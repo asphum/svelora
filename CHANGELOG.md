@@ -13,12 +13,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **release** — prepare v2.1.2 release and reformat release script
-- prepare public release
+- _None yet._
 
 ### Fixed
 
 - _None yet._
+
+## [2.2.0] - 2026-06-22
+
+### Added
+
+- ฟีเจอร์: เพิ่มไลบรารีส่วนประกอบ UI เริ่มต้นของ Svelte
+
+### Changed
+
+- prepare public release
 
 ## [2.1.1] - 2026-06-22
 
@@ -332,7 +341,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v2.1.1...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/asphum/svelora/compare/v2.1.1...v2.2.0
 [2.1.1]: https://github.com/asphum/svelora/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/asphum/svelora/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/asphum/svelora/compare/v1.8.0...v2.0.0

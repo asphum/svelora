@@ -1,6 +1,6 @@
 {
     "name": "svelora",
-    "version": "2.1.1",
+    "version": "2.2.0",
     "description": "Modern primitive-based UI component library for Svelte 5",
     "author": "asphum",
     "license": "MIT",
