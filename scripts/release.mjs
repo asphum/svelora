@@ -345,34 +345,45 @@ function createPendingCommit(commitMessage) {
     }
 }
 
-function getUnreleasedCommits(packageName, currentVersion, pendingCommitMessage) {
-    const releaseBase = resolveReleaseBase(currentVersion, packageName)
-    const gitLogArgs = ['log', '--reverse', '--format=%H%x1f%s%x1f%b%x1e']
+function getCommitHashes(releaseBase) {
+    const args = ['rev-list', '--reverse']
 
     if (releaseBase?.kind === 'ref') {
-        gitLogArgs.push(`${releaseBase.value}..HEAD`)
+        args.push(`${releaseBase.value}..HEAD`)
+    } else {
+        if (releaseBase?.kind === 'since') {
+            args.push(`--since=${releaseBase.value}`)
+        }
+
+        args.push('HEAD')
     }
 
-    if (releaseBase?.kind === 'since') {
-        gitLogArgs.push(`--since=${releaseBase.value}`)
+    const rawHashes = runCapture('git', args)
+
+    if (rawHashes.length === 0) {
+        return []
     }
 
-    const rawLog = runCapture('git', gitLogArgs)
-    const commits = rawLog
-        .split('\x1e')
-        .map((entry) => entry.trim())
-        .filter((entry) => entry.length > 0)
-        .map((entry) => {
-            const [hash = '', summary = '', body = ''] = entry.split('\x1f')
-            const normalizedSummary = normalizeCommitSummary(summary)
+    return rawHashes.split('\n').map((hash) => hash.trim()).filter((hash) => hash.length > 0)
+}
 
-            return {
-                body: body.trim(),
-                hash,
-                parsed: parseCommitMessage(normalizedSummary),
-                summary: normalizedSummary
-            }
-        })
+function getCommitRecord(hash) {
+    const rawEntry = runCapture('git', ['show', '--no-patch', '--format=%H%x1f%s%x1f%b', hash])
+    const [commitHash = '', summary = '', body = ''] = rawEntry.split('\x1f')
+    const normalizedSummary = normalizeCommitSummary(summary)
+
+    return {
+        body: body.trim(),
+        hash: commitHash,
+        parsed: parseCommitMessage(normalizedSummary),
+        summary: normalizedSummary
+    }
+}
+
+function getUnreleasedCommits(packageName, currentVersion, pendingCommitMessage) {
+    const releaseBase = resolveReleaseBase(currentVersion, packageName)
+    const commits = getCommitHashes(releaseBase)
+        .map((hash) => getCommitRecord(hash))
         .filter((commit) => commit.summary.length > 0)
         .filter((commit) => !/^chore\(release\): publish v/i.test(commit.summary))
 
