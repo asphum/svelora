@@ -19,6 +19,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.0.0] - 2026-06-23
+
+### Added
+
+- add vercel config, update deps and scripts
+- add docs site and update deploy domain
+- add docs pages, reorder imports, rebrand to SV5UI
+- rebrand to Svelora, enhance docs and tooling
+- add CodeBlock, Fonts provider, and Cursor MCP integration
+- **mcp** — add svelora docs MCP server and tooling
+
+### Changed
+
+- update svelte deployment adapter to vercel
+
+### Fixed
+
+- add component quick examples, fix minor issues
+
 ## [2.2.0] - 2026-06-22
 
 ### Added
@@ -341,7 +360,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/asphum/svelora/compare/v2.2.0...v3.0.0
 [2.2.0]: https://github.com/asphum/svelora/compare/v2.1.1...v2.2.0
 [2.1.1]: https://github.com/asphum/svelora/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/asphum/svelora/compare/v2.0.0...v2.1.0
