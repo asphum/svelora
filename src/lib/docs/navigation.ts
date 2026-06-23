@@ -1,3 +1,5 @@
+import packageJson from '../../../package.json' with { type: 'json' }
+
 export type DocsItem = {
     title: string
     href: string
@@ -13,7 +15,7 @@ export type DocsGroup = {
 
 export const docsMeta = {
     name: 'Svelora',
-    version: 'v2.2.0',
+    version: `v${packageJson.version}`,
     npmCommand: 'npm install svelora',
     githubHref: 'https://github.com/asphum/svelora'
 } as const
