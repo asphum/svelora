@@ -112,13 +112,8 @@ export function buildGoogleFontsUrl(
 
     if (families.length === 0) return ''
 
-    const params = new URLSearchParams()
-    families.forEach((family) => {
-        params.append('family', family)
-    })
-    params.set('display', display)
-
-    return `https://fonts.googleapis.com/css2?${params.toString()}`
+    const familyParams = families.map((f) => `family=${f}`).join('&')
+    return `https://fonts.googleapis.com/css2?${familyParams}&display=${display}`
 }
 
 export function buildFontFamily(font: FontDefinition): string {
