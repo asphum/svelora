@@ -169,7 +169,7 @@
             <div class="rounded-md bg-surface-container p-4">
                 <p class="mb-2 text-sm font-medium">Usage in Custom Components</p>
                 <pre
-                    class="overflow-x-auto rounded bg-surface-container-highest p-3 font-mono text-xs">{`import { useFormField } from 'sv5ui'
+                    class="overflow-x-auto rounded bg-surface-container-highest p-3 font-mono text-xs">{`import { useFormField } from 'svelora'
 
 const formField = useFormField()
 // formField?.name    → 'email'

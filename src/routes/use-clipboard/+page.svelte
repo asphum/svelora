@@ -5,13 +5,13 @@
     const clipboard = useClipboard()
     const clipboardLong = useClipboard({ timeout: 5000 })
 
-    let inputValue = $state('Hello, SV5UI!')
+    let inputValue = $state('Hello, Svelora!')
     let textareaValue = $state('const greeting = "Hello World";\nconsole.log(greeting);')
 
     const snippets = [
-        { label: 'npm', text: 'npm install sv5ui', icon: 'lucide:terminal' },
-        { label: 'pnpm', text: 'pnpm add sv5ui', icon: 'lucide:terminal' },
-        { label: 'yarn', text: 'yarn add sv5ui', icon: 'lucide:terminal' }
+        { label: 'npm', text: 'npm install svelora', icon: 'lucide:terminal' },
+        { label: 'pnpm', text: 'pnpm add svelora', icon: 'lucide:terminal' },
+        { label: 'yarn', text: 'yarn add svelora', icon: 'lucide:terminal' }
     ]
 </script>
 
@@ -28,7 +28,7 @@
         <h2 class="text-lg font-semibold">Basic</h2>
         <div class="flex flex-wrap items-center gap-3 rounded-lg bg-surface-container-high p-4">
             <Button
-                onclick={() => clipboard.copy('Hello from SV5UI!')}
+                onclick={() => clipboard.copy('Hello from Svelora!')}
                 icon={clipboard.copied ? 'lucide:check' : 'lucide:copy'}
                 color={clipboard.copied ? 'success' : 'primary'}
             >
@@ -130,10 +130,10 @@
                         <div
                             class="flex-1 truncate rounded-md bg-surface-container px-3 py-2 font-mono text-xs text-on-surface-variant"
                         >
-                            https://sv5ui.vercel.app/use-clipboard
+                            https://svelora.vercel.app/use-clipboard
                         </div>
                         <Button
-                            onclick={() => clipboard.copy('https://sv5ui.vercel.app/use-clipboard')}
+                            onclick={() => clipboard.copy('https://svelora.vercel.app/use-clipboard')}
                             icon={clipboard.copied ? 'lucide:check' : 'lucide:link'}
                             color={clipboard.copied ? 'success' : 'primary'}
                             variant="soft"

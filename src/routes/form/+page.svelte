@@ -42,7 +42,7 @@
     // Example 2 — Validation with real libraries
     // Same signup form validated by Zod / Valibot / Yup / Joi interchangeably.
     // Zod, Valibot, and Yup implement the Standard Schema spec; Joi has a
-    // dedicated adapter. SV5UI's Form accepts all four identically via the
+    // dedicated adapter. Svelora's Form accepts all four identically via the
     // `schema` prop — zero adapter code on the user's side.
     // ============================================================
     type SignupInput = {

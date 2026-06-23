@@ -138,7 +138,7 @@
                     class="rounded-lg border border-outline-variant bg-surface-container py-4"
                 >
                     <div class="flex items-center justify-between text-sm text-on-surface-variant">
-                        <span>&copy; 2026 SV5UI</span>
+                        <span>&copy; 2026 Svelora</span>
                         <div class="flex gap-4">
                             <span>Privacy</span>
                             <span>Terms</span>

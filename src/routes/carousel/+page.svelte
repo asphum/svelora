@@ -32,7 +32,7 @@
     ]
     const photos = Array.from({ length: 12 }, (_, i) => ({
         id: i,
-        src: `https://picsum.photos/seed/sv5ui-carousel-${i}/800/450`,
+        src: `https://picsum.photos/seed/svelora-carousel-${i}/800/450`,
         alt: `Photo ${i + 1}`,
         title: photoTitles[i]
     }))
@@ -125,7 +125,7 @@
             <Carousel items={fruits}>
                 {#snippet slide({ item })}
                     <div
-                        class="flex aspect-[2/1] flex-col items-center justify-center rounded-lg bg-linear-to-br {item.from} {item.to} text-white shadow-inner"
+                        class="flex aspect-[2/1 flex-col items-center justify-center rounded-lg bg-linear-to-br {item.from} {item.to} text-white shadow-inner"
                     >
                         <div class="text-7xl drop-shadow-sm">{item.emoji}</div>
                         <p class="mt-2 text-lg font-semibold">{item.label}</p>
@@ -280,7 +280,7 @@
             <Carousel bind:api={controlledApi} bind:index={controlledIndex} items={fruits} loop>
                 {#snippet slide({ item, selected })}
                     <div
-                        class="flex aspect-[2/1] flex-col items-center justify-center rounded-lg bg-linear-to-br {item.from} {item.to} text-white transition-transform"
+                        class="flex aspect-[2/1 flex-col items-center justify-center rounded-lg bg-linear-to-br {item.from} {item.to} text-white transition-transform"
                         class:scale-100={selected}
                         class:scale-95={!selected}
                     >
@@ -554,7 +554,7 @@
                     <Carousel items={fruits.slice(0, 4)} {color}>
                         {#snippet slide({ item })}
                             <div
-                                class="flex aspect-[2/1] items-center justify-center rounded-md bg-linear-to-br {item.from} {item.to} text-5xl text-white"
+                                class="flex aspect-[2/1 items-center justify-center rounded-md bg-linear-to-br {item.from} {item.to} text-5xl text-white"
                             >
                                 {item.emoji}
                             </div>
@@ -582,7 +582,7 @@
                     <Carousel items={fruits.slice(0, 4)} {size}>
                         {#snippet slide({ item })}
                             <div
-                                class="flex aspect-[2/1] items-center justify-center rounded-md bg-linear-to-br {item.from} {item.to} text-5xl text-white"
+                                class="flex aspect-[2/1 items-center justify-center rounded-md bg-linear-to-br {item.from} {item.to} text-5xl text-white"
                             >
                                 {item.emoji}
                             </div>

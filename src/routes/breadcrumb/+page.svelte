@@ -117,7 +117,7 @@
                 items={[
                     { label: 'Home', href: '/', icon: 'lucide:home' },
                     { label: 'Projects', href: '/projects', icon: 'lucide:folder' },
-                    { label: 'sv5ui', icon: 'lucide:package' }
+                    { label: 'svelora', icon: 'lucide:package' }
                 ]}
             >
                 {#snippet item({ item: crumb, active })}

@@ -90,7 +90,7 @@
 
     let serializedJson = $derived(JSON.stringify(jsonValue, null, 2))
 
-    const importExample = "import { Editor } from 'sv5ui/editor'"
+    const importExample = "import { Editor } from 'svelora/editor'"
 </script>
 
 <div class="space-y-8">
@@ -100,7 +100,7 @@
             Rich-text WYSIWYG editor built on <strong>Tiptap v3</strong> + ProseMirror. Imported via
             the sub-export
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
-                >sv5ui/editor</code
+                >svelora/editor</code
             >
             — only adds Tiptap to your bundle when actually used.
         </p>

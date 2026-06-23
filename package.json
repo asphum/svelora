@@ -17,7 +17,8 @@
         "url": "https://github.com/asphum/svelora/issues"
     },
     "scripts": {
-        "dev": "vite dev",
+        "dev": "vite dev --port 3000",
+        "dev:docs": "vite dev --host 0.0.0.0 --port 4173",
         "build": "vite build && bun run prepack",
         "preview": "vite preview",
         "prepare": "svelte-kit sync || echo ''",
@@ -49,7 +50,9 @@
         "public:major:full": "node ./scripts/release.mjs public major --full",
         "public:minor:dry": "node ./scripts/release.mjs public minor --dry-run",
         "public:major:dry": "node ./scripts/release.mjs public major --dry-run",
-        "clean": "rm -rf dist node_modules build .svelte-kit bun.lock"
+        "clean": "rm -rf dist node_modules build .svelte-kit bun.lock",
+        "kill": "PORT=${PORT:-3000}; lsof -ti:$PORT | xargs kill -9 2>/dev/null || true",
+        "kill:docs": "for p in 4173 4174 4175; do lsof -ti:$p | xargs kill -9 2>/dev/null || true; done"
     },
     "files": [
         "dist",
@@ -201,6 +204,7 @@
         "joi": "^18.2.3",
         "playwright": "^1.61.0",
         "publint": "^0.3.21",
+        "shiki": "^4.2.0",
         "svelte": "^5.56.3",
         "svelte-check": "^4.6.0",
         "tailwindcss": "^4.3.1",
