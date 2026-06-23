@@ -47,7 +47,8 @@
             <link rel="stylesheet" href={href} />
         {/if}
         {#if inlineCss}
-            <style>{inlineCss}</style>
+            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+            {@html `<style>${inlineCss}</style>`}
         {/if}
     {/if}
 </svelte:head>

@@ -72,4 +72,3 @@ export const codeBlockDefaults = {
     defaultVariants: codeBlockVariants.defaultVariants,
     slots: {} as Partial<Record<CodeBlockSlots, string>>
 }
-

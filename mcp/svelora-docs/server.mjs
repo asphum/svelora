@@ -36,7 +36,10 @@ function normalizeCode(code) {
         .map((line) => line.match(/^(\s*)/)?.[1].length ?? 0)
 
     const minIndent = indents.length > 0 ? Math.min(...indents) : 0
-    return trimmed.map((line) => line.slice(minIndent)).join('\n').trim()
+    return trimmed
+        .map((line) => line.slice(minIndent))
+        .join('\n')
+        .trim()
 }
 
 function unwrapPreviewWrappers(source) {
@@ -54,7 +57,8 @@ function unwrapPreviewWrappers(source) {
         if (t.startsWith('overflow-')) return true
         if (t === 'grid' || t.startsWith('grid-')) return true
         if (t === 'flex' || t === 'inline-flex' || t.startsWith('flex-')) return true
-        if (t.startsWith('items-') || t.startsWith('justify-') || t.startsWith('content-')) return true
+        if (t.startsWith('items-') || t.startsWith('justify-') || t.startsWith('content-'))
+            return true
         if (t.startsWith('self-') || t.startsWith('place-')) return true
         if (t.startsWith('rounded')) return true
         if (t.startsWith('border') || t.startsWith('ring') || t.startsWith('shadow')) return true
@@ -170,7 +174,10 @@ function detectLanguage(code) {
         return 'json'
     }
 
-    if (source.startsWith('@import') || (source.includes('{') && source.includes(':') && source.includes(';'))) {
+    if (
+        source.startsWith('@import') ||
+        (source.includes('{') && source.includes(':') && source.includes(';'))
+    ) {
         return 'css'
     }
 
@@ -293,4 +300,3 @@ server.tool(
 
 const transport = new StdioServerTransport()
 await server.connect(transport)
-

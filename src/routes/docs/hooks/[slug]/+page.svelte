@@ -3,10 +3,19 @@
     import { mount, tick, unmount } from 'svelte'
     import { CodeBlock, Link } from '$lib/index.js'
     import { docsHookItems } from '$lib/docs/navigation.js'
-    import { getSectionSnippets, renderHighlightedCode } from '$lib/docs/code-block.js'
+    import { buildDefaultHookExample, getSectionSnippets, renderHighlightedCode } from '$lib/docs/code-block.js'
+    import type { DocSectionSnippetOverrides } from '$lib/docs/code-block.js'
 
     type PageModule = {
         default: Component
+    }
+
+    type SnippetModule = {
+        sectionSnippets: DocSectionSnippetOverrides
+    }
+
+    type QuickExampleModule = {
+        quickExample: string
     }
 
     const modules = import.meta.glob('../../../use*/+page.svelte', {
@@ -18,6 +27,14 @@
         query: '?raw',
         import: 'default'
     }) as Record<string, string>
+
+    const snippetModules = import.meta.glob('../../../use-*/snippets.ts', {
+        eager: true
+    }) as Record<string, SnippetModule>
+
+    const quickExampleModules = import.meta.glob('../../../use-*/quick-example.ts', {
+        eager: true
+    }) as Record<string, QuickExampleModule>
 
     const docsPages = new Map<string, Component>(
         Object.entries(modules)
@@ -31,6 +48,18 @@
             .filter(([slug]) => slug.length > 0)
     )
 
+    const pageSnippetOverrides = new Map<string, DocSectionSnippetOverrides>(
+        Object.entries(snippetModules)
+            .map(([path, module]) => [path.split('/').at(-2) ?? '', module.sectionSnippets] as const)
+            .filter(([slug]) => slug.length > 0)
+    )
+
+    const pageQuickExamples = new Map<string, string>(
+        Object.entries(quickExampleModules)
+            .map(([path, module]) => [path.split('/').at(-2) ?? '', module.quickExample] as const)
+            .filter(([slug]) => slug.length > 0)
+    )
+
     const { data } = $props<{
         data: {
             slug: string
@@ -40,82 +69,11 @@
     const hookMeta = $derived(docsHookItems.find((item) => item.href.endsWith(`/${data.slug}`)))
     const resolvedPage = $derived(docsPages.get(data.slug))
     const pageSource = $derived(pageSources.get(data.slug) ?? '')
-
-    const hookExamples: Record<string, string> = {
-        'use-clipboard': `<script lang="ts">
- import { useClipboard } from 'svelora';
-
- const clipboard = useClipboard();
-<` + `/script>
-
-<button onclick={() => clipboard.copy('Hello Svelora!')}>
- {clipboard.copied ? 'Copied!' : 'Copy'}
-</button>`,
-        'use-debounce': `<script lang="ts">
- import { useDebounce } from 'svelora';
-
- let value = $state('');
- const debounced = useDebounce(() => value, 300);
-<` + `/script>
-
-<input bind:value placeholder="Type to debounce..." />
-<p>{debounced()}</p>`,
-        'use-form-field': `<script lang="ts">
- import { FormField, Input, useFormField } from 'svelora';
-<` + `/script>
-
-<FormField label="Email" name="email">
- <Input placeholder="you@example.com" />
-</FormField>
-
-<!-- Inside a child component -->
-const formField = useFormField();`,
-        'use-media-query': `<script lang="ts">
- import { useMediaQuery } from 'svelora';
-
- const isDesktop = useMediaQuery('(min-width: 1024px)');
-<` + `/script>
-
-<p>{isDesktop.current ? 'Desktop' : 'Mobile'}</p>`,
-        'use-click-outside': `<script lang="ts">
- import { useClickOutside } from 'svelora';
-
- let open = $state(true);
- const container = useClickOutside(() => (open = false));
-<` + `/script>
-
-<div use:container>Click outside me</div>`,
-        'use-infinite-scroll': `<script lang="ts">
- import { useInfiniteScroll } from 'svelora';
-
- const loadMore = () => {
-  console.log('load more');
- };
-<` + `/script>
-
-<div use:useInfiniteScroll={{ onLoadMore: loadMore }}>
- Scroll to load more
-</div>`,
-        'use-escape-keydown': `<script lang="ts">
- import { useEscapeKeydown } from 'svelora';
-
- useEscapeKeydown(() => {
-  console.log('escape pressed');
- });
-<` + `/script>`,
-    }
-
-    function getDefaultHookExample(hookName: string): string {
-        return `<script lang="ts">
- import { ${hookName} } from 'svelora';
-<` + `/script>
-
-const value = ${hookName}();`
-    }
+    const routeSnippetOverrides = $derived(pageSnippetOverrides.get(data.slug) ?? {})
+    const routeQuickExample = $derived(pageQuickExamples.get(data.slug))
 
     const exampleCode = $derived.by(() => {
-        const hookName = hookMeta?.title ?? 'useHook'
-        return hookExamples[data.slug] ?? getDefaultHookExample(hookName)
+        return routeQuickExample ?? buildDefaultHookExample(data.slug)
     })
 
     let containerEl = $state<HTMLElement | null>(null)
@@ -135,10 +93,15 @@ const value = ${hookName}();`
         })
     }
 
-    async function injectCodeBlocks(root: HTMLElement, source: string, darkMode: boolean): Promise<void> {
+    async function injectCodeBlocks(
+        root: HTMLElement,
+        source: string,
+        darkMode: boolean,
+        snippetOverrides: DocSectionSnippetOverrides
+    ): Promise<void> {
         clearInjectedCodeBlocks(root)
 
-        const snippets = getSectionSnippets(source, data.slug)
+        const snippets = getSectionSnippets(source, snippetOverrides)
         const sections = Array.from(root.querySelectorAll('section'))
         const highlightedSnippets = await Promise.all(
             snippets.map((entry) => renderHighlightedCode(entry.snippet, darkMode))
@@ -172,6 +135,7 @@ const value = ${hookName}();`
         const root = containerEl
         const source = pageSource
         const darkMode = isDarkMode
+        const snippetOverrides = routeSnippetOverrides
 
         if (!root || !source) return
 
@@ -179,7 +143,7 @@ const value = ${hookName}();`
 
         void tick().then(() => {
             if (cancelled) return
-            void injectCodeBlocks(root, source, darkMode)
+            void injectCodeBlocks(root, source, darkMode, snippetOverrides)
         })
 
         return () => {

@@ -66,10 +66,7 @@ type DeepPartial<T> = {
 
 /** Generic component config shape */
 export type UIConfig = {
-    [key: string]:
-        | DeepPartial<Record<string, unknown>>
-        | FontsConfig
-        | undefined
+    [key: string]: DeepPartial<Record<string, unknown>> | FontsConfig | undefined
     icons?: DeepPartial<typeof iconsDefaults>
     fonts?: FontsConfig
 }

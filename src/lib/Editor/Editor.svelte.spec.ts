@@ -852,9 +852,12 @@ describe('Editor', () => {
                 return el as HTMLElement
             })
 
-            const options = popup.querySelectorAll('[role="option"]')
-            expect(options.length).toBeGreaterThan(0)
+            await vi.waitFor(() => {
+                const options = popup.querySelectorAll('[role="option"]')
+                expect(options.length).toBeGreaterThan(0)
+            })
 
+            const options = popup.querySelectorAll('[role="option"]')
             const selected = popup.querySelectorAll('[role="option"][aria-selected="true"]')
             expect(selected.length).toBe(1)
 

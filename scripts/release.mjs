@@ -364,7 +364,10 @@ function getCommitHashes(releaseBase) {
         return []
     }
 
-    return rawHashes.split('\n').map((hash) => hash.trim()).filter((hash) => hash.length > 0)
+    return rawHashes
+        .split('\n')
+        .map((hash) => hash.trim())
+        .filter((hash) => hash.length > 0)
 }
 
 function getCommitRecord(hash) {
@@ -461,20 +464,20 @@ function updateChangelogForRelease(currentVersion, nextVersion, releaseSections)
 function parseArgs(argv) {
     const [firstArg, ...restArgs] = argv
     const publicMode = firstArg === 'public'
-    const publicReleaseType = publicMode && ['patch', 'minor', 'major'].includes(restArgs[0] ?? '')
-        ? restArgs[0]
-        : 'patch'
+    const publicReleaseType =
+        publicMode && ['patch', 'minor', 'major'].includes(restArgs[0] ?? '')
+            ? restArgs[0]
+            : 'patch'
     const releaseType = ['patch', 'minor', 'major'].includes(firstArg)
         ? firstArg
         : publicReleaseType
-    const remainingArgs =
-        publicMode
-            ? publicReleaseType === 'patch'
-                ? restArgs
-                : restArgs.slice(1)
-            : firstArg === releaseType
-              ? restArgs
-              : argv
+    const remainingArgs = publicMode
+        ? publicReleaseType === 'patch'
+            ? restArgs
+            : restArgs.slice(1)
+        : firstArg === releaseType
+          ? restArgs
+          : argv
 
     let dryRun = false
     let verifyScript = 'release:verify'
@@ -528,11 +531,10 @@ function main() {
         throw new Error(`Version ${nextVersion} is already published on npm`)
     }
 
-    const resolvedWorkCommitMessage =
-        hasUncommittedChanges
-            ? (options.workCommitMessage ??
-              (options.publicMode ? defaultAutoWorkCommitMessage : undefined))
-            : undefined
+    const resolvedWorkCommitMessage = hasUncommittedChanges
+        ? (options.workCommitMessage ??
+          (options.publicMode ? defaultAutoWorkCommitMessage : undefined))
+        : undefined
 
     if (hasUncommittedChanges && !resolvedWorkCommitMessage) {
         throw new Error(

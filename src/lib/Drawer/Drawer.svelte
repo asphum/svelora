@@ -81,7 +81,7 @@
     }
 
     const rootProps = $derived.by(() => {
-        const base = {
+        const base: Record<string, unknown> = {
             ...rest,
             open,
             onOpenChange: handleOpenChange,
@@ -98,6 +98,9 @@
             onDrag,
             onRelease,
             onClose
+        }
+        if (rest.container) {
+            base.container = rest.container
         }
         if (snapPoints && fadeFromIndex !== null) {
             return { ...base, snapPoints, fadeFromIndex }
@@ -182,9 +185,16 @@
             bits-ui v0 internally, which is incompatible with Svelte 5 snippets
             and yields an empty <button> in the DOM. We pass an `onclick` handler
             to the user-supplied trigger snippet so the user's element opens the
-            drawer when activated.
+            drawer when activated, and we manually expose `data-state` so callers
+            can style/assert the trigger element.
         -->
-        {@render children({ props: { type: 'button', onclick: () => (open = true) } })}
+        {@render children({
+            props: {
+                type: 'button',
+                onclick: () => (open = true),
+                'data-state': open ? 'open' : 'closed'
+            }
+        })}
     {/if}
 
     {#if portal}

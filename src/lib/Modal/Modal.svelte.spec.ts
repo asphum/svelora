@@ -115,7 +115,7 @@ describe('Modal', () => {
             await vi.waitFor(() => {
                 const overlay = getOverlay()
                 expect(overlay).not.toBeNull()
-                expect(overlay!.className).toContain('bg-black/30')
+                expect(overlay!.className).toContain('bg-[var(--scrim-bg)]')
                 expect(overlay!.className).toContain('backdrop-blur-sm')
             })
         })

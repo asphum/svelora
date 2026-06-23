@@ -467,6 +467,9 @@ export type Props = EditorProps;
         try {
             const url = await onImageUpload(file)
             if (!isSafeImageSrc(url)) {
+                console.warn(
+                    `[svelora] Blocked unsafe image src returned by onImageUpload: ${url}`
+                )
                 return
             }
             editor.chain().focus().setImage({ src: url }).run()

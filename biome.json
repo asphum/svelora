@@ -26,12 +26,14 @@
                 "useParseIntRadix": "off"
             },
             "style": {
-                "noNonNullAssertion": "off"
+                "noNonNullAssertion": "off",
+                "useTemplate": "off"
             },
             "suspicious": {
-                "noConsole": "warn",
+                "noConsole": "off",
                 "noExplicitAny": "off",
                 "noGlobalAssign": "off",
+                "noTemplateCurlyInString": "off",
                 "useIterableCallbackReturn": "off"
             },
             "complexity": {

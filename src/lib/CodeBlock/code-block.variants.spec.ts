@@ -27,4 +27,3 @@ describe('code-block.variants', () => {
         expect(validSizes).toHaveLength(3)
     })
 })
-

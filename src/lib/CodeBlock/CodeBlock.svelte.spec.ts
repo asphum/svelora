@@ -8,7 +8,8 @@ type ClipboardMock = {
 }
 
 function mockClipboard(impl?: ClipboardMock['writeText']): ClipboardMock {
-    const writeText = impl ?? (vi.fn(async () => undefined) as unknown as ClipboardMock['writeText'])
+    const writeText =
+        impl ?? (vi.fn(async () => undefined) as unknown as ClipboardMock['writeText'])
 
     const clipboard: ClipboardMock = { writeText }
     Object.defineProperty(navigator, 'clipboard', {

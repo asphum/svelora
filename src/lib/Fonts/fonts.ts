@@ -50,7 +50,10 @@ function normalizeFontName(name: string): string {
 function getFontWeights(weights?: number[]): number[] {
     const normalized = (weights ?? [400]).filter(
         (weight, index, source) =>
-            Number.isInteger(weight) && weight >= 100 && weight <= 900 && source.indexOf(weight) === index
+            Number.isInteger(weight) &&
+            weight >= 100 &&
+            weight <= 900 &&
+            source.indexOf(weight) === index
     )
 
     return normalized.length > 0 ? [...normalized].sort((a, b) => a - b) : [400]
@@ -58,7 +61,8 @@ function getFontWeights(weights?: number[]): number[] {
 
 function getFontStyles(styles?: GoogleFontStyle[]): GoogleFontStyle[] {
     const normalized = (styles ?? ['normal']).filter(
-        (style, index, source) => (style === 'normal' || style === 'italic') && source.indexOf(style) === index
+        (style, index, source) =>
+            (style === 'normal' || style === 'italic') && source.indexOf(style) === index
     )
 
     if (normalized.length === 0) return ['normal']
@@ -131,27 +135,25 @@ export function buildLocalFontFaceCss(
     fonts: FontDefinition[],
     defaultDisplay: GoogleFontDisplay = 'swap'
 ): string {
-    const declarations = fonts
-        .filter(isLocalFont)
-        .flatMap((font) =>
-            font.sources.map((source) => {
-                const lines = [
-                    '@font-face {',
-                    `    font-family: '${escapeFontName(normalizeFontName(font.name))}';`,
-                    `    src: ${buildLocalFontSourceReference(source)};`,
-                    `    font-display: ${font.display ?? defaultDisplay};`,
-                    `    font-style: ${source.style ?? 'normal'};`,
-                    `    font-weight: ${source.weight ?? 400};`
-                ]
+    const declarations = fonts.filter(isLocalFont).flatMap((font) =>
+        font.sources.map((source) => {
+            const lines = [
+                '@font-face {',
+                `    font-family: '${escapeFontName(normalizeFontName(font.name))}';`,
+                `    src: ${buildLocalFontSourceReference(source)};`,
+                `    font-display: ${font.display ?? defaultDisplay};`,
+                `    font-style: ${source.style ?? 'normal'};`,
+                `    font-weight: ${source.weight ?? 400};`
+            ]
 
-                if (source.unicodeRange) {
-                    lines.push(`    unicode-range: ${source.unicodeRange};`)
-                }
+            if (source.unicodeRange) {
+                lines.push(`    unicode-range: ${source.unicodeRange};`)
+            }
 
-                lines.push('}')
-                return lines.join('\n')
-            })
-        )
+            lines.push('}')
+            return lines.join('\n')
+        })
+    )
 
     return declarations.join('\n\n')
 }

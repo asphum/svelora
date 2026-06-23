@@ -45,7 +45,7 @@ describe('fonts provider', () => {
                 name: 'JetBrains Mono',
                 variable: '--font-mono-family'
             })
-        ).toContain("ui-monospace")
+        ).toContain('ui-monospace')
     })
 
     it('should build CSS variables only for fonts that define a variable', () => {

@@ -3,10 +3,19 @@
     import { mount, tick, unmount } from 'svelte'
     import { CodeBlock, Link } from '$lib/index.js'
     import { allComponentItems } from '$lib/docs/navigation.js'
-    import { getSectionSnippets, renderHighlightedCode } from '$lib/docs/code-block.js'
+    import { buildDefaultComponentExample, getSectionSnippets, renderHighlightedCode } from '$lib/docs/code-block.js'
+    import type { DocSectionSnippetOverrides } from '$lib/docs/code-block.js'
 
     type PageModule = {
         default: Component
+    }
+
+    type SnippetModule = {
+        sectionSnippets: DocSectionSnippetOverrides
+    }
+
+    type QuickExampleModule = {
+        quickExample: string
     }
 
     const modules = import.meta.glob('../../../*/+page.svelte', {
@@ -18,6 +27,14 @@
         query: '?raw',
         import: 'default'
     }) as Record<string, string>
+
+    const snippetModules = import.meta.glob('../../../*/snippets.ts', {
+        eager: true
+    }) as Record<string, SnippetModule>
+
+    const quickExampleModules = import.meta.glob('../../../*/quick-example.ts', {
+        eager: true
+    }) as Record<string, QuickExampleModule>
 
     const docsPages = new Map<string, Component>(
         Object.entries(modules)
@@ -31,6 +48,18 @@
             .filter(([slug]) => slug.length > 0)
     )
 
+    const pageSnippetOverrides = new Map<string, DocSectionSnippetOverrides>(
+        Object.entries(snippetModules)
+            .map(([path, module]) => [path.split('/').at(-2) ?? '', module.sectionSnippets] as const)
+            .filter(([slug]) => slug.length > 0)
+    )
+
+    const pageQuickExamples = new Map<string, string>(
+        Object.entries(quickExampleModules)
+            .map(([path, module]) => [path.split('/').at(-2) ?? '', module.quickExample] as const)
+            .filter(([slug]) => slug.length > 0)
+    )
+
     const { data } = $props<{
         data: {
             slug: string
@@ -40,155 +69,11 @@
     const componentMeta = $derived(allComponentItems.find((item) => item.href.endsWith(`/${data.slug}`)))
     const resolvedPage = $derived(docsPages.get(data.slug))
     const pageSource = $derived(pageSources.get(data.slug) ?? '')
-
-    const componentExamples: Record<string, string> = {
-        button: `<script lang="ts">
- import { Button } from 'svelora';
-<` + `/script>
-
-<Button label="Click me" color="primary" />`,
-        'code-block': `<script lang="ts">
- import { CodeBlock } from 'svelora';
-<` + `/script>
-
-<CodeBlock
- title="Code"
- code={\`type User = { _id: string; name: string }\n\nconst user: User = { _id: 'u_1', name: 'Jane' }\`}
-/>`,
-        fonts: `<script lang="ts">
- import { Fonts } from 'svelora';
-<` + `/script>
-
-<Fonts
- families={[
-  { name: 'Inter', variable: '--font-sans-family', weights: [400, 500, 600, 700] },
-  { name: 'JetBrains Mono', variable: '--font-mono-family', weights: [400, 500, 700] },
-  {
-   provider: 'local',
-   name: 'Sarabun',
-   variable: '--font-sarabun-family',
-   sources: [{ src: '/fonts/Sarabun-Regular.woff2', format: 'woff2', weight: 400 }]
-  }
- ]}
-/>`,
-        'google-fonts': `<script lang="ts">
- import { Fonts } from 'svelora';
-<` + `/script>
-
-<Fonts
- families={[
-  { name: 'Inter', variable: '--font-sans-family', weights: [400, 500, 600, 700] },
-  { name: 'JetBrains Mono', variable: '--font-mono-family', weights: [400, 500, 700] },
-  {
-   provider: 'local',
-   name: 'Sarabun',
-   variable: '--font-sarabun-family',
-   sources: [{ src: '/fonts/Sarabun-Regular.woff2', format: 'woff2', weight: 400 }]
-  }
- ]}
-/>`,
-        input: `<script lang="ts">
- import { Input } from 'svelora';
-<` + `/script>
-
-<Input placeholder="Enter text..." />`,
-        select: `<script lang="ts">
- import { Select } from 'svelora';
-
- const items = [
-  { value: 'apple', label: 'Apple' },
-  { value: 'banana', label: 'Banana' }
- ];
-<` + `/script>
-
-<Select {items} placeholder="Choose a fruit" />`,
-        'select-menu': `<script lang="ts">
- import { SelectMenu } from 'svelora';
-
- const items = [
-  { value: 'apple', label: 'Apple' },
-  { value: 'banana', label: 'Banana' },
-  { value: 'orange', label: 'Orange' }
- ];
-<` + `/script>
-
-<SelectMenu {items} placeholder="Select a fruit..." />`,
-        textarea: `<script lang="ts">
- import { Textarea } from 'svelora';
-<` + `/script>
-
-<Textarea rows={4} placeholder="Write something..." />`,
-        checkbox: `<script lang="ts">
- import { Checkbox } from 'svelora';
-<` + `/script>
-
-<Checkbox label="Accept terms" />`,
-        'radio-group': `<script lang="ts">
- import { RadioGroup } from 'svelora';
-
- const items = [
-  { value: 'apple', label: 'Apple' },
-  { value: 'banana', label: 'Banana' }
- ];
-
- let value = $state('apple');
-<` + `/script>
-
-<RadioGroup {items} bind:value />`,
-        switch: `<script lang="ts">
- import { Switch } from 'svelora';
-<` + `/script>
-
-<Switch label="Enable notifications" />`,
-        modal: `<script lang="ts">
- import { Button, Modal } from 'svelora';
-
- let open = $state(false);
-<` + `/script>
-
-<Button label="Open modal" onclick={() => (open = true)} />
-<Modal bind:open title="Confirm action" />`,
-        table: `<script lang="ts">
- import { Table } from 'svelora';
-
- const data = [
-  { name: 'Alice', email: 'alice@example.com', role: 'Admin' },
-  { name: 'Bob', email: 'bob@example.com', role: 'Editor' }
- ];
-<` + `/script>
-
-<Table {data} />`,
-        toast: `<script lang="ts">
- import { Button, Toaster, toast } from 'svelora';
-<` + `/script>
-
-<Button label="Show toast" onclick={() => toast.success('Saved successfully')} />
-<Toaster />`,
-        'theme-mode-button': `<script lang="ts">
- import { ThemeModeButton } from 'svelora';
-<` + `/script>
-
-<ThemeModeButton />`,
-        editor: `<script lang="ts">
- import { Editor } from 'svelora/editor';
-
- let value = $state('<p>Hello Svelora</p>');
-<` + `/script>
-
-<Editor bind:value />`
-    }
-
-    function getDefaultComponentExample(componentName: string): string {
-        return `<script lang="ts">
- import { ${componentName} } from 'svelora';
-<` + `/script>
-
-<${componentName} />`
-    }
+    const routeSnippetOverrides = $derived(pageSnippetOverrides.get(data.slug) ?? {})
+    const routeQuickExample = $derived(pageQuickExamples.get(data.slug))
 
     const exampleCode = $derived.by(() => {
-        const componentName = componentMeta?.title ?? 'Component'
-        return componentExamples[data.slug] ?? getDefaultComponentExample(componentName)
+        return routeQuickExample ?? buildDefaultComponentExample(data.slug)
     })
 
     let containerEl = $state<HTMLElement | null>(null)
@@ -208,10 +93,15 @@
         })
     }
 
-    async function injectCodeBlocks(root: HTMLElement, source: string, darkMode: boolean): Promise<void> {
+    async function injectCodeBlocks(
+        root: HTMLElement,
+        source: string,
+        darkMode: boolean,
+        snippetOverrides: DocSectionSnippetOverrides
+    ): Promise<void> {
         clearInjectedCodeBlocks(root)
 
-        const snippets = getSectionSnippets(source, data.slug)
+        const snippets = getSectionSnippets(source, snippetOverrides)
         const sections = Array.from(root.querySelectorAll('section'))
         const highlightedSnippets = await Promise.all(
             snippets.map((entry) => renderHighlightedCode(entry.snippet, darkMode))
@@ -245,6 +135,7 @@
         const root = containerEl
         const source = pageSource
         const darkMode = isDarkMode
+        const snippetOverrides = routeSnippetOverrides
 
         if (!root || !source) return
 
@@ -252,7 +143,7 @@
 
         void tick().then(() => {
             if (cancelled) return
-            void injectCodeBlocks(root, source, darkMode)
+            void injectCodeBlocks(root, source, darkMode, snippetOverrides)
         })
 
         return () => {
