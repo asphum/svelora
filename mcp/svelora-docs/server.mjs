@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -10,6 +12,9 @@ import { z } from 'zod'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const repoRoot = path.resolve(__dirname, '../../')
+const packagedDataPath = path.resolve(__dirname, './svelora-docs.data.json')
+
+let packagedDataPromise
 
 function resolveRepoPath(relativePath) {
     const fullPath = path.resolve(repoRoot, relativePath)
@@ -17,6 +22,23 @@ function resolveRepoPath(relativePath) {
         throw new Error('Invalid path')
     }
     return fullPath
+}
+
+async function readJsonIfExists(filePath) {
+    try {
+        const source = await readFile(filePath, 'utf8')
+        return JSON.parse(source)
+    } catch (error) {
+        if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
+            return null
+        }
+        throw error
+    }
+}
+
+async function getPackagedData() {
+    packagedDataPromise ??= readJsonIfExists(packagedDataPath)
+    return await packagedDataPromise
 }
 
 function normalizeCode(code) {
@@ -209,6 +231,11 @@ function getPagePathFromSlug(slug) {
 }
 
 async function readRouteSource(slug) {
+    const packagedData = await getPackagedData()
+    if (packagedData?.pages?.[slug]) {
+        return packagedData.pages[slug]
+    }
+
     const filePath = resolveRepoPath(getPagePathFromSlug(slug))
     return await readFile(filePath, 'utf8')
 }
@@ -216,6 +243,16 @@ async function readRouteSource(slug) {
 async function readDocsNavigationSource() {
     const filePath = resolveRepoPath('src/lib/docs/navigation.ts')
     return await readFile(filePath, 'utf8')
+}
+
+async function listDocSlugs() {
+    const packagedData = await getPackagedData()
+    if (packagedData?.slugs) {
+        return packagedData.slugs
+    }
+
+    const navigationSource = await readDocsNavigationSource()
+    return extractDocSlugs(navigationSource)
 }
 
 function extractDocSlugs(navigationSource) {
@@ -246,8 +283,7 @@ server.tool(
     'List docs slugs from src/lib/docs/navigation.ts (components + hooks)',
     {},
     async () => {
-        const navigationSource = await readDocsNavigationSource()
-        const slugs = extractDocSlugs(navigationSource)
+        const slugs = await listDocSlugs()
 
         return {
             content: [

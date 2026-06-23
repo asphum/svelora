@@ -23,6 +23,8 @@
  </div>
 </Card>`
 
+    const mcpInstallCode = `svelora-mcp-install-template`
+
     const builtWith = [
         { title: 'Svelte 5', description: 'Runes & snippets', icon: 'lucide:zap' },
         { title: 'Tailwind 4', description: 'Utility-first CSS', icon: 'lucide:palette' },
@@ -72,7 +74,7 @@
             <p class="text-on-surface-variant">Install and start using Svelora in two steps.</p>
         </div>
 
-        <div class="grid gap-4 lg:grid-cols-2">
+        <div class="grid gap-4 lg:grid-cols-3">
             <Card class="border border-outline-variant/70">
                 <div class="space-y-4">
                     <div class="flex items-center gap-2 text-on-surface-variant">
@@ -93,6 +95,32 @@
                     </div>
                     <div class="rounded-2xl bg-surface-container p-4 font-mono text-xs">
                         <pre class="overflow-x-auto whitespace-pre-wrap">{usageCode}</pre>
+                    </div>
+                </div>
+            </Card>
+
+            <Card class="border border-outline-variant/70">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2 text-on-surface-variant">
+                        <Icon name="lucide:plug" size="18" />
+                        <span class="text-sm font-medium">3. Enable MCP for Cursor</span>
+                    </div>
+                    <div class="rounded-2xl bg-surface-container p-4 font-mono text-sm">
+                        <code>{mcpInstallCode}</code>
+                    </div>
+                    <p class="text-sm text-on-surface-variant">
+                        Installs a ready-to-use `.cursor/mcp.json` so Cursor can access Svelora docs
+                        tools immediately.
+                    </p>
+                    <div>
+                        <Button
+                            label="Open MCP Guide"
+                            href="/docs/mcp"
+                            variant="outline"
+                            color="secondary"
+                            size="sm"
+                            trailingIcon="lucide:arrow-right"
+                        />
                     </div>
                 </div>
             </Card>

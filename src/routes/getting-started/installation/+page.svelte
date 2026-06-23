@@ -6,6 +6,19 @@ cd my-app`
 
     const installCode = `npm install svelora`
 
+    const mcpInstallCode = `svelora-mcp-install-template`
+
+    const mcpCursorConfigCode = `{
+  "mcpServers": {
+    "svelora-docs": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["./node_modules/svelora/dist/mcp/server.mjs"],
+      "cwd": "\${workspaceFolder}"
+    }
+  }
+}`
+
     const layoutCssCode = `@import 'tailwindcss';
 @import 'svelora/theme.css';
 
@@ -155,6 +168,29 @@ npm install joi`
     <section class="space-y-4">
         <div class="flex items-center gap-3">
             <span class="inline-flex size-8 items-center justify-center rounded-full bg-primary-container font-semibold text-on-primary-container">6</span>
+            <h2 class="text-xl font-semibold">(Optional) Enable MCP for Cursor</h2>
+        </div>
+        <p class="text-on-surface-variant">
+            If you use Cursor, Svelora can install a ready-to-use MCP config for docs tools right
+            after package install.
+        </p>
+        <Card class="border border-outline-variant/70">
+            <p class="mb-3 text-sm font-medium">Install the MCP template</p>
+            <pre class="overflow-x-auto text-sm"><code>{mcpInstallCode}</code></pre>
+        </Card>
+        <Card class="border border-outline-variant/70">
+            <p class="mb-3 text-sm font-medium">Generated `.cursor/mcp.json`</p>
+            <pre class="overflow-x-auto text-sm"><code>{mcpCursorConfigCode}</code></pre>
+        </Card>
+        <p class="text-sm text-on-surface-variant">
+            Need the full setup guide? See
+            <Link href="/docs/mcp" raw class="font-medium text-primary hover:underline">MCP for Cursor IDE</Link>.
+        </p>
+    </section>
+
+    <section class="space-y-4">
+        <div class="flex items-center gap-3">
+            <span class="inline-flex size-8 items-center justify-center rounded-full bg-primary-container font-semibold text-on-primary-container">7</span>
             <h2 class="text-xl font-semibold">(Optional) Install peers for advanced features</h2>
         </div>
         <p class="text-on-surface-variant">

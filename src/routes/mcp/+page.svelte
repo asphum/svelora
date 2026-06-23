@@ -2,7 +2,51 @@
     import { CodeBlock, Link } from '$lib/index.js'
     import { renderHighlightedCode } from '$lib/docs/code-block.js'
 
-    const cursorConfigCode = `{
+    const packageInstallCode = `bun add svelora`
+
+    const packageCursorConfigCode = `{
+  "mcpServers": {
+    "svelora-docs": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["./node_modules/svelora/dist/mcp/server.mjs"],
+      "cwd": "\${workspaceFolder}"
+    }
+  }
+}`
+
+    const packageCursorConfigBinCode = `{
+  "mcpServers": {
+    "svelora-docs": {
+      "type": "stdio",
+      "command": "svelora-mcp-docs",
+      "cwd": "\${workspaceFolder}"
+    }
+  }
+}`
+
+    const packageScriptCode = `{
+  "scripts": {
+    "mcp:svelora-docs": "node ./node_modules/svelora/dist/mcp/server.mjs"
+  }
+}`
+
+    const packageScriptExportCode = `{
+  "scripts": {
+    "mcp:svelora-docs": "node --eval \\"import('svelora/mcp/server')\\""
+  }
+}`
+
+    const packageTemplatePathCode = `./node_modules/svelora/dist/mcp/cursor.mcp.json`
+    const packageInstallTemplateCommandCode = `svelora-mcp-install-template`
+    const packageInstallTemplateForceCommandCode = `svelora-mcp-install-template --force`
+    const packageInstallTemplateScriptCode = `{
+  "scripts": {
+    "mcp:install-template": "node ./node_modules/svelora/dist/mcp/install-template.mjs"
+  }
+}`
+
+    const localCursorConfigCode = `{
   "mcpServers": {
     "svelora-docs": {
       "type": "stdio",
@@ -13,7 +57,8 @@
   }
 }`
 
-    const runCode = `bun run mcp:svelora-docs`
+    const packageRunCode = `node ./node_modules/svelora/dist/mcp/server.mjs`
+    const localRunCode = `bun run mcp:svelora-docs`
 
     const toolsCode = `- svelora_docs_list_slugs
 - svelora_docs_get_page_source { slug }
@@ -25,8 +70,18 @@
 - "render shiki ให้ snippet นี้ (dark=false) แล้วส่ง HTML กลับมา"`
 
     let isDarkMode = $state(true)
-    let cursorConfigHtml = $state('')
-    let runHtml = $state('')
+    let packageInstallHtml = $state('')
+    let packageCursorConfigHtml = $state('')
+    let packageCursorConfigBinHtml = $state('')
+    let packageScriptHtml = $state('')
+    let packageScriptExportHtml = $state('')
+    let packageTemplatePathHtml = $state('')
+    let packageInstallTemplateCommandHtml = $state('')
+    let packageInstallTemplateForceCommandHtml = $state('')
+    let packageInstallTemplateScriptHtml = $state('')
+    let packageRunHtml = $state('')
+    let localCursorConfigHtml = $state('')
+    let localRunHtml = $state('')
     let toolsHtml = $state('')
     let promptsHtml = $state('')
 
@@ -53,11 +108,41 @@
         let cancelled = false
 
         const tasks = [
-            renderHighlightedCode(cursorConfigCode, darkMode).then((html) => {
-                if (!cancelled) cursorConfigHtml = html
+            renderHighlightedCode(packageInstallCode, darkMode).then((html) => {
+                if (!cancelled) packageInstallHtml = html
             }),
-            renderHighlightedCode(runCode, darkMode).then((html) => {
-                if (!cancelled) runHtml = html
+            renderHighlightedCode(packageCursorConfigCode, darkMode).then((html) => {
+                if (!cancelled) packageCursorConfigHtml = html
+            }),
+            renderHighlightedCode(packageCursorConfigBinCode, darkMode).then((html) => {
+                if (!cancelled) packageCursorConfigBinHtml = html
+            }),
+            renderHighlightedCode(packageScriptCode, darkMode).then((html) => {
+                if (!cancelled) packageScriptHtml = html
+            }),
+            renderHighlightedCode(packageScriptExportCode, darkMode).then((html) => {
+                if (!cancelled) packageScriptExportHtml = html
+            }),
+            renderHighlightedCode(packageTemplatePathCode, darkMode).then((html) => {
+                if (!cancelled) packageTemplatePathHtml = html
+            }),
+            renderHighlightedCode(packageInstallTemplateCommandCode, darkMode).then((html) => {
+                if (!cancelled) packageInstallTemplateCommandHtml = html
+            }),
+            renderHighlightedCode(packageInstallTemplateForceCommandCode, darkMode).then((html) => {
+                if (!cancelled) packageInstallTemplateForceCommandHtml = html
+            }),
+            renderHighlightedCode(packageInstallTemplateScriptCode, darkMode).then((html) => {
+                if (!cancelled) packageInstallTemplateScriptHtml = html
+            }),
+            renderHighlightedCode(packageRunCode, darkMode).then((html) => {
+                if (!cancelled) packageRunHtml = html
+            }),
+            renderHighlightedCode(localCursorConfigCode, darkMode).then((html) => {
+                if (!cancelled) localCursorConfigHtml = html
+            }),
+            renderHighlightedCode(localRunCode, darkMode).then((html) => {
+                if (!cancelled) localRunHtml = html
             }),
             renderHighlightedCode(toolsCode, darkMode).then((html) => {
                 if (!cancelled) toolsHtml = html
@@ -96,27 +181,68 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">ติดตั้งและเปิดใช้งาน</h2>
+        <h2 class="text-xl font-semibold">ใช้หลัง bun add svelora</h2>
         <ol class="list-decimal space-y-2 pl-5 text-on-surface-variant">
-            <li>เปิดโปรเจกต์นี้ใน Cursor</li>
-            <li>ตรวจว่าไฟล์ <span class="font-medium text-on-surface">.cursor/mcp.json</span> มีอยู่ใน repo</li>
-            <li>ติดตั้ง dependencies: <span class="font-medium text-on-surface">bun install</span></li>
+            <li>ติดตั้งแพ็กเกจในโปรเจกต์ของคุณก่อนด้วย <span class="font-medium text-on-surface">bun add svelora</span></li>
+            <li>เพิ่ม config MCP ใน <span class="font-medium text-on-surface">.cursor/mcp.json</span> ของโปรเจกต์นั้น</li>
             <li>Restart Cursor 1 ครั้ง เพื่อให้โหลด MCP servers ใหม่</li>
             <li>เข้า Agent Mode แล้วลองเรียก tools ได้ทันที</li>
         </ol>
+        <CodeBlock title="Install" code={packageInstallCode} html={packageInstallHtml} />
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">ไฟล์ config สำหรับ Cursor</h2>
+        <h2 class="text-xl font-semibold">Cursor config สำหรับ consumer app</h2>
         <p class="text-on-surface-variant">
-            โปรเจกต์นี้มี config ให้แล้วที่ <span class="font-medium text-on-surface">.cursor/mcp.json</span>
+            ถ้าคุณติดตั้งผ่าน npm package ให้ชี้ไปที่ไฟล์ server ใน <span class="font-medium text-on-surface">node_modules/svelora/dist/mcp/server.mjs</span>
         </p>
-        <CodeBlock title="mcp.json" code={cursorConfigCode} html={cursorConfigHtml} />
+        <CodeBlock title="mcp.json" code={packageCursorConfigCode} html={packageCursorConfigHtml} />
+        <CodeBlock title="mcp.json via bin" code={packageCursorConfigBinCode} html={packageCursorConfigBinHtml} />
+        <p class="text-on-surface-variant">
+            ถ้าไม่อยากเขียนเอง สามารถ copy template ที่แพ็กไปกับ package ได้จาก path นี้
+        </p>
+        <CodeBlock title="template path" code={packageTemplatePathCode} html={packageTemplatePathHtml} />
+        <p class="text-on-surface-variant">
+            หรือใช้ helper command นี้เพื่อสร้าง <span class="font-medium text-on-surface">.cursor/mcp.json</span> ให้ทันที
+        </p>
+        <CodeBlock
+            title="install template"
+            code={packageInstallTemplateCommandCode}
+            html={packageInstallTemplateCommandHtml}
+        />
+        <CodeBlock
+            title="overwrite existing template"
+            code={packageInstallTemplateForceCommandCode}
+            html={packageInstallTemplateForceCommandHtml}
+        />
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">รัน server เองเพื่อทดสอบ</h2>
-        <CodeBlock title="Command" code={runCode} html={runHtml} />
+        <h2 class="text-xl font-semibold">Script แนะนำใน consumer app</h2>
+        <p class="text-on-surface-variant">
+            ถ้าต้องการคำสั่งสั้น ๆ ในโปรเจกต์ของคุณ ให้เพิ่ม script นี้ใน <span class="font-medium text-on-surface">package.json</span>
+        </p>
+        <CodeBlock title="package.json" code={packageScriptCode} html={packageScriptHtml} />
+        <CodeBlock title="package.json via export" code={packageScriptExportCode} html={packageScriptExportHtml} />
+        <CodeBlock
+            title="package.json install template"
+            code={packageInstallTemplateScriptCode}
+            html={packageInstallTemplateScriptHtml}
+        />
+    </section>
+
+    <section class="space-y-4">
+        <h2 class="text-xl font-semibold">รัน server จาก package โดยตรง</h2>
+        <CodeBlock title="Command" code={packageRunCode} html={packageRunHtml} />
+    </section>
+
+    <section class="space-y-4">
+        <h2 class="text-xl font-semibold">ใช้จาก repo ของ Svelora เอง</h2>
+        <p class="text-on-surface-variant">
+            ถ้าคุณเปิด repo นี้โดยตรง ยังใช้ workflow เดิมได้ผ่าน <span class="font-medium text-on-surface">bun run mcp:svelora-docs</span>
+        </p>
+        <CodeBlock title="repo .cursor/mcp.json" code={localCursorConfigCode} html={localCursorConfigHtml} />
+        <CodeBlock title="repo command" code={localRunCode} html={localRunHtml} />
     </section>
 
     <section class="space-y-4">
@@ -133,10 +259,12 @@
     <section class="space-y-4">
         <h2 class="text-xl font-semibold">ข้อควรระวัง</h2>
         <ul class="list-disc space-y-2 pl-5 text-on-surface-variant">
-            <li>config นี้ใช้ <span class="font-medium text-on-surface">bun</span> เป็น command ดังนั้นเครื่องที่ใช้ Cursor ต้องมี bun</li>
-            <li>ถ้าต้องการไม่พึ่ง bun สามารถเปลี่ยน command เป็น <span class="font-medium text-on-surface">node</span> แล้วชี้ไปที่ไฟล์ server ได้</li>
+            <li>consumer app ไม่จำเป็นต้องมี source docs ของ repo เพราะ MCP จะอ่าน data ที่ pack มากับแพ็กเกจ</li>
+            <li>config แบบ package แนะนำให้ใช้ <span class="font-medium text-on-surface">node</span> เพื่อไม่ต้องพึ่ง bun ตอนรัน MCP server</li>
+            <li>ตอนนี้แพ็กเกจมีทั้ง <span class="font-medium text-on-surface">bin: svelora-mcp-docs</span>, <span class="font-medium text-on-surface">bin: svelora-mcp-install-template</span>, export path <span class="font-medium text-on-surface">svelora/mcp/server</span>, และ template <span class="font-medium text-on-surface">svelora/mcp/cursor-template</span></li>
+            <li>ถ้าเปิด repo นี้โดยตรงยังใช้คำสั่ง <span class="font-medium text-on-surface">bun run mcp:svelora-docs</span> ได้เหมือนเดิม</li>
+            <li>helper install จะไม่เขียนทับไฟล์เดิม ยกเว้นคุณส่ง <span class="font-medium text-on-surface">--force</span></li>
             <li>อย่าใส่ secrets ลงใน <span class="font-medium text-on-surface">mcp.json</span> ตรง ๆ ให้ใช้ env vars แทน</li>
         </ul>
     </section>
 </div>
-
