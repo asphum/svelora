@@ -1,4 +1,4 @@
-import { localizeHref, locales, type Locale } from '$lib/paraglide/runtime.js'
+import { locales, type Locale } from '$lib/paraglide/runtime.js'
 import type { LocaleButtonLocale } from '$lib/LocaleButton/index.js'
 
 const localeMeta: Record<Locale, Pick<LocaleButtonLocale, 'label' | 'shortLabel'>> = {
@@ -12,14 +12,11 @@ const localeMeta: Record<Locale, Pick<LocaleButtonLocale, 'label' | 'shortLabel'
     }
 }
 
-export function buildLocaleOptions(href: string): LocaleButtonLocale[] {
-    const normalizedHref = href || '/'
-
+export function buildLocaleOptions(): LocaleButtonLocale[] {
     return locales.map((locale) => ({
         code: locale,
         label: localeMeta[locale].label,
         shortLabel: localeMeta[locale].shortLabel,
-        href: localizeHref(normalizedHref, { locale }),
         hreflang: locale
     }))
 }

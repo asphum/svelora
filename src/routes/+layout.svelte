@@ -12,7 +12,7 @@
         toggleMode
     } from '$lib/index.js'
     import { m } from '$lib/paraglide/messages.js'
-    import { getLocale, localizeHref, setLocale, toLocale } from '$lib/paraglide/runtime.js'
+    import { getLocale, setLocale, toLocale } from '$lib/paraglide/runtime.js'
 
     import {
         docsComponentGroups,
@@ -47,8 +47,7 @@
     const activePath = $derived(docsPathAliases.get(data.pathname) ?? data.pathname)
     const normalizedSearchQuery = $derived(searchQuery.trim().toLowerCase())
     const currentLocale = $derived(getLocale())
-    const currentHref = $derived(data.pathname || '/')
-    const localeOptions = $derived(buildLocaleOptions(currentHref))
+    const localeOptions = $derived(buildLocaleOptions())
 
     const filteredSidebarSections = $derived.by(() => {
         if (!normalizedSearchQuery) {
@@ -108,11 +107,7 @@
                         <Icon name="lucide:menu" size="18" />
                     </button>
 
-                    <Link
-                        href={localizeHref('/')}
-                        raw
-                        class="flex items-center gap-2 text-base font-semibold text-on-surface"
-                    >
+                    <Link href="/" raw class="flex items-center gap-2 text-base font-semibold text-on-surface">
                         <span class="inline-flex size-8 items-center justify-center rounded-xl bg-primary text-sm font-bold text-on-primary">
                             S
                         </span>
@@ -128,7 +123,7 @@
                 <nav class="hidden items-center gap-1 lg:flex">
                     {#each docsTopNav as item (item.href)}
                         <Link
-                            href={localizeHref(item.href)}
+                            href={item.href}
                             raw
                             class={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                                 isTopNavActive(item.href)
@@ -238,7 +233,7 @@
                                 <div class="space-y-1">
                                     {#each section.items as item (item.href)}
                                         <Link
-                                            href={localizeHref(item.href)}
+                                            href={item.href}
                                             raw
                                             class={`flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors ${
                                                 isNavActive(item.href)

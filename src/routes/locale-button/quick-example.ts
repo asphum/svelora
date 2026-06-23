@@ -1,15 +1,23 @@
 export const quickExample = `<script lang="ts">
- import { LocaleButton } from 'svelora'
- import { setLocale } from '$lib/paraglide/runtime'
+ import { LocaleButton, type LocaleButtonLocale } from 'svelora'
+ import { setLocale, toLocale } from '$lib/paraglide/runtime'
  
- const locales = [
+ const locales: LocaleButtonLocale[] = [
    { code: 'en', label: 'English', shortLabel: 'EN' },
    { code: 'th', label: 'Thai', shortLabel: 'TH' }
  ]
+
+ let locale = 'en'
 </script>
 
 <LocaleButton
- locale="en"
  {locales}
- onLocaleChange={(nextLocale) => setLocale(nextLocale)}
+ {locale}
+ onLocaleChange={(nextLocale) => {
+  locale = nextLocale
+  const target = toLocale(nextLocale)
+  if (target) {
+   return setLocale(target, { reload: false })
+  }
+ }}
 />`

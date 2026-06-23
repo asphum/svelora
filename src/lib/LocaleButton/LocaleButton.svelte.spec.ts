@@ -19,7 +19,9 @@ describe('LocaleButton', () => {
                 portal: false
             })
 
-            await expect.element(page.getByRole('button', { name: 'Change language' })).toBeVisible()
+            await expect
+                .element(page.getByRole('button', { name: 'Change language' }))
+                .toBeVisible()
             await expect.element(page.getByText('TH')).toBeInTheDocument()
         })
 

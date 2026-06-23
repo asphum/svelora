@@ -3,7 +3,7 @@
     import { Badge, Button, Card, Icon, Link, LocaleButton } from '$lib/index.js'
     import { allComponentItems, docsIntroItems, docsMeta, totalComponents } from '$lib/docs/navigation.js'
     import { m } from '$lib/paraglide/messages.js'
-    import { getLocale, localizeHref, setLocale, toLocale } from '$lib/paraglide/runtime.js'
+    import { getLocale, setLocale, toLocale } from '$lib/paraglide/runtime.js'
 
     const installCode = docsMeta.npmCommand
 
@@ -79,7 +79,7 @@
 
     const previewItems = allComponentItems.slice(0, 12)
     const currentLocale = $derived(getLocale())
-    const localeOptions = $derived(buildLocaleOptions('/'))
+    const localeOptions = $derived(buildLocaleOptions())
 </script>
 
 <div class="relative overflow-hidden">
@@ -87,7 +87,7 @@
 
     <header class="border-b border-outline-variant/60">
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-6">
-            <Link href={localizeHref('/')} raw class="flex items-center gap-3 text-on-surface">
+            <Link href="/" raw class="flex items-center gap-3 text-on-surface">
                 <span class="inline-flex size-10 items-center justify-center rounded-2xl bg-primary text-sm font-bold text-on-primary">
                     S
                 </span>
@@ -98,10 +98,10 @@
             </Link>
 
             <nav class="hidden items-center gap-2 md:flex">
-                <Link href={localizeHref('/docs')} raw class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
+                <Link href="/docs" raw class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
                     {m.layout_docs()}
                 </Link>
-                <Link href={localizeHref('/docs/components/button')} raw class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
+                <Link href="/docs/components/button" raw class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
                     {m.layout_components()}
                 </Link>
                 <Link href={docsMeta.githubHref} raw external class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
@@ -124,7 +124,7 @@
                         }
                     }}
                 />
-                <Button label={m.landing_get_started()} href={localizeHref('/docs')} size="sm" />
+                <Button label={m.landing_get_started()} href="/docs" size="sm" />
                 <Button
                     variant="outline"
                     color="secondary"
@@ -158,7 +158,7 @@
                 <div class="flex flex-wrap gap-3">
                     <Button
                         label={m.landing_get_started()}
-                        href={localizeHref('/docs')}
+                        href="/docs"
                         leadingIcon="lucide:rocket"
                     />
                     <Button
