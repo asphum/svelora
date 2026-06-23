@@ -1,6 +1,9 @@
 <script lang="ts">
-    import { Badge, Button, Card, Icon, Link } from '$lib/index.js'
+    import { buildLocaleOptions } from '$lib/i18n.js'
+    import { Badge, Button, Card, Icon, Link, LocaleButton } from '$lib/index.js'
     import { allComponentItems, docsIntroItems, docsMeta, totalComponents } from '$lib/docs/navigation.js'
+    import { m } from '$lib/paraglide/messages.js'
+    import { getLocale, localizeHref, setLocale, toLocale } from '$lib/paraglide/runtime.js'
 
     const installCode = docsMeta.npmCommand
 
@@ -75,6 +78,8 @@
     ] as const
 
     const previewItems = allComponentItems.slice(0, 12)
+    const currentLocale = $derived(getLocale())
+    const localeOptions = $derived(buildLocaleOptions('/'))
 </script>
 
 <div class="relative overflow-hidden">
@@ -82,34 +87,48 @@
 
     <header class="border-b border-outline-variant/60">
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-6">
-            <Link href="/" raw class="flex items-center gap-3 text-on-surface">
+            <Link href={localizeHref('/')} raw class="flex items-center gap-3 text-on-surface">
                 <span class="inline-flex size-10 items-center justify-center rounded-2xl bg-primary text-sm font-bold text-on-primary">
                     S
                 </span>
                 <div class="space-y-0.5">
                     <p class="text-sm font-semibold">{docsMeta.name}</p>
-                    <p class="text-xs text-on-surface-variant">Svelte 5 UI Library</p>
+                    <p class="text-xs text-on-surface-variant">{m.landing_library_tagline()}</p>
                 </div>
             </Link>
 
             <nav class="hidden items-center gap-2 md:flex">
-                <Link href="/docs" raw class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
-                    Docs
+                <Link href={localizeHref('/docs')} raw class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
+                    {m.layout_docs()}
                 </Link>
-                <Link href="/docs/components/button" raw class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
-                    Components
+                <Link href={localizeHref('/docs/components/button')} raw class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
+                    {m.layout_components()}
                 </Link>
                 <Link href={docsMeta.githubHref} raw external class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
-                    GitHub
+                    {m.layout_github()}
                 </Link>
             </nav>
 
             <div class="flex items-center gap-2">
-                <Button label="Get Started" href="/docs" size="sm" />
+                <LocaleButton
+                    locales={localeOptions}
+                    locale={currentLocale}
+                    size="sm"
+                    square={false}
+                    ariaLabel={m.locale_change_language()}
+                    menuLabel={m.locale_language()}
+                    onLocaleChange={(nextLocale) => {
+                        const locale = toLocale(nextLocale)
+                        if (locale) {
+                            return setLocale(locale, { reload: false })
+                        }
+                    }}
+                />
+                <Button label={m.landing_get_started()} href={localizeHref('/docs')} size="sm" />
                 <Button
                     variant="outline"
                     color="secondary"
-                    label="Star on GitHub"
+                    label={m.landing_star_github()}
                     href={docsMeta.githubHref}
                     external
                     size="sm"
@@ -129,26 +148,21 @@
 
                 <div class="space-y-5">
                     <h1 class="max-w-3xl text-5xl font-semibold tracking-tight text-balance sm:text-6xl">
-                        Build stunning UIs in record time
+                        {m.landing_title()}
                     </h1>
                     <p class="max-w-2xl text-lg leading-8 text-on-surface-variant">
-                        {totalComponents}+ beautifully crafted, accessible components built on
-                        <strong> bits-ui </strong>
-                        and styled with
-                        <strong> Tailwind CSS 4 </strong>.
-                        Fully typed, dark mode ready, and designed for
-                        <strong> Svelte 5 </strong>.
+                        {@html m.landing_description({ count: `${totalComponents}` })}
                     </p>
                 </div>
 
                 <div class="flex flex-wrap gap-3">
                     <Button
-                        label="Get Started"
-                        href="/docs"
+                        label={m.landing_get_started()}
+                        href={localizeHref('/docs')}
                         leadingIcon="lucide:rocket"
                     />
                     <Button
-                        label="Browse Components"
+                        label={m.landing_browse_components()}
                         href="#components"
                         variant="outline"
                         color="secondary"
@@ -164,7 +178,7 @@
                             </span>
                         {/each}
                     </div>
-                    <span>Loved by 500+ developers</span>
+                    <span>{m.landing_loved_by()}</span>
                 </div>
             </div>
 

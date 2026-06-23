@@ -65,9 +65,9 @@
 - svelora_docs_get_section_snippets { slug }
 - svelora_docs_render_shiki { code, isDarkMode? }`
 
-    const promptExamplesCode = `- "List docs slugs แล้วสรุปว่ามี components/hooks อะไรบ้าง"
-- "ดึง section snippets ของ select-menu แล้วสรุปหัวข้อทั้งหมด"
-- "render shiki ให้ snippet นี้ (dark=false) แล้วส่ง HTML กลับมา"`
+    const promptExamplesCode = `- "List docs slugs and summarize the available components and hooks"
+- "Get section snippets for select-menu and summarize all sections"
+- "Render shiki for this snippet (dark=false) and return the HTML"`
 
     let isDarkMode = $state(true)
     let packageInstallHtml = $state('')
@@ -181,7 +181,7 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">ใช้หลัง bun add svelora</h2>
+        <h2 class="text-xl font-semibold">After `bun add svelora`</h2>
         <ol class="list-decimal space-y-2 pl-5 text-on-surface-variant">
             <li>ติดตั้งแพ็กเกจในโปรเจกต์ของคุณก่อนด้วย <span class="font-medium text-on-surface">bun add svelora</span></li>
             <li>เพิ่ม config MCP ใน <span class="font-medium text-on-surface">.cursor/mcp.json</span> ของโปรเจกต์นั้น</li>
@@ -192,7 +192,7 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Cursor config สำหรับ consumer app</h2>
+        <h2 class="text-xl font-semibold">Cursor Config For Consumer App</h2>
         <p class="text-on-surface-variant">
             ถ้าคุณติดตั้งผ่าน npm package ให้ชี้ไปที่ไฟล์ server ใน <span class="font-medium text-on-surface">node_modules/svelora/dist/mcp/server.mjs</span>
         </p>
@@ -218,7 +218,7 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Script แนะนำใน consumer app</h2>
+        <h2 class="text-xl font-semibold">Recommended Script For Consumer App</h2>
         <p class="text-on-surface-variant">
             ถ้าต้องการคำสั่งสั้น ๆ ในโปรเจกต์ของคุณ ให้เพิ่ม script นี้ใน <span class="font-medium text-on-surface">package.json</span>
         </p>
@@ -232,12 +232,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">รัน server จาก package โดยตรง</h2>
+        <h2 class="text-xl font-semibold">Run Server From Package</h2>
         <CodeBlock title="Command" code={packageRunCode} html={packageRunHtml} />
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">ใช้จาก repo ของ Svelora เอง</h2>
+        <h2 class="text-xl font-semibold">Use From The Svelora Repo</h2>
         <p class="text-on-surface-variant">
             ถ้าคุณเปิด repo นี้โดยตรง ยังใช้ workflow เดิมได้ผ่าน <span class="font-medium text-on-surface">bun run mcp:svelora-docs</span>
         </p>
@@ -246,18 +246,18 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Tools ที่มีให้เรียก</h2>
+        <h2 class="text-xl font-semibold">Available Tools</h2>
         <p class="text-on-surface-variant">Tools จะปรากฏใน Cursor MCP tools เมื่อเปิดใช้งานสำเร็จ</p>
         <CodeBlock title="Tools" code={toolsCode} html={toolsHtml} />
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">ตัวอย่างการสั่งงานใน Cursor</h2>
+        <h2 class="text-xl font-semibold">Cursor Prompt Examples</h2>
         <CodeBlock title="Prompts" code={promptExamplesCode} html={promptsHtml} />
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">ข้อควรระวัง</h2>
+        <h2 class="text-xl font-semibold">Notes</h2>
         <ul class="list-disc space-y-2 pl-5 text-on-surface-variant">
             <li>consumer app ไม่จำเป็นต้องมี source docs ของ repo เพราะ MCP จะอ่าน data ที่ pack มากับแพ็กเกจ</li>
             <li>config แบบ package แนะนำให้ใช้ <span class="font-medium text-on-surface">node</span> เพื่อไม่ต้องพึ่ง bun ตอนรัน MCP server</li>

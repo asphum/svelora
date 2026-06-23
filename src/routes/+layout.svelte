@@ -1,14 +1,19 @@
 <script lang="ts">
     import './layout.css'
     import type { DocsGroup, DocsItem } from '$lib/docs/navigation.js'
+    import { buildLocaleOptions } from '$lib/i18n.js'
     import {
         Button,
         Icon,
         Link,
+        LocaleButton,
         ModeWatcher,
         mode,
         toggleMode
     } from '$lib/index.js'
+    import { m } from '$lib/paraglide/messages.js'
+    import { getLocale, localizeHref, setLocale, toLocale } from '$lib/paraglide/runtime.js'
+
     import {
         docsComponentGroups,
         docsHookItems,
@@ -18,6 +23,7 @@
         docsThemeItems,
         docsTopNav
     } from '$lib/docs/navigation.js'
+
     import '../svelora.config.js'
 
     const { children, data } = $props<{
@@ -40,6 +46,10 @@
     const isLanding = $derived(data.pathname === '/')
     const activePath = $derived(docsPathAliases.get(data.pathname) ?? data.pathname)
     const normalizedSearchQuery = $derived(searchQuery.trim().toLowerCase())
+    const currentLocale = $derived(getLocale())
+    const currentHref = $derived(data.pathname || '/')
+    const localeOptions = $derived(buildLocaleOptions(currentHref))
+
     const filteredSidebarSections = $derived.by(() => {
         if (!normalizedSearchQuery) {
             return sidebarSections
@@ -84,9 +94,7 @@
 <ModeWatcher />
 
 {#if isLanding}
-    <div class="min-h-screen bg-surface text-on-surface">
-        {@render children()}
-    </div>
+    <div class="min-h-screen bg-surface text-on-surface">{@render children()}</div>
 {:else}
     <div class="min-h-screen bg-surface text-on-surface">
         <header class="sticky top-0 z-50 border-b border-outline-variant/70 bg-surface/90 backdrop-blur">
@@ -95,19 +103,23 @@
                     <button
                         class="rounded-lg border border-outline-variant bg-surface-container p-2 text-on-surface-variant transition-colors hover:bg-surface-container-high lg:hidden"
                         onclick={() => (sidebarOpen = !sidebarOpen)}
-                        aria-label="Toggle sidebar"
+                        aria-label={m.layout_toggle_sidebar()}
                     >
                         <Icon name="lucide:menu" size="18" />
                     </button>
 
-                    <Link href="/" raw class="flex items-center gap-2 text-base font-semibold text-on-surface">
+                    <Link
+                        href={localizeHref('/')}
+                        raw
+                        class="flex items-center gap-2 text-base font-semibold text-on-surface"
+                    >
                         <span class="inline-flex size-8 items-center justify-center rounded-xl bg-primary text-sm font-bold text-on-primary">
                             S
                         </span>
+
                         <span>{docsMeta.name}</span>
-                        <span
-                            class="hidden rounded-full border border-outline-variant bg-surface-container px-2 py-0.5 text-xs text-on-surface-variant sm:inline"
-                        >
+
+                        <span class="hidden rounded-full border border-outline-variant bg-surface-container px-2 py-0.5 text-xs text-on-surface-variant sm:inline">
                             {docsMeta.version}
                         </span>
                     </Link>
@@ -116,7 +128,7 @@
                 <nav class="hidden items-center gap-1 lg:flex">
                     {#each docsTopNav as item (item.href)}
                         <Link
-                            href={item.href}
+                            href={localizeHref(item.href)}
                             raw
                             class={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                                 isTopNavActive(item.href)
@@ -124,20 +136,43 @@
                                     : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
                             }`}
                         >
-                            {item.title}
+                            {#if item.href === '/docs'}
+                                {m.layout_docs()}
+                            {:else if item.href.includes('/components/')}
+                                {m.layout_components()}
+                            {:else if item.href.includes('/hooks/')}
+                                {m.layout_hooks()}
+                            {:else}
+                                {item.title}
+                            {/if}
                         </Link>
                     {/each}
                 </nav>
 
                 <div class="flex items-center gap-2">
+                    <LocaleButton
+                        locales={localeOptions}
+                        locale={currentLocale}
+                        size="sm"
+                        square={false}
+                        ariaLabel={m.locale_change_language()}
+                        menuLabel={m.locale_language()}
+                        onLocaleChange={(nextLocale) => {
+                            const locale = toLocale(nextLocale)
+                            if (locale) {
+                                return setLocale(locale, { reload: false })
+                            }
+                        }}
+                    />
                     <Link
                         href={docsMeta.githubHref}
                         raw
                         external
                         class="hidden rounded-lg border border-outline-variant px-3 py-2 text-sm text-on-surface-variant transition-colors hover:bg-surface-container hover:text-on-surface sm:inline-flex"
                     >
-                        GitHub
+                        {m.layout_github()}
                     </Link>
+
                     <Button
                         variant="ghost"
                         color="secondary"
@@ -155,7 +190,7 @@
                 <button
                     class="fixed inset-0 z-30 bg-black/50 lg:hidden"
                     onclick={() => (sidebarOpen = false)}
-                    aria-label="Close sidebar"
+                    aria-label={m.layout_close_sidebar()}
                 ></button>
             {/if}
 
@@ -172,20 +207,22 @@
                                 size="16"
                                 class="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-on-surface-variant"
                             />
+
                             <input
                                 bind:value={searchQuery}
                                 type="search"
-                                placeholder="Search docs..."
+                                placeholder={m.layout_search_docs_placeholder()}
                                 class="w-full rounded-xl border border-outline-variant bg-surface-container py-2 pr-3 pl-10 text-sm text-on-surface outline-none transition-colors placeholder:text-on-surface-variant focus:border-primary"
-                                aria-label="Search docs"
+                                aria-label={m.layout_search_docs_aria()}
                             />
                         </div>
+
                         {#if normalizedSearchQuery}
                             <p class="px-1 text-xs text-on-surface-variant">
                                 {#if filteredSidebarSections.length > 0}
-                                    Search results for "{searchQuery.trim()}"
+                                    {m.layout_search_results({ query: searchQuery.trim() })}
                                 {:else}
-                                    No docs matched "{searchQuery.trim()}"
+                                    {m.layout_search_empty({ query: searchQuery.trim() })}
                                 {/if}
                             </p>
                         {/if}
@@ -197,10 +234,11 @@
                                 <p class="px-3 text-xs font-semibold tracking-[0.14em] text-on-surface-variant uppercase">
                                     {section.title}
                                 </p>
+
                                 <div class="space-y-1">
                                     {#each section.items as item (item.href)}
                                         <Link
-                                            href={item.href}
+                                            href={localizeHref(item.href)}
                                             raw
                                             class={`flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors ${
                                                 isNavActive(item.href)
@@ -233,6 +271,7 @@
     :global(html) {
         scroll-behavior: smooth;
     }
+
     :global(body) {
         background: var(--color-surface);
         color: var(--color-on-surface);

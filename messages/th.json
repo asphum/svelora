@@ -1,0 +1,23 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"hello_world": "Hello, {name} from th!",
+	"layout_docs": "Docs",
+	"layout_components": "Components",
+	"layout_hooks": "Hooks",
+	"layout_github": "GitHub",
+	"layout_toggle_sidebar": "Toggle sidebar",
+	"layout_close_sidebar": "Close sidebar",
+	"layout_search_docs_placeholder": "Search docs...",
+	"layout_search_docs_aria": "Search docs",
+	"layout_search_results": "ผลการค้นหาสำหรับ \"{query}\"",
+	"layout_search_empty": "ไม่พบเอกสารที่ตรงกับ \"{query}\"",
+	"locale_change_language": "Change language",
+	"locale_language": "Language",
+	"landing_library_tagline": "Svelte 5 UI Library",
+	"landing_get_started": "Get Started",
+	"landing_star_github": "Star on GitHub",
+	"landing_title": "Build stunning UIs in record time",
+	"landing_description": "คอมโพเนนต์ {count}+ ตัวที่ออกแบบมาอย่างสวยงามและเข้าถึงได้ สร้างบน <strong>bits-ui</strong> และตกแต่งด้วย <strong>Tailwind CSS 4</strong> พร้อม TypeScript, Dark Mode และออกแบบมาสำหรับ <strong>Svelte 5</strong>.",
+	"landing_browse_components": "Browse Components",
+	"landing_loved_by": "เป็นที่ชื่นชอบของนักพัฒนา 500+ คน"
+}

@@ -116,6 +116,12 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:link'
             },
             {
+                title: 'LocaleButton',
+                href: '/docs/components/locale-button',
+                legacyHref: '/locale-button',
+                icon: 'lucide:languages'
+            },
+            {
                 title: 'Kbd',
                 href: '/docs/components/kbd',
                 legacyHref: '/kbd',

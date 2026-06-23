@@ -6,12 +6,13 @@
     const groups: { title: string; count: number; items: Item[] }[] = [
         {
             title: 'General',
-            count: 6,
+            count: 7,
             items: [
                 { name: 'Button', href: '/button', icon: 'lucide:mouse-pointer-click' },
                 { name: 'FieldGroup', href: '/field-group', icon: 'lucide:group' },
                 { name: 'Icon', href: '/icon', icon: 'lucide:shapes' },
                 { name: 'Link', href: '/link', icon: 'lucide:link' },
+                { name: 'LocaleButton', href: '/locale-button', icon: 'lucide:languages' },
                 { name: 'Kbd', href: '/kbd', icon: 'lucide:keyboard' },
                 { name: 'ThemeModeButton', href: '/theme-mode-button', icon: 'lucide:sun-moon' }
             ]

@@ -94,7 +94,7 @@
  ]}
 />
 
-<p class="font-sarabun">สวัสดี Sarabun</p>`
+<p class="font-sarabun">Hello Sarabun</p>`
 
     const fontsConfigCode = `import { defineConfig } from 'svelora';
 
