@@ -30,6 +30,7 @@
         "lint:fix": "biome check --write .",
         "test:unit": "vitest",
         "test": "bun run test:unit -- --run",
+        "mcp:svelora-docs": "node ./mcp/svelora-docs/server.mjs",
         "changelog:template": "node ./scripts/changelog-template.mjs",
         "release:verify": "bun run check && bun run prepack && npm pack --dry-run",
         "release:verify:full": "bun run check && bun run test && bun run prepack && npm pack --dry-run",
@@ -177,6 +178,7 @@
     },
     "devDependencies": {
         "@biomejs/biome": "2.5.0",
+        "@modelcontextprotocol/sdk": "^1.0.0",
         "@sveltejs/adapter-vercel": "^6.3.4",
         "@sveltejs/kit": "^2.66.0",
         "@sveltejs/package": "^2.5.8",

@@ -46,6 +46,13 @@ export const docsIntroItems: DocsItem[] = [
         legacyHref: '/getting-started/dark-mode',
         icon: 'lucide:moon-star',
         description: 'Enable light, dark, and system theme support.'
+    },
+    {
+        title: 'MCP',
+        href: '/docs/mcp',
+        legacyHref: '/mcp',
+        icon: 'lucide:plug',
+        description: 'Connect Svelora docs helpers to Cursor IDE via MCP.'
     }
 ] as const
 
@@ -71,7 +78,9 @@ export const docsComponentGroups: DocsGroup[] = [
         title: 'General',
         items: [
             { title: 'Button', href: '/docs/components/button', legacyHref: '/button', icon: 'lucide:mouse-pointer-click' },
+            { title: 'CodeBlock', href: '/docs/components/code-block', legacyHref: '/code-block', icon: 'lucide:code' },
             { title: 'FieldGroup', href: '/docs/components/field-group', legacyHref: '/field-group', icon: 'lucide:group' },
+            { title: 'Fonts', href: '/docs/components/fonts', legacyHref: '/google-fonts', icon: 'lucide:font' },
             { title: 'Icon', href: '/docs/components/icon', legacyHref: '/icon', icon: 'lucide:shapes' },
             { title: 'Link', href: '/docs/components/link', legacyHref: '/link', icon: 'lucide:link' },
             { title: 'Kbd', href: '/docs/components/kbd', legacyHref: '/kbd', icon: 'lucide:keyboard' },

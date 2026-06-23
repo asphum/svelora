@@ -5,7 +5,138 @@ export type DocSectionSnippet = {
     snippet: string
 }
 
+const fontsDocSnippets: Record<string, string> = {
+    'Default Preset': `<script lang="ts">
+ import 'svelora/theme.css';
+ import { Fonts } from 'svelora';
+<` + `/script>
+
+<Fonts />`,
+    'Google Provider': `<script lang="ts">
+ import 'svelora/theme.css';
+ import { Fonts } from 'svelora';
+ import type { FontDefinition } from 'svelora';
+
+ const families: FontDefinition[] = [
+  { name: 'Inter', variable: '--font-sans-family', weights: [400, 500, 600, 700] },
+  { name: 'Poppins', variable: '--font-heading-family', weights: [600, 700] },
+  { name: 'JetBrains Mono', variable: '--font-mono-family', weights: [400, 500, 700] }
+ ];
+<` + `/script>
+
+<Fonts families={families} />
+
+<div class="space-y-2">
+ <h3 class="font-heading text-2xl font-semibold">Poppins heading</h3>
+ <p>Inter body copy is mapped to \`--font-sans-family\`.</p>
+ <p class="font-mono text-sm">const provider = 'google';</p>
+</div>`,
+    'Local Provider': `<Fonts
+ families={[
+  {
+   provider: 'local',
+   name: 'Sarabun',
+   variable: '--font-sarabun-family',
+   sources: [
+    { src: '/fonts/Sarabun-Regular.woff2', format: 'woff2', weight: 400 },
+    { src: '/fonts/Sarabun-Bold.woff2', format: 'woff2', weight: 700 }
+   ]
+  }
+ ]}
+/>`,
+    'Local Font Setup': `<script lang="ts">
+ import 'svelora/theme.css';
+ import { Fonts } from 'svelora';
+
+ let { children } = $props();
+<` + `/script>
+
+<Fonts
+ families={[
+  {
+   provider: 'local',
+   name: 'Sarabun',
+   variable: '--font-sarabun-family',
+   sources: [
+    { src: '/fonts/Sarabun-Regular.woff2', format: 'woff2', weight: 400 },
+    { src: '/fonts/Sarabun-Medium.woff2', format: 'woff2', weight: 500 },
+    { src: '/fonts/Sarabun-Bold.woff2', format: 'woff2', weight: 700 }
+   ]
+  }
+ ]}
+/>
+
+<main class="font-sarabun">
+ {@render children?.()}
+</main>`,
+    'Mixed Providers': `<Fonts
+ families={[
+  { name: 'Inter', variable: '--font-sans-family', weights: [400, 500, 600, 700] },
+  { name: 'Poppins', variable: '--font-heading-family', weights: [600, 700] },
+  {
+   provider: 'local',
+   name: 'Sarabun',
+   variable: '--font-sarabun-family',
+   sources: [{ src: '/fonts/Sarabun-Regular.woff2', format: 'woff2', weight: 400 }]
+  }
+ ]}
+/>`,
+    'Using Global Config': `import { defineConfig } from 'svelora';
+
+defineConfig({
+ fonts: {
+  families: [
+   { name: 'Inter', variable: '--font-sans-family', weights: [400, 500, 600, 700] },
+   { name: 'Poppins', variable: '--font-heading-family', weights: [600, 700] },
+   {
+    provider: 'local',
+    name: 'Sarabun',
+    variable: '--font-sarabun-family',
+    sources: [
+     { src: '/fonts/Sarabun-Regular.woff2', format: 'woff2', weight: 400 },
+     { src: '/fonts/Sarabun-Bold.woff2', format: 'woff2', weight: 700 }
+    ]
+   }
+  ]
+ }
+});`,
+    'Disable Defaults': `import { defineConfig } from 'svelora';
+
+defineConfig({
+ fonts: false
+});`,
+    'API Reference': `import type {
+ FontDefinition,
+ FontsOptions,
+ LocalFontSource
+} from 'svelora';
+
+const source: LocalFontSource = {
+ src: '/fonts/Sarabun-Regular.woff2',
+ format: 'woff2',
+ weight: 400,
+ style: 'normal'
+};
+
+const families: FontDefinition[] = [
+ {
+  provider: 'local',
+  name: 'Sarabun',
+  variable: '--font-sarabun-family',
+  sources: [source]
+ }
+];
+
+const options: FontsOptions = {
+ families,
+ display: 'swap',
+ preconnect: true
+};`
+}
+
 const sectionSnippetOverrides: Record<string, Record<string, string>> = {
+    fonts: fontsDocSnippets,
+    'google-fonts': fontsDocSnippets,
     accordion: {
         'Basic Usage': `<script lang="ts">
  import { Accordion } from 'svelora';
@@ -1739,11 +1870,58 @@ export function normalizeCode(code: string): string {
 function unwrapPreviewWrappers(source: string): string {
     let current = source.trim()
 
+    const stripPrefix = (token: string): string => token.split(':').at(-1) ?? token
+    const isPresentationToken = (token: string): boolean => {
+        const t = stripPrefix(token)
+
+        if (t.length === 0) return false
+
+        if (t.startsWith('max-w-') || t.startsWith('min-w-') || t.startsWith('w-')) return true
+        if (t.startsWith('max-h-') || t.startsWith('min-h-') || t.startsWith('h-')) return true
+
+        if (/^(m|p)[trblxyse]?-\d+$/.test(t)) return true
+
+        if (t.startsWith('gap-') || t.startsWith('space-')) return true
+        if (t.startsWith('overflow-')) return true
+
+        if (t === 'grid' || t.startsWith('grid-')) return true
+        if (t === 'flex' || t === 'inline-flex' || t.startsWith('flex-')) return true
+        if (t.startsWith('items-') || t.startsWith('justify-') || t.startsWith('content-')) return true
+        if (t.startsWith('self-') || t.startsWith('place-')) return true
+
+        if (t.startsWith('rounded')) return true
+        if (t.startsWith('border') || t.startsWith('ring') || t.startsWith('shadow')) return true
+
+        if (t === 'bg-transparent') return true
+        if (t.startsWith('bg-surface')) return true
+        if (t.startsWith('bg-[')) return true
+
+        if (t.startsWith('text-') || t.startsWith('font-') || t.startsWith('leading-')) return true
+        if (t.startsWith('tracking-')) return true
+        if (t === 'uppercase' || t === 'lowercase' || t === 'capitalize') return true
+
+        if (t.startsWith('opacity-')) return true
+        if (t.startsWith('backdrop-blur') || t.startsWith('blur')) return true
+
+        if (t.startsWith('aspect-') || t.startsWith('object-')) return true
+        if (t.startsWith('size-')) return true
+
+        if (t.startsWith('[') && t.includes(']:')) return true
+
+        return false
+    }
+
     for (let pass = 0; pass < 3; pass += 1) {
         const match = current.match(/^<div\b([^>]*)>([\s\S]*)<\/div>$/)
         if (!match) break
 
         const attrs = match[1]
+        const attrsWithoutClass = attrs
+            .replace(/\s*\bclass=(?:"[^"]*"|'[^']*')/, '')
+            .replace(/\s+/g, ' ')
+            .trim()
+        if (attrsWithoutClass.length > 0) break
+
         const classMatch = attrs.match(/\bclass=(?:"([^"]*)"|'([^']*)')/)
         const classValue = (classMatch?.[1] ?? classMatch?.[2] ?? '').trim()
         const tokens = classValue.length > 0 ? classValue.split(/\s+/) : []
@@ -1753,16 +1931,11 @@ function unwrapPreviewWrappers(source: string): string {
         const isRounded = tokens.some((token) => token.startsWith('rounded'))
         const hasPadding = tokens.some((token) => /^p[trblxy]?-\d+$/.test(token))
         const isMaxWidth = tokens.some((token) => token.startsWith('max-w-'))
-        const isLayout = tokens.some(
-            (token) =>
-                token.startsWith('grid') ||
-                token.startsWith('flex') ||
-                token.startsWith('space-') ||
-                token.startsWith('overflow-')
-        )
+        const isOverflow = tokens.some((token) => token.startsWith('overflow-'))
+        const isPresentationOnly = tokens.length > 0 && tokens.every(isPresentationToken)
 
-        const shouldUnwrap = (isPreviewBg || isBordered || isRounded) && hasPadding
-        const shouldUnwrapMaxWidth = isMaxWidth && !isLayout
+        const shouldUnwrap = ((isPreviewBg || isBordered || isRounded) && hasPadding) || isOverflow
+        const shouldUnwrapMaxWidth = isMaxWidth && isPresentationOnly
 
         if (!shouldUnwrap && !shouldUnwrapMaxWidth) break
 
@@ -1863,7 +2036,7 @@ function detectLanguage(code: string): 'svelte' | 'ts' | 'js' | 'css' | 'html' |
 function decorateHighlightedHtml(html: string): string {
     return html.replace(
         /<pre class="shiki[\s\S]*?"[^>]*>/,
-        '<pre class="shiki overflow-x-auto p-4 text-sm leading-6 m-0 rounded-none">'
+        '<pre class="shiki">'
     )
 }
 

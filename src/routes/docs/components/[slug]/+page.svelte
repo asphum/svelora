@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { Component } from 'svelte'
-    import { tick } from 'svelte'
-    import { Link } from '$lib/index.js'
+    import { mount, tick, unmount } from 'svelte'
+    import { CodeBlock, Link } from '$lib/index.js'
     import { allComponentItems } from '$lib/docs/navigation.js'
     import { getSectionSnippets, renderHighlightedCode } from '$lib/docs/code-block.js'
 
@@ -47,6 +47,46 @@
 <` + `/script>
 
 <Button label="Click me" color="primary" />`,
+        'code-block': `<script lang="ts">
+ import { CodeBlock } from 'svelora';
+<` + `/script>
+
+<CodeBlock
+ title="Code"
+ code={\`type User = { _id: string; name: string }\n\nconst user: User = { _id: 'u_1', name: 'Jane' }\`}
+/>`,
+        fonts: `<script lang="ts">
+ import { Fonts } from 'svelora';
+<` + `/script>
+
+<Fonts
+ families={[
+  { name: 'Inter', variable: '--font-sans-family', weights: [400, 500, 600, 700] },
+  { name: 'JetBrains Mono', variable: '--font-mono-family', weights: [400, 500, 700] },
+  {
+   provider: 'local',
+   name: 'Sarabun',
+   variable: '--font-sarabun-family',
+   sources: [{ src: '/fonts/Sarabun-Regular.woff2', format: 'woff2', weight: 400 }]
+  }
+ ]}
+/>`,
+        'google-fonts': `<script lang="ts">
+ import { Fonts } from 'svelora';
+<` + `/script>
+
+<Fonts
+ families={[
+  { name: 'Inter', variable: '--font-sans-family', weights: [400, 500, 600, 700] },
+  { name: 'JetBrains Mono', variable: '--font-mono-family', weights: [400, 500, 700] },
+  {
+   provider: 'local',
+   name: 'Sarabun',
+   variable: '--font-sarabun-family',
+   sources: [{ src: '/fonts/Sarabun-Regular.woff2', format: 'woff2', weight: 400 }]
+  }
+ ]}
+/>`,
         input: `<script lang="ts">
  import { Input } from 'svelora';
 <` + `/script>
@@ -153,34 +193,19 @@
 
     let containerEl = $state<HTMLElement | null>(null)
     let quickExampleHtml = $state('')
-    let quickExampleCopyLabel = $state('Copy')
     let isDarkMode = $state(true)
 
-    function scheduleLabelReset(reset: () => void): void {
-        window.setTimeout(() => {
-            reset()
-        }, 1200)
-    }
-
-    async function copyWithFeedback(
-        code: string,
-        setLabel: (label: string) => void,
-        resetLabel = 'Copy'
-    ): Promise<void> {
-        try {
-            await navigator.clipboard.writeText(code)
-            setLabel('Copied')
-        } catch {
-            setLabel('Failed')
-        }
-
-        scheduleLabelReset(() => {
-            setLabel(resetLabel)
-        })
-    }
+    const mountedCodeBlocks = new Map<Element, ReturnType<typeof mount>>()
 
     function clearInjectedCodeBlocks(root: HTMLElement): void {
-        root.querySelectorAll('[data-doc-code]').forEach((node) => node.remove())
+        root.querySelectorAll('[data-doc-code]').forEach((node) => {
+            const instance = mountedCodeBlocks.get(node)
+            if (instance) {
+                unmount(instance)
+                mountedCodeBlocks.delete(node)
+            }
+            node.remove()
+        })
     }
 
     async function injectCodeBlocks(root: HTMLElement, source: string, darkMode: boolean): Promise<void> {
@@ -199,40 +224,20 @@
             const highlightedHtml = highlightedSnippets[index]
             if (!code || !highlightedHtml) return
 
-            const wrapper = document.createElement('div')
-            wrapper.setAttribute('data-doc-code', 'true')
-            wrapper.className =
-                'mt-4 overflow-hidden rounded-2xl border border-outline-variant bg-surface-container'
+            const host = document.createElement('div')
+            host.setAttribute('data-doc-code', 'true')
+            section.appendChild(host)
 
-            const header = document.createElement('div')
-            header.className =
-                'flex items-center justify-between border-b border-outline-variant px-4 py-3'
-
-            const label = document.createElement('p')
-            label.className = 'text-sm font-medium text-on-surface-variant'
-            label.textContent = 'Code'
-
-            const button = document.createElement('button')
-            button.type = 'button'
-            button.className =
-                'rounded-md border border-outline-variant px-2.5 py-1 text-xs font-medium text-on-surface-variant transition-colors hover:bg-surface-container-highest'
-            button.textContent = 'Copy'
-            button.addEventListener('click', () => {
-                void copyWithFeedback(code, (label) => {
-                    button.textContent = label
-                })
+            const instance = mount(CodeBlock, {
+                target: host,
+                props: {
+                    title: 'Code',
+                    code,
+                    copyText: code,
+                    html: highlightedHtml
+                }
             })
-
-            const pre = document.createElement('pre')
-            pre.className = 'contents'
-
-            header.appendChild(label)
-            header.appendChild(button)
-            pre.innerHTML = highlightedHtml
-            wrapper.appendChild(header)
-            wrapper.appendChild(pre)
-
-            section.appendChild(wrapper)
+            mountedCodeBlocks.set(host, instance)
         })
     }
 
@@ -309,29 +314,7 @@
                     ตัวอย่าง import และการใช้งานแบบสั้นสำหรับหน้า `{data.slug}`
                 </p>
             </div>
-            <div
-                class="overflow-hidden rounded-2xl border border-outline-variant bg-surface-container"
-            >
-                <div
-                    class="flex items-center justify-between border-b border-outline-variant px-4 py-3"
-                >
-                    <p class="text-sm font-medium text-on-surface-variant">Code</p>
-                    <button
-                        type="button"
-                        class="rounded-md border border-outline-variant px-2.5 py-1 text-xs font-medium text-on-surface-variant transition-colors hover:bg-surface-container-highest"
-                        onclick={async () => {
-                            await copyWithFeedback(exampleCode, (label) => {
-                                quickExampleCopyLabel = label
-                            })
-                        }}
-                    >
-                        {quickExampleCopyLabel}
-                    </button>
-                </div>
-                <div class="bg-surface-container-highest [&_.shiki]:rounded-none">
-                    {@html quickExampleHtml}
-                </div>
-            </div>
+            <CodeBlock code={exampleCode} html={quickExampleHtml} />
         </section>
 
         <div bind:this={containerEl}>

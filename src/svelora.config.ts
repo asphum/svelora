@@ -14,6 +14,21 @@
 import { defineConfig } from '$lib/config.js'
 
 defineConfig({
+    // Example: configure the Fonts provider once for the whole app
+    // fonts: {
+    //     families: [
+    //         {
+    //             name: 'Inter',
+    //             variable: '--font-sans-family',
+    //             weights: [400, 500, 600, 700]
+    //         },
+    //         {
+    //             name: 'JetBrains Mono',
+    //             variable: '--font-mono-family',
+    //             weights: [400, 500, 700]
+    //         }
+    //     ]
+    // },
     // Example: customize button defaults and slots
     // button: {
     //     defaultVariants: { variant: 'outline', color: 'secondary' },

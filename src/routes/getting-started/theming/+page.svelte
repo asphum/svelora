@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge, Button, Card, Link } from '$lib/index.js'
+    import { Badge, Button, Card, Fonts, Link } from '$lib/index.js'
 
     const importThemeCode = `@import 'tailwindcss';
 @import 'svelora/theme.css';
@@ -60,6 +60,59 @@
  --radius-3xl: 1.5rem;
  --radius-full: 9999px;
 }`
+
+    const fontsLayoutCode = `<script lang="ts">
+ import { Fonts, ModeWatcher } from 'svelora';
+ import 'svelora/theme.css';
+
+ let { children } = $props();
+<` + `/script>
+
+<Fonts
+ families={[
+  { name: 'Inter', variable: '--font-sans-family', weights: [400, 500, 600, 700] },
+  { name: 'Poppins', variable: '--font-heading-family', weights: [600, 700] },
+  { name: 'JetBrains Mono', variable: '--font-mono-family', weights: [400, 500, 700] }
+ ]}
+/>
+
+<ModeWatcher />
+{@render children?.()}`
+
+    const sarabunCode = `<script lang="ts">
+ import { Fonts } from 'svelora';
+<` + `/script>
+
+<Fonts
+ families={[
+  {
+   provider: 'local',
+   name: 'Sarabun',
+   variable: '--font-sarabun-family',
+   sources: [{ src: '/fonts/Sarabun-Regular.woff2', format: 'woff2', weight: 400 }]
+  }
+ ]}
+/>
+
+<p class="font-sarabun">สวัสดี Sarabun</p>`
+
+    const fontsConfigCode = `import { defineConfig } from 'svelora';
+
+defineConfig({
+ fonts: {
+  families: [
+   { name: 'Inter', variable: '--font-sans-family', weights: [400, 500, 600, 700] },
+   { name: 'Poppins', variable: '--font-heading-family', weights: [600, 700] },
+   { name: 'JetBrains Mono', variable: '--font-mono-family', weights: [400, 500, 700] },
+   {
+    provider: 'local',
+    name: 'Sarabun',
+    variable: '--font-sarabun-family',
+    sources: [{ src: '/fonts/Sarabun-Regular.woff2', format: 'woff2', weight: 400 }]
+   }
+  ]
+ }
+});`
 
     const configCode = `import { defineConfig } from 'svelora';
 
@@ -140,6 +193,14 @@ defineConfig({
 </script>
 
 <div class="space-y-10">
+    <Fonts
+        families={[
+            { name: 'Inter', variable: '--font-sans-family', weights: [400, 500, 600, 700] },
+            { name: 'Poppins', variable: '--font-heading-family', weights: [600, 700] },
+            { name: 'JetBrains Mono', variable: '--font-mono-family', weights: [400, 500, 700] }
+        ]}
+    />
+
     <section class="space-y-4 border-b border-outline-variant/60 pb-8">
         <nav class="text-sm text-on-surface-variant">
             <ol class="flex flex-wrap items-center gap-2">
@@ -253,6 +314,45 @@ defineConfig({
         <Card class="border border-outline-variant/70">
             <pre class="overflow-x-auto text-sm"><code>{radiusCode}</code></pre>
         </Card>
+    </section>
+
+    <section class="space-y-4">
+        <h2 class="text-xl font-semibold">Fonts Provider</h2>
+        <p class="text-on-surface-variant">
+            Use the `Fonts` provider to load either Google Fonts or local font files and map them to
+            Svelora variables such as `--font-sans-family`, `--font-heading-family`, and
+            `--font-mono-family`.
+        </p>
+        <div class="grid gap-4 md:grid-cols-2">
+            <Card class="border border-outline-variant/70">
+                <div class="space-y-3">
+                    <h3 class="font-heading text-2xl font-semibold">Poppins heading</h3>
+                    <p>Inter body copy is applied through `--font-sans-family`.</p>
+                    <p class="font-mono text-sm">const family = 'font-mono';</p>
+                </div>
+            </Card>
+            <Card class="border border-outline-variant/70">
+                <p class="mb-3 text-sm text-on-surface-variant">`src/routes/+layout.svelte`</p>
+                <pre class="overflow-x-auto text-sm"><code>{fontsLayoutCode}</code></pre>
+            </Card>
+        </div>
+        <Card class="border border-outline-variant/70">
+            <p class="mb-3 text-sm text-on-surface-variant">`src/svelora.config.ts`</p>
+            <pre class="overflow-x-auto text-sm"><code>{fontsConfigCode}</code></pre>
+        </Card>
+        <p class="text-sm text-on-surface-variant">
+            Top-level config uses `fonts`, `fonts: false` disables defaults, `font-heading` is available
+            as a utility class, and `font-mono` automatically uses
+            `--font-mono-family`.
+        </p>
+        <Card class="border border-outline-variant/70">
+            <p class="mb-3 text-sm text-on-surface-variant">Custom class: `font-sarabun`</p>
+            <pre class="overflow-x-auto text-sm"><code>{sarabunCode}</code></pre>
+        </Card>
+        <p class="text-sm text-on-surface-variant">
+            Svelora now exposes `font-sarabun` through theme tokens, so you can use it directly in
+            classes across the project after mapping `--font-sarabun-family`.
+        </p>
     </section>
 
     <section class="space-y-4">

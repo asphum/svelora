@@ -1,0 +1,14 @@
+{
+    "mcpServers": {
+        "svelora-docs": {
+            "type": "stdio",
+            "command": "bun",
+            "args": [
+                "run",
+                "mcp:svelora-docs"
+            ],
+            "cwd": "${workspaceFolder}"
+        }
+    }
+}
+

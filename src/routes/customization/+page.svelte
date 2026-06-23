@@ -24,6 +24,30 @@ defineConfig({
 
 resetConfig();`
 
+    const fontsConfigCode = `import { defineConfig } from 'svelora';
+
+defineConfig({
+ fonts: {
+  families: [
+   { name: 'Inter', variable: '--font-sans-family', weights: [400, 500, 600, 700] },
+   { name: 'Poppins', variable: '--font-heading-family', weights: [600, 700] },
+   { name: 'JetBrains Mono', variable: '--font-mono-family', weights: [400, 500, 700] },
+   {
+    provider: 'local',
+    name: 'Sarabun',
+    variable: '--font-sarabun-family',
+    sources: [{ src: '/fonts/Sarabun-Regular.woff2', format: 'woff2', weight: 400 }]
+   }
+  ]
+ }
+});`
+
+    const disableFontsCode = `import { defineConfig } from 'svelora';
+
+defineConfig({
+ fonts: false
+});`
+
     const variantsCode = `// src/lib/Button/button.variants.ts
 export const buttonVariants = tv({
  variants: {
@@ -81,6 +105,19 @@ export const buttonVariants = tv({
         <h2 class="text-xl font-semibold">Reset Config</h2>
         <Card class="border border-outline-variant/70">
             <pre class="overflow-x-auto text-sm"><code>{resetCode}</code></pre>
+        </Card>
+    </section>
+
+    <section class="space-y-4">
+        <h2 class="text-xl font-semibold">Fonts Provider Defaults</h2>
+        <p class="text-on-surface-variant">
+            Configure top-level `fonts` once, then render a single `&lt;Fonts /&gt;` in your root layout.
+        </p>
+        <Card class="border border-outline-variant/70">
+            <pre class="overflow-x-auto text-sm"><code>{fontsConfigCode}</code></pre>
+        </Card>
+        <Card class="border border-outline-variant/70">
+            <pre class="overflow-x-auto text-sm"><code>{disableFontsCode}</code></pre>
         </Card>
     </section>
 

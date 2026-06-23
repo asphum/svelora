@@ -1,3 +1,5 @@
+import type { FontsConfig } from './Fonts/fonts.types.js'
+
 /**
  * Svelora Global Configuration
  *
@@ -6,6 +8,15 @@
  * import { defineConfig } from 'svelora'
  *
  * defineConfig({
+ *     fonts: {
+ *         families: [
+ *             {
+ *                 name: 'Inter',
+ *                 variable: '--font-sans-family',
+ *                 weights: [400, 500, 600, 700]
+ *             }
+ *         ]
+ *     },
  *     button: {
  *         defaultVariants: { variant: 'outline', color: 'secondary' },
  *         slots: { base: 'shadow-md', label: 'font-bold' }
@@ -55,8 +66,12 @@ type DeepPartial<T> = {
 
 /** Generic component config shape */
 export type UIConfig = {
-    [key: string]: DeepPartial<Record<string, unknown>> | undefined
+    [key: string]:
+        | DeepPartial<Record<string, unknown>>
+        | FontsConfig
+        | undefined
     icons?: DeepPartial<typeof iconsDefaults>
+    fonts?: FontsConfig
 }
 
 // ==================== GLOBAL STATE ====================
