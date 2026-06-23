@@ -16,8 +16,8 @@
 </p>
 
 <p align="center">
-  <a href="https://svelora.vercel.app"><strong>Live Demo</strong></a> &middot;
-  <a href="https://svelora.vercel.app/getting-started"><strong>Getting Started</strong></a> &middot;
+  <a href="https://svelora-ui.vercel.app/"><strong>Live Demo</strong></a> &middot;
+  <a href="https://svelora-ui.vercel.app//getting-started"><strong>Getting Started</strong></a> &middot;
   <a href="https://github.com/asphum/svelora/blob/main/CHANGELOG.md"><strong>Changelog</strong></a>
 </p>
 

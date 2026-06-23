@@ -1,341 +1,506 @@
 <script lang="ts">
     import { Badge, Button, Card, Icon, Link } from '$lib/index.js'
+    import { allComponentItems, docsIntroItems, docsMeta, totalComponents } from '$lib/docs/navigation.js'
 
-    type ComponentItem = {
-        name: string
-        href: string
-        icon: string
-    }
+    const installCode = docsMeta.npmCommand
 
-    type Category = {
-        title: string
-        count: number
-        items: ComponentItem[]
-    }
+    const usageCode = `<script lang="ts">
+ import { Button, Card, Badge } from 'svelora';
+<` + `/script>
 
-    const categories: Category[] = [
+<Card>
+ <h3>Welcome to Svelora</h3>
+ <p>Build beautiful UIs with Svelte 5.</p>
+
+ <div class="flex gap-2">
+  <Button label="Get Started" color="primary" />
+  <Badge label="${docsMeta.version}" variant="soft" color="success" />
+ </div>
+</Card>`
+
+    const layoutCode = `@import 'tailwindcss';
+@import 'svelora/theme.css';
+
+@custom-variant dark (&:where(.dark, .dark *));`
+
+    const features = [
         {
-            title: 'General',
-            count: 6,
-            items: [
-                { name: 'Button', href: '/button', icon: 'lucide:mouse-pointer-click' },
-                { name: 'FieldGroup', href: '/field-group', icon: 'lucide:group' },
-                { name: 'Icon', href: '/icon', icon: 'lucide:shapes' },
-                { name: 'Link', href: '/link', icon: 'lucide:link' },
-                { name: 'Kbd', href: '/kbd', icon: 'lucide:keyboard' },
-                { name: 'ThemeModeButton', href: '/theme-mode-button', icon: 'lucide:sun-moon' }
-            ]
+            title: 'Svelte 5 Runes',
+            description: 'Built from the ground up with runes, snippets, and the latest reactivity model.',
+            icon: 'lucide:zap'
         },
         {
-            title: 'Layout',
-            count: 3,
-            items: [
-                { name: 'Card', href: '/card', icon: 'lucide:square' },
-                { name: 'Container', href: '/container', icon: 'lucide:box' },
-                { name: 'Separator', href: '/separator', icon: 'lucide:minus' }
-            ]
+            title: 'OKLCH Colors',
+            description: '8 semantic color scales that stay balanced across light and dark themes.',
+            icon: 'lucide:palette'
         },
         {
-            title: 'Data Display',
-            count: 11,
-            items: [
-                { name: 'Accordion', href: '/accordion', icon: 'lucide:chevrons-down-up' },
-                { name: 'Avatar', href: '/avatar', icon: 'lucide:circle-user' },
-                { name: 'AvatarGroup', href: '/avatar-group', icon: 'lucide:users' },
-                { name: 'Badge', href: '/badge', icon: 'lucide:tag' },
-                { name: 'Carousel', href: '/carousel', icon: 'lucide:gallery-horizontal' },
-                { name: 'Chip', href: '/chip', icon: 'lucide:circle-dot' },
-                { name: 'Empty', href: '/empty', icon: 'lucide:inbox' },
-                { name: 'Skeleton', href: '/skeleton', icon: 'lucide:loader-circle' },
-                { name: 'Timeline', href: '/timeline', icon: 'lucide:git-commit-horizontal' },
-                { name: 'User', href: '/user', icon: 'lucide:user' },
-                { name: 'Table', href: '/table', icon: 'lucide:table' }
-            ]
+            title: 'Fully Accessible',
+            description: 'Powered by bits-ui primitives with keyboard navigation and ARIA patterns.',
+            icon: 'lucide:accessibility'
         },
         {
-            title: 'Forms',
-            count: 14,
-            items: [
-                { name: 'Checkbox', href: '/checkbox', icon: 'lucide:check-square' },
-                { name: 'CheckboxGroup', href: '/checkbox-group', icon: 'lucide:list-checks' },
-                { name: 'Editor', href: '/editor', icon: 'lucide:pen-line' },
-                { name: 'Input', href: '/input', icon: 'lucide:text-cursor-input' },
-                { name: 'RadioGroup', href: '/radio-group', icon: 'lucide:circle-dot' },
-                { name: 'Select', href: '/select', icon: 'lucide:chevron-down-square' },
-                { name: 'SelectMenu', href: '/select-menu', icon: 'lucide:square-chevron-down' },
-                { name: 'Slider', href: '/slider', icon: 'lucide:sliders-horizontal' },
-                { name: 'Switch', href: '/switch', icon: 'lucide:toggle-left' },
-                { name: 'Textarea', href: '/textarea', icon: 'lucide:textarea' },
-                { name: 'FileUpload', href: '/file-upload', icon: 'lucide:upload' },
-                { name: 'PinInput', href: '/pin-input', icon: 'lucide:hash' },
-                { name: 'FormField', href: '/form-field', icon: 'lucide:form-input' },
-                { name: 'Form', href: '/form', icon: 'lucide:scroll-text' }
-            ]
+            title: 'Tailwind CSS 4',
+            description: 'Utility-first styling with easy overrides through classes and tokens.',
+            icon: 'lucide:wand-sparkles'
         },
         {
-            title: 'Feedback',
-            count: 4,
-            items: [
-                { name: 'Alert', href: '/alert', icon: 'lucide:bell' },
-                { name: 'Banner', href: '/banner', icon: 'lucide:megaphone' },
-                { name: 'Progress', href: '/progress', icon: 'lucide:loader' },
-                { name: 'Toast', href: '/toast', icon: 'lucide:message-square-warning' }
-            ]
+            title: `${totalComponents}+ Components`,
+            description: 'From buttons to calendars, overlays to tables, ready for production apps.',
+            icon: 'lucide:blocks'
         },
         {
-            title: 'Navigation',
-            count: 4,
-            items: [
-                { name: 'Breadcrumb', href: '/breadcrumb', icon: 'lucide:chevron-right' },
-                { name: 'Pagination', href: '/pagination', icon: 'lucide:ellipsis' },
-                { name: 'Stepper', href: '/stepper', icon: 'lucide:list-ordered' },
-                { name: 'Tabs', href: '/tabs', icon: 'lucide:folder' }
-            ]
-        },
-        {
-            title: 'Overlay',
-            count: 9,
-            items: [
-                { name: 'Collapsible', href: '/collapsible', icon: 'lucide:chevrons-up-down' },
-                { name: 'Command', href: '/command', icon: 'lucide:square-terminal' },
-                { name: 'ContextMenu', href: '/context-menu', icon: 'lucide:mouse-pointer-square' },
-                { name: 'Modal', href: '/modal', icon: 'lucide:square-stack' },
-                { name: 'Drawer', href: '/drawer', icon: 'lucide:panel-bottom' },
-                { name: 'DropdownMenu', href: '/dropdown-menu', icon: 'lucide:menu' },
-                { name: 'Popover', href: '/popover', icon: 'lucide:messages-square' },
-                { name: 'Slideover', href: '/slideover', icon: 'lucide:panel-right' },
-                { name: 'Tooltip', href: '/tooltip', icon: 'lucide:message-square' }
-            ]
-        },
-        {
-            title: 'Date & Time',
-            count: 2,
-            items: [
-                { name: 'Calendar', href: '/calendar', icon: 'lucide:calendar' },
-                { name: 'RangeCalendar', href: '/range-calendar', icon: 'lucide:calendar-range' }
-            ]
+            title: 'Fully Typed',
+            description: 'Exported TypeScript types help keep every component safe and discoverable.',
+            icon: 'lucide:code-xml'
         }
-    ]
+    ] as const
 
-    const totalComponents = categories.reduce((sum, c) => sum + c.count, 0)
+    const stats = [
+        { label: 'Components', value: `${totalComponents}+` },
+        { label: 'TypeScript', value: '100%' },
+        { label: 'Color Scales', value: '8' },
+        { label: 'MIT License', value: 'MIT' }
+    ] as const
 
-    const installCode = 'npm install svelora'
+    const colorGroups = [
+        { title: 'Primary', description: 'Main actions & branding', color: 'primary' },
+        { title: 'Secondary', description: 'Supporting elements', color: 'secondary' },
+        { title: 'Tertiary', description: 'Accents & highlights', color: 'tertiary' },
+        { title: 'Success', description: 'Positive feedback', color: 'success' },
+        { title: 'Warning', description: 'Caution signals', color: 'warning' },
+        { title: 'Error', description: 'Error & destructive', color: 'error' },
+        { title: 'Info', description: 'Informational hints', color: 'info' },
+        { title: 'Surface', description: 'Backgrounds & neutral', color: 'surface' }
+    ] as const
 
-    const usageCode =
-        '<script lang="ts">\n' +
-        "    import { Button, Card, Badge } from 'svelora'\n" +
-        '<' +
-        '/script>\n\n' +
-        '<Card>\n' +
-        '    <h3>Welcome</h3>\n' +
-        '    <p>Build beautiful UIs with Svelte 5.</p>\n' +
-        '    <div class="flex gap-2">\n' +
-        '        <Button label="Get Started" color="primary" />\n' +
-        '        <Badge label="v2.1.0" variant="soft" color="success" />\n' +
-        '    </div>\n' +
-        '</Card>'
+    const previewItems = allComponentItems.slice(0, 12)
 </script>
 
-<div class="space-y-16">
-    <!-- Hero -->
-    <section class="space-y-6 py-12 text-center">
-        <Badge label="v2.1.0" variant="soft" color="primary" size="lg" />
-        <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
-            Build beautiful UIs with <span class="text-primary">Svelora</span>
-        </h1>
-        <p class="mx-auto max-w-2xl text-lg text-on-surface-variant">
-            A modern, accessible UI component library built natively for <strong>Svelte 5</strong>
-            and <strong>Tailwind CSS 4</strong>. Ship faster with {totalComponents}+ production-ready
-            components.
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-3">
-            <Button
-                variant="solid"
-                color="primary"
-                leadingIcon="lucide:rocket"
-                label="Installation"
-                href="/getting-started/installation"
-            />
-            <Button
-                variant="outline"
-                color="secondary"
-                leadingIcon="lucide:layout-grid"
-                label="Browse Components"
-                href="/getting-started/components"
-            />
-        </div>
-    </section>
+<div class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[540px] bg-[radial-gradient(circle_at_top,theme(colors.primary/.18),transparent_55%)]"></div>
 
-    <!-- Quick Start -->
-    <section class="space-y-6">
-        <div class="space-y-2 text-center">
-            <h2 class="text-2xl font-bold">Quick Start</h2>
-            <p class="text-on-surface-variant">Install and start using Svelora in two steps.</p>
-        </div>
-
-        <div class="grid gap-4 lg:grid-cols-2">
-            <Card>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-2 text-on-surface-variant">
-                        <Icon name="lucide:package" size="18" />
-                        <span class="text-sm font-medium">1. Install the package</span>
-                    </div>
-                    <div class="rounded-md bg-surface-container-highest p-3 font-mono text-sm">
-                        <code>{installCode}</code>
-                    </div>
+    <header class="border-b border-outline-variant/60">
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-6">
+            <Link href="/" raw class="flex items-center gap-3 text-on-surface">
+                <span class="inline-flex size-10 items-center justify-center rounded-2xl bg-primary text-sm font-bold text-on-primary">
+                    S
+                </span>
+                <div class="space-y-0.5">
+                    <p class="text-sm font-semibold">{docsMeta.name}</p>
+                    <p class="text-xs text-on-surface-variant">Svelte 5 UI Library</p>
                 </div>
-            </Card>
+            </Link>
 
-            <Card>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-2 text-on-surface-variant">
-                        <Icon name="lucide:code" size="18" />
-                        <span class="text-sm font-medium">2. Use components</span>
-                    </div>
-                    <div class="rounded-md bg-surface-container-highest p-3 font-mono text-xs">
-                        <pre class="overflow-x-auto whitespace-pre">{usageCode}</pre>
-                    </div>
+            <nav class="hidden items-center gap-2 md:flex">
+                <Link href="/docs" raw class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
+                    Docs
+                </Link>
+                <Link href="/docs/components/button" raw class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
+                    Components
+                </Link>
+                <Link href={docsMeta.githubHref} raw external class="rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container">
+                    GitHub
+                </Link>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <Button label="Get Started" href="/docs" size="sm" />
+                <Button
+                    variant="outline"
+                    color="secondary"
+                    label="Star on GitHub"
+                    href={docsMeta.githubHref}
+                    external
+                    size="sm"
+                />
+            </div>
+        </div>
+    </header>
+
+    <main class="space-y-24 pb-20">
+        <section class="mx-auto grid max-w-7xl gap-12 px-4 pt-16 lg:grid-cols-[minmax(0,1fr)_520px] lg:px-6 lg:pt-20">
+            <div class="space-y-8">
+                <div class="flex flex-wrap gap-2">
+                    <Badge label="Open Source" variant="soft" color="success" />
+                    <Badge label={docsMeta.version} variant="soft" color="primary" />
+                    <Badge label="Svelte 5" variant="soft" color="secondary" />
                 </div>
-            </Card>
-        </div>
-    </section>
 
-    <!-- Welcome Preview -->
-    <section class="space-y-4">
-        <div class="space-y-2 text-center">
-            <h2 class="text-2xl font-bold">Welcome</h2>
-            <p class="text-on-surface-variant">Build beautiful UIs with Svelte 5.</p>
-        </div>
-        <div class="mx-auto max-w-md">
-            <Card>
-                <div class="space-y-3">
-                    <h3 class="text-lg font-semibold">Welcome</h3>
-                    <p class="text-on-surface-variant">Build beautiful UIs with Svelte 5.</p>
-                    <div class="flex gap-2">
-                        <Button label="Get Started" color="primary" />
-                        <Badge label="v2.1.0" variant="soft" color="success" />
+                <div class="space-y-5">
+                    <h1 class="max-w-3xl text-5xl font-semibold tracking-tight text-balance sm:text-6xl">
+                        Build stunning UIs in record time
+                    </h1>
+                    <p class="max-w-2xl text-lg leading-8 text-on-surface-variant">
+                        {totalComponents}+ beautifully crafted, accessible components built on
+                        <strong> bits-ui </strong>
+                        and styled with
+                        <strong> Tailwind CSS 4 </strong>.
+                        Fully typed, dark mode ready, and designed for
+                        <strong> Svelte 5 </strong>.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-3">
+                    <Button
+                        label="Get Started"
+                        href="/docs"
+                        leadingIcon="lucide:rocket"
+                    />
+                    <Button
+                        label="Browse Components"
+                        href="#components"
+                        variant="outline"
+                        color="secondary"
+                        leadingIcon="lucide:layout-grid"
+                    />
+                </div>
+
+                <div class="flex flex-wrap items-center gap-4 text-sm text-on-surface-variant">
+                    <div class="flex -space-x-2">
+                        {#each ['A', 'S', 'M', 'J', 'K'] as initial (initial)}
+                            <span class="inline-flex size-9 items-center justify-center rounded-full border border-surface bg-surface-container font-medium text-on-surface">
+                                {initial}
+                            </span>
+                        {/each}
                     </div>
-                </div>
-            </Card>
-        </div>
-    </section>
-
-    <!-- Components Overview -->
-    <section class="space-y-8">
-        <div class="space-y-2 text-center">
-            <h2 class="text-2xl font-bold">Components</h2>
-            <p class="text-on-surface-variant">
-                {totalComponents}+ components across {categories.length} categories.
-            </p>
-        </div>
-
-        {#each categories as category (category.title)}
-            <div class="space-y-3">
-                <div class="flex items-baseline gap-2">
-                    <h3 class="text-lg font-semibold">{category.title}</h3>
-                    <span class="text-sm text-on-surface-variant">{category.count}</span>
-                </div>
-                <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {#each category.items as item (item.href)}
-                        <Link
-                            href={item.href}
-                            raw
-                            class="group flex items-center gap-3 rounded-md border border-outline-variant p-3 transition-colors hover:border-primary hover:bg-surface-container-high"
-                        >
-                            <Icon
-                                name={item.icon}
-                                size="18"
-                                class="text-on-surface-variant group-hover:text-primary"
-                            />
-                            <span
-                                class="text-sm font-medium group-hover:text-primary"
-                            >{item.name}</span>
-                        </Link>
-                    {/each}
+                    <span>Loved by 500+ developers</span>
                 </div>
             </div>
-        {/each}
-    </section>
 
-    <!-- Hooks -->
-    <section class="space-y-4">
-        <div class="space-y-2 text-center">
-            <h2 class="text-2xl font-bold">Hooks</h2>
-            <p class="text-on-surface-variant">7 utility hooks for common interactions.</p>
-        </div>
-        <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-            {#each [{ name: 'useClickOutside', href: '/use-click-outside', icon: 'lucide:mouse-pointer-click' }, { name: 'useClipboard', href: '/use-clipboard', icon: 'lucide:clipboard' }, { name: 'useDebounce', href: '/use-debounce', icon: 'lucide:timer' }, { name: 'useEscapeKeydown', href: '/use-escape-keydown', icon: 'lucide:circle-x' }, { name: 'useFormField', href: '/use-form-field', icon: 'lucide:form-input' }, { name: 'useInfiniteScroll', href: '/use-infinite-scroll', icon: 'lucide:arrow-down-narrow-wide' }, { name: 'useMediaQuery', href: '/use-media-query', icon: 'lucide:monitor-smartphone' }] as hook (hook.href)}
-                <Link
-                    href={hook.href}
-                    raw
-                    class="group flex items-center gap-3 rounded-md border border-outline-variant p-3 transition-colors hover:border-primary hover:bg-surface-container-high"
-                >
-                    <Icon
-                        name={hook.icon}
-                        size="18"
-                        class="text-on-surface-variant group-hover:text-primary"
-                    />
-                    <span class="font-mono text-sm group-hover:text-primary">{hook.name}</span>
-                </Link>
-            {/each}
-        </div>
-    </section>
-
-    <!-- Built With -->
-    <section class="space-y-6">
-        <div class="space-y-2 text-center">
-            <h2 class="text-2xl font-bold">Built With</h2>
-            <p class="text-on-surface-variant">Powered by the modern Svelte ecosystem.</p>
-        </div>
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {#each [{ title: 'Svelte 5', desc: 'Runes & Snippets', icon: 'lucide:zap' }, { title: 'Tailwind 4', desc: 'Utility-first CSS', icon: 'lucide:palette' }, { title: 'bits-ui', desc: 'Headless primitives', icon: 'lucide:layers' }, { title: 'TypeScript', desc: 'Full type safety', icon: 'lucide:code' }] as tech (tech.title)}
-                <Card variant="soft">
-                    <div class="flex flex-col items-center gap-3 py-2 text-center">
-                        <div
-                            class="flex size-12 items-center justify-center rounded-full bg-primary-container text-on-primary-container"
-                        >
-                            <Icon name={tech.icon} size="24" />
+            <div class="grid gap-4 sm:grid-cols-2">
+                <Card class="border border-outline-variant/70 bg-surface/90 shadow-xl shadow-primary/5">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium">Deployment</p>
+                                <p class="text-sm text-on-surface-variant">Maya just deployed v2.4</p>
+                            </div>
+                            <Badge label="New" variant="soft" color="success" size="sm" />
                         </div>
-                        <h3 class="font-semibold">{tech.title}</h3>
-                        <p class="text-sm text-on-surface-variant">{tech.desc}</p>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="rounded-2xl bg-surface-container p-3">
+                                <p class="text-xs text-on-surface-variant">Tasks</p>
+                                <p class="mt-1 text-2xl font-semibold">12</p>
+                            </div>
+                            <div class="rounded-2xl bg-surface-container p-3">
+                                <p class="text-xs text-on-surface-variant">Reviews</p>
+                                <p class="mt-1 text-2xl font-semibold">3</p>
+                            </div>
+                            <div class="rounded-2xl bg-surface-container p-3">
+                                <p class="text-xs text-on-surface-variant">Build</p>
+                                <p class="mt-1 text-2xl font-semibold text-success">Pass</p>
+                            </div>
+                        </div>
                     </div>
                 </Card>
-            {/each}
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="space-y-4 border-t border-outline-variant pt-8 text-center">
-        <div class="flex items-center justify-center gap-4 text-sm">
-            <Link
-                href="/getting-started/installation"
-                class="text-on-surface-variant hover:text-primary"
-                >Installation</Link
-            >
-            <span class="text-outline-variant">·</span>
-            <Link
-                href="/getting-started/components"
-                class="text-on-surface-variant hover:text-primary">Components</Link
-            >
-            <span class="text-outline-variant">·</span>
-            <Link
-                href="https://github.com/asphum/svelora"
-                external
-                class="text-on-surface-variant hover:text-primary"
-            >
-                GitHub
-            </Link>
+                <Card class="border border-outline-variant/70 bg-surface/90 shadow-xl shadow-primary/5">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium">Sprint progress</p>
+                                <p class="text-sm text-on-surface-variant">Design system rollout</p>
+                            </div>
+                            <span class="text-lg font-semibold">78%</span>
+                        </div>
+                        <div class="h-3 overflow-hidden rounded-full bg-surface-container-high">
+                            <div class="h-full w-[78%] rounded-full bg-primary"></div>
+                        </div>
+                        <div class="flex gap-2 text-xs text-on-surface-variant">
+                            <span class="rounded-full bg-surface-container px-2 py-1">Theming</span>
+                            <span class="rounded-full bg-surface-container px-2 py-1">Forms</span>
+                            <span class="rounded-full bg-surface-container px-2 py-1">Navigation</span>
+                        </div>
+                    </div>
+                </Card>
+
+                <Card class="sm:col-span-2 border border-outline-variant/70 bg-surface/90 shadow-xl shadow-primary/5">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium">Actions & Status</p>
+                                <p class="text-sm text-on-surface-variant">Core building blocks, ready to compose.</p>
+                            </div>
+                            <Badge label="Live Preview" variant="soft" color="info" size="sm" />
+                        </div>
+
+                        <div class="flex flex-wrap gap-2">
+                            <Button label="Primary" size="sm" />
+                            <Button label="Outline" variant="outline" color="secondary" size="sm" />
+                            <Button label="Soft" variant="soft" color="secondary" size="sm" />
+                            <Button label="Ghost" variant="ghost" color="secondary" size="sm" />
+                            <Badge label="Success" variant="soft" color="success" />
+                            <Badge label="Warning" variant="soft" color="warning" />
+                            <Badge label="Error" variant="soft" color="error" />
+                        </div>
+
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <div class="rounded-2xl border border-outline-variant bg-surface-container p-4">
+                                <p class="text-sm font-medium">Framework</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-on-surface-variant">Svelte</span>
+                                    <span class="rounded-full bg-success/10 px-2 py-1 text-xs font-medium text-success">
+                                        Enabled
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="rounded-2xl border border-outline-variant bg-surface-container p-4">
+                                <p class="text-sm font-medium">Dark mode</p>
+                                <div class="mt-2 flex items-center justify-between">
+                                    <span class="text-on-surface-variant">Automatic theme sync</span>
+                                    <span class="relative inline-flex h-6 w-11 rounded-full bg-primary">
+                                        <span class="absolute top-1 right-1 size-4 rounded-full bg-white"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Card>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl space-y-8 px-4 lg:px-6">
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {#each stats as stat (stat.label)}
+                    <Card variant="soft" class="border border-outline-variant/70">
+                        <div class="space-y-2">
+                            <p class="text-sm text-on-surface-variant">{stat.label}</p>
+                            <p class="text-3xl font-semibold">{stat.value}</p>
+                        </div>
+                    </Card>
+                {/each}
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl space-y-8 px-4 lg:px-6">
+            <div class="space-y-3 text-center">
+                <p class="text-sm font-semibold tracking-[0.16em] text-primary uppercase">Features</p>
+                <h2 class="text-3xl font-semibold sm:text-4xl">Everything you need, nothing you don't</h2>
+                <p class="mx-auto max-w-3xl text-on-surface-variant">
+                    A thoughtfully designed component library that gives you the building blocks for modern applications.
+                </p>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {#each features as feature (feature.title)}
+                    <Card class="border border-outline-variant/70 bg-surface/90">
+                        <div class="space-y-4">
+                            <div class="flex size-11 items-center justify-center rounded-2xl bg-primary-container text-on-primary-container">
+                                <Icon name={feature.icon} size="20" />
+                            </div>
+                            <div class="space-y-2">
+                                <h3 class="text-lg font-semibold">{feature.title}</h3>
+                                <p class="text-sm leading-6 text-on-surface-variant">{feature.description}</p>
+                            </div>
+                        </div>
+                    </Card>
+                {/each}
+            </div>
+        </section>
+
+        <section id="components" class="mx-auto max-w-7xl space-y-8 px-4 lg:px-6">
+            <div class="space-y-3">
+                <p class="text-sm font-semibold tracking-[0.16em] text-primary uppercase">Components</p>
+                <h2 class="text-3xl font-semibold sm:text-4xl">{totalComponents}+ components ready to use</h2>
+                <p class="max-w-3xl text-on-surface-variant">
+                    Interactive previews of real Svelora components. Explore the design language before you jump into the docs.
+                </p>
+            </div>
+
+            <div class="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
+                <Card class="border border-outline-variant/70">
+                    <div class="space-y-6">
+                        <div class="space-y-2">
+                            <p class="text-sm font-medium">Actions & Status</p>
+                            <p class="text-sm text-on-surface-variant">Buttons, badges, and alerts working together.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <Button label="Primary" size="sm" />
+                            <Button label="Outline" variant="outline" color="secondary" size="sm" />
+                            <Button label="Soft" variant="soft" color="success" size="sm" />
+                            <Button label="Subtle" variant="subtle" color="warning" size="sm" />
+                            <Button label="Ghost" variant="ghost" color="secondary" size="sm" />
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <Badge label="Primary" variant="soft" color="primary" />
+                            <Badge label="Success" variant="soft" color="success" />
+                            <Badge label="Warning" variant="soft" color="warning" />
+                            <Badge label="Error" variant="soft" color="error" />
+                            <Badge label="Info" variant="soft" color="info" />
+                        </div>
+                        <div class="grid gap-3 sm:grid-cols-3">
+                            <div class="rounded-2xl border border-success/20 bg-success/10 p-4 text-sm text-success">
+                                Deployment complete
+                            </div>
+                            <div class="rounded-2xl border border-info/20 bg-info/10 p-4 text-sm text-info">
+                                Update available
+                            </div>
+                            <div class="rounded-2xl border border-warning/20 bg-warning/10 p-4 text-sm text-warning">
+                                Rate limit warning
+                            </div>
+                        </div>
+                    </div>
+                </Card>
+
+                <Card class="border border-outline-variant/70">
+                    <div class="space-y-6">
+                        <div class="space-y-2">
+                            <p class="text-sm font-medium">Preview Grid</p>
+                            <p class="text-sm text-on-surface-variant">A quick look at categories inside the library.</p>
+                        </div>
+                        <div class="grid gap-2 sm:grid-cols-2">
+                            {#each previewItems as item (item.href)}
+                                <Link
+                                    href={item.href}
+                                    raw
+                                    class="group flex items-center gap-3 rounded-2xl border border-outline-variant bg-surface-container px-4 py-3 transition-colors hover:border-primary hover:bg-surface-container-high"
+                                >
+                                    <span class="inline-flex size-9 items-center justify-center rounded-xl bg-surface-container-high">
+                                        <Icon name={item.icon} size="17" class="text-on-surface-variant group-hover:text-primary" />
+                                    </span>
+                                    <span class="text-sm font-medium group-hover:text-primary">{item.title}</span>
+                                </Link>
+                            {/each}
+                        </div>
+                    </div>
+                </Card>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl space-y-8 px-4 lg:px-6">
+            <div class="space-y-3">
+                <p class="text-sm font-semibold tracking-[0.16em] text-primary uppercase">Color System</p>
+                <h2 class="text-3xl font-semibold sm:text-4xl">8 semantic colors, infinite possibilities</h2>
+                <p class="max-w-3xl text-on-surface-variant">
+                    A complete OKLCH color system that adapts cleanly to light and dark themes.
+                </p>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                {#each colorGroups as group (group.title)}
+                    <Card class="border border-outline-variant/70 bg-surface/90">
+                        <div class="space-y-4">
+                            <div class="space-y-1">
+                                <h3 class="font-semibold">{group.title}</h3>
+                                <p class="text-sm text-on-surface-variant">{group.description}</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <Button label="Button" color={group.color} size="sm" />
+                                <Badge label="Badge" color={group.color} variant="soft" />
+                            </div>
+                        </div>
+                    </Card>
+                {/each}
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl space-y-8 px-4 lg:px-6">
+            <div class="space-y-3">
+                <p class="text-sm font-semibold tracking-[0.16em] text-primary uppercase">Getting Started</p>
+                <h2 class="text-3xl font-semibold sm:text-4xl">Up and running in 3 simple steps</h2>
+                <p class="max-w-3xl text-on-surface-variant">
+                    No complex configuration. Install, import the theme, and start building.
+                </p>
+            </div>
+
+            <div class="grid gap-4 lg:grid-cols-3">
+                <Card class="border border-outline-variant/70">
+                    <div class="space-y-4">
+                        <div class="inline-flex size-10 items-center justify-center rounded-2xl bg-primary-container font-semibold text-on-primary-container">
+                            1
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-semibold">Install the package</h3>
+                            <p class="text-sm text-on-surface-variant">Add Svelora to your SvelteKit project.</p>
+                        </div>
+                        <div class="overflow-x-auto rounded-2xl bg-surface-container p-4 font-mono text-sm">
+                            <code>{installCode}</code>
+                        </div>
+                    </div>
+                </Card>
+
+                <Card class="border border-outline-variant/70">
+                    <div class="space-y-4">
+                        <div class="inline-flex size-10 items-center justify-center rounded-2xl bg-primary-container font-semibold text-on-primary-container">
+                            2
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-semibold">Set up your styles</h3>
+                            <p class="text-sm text-on-surface-variant">Import Tailwind and the Svelora theme tokens.</p>
+                        </div>
+                        <div class="overflow-x-auto rounded-2xl bg-surface-container p-4 font-mono text-xs">
+                            <pre>{layoutCode}</pre>
+                        </div>
+                    </div>
+                </Card>
+
+                <Card class="border border-outline-variant/70">
+                    <div class="space-y-4">
+                        <div class="inline-flex size-10 items-center justify-center rounded-2xl bg-primary-container font-semibold text-on-primary-container">
+                            3
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-semibold">Start building</h3>
+                            <p class="text-sm text-on-surface-variant">Import components and compose your first UI.</p>
+                        </div>
+                        <div class="overflow-x-auto rounded-2xl bg-surface-container p-4 font-mono text-xs">
+                            <pre>{usageCode}</pre>
+                        </div>
+                    </div>
+                </Card>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-4 lg:px-6">
+            <Card class="overflow-hidden border border-outline-variant/70 bg-[linear-gradient(135deg,theme(colors.primary/.12),theme(colors.secondary/.08))]">
+                <div class="grid gap-8 px-6 py-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:px-10 lg:py-12">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <Badge label="Open Source" variant="soft" color="success" />
+                            <Badge label="MIT" variant="soft" color="secondary" />
+                        </div>
+                        <div class="space-y-3">
+                            <h2 class="text-3xl font-semibold sm:text-4xl">Ready to build something amazing?</h2>
+                            <p class="max-w-2xl text-on-surface-variant">
+                                Join developers building polished Svelte applications with a modern, accessible component system.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3">
+                        <Button label="Get Started Free" href="/docs" leadingIcon="lucide:rocket" />
+                        <Button
+                            label="Star on GitHub"
+                            href={docsMeta.githubHref}
+                            external
+                            variant="outline"
+                            color="secondary"
+                            leadingIcon="lucide:star"
+                        />
+                    </div>
+                </div>
+            </Card>
+        </section>
+    </main>
+
+    <footer class="border-t border-outline-variant/60">
+        <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-on-surface-variant lg:flex-row lg:items-center lg:justify-between lg:px-6">
+            <div class="space-y-1">
+                <p class="font-medium text-on-surface">{docsMeta.name}</p>
+                <p>A modern, accessible Svelte 5 UI component library built with Tailwind CSS 4.</p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-4">
+                {#each docsIntroItems.slice(0, 2) as item (item.href)}
+                    <Link href={item.href} raw class="hover:text-primary">
+                        {item.title}
+                    </Link>
+                {/each}
+                <Link href="/docs/components/button" raw class="hover:text-primary">Components</Link>
+                <Link href="/docs/hooks/use-debounce" raw class="hover:text-primary">Hooks</Link>
+                <Link href={docsMeta.githubHref} raw external class="hover:text-primary">GitHub</Link>
+            </div>
         </div>
-        <p class="text-xs text-on-surface-variant">
-            Released under the MIT License. Copyright © {new Date().getFullYear()} asphum.
-        </p>
-        <Button
-            variant="ghost"
-            size="sm"
-            color="primary"
-            leadingIcon="lucide:arrow-up"
-            label="Back to top"
-            onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        />
     </footer>
 </div>

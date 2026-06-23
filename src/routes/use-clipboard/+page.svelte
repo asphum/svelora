@@ -129,10 +129,10 @@
                         <div
                             class="flex-1 truncate rounded-md bg-surface-container px-3 py-2 font-mono text-xs text-on-surface-variant"
                         >
-                            https://svelora.vercel.app/use-clipboard
+                            https://svelora-ui.vercel.app//use-clipboard
                         </div>
                         <Button
-                            onclick={() => clipboard.copy('https://svelora.vercel.app/use-clipboard')}
+                            onclick={() => clipboard.copy('https://svelora-ui.vercel.app//use-clipboard')}
                             icon={clipboard.copied ? 'lucide:check' : 'lucide:link'}
                             color={clipboard.copied ? 'success' : 'primary'}
                             variant="soft"

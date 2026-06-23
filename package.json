@@ -9,7 +9,7 @@
         "type": "git",
         "url": "git+https://github.com/asphum/svelora.git"
     },
-    "homepage": "https://svelora.vercel.app",
+    "homepage": "https://svelora-ui.vercel.app/",
     "publishConfig": {
         "access": "public"
     },
