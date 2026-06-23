@@ -48,7 +48,7 @@
         "public:major:full": "node ./scripts/release.mjs public major --full",
         "public:minor:dry": "node ./scripts/release.mjs public minor --dry-run",
         "public:major:dry": "node ./scripts/release.mjs public major --dry-run",
-        "clean": "rm -rf dist node_modules build .svelte-kit"
+        "clean": "rm -rf dist node_modules build .svelte-kit bun.lock"
     },
     "files": [
         "dist",
@@ -246,6 +246,7 @@
         "vaul-svelte": "0.3.2"
     },
     "overrides": {
+        "estree-walker": "^3.0.3",
         "tailwind-merge": "^3.6.0",
         "embla-carousel": "9.0.0-rc02",
         "embla-carousel-autoplay": "9.0.0-rc02",
