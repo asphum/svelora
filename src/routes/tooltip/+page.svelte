@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge, Button, Icon, Separator, Tooltip } from '$lib/index.js'
+    import { Tooltip, Button, Badge, Icon, Separator } from '$lib/index.js'
 
     let controlledOpen = $state(false)
 </script>

@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { Badge, Button, Skeleton, Table, type TableColumn, useInfiniteScroll } from '$lib/index.js'
+    import { useInfiniteScroll } from '$lib/index.js'
+    import { Badge, Button, Skeleton, Table, type TableColumn } from '$lib/index.js'
 
     // ==================== Basic List ====================
 

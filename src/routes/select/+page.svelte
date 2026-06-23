@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { Select, FormField, FieldGroup, Separator } from '$lib/index.js'
     import type { SelectItem, SelectItemType } from '$lib/index.js'
-    import { FieldGroup, FormField, Select, Separator } from '$lib/index.js'
 
     const variants = ['outline', 'soft', 'subtle', 'ghost', 'none'] as const
     const colors = [

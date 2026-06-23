@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, FieldGroup, Input, Separator } from '$lib/index.js'
+    import { Button, Input, FieldGroup, Separator } from '$lib/index.js'
 
     const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const
 </script>

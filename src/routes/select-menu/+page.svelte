@@ -1,138 +1,147 @@
-<script lang="ts">import type { SelectMenuItem, SelectMenuItemType } from '$lib/index.js';
-import { FieldGroup, FormField, Icon, SelectMenu, Separator } from '$lib/index.js';
-const variants = ['outline', 'soft', 'subtle', 'ghost', 'none'] as const;
-const colors = [
-    'primary',
-    'secondary',
-    'tertiary',
-    'success',
-    'warning',
-    'error',
-    'info',
-    'surface'
-] as const;
-const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
-let bindValue = $state('');
-let multipleValue = $state<string[]>(['apple', 'banana']);
-let chipValue = $state<string[]>(['alice']);
-let createValue = $state('');
-let createLastEvent = $state('');
-let createTags = $state<string[]>(['svelte', 'tailwind']);
-let createTagItems = $state<SelectMenuItem[]>([
-    { value: 'svelte', label: 'Svelte' },
-    { value: 'tailwind', label: 'Tailwind' },
-    { value: 'vite', label: 'Vite' }
-]);
-const fruits: SelectMenuItem[] = [
-    { value: 'apple', label: 'Apple' },
-    { value: 'banana', label: 'Banana' },
-    { value: 'cherry', label: 'Cherry' },
-    { value: 'grape', label: 'Grape' },
-    { value: 'orange', label: 'Orange' }
-];
-const iconItems: SelectMenuItem[] = [
-    { value: 'home', label: 'Home', icon: 'lucide:home' },
-    { value: 'settings', label: 'Settings', icon: 'lucide:settings' },
-    { value: 'profile', label: 'Profile', icon: 'lucide:user' },
-    { value: 'notifications', label: 'Notifications', icon: 'lucide:bell' }
-];
-const avatarItems: SelectMenuItem[] = [
-    {
-        value: 'alice',
-        label: 'Alice',
-        avatar: { src: 'https://i.pravatar.cc/120?img=1', alt: 'Alice' }
-    },
-    {
-        value: 'bob',
-        label: 'Bob',
-        avatar: { src: 'https://i.pravatar.cc/120?img=3', alt: 'Bob' }
-    },
-    {
-        value: 'charlie',
-        label: 'Charlie',
-        avatar: { src: 'https://i.pravatar.cc/120?img=5', alt: 'Charlie' }
+<script lang="ts">
+    import { SelectMenu, FormField, FieldGroup, Separator, Icon } from '$lib/index.js'
+    import type { SelectMenuItem, SelectMenuItemType } from '$lib/index.js'
+
+    const variants = ['outline', 'soft', 'subtle', 'ghost', 'none'] as const
+    const colors = [
+        'primary',
+        'secondary',
+        'tertiary',
+        'success',
+        'warning',
+        'error',
+        'info',
+        'surface'
+    ] as const
+    const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const
+
+    let bindValue = $state('')
+    let multipleValue = $state<string[]>(['apple', 'banana'])
+    let chipValue = $state<string[]>(['alice'])
+    let createValue = $state('')
+    let createLastEvent = $state('')
+    let createTags = $state<string[]>(['svelte', 'tailwind'])
+    let createTagItems = $state<SelectMenuItem[]>([
+        { value: 'svelte', label: 'Svelte' },
+        { value: 'tailwind', label: 'Tailwind' },
+        { value: 'vite', label: 'Vite' }
+    ])
+
+    const fruits: SelectMenuItem[] = [
+        { value: 'apple', label: 'Apple' },
+        { value: 'banana', label: 'Banana' },
+        { value: 'cherry', label: 'Cherry' },
+        { value: 'grape', label: 'Grape' },
+        { value: 'orange', label: 'Orange' }
+    ]
+
+    const iconItems: SelectMenuItem[] = [
+        { value: 'home', label: 'Home', icon: 'lucide:home' },
+        { value: 'settings', label: 'Settings', icon: 'lucide:settings' },
+        { value: 'profile', label: 'Profile', icon: 'lucide:user' },
+        { value: 'notifications', label: 'Notifications', icon: 'lucide:bell' }
+    ]
+
+    const avatarItems: SelectMenuItem[] = [
+        {
+            value: 'alice',
+            label: 'Alice',
+            avatar: { src: 'https://i.pravatar.cc/120?img=1', alt: 'Alice' }
+        },
+        {
+            value: 'bob',
+            label: 'Bob',
+            avatar: { src: 'https://i.pravatar.cc/120?img=3', alt: 'Bob' }
+        },
+        {
+            value: 'charlie',
+            label: 'Charlie',
+            avatar: { src: 'https://i.pravatar.cc/120?img=5', alt: 'Charlie' }
+        }
+    ]
+
+    const descriptionItems: SelectMenuItem[] = [
+        { value: 'standard', label: 'Standard', description: 'Free shipping, 5-7 business days' },
+        { value: 'express', label: 'Express', description: 'Paid shipping, 2-3 business days' },
+        {
+            value: 'overnight',
+            label: 'Overnight',
+            description: 'Premium shipping, next business day'
+        }
+    ]
+
+    const groupedItems: SelectMenuItemType[] = [
+        { type: 'label', label: 'Fruits' },
+        { value: 'apple', label: 'Apple' },
+        { value: 'banana', label: 'Banana' },
+        { type: 'separator' },
+        { type: 'label', label: 'Vegetables' },
+        { value: 'carrot', label: 'Carrot' },
+        { value: 'broccoli', label: 'Broccoli' }
+    ]
+
+    const disabledItems: SelectMenuItem[] = [
+        { value: 'active', label: 'Active' },
+        { value: 'disabled', label: 'Disabled', disabled: true },
+        { value: 'pending', label: 'Pending' }
+    ]
+
+    const manyItems: SelectMenuItem[] = Array.from({ length: 50 }, (_, i) => ({
+        value: `item-${i + 1}`,
+        label: `Item ${i + 1}`
+    }))
+
+    type StatusItem = SelectMenuItem & { status?: 'active' | 'idle' | 'offline' }
+    const statusItems: StatusItem[] = [
+        {
+            value: 'alice',
+            label: 'Alice Johnson',
+            description: 'Frontend Engineer',
+            status: 'active',
+            avatar: { src: 'https://i.pravatar.cc/120?img=1', alt: 'Alice' }
+        },
+        {
+            value: 'bob',
+            label: 'Bob Smith',
+            description: 'Backend Engineer',
+            status: 'idle',
+            avatar: { src: 'https://i.pravatar.cc/120?img=3', alt: 'Bob' }
+        },
+        {
+            value: 'charlie',
+            label: 'Charlie Lee',
+            description: 'Designer',
+            status: 'offline',
+            avatar: { src: 'https://i.pravatar.cc/120?img=5', alt: 'Charlie' }
+        },
+        {
+            value: 'diana',
+            label: 'Diana Prince',
+            description: 'Product Manager',
+            status: 'active',
+            avatar: { src: 'https://i.pravatar.cc/120?img=9', alt: 'Diana' }
+        }
+    ]
+
+    const statusColor: Record<string, string> = {
+        active: 'bg-success',
+        idle: 'bg-warning',
+        offline: 'bg-on-surface-variant/40'
     }
-];
-const descriptionItems: SelectMenuItem[] = [
-    { value: 'standard', label: 'Standard', description: 'Free shipping, 5-7 business days' },
-    { value: 'express', label: 'Express', description: 'Paid shipping, 2-3 business days' },
-    {
-        value: 'overnight',
-        label: 'Overnight',
-        description: 'Premium shipping, next business day'
+
+    const planItems: SelectMenuItem[] = [
+        { value: 'free', label: 'Free', description: 'Up to 3 projects' },
+        { value: 'pro', label: 'Pro', description: 'Unlimited projects' },
+        { value: 'team', label: 'Team', description: 'Collaboration features' },
+        { value: 'enterprise', label: 'Enterprise', description: 'Custom pricing' }
+    ]
+
+    const planBadge: Record<string, { label: string; class: string }> = {
+        free: { label: 'FREE', class: 'bg-surface-container text-on-surface-variant' },
+        pro: { label: 'PRO', class: 'bg-primary-container text-on-primary-container' },
+        team: { label: 'TEAM', class: 'bg-secondary-container text-on-secondary-container' },
+        enterprise: { label: 'ENT', class: 'bg-tertiary-container text-on-tertiary-container' }
     }
-];
-const groupedItems: SelectMenuItemType[] = [
-    { type: 'label', label: 'Fruits' },
-    { value: 'apple', label: 'Apple' },
-    { value: 'banana', label: 'Banana' },
-    { type: 'separator' },
-    { type: 'label', label: 'Vegetables' },
-    { value: 'carrot', label: 'Carrot' },
-    { value: 'broccoli', label: 'Broccoli' }
-];
-const disabledItems: SelectMenuItem[] = [
-    { value: 'active', label: 'Active' },
-    { value: 'disabled', label: 'Disabled', disabled: true },
-    { value: 'pending', label: 'Pending' }
-];
-const manyItems: SelectMenuItem[] = Array.from({ length: 50 }, (_, i) => ({
-    value: `item-${i + 1}`,
-    label: `Item ${i + 1}`
-}));
-type StatusItem = SelectMenuItem & {
-    status?: 'active' | 'idle' | 'offline';
-};
-const statusItems: StatusItem[] = [
-    {
-        value: 'alice',
-        label: 'Alice Johnson',
-        description: 'Frontend Engineer',
-        status: 'active',
-        avatar: { src: 'https://i.pravatar.cc/120?img=1', alt: 'Alice' }
-    },
-    {
-        value: 'bob',
-        label: 'Bob Smith',
-        description: 'Backend Engineer',
-        status: 'idle',
-        avatar: { src: 'https://i.pravatar.cc/120?img=3', alt: 'Bob' }
-    },
-    {
-        value: 'charlie',
-        label: 'Charlie Lee',
-        description: 'Designer',
-        status: 'offline',
-        avatar: { src: 'https://i.pravatar.cc/120?img=5', alt: 'Charlie' }
-    },
-    {
-        value: 'diana',
-        label: 'Diana Prince',
-        description: 'Product Manager',
-        status: 'active',
-        avatar: { src: 'https://i.pravatar.cc/120?img=9', alt: 'Diana' }
-    }
-];
-const statusColor: Record<string, string> = {
-    active: 'bg-success',
-    idle: 'bg-warning',
-    offline: 'bg-on-surface-variant/40'
-};
-const planItems: SelectMenuItem[] = [
-    { value: 'free', label: 'Free', description: 'Up to 3 projects' },
-    { value: 'pro', label: 'Pro', description: 'Unlimited projects' },
-    { value: 'team', label: 'Team', description: 'Collaboration features' },
-    { value: 'enterprise', label: 'Enterprise', description: 'Custom pricing' }
-];
-const planBadge: Record<string, {
-    label: string;
-    class: string;
-}> = {
-    free: { label: 'FREE', class: 'bg-surface-container text-on-surface-variant' },
-    pro: { label: 'PRO', class: 'bg-primary-container text-on-primary-container' },
-    team: { label: 'TEAM', class: 'bg-secondary-container text-on-secondary-container' },
-    enterprise: { label: 'ENT', class: 'bg-tertiary-container text-on-tertiary-container' }
-};
 </script>
 
 <div class="space-y-8">

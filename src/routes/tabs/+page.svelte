@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { Tabs, Badge, Button, Icon, Separator } from '$lib/index.js'
     import type { TabsItem } from '$lib/index.js'
-    import { Badge, Button, Icon, Separator, Tabs } from '$lib/index.js'
 
     const basicItems: TabsItem[] = [
         {

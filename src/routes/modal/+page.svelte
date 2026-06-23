@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge, Button, Icon, Modal, Separator } from '$lib/index.js'
+    import { Modal, Button, Badge, Icon, Separator } from '$lib/index.js'
 
     let basicOpen = $state(false)
     let fullscreenOpen = $state(false)

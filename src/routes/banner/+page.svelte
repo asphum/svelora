@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge, Banner, Button, Icon, Separator } from '$lib/index.js'
+    import { Banner, Button, Icon, Separator, Badge } from '$lib/index.js'
 
     const colors = [
         'primary',
@@ -17,14 +17,14 @@
     let onCloseFired = $state(0)
 
     function resetPersistedBanner() {
-        localStorage.removeItem('ps-banner-demo-persisted')
+        localStorage.removeItem('sv5ui-banner-demo-persisted')
         persistedOpen = true
     }
 
     const prehydrationRecipe = [
         '<' + 'script>',
         '  try {',
-        "    var v = localStorage.getItem('ps-banner-your-id')",
+        "    var v = localStorage.getItem('sv5ui-banner-your-id')",
         "    if (v === '1') document.documentElement.dataset.bannerHidden = 'your-id'",
         '  } catch {}',
         '<' + '/script>',
@@ -51,7 +51,7 @@
     <!-- Basic -->
     <section class="space-y-3">
         <h2 class="text-lg font-semibold">Basic</h2>
-        <Banner title="Welcome to Svelora — a Svelte 5 component library." />
+        <Banner title="Welcome to SV5UI — a Svelte 5 component library." />
     </section>
 
     <!-- With icon -->
@@ -150,7 +150,7 @@
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">id</code> to
             persist the dismissal across reloads. Storage key:
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
-                >ps-banner-demo-persisted</code
+                >sv5ui-banner-demo-persisted</code
             >.
         </p>
         <Banner
@@ -185,7 +185,7 @@
             color="primary"
             icon="lucide:rocket"
             title="Read the v1.7.0 release notes →"
-            to="https://github.com/asphum/svelora/blob/main/CHANGELOG.md"
+            to="https://github.com/ndlabdev/sv5ui/blob/main/CHANGELOG.md"
             target="_blank"
             close
         />

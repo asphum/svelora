@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Avatar, Button, Card, Icon } from '$lib/index.js'
+    import { Card, Button, Icon, Avatar } from '$lib/index.js'
 </script>
 
 <div class="space-y-8">

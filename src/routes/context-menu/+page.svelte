@@ -1,9 +1,9 @@
 <script lang="ts">
     import {
         ContextMenu,
+        Separator,
         type ContextMenuItem,
-        type ContextMenuRadioGroup, 
-        Separator
+        type ContextMenuRadioGroup
     } from '$lib/index.js'
 
     let showStatusBar = $state(true)

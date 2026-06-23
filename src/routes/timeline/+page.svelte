@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { Timeline, Button, Separator } from '$lib/index.js'
     import type { TimelineItem } from '$lib/index.js'
-    import { Button, Separator, Timeline } from '$lib/index.js'
 
     const colors = [
         'primary',

@@ -1,331 +1,367 @@
 <script lang="ts">
-import { Avatar, Badge, Button, DropdownMenu, type DropdownMenuItem, Icon, Input, Pagination, type SortState, Table, type TableCellSlotProps, type TableColumn, type TableFooterSlotProps } from '$lib/index.js';
-import type { Snippet } from 'svelte'
-// ==================== Types ====================
-interface User {
-    id: string;
-    name: string;
-    email: string;
-    role: string;
-    status: 'active' | 'inactive' | 'pending';
-    avatar: string;
-}
-interface Product {
-    name: string;
-    category: string;
-    price: number;
-    stock: number;
-}
-interface Department {
-    id: string;
-    name: string;
-    manager: string;
-    employees: number;
-    budget: string;
-    children?: Department[];
-}
-// ==================== Data ====================
-const users: User[] = [
-    {
-        id: '1',
-        name: 'Alice Johnson',
-        email: 'alice@example.com',
-        role: 'Admin',
-        status: 'active',
-        avatar: 'https://i.pravatar.cc/150?u=alice'
-    },
-    {
-        id: '2',
-        name: 'Bob Smith',
-        email: 'bob@example.com',
-        role: 'User',
-        status: 'inactive',
-        avatar: 'https://i.pravatar.cc/150?u=bob'
-    },
-    {
-        id: '3',
-        name: 'Charlie Brown',
-        email: 'charlie@example.com',
-        role: 'Editor',
-        status: 'active',
-        avatar: 'https://i.pravatar.cc/150?u=charlie'
-    },
-    {
-        id: '4',
-        name: 'Diana Prince',
-        email: 'diana@example.com',
-        role: 'Admin',
-        status: 'pending',
-        avatar: 'https://i.pravatar.cc/150?u=diana'
-    },
-    {
-        id: '5',
-        name: 'Eve Wilson',
-        email: 'eve@example.com',
-        role: 'User',
-        status: 'active',
-        avatar: 'https://i.pravatar.cc/150?u=eve'
+    import {
+        Table,
+        Badge,
+        Avatar,
+        Button,
+        Input,
+        Icon,
+        Pagination,
+        DropdownMenu,
+        type TableColumn,
+        type SortState,
+        type TableCellSlotProps,
+        type TableFooterSlotProps,
+        type DropdownMenuItem
+    } from '$lib/index.js'
+
+    // ==================== Types ====================
+
+    interface User {
+        id: string
+        name: string
+        email: string
+        role: string
+        status: 'active' | 'inactive' | 'pending'
+        avatar: string
     }
-];
-const manyUsers: User[] = Array.from({ length: 50 }, (_, i) => ({
-    id: String(i + 1),
-    name: `User ${i + 1}`,
-    email: `user${i + 1}@example.com`,
-    role: ['Admin', 'User', 'Editor'][i % 3],
-    status: (['active', 'inactive', 'pending'] as const)[i % 3],
-    avatar: `https://i.pravatar.cc/150?u=user${i + 1}`
-}));
-const products: Product[] = [
-    { name: 'MacBook Pro', category: 'Electronics', price: 2499, stock: 12 },
-    { name: 'iPhone 16', category: 'Electronics', price: 999, stock: 45 },
-    { name: 'AirPods Pro', category: 'Accessories', price: 249, stock: 100 },
-    { name: 'Magic Keyboard', category: 'Accessories', price: 299, stock: 30 },
-    { name: 'Studio Display', category: 'Electronics', price: 1599, stock: 8 }
-];
-const departments: Department[] = [
-    {
-        id: 'eng',
-        name: 'Engineering',
-        manager: 'Alice Johnson',
-        employees: 42,
-        budget: '$2.1M',
-        children: [
-            {
-                id: 'eng-fe',
-                name: 'Frontend',
-                manager: 'Bob Smith',
-                employees: 15,
-                budget: '$750K'
-            },
-            {
-                id: 'eng-be',
-                name: 'Backend',
-                manager: 'Charlie Brown',
-                employees: 18,
-                budget: '$900K'
-            },
-            {
-                id: 'eng-infra',
-                name: 'Infrastructure',
-                manager: 'Diana Prince',
-                employees: 9,
-                budget: '$450K'
-            }
-        ]
-    },
-    {
-        id: 'design',
-        name: 'Design',
-        manager: 'Eve Wilson',
-        employees: 12,
-        budget: '$600K',
-        children: [
-            {
-                id: 'design-ux',
-                name: 'UX Research',
-                manager: 'Frank Lee',
-                employees: 5,
-                budget: '$250K'
-            },
-            {
-                id: 'design-ui',
-                name: 'UI Design',
-                manager: 'Grace Kim',
-                employees: 7,
-                budget: '$350K'
-            }
-        ]
-    },
-    {
-        id: 'marketing',
-        name: 'Marketing',
-        manager: 'Henry Zhang',
-        employees: 8,
-        budget: '$400K'
+
+    interface Product {
+        name: string
+        category: string
+        price: number
+        stock: number
     }
-];
-// Flatten departments with parent-child for expandable
-const flatDepartments = $derived.by(() => {
-    const result: (Department & {
-        level: number;
-        parentId?: string;
-    })[] = [];
-    for (const dept of departments) {
-        result.push({ ...dept, level: 0 });
+
+    interface Department {
+        id: string
+        name: string
+        manager: string
+        employees: number
+        budget: string
+        children?: Department[]
     }
-    return result;
-});
-const statusColor: Record<string, 'success' | 'error' | 'warning'> = {
-    active: 'success',
-    inactive: 'error',
-    pending: 'warning'
-};
-const roleColor: Record<string, 'primary' | 'secondary' | 'tertiary'> = {
-    Admin: 'primary',
-    User: 'secondary',
-    Editor: 'tertiary'
-};
-// ==================== Rich Columns ====================
-const richColumns: TableColumn<User>[] = [
-    { key: 'id', label: '#' },
-    { key: 'name', label: 'Name', cell: userCell },
-    { key: 'email', label: 'Email' },
-    { key: 'role', label: 'Role', cell: roleCell },
-    { key: 'status', label: 'Status', cell: statusCell }
-];
-// ==================== Sorting ====================
-let sorting: SortState = $state([{ key: 'name', direction: 'asc' }]);
-const sortColumns: TableColumn<User>[] = [
-    { key: 'id', label: '#' },
-    { key: 'name', label: 'Name', sortable: true, cell: userCell },
-    { key: 'email', label: 'Email' },
-    { key: 'role', label: 'Role', sortable: true, cell: roleCell },
-    { key: 'status', label: 'Status', sortable: true, cell: statusCell }
-];
-// ==================== Row Actions ====================
-function getRowActions(row: User): DropdownMenuItem[] {
-    return [
+
+    // ==================== Data ====================
+
+    const users: User[] = [
         {
-            label: 'View profile',
-            icon: 'lucide:user',
-            onSelect: () => alert(`View ${row.name}`)
+            id: '1',
+            name: 'Alice Johnson',
+            email: 'alice@example.com',
+            role: 'Admin',
+            status: 'active',
+            avatar: 'https://i.pravatar.cc/150?u=alice'
         },
         {
-            label: 'Send email',
-            icon: 'lucide:mail',
-            onSelect: () => alert(`Email ${row.email}`)
+            id: '2',
+            name: 'Bob Smith',
+            email: 'bob@example.com',
+            role: 'User',
+            status: 'inactive',
+            avatar: 'https://i.pravatar.cc/150?u=bob'
         },
-        { type: 'separator' },
-        { label: 'Edit', icon: 'lucide:pencil', onSelect: () => alert(`Edit ${row.name}`) },
         {
-            label: 'Delete',
-            icon: 'lucide:trash-2',
-            color: 'error',
-            onSelect: () => alert(`Delete ${row.name}`)
+            id: '3',
+            name: 'Charlie Brown',
+            email: 'charlie@example.com',
+            role: 'Editor',
+            status: 'active',
+            avatar: 'https://i.pravatar.cc/150?u=charlie'
+        },
+        {
+            id: '4',
+            name: 'Diana Prince',
+            email: 'diana@example.com',
+            role: 'Admin',
+            status: 'pending',
+            avatar: 'https://i.pravatar.cc/150?u=diana'
+        },
+        {
+            id: '5',
+            name: 'Eve Wilson',
+            email: 'eve@example.com',
+            role: 'User',
+            status: 'active',
+            avatar: 'https://i.pravatar.cc/150?u=eve'
         }
-    ];
-}
-const actionColumns: TableColumn<User>[] = [
-    { key: 'id', label: '#' },
-    { key: 'name', label: 'Name', cell: userCell },
-    { key: 'email', label: 'Email' },
-    { key: 'role', label: 'Role', cell: roleCell },
-    { key: 'status', label: 'Status', cell: statusCell },
-    { key: 'avatar', label: '', cell: actionsCell, align: 'right', width: 60 }
-];
-// ==================== Column Pinning ====================
-const pinColumns: TableColumn<User>[] = [
-    { key: 'id', label: '#', width: 60 },
-    { key: 'name', label: 'Name', cell: userCell, width: 200 },
-    { key: 'email', label: 'Email', width: 220 },
-    { key: 'role', label: 'Role', cell: roleCell, width: 120 },
-    { key: 'status', label: 'Status', cell: statusCell, width: 120 },
-    { key: 'avatar', label: '', cell: actionsCell, align: 'right', width: 80 }
-];
-// ==================== Row Pinning ====================
-let pinnedRows: (string | number)[] = $state(['1', '3']);
-const rowPinColumns: TableColumn<User>[] = [
-    { key: 'id', label: '#' },
-    { key: 'name', label: 'Name', cell: userCell },
-    { key: 'email', label: 'Email' },
-    { key: 'role', label: 'Role', cell: roleCell },
-    { key: 'status', label: 'Status', cell: statusCell },
-    { key: 'avatar', label: '', cell: pinActionCell, align: 'right', width: 60 }
-];
-// ==================== Expandable Rows ====================
-let expandedRows: (string | number)[] = $state([]);
-let expandedDepts: (string | number)[] = $state([]);
-const deptColumns: TableColumn<Department>[] = [
-    { key: 'id', label: '', cell: deptExpandCell, width: 40 },
-    { key: 'name', label: 'Department', cell: deptNameCell },
-    { key: 'manager', label: 'Manager' },
-    { key: 'employees', label: 'Employees', align: 'right' },
-    { key: 'budget', label: 'Budget', align: 'right' }
-];
-// ==================== Row Selection ====================
-let selectedRows: User[] = $state([]);
-// ==================== Column Visibility ====================
-let columnVisibility: Record<string, boolean> = $state({});
-const visibilityItems = [
-    { value: 'id', label: '#' },
-    { value: 'name', label: 'Name' },
-    { value: 'email', label: 'Email' },
-    { value: 'role', label: 'Role' },
-    { value: 'status', label: 'Status' }
-];
-function toggleColumnVisibility(col: string) {
-    columnVisibility = {
-        ...columnVisibility,
-        [col]: columnVisibility[col] === false
-    };
-}
-// ==================== Pagination ====================
-let paginationPage = $state(1);
-const pageSize = 10;
-const tablePage = $derived(paginationPage - 1);
-// ==================== Row Pinning + Pagination ====================
-let pinPagPage = $state(1);
-const pinPagTablePage = $derived(pinPagPage - 1);
-let pinPagPinnedRows: (string | number)[] = $state(['1', '5', '12']);
-const rowPinPagColumns: TableColumn<User>[] = [
-    { key: 'id', label: '#' },
-    { key: 'name', label: 'Name', cell: userCell },
-    { key: 'email', label: 'Email' },
-    { key: 'role', label: 'Role', cell: roleCell },
-    { key: 'status', label: 'Status', cell: statusCell },
-    { key: 'avatar', label: '', cell: pinPagActionCell, align: 'right', width: 60 }
-];
-// ==================== Selection + Pagination ====================
-let selPagPage = $state(1);
-const selPagTablePage = $derived(selPagPage - 1);
-let selPagSelected: User[] = $state([]);
-// ==================== Global Filter ====================
-let globalFilter = $state('');
-// ==================== Loading (Replace data) ====================
-let isLoadingReplace = $state(false);
-function simulateLoadingReplace() {
-    isLoadingReplace = true;
-    setTimeout(() => (isLoadingReplace = false), 2000);
-}
-// ==================== Loading (Overlay) ====================
-let isLoadingOverlay = $state(false);
-function simulateLoadingOverlay() {
-    isLoadingOverlay = true;
-    setTimeout(() => (isLoadingOverlay = false), 2000);
-}
-// ==================== Row Click ====================
-let selectedUser: User | undefined = $state(undefined);
-// ==================== Column Resizing ====================
-let columnSizing: Record<string, number> = $state({});
-const resizableColumns: TableColumn<User>[] = [
-    { key: 'id', label: '#', width: 60 },
-    { key: 'name', label: 'Name', cell: userCell, resizable: true, width: 200, minWidth: 120 },
-    { key: 'email', label: 'Email', resizable: true, width: 220, minWidth: 150 },
-    { key: 'role', label: 'Role', cell: roleCell, resizable: true, width: 120, minWidth: 80 },
-    { key: 'status', label: 'Status', cell: statusCell, width: 120 }
-];
-// ==================== Hover / Contextmenu ====================
-let hoveredUser: User | null = $state(null);
-let contextUser: {
-    user: User;
-    x: number;
-    y: number;
-} | null = $state(null);
-// ==================== Product columns ====================
-const productColumns: TableColumn<Product>[] = [
-    { key: 'name', label: 'Product' },
-    { key: 'category', label: 'Category', cell: categoryCell },
-    { key: 'price', label: 'Price', cell: priceCell, align: 'right' },
-    { key: 'stock', label: 'Stock', cell: stockCell, align: 'right' }
-];
-// Snippet type aliases — svelte-check 4.6.0 cannot resolve script-level
-// generic types (User, Product, ...) referenced by `{#snippet ...}`
-// declarations in the template, so we re-export the snippet signatures
-// here and declare the snippet bodies with `as Snippet<...>` casts.
-type UserCellSnippet = Snippet<[TableCellSlotProps<User>]>
-type ProductCellSnippet = Snippet<[TableCellSlotProps<Product>]>
-type DeptCellSnippet = Snippet<[TableCellSlotProps<Department>]>
-type ProductFooterSnippet = Snippet<[TableFooterSlotProps<Product>]>
+    ]
+
+    const manyUsers: User[] = Array.from({ length: 50 }, (_, i) => ({
+        id: String(i + 1),
+        name: `User ${i + 1}`,
+        email: `user${i + 1}@example.com`,
+        role: ['Admin', 'User', 'Editor'][i % 3],
+        status: (['active', 'inactive', 'pending'] as const)[i % 3],
+        avatar: `https://i.pravatar.cc/150?u=user${i + 1}`
+    }))
+
+    const products: Product[] = [
+        { name: 'MacBook Pro', category: 'Electronics', price: 2499, stock: 12 },
+        { name: 'iPhone 16', category: 'Electronics', price: 999, stock: 45 },
+        { name: 'AirPods Pro', category: 'Accessories', price: 249, stock: 100 },
+        { name: 'Magic Keyboard', category: 'Accessories', price: 299, stock: 30 },
+        { name: 'Studio Display', category: 'Electronics', price: 1599, stock: 8 }
+    ]
+
+    const departments: Department[] = [
+        {
+            id: 'eng',
+            name: 'Engineering',
+            manager: 'Alice Johnson',
+            employees: 42,
+            budget: '$2.1M',
+            children: [
+                {
+                    id: 'eng-fe',
+                    name: 'Frontend',
+                    manager: 'Bob Smith',
+                    employees: 15,
+                    budget: '$750K'
+                },
+                {
+                    id: 'eng-be',
+                    name: 'Backend',
+                    manager: 'Charlie Brown',
+                    employees: 18,
+                    budget: '$900K'
+                },
+                {
+                    id: 'eng-infra',
+                    name: 'Infrastructure',
+                    manager: 'Diana Prince',
+                    employees: 9,
+                    budget: '$450K'
+                }
+            ]
+        },
+        {
+            id: 'design',
+            name: 'Design',
+            manager: 'Eve Wilson',
+            employees: 12,
+            budget: '$600K',
+            children: [
+                {
+                    id: 'design-ux',
+                    name: 'UX Research',
+                    manager: 'Frank Lee',
+                    employees: 5,
+                    budget: '$250K'
+                },
+                {
+                    id: 'design-ui',
+                    name: 'UI Design',
+                    manager: 'Grace Kim',
+                    employees: 7,
+                    budget: '$350K'
+                }
+            ]
+        },
+        {
+            id: 'marketing',
+            name: 'Marketing',
+            manager: 'Henry Zhang',
+            employees: 8,
+            budget: '$400K'
+        }
+    ]
+
+    // Flatten departments with parent-child for expandable
+    const flatDepartments = $derived.by(() => {
+        const result: (Department & { level: number; parentId?: string })[] = []
+        for (const dept of departments) {
+            result.push({ ...dept, level: 0 })
+        }
+        return result
+    })
+
+    const statusColor: Record<string, 'success' | 'error' | 'warning'> = {
+        active: 'success',
+        inactive: 'error',
+        pending: 'warning'
+    }
+
+    const roleColor: Record<string, 'primary' | 'secondary' | 'tertiary'> = {
+        Admin: 'primary',
+        User: 'secondary',
+        Editor: 'tertiary'
+    }
+
+    // ==================== Rich Columns ====================
+    const richColumns: TableColumn<User>[] = [
+        { key: 'id', label: '#' },
+        { key: 'name', label: 'Name', cell: userCell },
+        { key: 'email', label: 'Email' },
+        { key: 'role', label: 'Role', cell: roleCell },
+        { key: 'status', label: 'Status', cell: statusCell }
+    ]
+
+    // ==================== Sorting ====================
+    let sorting: SortState = $state([{ key: 'name', direction: 'asc' }])
+
+    const sortColumns: TableColumn<User>[] = [
+        { key: 'id', label: '#' },
+        { key: 'name', label: 'Name', sortable: true, cell: userCell },
+        { key: 'email', label: 'Email' },
+        { key: 'role', label: 'Role', sortable: true, cell: roleCell },
+        { key: 'status', label: 'Status', sortable: true, cell: statusCell }
+    ]
+
+    // ==================== Row Actions ====================
+    function getRowActions(row: User): DropdownMenuItem[] {
+        return [
+            {
+                label: 'View profile',
+                icon: 'lucide:user',
+                onSelect: () => alert(`View ${row.name}`)
+            },
+            {
+                label: 'Send email',
+                icon: 'lucide:mail',
+                onSelect: () => alert(`Email ${row.email}`)
+            },
+            { type: 'separator' },
+            { label: 'Edit', icon: 'lucide:pencil', onSelect: () => alert(`Edit ${row.name}`) },
+            {
+                label: 'Delete',
+                icon: 'lucide:trash-2',
+                color: 'error',
+                onSelect: () => alert(`Delete ${row.name}`)
+            }
+        ]
+    }
+
+    const actionColumns: TableColumn<User>[] = [
+        { key: 'id', label: '#' },
+        { key: 'name', label: 'Name', cell: userCell },
+        { key: 'email', label: 'Email' },
+        { key: 'role', label: 'Role', cell: roleCell },
+        { key: 'status', label: 'Status', cell: statusCell },
+        { key: 'avatar', label: '', cell: actionsCell, align: 'right', width: 60 }
+    ]
+
+    // ==================== Column Pinning ====================
+    const pinColumns: TableColumn<User>[] = [
+        { key: 'id', label: '#', width: 60 },
+        { key: 'name', label: 'Name', cell: userCell, width: 200 },
+        { key: 'email', label: 'Email', width: 220 },
+        { key: 'role', label: 'Role', cell: roleCell, width: 120 },
+        { key: 'status', label: 'Status', cell: statusCell, width: 120 },
+        { key: 'avatar', label: '', cell: actionsCell, align: 'right', width: 80 }
+    ]
+
+    // ==================== Row Pinning ====================
+    let pinnedRows: (string | number)[] = $state(['1', '3'])
+
+    const rowPinColumns: TableColumn<User>[] = [
+        { key: 'id', label: '#' },
+        { key: 'name', label: 'Name', cell: userCell },
+        { key: 'email', label: 'Email' },
+        { key: 'role', label: 'Role', cell: roleCell },
+        { key: 'status', label: 'Status', cell: statusCell },
+        { key: 'avatar', label: '', cell: pinActionCell, align: 'right', width: 60 }
+    ]
+
+    // ==================== Expandable Rows ====================
+    let expandedRows: (string | number)[] = $state([])
+    let expandedDepts: (string | number)[] = $state([])
+
+    const deptColumns: TableColumn<Department>[] = [
+        { key: 'id', label: '', cell: deptExpandCell, width: 40 },
+        { key: 'name', label: 'Department', cell: deptNameCell },
+        { key: 'manager', label: 'Manager' },
+        { key: 'employees', label: 'Employees', align: 'right' },
+        { key: 'budget', label: 'Budget', align: 'right' }
+    ]
+
+    // ==================== Row Selection ====================
+    let selectedRows: User[] = $state([])
+
+    // ==================== Column Visibility ====================
+    let columnVisibility: Record<string, boolean> = $state({})
+
+    const visibilityItems = [
+        { value: 'id', label: '#' },
+        { value: 'name', label: 'Name' },
+        { value: 'email', label: 'Email' },
+        { value: 'role', label: 'Role' },
+        { value: 'status', label: 'Status' }
+    ]
+
+    function toggleColumnVisibility(col: string) {
+        columnVisibility = {
+            ...columnVisibility,
+            [col]: columnVisibility[col] === false
+        }
+    }
+
+    // ==================== Pagination ====================
+    let paginationPage = $state(1)
+    const pageSize = 10
+    const tablePage = $derived(paginationPage - 1)
+
+    // ==================== Row Pinning + Pagination ====================
+    let pinPagPage = $state(1)
+    const pinPagTablePage = $derived(pinPagPage - 1)
+    let pinPagPinnedRows: (string | number)[] = $state(['1', '5', '12'])
+
+    const rowPinPagColumns: TableColumn<User>[] = [
+        { key: 'id', label: '#' },
+        { key: 'name', label: 'Name', cell: userCell },
+        { key: 'email', label: 'Email' },
+        { key: 'role', label: 'Role', cell: roleCell },
+        { key: 'status', label: 'Status', cell: statusCell },
+        { key: 'avatar', label: '', cell: pinPagActionCell, align: 'right', width: 60 }
+    ]
+
+    // ==================== Selection + Pagination ====================
+    let selPagPage = $state(1)
+    const selPagTablePage = $derived(selPagPage - 1)
+    let selPagSelected: User[] = $state([])
+
+    // ==================== Global Filter ====================
+    let globalFilter = $state('')
+
+    // ==================== Loading (Replace data) ====================
+    let isLoadingReplace = $state(false)
+    function simulateLoadingReplace() {
+        isLoadingReplace = true
+        setTimeout(() => (isLoadingReplace = false), 2000)
+    }
+
+    // ==================== Loading (Overlay) ====================
+    let isLoadingOverlay = $state(false)
+    function simulateLoadingOverlay() {
+        isLoadingOverlay = true
+        setTimeout(() => (isLoadingOverlay = false), 2000)
+    }
+
+    // ==================== Row Click ====================
+    let selectedUser: User | undefined = $state(undefined)
+
+    // ==================== Column Resizing ====================
+    let columnSizing: Record<string, number> = $state({})
+
+    const resizableColumns: TableColumn<User>[] = [
+        { key: 'id', label: '#', width: 60 },
+        { key: 'name', label: 'Name', cell: userCell, resizable: true, width: 200, minWidth: 120 },
+        { key: 'email', label: 'Email', resizable: true, width: 220, minWidth: 150 },
+        { key: 'role', label: 'Role', cell: roleCell, resizable: true, width: 120, minWidth: 80 },
+        { key: 'status', label: 'Status', cell: statusCell, width: 120 }
+    ]
+
+    // ==================== Hover / Contextmenu ====================
+    let hoveredUser: User | null = $state(null)
+    let contextUser: { user: User; x: number; y: number } | null = $state(null)
+
+    // ==================== Product columns ====================
+    const productColumns: TableColumn<Product>[] = [
+        { key: 'name', label: 'Product' },
+        { key: 'category', label: 'Category', cell: categoryCell },
+        { key: 'price', label: 'Price', cell: priceCell, align: 'right' },
+        { key: 'stock', label: 'Stock', cell: stockCell, align: 'right' }
+    ]
 </script>
 
 <div class="space-y-16">
@@ -1045,18 +1081,18 @@ type ProductFooterSnippet = Snippet<[TableFooterSlotProps<Product>]>
 
 <!-- ==================== SNIPPET DEFINITIONS ==================== -->
 
-{#snippet userCell(props: Parameters<UserCellSnippet>[0])}
+{#snippet userCell(props: TableCellSlotProps<User>)}
     <div class="flex items-center gap-3">
         <Avatar src={props.row.avatar} alt={props.row.name} size="xs" />
         <span class="font-medium">{props.row.name}</span>
     </div>
 {/snippet}
 
-{#snippet roleCell(props: Parameters<UserCellSnippet>[0])}
+{#snippet roleCell(props: TableCellSlotProps<User>)}
     <Badge label={props.row.role} variant="soft" color={roleColor[props.row.role] ?? 'secondary'} />
 {/snippet}
 
-{#snippet statusCell(props: Parameters<UserCellSnippet>[0])}
+{#snippet statusCell(props: TableCellSlotProps<User>)}
     <Badge
         label={props.row.status}
         variant="subtle"
@@ -1064,7 +1100,7 @@ type ProductFooterSnippet = Snippet<[TableFooterSlotProps<Product>]>
     />
 {/snippet}
 
-{#snippet categoryCell(props: Parameters<ProductCellSnippet>[0])}
+{#snippet categoryCell(props: TableCellSlotProps<Product>)}
     <Badge
         label={props.row.category}
         variant="soft"
@@ -1072,11 +1108,11 @@ type ProductFooterSnippet = Snippet<[TableFooterSlotProps<Product>]>
     />
 {/snippet}
 
-{#snippet priceCell(props: Parameters<ProductCellSnippet>[0])}
+{#snippet priceCell(props: TableCellSlotProps<Product>)}
     <span class="font-medium">${props.row.price.toLocaleString()}</span>
 {/snippet}
 
-{#snippet stockCell(props: Parameters<ProductCellSnippet>[0])}
+{#snippet stockCell(props: TableCellSlotProps<Product>)}
     <Badge
         label={String(props.row.stock)}
         variant="subtle"
@@ -1084,7 +1120,7 @@ type ProductFooterSnippet = Snippet<[TableFooterSlotProps<Product>]>
     />
 {/snippet}
 
-{#snippet actionsCell(props: Parameters<UserCellSnippet>[0])}
+{#snippet actionsCell(props: TableCellSlotProps<User>)}
     <DropdownMenu items={getRowActions(props.row)}>
         <Button
             variant="ghost"
@@ -1096,7 +1132,7 @@ type ProductFooterSnippet = Snippet<[TableFooterSlotProps<Product>]>
     </DropdownMenu>
 {/snippet}
 
-{#snippet expandCell(props: Parameters<UserCellSnippet>[0])}
+{#snippet expandCell(props: TableCellSlotProps<User>)}
     {@const rowId = props.row.id}
     {@const isExpanded = expandedRows.includes(rowId)}
     <Button
@@ -1117,7 +1153,7 @@ type ProductFooterSnippet = Snippet<[TableFooterSlotProps<Product>]>
     />
 {/snippet}
 
-{#snippet deptExpandCell(props: Parameters<DeptCellSnippet>[0])}
+{#snippet deptExpandCell(props: TableCellSlotProps<Department>)}
     {@const deptId = props.row.id}
     {@const hasChildren = props.row.children && props.row.children.length > 0}
     {@const isExpanded = expandedDepts.includes(deptId)}
@@ -1141,7 +1177,7 @@ type ProductFooterSnippet = Snippet<[TableFooterSlotProps<Product>]>
     {/if}
 {/snippet}
 
-{#snippet deptNameCell(props: Parameters<DeptCellSnippet>[0])}
+{#snippet deptNameCell(props: TableCellSlotProps<Department>)}
     <div class="flex items-center gap-2">
         <Icon name="lucide:building-2" class="size-4 text-on-surface-variant" />
         <span class="font-medium">{props.row.name}</span>
@@ -1156,23 +1192,23 @@ type ProductFooterSnippet = Snippet<[TableFooterSlotProps<Product>]>
     </div>
 {/snippet}
 
-{#snippet footerLabel(props: Parameters<ProductFooterSnippet>[0])}
+{#snippet footerLabel(props: TableFooterSlotProps<Product>)}
     <span class="font-semibold text-on-surface">Total ({props.rows.length} items)</span>
 {/snippet}
 
-{#snippet footerTotal(props: Parameters<ProductFooterSnippet>[0])}
+{#snippet footerTotal(props: TableFooterSlotProps<Product>)}
     <span class="font-semibold text-on-surface"
         >${props.rows.reduce((sum, r) => sum + r.price, 0).toLocaleString()}</span
     >
 {/snippet}
 
-{#snippet footerSum(props: Parameters<ProductFooterSnippet>[0])}
+{#snippet footerSum(props: TableFooterSlotProps<Product>)}
     <span class="font-semibold text-on-surface"
         >{props.rows.reduce((sum, r) => sum + r.stock, 0)}</span
     >
 {/snippet}
 
-{#snippet pinActionCell(props: Parameters<UserCellSnippet>[0])}
+{#snippet pinActionCell(props: TableCellSlotProps<User>)}
     {@const isPinned = pinnedRows.includes(props.row.id)}
     <Button
         variant="ghost"
@@ -1190,7 +1226,7 @@ type ProductFooterSnippet = Snippet<[TableFooterSlotProps<Product>]>
     />
 {/snippet}
 
-{#snippet pinPagActionCell(props: Parameters<UserCellSnippet>[0])}
+{#snippet pinPagActionCell(props: TableCellSlotProps<User>)}
     {@const isPinned = pinPagPinnedRows.includes(props.row.id)}
     <Button
         variant="ghost"

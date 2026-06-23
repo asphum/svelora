@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge, Button, Icon, Separator, Slideover } from '$lib/index.js'
+    import { Slideover, Button, Badge, Icon, Separator } from '$lib/index.js'
 
     // --- State ---
     let basicOpen = $state(false)

@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { Command, Separator, Badge, Kbd, Button, Popover, Modal, Drawer } from '$lib/index.js'
     import type { CommandGroup } from '$lib/index.js'
-    import { Badge, Button, Command, Drawer, Kbd, Modal, Popover, Separator } from '$lib/index.js'
 
     // --- Basic groups ---
     const basicGroups: CommandGroup[] = [

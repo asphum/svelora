@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { Badge, Button, Card, Icon, Input, useDebounce } from '$lib/index.js'
+    import { useDebounce } from '$lib/index.js'
+    import { Button, Input, Badge, Card, Icon } from '$lib/index.js'
 
     // ==================== Basic ====================
     let searchQuery = $state('')

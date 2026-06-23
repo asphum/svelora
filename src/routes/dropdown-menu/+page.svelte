@@ -1,10 +1,10 @@
 <script lang="ts">
     import {
-        Button,
         DropdownMenu,
+        Button,
+        Separator,
         type DropdownMenuItem,
-        type DropdownMenuRadioGroup, 
-        Separator
+        type DropdownMenuRadioGroup
     } from '$lib/index.js'
 
     let controlledOpen = $state(false)

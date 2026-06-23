@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { FormField, Separator, Switch } from '$lib/index.js'
+    import { Switch, FormField, Separator } from '$lib/index.js'
 
     const colors = [
         'primary',

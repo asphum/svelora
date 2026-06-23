@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { FormField, PinInput } from '$lib/index.js'
+    import { PinInput, FormField } from '$lib/index.js'
 
     const colors = [
         'primary',

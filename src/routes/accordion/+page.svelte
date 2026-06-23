@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { Accordion, Button, Badge, Icon, Separator } from '$lib/index.js'
     import type { AccordionItem } from '$lib/index.js'
-    import { Accordion, Badge, Button, Icon, Separator } from '$lib/index.js'
 
     // --- Basic items ---
     const basicItems: AccordionItem[] = [

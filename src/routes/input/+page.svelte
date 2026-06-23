@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { FieldGroup, FormField, Input, Separator } from '$lib/index.js'
+    import { Input, FormField, FieldGroup, Separator } from '$lib/index.js'
 
     const variants = ['outline', 'soft', 'subtle', 'ghost', 'none'] as const
     const colors = [

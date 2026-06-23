@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Pagination, Separator } from '$lib/index.js'
+    import { Pagination, Button, Separator } from '$lib/index.js'
 
     const colors = [
         'primary',

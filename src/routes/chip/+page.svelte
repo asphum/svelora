@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Avatar, Button, Chip } from '$lib/index.js'
+    import { Chip, Avatar, Button } from '$lib/index.js'
 
     const colors = [
         'primary',

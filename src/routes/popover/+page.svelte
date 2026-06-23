@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge, Button, Icon, Popover, Separator } from '$lib/index.js'
+    import { Popover, Button, Badge, Icon, Separator } from '$lib/index.js'
 
     let controlledOpen = $state(false)
 </script>

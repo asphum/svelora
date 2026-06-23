@@ -1,25 +1,25 @@
 <script lang="ts">
-    import Joi from 'joi'
-    import * as v from 'valibot'
-    import * as yup from 'yup'
-    import { z } from 'zod'
-    import type { FormSchema } from '$lib/index.js'
     import {
-        Button,
-        Checkbox,
         Form,
-        type FormApi,
-        type FormError,
-        type FormErrorEvent, 
         FormField,
         Input,
-        PinInput,
-        RadioGroup,
+        Textarea,
         Select,
-        Slider,
+        Checkbox,
         Switch,
-        Textarea
+        RadioGroup,
+        Slider,
+        PinInput,
+        Button,
+        type FormApi,
+        type FormError,
+        type FormErrorEvent
     } from '$lib/index.js'
+    import { z } from 'zod'
+    import * as v from 'valibot'
+    import * as yup from 'yup'
+    import Joi from 'joi'
+    import type { FormSchema } from '$lib/index.js'
 
     // ============================================================
     // Example 1 — Basic login form with Zod
@@ -42,7 +42,7 @@
     // Example 2 — Validation with real libraries
     // Same signup form validated by Zod / Valibot / Yup / Joi interchangeably.
     // Zod, Valibot, and Yup implement the Standard Schema spec; Joi has a
-    // dedicated adapter. Svelora's Form accepts all four identically via the
+    // dedicated adapter. SV5UI's Form accepts all four identically via the
     // `schema` prop — zero adapter code on the user's side.
     // ============================================================
     type SignupInput = {

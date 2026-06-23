@@ -49,6 +49,23 @@ export const docsIntroItems: DocsItem[] = [
     }
 ] as const
 
+export const docsThemeItems: DocsItem[] = [
+    {
+        title: 'Customization',
+        href: '/docs/customization',
+        legacyHref: '/customization',
+        icon: 'lucide:sliders-horizontal',
+        description: 'Configure global defaults, icons, and component slots.'
+    },
+    {
+        title: 'Colors',
+        href: '/docs/colors',
+        legacyHref: '/colors',
+        icon: 'lucide:swatch-book',
+        description: 'Explore semantic color tokens and the surface system.'
+    }
+] as const
+
 export const docsComponentGroups: DocsGroup[] = [
     {
         title: 'General',
@@ -162,7 +179,7 @@ export const docsTopNav: DocsItem[] = [
 ] as const
 
 export const allComponentItems = docsComponentGroups.flatMap((group) => group.items)
-export const allDocsItems = [...docsIntroItems, ...allComponentItems, ...docsHookItems]
+export const allDocsItems = [...docsIntroItems, ...docsThemeItems, ...allComponentItems, ...docsHookItems]
 export const totalComponents = allComponentItems.length
 export const totalHooks = docsHookItems.length
 

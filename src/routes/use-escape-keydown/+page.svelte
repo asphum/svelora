@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { Badge, Button, Card, useEscapeKeydown } from '$lib/index.js'
+    import { useEscapeKeydown } from '$lib/index.js'
+    import { Button, Badge, Card } from '$lib/index.js'
 
     let escCount = $state(0)
 

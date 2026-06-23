@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { Badge, Button, Collapsible, Icon, Separator } from '$lib/index.js'
+    import { Collapsible, Button, Icon, Badge, Separator } from '$lib/index.js'
 
     let basicOpen = $state(false)
-    let callbackValue = $state<boolean | null>(null)
     let controlledOpen = $state(true)
 </script>
 
@@ -104,7 +103,8 @@
     <!-- onOpenChange callback -->
     <section class="space-y-3">
         <h2 class="text-lg font-semibold">onOpenChange Callback</h2>
-        <Collapsible bind:open={basicOpen} onOpenChange={(v) => (callbackValue = v)}>
+        <!-- eslint-disable-next-line no-console -->
+        <Collapsible bind:open={basicOpen} onOpenChange={(v) => console.log('open changed:', v)}>
             {#snippet trigger({ open, props })}
                 <Button
                     {...props}
@@ -118,10 +118,9 @@
             {#snippet content()}
                 <div class="mt-2 rounded-lg border border-outline-variant p-4 text-sm">
                     <p>
-                        Latest onOpenChange value:
-                        <code class="rounded bg-surface-container px-1"
-                            >{callbackValue}</code
-                        >
+                        Open the console to see the <code class="rounded bg-surface-container px-1"
+                            >onOpenChange</code
+                        > callback firing.
                     </p>
                 </div>
             {/snippet}

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { z } from 'zod'
+    import { FileUpload, Button, Form, FormField } from '$lib/index.js'
     import type { FileUploadRejection, FormApi } from '$lib/index.js'
-    import { Button, FileUpload, Form, FormField } from '$lib/index.js'
+    import { z } from 'zod'
 
     const colors = [
         'primary',

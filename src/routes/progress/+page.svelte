@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Progress } from '$lib/index.js'
+    import { Progress, Button } from '$lib/index.js'
 
     const colors = [
         'primary',

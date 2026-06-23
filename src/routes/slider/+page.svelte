@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { FormField, Slider } from '$lib/index.js'
+    import { Slider, FormField } from '$lib/index.js'
 
     const colors = [
         'primary',

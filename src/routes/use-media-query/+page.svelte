@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { Badge, Button, Card, Icon, useMediaQuery } from '$lib/index.js'
+    import { useMediaQuery } from '$lib/index.js'
+    import { Badge, Button, Icon, Card } from '$lib/index.js'
 
     const isMobile = useMediaQuery('(max-width: 640px)')
     const isTablet = useMediaQuery('(min-width: 641px) and (max-width: 1024px)')

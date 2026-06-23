@@ -1,18 +1,18 @@
 <script lang="ts">
     import {
+        Stepper,
         Badge,
         Button,
-        Checkbox,
-        Form,
-        type FormApi, 
-        FormField,
         Icon,
-        Input,
         Separator,
-        Stepper,
-        type StepperApi,
+        Form,
+        FormField,
+        Input,
+        Textarea,
+        Checkbox,
         type StepperItem,
-        Textarea
+        type StepperApi,
+        type FormApi
     } from '$lib/index.js'
 
     const basicItems: StepperItem[] = [

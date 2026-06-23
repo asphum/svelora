@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { Badge, Button, Card, useClickOutside } from '$lib/index.js'
+    import { useClickOutside } from '$lib/index.js'
+    import { Button, Badge, Card } from '$lib/index.js'
 
     let dropdownOpen = $state(false)
     let clickCount = $state(0)

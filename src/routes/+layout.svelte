@@ -1,4 +1,5 @@
 <script lang="ts">
+    import './layout.css'
     import {
         Button,
         Icon,
@@ -13,6 +14,7 @@
         docsIntroItems,
         docsMeta,
         docsPathAliases,
+        docsThemeItems,
         docsTopNav
     } from '$lib/docs/navigation.js'
     import '../svelora.config.js'
@@ -26,6 +28,7 @@
 
     const sidebarSections = [
         { title: 'Getting Started', items: docsIntroItems },
+        { title: 'Theme & Config', items: docsThemeItems },
         ...docsComponentGroups.map((group) => ({ title: group.title, items: group.items })),
         { title: 'Hooks', items: docsHookItems }
     ]
@@ -180,7 +183,6 @@
 {/if}
 
 <style global>
-    @import '../lib/theme.css';
     :global(html) {
         scroll-behavior: smooth;
     }

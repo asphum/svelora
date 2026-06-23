@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type { EditorApi, EditorJSON, MentionItem } from '$lib/Editor/index.js'
     import { Editor } from '$lib/Editor/index.js'
-    import { Badge, Button, Card, Form, FormField, Icon, Input, Separator } from '$lib/index.js'
+    import type { EditorApi, EditorJSON, MentionItem } from '$lib/Editor/index.js'
+    import { Button, Badge, Separator, Card, Icon, Form, FormField, Input } from '$lib/index.js'
 
     let basicHtml = $state('<p>Start writing here…</p>')
 
@@ -90,7 +90,7 @@
 
     let serializedJson = $derived(JSON.stringify(jsonValue, null, 2))
 
-    const importExample = "import { Editor } from 'svelora/editor'"
+    const importExample = "import { Editor } from 'sv5ui/editor'"
 </script>
 
 <div class="space-y-8">
@@ -100,7 +100,7 @@
             Rich-text WYSIWYG editor built on <strong>Tiptap v3</strong> + ProseMirror. Imported via
             the sub-export
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
-                >svelora/editor</code
+                >sv5ui/editor</code
             >
             — only adds Tiptap to your bundle when actually used.
         </p>

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { CheckboxGroupItem } from '$lib/index.js'
     import { CheckboxGroup } from '$lib/index.js'
+    import type { CheckboxGroupItem } from '$lib/index.js'
 
     const colors = [
         'primary',

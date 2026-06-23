@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { Carousel, Button, Icon, Badge, Link } from '$lib/index.js'
     import type { CarouselApi } from '$lib/index.js'
-    import { Badge, Button, Carousel, Icon, Link } from '$lib/index.js'
 
     const colors = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'error'] as const
     const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const
@@ -32,7 +32,7 @@
     ]
     const photos = Array.from({ length: 12 }, (_, i) => ({
         id: i,
-        src: `https://picsum.photos/seed/svelora-carousel-${i}/800/450`,
+        src: `https://picsum.photos/seed/sv5ui-carousel-${i}/800/450`,
         alt: `Photo ${i + 1}`,
         title: photoTitles[i]
     }))

@@ -1,30 +1,30 @@
-<script lang="ts">import { Badge, Checkbox, FormField, Input, Select, Separator, Switch } from '$lib/index.js';
-let name = $state('');
-let email = $state('');
-let nameError = $state<string | boolean>(false);
-let emailError = $state<string | boolean>(false);
-function validateName() {
-    if (!name) {
-        nameError = 'Name is required';
+<script lang="ts">
+    import { FormField, Input, Select, Switch, Checkbox, Badge, Separator } from '$lib/index.js'
+
+    let name = $state('')
+    let email = $state('')
+    let nameError = $state<string | boolean>(false)
+    let emailError = $state<string | boolean>(false)
+
+    function validateName() {
+        if (!name) {
+            nameError = 'Name is required'
+        } else if (name.length < 2) {
+            nameError = 'Name must be at least 2 characters'
+        } else {
+            nameError = false
+        }
     }
-    else if (name.length < 2) {
-        nameError = 'Name must be at least 2 characters';
+
+    function validateEmail() {
+        if (!email) {
+            emailError = 'Email is required'
+        } else if (!email.includes('@')) {
+            emailError = 'Please enter a valid email'
+        } else {
+            emailError = false
+        }
     }
-    else {
-        nameError = false;
-    }
-}
-function validateEmail() {
-    if (!email) {
-        emailError = 'Email is required';
-    }
-    else if (!email.includes('@')) {
-        emailError = 'Please enter a valid email';
-    }
-    else {
-        emailError = false;
-    }
-}
 </script>
 
 <div class="space-y-8">
@@ -169,7 +169,7 @@ function validateEmail() {
             <div class="rounded-md bg-surface-container p-4">
                 <p class="mb-2 text-sm font-medium">Usage in Custom Components</p>
                 <pre
-                    class="overflow-x-auto rounded bg-surface-container-highest p-3 font-mono text-xs">{`import { useFormField } from 'svelora'
+                    class="overflow-x-auto rounded bg-surface-container-highest p-3 font-mono text-xs">{`import { useFormField } from 'sv5ui'
 
 const formField = useFormField()
 // formField?.name    → 'email'

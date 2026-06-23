@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { RadioGroup, FormField, Separator } from '$lib/index.js'
     import type { RadioGroupItem } from '$lib/index.js'
-    import { FormField, RadioGroup, Separator } from '$lib/index.js'
 
     const colors = [
         'primary',

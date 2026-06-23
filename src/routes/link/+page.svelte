@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Icon, Link } from '$lib/index.js'
+    import { Link, Icon } from '$lib/index.js'
 </script>
 
 <div class="space-y-8">

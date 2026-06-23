@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Checkbox, FormField, Input, Select, Separator, Switch, Textarea } from '$lib/index.js'
+    import { FormField, Input, Textarea, Select, Checkbox, Switch, Separator } from '$lib/index.js'
 
     const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const
 

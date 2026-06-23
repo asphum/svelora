@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge, Button, Drawer, Icon, Separator } from '$lib/index.js'
+    import { Drawer, Button, Badge, Icon, Separator } from '$lib/index.js'
 
     let basicOpen = $state(false)
     let directionOpen = $state<Record<string, boolean>>({

@@ -1,10 +1,10 @@
 <script lang="ts">
-    import type { DateValue } from '@internationalized/date'
-    import { CalendarDate, getLocalTimeZone, today } from '@internationalized/date'
-    import type { DateRange } from 'bits-ui'
-    import { z } from 'zod'
+    import { Calendar, Button, Popover, Icon, Form, FormField } from '$lib/index.js'
     import type { FormApi } from '$lib/index.js'
-    import { Button, Calendar, Form, FormField, Icon, Popover } from '$lib/index.js'
+    import { z } from 'zod'
+    import { CalendarDate, today, getLocalTimeZone } from '@internationalized/date'
+    import type { DateValue } from '@internationalized/date'
+    import type { DateRange } from 'bits-ui'
 
     let datePickerValue: DateValue | undefined = $state(undefined)
     let datePickerOpen = $state(false)

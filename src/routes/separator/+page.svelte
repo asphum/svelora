@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Separator } from '$lib/index.js'
+    import { Separator, Button } from '$lib/index.js'
 
     const colors = [
         'surface',

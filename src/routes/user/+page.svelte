@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Separator, User } from '$lib/index.js'
+    import { User, Separator } from '$lib/index.js'
 
     const sizes = ['3xs', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'] as const
 </script>

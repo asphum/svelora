@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { Button, Icon, Toaster, toast } from '$lib/index.js'
+    import { toast, Toaster } from '$lib/index.js'
+    import { Button, Icon } from '$lib/index.js'
     import type { ToasterProps } from '$lib/Toast/toast.types.js'
 
     type Variant = NonNullable<ToasterProps['variant']>
@@ -28,7 +29,7 @@
         <h1 class="text-2xl font-bold">Toast</h1>
         <p class="text-on-surface-variant">
             Non-intrusive notification messages that appear temporarily. Powered by svelte-sonner
-            with Svelora semantic color theming.
+            with SV5UI semantic color theming.
         </p>
     </div>
 
@@ -420,7 +421,7 @@
                 variant="outline"
                 onclick={() =>
                     toast('Alex invited you to a project', {
-                        description: 'Project: Svelora Design System',
+                        description: 'Project: SV5UI Design System',
                         avatar: { alt: 'Alex' },
                         action: {
                             label: 'Accept',
