@@ -88,6 +88,7 @@
 
     const resolvedColor = $derived(active && activeColor ? activeColor : color)
     const resolvedVariant = $derived(active && activeVariant ? activeVariant : variant)
+    const isLink = $derived(!!href)
 
     const classes = $derived.by(() => {
         const slots = buttonVariants({
@@ -140,38 +141,69 @@
     }
 </script>
 
-<Link
-    {...restProps}
-    bind:ref
-    {href}
-    {type}
-    {external}
-    {active}
-    {exact}
-    {activeClass}
-    {inactiveClass}
-    raw
-    disabled={disabled || isLoading}
-    class={classes.base}
-    onclick={handleClick}
->
-    {#if leadingSlot}
-        {@render leadingSlot()}
-    {:else if isLeading && leadingIconName}
-        <Icon name={leadingIconName} class={classes.leadingIcon} />
-    {:else if avatar}
-        <Avatar {...avatar} size={classes.leadingAvatarSize} class={classes.leadingAvatar} />
-    {/if}
+{#if isLink}
+    <Link
+        {...restProps}
+        bind:ref
+        {href}
+        {type}
+        {external}
+        {active}
+        {exact}
+        {activeClass}
+        {inactiveClass}
+        raw
+        disabled={disabled || isLoading}
+        class={classes.base}
+        onclick={handleClick}
+    >
+        {#if leadingSlot}
+            {@render leadingSlot()}
+        {:else if isLeading && leadingIconName}
+            <Icon name={leadingIconName} class={classes.leadingIcon} />
+        {:else if avatar}
+            <Avatar {...avatar} size={classes.leadingAvatarSize} class={classes.leadingAvatar} />
+        {/if}
 
-    {#if label}
-        <span class={classes.label}>{label}</span>
-    {:else if children}
-        <span class={classes.label}>{@render children()}</span>
-    {/if}
+        {#if label}
+            <span class={classes.label}>{label}</span>
+        {:else if children}
+            <span class={classes.label}>{@render children()}</span>
+        {/if}
 
-    {#if trailingSlot}
-        {@render trailingSlot()}
-    {:else if isTrailing && trailingIconName}
-        <Icon name={trailingIconName} class={classes.trailingIcon} />
-    {/if}
-</Link>
+        {#if trailingSlot}
+            {@render trailingSlot()}
+        {:else if isTrailing && trailingIconName}
+            <Icon name={trailingIconName} class={classes.trailingIcon} />
+        {/if}
+    </Link>
+{:else}
+    <button
+        {...restProps}
+        bind:this={ref}
+        type={type ?? 'button'}
+        disabled={disabled || isLoading}
+        class={classes.base}
+        onclick={handleClick}
+    >
+        {#if leadingSlot}
+            {@render leadingSlot()}
+        {:else if isLeading && leadingIconName}
+            <Icon name={leadingIconName} class={classes.leadingIcon} />
+        {:else if avatar}
+            <Avatar {...avatar} size={classes.leadingAvatarSize} class={classes.leadingAvatar} />
+        {/if}
+
+        {#if label}
+            <span class={classes.label}>{label}</span>
+        {:else if children}
+            <span class={classes.label}>{@render children()}</span>
+        {/if}
+
+        {#if trailingSlot}
+            {@render trailingSlot()}
+        {:else if isTrailing && trailingIconName}
+            <Icon name={trailingIconName} class={classes.trailingIcon} />
+        {/if}
+    </button>
+{/if}

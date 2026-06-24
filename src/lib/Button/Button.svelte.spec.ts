@@ -503,6 +503,20 @@ describe('Button', () => {
             await expect.element(btn).toHaveAttribute('formaction', '/save')
         })
 
+        it('should render a native submit button with formmethod attributes', async () => {
+            render(Button, {
+                label: 'Continue',
+                type: 'submit',
+                formaction: '/login',
+                formmethod: 'post'
+            })
+            const btn = page.getByRole('button', { name: 'Continue' })
+            expect(btn.element().tagName).toBe('BUTTON')
+            await expect.element(btn).toHaveAttribute('type', 'submit')
+            await expect.element(btn).toHaveAttribute('formaction', '/login')
+            await expect.element(btn).toHaveAttribute('formmethod', 'post')
+        })
+
         it('should forward anchor attributes (download, hreflang) on a link', async () => {
             render(Button, {
                 label: 'Download',

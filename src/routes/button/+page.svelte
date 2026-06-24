@@ -23,6 +23,19 @@
             <code class="rounded bg-surface-container-highest px-1">href</code>. Supports multiple
             variants, colors, sizes, icons, avatars, and loading states.
         </p>
+        <div
+            class="rounded-lg border border-outline-variant bg-surface-container-high px-4 py-3 text-sm text-on-surface-variant"
+        >
+            <strong class="text-on-surface">Mode guide:</strong>
+            omit <code class="rounded bg-surface-container-highest px-1">href</code> for a native
+            <code class="rounded bg-surface-container-highest px-1">&lt;button&gt;</code> with form
+            attributes like
+            <code class="rounded bg-surface-container-highest px-1">type</code>,
+            <code class="rounded bg-surface-container-highest px-1">formaction</code>, and
+            <code class="rounded bg-surface-container-highest px-1">formmethod</code>. Add
+            <code class="rounded bg-surface-container-highest px-1">href</code> to render an anchor
+            for navigation instead.
+        </div>
     </div>
 
     <!-- Usage -->
@@ -360,6 +373,102 @@
             <Button label="Button (default)" />
             <Button variant="outline" color="success" type="submit" label="Submit" />
             <Button variant="ghost" color="secondary" type="reset" label="Reset" />
+        </div>
+    </section>
+
+    <!-- Native Form -->
+    <section class="space-y-3">
+        <h2 class="text-lg font-semibold">Native Form Submit</h2>
+        <p class="text-sm text-on-surface-variant">
+            When <code class="rounded bg-surface-container-highest px-1">href</code> is omitted,
+            <code class="rounded bg-surface-container-highest px-1">Button</code> renders a native
+            <code class="rounded bg-surface-container-highest px-1">&lt;button&gt;</code> element. This
+            means browser form semantics such as
+            <code class="rounded bg-surface-container-highest px-1">type</code>,
+            <code class="rounded bg-surface-container-highest px-1">formaction</code>, and
+            <code class="rounded bg-surface-container-highest px-1">formmethod</code> work as expected.
+        </p>
+        <form class="space-y-3 rounded-lg bg-surface-container-high p-4" onsubmit={(event) => event.preventDefault()}>
+            <div class="grid gap-3 sm:grid-cols-2">
+                <label class="grid gap-1 text-sm">
+                    <span class="text-on-surface-variant">Phone</span>
+                    <input
+                        class="rounded-lg border border-outline-variant bg-surface px-3 py-2"
+                        placeholder="081-234-5678"
+                    />
+                </label>
+                <label class="grid gap-1 text-sm">
+                    <span class="text-on-surface-variant">Code</span>
+                    <input
+                        class="rounded-lg border border-outline-variant bg-surface px-3 py-2"
+                        placeholder="123456"
+                    />
+                </label>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <Button
+                    type="submit"
+                    formaction="?/sendOtp"
+                    formmethod="post"
+                    variant="outline"
+                    color="secondary"
+                    label="Send Code"
+                />
+                <Button
+                    type="submit"
+                    formaction="?/login"
+                    formmethod="post"
+                    label="Sign In"
+                />
+            </div>
+        </form>
+    </section>
+
+    <!-- Mode Notes -->
+    <section class="space-y-3">
+        <h2 class="text-lg font-semibold">Mode Notes</h2>
+        <div class="overflow-x-auto rounded-lg bg-surface-container-high p-4">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b border-outline-variant text-left text-on-surface-variant">
+                        <th class="px-2 py-2 font-medium">Mode</th>
+                        <th class="px-2 py-2 font-medium">Rendered element</th>
+                        <th class="px-2 py-2 font-medium">Use for</th>
+                        <th class="px-2 py-2 font-medium">Important props</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-outline-variant/50 align-top">
+                        <td class="px-2 py-3 font-medium text-on-surface">Button mode</td>
+                        <td class="px-2 py-3">
+                            <code class="rounded bg-surface-container-highest px-1"
+                                >&lt;button&gt;</code
+                            >
+                        </td>
+                        <td class="px-2 py-3">Actions, submit, reset, and native form behavior</td>
+                        <td class="px-2 py-3">
+                            <code class="rounded bg-surface-container-highest px-1">type</code>,
+                            <code class="rounded bg-surface-container-highest px-1">name</code>,
+                            <code class="rounded bg-surface-container-highest px-1">value</code>,
+                            <code class="rounded bg-surface-container-highest px-1">formaction</code>,
+                            <code class="rounded bg-surface-container-highest px-1">formmethod</code>
+                        </td>
+                    </tr>
+                    <tr class="align-top">
+                        <td class="px-2 py-3 font-medium text-on-surface">Link mode</td>
+                        <td class="px-2 py-3">
+                            <code class="rounded bg-surface-container-highest px-1">&lt;a&gt;</code>
+                        </td>
+                        <td class="px-2 py-3">Navigation to internal or external destinations</td>
+                        <td class="px-2 py-3">
+                            <code class="rounded bg-surface-container-highest px-1">href</code>,
+                            <code class="rounded bg-surface-container-highest px-1">target</code>,
+                            <code class="rounded bg-surface-container-highest px-1">rel</code>,
+                            <code class="rounded bg-surface-container-highest px-1">download</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
