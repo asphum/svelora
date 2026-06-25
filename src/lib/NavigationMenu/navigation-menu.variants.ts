@@ -2,7 +2,8 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const navigationMenuVariants = tv({
     slots: {
-        base: 'flex items-center gap-1',
+        base: 'flex',
+        group: 'flex',
         item: [
             'group relative flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
@@ -12,6 +13,18 @@ export const navigationMenuVariants = tv({
         chevron: 'text-base opacity-50 shrink-0 transition-transform group-data-[state=open]:rotate-180'
     },
     variants: {
+        orientation: {
+            horizontal: {
+                base: 'flex-row items-center justify-between w-full gap-4',
+                group: 'flex-row items-center gap-1',
+                item: ''
+            },
+            vertical: {
+                base: 'flex-col w-full gap-4',
+                group: 'flex-col gap-1 w-full',
+                item: 'w-full justify-start'
+            }
+        },
         variant: {
             default: {
                 item: [
@@ -38,7 +51,8 @@ export const navigationMenuVariants = tv({
     },
     defaultVariants: {
         variant: 'default',
-        active: false
+        active: false,
+        orientation: 'horizontal'
     }
 })
 

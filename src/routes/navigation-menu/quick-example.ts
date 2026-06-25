@@ -2,8 +2,13 @@ export const quickExample = `<script lang="ts">
     import { NavigationMenu } from 'svelora'
 
     const items = [
-        { label: 'Home', href: '/' },
-        { label: 'About', href: '/about' }
+        [
+            { label: 'Dashboard', href: '/' },
+            { label: 'Products', href: '/products' }
+        ],
+        [
+            { label: 'Settings', href: '/settings' }
+        ]
     ]
 </script>
 

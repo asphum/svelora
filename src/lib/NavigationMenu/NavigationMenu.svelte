@@ -9,12 +9,21 @@
     let {
         items = [],
         variant = 'default',
+        orientation = 'horizontal',
         class: className,
         ui,
         children
     }: NavigationMenuProps = $props()
 
-    let styles = $derived(navigationMenuVariants({ variant }))
+    let styles = $derived(navigationMenuVariants({ variant, orientation }))
+
+    let normalizedItems = $derived.by(() => {
+        if (!items || items.length === 0) return []
+        if (Array.isArray(items[0])) {
+            return items as NavigationMenuItemType[][]
+        }
+        return [items as NavigationMenuItemType[]]
+    })
 
     // Auto active logic based on current path
     let currentPath = $state('')
@@ -37,10 +46,16 @@
 </script>
 
 {#snippet renderItem(item: NavigationMenuItemType)}
-    <li>
-        {#if item.items && item.items.length > 0}
+    <li class={orientation === 'vertical' ? 'w-full' : ''}>
+        {#if (item.items && item.items.length > 0) || (item.children && item.children.length > 0)}
+            {@const subItems = item.items || item.children || []}
             <!-- Dropdown for nested items -->
-            <DropdownMenu items={item.items}>
+            <DropdownMenu 
+                items={subItems} 
+                side={orientation === 'vertical' ? 'right' : 'bottom'} 
+                align="start"
+                sideOffset={4}
+            >
                 {#snippet children({ props, open })}
                     <!-- svelte-ignore a11y_no_static_element_interactions -->
                     <button
@@ -56,10 +71,16 @@
                         {#if item.badge !== undefined}
                             <Badge label={String(item.badge)} color={item.badgeColor || 'primary'} size="sm" class="ml-1" />
                         {/if}
-                        <Icon 
-                            name="lucide:chevron-down" 
-                            class={twMerge(styles.chevron(), open ? 'rotate-180' : '')} 
-                        />
+                        <span class="ml-auto flex items-center">
+                            <Icon 
+                                name={orientation === 'vertical' ? 'lucide:chevron-right' : 'lucide:chevron-down'} 
+                                class={twMerge(
+                                    styles.chevron(), 
+                                    open && orientation === 'horizontal' ? 'rotate-180' : '',
+                                    open && orientation === 'vertical' ? 'translate-x-1' : ''
+                                )} 
+                            />
+                        </span>
                     </button>
                 {/snippet}
             </DropdownMenu>
@@ -82,7 +103,7 @@
                     <span>{item.label}</span>
                 {/if}
                 {#if item.badge !== undefined}
-                    <Badge label={String(item.badge)} color={item.badgeColor || 'primary'} size="sm" class="ml-1" />
+                    <Badge label={String(item.badge)} color={item.badgeColor || 'primary'} size="sm" class="ml-auto" />
                 {/if}
             </svelte:element>
         {/if}
@@ -90,13 +111,17 @@
 {/snippet}
 
 <nav>
-    <ul class={twMerge(styles.base(), className)}>
+    <div class={twMerge(styles.base(), className)}>
         {#if children}
             {@render children()}
         {:else}
-            {#each items as item}
-                {@render renderItem(item)}
+            {#each normalizedItems as group}
+                <ul class={styles.group()}>
+                    {#each group as item}
+                        {@render renderItem(item)}
+                    {/each}
+                </ul>
             {/each}
         {/if}
-    </ul>
+    </div>
 </nav>

@@ -46,10 +46,15 @@ export type NavigationMenuItemType = {
     disabled?: boolean
 
     /**
-     * Sub-items for this menu item.
+     * Sub-items for this menu item (Svelora standard).
      * If provided, the item renders as a dropdown trigger.
      */
     items?: DropdownMenuItem[]
+
+    /**
+     * Alias for sub-items (Nuxt UI style compatibility).
+     */
+    children?: DropdownMenuItem[]
 
     /**
      * Custom click handler for standard items.
@@ -64,15 +69,21 @@ export type NavigationMenuItemType = {
 
 export type NavigationMenuProps = {
     /**
-     * Array of navigation items.
+     * Array of navigation items. Supports 1D or 2D arrays for grouping.
      */
-    items?: NavigationMenuItemType[]
+    items?: NavigationMenuItemType[] | NavigationMenuItemType[][]
 
     /**
      * Visual variant of the navigation menu.
      * @default 'default'
      */
     variant?: NonNullable<NavigationMenuVariantProps['variant']>
+
+    /**
+     * Orientation of the navigation menu.
+     * @default 'horizontal'
+     */
+    orientation?: NonNullable<NavigationMenuVariantProps['orientation']>
 
     /**
      * Additional CSS classes.
