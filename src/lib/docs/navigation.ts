@@ -1,4 +1,4 @@
-import packageJson from '../../../package.json' with { type: 'json' }
+import packageJson from '../../../package.json'
 
 export type DocsItem = {
     title: string
@@ -56,7 +56,7 @@ export const docsIntroItems: DocsItem[] = [
         icon: 'lucide:plug',
         description: 'Connect Svelora docs helpers to Cursor IDE via MCP.'
     }
-] as const
+]
 
 export const docsThemeItems: DocsItem[] = [
     {
@@ -73,7 +73,7 @@ export const docsThemeItems: DocsItem[] = [
         icon: 'lucide:swatch-book',
         description: 'Explore semantic color tokens and the surface system.'
     }
-] as const
+]
 
 export const docsComponentGroups: DocsGroup[] = [
     {
@@ -139,6 +139,12 @@ export const docsComponentGroups: DocsGroup[] = [
         title: 'Layout',
         items: [
             {
+                title: 'BentoGrid',
+                href: '/docs/components/bento-grid',
+                legacyHref: '/bento-grid',
+                icon: 'lucide:layout-dashboard'
+            },
+            {
                 title: 'Card',
                 href: '/docs/components/card',
                 legacyHref: '/card',
@@ -149,6 +155,18 @@ export const docsComponentGroups: DocsGroup[] = [
                 href: '/docs/components/container',
                 legacyHref: '/container',
                 icon: 'lucide:box'
+            },
+            {
+                title: 'Resizable',
+                href: '/docs/components/resizable',
+                legacyHref: '/resizable',
+                icon: 'lucide:layout-panel-left-right'
+            },
+            {
+                title: 'ScrollArea',
+                href: '/docs/components/scroll-area',
+                legacyHref: '/scroll-area',
+                icon: 'lucide:mouse-pointer-square-dashed'
             },
             {
                 title: 'Separator',
@@ -166,6 +184,12 @@ export const docsComponentGroups: DocsGroup[] = [
                 href: '/docs/components/accordion',
                 legacyHref: '/accordion',
                 icon: 'lucide:chevrons-down-up'
+            },
+            {
+                title: 'Chart',
+                href: '/docs/components/chart',
+                legacyHref: '/chart',
+                icon: 'lucide:bar-chart-2'
             },
             {
                 title: 'Avatar',
@@ -198,6 +222,24 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:circle-dot'
             },
             {
+                title: 'List',
+                href: '/docs/components/list',
+                legacyHref: '/list',
+                icon: 'lucide:list'
+            },
+            {
+                title: 'NumberTicker',
+                href: '/docs/components/number-ticker',
+                legacyHref: '/number-ticker',
+                icon: 'lucide:clock-10'
+            },
+            {
+                title: 'Prose',
+                href: '/docs/components/prose',
+                legacyHref: '/prose',
+                icon: 'lucide:type'
+            },
+            {
                 title: 'Empty',
                 href: '/docs/components/empty',
                 legacyHref: '/empty',
@@ -226,6 +268,12 @@ export const docsComponentGroups: DocsGroup[] = [
                 href: '/docs/components/table',
                 legacyHref: '/table',
                 icon: 'lucide:table'
+            },
+            {
+                title: 'TreeView',
+                href: '/docs/components/tree-view',
+                legacyHref: '/tree-view',
+                icon: 'lucide:folder-tree'
             }
         ]
     },
@@ -237,6 +285,12 @@ export const docsComponentGroups: DocsGroup[] = [
                 href: '/docs/components/checkbox',
                 legacyHref: '/checkbox',
                 icon: 'lucide:square-check'
+            },
+            {
+                title: 'ColorPicker',
+                href: '/docs/components/color-picker',
+                legacyHref: '/color-picker',
+                icon: 'lucide:pipette'
             },
             {
                 title: 'CheckboxGroup',
@@ -293,6 +347,12 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:text'
             },
             {
+                title: 'PasswordInput',
+                href: '/docs/components/password-input',
+                legacyHref: '/password-input',
+                icon: 'lucide:key'
+            },
+            {
                 title: 'FileUpload',
                 href: '/docs/components/file-upload',
                 legacyHref: '/file-upload',
@@ -303,6 +363,18 @@ export const docsComponentGroups: DocsGroup[] = [
                 href: '/docs/components/pin-input',
                 legacyHref: '/pin-input',
                 icon: 'lucide:square-asterisk'
+            },
+            {
+                title: 'Rating',
+                href: '/docs/components/rating',
+                legacyHref: '/rating',
+                icon: 'lucide:star'
+            },
+            {
+                title: 'TagsInput',
+                href: '/docs/components/tags-input',
+                legacyHref: '/tags-input',
+                icon: 'lucide:tags'
             },
             {
                 title: 'FormField',
@@ -334,6 +406,18 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:megaphone'
             },
             {
+                title: 'Chat',
+                href: '/docs/components/chat',
+                legacyHref: '/chat',
+                icon: 'lucide:message-circle'
+            },
+            {
+                title: 'Marquee',
+                href: '/docs/components/marquee',
+                legacyHref: '/marquee',
+                icon: 'lucide:move-right'
+            },
+            {
                 title: 'Progress',
                 href: '/docs/components/progress',
                 legacyHref: '/progress',
@@ -344,6 +428,12 @@ export const docsComponentGroups: DocsGroup[] = [
                 href: '/docs/components/toast',
                 legacyHref: '/toast',
                 icon: 'lucide:message-square-warning'
+            },
+            {
+                title: 'Spotlight',
+                href: '/docs/components/spotlight',
+                legacyHref: '/spotlight',
+                icon: 'lucide:flashlight'
             }
         ]
     },
@@ -361,6 +451,18 @@ export const docsComponentGroups: DocsGroup[] = [
                 href: '/docs/components/pagination',
                 legacyHref: '/pagination',
                 icon: 'lucide:ellipsis'
+            },
+            {
+                title: 'Menu',
+                href: '/docs/components/menu',
+                legacyHref: '/menu',
+                icon: 'lucide:menu-square'
+            },
+            {
+                title: 'Sidebar',
+                href: '/docs/components/sidebar',
+                legacyHref: '/sidebar',
+                icon: 'lucide:layout-sidebar'
             },
             {
                 title: 'Stepper',
@@ -449,10 +551,16 @@ export const docsComponentGroups: DocsGroup[] = [
                 href: '/docs/components/range-calendar',
                 legacyHref: '/range-calendar',
                 icon: 'lucide:calendar-range'
+            },
+            {
+                title: 'DateRangePicker',
+                href: '/docs/components/date-range-picker',
+                legacyHref: '/date-range-picker',
+                icon: 'lucide:calendar-days'
             }
         ]
     }
-] as const
+]
 
 export const docsHookItems: DocsItem[] = [
     {
@@ -551,13 +659,13 @@ export const docsHookItems: DocsItem[] = [
         legacyHref: '/use-timers',
         icon: 'lucide:timer-reset'
     }
-] as const
+]
 
 export const docsTopNav: DocsItem[] = [
     { title: 'Docs', href: '/docs', icon: 'lucide:book-open' },
     { title: 'Components', href: '/docs/components/button', icon: 'lucide:blocks' },
     { title: 'Hooks', href: '/docs/hooks/use-debounce', icon: 'lucide:hook' }
-] as const
+]
 
 export const allComponentItems = docsComponentGroups.flatMap((group) => group.items)
 export const allDocsItems = [
