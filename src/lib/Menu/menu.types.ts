@@ -24,6 +24,22 @@ export interface MenuItemBase {
     active?: boolean
 
     /**
+     * Optional badge text to display (e.g., "New", "5").
+     */
+    badge?: string | number
+
+    /**
+     * Color of the badge.
+     * @default 'primary'
+     */
+    badgeColor?: 'primary' | 'secondary' | 'error' | 'warning' | 'success' | 'surface'
+
+    /**
+     * Keyboard shortcut to display (e.g., ['meta', 'S']).
+     */
+    shortcut?: string[]
+
+    /**
      * Additional CSS classes.
      */
     class?: ClassNameValue

@@ -1,6 +1,9 @@
 <script lang="ts">
+    import { untrack } from 'svelte'
     import { twMerge } from 'tailwind-merge'
     import Icon from '../Icon/Icon.svelte'
+    import Badge from '../Badge/Badge.svelte'
+    import Kbd from '../Kbd/Kbd.svelte'
     import type { MenuProps, MenuItemType, MenuGroupItem } from './menu.types.js'
     import { menuVariants } from './menu.variants.js'
 
@@ -16,20 +19,18 @@
     let styles = $derived(menuVariants({ variant }))
 
     // Track open state for groups
-    let openGroupLabel = $state<string | null>(null)
-    let openGroups = $state(new Set<string>())
-
-    // Initialize open groups based on prop
-    $effect(() => {
-        if (!accordion) {
-            items.forEach(item => {
-                if (item.type === 'group' && item.open && item.label) {
-                    openGroups.add(item.label)
-                }
-            })
-            openGroups = new Set(openGroups)
-        }
-    })
+    let openGroupLabel = $state<string | null>(
+        untrack(() => accordion
+            ? (items.find((item) => item.type === 'group' && item.open && item.label)?.label ?? null)
+            : null)
+    )
+    let openGroups = $state<string[]>(
+        untrack(() => !accordion
+            ? items
+                  .filter((item) => item.type === 'group' && item.open && item.label)
+                  .map((item) => item.label as string)
+            : [])
+    )
 
     function handleGroupToggle(groupItem: MenuGroupItem) {
         if (accordion) {
@@ -46,12 +47,11 @@
     function toggleGroup(groupItem: MenuGroupItem) {
         if (!groupItem.label) return
         
-        if (openGroups.has(groupItem.label)) {
-            openGroups.delete(groupItem.label)
+        if (openGroups.includes(groupItem.label)) {
+            openGroups = openGroups.filter(l => l !== groupItem.label)
         } else {
-            openGroups.add(groupItem.label)
+            openGroups = [...openGroups, groupItem.label]
         }
-        openGroups = new Set(openGroups)
     }
 
     function isGroupOpen(groupItem: MenuGroupItem): boolean {
@@ -59,7 +59,7 @@
             return openGroupLabel === groupItem.label
         }
         if (!groupItem.label) return false
-        return openGroups.has(groupItem.label)
+        return openGroups.includes(groupItem.label)
     }
 
     // Auto active logic
@@ -100,6 +100,20 @@
                 <Icon name={item.icon} class={styles.icon()} />
             {/if}
             <span class="truncate">{item.label}</span>
+            {#if item.badge || item.shortcut?.length}
+                <span class="ml-auto flex items-center gap-2">
+                    {#if item.badge !== undefined}
+                        <Badge label={String(item.badge)} color={item.badgeColor || 'primary'} size="sm" />
+                    {/if}
+                    {#if item.shortcut?.length}
+                        <span class="flex items-center gap-0.5">
+                            {#each item.shortcut as key}
+                                <Kbd value={key} size="sm" />
+                            {/each}
+                        </span>
+                    {/if}
+                </span>
+            {/if}
         </svelte:element>
     </li>
 {/snippet}
@@ -112,16 +126,32 @@
             disabled={item.disabled}
             onclick={() => handleGroupToggle(item)}
         >
-            <div class="flex items-center truncate">
+            <div class="flex flex-1 items-center truncate">
                 {#if item.icon}
                     <Icon name={item.icon} class={styles.icon()} />
                 {/if}
                 <span class="truncate">{item.label}</span>
             </div>
-            <Icon 
-                name="lucide:chevron-down" 
-                class={twMerge(styles.chevron(), isGroupOpen(item) ? 'rotate-180' : '')} 
-            />
+            <div class="flex items-center gap-2">
+                {#if item.badge !== undefined || item.shortcut?.length}
+                    <span class="flex items-center gap-2">
+                        {#if item.badge !== undefined}
+                            <Badge label={String(item.badge)} color={item.badgeColor || 'primary'} size="sm" />
+                        {/if}
+                        {#if item.shortcut?.length}
+                            <span class="flex items-center gap-0.5">
+                                {#each item.shortcut as key}
+                                    <Kbd value={key} size="sm" />
+                                {/each}
+                            </span>
+                        {/if}
+                    </span>
+                {/if}
+                <Icon 
+                    name="lucide:chevron-down" 
+                    class={twMerge(styles.chevron(), isGroupOpen(item) ? 'rotate-180' : '')} 
+                />
+            </div>
         </button>
         {#if isGroupOpen(item)}
             <ul class={styles.groupContent()}>

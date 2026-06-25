@@ -163,10 +163,27 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:layout-panel-left-right'
             },
             {
-                title: 'ScrollArea',
+                title: 'Modal',
+                href: '/docs/components/modal',
+                icon: 'lucide:layout-panel-left-right'
+            },
+            {
+                title: 'Navigation Menu',
+                href: '/docs/components/navigation-menu',
+                icon: 'lucide:compass',
+                description: 'A horizontal list of links with optional nested dropdowns.'
+            },
+            {
+                title: 'Scroll Area',
                 href: '/docs/components/scroll-area',
-                legacyHref: '/scroll-area',
-                icon: 'lucide:mouse-pointer-square-dashed'
+                icon: 'lucide:scroll-text',
+                description: 'A customizable scrollable area with custom scrollbars.'
+            },
+            {
+                title: 'Search',
+                href: '/docs/components/search',
+                icon: 'lucide:search',
+                description: 'A flexible search input or command palette modal.'
             },
             {
                 title: 'Separator',
