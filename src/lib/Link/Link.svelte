@@ -1,8 +1,9 @@
 <script lang="ts" module>
     import type { LinkProps } from './link.types.js'
 
-    const navigationEvent = 'svelora:navigation'
-    let isHistoryPatched = false
+    const locationSubscribers = new Set<() => void>()
+    let stopLocationTracking: (() => void) | undefined
+    let lastKnownHref = ''
 
     export type Props = LinkProps
 
@@ -51,36 +52,62 @@
         return link === '/' ? current === '/' : current === link || current.startsWith(`${link}/`)
     }
 
-    function dispatchNavigationEvent() {
+    function dispatchLocationChange() {
         if (typeof window === 'undefined') {
             return
         }
 
-        window.dispatchEvent(new Event(navigationEvent))
+        for (const callback of locationSubscribers) {
+            callback()
+        }
     }
 
-    function patchHistoryMethod(method: 'pushState' | 'replaceState') {
-        const historyMethod = window.history[method].bind(window.history) as (
-            ...args: Parameters<History['pushState']>
-        ) => void
-
-        Object.defineProperty(window.history, method, {
-            configurable: true,
-            value: (...args: Parameters<History['pushState']>) => {
-                historyMethod(...args)
-                dispatchNavigationEvent()
-            }
-        })
-    }
-
-    function ensureNavigationEvents() {
-        if (typeof window === 'undefined' || isHistoryPatched) {
+    function syncLocation(force = false) {
+        if (typeof window === 'undefined') {
             return
         }
 
-        isHistoryPatched = true
-        patchHistoryMethod('pushState')
-        patchHistoryMethod('replaceState')
+        const href = window.location.href
+        if (!force && href === lastKnownHref) {
+            return
+        }
+
+        lastKnownHref = href
+        dispatchLocationChange()
+    }
+
+    function scheduleLocationSync() {
+        if (typeof window === 'undefined') {
+            return
+        }
+
+        queueMicrotask(() => syncLocation())
+        window.setTimeout(() => syncLocation(), 0)
+        window.requestAnimationFrame(() => syncLocation())
+    }
+
+    function ensureLocationTracking() {
+        if (typeof window === 'undefined' || stopLocationTracking) {
+            return
+        }
+
+        lastKnownHref = window.location.href
+
+        const handleImmediateLocationChange = () => syncLocation()
+        const handleDeferredLocationChange = () => scheduleLocationSync()
+        const intervalId = window.setInterval(() => syncLocation(), 125)
+
+        window.addEventListener('popstate', handleImmediateLocationChange)
+        window.addEventListener('hashchange', handleImmediateLocationChange)
+        document.addEventListener('click', handleDeferredLocationChange, true)
+
+        stopLocationTracking = () => {
+            window.clearInterval(intervalId)
+            window.removeEventListener('popstate', handleImmediateLocationChange)
+            window.removeEventListener('hashchange', handleImmediateLocationChange)
+            document.removeEventListener('click', handleDeferredLocationChange, true)
+            stopLocationTracking = undefined
+        }
     }
 
     function subscribeToLocation(callback: () => void) {
@@ -88,27 +115,26 @@
             return () => undefined
         }
 
-        ensureNavigationEvents()
+        ensureLocationTracking()
+        locationSubscribers.add(callback)
 
-        const handleLocationChange = () => callback()
-
-        handleLocationChange()
-        window.addEventListener('popstate', handleLocationChange)
-        window.addEventListener('hashchange', handleLocationChange)
-        window.addEventListener(navigationEvent, handleLocationChange)
+        callback()
 
         return () => {
-            window.removeEventListener('popstate', handleLocationChange)
-            window.removeEventListener('hashchange', handleLocationChange)
-            window.removeEventListener(navigationEvent, handleLocationChange)
+            locationSubscribers.delete(callback)
+
+            if (locationSubscribers.size === 0) {
+                stopLocationTracking?.()
+            }
         }
     }
 </script>
 
 <script lang="ts">
-    import { onMount } from 'svelte'
+    import { getContext, onMount } from 'svelte'
     import { twMerge } from 'tailwind-merge'
     import { getComponentConfig } from '../config.js'
+    import { LINK_LOCATION_CONTEXT_KEY, type LinkLocationContext } from './location-context.js'
     import { linkDefaults, linkVariants } from './link.variants.js'
 
     const config = getComponentConfig('link', linkDefaults)
@@ -136,11 +162,17 @@
     }: Props = $props()
 
     const isLink = $derived(!!href)
-    let currentUrl = $state<URL | undefined>(undefined)
+    const locationContext = getContext<LinkLocationContext | undefined>(LINK_LOCATION_CONTEXT_KEY)
+    let observedUrl = $state<URL | undefined>(undefined)
+    const currentUrl = $derived.by(() => locationContext?.currentUrl() ?? observedUrl)
 
     onMount(() => {
+        if (locationContext) {
+            return
+        }
+
         return subscribeToLocation(() => {
-            currentUrl = new URL(window.location.href)
+            observedUrl = new URL(window.location.href)
         })
     })
 

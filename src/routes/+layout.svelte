@@ -1,11 +1,14 @@
 <script lang="ts">
+    import { page } from '$app/state'
     import './layout.css'
     import type { DocsGroup, DocsItem } from '$lib/docs/navigation.js'
     import { buildLocaleOptions } from '$lib/i18n.js'
     import {
         Button,
         Icon,
+        LINK_LOCATION_CONTEXT_KEY,
         Link,
+        type LinkLocationContext,
         LocaleButton,
         ModeWatcher,
         mode,
@@ -13,6 +16,7 @@
     } from '$lib/index.js'
     import { m } from '$lib/paraglide/messages.js'
     import { getLocale, setLocale, toLocale } from '$lib/paraglide/runtime.js'
+    import { setContext } from 'svelte'
 
     import {
         docsComponentGroups,
@@ -60,6 +64,10 @@
                 return items.length > 0 ? { ...section, items } : null
             })
             .filter((section): section is DocsGroup => section !== null)
+    })
+
+    setContext<LinkLocationContext>(LINK_LOCATION_CONTEXT_KEY, {
+        currentUrl: () => page.url
     })
 
     function isNavActive(href: string): boolean {

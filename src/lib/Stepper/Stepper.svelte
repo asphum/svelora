@@ -72,32 +72,35 @@ function handleKeydown(e: KeyboardEvent, index: number) {
 }
 const apiInstance: StepperApi = {
     next() {
-        if (activeIndex >= items.length - 1)
+        const current = untrack(() => activeIndex);
+        if (current >= items.length - 1)
             return;
-        const target = items[activeIndex + 1];
+        const target = items[current + 1];
         if (!target)
             return;
-        setValue(getItemValue(target, activeIndex + 1));
+        setValue(getItemValue(target, current + 1));
     },
     prev() {
-        if (activeIndex <= 0)
+        const current = untrack(() => activeIndex);
+        if (current <= 0)
             return;
-        const target = items[activeIndex - 1];
+        const target = items[current - 1];
         if (!target)
             return;
-        setValue(getItemValue(target, activeIndex - 1));
+        setValue(getItemValue(target, current - 1));
     },
     goTo(next) {
         setValue(next);
     },
     get hasNext() {
-        return activeIndex >= 0 && activeIndex < items.length - 1;
+        const current = untrack(() => activeIndex);
+        return current >= 0 && current < items.length - 1;
     },
     get hasPrev() {
-        return activeIndex > 0;
+        return untrack(() => activeIndex) > 0;
     },
     get activeIndex() {
-        return activeIndex;
+        return untrack(() => activeIndex);
     }
 };
 api = apiInstance;

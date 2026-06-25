@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { page } from 'vitest/browser'
 import { render } from 'vitest-browser-svelte'
+import LinkContextHarness from './Link.context-harness.svelte'
 import Link from './Link.svelte'
 
 describe('Link', () => {
@@ -61,6 +62,36 @@ describe('Link', () => {
     // ==================== ACTIVE STATE ====================
 
     describe('active state', () => {
+        it('should read the active route from context when provided', async () => {
+            const { container } = render(LinkContextHarness, {
+                url: new URL('https://example.com/from-context')
+            })
+            const el = page.elementLocator(container.querySelector('a')!)
+
+            await expect.element(el).toHaveClass(/text-primary/)
+        })
+
+        it('should auto-detect the active route from the current URL', async () => {
+            window.history.replaceState({}, '', '/link')
+
+            const { container } = render(Link, { href: '/link' })
+            const el = page.elementLocator(container.firstElementChild!)
+
+            await expect.element(el).toHaveClass(/text-primary/)
+        })
+
+        it('should update auto-detected active state after a history change', async () => {
+            const { container } = render(Link, { href: '/about' })
+            const el = page.elementLocator(container.firstElementChild!)
+
+            await expect.element(el).toHaveClass(/text-on-surface-variant/)
+
+            window.history.replaceState({}, '', '/about')
+            await new Promise((resolve) => window.setTimeout(resolve, 200))
+
+            await expect.element(el).toHaveClass(/text-primary/)
+        })
+
         it('should apply active styles when active=true', async () => {
             const { container } = render(Link, { href: '/', active: true })
             const el = page.elementLocator(container.firstElementChild!)
