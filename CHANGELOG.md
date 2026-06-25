@@ -19,6 +19,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.0.6] - 2026-06-25
+
+### Added
+
+- **link** — add location context support
+- **hooks** — add full set of Svelte hooks and docs
+
+### Changed
+
+- prepare public release
+
 ## [3.0.5] - 2026-06-24
 
 ### Changed
@@ -393,7 +404,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.5...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.6...HEAD
+[3.0.6]: https://github.com/asphum/svelora/compare/v3.0.5...v3.0.6
 [3.0.5]: https://github.com/asphum/svelora/compare/v3.0.4...v3.0.5
 [3.0.4]: https://github.com/asphum/svelora/compare/v3.0.3...v3.0.4
 [3.0.3]: https://github.com/asphum/svelora/compare/v3.0.2...v3.0.3
