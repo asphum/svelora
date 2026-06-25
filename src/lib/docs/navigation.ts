@@ -470,12 +470,6 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:ellipsis'
             },
             {
-                title: 'Menu',
-                href: '/docs/components/menu',
-                legacyHref: '/menu',
-                icon: 'lucide:menu-square'
-            },
-            {
                 title: 'Sidebar',
                 href: '/docs/components/sidebar',
                 legacyHref: '/sidebar',

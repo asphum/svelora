@@ -36,13 +36,35 @@
             }
         ]
     ]
+
+    // --- Vertical Sidebar Links ---
+    const sidebarLinks: NavigationMenuItemType[] = [
+        { label: 'Overview', icon: 'lucide:layout-dashboard', href: '/dashboard' },
+        {
+            label: 'Analytics',
+            icon: 'lucide:bar-chart-2',
+            defaultOpen: true,
+            items: [
+                { type: 'item', label: 'Reports', icon: 'lucide:file-text' },
+                { type: 'item', label: 'Traffic', icon: 'lucide:activity' }
+            ]
+        },
+        {
+            label: 'Settings',
+            icon: 'lucide:settings',
+            items: [
+                { type: 'item', label: 'Profile', icon: 'lucide:user' },
+                { type: 'item', label: 'Billing', icon: 'lucide:credit-card' }
+            ]
+        }
+    ]
 </script>
 
 <div class="space-y-8">
     <div class="space-y-2">
         <h1 class="text-2xl font-bold">Navigation Menu</h1>
         <p class="text-on-surface-variant">
-            A unified navigation component that supports both horizontal and vertical orientations, along with 2D array grouping.
+            A unified navigation component that supports both horizontal and vertical orientations.
         </p>
     </div>
 
@@ -77,15 +99,21 @@
 
     <Separator />
 
-    <!-- Vertical Orientation -->
+    <!-- Vertical Orientation (Accordion) -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Vertical Orientation</h2>
+        <h2 class="text-lg font-semibold">Vertical (Sidebar & Accordion)</h2>
         <p class="text-sm text-on-surface-variant">
-            Set <code class="rounded bg-surface-container-highest px-1">orientation="vertical"</code> to render as a sidebar menu. Nested dropdowns will automatically pop out to the right.
+            Set <code class="rounded bg-surface-container-highest px-1">orientation="vertical"</code> to render as a sidebar menu. Nested sub-menus will automatically render as smoothly expanding accordions! Add <code class="rounded bg-surface-container-highest px-1">accordion="true"</code> to restrict opening to one group at a time.
         </p>
-        <div class="rounded-lg border border-outline-variant bg-surface-container-lowest p-6">
-            <div class="w-64 bg-surface border border-outline-variant rounded-xl shadow-sm p-2 flex flex-col items-start">
-                <NavigationMenu items={unifiedLinks} orientation="vertical" variant="ghost" />
+        <div class="rounded-lg border border-outline-variant bg-surface-container-lowest p-6 flex gap-8">
+            <div class="w-64 bg-surface border border-outline-variant rounded-xl shadow-sm p-3 flex flex-col items-start">
+                <p class="text-xs font-semibold text-on-surface-variant px-3 mb-2 uppercase tracking-wider">Multi-Open</p>
+                <NavigationMenu items={sidebarLinks} orientation="vertical" variant="ghost" />
+            </div>
+            
+            <div class="w-64 bg-surface border border-outline-variant rounded-xl shadow-sm p-3 flex flex-col items-start">
+                <p class="text-xs font-semibold text-on-surface-variant px-3 mb-2 uppercase tracking-wider">Strict Accordion</p>
+                <NavigationMenu items={sidebarLinks} orientation="vertical" variant="ghost" accordion />
             </div>
         </div>
     </section>

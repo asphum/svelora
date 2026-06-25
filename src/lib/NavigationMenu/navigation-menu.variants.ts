@@ -10,7 +10,14 @@ export const navigationMenuVariants = tv({
             'disabled:pointer-events-none disabled:opacity-50'
         ],
         icon: 'text-lg shrink-0 transition-colors',
-        chevron: 'text-base opacity-50 shrink-0 transition-transform group-data-[state=open]:rotate-180'
+        chevron: 'text-base opacity-50 shrink-0 transition-transform group-data-[state=open]:rotate-180',
+        accordionGroupContent: 'flex flex-col gap-1 pl-4 mt-1',
+        accordionTrigger: [
+            'flex items-center justify-between w-full px-3 py-2 text-sm font-medium rounded-md',
+            'transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-outline',
+            'text-on-surface hover:bg-surface-container-highest',
+            'disabled:opacity-50 disabled:cursor-not-allowed'
+        ]
     },
     variants: {
         orientation: {
@@ -44,7 +51,8 @@ export const navigationMenuVariants = tv({
         active: {
             true: {
                 item: 'bg-primary/10 text-primary font-semibold',
-                icon: 'text-primary'
+                icon: 'text-primary',
+                accordionTrigger: 'bg-primary-container text-on-primary-container'
             },
             false: {}
         }

@@ -2,11 +2,17 @@ import type { Snippet } from 'svelte'
 import type { ClassNameValue } from 'tailwind-merge'
 import type { DropdownMenuItem } from '../DropdownMenu/dropdown-menu.types.js'
 import type { BadgeProps } from '../Badge/badge.types.js'
+import type { KbdProps } from '../Kbd/kbd.types.js'
 import type { NavigationMenuVariantProps, NavigationMenuSlots } from './navigation-menu.variants.js'
 
 export type NavigationMenuItemType = {
     /**
-     * Text label for the item.
+     * Item type for compatibility with DropdownMenu.
+     */
+    type?: 'item' | 'label' | 'separator' | 'sub'
+
+    /**
+     * The visible text displayed in the menu item.
      */
     label?: string
 
@@ -46,15 +52,26 @@ export type NavigationMenuItemType = {
     disabled?: boolean
 
     /**
-     * Sub-items for this menu item (Svelora standard).
-     * If provided, the item renders as a dropdown trigger.
+     * Whether this group should be open by default (when orientation="vertical").
      */
-    items?: DropdownMenuItem[]
+    defaultOpen?: boolean
+
+    /**
+     * Keyboard shortcuts to display.
+     */
+    shortcut?: string[]
+    kbds?: (string | Pick<KbdProps, 'value' | 'size' | 'variant' | 'color'>)[]
+
+    /**
+     * Sub-items for this menu item (Svelora standard).
+     * If provided, the item renders as a dropdown trigger or accordion.
+     */
+    items?: NavigationMenuItemType[]
 
     /**
      * Alias for sub-items (Nuxt UI style compatibility).
      */
-    children?: DropdownMenuItem[]
+    children?: NavigationMenuItemType[]
 
     /**
      * Custom click handler for standard items.
@@ -84,6 +101,13 @@ export type NavigationMenuProps = {
      * @default 'horizontal'
      */
     orientation?: NonNullable<NavigationMenuVariantProps['orientation']>
+
+    /**
+     * Enable accordion mode (only affects orientation="vertical").
+     * If true, only one group can be open at a time.
+     * @default false
+     */
+    accordion?: boolean
 
     /**
      * Additional CSS classes.
