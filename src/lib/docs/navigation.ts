@@ -496,6 +496,60 @@ export const docsHookItems: DocsItem[] = [
         href: '/docs/hooks/use-debounce',
         legacyHref: '/use-debounce',
         icon: 'lucide:timer'
+    },
+    {
+        title: 'useDebouncedState',
+        href: '/docs/hooks/use-debounced-state',
+        legacyHref: '/use-debounced-state',
+        icon: 'lucide:clock-3'
+    },
+    {
+        title: 'useEventListener',
+        href: '/docs/hooks/use-event-listener',
+        legacyHref: '/use-event-listener',
+        icon: 'lucide:radio'
+    },
+    {
+        title: 'useResizeObserver / useElementSize',
+        href: '/docs/hooks/use-resize-observer',
+        legacyHref: '/use-resize-observer',
+        icon: 'lucide:scaling'
+    },
+    {
+        title: 'useIntersectionObserver',
+        href: '/docs/hooks/use-intersection-observer',
+        legacyHref: '/use-intersection-observer',
+        icon: 'lucide:scan-search'
+    },
+    {
+        title: 'useScrollLock',
+        href: '/docs/hooks/use-scroll-lock',
+        legacyHref: '/use-scroll-lock',
+        icon: 'lucide:lock'
+    },
+    {
+        title: 'useFocusTrap',
+        href: '/docs/hooks/use-focus-trap',
+        legacyHref: '/use-focus-trap',
+        icon: 'lucide:focus'
+    },
+    {
+        title: 'useLocalStorage',
+        href: '/docs/hooks/use-local-storage',
+        legacyHref: '/use-local-storage',
+        icon: 'lucide:hard-drive'
+    },
+    {
+        title: 'useThrottle',
+        href: '/docs/hooks/use-throttle',
+        legacyHref: '/use-throttle',
+        icon: 'lucide:gauge'
+    },
+    {
+        title: 'useTimeout / useInterval',
+        href: '/docs/hooks/use-timers',
+        legacyHref: '/use-timers',
+        icon: 'lucide:timer-reset'
     }
 ] as const
 

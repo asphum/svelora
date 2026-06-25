@@ -112,7 +112,9 @@ export function buildGoogleFontsUrl(
 
     if (families.length === 0) return ''
 
-    const familyParams = families.map((f) => `family=${f}`).join('&')
+    const familyParams = families
+        .map((f) => `family=${encodeURIComponent(f).replaceAll('%2B', '+')}`)
+        .join('&')
     return `https://fonts.googleapis.com/css2?${familyParams}&display=${display}`
 }
 

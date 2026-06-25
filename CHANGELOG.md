@@ -59,7 +59,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - add vercel config, update deps and scripts
 - add docs site and update deploy domain
-- add docs pages, reorder imports, rebrand to SV5UI
 - rebrand to Svelora, enhance docs and tooling
 - add CodeBlock, Fonts provider, and Cursor MCP integration
 - **mcp** — add svelora docs MCP server and tooling

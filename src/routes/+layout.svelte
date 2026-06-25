@@ -198,7 +198,7 @@
             {/if}
 
             <aside
-                class={`fixed inset-y-0 left-0 top-[65px] z-40 h-[calc(100vh-65px)] w-80 shrink-0 overflow-y-auto border-r border-outline-variant bg-surface/95 px-4 py-6 backdrop-blur transition-transform duration-200 lg:sticky lg:translate-x-0 ${
+                class={`fixed inset-y-0 left-0 top-16.25 z-40 h-[calc(100vh-65px)] w-80 shrink-0 overflow-y-auto border-r border-outline-variant bg-surface/95 px-4 py-6 backdrop-blur transition-transform duration-200 lg:sticky lg:translate-x-0 ${
                     sidebarOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
             >
