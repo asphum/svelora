@@ -1,8 +1,21 @@
 import { describe, expect, it, vi } from 'vitest'
 import { page } from 'vitest/browser'
-import { render } from 'vitest-browser-svelte'
+import { render as renderSvelte } from 'vitest-browser-svelte'
 import Modal from './Modal.svelte'
 import ModalTriggerTestWrapper from './ModalTriggerTestWrapper.svelte'
+import type { ModalProps } from './modal.types.js'
+
+const render: typeof renderSvelte = ((component, props) => {
+    if (component === Modal) {
+        const p = (props ?? {}) as Partial<ModalProps>
+        return renderSvelte(Modal, {
+            ...p,
+            trapFocus: p.trapFocus ?? false,
+            preventScroll: p.preventScroll ?? false
+        })
+    }
+    return renderSvelte(component, props)
+}) as typeof renderSvelte
 
 describe('Modal', () => {
     const getOverlay = () => document.querySelector('[data-dialog-overlay]') as HTMLElement | null

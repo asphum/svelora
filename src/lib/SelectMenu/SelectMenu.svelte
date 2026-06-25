@@ -168,14 +168,39 @@
             : (singleSelectedItem?.label ?? singleSelectedItem?.value ?? '')
     )
 
+    let isAlive = true
+    $effect(() => {
+        return () => {
+            isAlive = false
+        }
+    })
+
+    function getSelectedValues(): string[] {
+        if (!multiple) {
+            return typeof value === 'string' && value !== '' ? [value] : []
+        }
+        return Array.isArray(value) ? value : []
+    }
+
+    function getCombinedItems(): SelectMenuItemType[] {
+        const itemList = items as SelectMenuItemType[]
+        const propValues = new Set(
+            itemList.filter((i): i is SelectMenuItem => !('type' in i)).map((i) => i.value)
+        )
+        const extras = createdItems.filter((c) => !propValues.has(c.value))
+        return [...itemList, ...extras]
+    }
+
     function removeValue(val: string) {
         if (!multiple) return
-        value = selectedValues.filter((v) => v !== val)
+        if (!isAlive) return
+        value = getSelectedValues().filter((v) => v !== val)
         emit.onChange()
     }
 
     function clearSelection() {
         if (!multiple) return
+        if (!isAlive) return
         value = []
         emit.onChange()
     }
@@ -237,32 +262,49 @@
         typeof createItemLabel === 'function' ? createItemLabel(trimmedSearch) : createItemLabel
     )
 
-    function findItemByCaseInsensitive(query: string): SelectMenuItem | undefined {
+    function hasExactMatch(query: string, combined: SelectMenuItemType[]): boolean {
         const q = query.toLowerCase()
-        for (const it of itemsMap.values()) {
-            if (it.value.toLowerCase() === q || (it.label ?? it.value).toLowerCase() === q) {
-                return it
-            }
+        for (const it of combined) {
+            if ('type' in it) continue
+            if (it.value.toLowerCase() === q || (it.label ?? it.value).toLowerCase() === q) return true
+        }
+        return false
+    }
+
+    function findItemByCaseInsensitive(
+        query: string,
+        combined: SelectMenuItemType[]
+    ): SelectMenuItem | undefined {
+        const q = query.toLowerCase()
+        for (const it of combined) {
+            if ('type' in it) continue
+            if (it.value.toLowerCase() === q || (it.label ?? it.value).toLowerCase() === q) return it
         }
         return undefined
     }
 
     function selectValue(val: string) {
+        if (!isAlive) return
+        const current = getSelectedValues()
         if (multiple) {
-            if (!selectedValues.includes(val)) {
-                value = [...selectedValues, val]
-            }
-        } else {
-            value = val
+            if (!current.includes(val)) value = [...current, val]
+            return
         }
+        value = val
     }
 
     function handleCreate() {
-        if (!showCreateItem) return
-        const newValue = trimmedSearch
+        if (!isAlive) return
+        if (!createItem) return
+        const newValue = searchTerm.trim()
         if (!newValue) return
 
-        const existing = findItemByCaseInsensitive(newValue)
+        const combined = getCombinedItems()
+        const mode = createItem === true ? 'lazy' : createItem
+        const shouldShow = mode === 'always' ? true : !hasExactMatch(newValue, combined)
+        if (!shouldShow) return
+
+        const existing = findItemByCaseInsensitive(newValue, combined)
         if (existing) {
             selectValue(existing.value)
         } else {

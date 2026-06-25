@@ -1,15 +1,23 @@
 import { describe, expect, it, vi } from 'vitest'
 import { page } from 'vitest/browser'
-import { render } from 'vitest-browser-svelte'
+import { render as renderSvelte } from 'vitest-browser-svelte'
 import SelectMenu from './SelectMenu.svelte'
 import SelectMenuFormFieldTestWrapper from './SelectMenuFormFieldTestWrapper.svelte'
-import type { SelectMenuItem, SelectMenuItemType } from './select-menu.types.js'
+import type { SelectMenuItem, SelectMenuItemType, SelectMenuProps } from './select-menu.types.js'
 
 const defaultItems: SelectMenuItem[] = [
     { value: 'apple', label: 'Apple' },
     { value: 'banana', label: 'Banana' },
     { value: 'cherry', label: 'Cherry' }
 ]
+
+const render: typeof renderSvelte = ((component, props) => {
+    if (component === SelectMenu) {
+        const p = (props ?? {}) as Partial<SelectMenuProps>
+        return renderSvelte(SelectMenu, { ...p, portal: p.portal ?? false })
+    }
+    return renderSvelte(component, props)
+}) as typeof renderSvelte
 
 const getTrigger = (container: Element) =>
     container.querySelector('button') as HTMLButtonElement | null

@@ -20,6 +20,12 @@ export default defineConfig({
     ssr: { noExternal: ['svelte-sonner'] },
     test: {
         expect: { requireAssertions: true },
+        onConsoleLog(log: string, type: string) {
+            if (type !== 'warn') return true
+            if (log.includes('derived_inert')) return false
+            if (log.includes('https://svelte.dev/e/derived_inert')) return false
+            return true
+        },
         projects: [
             {
                 extends: './vite.config.ts',
