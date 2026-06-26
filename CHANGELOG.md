@@ -19,6 +19,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.0.11] - 2026-06-26
+
+### Added
+
+- add TableBulkActionBar component and automate documentation heading IDs while updating site-wide UI styling
+- add NavigationMenu tree support, path matching controls, and migrate top navigation to component-based layout
+
+### Changed
+
+- replace custom sidebar navigation with NavigationMenu and update LocaleButton with flag icons and custom snippets
+
 ## [3.0.10] - 2026-06-26
 
 ### Changed
@@ -443,7 +454,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.10...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.11...HEAD
+[3.0.11]: https://github.com/asphum/svelora/compare/v3.0.10...v3.0.11
 [3.0.10]: https://github.com/asphum/svelora/compare/v3.0.9...v3.0.10
 [3.0.9]: https://github.com/asphum/svelora/compare/v3.0.8...v3.0.9
 [3.0.8]: https://github.com/asphum/svelora/compare/v3.0.7...v3.0.8
