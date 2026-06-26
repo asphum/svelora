@@ -101,7 +101,7 @@ export const docsComponentGroups: DocsGroup[] = [
                 title: 'Fonts',
                 href: '/docs/components/fonts',
                 legacyHref: '/google-fonts',
-                icon: 'lucide:font'
+                icon: 'lucide:type'
             },
             {
                 title: 'Icon',
@@ -160,12 +160,12 @@ export const docsComponentGroups: DocsGroup[] = [
                 title: 'Resizable',
                 href: '/docs/components/resizable',
                 legacyHref: '/resizable',
-                icon: 'lucide:layout-panel-left-right'
+                icon: 'lucide:stretch-horizontal'
             },
             {
                 title: 'Modal',
                 href: '/docs/components/modal',
-                icon: 'lucide:layout-panel-left-right'
+                icon: 'lucide:app-window'
             },
             {
                 title: 'Navigation Menu',
@@ -473,7 +473,7 @@ export const docsComponentGroups: DocsGroup[] = [
                 title: 'Sidebar',
                 href: '/docs/components/sidebar',
                 legacyHref: '/sidebar',
-                icon: 'lucide:layout-sidebar'
+                icon: 'lucide:panel-left'
             },
             {
                 title: 'Stepper',
@@ -675,7 +675,7 @@ export const docsHookItems: DocsItem[] = [
 export const docsTopNav: DocsItem[] = [
     { title: 'Docs', href: '/docs', icon: 'lucide:book-open' },
     { title: 'Components', href: '/docs/components/button', icon: 'lucide:blocks' },
-    { title: 'Hooks', href: '/docs/hooks/use-debounce', icon: 'lucide:hook' }
+    { title: 'Hooks', href: '/docs/hooks/use-debounce', icon: 'lucide:webhook' }
 ]
 
 export const allComponentItems = docsComponentGroups.flatMap((group) => group.items)

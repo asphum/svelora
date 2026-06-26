@@ -9,7 +9,9 @@
         LINK_LOCATION_CONTEXT_KEY,
         Link,
         type LinkLocationContext,
-        LocaleButton
+        LocaleButton,
+        NavigationMenu,
+        type NavigationMenuItemType
     } from '$lib/index.js'
     import { ModeWatcher, mode, toggleMode } from 'mode-watcher'
     import { m } from '$lib/paraglide/messages.js'
@@ -62,6 +64,20 @@
                 return items.length > 0 ? { ...section, items } : null
             })
             .filter((section): section is DocsGroup => section !== null)
+    })
+
+    const sidebarNavItems = $derived.by<NavigationMenuItemType[]>(() => {
+        return filteredSidebarSections.map(section => ({
+            label: section.title,
+            defaultOpen: true,
+            items: section.items.map(item => ({
+                type: 'item',
+                label: item.title,
+                href: item.href,
+                icon: item.icon,
+                active: isNavActive(item.href)
+            }))
+        }))
     })
 
     setContext<LinkLocationContext>(LINK_LOCATION_CONTEXT_KEY, {
@@ -154,19 +170,59 @@
                     <LocaleButton
                         locales={localeOptions}
                         locale={currentLocale}
-                        size="sm"
-                        variant="ghost"
+                        square
+                        variant="outline"
                         color="secondary"
-                        square={false}
+                        showChevron={false}
                         ariaLabel={m.locale_change_language()}
                         menuLabel={m.locale_language()}
+                        class="rounded-full !p-1 overflow-hidden"
                         onLocaleChange={(nextLocale) => {
                             const locale = toLocale(nextLocale)
                             if (locale) {
                                 return setLocale(locale, { reload: false })
                             }
                         }}
-                    />
+                    >
+                        {#snippet children({ currentLocale })}
+                            {#if currentLocale?.code === 'th'}
+                                <Icon name="circle-flags:th" size="24" />
+                            {:else if currentLocale?.code === 'la'}
+                                <Icon name="circle-flags:la" size="24" />
+                            {:else if currentLocale?.code === 'en'}
+                                <Icon name="circle-flags:uk" size="24" />
+                            {:else}
+                                <Icon name="lucide:globe" size="20" />
+                            {/if}
+                        {/snippet}
+
+                        {#snippet item({ item, current, close })}
+                            <button
+                                class={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-lg ${
+                                    current ? 'bg-surface-container-high text-on-surface' : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
+                                }`}
+                                onclick={() => {
+                                    const locale = toLocale(item.code)
+                                    if (locale) {
+                                        setLocale(locale, { reload: false })
+                                    }
+                                    close()
+                                }}
+                            >
+                                {#if item.code === 'th'}
+                                    <Icon name="circle-flags:th" size="20" />
+                                {:else if item.code === 'la'}
+                                    <Icon name="circle-flags:la" size="20" />
+                                {:else if item.code === 'en'}
+                                    <Icon name="circle-flags:uk" size="20" />
+                                {:else}
+                                    <Icon name="lucide:globe" size="20" />
+                                {/if}
+                                
+                                <span class="font-medium text-[14px] uppercase">{item.shortLabel ?? item.code}</span>
+                            </button>
+                        {/snippet}
+                    </LocaleButton>
                     <Link
                         href={docsMeta.githubHref}
                         raw
@@ -233,32 +289,17 @@
                 </div>
 
                 <div class="flex-1 overflow-y-auto p-4 space-y-6 pb-12">
-                    {#if filteredSidebarSections.length > 0}
-                        {#each filteredSidebarSections as section (section.title)}
-                            <section class="space-y-2">
-                                <p class="px-3 text-xs font-semibold tracking-[0.14em] text-on-surface-variant uppercase">
-                                    {section.title}
-                                </p>
-
-                                <div class="space-y-1">
-                                    {#each section.items as item (item.href)}
-                                        <Link
-                                            href={item.href}
-                                            raw
-                                            class={`flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors ${
-                                                isNavActive(item.href)
-                                                    ? 'bg-primary-container text-on-primary-container'
-                                                    : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
-                                            }`}
-                                            onclick={() => (sidebarOpen = false)}
-                                        >
-                                            <Icon name={item.icon} size="16" />
-                                            <span>{item.title}</span>
-                                        </Link>
-                                    {/each}
-                                </div>
-                            </section>
-                        {/each}
+                    {#if sidebarNavItems.length > 0}
+                        <!-- svelte-ignore a11y_no_static_element_interactions -->
+                        <!-- svelte-ignore a11y_click_events_have_key_events -->
+                        <div class="-mx-3" onclick={() => (sidebarOpen = false)}>
+                            <NavigationMenu 
+                                items={sidebarNavItems} 
+                                orientation="vertical" 
+                                accordion 
+                                variant="ghost"
+                            />
+                        </div>
                     {/if}
                 </div>
             </aside>

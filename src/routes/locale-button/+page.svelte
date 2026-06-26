@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { CodeBlock, LocaleButton } from '$lib/index.js'
+    import { CodeBlock, LocaleButton, Icon } from '$lib/index.js'
     import type { LocaleButtonLocale } from '$lib/index.js'
 
     const locales: LocaleButtonLocale[] = [
@@ -22,6 +22,13 @@
             description: 'Japanese translation'
         }
     ]
+
+    const flagLocales: LocaleButtonLocale[] = [
+        { code: 'th', shortLabel: 'TH' },
+        { code: 'la', shortLabel: 'LO' },
+        { code: 'en', shortLabel: 'EN' }
+    ]
+    let flagLocale = $state('th')
 
     const variants = ['solid', 'outline', 'soft', 'subtle', 'ghost', 'link'] as const
     const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const
@@ -550,9 +557,7 @@ const locales: LocaleButtonLocale[] = [
         <h2 id="Custom-Menu-Items" class="text-lg font-semibold">
 <a href="#Custom-Menu-Items" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
-                        
-            Custom Menu Items
-        
+                        Custom Menu Items
                     </a>
 </h2>
         <p class="text-sm text-on-surface-variant">
@@ -595,9 +600,7 @@ const locales: LocaleButtonLocale[] = [
         <h2 id="Custom-Menu-Layout" class="text-lg font-semibold">
 <a href="#Custom-Menu-Layout" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
-                        
-            Custom Menu Layout
-        
+                        Custom Menu Layout
                     </a>
 </h2>
         <p class="text-sm text-on-surface-variant">
@@ -635,6 +638,69 @@ const locales: LocaleButtonLocale[] = [
                             </button>
                         {/each}
                     </div>
+                {/snippet}
+            </LocaleButton>
+        </div>
+    <section class="space-y-3">
+        <h2 id="Flag-Icons-Design" class="text-lg font-semibold">
+<a href="#Flag-Icons-Design" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        
+            Flag Icons Design
+        
+                    </a>
+</h2>
+        <p class="text-sm text-on-surface-variant">
+            Here is a highly requested design: a circular flag trigger that reveals a dropdown of languages with flags.
+            This uses both the <code class="rounded bg-surface-container-highest px-1">children</code> and 
+            <code class="rounded bg-surface-container-highest px-1">item</code> snippets.
+        </p>
+        <div class="rounded-lg bg-surface-container-high p-4 flex gap-4">
+            <LocaleButton
+                locales={flagLocales}
+                locale={flagLocale}
+                square
+                variant="outline"
+                color="secondary"
+                showChevron={false}
+                class="rounded-full !p-1 border-[1.5px] border-primary text-primary overflow-hidden bg-surface"
+                onLocaleChange={(nextLocale) => {
+                    flagLocale = nextLocale
+                }}
+            >
+                {#snippet children({ currentLocale })}
+                    <!-- Using iconify circle-flags -->
+                    {#if currentLocale?.code === 'th'}
+                        <Icon name="circle-flags:th" size="32" />
+                    {:else if currentLocale?.code === 'la'}
+                        <Icon name="circle-flags:la" size="32" />
+                    {:else if currentLocale?.code === 'en'}
+                        <Icon name="circle-flags:uk" size="32" />
+                    {:else}
+                        <Icon name="lucide:globe" size="24" />
+                    {/if}
+                {/snippet}
+
+                {#snippet item({ item, current, close })}
+                    <button
+                        class={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-lg ${
+                            current ? 'bg-surface-container-high text-on-surface' : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
+                        }`}
+                        onclick={() => {
+                            flagLocale = item.code
+                            close()
+                        }}
+                    >
+                        {#if item.code === 'th'}
+                            <Icon name="circle-flags:th" size="24" />
+                        {:else if item.code === 'la'}
+                            <Icon name="circle-flags:la" size="24" />
+                        {:else if item.code === 'en'}
+                            <Icon name="circle-flags:uk" size="24" />
+                        {/if}
+                        
+                        <span class="font-medium text-[15px]">{item.shortLabel}</span>
+                    </button>
                 {/snippet}
             </LocaleButton>
         </div>
