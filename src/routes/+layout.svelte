@@ -190,7 +190,7 @@
                         onLocaleChange={(nextLocale) => {
                             const locale = toLocale(nextLocale)
                             if (locale) {
-                                return setLocale(locale, { reload: false })
+                                return setLocale(locale, { reload: true })
                             }
                         }}
                     >
@@ -214,7 +214,7 @@
                                 onclick={() => {
                                     const locale = toLocale(item.code)
                                     if (locale) {
-                                        setLocale(locale, { reload: false })
+                                        setLocale(locale, { reload: true })
                                     }
                                     close()
                                 }}

@@ -3,6 +3,8 @@
         DropdownMenu,
         Button,
         Separator,
+        Badge,
+        Icon,
         type DropdownMenuItem,
         type DropdownMenuRadioGroup
     } from '$lib/index.js'
@@ -16,6 +18,16 @@
     let option1 = $state(false)
     let option2 = $state(false)
     let option3 = $state(false)
+
+    const notificationItems: DropdownMenuItem[] = [
+        { type: 'label', label: 'Notifications' },
+        { type: 'separator' },
+        { label: 'Svelora v3.0.11 is out!', icon: 'lucide:rocket' },
+        { label: 'New component: BentoGrid', icon: 'lucide:layout-grid' },
+        { label: 'System maintenance scheduled', icon: 'lucide:wrench' },
+        { type: 'separator' },
+        { label: 'Mark all as read', icon: 'lucide:check-check' }
+    ]
 
     const basicItems: DropdownMenuItem[] = [
         { label: 'New File', icon: 'lucide:file-plus', kbds: ['meta', 'n'] },
@@ -575,6 +587,33 @@
                                 square
                                 aria-label="More options"
                             />
+                        {/snippet}
+                    </DropdownMenu>
+                </div>
+            </div>
+
+            <!-- Notification Bell -->
+            <div class="space-y-2">
+                <p class="text-sm font-medium">Notification Bell</p>
+                <div
+                    class="flex items-center justify-center rounded-lg bg-surface-container-high p-6"
+                >
+                    <DropdownMenu items={notificationItems} arrow align="end">
+                        {#snippet children({ props })}
+                            <Button
+                                {...props}
+                                variant="ghost"
+                                square
+                                class="relative"
+                                aria-label="Notifications"
+                            >
+                                <Icon name="lucide:bell" size="20" />
+                                <Badge 
+                                    size="sm" 
+                                    color="error"
+                                    class="absolute top-1 right-1 size-2 p-0" 
+                                />
+                            </Button>
                         {/snippet}
                     </DropdownMenu>
                 </div>

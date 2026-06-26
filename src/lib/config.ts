@@ -36,6 +36,7 @@ import type { FontsConfig } from './Fonts/fonts.types.js'
  * Default icons used across components
  */
 export const iconsDefaults = {
+    provider: 'iconify' as 'iconify' | 'tailwind',
     loading: 'lucide:loader-2',
     chevronDown: 'lucide:chevron-down',
     chevronLeft: 'lucide:chevron-left',

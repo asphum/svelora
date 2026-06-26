@@ -3,6 +3,7 @@
 
     let basicOpen = $state(false)
     let fullscreenOpen = $state(false)
+    let scrollableBodyOpen = $state(false)
     let scrollableOpen = $state(false)
     let scrollableFullscreenOpen = $state(false)
     let noCloseOpen = $state(false)
@@ -123,20 +124,51 @@
     <!-- Scrollable -->
     <section class="space-y-3">
         <h2 id="Scrollable" class="text-lg font-semibold">
-<a href="#Scrollable" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
-                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
-                        Scrollable
-                    </a>
-</h2>
+            <a href="#Scrollable" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                Scrollable
+            </a>
+        </h2>
+        <p class="text-sm text-on-surface-variant">
+            By default, long content scrolls <strong>inside the modal body</strong> while the header and footer remain fixed. If you prefer the <em>entire modal</em> to scroll along with the overlay, you can use the <code class="rounded bg-surface-container-highest px-1">scrollable</code> property.
+        </p>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
+            <!-- Scrollable Body (Default) -->
+            <Modal
+                bind:open={scrollableBodyOpen}
+                title="Scrollable Body (Default)"
+                description="The header and footer stay fixed. Only the body scrolls."
+            >
+                {#snippet children({ props })}
+                    <Button {...props} variant="outline" label="Scrollable Body" />
+                {/snippet}
+                {#snippet body()}
+                    <div class="space-y-3">
+                        {#each Array.from({ length: 20 }, (_, i) => i) as i (i)}
+                            <div class="rounded-md bg-surface-container p-3">
+                                <p class="text-sm text-on-surface-variant">Content item {i + 1}</p>
+                            </div>
+                        {/each}
+                    </div>
+                {/snippet}
+                {#snippet footer()}
+                    <Button
+                        label="Close"
+                        variant="outline"
+                        onclick={() => (scrollableBodyOpen = false)}
+                    />
+                {/snippet}
+            </Modal>
+
+            <!-- Scrollable Overlay -->
             <Modal
                 bind:open={scrollableOpen}
                 scrollable
-                title="Scrollable Modal"
+                title="Scrollable Overlay"
                 description="The entire modal scrolls within the overlay."
             >
                 {#snippet children({ props })}
-                    <Button {...props} variant="outline" label="Scrollable" />
+                    <Button {...props} variant="outline" label="Scrollable Overlay" />
                 {/snippet}
                 {#snippet body()}
                     <div class="space-y-3">
