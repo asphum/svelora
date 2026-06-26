@@ -16,25 +16,25 @@
 
     let styles = $derived(sidebarVariants({ collapsed, position }))
 
-    // Provide context to children (like Menu) so they know if sidebar is collapsed
-    // Useful if we want the Menu to hide labels when collapsed
+    // Provide context to children (like Menu) so they know if sidebar is collapsed or right-aligned
     setContext('sidebar-collapsed', () => collapsed)
+    setContext('sidebar-position', () => position)
 </script>
 
 <aside class={twMerge(styles.base(), className)} {...restProps}>
     {#if header}
         <div class={styles.header()}>
-            {@render header()}
+            {@render header({ collapsed })}
         </div>
     {/if}
 
     <div class={styles.content()}>
-        {@render children?.()}
+        {@render children?.({ collapsed })}
     </div>
 
     {#if footer}
         <div class={styles.footer()}>
-            {@render footer()}
+            {@render footer({ collapsed })}
         </div>
     {/if}
 </aside>

@@ -1,10 +1,11 @@
 <script lang="ts">
-    import { untrack } from 'svelte'
+    import { untrack, getContext } from 'svelte'
     import { twMerge } from 'tailwind-merge'
-    import Icon from '../Icon/Icon.svelte'
+    import { Icon } from '../Icon/index.js'
     import Badge from '../Badge/Badge.svelte'
     import Kbd from '../Kbd/Kbd.svelte'
-    import DropdownMenu from '../DropdownMenu/DropdownMenu.svelte'
+    import { DropdownMenu } from '../DropdownMenu/index.js'
+    import { Tooltip } from '../Tooltip/index.js'
     import type { NavigationMenuProps, NavigationMenuItemType } from './navigation-menu.types.js'
     import { navigationMenuVariants } from './navigation-menu.variants.js'
 
@@ -18,7 +19,19 @@
         children
     }: NavigationMenuProps = $props()
 
-    let styles = $derived(navigationMenuVariants({ variant, orientation }))
+    const sidebarCollapsedFn = getContext<() => boolean>('sidebar-collapsed')
+    let isCollapsed = $derived(sidebarCollapsedFn ? sidebarCollapsedFn() : false)
+
+    const sidebarPositionFn = getContext<() => 'left' | 'right'>('sidebar-position')
+    let sidebarPosition = $derived(sidebarPositionFn ? sidebarPositionFn() : 'left')
+
+    let styles = $derived(
+        navigationMenuVariants({
+            variant,
+            orientation,
+            collapsed: isCollapsed
+        })
+    )
 
     let normalizedItems = $derived.by(() => {
         if (!items || items.length === 0) return []
@@ -108,67 +121,94 @@
                 >
                     {#snippet children({ props, open })}
                         <!-- svelte-ignore a11y_no_static_element_interactions -->
-                        <button
-                            type="button"
-                            {...props}
-                            class={twMerge(styles.item({ active: isActive(item) }), item.class)}
-                            disabled={item.disabled}
-                        >
-                            {#if item.icon}
-                                <Icon name={item.icon} class={styles.icon({ active: isActive(item) })} />
-                            {/if}
-                            <span>{item.label}</span>
-                            {#if item.badge !== undefined}
-                                <Badge label={String(item.badge)} color={item.badgeColor || 'primary'} size="sm" class="ml-1" />
-                            {/if}
-                            <span class="ml-auto flex items-center">
-                                <Icon 
-                                    name="lucide:chevron-down" 
-                                    class={twMerge(styles.chevron(), open ? 'rotate-180' : '')} 
-                                />
-                            </span>
-                        </button>
+                        {#snippet buttonContent()}
+                            <button
+                                type="button"
+                                {...props}
+                                class={twMerge(styles.item({ active: isActive(item), collapsed: isCollapsed }), item.class)}
+                                disabled={item.disabled}
+                            >
+                                {#if item.icon}
+                                    <Icon name={item.icon} class={styles.icon({ active: isActive(item), collapsed: isCollapsed })} />
+                                {/if}
+                                {#if !isCollapsed}
+                                    <span>{item.label}</span>
+                                    {#if item.badge !== undefined}
+                                        <Badge label={String(item.badge)} color={item.badgeColor || 'primary'} size="sm" class="ml-1" />
+                                    {/if}
+                                    <span class="ml-auto flex items-center">
+                                        <Icon 
+                                            name="lucide:chevron-down" 
+                                            class={twMerge(styles.chevron(), open ? 'rotate-180' : '')} 
+                                        />
+                                    </span>
+                                {/if}
+                            </button>
+                        {/snippet}
+                        
+                        {#if isCollapsed}
+                            <Tooltip text={item.label} side={sidebarPosition === 'right' ? 'left' : 'right'}>
+                                {@render buttonContent()}
+                            </Tooltip>
+                        {:else}
+                            {@render buttonContent()}
+                        {/if}
                     {/snippet}
                 </DropdownMenu>
             {:else}
                 <!-- VERTICAL: Accordion -->
-                <button
-                    type="button"
-                    class={twMerge(
-                        styles.accordionTrigger(), 
-                        isGroupOpen(item) ? styles.item({ active: true }) : '', 
-                        item.class
-                    )}
-                    disabled={item.disabled}
-                    onclick={() => handleGroupToggle(item)}
-                >
-                    <div class="flex flex-1 items-center truncate">
-                        {#if item.icon}
-                            <Icon name={item.icon} class={styles.icon({ active: isActive(item) })} />
-                        {/if}
-                        <span class="truncate">{item.label}</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        {#if item.badge !== undefined || getKbds(item).length > 0}
-                            <span class="flex items-center gap-2">
-                                {#if item.badge !== undefined}
-                                    <Badge label={String(item.badge)} color={item.badgeColor || 'primary'} size="sm" />
-                                {/if}
-                                {#if getKbds(item).length > 0}
-                                    <span class="flex items-center gap-0.5">
-                                        {#each getKbds(item) as key}
-                                            <Kbd value={typeof key === 'string' ? key : key.value} size="sm" />
-                                        {/each}
+                {#snippet accordionButton()}
+                    <button
+                        type="button"
+                        class={twMerge(
+                            styles.accordionTrigger(), 
+                            isGroupOpen(item) ? styles.item({ active: true, collapsed: isCollapsed }) : '', 
+                            isCollapsed ? styles.item({ collapsed: true }) : '',
+                            item.class
+                        )}
+                        disabled={item.disabled}
+                        onclick={() => handleGroupToggle(item)}
+                    >
+                        <div class="flex flex-1 items-center truncate">
+                            {#if item.icon}
+                                <Icon name={item.icon} class={styles.icon({ active: isActive(item), collapsed: isCollapsed })} />
+                            {/if}
+                            {#if !isCollapsed}
+                                <span class="truncate ml-1.5">{item.label}</span>
+                            {/if}
+                        </div>
+                        {#if !isCollapsed}
+                            <div class="flex items-center gap-2">
+                                {#if item.badge !== undefined || getKbds(item).length > 0}
+                                    <span class="flex items-center gap-2">
+                                        {#if item.badge !== undefined}
+                                            <Badge label={String(item.badge)} color={item.badgeColor || 'primary'} size="sm" />
+                                        {/if}
+                                        {#if getKbds(item).length > 0}
+                                            <span class="flex items-center gap-0.5">
+                                                {#each getKbds(item) as key}
+                                                    <Kbd value={typeof key === 'string' ? key : key.value} size="sm" />
+                                                {/each}
+                                            </span>
+                                        {/if}
                                     </span>
                                 {/if}
-                            </span>
+                                <Icon 
+                                    name="lucide:chevron-down" 
+                                    class={twMerge(styles.chevron(), isGroupOpen(item) ? 'rotate-180' : '')} 
+                                />
+                            </div>
                         {/if}
-                        <Icon 
-                            name="lucide:chevron-down" 
-                            class={twMerge(styles.chevron(), isGroupOpen(item) ? 'rotate-180' : '')} 
-                        />
-                    </div>
-                </button>
+                    </button>
+                {/snippet}
+
+                {#if isCollapsed}
+                    <Tooltip text={item.label} side={sidebarPosition === 'right' ? 'left' : 'right'}>
+                        {@render accordionButton()}
+                    </Tooltip>
+                {:else}
+                    {@render accordionButton()}
+                {/if}
                 {#if isGroupOpen(item)}
                     <ul class={styles.accordionGroupContent()}>
                         {#each subItems as subItem}
@@ -180,38 +220,48 @@
         {:else}
             <!-- STANDARD LINK -->
             <!-- svelte-ignore a11y_no_static_element_interactions -->
-            <svelte:element 
-                this={item.href ? 'a' : 'button'}
-                href={item.href}
-                target={item.target}
-                type={!item.href ? 'button' : undefined}
-                class={twMerge(styles.item({ active: isActive(item) }), item.class)}
-                disabled={item.disabled}
-                onclick={item.onClick}
-            >
-                <div class="flex flex-1 items-center truncate gap-1.5">
-                    {#if item.icon}
-                        <Icon name={item.icon} class={styles.icon({ active: isActive(item) })} />
-                    {/if}
-                    {#if item.label}
-                        <span class="truncate">{item.label}</span>
-                    {/if}
-                </div>
-                {#if item.badge !== undefined || getKbds(item).length > 0}
-                    <span class="ml-auto flex items-center gap-2">
-                        {#if item.badge !== undefined}
-                            <Badge label={String(item.badge)} color={item.badgeColor || 'primary'} size="sm" />
+            {#snippet linkContent()}
+                <svelte:element 
+                    this={item.href ? 'a' : 'button'}
+                    href={item.href}
+                    target={item.target}
+                    type={!item.href ? 'button' : undefined}
+                    class={twMerge(styles.item({ active: isActive(item), collapsed: isCollapsed }), item.class)}
+                    disabled={item.disabled}
+                    onclick={item.onClick}
+                >
+                    <div class="flex flex-1 items-center truncate gap-1.5">
+                        {#if item.icon}
+                            <Icon name={item.icon} class={styles.icon({ active: isActive(item), collapsed: isCollapsed })} />
                         {/if}
-                        {#if getKbds(item).length > 0}
-                            <span class="flex items-center gap-0.5">
-                                {#each getKbds(item) as key}
-                                    <Kbd value={typeof key === 'string' ? key : key.value} size="sm" />
-                                {/each}
-                            </span>
+                        {#if !isCollapsed && item.label}
+                            <span class="truncate">{item.label}</span>
                         {/if}
-                    </span>
-                {/if}
-            </svelte:element>
+                    </div>
+                    {#if !isCollapsed && (item.badge !== undefined || getKbds(item).length > 0)}
+                        <span class="ml-auto flex items-center gap-2">
+                            {#if item.badge !== undefined}
+                                <Badge label={String(item.badge)} color={item.badgeColor || 'primary'} size="sm" />
+                            {/if}
+                            {#if getKbds(item).length > 0}
+                                <span class="flex items-center gap-0.5">
+                                    {#each getKbds(item) as key}
+                                        <Kbd value={typeof key === 'string' ? key : key.value} size="sm" />
+                                    {/each}
+                                </span>
+                            {/if}
+                        </span>
+                    {/if}
+                </svelte:element>
+            {/snippet}
+
+            {#if isCollapsed}
+                <Tooltip text={item.label} side={sidebarPosition === 'right' ? 'left' : 'right'}>
+                    {@render linkContent()}
+                </Tooltip>
+            {:else}
+                {@render linkContent()}
+            {/if}
         {/if}
     </li>
 {/snippet}

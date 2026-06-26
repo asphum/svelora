@@ -55,6 +55,13 @@ export const navigationMenuVariants = tv({
                 accordionTrigger: 'bg-primary-container text-on-primary-container'
             },
             false: {}
+        },
+        collapsed: {
+            true: {
+                item: 'w-10 h-10 justify-center p-0 aspect-square shrink-0',
+                icon: 'text-[1.25rem] m-0'
+            },
+            false: {}
         }
     },
     defaultVariants: {

@@ -23,15 +23,15 @@ export interface SidebarProps extends HTMLAttributes<HTMLElement> {
     /**
      * Snippet for the top header section (e.g. Logo).
      */
-    header?: Snippet
+    header?: Snippet<[{ collapsed: boolean }]>
 
     /**
      * Snippet for the main content (e.g. Navigation Menu).
      */
-    children?: Snippet
+    children?: Snippet<[{ collapsed: boolean }]>
 
     /**
      * Snippet for the bottom footer section (e.g. User Profile).
      */
-    footer?: Snippet
+    footer?: Snippet<[{ collapsed: boolean }]>
 }
