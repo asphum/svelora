@@ -6,12 +6,14 @@
     import {
         Button,
         Icon,
+        Input,
         LINK_LOCATION_CONTEXT_KEY,
         Link,
         type LinkLocationContext,
         LocaleButton,
         NavigationMenu,
-        type NavigationMenuItemType
+        type NavigationMenuItemType,
+        Search
     } from '$lib/index.js'
     import { ModeWatcher, mode, toggleMode } from 'mode-watcher'
     import { m } from '$lib/paraglide/messages.js'
@@ -38,10 +40,10 @@
     }>()
 
     const sidebarSections = [
-        { title: 'Getting Started', items: docsIntroItems },
-        { title: 'Theme & Config', items: docsThemeItems },
-        ...docsComponentGroups.map((group) => ({ title: group.title, items: group.items })),
-        { title: 'Hooks', items: docsHookItems }
+        { title: 'Getting Started', icon: 'lucide:rocket', items: docsIntroItems },
+        { title: 'Theme & Config', icon: 'lucide:palette', items: docsThemeItems },
+        ...docsComponentGroups.map((group) => ({ title: group.title, icon: group.icon, items: group.items })),
+        { title: 'Hooks', icon: 'lucide:webhook', items: docsHookItems }
     ] satisfies DocsGroup[]
 
     let sidebarOpen = $state(false)
@@ -61,7 +63,7 @@
         return sidebarSections
             .map((section) => {
                 const items = section.items.filter((item) => matchesSearch(item, normalizedSearchQuery))
-                return items.length > 0 ? { ...section, items } : null
+                return items.length > 0 ? ({ ...section, items } as DocsGroup) : null
             })
             .filter((section): section is DocsGroup => section !== null)
     })
@@ -69,7 +71,9 @@
     const sidebarNavItems = $derived.by<NavigationMenuItemType[]>(() => {
         return filteredSidebarSections.map(section => ({
             label: section.title,
+            icon: section.icon,
             defaultOpen: true,
+            badge: section.items.length,
             items: section.items.map(item => ({
                 type: 'item',
                 label: item.title,
@@ -80,27 +84,38 @@
         }))
     })
 
+    const topNavItems = $derived.by<NavigationMenuItemType[]>(() => {
+        return docsTopNav.map(item => {
+            let label = item.title
+            let matchPattern = item.href
+
+            if (item.href === '/docs') {
+                label = m.layout_docs()
+            }
+            else if (item.href.includes('/components/')) {
+                label = m.layout_components()
+                matchPattern = '/docs/components'
+            }
+            else if (item.href.includes('/hooks/')) {
+                label = m.layout_hooks()
+                matchPattern = '/docs/hooks'
+            }
+
+            return {
+                type: 'item',
+                label,
+                href: item.href,
+                matchPattern,
+                exact: false
+            }
+        })
+    })
+
     setContext<LinkLocationContext>(LINK_LOCATION_CONTEXT_KEY, {
         currentUrl: () => page.url
     })
 
     function isNavActive(href: string): boolean {
-        return activePath === href
-    }
-
-    function isTopNavActive(href: string): boolean {
-        if (href === '/docs') {
-            return activePath === '/docs' || activePath.startsWith('/docs/')
-        }
-
-        if (href.includes('/components/')) {
-            return activePath.startsWith('/docs/components/')
-        }
-
-        if (href.includes('/hooks/')) {
-            return activePath.startsWith('/docs/hooks/')
-        }
-
         return activePath === href
     }
 
@@ -110,7 +125,22 @@
             .toLowerCase()
             .includes(query)
     }
+
+    const pageTitle = $derived.by(() => {
+        if (isLanding) return 'Svelora - Premium Svelte 5 UI Components'
+        for (const section of sidebarSections) {
+            for (const item of section.items) {
+                if (item.href === activePath) return `${item.title} - Svelora`
+            }
+        }
+        if (activePath === '/editor') return 'Editor - Svelora'
+        return 'Svelora'
+    })
 </script>
+
+<svelte:head>
+    <title>{pageTitle}</title>
+</svelte:head>
 
 <ModeWatcher />
 
@@ -142,28 +172,8 @@
                     </Link>
                 </div>
 
-                <nav class="hidden items-center gap-1 lg:flex">
-                    {#each docsTopNav as item (item.href)}
-                        <Link
-                            href={item.href}
-                            raw
-                            class={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                                isTopNavActive(item.href)
-                                    ? 'bg-primary-container text-on-primary-container'
-                                    : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
-                            }`}
-                        >
-                            {#if item.href === '/docs'}
-                                {m.layout_docs()}
-                            {:else if item.href.includes('/components/')}
-                                {m.layout_components()}
-                            {:else if item.href.includes('/hooks/')}
-                                {m.layout_hooks()}
-                            {:else}
-                                {item.title}
-                            {/if}
-                        </Link>
-                    {/each}
+                <nav class="hidden lg:block">
+                    <NavigationMenu items={topNavItems} orientation="horizontal" variant="ghost" />
                 </nav>
 
                 <div class="flex items-center gap-2">
@@ -258,23 +268,16 @@
                     sidebarOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
             >
-                <div class="border-b border-outline-variant/50 p-4 pt-6">
-                    <section class="space-y-3">
-                        <div class="relative">
-                            <Icon
-                                name="lucide:search"
-                                size="16"
-                                class="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-on-surface-variant"
-                            />
-
-                            <input
-                                bind:value={searchQuery}
-                                type="search"
-                                placeholder={m.layout_search_docs_placeholder()}
-                                class="w-full rounded-xl border border-outline-variant bg-surface-container py-2 pr-3 pl-10 text-sm text-on-surface outline-none transition-colors placeholder:text-on-surface-variant focus:border-primary"
-                                aria-label={m.layout_search_docs_aria()}
-                            />
-                        </div>
+                <div class="border-b border-outline-variant/50">
+                    <section class="space-y-3 p-1">
+                        <Search
+                            bind:value={searchQuery}
+                            variant="input"
+                            placeholder={m.layout_search_docs_placeholder()}
+                            class="w-full"
+                            aria-label={m.layout_search_docs_aria()}
+                            kbd={['/']}
+                        />
 
                         {#if normalizedSearchQuery}
                             <p class="px-1 text-xs text-on-surface-variant">
@@ -297,6 +300,7 @@
                                 items={sidebarNavItems} 
                                 orientation="vertical" 
                                 accordion 
+                                tree
                                 variant="ghost"
                             />
                         </div>
@@ -316,6 +320,7 @@
 <style global>
     :global(html) {
         scroll-behavior: smooth;
+        scroll-padding-top: 80px;
     }
 
     :global(body) {

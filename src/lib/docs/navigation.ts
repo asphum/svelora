@@ -10,6 +10,7 @@ export type DocsItem = {
 
 export type DocsGroup = {
     title: string
+    icon?: string
     items: DocsItem[]
 }
 
@@ -78,6 +79,7 @@ export const docsThemeItems: DocsItem[] = [
 export const docsComponentGroups: DocsGroup[] = [
     {
         title: 'General',
+        icon: 'lucide:box',
         items: [
             {
                 title: 'Button',
@@ -137,6 +139,7 @@ export const docsComponentGroups: DocsGroup[] = [
     },
     {
         title: 'Layout',
+        icon: 'lucide:layout-panel-top',
         items: [
             {
                 title: 'BentoGrid',
@@ -195,6 +198,7 @@ export const docsComponentGroups: DocsGroup[] = [
     },
     {
         title: 'Data Display',
+        icon: 'lucide:table-properties',
         items: [
             {
                 title: 'Accordion',
@@ -296,6 +300,7 @@ export const docsComponentGroups: DocsGroup[] = [
     },
     {
         title: 'Forms',
+        icon: 'lucide:type',
         items: [
             {
                 title: 'Checkbox',
@@ -409,6 +414,7 @@ export const docsComponentGroups: DocsGroup[] = [
     },
     {
         title: 'Feedback',
+        icon: 'lucide:message-square',
         items: [
             {
                 title: 'Alert',
@@ -456,6 +462,7 @@ export const docsComponentGroups: DocsGroup[] = [
     },
     {
         title: 'Navigation',
+        icon: 'lucide:compass',
         items: [
             {
                 title: 'Breadcrumb',
@@ -491,6 +498,7 @@ export const docsComponentGroups: DocsGroup[] = [
     },
     {
         title: 'Overlay',
+        icon: 'lucide:layers',
         items: [
             {
                 title: 'Collapsible',
@@ -550,6 +558,7 @@ export const docsComponentGroups: DocsGroup[] = [
     },
     {
         title: 'Date & Time',
+        icon: 'lucide:calendar',
         items: [
             {
                 title: 'Calendar',

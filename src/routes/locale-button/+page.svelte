@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { CodeBlock, LocaleButton, Icon } from '$lib/index.js'
+    import { CodeBlock, LocaleButton, Icon, Separator } from '$lib/index.js'
     import type { LocaleButtonLocale } from '$lib/index.js'
 
     const locales: LocaleButtonLocale[] = [
@@ -24,9 +24,9 @@
     ]
 
     const flagLocales: LocaleButtonLocale[] = [
-        { code: 'th', shortLabel: 'TH' },
-        { code: 'la', shortLabel: 'LO' },
-        { code: 'en', shortLabel: 'EN' }
+        { code: 'th', label: 'Thai', shortLabel: 'TH' },
+        { code: 'la', label: 'Lao', shortLabel: 'LO' },
+        { code: 'en', label: 'English', shortLabel: 'EN' }
     ]
     let flagLocale = $state('th')
 
@@ -641,13 +641,15 @@ const locales: LocaleButtonLocale[] = [
                 {/snippet}
             </LocaleButton>
         </div>
+    </section>
+
+    <Separator />
+
     <section class="space-y-3">
         <h2 id="Flag-Icons-Design" class="text-lg font-semibold">
 <a href="#Flag-Icons-Design" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
-                        
-            Flag Icons Design
-        
+                        Flag Icons Design
                     </a>
 </h2>
         <p class="text-sm text-on-surface-variant">

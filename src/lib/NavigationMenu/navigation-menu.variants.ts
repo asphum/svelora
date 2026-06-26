@@ -61,14 +61,30 @@ export const navigationMenuVariants = tv({
             true: {
                 item: 'w-10 h-10 justify-center p-0 aspect-square shrink-0',
                 icon: 'text-[1.25rem] m-0'
+            }
+        },
+        tree: {
+            true: {
+                accordionGroupContent: 'pl-2 ml-6 border-l border-outline-variant/50 relative'
             },
             false: {}
         }
     },
+    compoundVariants: [
+        {
+            active: true,
+            tree: true,
+            class: {
+                item: 'border-primary',
+                accordionTrigger: 'border-primary bg-primary/10 text-primary'
+            }
+        }
+    ],
     defaultVariants: {
         variant: 'default',
         active: false,
-        orientation: 'horizontal'
+        orientation: 'horizontal',
+        tree: false
     }
 })
 

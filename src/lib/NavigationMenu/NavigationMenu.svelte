@@ -14,6 +14,7 @@
         variant = 'default',
         orientation = 'horizontal',
         accordion = false,
+        tree = false,
         class: className,
         ui,
         children
@@ -29,7 +30,8 @@
         navigationMenuVariants({
             variant,
             orientation,
-            collapsed: isCollapsed
+            collapsed: isCollapsed,
+            tree
         })
     )
 
@@ -78,22 +80,60 @@
         return openGroups.includes(item.label)
     }
 
+    import { LINK_LOCATION_CONTEXT_KEY, type LinkLocationContext } from '../Link/location-context.js'
+
+    const linkLocation = getContext<LinkLocationContext>(LINK_LOCATION_CONTEXT_KEY)
+
     // --- Auto Active State ---
-    let currentPath = $state('')
+    let windowPath = $state('')
     $effect(() => {
-        if (typeof window !== 'undefined') {
-            currentPath = window.location.pathname
-            const onPopState = () => { currentPath = window.location.pathname }
+        if (!linkLocation && typeof window !== 'undefined') {
+            windowPath = window.location.pathname
+            const onPopState = () => { windowPath = window.location.pathname }
             window.addEventListener('popstate', onPopState)
             return () => window.removeEventListener('popstate', onPopState)
         }
     })
+    
+    const currentPath = $derived(linkLocation ? linkLocation.currentUrl().pathname : windowPath)
+
+    const bestMatchHref = $derived.by(() => {
+        let best = ''
+        const search = (menuItems: NavigationMenuItemType[]) => {
+            for (const item of menuItems) {
+                const target = item.matchPattern || item.href
+                if (target) {
+                    const isExact = item.exact !== false
+                    if (isExact && currentPath === target) {
+                        return target // Exact match wins immediately
+                    } else if (!isExact && (currentPath === target || currentPath.startsWith(target + '/'))) {
+                        if (target.length > best.length) {
+                            best = target
+                        }
+                    }
+                }
+                const children = item.items || item.children || []
+                if (children.length > 0) {
+                    const childBest = search(children)
+                    if (childBest && childBest.length > best.length) best = childBest
+                }
+            }
+            return best
+        }
+        return search(normalizedItems.flat())
+    })
 
     function isActive(item: NavigationMenuItemType): boolean {
         if (item.active) return true
-        if (item.href) {
-            return currentPath === item.href || currentPath.startsWith(item.href + '/')
+        
+        const target = item.matchPattern || item.href
+        if (target && target === bestMatchHref) return true
+        
+        const children = item.items || item.children || []
+        if (children.some(child => isActive(child))) {
+            return true
         }
+
         return false
     }
 

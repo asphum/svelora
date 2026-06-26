@@ -22,6 +22,20 @@ export type NavigationMenuItemType = {
     icon?: string
 
     /**
+     * If true, the item will only be active if the current path matches the item's href exactly.
+     * If false, it will be active if the current path starts with the item's href.
+     * Defaults to true.
+     */
+    exact?: boolean
+
+    /**
+     * Optional pattern to use for active state matching instead of the href.
+     * Useful when href points to a subpage (e.g. /docs/components/button)
+     * but you want it to match any page in the section (e.g. /docs/components).
+     */
+    matchPattern?: string
+
+    /**
      * Optional badge text/number to display after the label.
      */
     badge?: string | number
@@ -108,6 +122,12 @@ export type NavigationMenuProps = {
      * @default false
      */
     accordion?: boolean
+
+    /**
+     * Enable tree line styling for vertical accordion mode.
+     * @default false
+     */
+    tree?: boolean
 
     /**
      * Additional CSS classes.
