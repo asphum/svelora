@@ -1,21 +1,6 @@
 // Components
 
-export {
-    ModeWatcher,
-    createInitialModeExpression,
-    generateSetInitialModeExpression,
-    mode,
-    resetMode,
-    setMode,
-    setTheme,
-    systemPrefersMode,
-    theme,
-    themeStorageKey,
-    toggleMode,
-    userPrefersMode,
-    modeStorageKey
-} from 'mode-watcher'
-export type { SystemModeValue, SystemPrefersMode, UserPrefersMode } from 'mode-watcher'
+
 export * from './Accordion/index.js'
 export * from './Alert/index.js'
 export * from './Avatar/index.js'

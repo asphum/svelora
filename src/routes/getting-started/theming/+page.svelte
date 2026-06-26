@@ -62,7 +62,8 @@
 }`
 
     const fontsLayoutCode = `<` + `script lang="ts">
- import { Fonts, ModeWatcher } from 'svelora';
+ import { Fonts } from 'svelora';
+ import { ModeWatcher } from 'mode-watcher';
  import 'svelora/theme.css';
 
  let { children } = $props();
@@ -78,6 +79,15 @@
 
 <ModeWatcher />
 {@render children?.()}`
+
+    const modeWatcherPropsCode = `<!-- Default behavior (syncs with system, saves to localStorage) -->
+<ModeWatcher />
+
+<!-- Force dark mode by default -->
+<ModeWatcher defaultMode="dark" />
+
+<!-- Disable saving to localStorage (always use system preference) -->
+<ModeWatcher track={false} />`
 
     const sarabunCode = `<` + `script lang="ts">
  import { Fonts } from 'svelora';
@@ -352,6 +362,23 @@ defineConfig({
         <p class="text-sm text-on-surface-variant">
             Svelora now exposes `font-sarabun` through theme tokens, so you can use it directly in
             classes across the project after mapping `--font-sarabun-family`.
+        </p>
+    </section>
+
+    <section class="space-y-4">
+        <h2 class="text-xl font-semibold">Mode Watcher (Dark Mode)</h2>
+        <p class="text-on-surface-variant">
+            Svelora uses <a href="https://github.com/svecosystem/mode-watcher" target="_blank" class="text-primary hover:underline">mode-watcher</a> to handle dark mode seamlessly without a flash of unstyled content (FOUC).
+            You must install it as a peer dependency: <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-sm">npm install mode-watcher</code>
+        </p>
+        <p class="text-on-surface-variant">
+            Place the <code>&lt;ModeWatcher /&gt;</code> component at the root of your app (in <code>+layout.svelte</code>). You can customize its behavior using props:
+        </p>
+        <Card class="border border-outline-variant/70">
+            <pre class="overflow-x-auto text-sm"><code>{modeWatcherPropsCode}</code></pre>
+        </Card>
+        <p class="text-sm text-on-surface-variant">
+            You can also import <code>mode</code> and <code>toggleMode</code> directly from <code>mode-watcher</code> to build your own theme toggle buttons.
         </p>
     </section>
 

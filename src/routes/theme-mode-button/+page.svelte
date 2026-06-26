@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { ThemeModeButton, mode } from '$lib/index.js'
+    import { ThemeModeButton } from '$lib/index.js'
+    import { mode } from 'mode-watcher'
 
     const variants = ['solid', 'outline', 'soft', 'subtle', 'ghost', 'link'] as const
     const colors = [
@@ -20,8 +21,12 @@
         <h1 class="text-2xl font-bold">ThemeModeButton</h1>
         <p class="text-on-surface-variant">
             A button to switch between light and dark mode. Built on top of the Button component
-            and Svelora theme utilities.
+            and <code class="rounded bg-surface-container-highest px-1">mode-watcher</code>.
         </p>
+        <div class="mt-4 rounded-xl border-l-4 border-warning bg-warning/10 p-4 text-sm text-on-surface-variant">
+            <strong class="font-semibold text-warning">Requirement:</strong>
+            You must install <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-sm">mode-watcher</code> as a peer dependency to use this component.
+        </div>
     </div>
 
     <!-- Basic Usage -->

@@ -9,11 +9,9 @@
         LINK_LOCATION_CONTEXT_KEY,
         Link,
         type LinkLocationContext,
-        LocaleButton,
-        ModeWatcher,
-        mode,
-        toggleMode
+        LocaleButton
     } from '$lib/index.js'
+    import { ModeWatcher, mode, toggleMode } from 'mode-watcher'
     import { m } from '$lib/paraglide/messages.js'
     import { getLocale, setLocale, toLocale } from '$lib/paraglide/runtime.js'
     import { setContext } from 'svelte'
