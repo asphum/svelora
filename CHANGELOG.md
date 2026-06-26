@@ -19,6 +19,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.0.8] - 2026-06-26
+
+### Added
+
+- add NavigationMenu and Search components with extended Menu types for badges and shortcuts
+- add orientation support and 2D array grouping to NavigationMenu component
+- consolidate Menu component functionality into NavigationMenu with new accordion support
+- migrate charting engine from Chart.js to ApexCharts
+
+### Changed
+
+- prepare public release
+
 ## [3.0.7] - 2026-06-25
 
 ### Added
@@ -414,7 +427,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.7...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.8...HEAD
+[3.0.8]: https://github.com/asphum/svelora/compare/v3.0.7...v3.0.8
 [3.0.7]: https://github.com/asphum/svelora/compare/v3.0.6...v3.0.7
 [3.0.6]: https://github.com/asphum/svelora/compare/v3.0.5...v3.0.6
 [3.0.5]: https://github.com/asphum/svelora/compare/v3.0.4...v3.0.5
