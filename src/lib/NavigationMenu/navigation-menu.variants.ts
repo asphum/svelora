@@ -10,7 +10,8 @@ export const navigationMenuVariants = tv({
             'disabled:pointer-events-none disabled:opacity-50'
         ],
         icon: 'text-lg shrink-0 transition-colors',
-        chevron: 'text-base opacity-50 shrink-0 transition-transform group-data-[state=open]:rotate-180',
+        chevron:
+            'text-base opacity-50 shrink-0 transition-transform group-data-[state=open]:rotate-180',
         accordionGroupContent: 'flex flex-col gap-1 pl-4 mt-1',
         accordionTrigger: [
             'flex items-center justify-between w-full px-3 py-2 text-sm font-medium rounded-md',

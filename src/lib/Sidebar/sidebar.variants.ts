@@ -13,13 +13,13 @@ export const sidebarVariants = tv({
             right: { base: 'border-l' }
         },
         collapsed: {
-            true: { 
+            true: {
                 base: 'w-[64px]',
                 header: 'px-3 justify-center',
                 content: 'px-3 flex flex-col items-center',
                 footer: 'p-3 flex flex-col items-center justify-center gap-4'
             },
-            false: { 
+            false: {
                 base: 'w-64',
                 header: 'px-4',
                 content: 'px-3',

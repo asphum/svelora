@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte'
 import type { ClassNameValue } from 'tailwind-merge'
-import type { DropdownMenuItem } from '../DropdownMenu/dropdown-menu.types.js'
+
 import type { BadgeProps } from '../Badge/badge.types.js'
 import type { KbdProps } from '../Kbd/kbd.types.js'
 import type { NavigationMenuVariantProps, NavigationMenuSlots } from './navigation-menu.variants.js'

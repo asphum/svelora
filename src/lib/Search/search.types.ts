@@ -4,7 +4,8 @@ import type { CommandGroup } from '../Command/command.types.js'
 
 export type SearchVariant = 'input' | 'modal' | 'button'
 
-export interface SearchProps extends Omit<HTMLAttributes<HTMLInputElement | HTMLButtonElement>, 'class'> {
+export interface SearchProps
+    extends Omit<HTMLAttributes<HTMLInputElement | HTMLButtonElement>, 'class'> {
     /**
      * Determines the visual style and behavior of the search component.
      * - `input`: A standard input box.
