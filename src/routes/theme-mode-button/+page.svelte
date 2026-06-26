@@ -31,7 +31,12 @@
 
     <!-- Basic Usage -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic Usage</h2>
+        <h2 id="Basic-Usage" class="text-lg font-semibold">
+<a href="#Basic-Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic Usage
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-4 rounded-lg bg-surface-container-high p-4">
             <ThemeModeButton />
             <span class="text-sm text-on-surface-variant capitalize">
@@ -42,7 +47,12 @@
 
     <!-- Variants -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-3 rounded-lg bg-surface-container-high p-4">
             {#each variants as variant (variant)}
                 <div class="flex flex-col items-center gap-2">
@@ -55,7 +65,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <div class="overflow-x-auto">
             <table class="w-full">
                 <thead>
@@ -92,7 +107,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="flex flex-wrap items-end gap-3 rounded-lg bg-surface-container-high p-4">
             {#each sizes as size (size)}
                 <div class="flex flex-col items-center gap-2">
@@ -105,7 +125,12 @@
 
     <!-- Custom Icons -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Icons</h2>
+        <h2 id="Custom-Icons" class="text-lg font-semibold">
+<a href="#Custom-Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Icons
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Override the default light/dark icons using the
             <code class="rounded bg-surface-container-highest px-1">lightIcon</code> and
@@ -129,7 +154,12 @@
 
     <!-- Non-square (with label via children) -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Content (Children Snippet)</h2>
+        <h2 id="Custom-Content-Children-Snippet" class="text-lg font-semibold">
+<a href="#Custom-Content-Children-Snippet" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Content (Children Snippet)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">children</code> snippet
             with
@@ -159,7 +189,12 @@
 
     <!-- Disabled & Loading -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled & Loading</h2>
+        <h2 id="Disabled--Loading" class="text-lg font-semibold">
+<a href="#Disabled--Loading" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled & Loading
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-4 rounded-lg bg-surface-container-high p-4">
             <div class="flex flex-col items-center gap-2">
                 <ThemeModeButton disabled />
@@ -174,7 +209,12 @@
 
     <!-- UI Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Prop (Class Overrides)</h2>
+        <h2 id="UI-Prop-Class-Overrides" class="text-lg font-semibold">
+<a href="#UI-Prop-Class-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Prop (Class Overrides)
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-4 rounded-lg bg-surface-container-high p-4">
             <div class="flex flex-col items-center gap-2">
                 <ThemeModeButton class="rounded-full" variant="outline" color="primary" />

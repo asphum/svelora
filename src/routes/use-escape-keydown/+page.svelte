@@ -22,7 +22,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Press Escape anywhere on this page.</p>
         <div
             use:useEscapeKeydown={{ handler: () => escCount++ }}
@@ -40,7 +45,12 @@
 
     <!-- Dismiss Panel -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Dismiss Panel</h2>
+        <h2 id="Dismiss-Panel" class="text-lg font-semibold">
+<a href="#Dismiss-Panel" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Dismiss Panel
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Button onclick={() => (panelOpen = true)} disabled={panelOpen}>Show Panel</Button>
 
@@ -62,7 +72,12 @@
 
     <!-- Confirmation Dialog -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Confirmation Dialog</h2>
+        <h2 id="Confirmation-Dialog" class="text-lg font-semibold">
+<a href="#Confirmation-Dialog" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Confirmation Dialog
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Press Escape to cancel the confirmation.</p>
         <div class="rounded-lg bg-surface-container-high p-4">
             {#if !confirmOpen}
@@ -96,7 +111,12 @@
 
     <!-- Enable/Disable -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Enable / Disable</h2>
+        <h2 id="Enable--Disable" class="text-lg font-semibold">
+<a href="#Enable--Disable" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Enable / Disable
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <div class="flex items-center gap-4">
                 <Button variant="outline" size="sm" onclick={() => (enabled = !enabled)}>

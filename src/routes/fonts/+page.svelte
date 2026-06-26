@@ -298,7 +298,12 @@ defineConfig({
     </div>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Default Preset</h2>
+        <h2 id="Default-Preset" class="text-lg font-semibold">
+<a href="#Default-Preset" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Default Preset
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             If you render `<Fonts />` without props or custom config, Svelora uses the built-in preset
             below. The current default display is `{fontsDefaults.display}` with preconnect set to
@@ -324,7 +329,12 @@ defineConfig({
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Google Provider</h2>
+        <h2 id="Google-Provider" class="text-lg font-semibold">
+<a href="#Google-Provider" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Google Provider
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Fonts families={googleFamilies} />
             <h3 class="font-heading text-2xl font-semibold">Poppins heading</h3>
@@ -334,7 +344,12 @@ defineConfig({
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Local Provider</h2>
+        <h2 id="Local-Provider" class="text-lg font-semibold">
+<a href="#Local-Provider" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Local Provider
+                    </a>
+</h2>
         <CodeBlock title="Local Provider" code={localProviderCode} html={localProviderHtml} />
         <p class="text-sm text-on-surface-variant">
             Put your font files under `static/fonts/*`, map them to a CSS variable, then use utility
@@ -343,7 +358,12 @@ defineConfig({
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Local Font Setup</h2>
+        <h2 id="Local-Font-Setup" class="text-lg font-semibold">
+<a href="#Local-Font-Setup" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Local Font Setup
+                    </a>
+</h2>
         <div class="grid gap-3 md:grid-cols-2">
             {#each localSetupSteps as step, index (`${index}-${step}`)}
                 <Card class="border border-outline-variant/70">
@@ -358,7 +378,12 @@ defineConfig({
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Mixed Providers</h2>
+        <h2 id="Mixed-Providers" class="text-lg font-semibold">
+<a href="#Mixed-Providers" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Mixed Providers
+                    </a>
+</h2>
         <CodeBlock title="Mixed Providers" code={mixedProviderCode} html={mixedProviderHtml} />
         <p class="text-sm text-on-surface-variant">
             Mix Google fonts for global typography with local assets for brand or language-specific
@@ -367,13 +392,23 @@ defineConfig({
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Using Global Config</h2>
+        <h2 id="Using-Global-Config" class="text-lg font-semibold">
+<a href="#Using-Global-Config" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Using Global Config
+                    </a>
+</h2>
         <CodeBlock title="defineConfig()" code={configCode} html={configHtml} />
         <CodeBlock title="+layout.svelte" code={layoutCode} html={layoutHtml} />
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disable Defaults</h2>
+        <h2 id="Disable-Defaults" class="text-lg font-semibold">
+<a href="#Disable-Defaults" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disable Defaults
+                    </a>
+</h2>
         <CodeBlock title="Disable Defaults" code={disableDefaultsCode} html={disableDefaultsHtml} />
         <p class="text-sm text-on-surface-variant">
             Set `fonts: false` when you want to fully manage font loading yourself.
@@ -381,7 +416,12 @@ defineConfig({
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">API Reference</h2>
+        <h2 id="API-Reference" class="text-lg font-semibold">
+<a href="#API-Reference" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        API Reference
+                    </a>
+</h2>
         <div class="grid gap-4 lg:grid-cols-2">
             <Card class="border border-outline-variant/70">
                 <div class="space-y-4">

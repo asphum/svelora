@@ -147,7 +147,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Right-click on the area below to open a context menu with icons and keyboard shortcuts.
         </p>
@@ -160,7 +165,12 @@
 
     <!-- Colored Items -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colored Items</h2>
+        <h2 id="Colored-Items" class="text-lg font-semibold">
+<a href="#Colored-Items" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colored Items
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">color</code>
@@ -175,7 +185,12 @@
 
     <!-- Checkbox Items -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Checkbox Items</h2>
+        <h2 id="Checkbox-Items" class="text-lg font-semibold">
+<a href="#Checkbox-Items" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Checkbox Items
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Toggle boolean states with checkbox items.</p>
         <div class="flex items-start gap-4 rounded-lg bg-surface-container-high p-4">
             <ContextMenu items={checkboxItems} class="flex-1">
@@ -193,7 +208,12 @@
 
     <!-- Radio Items -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Radio Items</h2>
+        <h2 id="Radio-Items" class="text-lg font-semibold">
+<a href="#Radio-Items" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Radio Items
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Single selection with radio items and groups.</p>
         <div class="flex items-start gap-4 rounded-lg bg-surface-container-high p-4">
             <ContextMenu items={radioItems} {radioGroups} class="flex-1">
@@ -209,7 +229,12 @@
 
     <!-- Submenus -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Submenus</h2>
+        <h2 id="Submenus" class="text-lg font-semibold">
+<a href="#Submenus" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Submenus
+                    </a>
+</h2>
         <ContextMenu items={submenuItems}>
             <div class="{triggerClass} h-36 w-full">
                 <span class="text-sm">Right-click for submenus</span>
@@ -219,7 +244,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control the menu size with the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">size</code>
@@ -238,7 +268,12 @@
 
     <!-- Custom Header/Footer -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Header/Footer</h2>
+        <h2 id="Custom-HeaderFooter" class="text-lg font-semibold">
+<a href="#Custom-HeaderFooter" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Header/Footer
+                    </a>
+</h2>
         <ContextMenu items={basicItems.slice(0, 4)}>
             <div class="{triggerClass} h-36 w-full">
                 <span class="text-sm">Right-click for header/footer</span>
@@ -266,7 +301,12 @@
 
     <!-- Custom Content -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Content</h2>
+        <h2 id="Custom-Content" class="text-lg font-semibold">
+<a href="#Custom-Content" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Content
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">content</code>
@@ -297,7 +337,12 @@
 
     <!-- UI Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Overrides</h2>
+        <h2 id="UI-Overrides" class="text-lg font-semibold">
+<a href="#UI-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Overrides
+                    </a>
+</h2>
         <div class="grid gap-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Primary theme</p>
@@ -332,7 +377,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-6">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <div class="space-y-4">
             <div class="space-y-2">

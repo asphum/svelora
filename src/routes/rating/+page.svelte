@@ -15,7 +15,12 @@
 
     <!-- Usage -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Usage</h2>
+        <h2 id="Usage" class="text-lg font-semibold">
+<a href="#Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Usage
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1">bind:value</code> to control the rating.
         </p>
@@ -29,7 +34,12 @@
 
     <!-- Half Stars -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Half Stars</h2>
+        <h2 id="Half-Stars" class="text-lg font-semibold">
+<a href="#Half-Stars" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Half Stars
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1">allowHalf={`{true}`}</code> to enable half-star precision rating via mouse or keyboard.
         </p>
@@ -43,7 +53,12 @@
 
     <!-- Custom Icons -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Icons</h2>
+        <h2 id="Custom-Icons" class="text-lg font-semibold">
+<a href="#Custom-Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Icons
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Provide <code class="rounded bg-surface-container-highest px-1">iconFull</code> and <code class="rounded bg-surface-container-highest px-1">iconEmpty</code> to change the shapes.
         </p>

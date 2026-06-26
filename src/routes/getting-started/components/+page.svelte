@@ -122,7 +122,12 @@
     {#each groups as group (group.title)}
         <section class="space-y-3">
             <div class="flex items-baseline gap-2">
-                <h2 class="text-xl font-semibold">{group.title}</h2>
+                <h2 id="grouptitle" class="text-xl font-semibold">
+<a href="#grouptitle" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        {group.title}
+                    </a>
+</h2>
                 <span class="text-sm text-on-surface-variant">{group.count}</span>
             </div>
             <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

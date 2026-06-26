@@ -67,7 +67,12 @@
 
     <!-- Window resize -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Window resize</h2>
+        <h2 id="Window-resize" class="text-lg font-semibold">
+<a href="#Window-resize" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Window resize
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Listens to <code>resize</code> on <code>window</code>. Resize the browser window to see
             it update.
@@ -80,7 +85,12 @@
 
     <!-- Keydown -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Keyboard</h2>
+        <h2 id="Keyboard" class="text-lg font-semibold">
+<a href="#Keyboard" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Keyboard
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Listens to <code>keydown</code> on <code>window</code>. Press any key.
         </p>
@@ -92,7 +102,12 @@
 
     <!-- Pointer position -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Pointer position (reactive element target)</h2>
+        <h2 id="Pointer-position-reactive-element-target" class="text-lg font-semibold">
+<a href="#Pointer-position-reactive-element-target" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Pointer position (reactive element target)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Listens to <code>pointermove</code> / <code>pointerenter</code> /
             <code>pointerleave</code> on an element resolved via a <code>() => box</code> getter, so the

@@ -62,37 +62,41 @@
         arrow = false,
         ui,
         children: triggerContent,
+        item: itemSnippet,
+        menu: menuSnippet,
         class: className,
         ...restProps
     }: Props = $props()
 
-    const slots = localeButtonVariants()
-    const classes = $derived({
-        base: slots.base({ class: [config.slots.base, className, ui?.base] }),
-        triggerLabel: slots.triggerLabel({
-            class: [config.slots.triggerLabel, ui?.triggerLabel]
-        }),
-        triggerIcon: slots.triggerIcon({
-            class: [config.slots.triggerIcon, ui?.triggerIcon]
-        }),
-        triggerChevron: slots.triggerChevron({
-            class: [config.slots.triggerChevron, ui?.triggerChevron]
-        }),
-        menu: slots.menu({ class: [config.slots.menu, ui?.menu] }),
-        menuLabel: slots.menuLabel({ class: [config.slots.menuLabel, ui?.menuLabel] }),
-        item: slots.item({ class: [config.slots.item, ui?.item] }),
-        itemIdle: slots.itemIdle({ class: [config.slots.itemIdle, ui?.itemIdle] }),
-        itemCurrent: slots.itemCurrent({ class: [config.slots.itemCurrent, ui?.itemCurrent] }),
-        itemLeading: slots.itemLeading({ class: [config.slots.itemLeading, ui?.itemLeading] }),
-        itemText: slots.itemText({ class: [config.slots.itemText, ui?.itemText] }),
-        itemLabel: slots.itemLabel({ class: [config.slots.itemLabel, ui?.itemLabel] }),
-        itemDescription: slots.itemDescription({
-            class: [config.slots.itemDescription, ui?.itemDescription]
-        }),
-        itemCode: slots.itemCode({ class: [config.slots.itemCode, ui?.itemCode] }),
-        itemIndicator: slots.itemIndicator({
-            class: [config.slots.itemIndicator, ui?.itemIndicator]
-        })
+    const classes = $derived.by(() => {
+        const slots = localeButtonVariants({ size })
+        return {
+            base: slots.base({ class: [config.slots.base, className, ui?.base] }),
+            triggerLabel: slots.triggerLabel({
+                class: [config.slots.triggerLabel, ui?.triggerLabel]
+            }),
+            triggerIcon: slots.triggerIcon({
+                class: [config.slots.triggerIcon, ui?.triggerIcon]
+            }),
+            triggerChevron: slots.triggerChevron({
+                class: [config.slots.triggerChevron, ui?.triggerChevron]
+            }),
+            menu: slots.menu({ class: [config.slots.menu, ui?.menu] }),
+            menuLabel: slots.menuLabel({ class: [config.slots.menuLabel, ui?.menuLabel] }),
+            item: slots.item({ class: [config.slots.item, ui?.item] }),
+            itemIdle: slots.itemIdle({ class: [config.slots.itemIdle, ui?.itemIdle] }),
+            itemCurrent: slots.itemCurrent({ class: [config.slots.itemCurrent, ui?.itemCurrent] }),
+            itemLeading: slots.itemLeading({ class: [config.slots.itemLeading, ui?.itemLeading] }),
+            itemText: slots.itemText({ class: [config.slots.itemText, ui?.itemText] }),
+            itemLabel: slots.itemLabel({ class: [config.slots.itemLabel, ui?.itemLabel] }),
+            itemDescription: slots.itemDescription({
+                class: [config.slots.itemDescription, ui?.itemDescription]
+            }),
+            itemCode: slots.itemCode({ class: [config.slots.itemCode, ui?.itemCode] }),
+            itemIndicator: slots.itemIndicator({
+                class: [config.slots.itemIndicator, ui?.itemIndicator]
+            })
+        }
     })
 
     const currentLocale = $derived(
@@ -189,54 +193,62 @@
     {/snippet}
 
     {#snippet content({ close })}
-        <div class={classes.menu}>
-            {#if menuLabel}
-                <p class={classes.menuLabel}>{menuLabel}</p>
-            {/if}
+        {#if menuSnippet}
+            {@render menuSnippet({ close })}
+        {:else}
+            <div class={classes.menu}>
+                {#if menuLabel}
+                    <p class={classes.menuLabel}>{menuLabel}</p>
+                {/if}
 
-            {#each locales as item (item.code)}
-                {@const current = isCurrentLocale(item)}
-                {@const href = getResolvedHref(item)}
-                {@const itemDisabled = isItemDisabled(item)}
+                {#each locales as item (item.code)}
+                    {@const current = isCurrentLocale(item)}
+                    {@const href = getResolvedHref(item)}
+                    {@const itemDisabled = isItemDisabled(item)}
 
-                <Link
-                    href={href}
-                    hreflang={item.hreflang ?? item.code}
-                    raw
-                    role="menuitemradio"
-                    aria-checked={current}
-                    disabled={itemDisabled}
-                    class={[
-                        classes.item,
-                        current ? classes.itemCurrent : classes.itemIdle,
-                        item.class
-                    ]}
-                    onclick={(event) => handleItemClick(event, item, close)}
-                >
-                    <span class={classes.itemLeading}>
-                        {#if item.icon}
-                            <Icon name={item.icon} />
-                        {/if}
-                        <span class={classes.itemText}>
-                            <span class={classes.itemLabel}>{item.label}</span>
-                            {#if item.description}
-                                <span class={classes.itemDescription}>{item.description}</span>
-                            {/if}
-                        </span>
-                    </span>
-
-                    <span class="flex items-center gap-2">
-                        {#if showCode}
-                            <span class={classes.itemCode}>{item.shortLabel ?? item.code}</span>
-                        {/if}
-                        {#if showIndicator && current}
-                            <span class={classes.itemIndicator}>
-                                <Icon name={icons.check} />
+                    {#if itemSnippet}
+                        {@render itemSnippet({ item, current, disabled: itemDisabled, close })}
+                    {:else}
+                        <Link
+                            href={href}
+                            hreflang={item.hreflang ?? item.code}
+                            raw
+                            role="menuitemradio"
+                            aria-checked={current}
+                            disabled={itemDisabled}
+                            class={[
+                                classes.item,
+                                current ? classes.itemCurrent : classes.itemIdle,
+                                item.class
+                            ]}
+                            onclick={(event) => handleItemClick(event, item, close)}
+                        >
+                            <span class={classes.itemLeading}>
+                                {#if item.icon}
+                                    <Icon name={item.icon} />
+                                {/if}
+                                <span class={classes.itemText}>
+                                    <span class={classes.itemLabel}>{item.label}</span>
+                                    {#if item.description}
+                                        <span class={classes.itemDescription}>{item.description}</span>
+                                    {/if}
+                                </span>
                             </span>
-                        {/if}
-                    </span>
-                </Link>
-            {/each}
-        </div>
+
+                            <span class="flex items-center gap-2">
+                                {#if showCode}
+                                    <span class={classes.itemCode}>{item.shortLabel ?? item.code}</span>
+                                {/if}
+                                {#if showIndicator && current}
+                                    <span class={classes.itemIndicator}>
+                                        <Icon name={icons.check} />
+                                    </span>
+                                {/if}
+                            </span>
+                        </Link>
+                    {/if}
+                {/each}
+            </div>
+        {/if}
     {/snippet}
 </DropdownMenu>

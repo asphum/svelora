@@ -13,7 +13,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Breadcrumb
                 items={[
@@ -28,7 +33,12 @@
 
     <!-- With Icons -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Icons</h2>
+        <h2 id="With-Icons" class="text-lg font-semibold">
+<a href="#With-Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Icons
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Breadcrumb
                 items={[
@@ -42,7 +52,12 @@
 
     <!-- Separator Icon -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Separator Icon</h2>
+        <h2 id="Separator-Icon" class="text-lg font-semibold">
+<a href="#Separator-Icon" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Separator Icon
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Customize the separator between items via the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -68,7 +83,12 @@
 
     <!-- Separator Snippet -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Separator Snippet</h2>
+        <h2 id="Separator-Snippet" class="text-lg font-semibold">
+<a href="#Separator-Snippet" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Separator Snippet
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">separator</code
@@ -91,7 +111,12 @@
 
     <!-- Disabled Items -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled Items</h2>
+        <h2 id="Disabled-Items" class="text-lg font-semibold">
+<a href="#Disabled-Items" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled Items
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Breadcrumb
                 items={[
@@ -106,7 +131,12 @@
 
     <!-- Custom Item Snippet -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Item Snippet</h2>
+        <h2 id="Custom-Item-Snippet" class="text-lg font-semibold">
+<a href="#Custom-Item-Snippet" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Item Snippet
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">item</code>
@@ -149,7 +179,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="grid gap-4 lg:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Custom active color</p>
@@ -211,7 +246,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-6">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <div class="grid gap-4 md:grid-cols-2">
             <!-- File Browser -->

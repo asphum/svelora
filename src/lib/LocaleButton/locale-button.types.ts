@@ -211,6 +211,18 @@ export type LocaleButtonProps = Omit<HTMLAttributes<HTMLElement>, 'children' | '
         children?: Snippet<[{ open: boolean; currentLocale: LocaleButtonLocale | undefined }]>
 
         /**
+         * Render custom content for each locale item in the menu.
+         */
+        item?: Snippet<
+            [{ item: LocaleButtonLocale; current: boolean; disabled: boolean; close: () => void }]
+        >
+
+        /**
+         * Render a custom menu layout entirely.
+         */
+        menu?: Snippet<[{ close: () => void }]>
+
+        /**
          * Whether to render the menu in a portal.
          * @default true
          */

@@ -290,7 +290,12 @@
         <section class="mx-auto max-w-7xl space-y-8 px-4 lg:px-6">
             <div class="space-y-3 text-center">
                 <p class="text-sm font-semibold tracking-[0.16em] text-primary uppercase">Features</p>
-                <h2 class="text-3xl font-semibold sm:text-4xl">Everything you need, nothing you don't</h2>
+                <h2 id="Everything-you-need-nothing-you-dont" class="text-3xl font-semibold sm:text-4xl">
+<a href="#Everything-you-need-nothing-you-dont" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Everything you need, nothing you don't
+                    </a>
+</h2>
                 <p class="mx-auto max-w-3xl text-on-surface-variant">
                     A thoughtfully designed component library that gives you the building blocks for modern applications.
                 </p>
@@ -316,7 +321,12 @@
         <section id="components" class="mx-auto max-w-7xl space-y-8 px-4 lg:px-6">
             <div class="space-y-3">
                 <p class="text-sm font-semibold tracking-[0.16em] text-primary uppercase">Components</p>
-                <h2 class="text-3xl font-semibold sm:text-4xl">{totalComponents}+ components ready to use</h2>
+                <h2 id="totalComponents-components-ready-to-use" class="text-3xl font-semibold sm:text-4xl">
+<a href="#totalComponents-components-ready-to-use" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        {totalComponents}+ components ready to use
+                    </a>
+</h2>
                 <p class="max-w-3xl text-on-surface-variant">
                     Interactive previews of real Svelora components. Explore the design language before you jump into the docs.
                 </p>
@@ -385,7 +395,12 @@
         <section class="mx-auto max-w-7xl space-y-8 px-4 lg:px-6">
             <div class="space-y-3">
                 <p class="text-sm font-semibold tracking-[0.16em] text-primary uppercase">Color System</p>
-                <h2 class="text-3xl font-semibold sm:text-4xl">8 semantic colors, infinite possibilities</h2>
+                <h2 id="8-semantic-colors-infinite-possibilities" class="text-3xl font-semibold sm:text-4xl">
+<a href="#8-semantic-colors-infinite-possibilities" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        8 semantic colors, infinite possibilities
+                    </a>
+</h2>
                 <p class="max-w-3xl text-on-surface-variant">
                     A complete OKLCH color system that adapts cleanly to light and dark themes.
                 </p>
@@ -412,7 +427,12 @@
         <section class="mx-auto max-w-7xl space-y-8 px-4 lg:px-6">
             <div class="space-y-3">
                 <p class="text-sm font-semibold tracking-[0.16em] text-primary uppercase">Getting Started</p>
-                <h2 class="text-3xl font-semibold sm:text-4xl">Up and running in 3 simple steps</h2>
+                <h2 id="Up-and-running-in-3-simple-steps" class="text-3xl font-semibold sm:text-4xl">
+<a href="#Up-and-running-in-3-simple-steps" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Up and running in 3 simple steps
+                    </a>
+</h2>
                 <p class="max-w-3xl text-on-surface-variant">
                     No complex configuration. Install, import the theme, and start building.
                 </p>
@@ -475,7 +495,12 @@
                             <Badge label="MIT" variant="soft" color="secondary" />
                         </div>
                         <div class="space-y-3">
-                            <h2 class="text-3xl font-semibold sm:text-4xl">Ready to build something amazing?</h2>
+                            <h2 id="Ready-to-build-something-amazing" class="text-3xl font-semibold sm:text-4xl">
+<a href="#Ready-to-build-something-amazing" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Ready to build something amazing?
+                    </a>
+</h2>
                             <p class="max-w-2xl text-on-surface-variant">
                                 Join developers building polished Svelte applications with a modern, accessible component system.
                             </p>

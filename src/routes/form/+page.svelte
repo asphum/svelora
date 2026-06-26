@@ -411,7 +411,12 @@
     <!-- ============================================================ -->
     <section class="space-y-4">
         <div>
-            <h2 class="text-lg font-semibold text-on-surface">Basic — Login form with Zod</h2>
+            <h2 id="Basic--Login-form-with-Zod" class="text-lg font-semibold text-on-surface">
+<a href="#Basic--Login-form-with-Zod" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic — Login form with Zod
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">
                 Simplest usage: pass a Zod schema to the <code
                     class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">schema</code
@@ -476,9 +481,12 @@
     <!-- ============================================================ -->
     <section class="space-y-4">
         <div>
-            <h2 class="text-lg font-semibold text-on-surface">
-                Schema validation — Zod / Valibot / Yup / Joi
-            </h2>
+            <h2 id="-Schema-validation--Zod--Valibot--Yup--Joi-" class="text-lg font-semibold text-on-surface">
+<a href="#-Schema-validation--Zod--Valibot--Yup--Joi-" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Schema validation — Zod / Valibot / Yup / Joi
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">
                 The same signup form validated by four different libraries. Zod, Valibot, and Yup go
                 through the <a
@@ -627,7 +635,12 @@
     <!-- ============================================================ -->
     <section class="space-y-4">
         <div>
-            <h2 class="text-lg font-semibold text-on-surface">Async submit — loading state</h2>
+            <h2 id="Async-submit--loading-state" class="text-lg font-semibold text-on-surface">
+<a href="#Async-submit--loading-state" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Async submit — loading state
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">
                 When <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                     >onsubmit</code
@@ -677,7 +690,12 @@
     <!-- ============================================================ -->
     <section class="space-y-4">
         <div>
-            <h2 class="text-lg font-semibold text-on-surface">Programmatic API — bind:api</h2>
+            <h2 id="Programmatic-API--bindapi" class="text-lg font-semibold text-on-surface">
+<a href="#Programmatic-API--bindapi" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Programmatic API — bind:api
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">
                 Bind the <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                     >api</code
@@ -769,7 +787,12 @@
     <!-- ============================================================ -->
     <section class="space-y-4">
         <div>
-            <h2 class="text-lg font-semibold text-on-surface">Async validation</h2>
+            <h2 id="Async-validation" class="text-lg font-semibold text-on-surface">
+<a href="#Async-validation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Async validation
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">
                 The <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                     >validate</code
@@ -815,7 +838,12 @@
     <!-- ============================================================ -->
     <section class="space-y-4">
         <div>
-            <h2 class="text-lg font-semibold text-on-surface">Array fields (repeater)</h2>
+            <h2 id="Array-fields-repeater" class="text-lg font-semibold text-on-surface">
+<a href="#Array-fields-repeater" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Array fields (repeater)
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">
                 Each row is a <code class="rounded bg-surface-container-highest px-1 text-xs"
                     >&lt;Form nested name="guests.&#123;index&#125;"&gt;</code
@@ -899,7 +927,12 @@
     <!-- ============================================================ -->
     <section class="space-y-4">
         <div>
-            <h2 class="text-lg font-semibold text-on-surface">Dependent fields</h2>
+            <h2 id="Dependent-fields" class="text-lg font-semibold text-on-surface">
+<a href="#Dependent-fields" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Dependent fields
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">
                 Zod's <code class="rounded bg-surface-container-highest px-1 text-xs"
                     >.refine()</code
@@ -953,7 +986,12 @@
     <!-- ============================================================ -->
     <section class="space-y-4">
         <div>
-            <h2 class="text-lg font-semibold text-on-surface">Nested forms</h2>
+            <h2 id="Nested-forms" class="text-lg font-semibold text-on-surface">
+<a href="#Nested-forms" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Nested forms
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">
                 A child <code class="rounded bg-surface-container-highest px-1 text-xs"
                     >&lt;Form nested name="address"&gt;</code
@@ -1012,7 +1050,12 @@
     <!-- ============================================================ -->
     <section class="space-y-4">
         <div>
-            <h2 class="text-lg font-semibold text-on-surface">Error summary + reset</h2>
+            <h2 id="Error-summary--reset" class="text-lg font-semibold text-on-surface">
+<a href="#Error-summary--reset" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Error summary + reset
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">
                 Read <code class="rounded bg-surface-container-highest px-1 text-xs"
                     >form.errors</code
@@ -1087,7 +1130,12 @@
     <!-- Features list                                                  -->
     <!-- ============================================================ -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Features</h2>
+        <h2 id="Features" class="text-lg font-semibold text-on-surface">
+<a href="#Features" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Features
+                    </a>
+</h2>
         <ul class="list-inside list-disc space-y-1 text-sm text-on-surface-variant">
             <li>
                 Supported libraries: <strong>Zod 3.24+</strong>, <strong>Valibot 1.0+</strong>,

@@ -57,7 +57,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-2 rounded-lg bg-surface-container-high p-4">
             <Kbd value="K" />
             <Kbd value="Enter" />
@@ -68,7 +73,12 @@
 
     <!-- Modifier Keys -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Modifier Keys</h2>
+        <h2 id="Modifier-Keys" class="text-lg font-semibold">
+<a href="#Modifier-Keys" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Modifier Keys
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Platform-aware: Mac shows symbols, others show text labels.
         </p>
@@ -81,7 +91,12 @@
 
     <!-- Special Keys -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Special Keys</h2>
+        <h2 id="Special-Keys" class="text-lg font-semibold">
+<a href="#Special-Keys" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Special Keys
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-2 rounded-lg bg-surface-container-high p-4">
             {#each specialKeys as key (key)}
                 <Kbd value={key} />
@@ -91,7 +106,12 @@
 
     <!-- Arrow & Navigation Keys -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Arrow & Navigation Keys</h2>
+        <h2 id="Arrow--Navigation-Keys" class="text-lg font-semibold">
+<a href="#Arrow--Navigation-Keys" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Arrow & Navigation Keys
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-2 rounded-lg bg-surface-container-high p-4">
             {#each arrowKeys as key (key)}
                 <Kbd value={key} />
@@ -105,7 +125,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-3 rounded-lg bg-surface-container-high p-4">
             {#each sizes as size (size)}
                 <div class="flex items-center gap-1">
@@ -118,7 +143,12 @@
 
     <!-- Variants -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             {#each variants as variant (variant)}
                 <div class="flex flex-wrap items-center gap-2">
@@ -133,7 +163,12 @@
 
     <!-- Children Slot -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Children Slot</h2>
+        <h2 id="Children-Slot" class="text-lg font-semibold">
+<a href="#Children-Slot" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Children Slot
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the default snippet for custom key labels.
         </p>
@@ -149,7 +184,12 @@
 
     <!-- Keyboard Shortcuts -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Keyboard Shortcuts</h2>
+        <h2 id="Keyboard-Shortcuts" class="text-lg font-semibold">
+<a href="#Keyboard-Shortcuts" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Keyboard Shortcuts
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             {#each [{ label: 'Copy', keys: ['meta', 'C'] }, { label: 'Paste', keys: ['meta', 'V'] }, { label: 'Save', keys: ['meta', 'S'] }, { label: 'Search', keys: ['meta', 'K'] }, { label: 'Undo', keys: ['meta', 'Z'] }, { label: 'Redo', keys: ['meta', 'shift', 'Z'] }] as shortcut (shortcut.label)}
                 <div class="flex items-center justify-between">
@@ -169,7 +209,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-2 rounded-lg bg-surface-container-high p-4">
             <Kbd value="K" ui={{ base: 'rounded-md' }} />
             <Kbd value="meta" ui={{ base: 'rounded-full px-2' }} />
@@ -179,7 +224,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
         <div class="space-y-6 rounded-lg bg-surface-container-high p-4">
             <!-- Command Palette -->
             <div class="space-y-2">
@@ -243,7 +293,12 @@
 
     <!-- useKbd: Shortcut Listener -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">useKbd — Shortcut Listener</h2>
+        <h2 id="useKbd--Shortcut-Listener" class="text-lg font-semibold">
+<a href="#useKbd--Shortcut-Listener" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        useKbd — Shortcut Listener
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Try pressing the shortcuts below. The hook listens for keyboard events and fires
             callbacks.
@@ -285,7 +340,12 @@
 
     <!-- useKbd: Reactive Key State -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">useKbd — Reactive Key State</h2>
+        <h2 id="useKbd--Reactive-Key-State" class="text-lg font-semibold">
+<a href="#useKbd--Reactive-Key-State" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        useKbd — Reactive Key State
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Hold any key to see it tracked in real-time.</p>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             <div class="flex flex-wrap gap-2">
@@ -323,7 +383,12 @@
 
     <!-- Variants x Colors Matrix -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants x Colors</h2>
+        <h2 id="Variants-x-Colors" class="text-lg font-semibold">
+<a href="#Variants-x-Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants x Colors
+                    </a>
+</h2>
         <div class="overflow-x-auto rounded-lg bg-surface-container-high p-4">
             <table class="w-full">
                 <thead>

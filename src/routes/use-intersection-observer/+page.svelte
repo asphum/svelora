@@ -28,7 +28,12 @@
     </div>
 
     <Card>
-        <h2 class="mb-1 font-semibold text-on-surface">Live visibility</h2>
+        <h2 id="Live-visibility" class="mb-1 font-semibold text-on-surface">
+<a href="#Live-visibility" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Live visibility
+                    </a>
+</h2>
         <p class="mb-4 text-sm text-on-surface-variant">
             This badge tracks the target card far below. Scroll down and watch it flip as the target
             enters and leaves the viewport.
@@ -50,7 +55,12 @@
     </div>
 
     <Card>
-        <h2 class="mb-3 font-semibold text-on-surface">Lazy target (threshold: 0.25)</h2>
+        <h2 id="Lazy-target-threshold-025" class="mb-3 font-semibold text-on-surface">
+<a href="#Lazy-target-threshold-025" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Lazy target (threshold: 0.25)
+                    </a>
+</h2>
         <div
             bind:this={target}
             class="flex h-32 items-center justify-center rounded-lg border border-dashed transition-colors duration-500"

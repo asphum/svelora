@@ -17,7 +17,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="grid gap-4 lg:grid-cols-3">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">
@@ -52,7 +57,12 @@
 
     <!-- Variants with Icon -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants with Icon</h2>
+        <h2 id="Variants-with-Icon" class="text-lg font-semibold">
+<a href="#Variants-with-Icon" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants with Icon
+                    </a>
+</h2>
         <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {#each variants as variant (variant)}
                 <div class="space-y-2">
@@ -73,7 +83,12 @@
 
     <!-- Variants with Avatar -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants with Avatar</h2>
+        <h2 id="Variants-with-Avatar" class="text-lg font-semibold">
+<a href="#Variants-with-Avatar" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants with Avatar
+                    </a>
+</h2>
         <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {#each variants as variant (variant)}
                 <div class="space-y-2">
@@ -97,7 +112,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="space-y-3">
             {#each sizes as size (size)}
                 <div class="flex items-start gap-4">
@@ -117,7 +137,12 @@
 
     <!-- With Actions -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Actions</h2>
+        <h2 id="With-Actions" class="text-lg font-semibold">
+<a href="#With-Actions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Actions
+                    </a>
+</h2>
         <div class="grid gap-4 lg:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Single action</p>
@@ -149,7 +174,12 @@
 
     <!-- Custom Slots -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Slots</h2>
+        <h2 id="Custom-Slots" class="text-lg font-semibold">
+<a href="#Custom-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Slots
+                    </a>
+</h2>
         <div class="grid gap-4 lg:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Custom leading</p>
@@ -196,7 +226,12 @@
 
     <!-- Footer Slot -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Footer</h2>
+        <h2 id="With-Footer" class="text-lg font-semibold">
+<a href="#With-Footer" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Footer
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Empty
                 variant="subtle"
@@ -217,7 +252,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="grid gap-4 lg:grid-cols-2">
             <div class="rounded-lg bg-surface-container-high p-4">
                 <Empty
@@ -249,7 +289,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-6">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <!-- Empty Inbox -->
         <div class="space-y-3">

@@ -15,7 +15,12 @@
 
     <!-- Usage -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Usage</h2>
+        <h2 id="Usage" class="text-lg font-semibold">
+<a href="#Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Usage
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Bind a hex string variable to the <code class="rounded bg-surface-container-highest px-1">value</code> prop using <code class="rounded bg-surface-container-highest px-1">bind:value</code>.
         </p>
@@ -29,7 +34,12 @@
 
     <!-- Disabled State -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled</h2>
+        <h2 id="Disabled" class="text-lg font-semibold">
+<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">disabled</code> prop to prevent interaction.
         </p>

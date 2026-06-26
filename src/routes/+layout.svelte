@@ -155,6 +155,8 @@
                         locales={localeOptions}
                         locale={currentLocale}
                         size="sm"
+                        variant="ghost"
+                        color="secondary"
                         square={false}
                         ariaLabel={m.locale_change_language()}
                         menuLabel={m.locale_language()}
@@ -196,11 +198,11 @@
             {/if}
 
             <aside
-                class={`fixed inset-y-0 left-0 top-16.25 z-40 h-[calc(100vh-65px)] w-80 shrink-0 overflow-y-auto border-r border-outline-variant bg-surface/95 px-4 py-6 backdrop-blur transition-transform duration-200 lg:sticky lg:translate-x-0 ${
+                class={`fixed inset-y-0 left-0 top-16.25 z-40 flex h-[calc(100vh-65px)] w-80 shrink-0 flex-col border-r border-outline-variant bg-surface/95 backdrop-blur transition-transform duration-200 lg:sticky lg:translate-x-0 ${
                     sidebarOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
             >
-                <div class="space-y-6">
+                <div class="border-b border-outline-variant/50 p-4 pt-6">
                     <section class="space-y-3">
                         <div class="relative">
                             <Icon
@@ -228,7 +230,9 @@
                             </p>
                         {/if}
                     </section>
+                </div>
 
+                <div class="flex-1 overflow-y-auto p-4 space-y-6 pb-12">
                     {#if filteredSidebarSections.length > 0}
                         {#each filteredSidebarSections as section (section.title)}
                             <section class="space-y-2">

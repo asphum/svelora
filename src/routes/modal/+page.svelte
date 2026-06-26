@@ -52,7 +52,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Modal
                 bind:open={basicOpen}
@@ -83,7 +88,12 @@
 
     <!-- Fullscreen -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Fullscreen</h2>
+        <h2 id="Fullscreen" class="text-lg font-semibold">
+<a href="#Fullscreen" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Fullscreen
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Modal
                 bind:open={fullscreenOpen}
@@ -112,7 +122,12 @@
 
     <!-- Scrollable -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Scrollable</h2>
+        <h2 id="Scrollable" class="text-lg font-semibold">
+<a href="#Scrollable" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Scrollable
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Modal
                 bind:open={scrollableOpen}
@@ -173,7 +188,12 @@
 
     <!-- Options -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Options</h2>
+        <h2 id="Options" class="text-lg font-semibold">
+<a href="#Options" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Options
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Modal
                 bind:open={noTransitionOpen}
@@ -238,7 +258,12 @@
 
     <!-- Non-Dismissible -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Non-Dismissible</h2>
+        <h2 id="Non-Dismissible" class="text-lg font-semibold">
+<a href="#Non-Dismissible" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Non-Dismissible
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Modal
                 bind:open={nonDismissibleOpen}
@@ -268,7 +293,12 @@
 
     <!-- Slots -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Slots</h2>
+        <h2 id="Slots" class="text-lg font-semibold">
+<a href="#Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Slots
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <!-- Custom header -->
             <Modal bind:open={slotsOpen}>
@@ -363,7 +393,12 @@
 
     <!-- Lifecycle Callbacks -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Lifecycle Callbacks</h2>
+        <h2 id="Lifecycle-Callbacks" class="text-lg font-semibold">
+<a href="#Lifecycle-Callbacks" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Lifecycle Callbacks
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <div class="mb-3 space-y-1">
                 {#if callbackLog.length === 0}
@@ -403,7 +438,12 @@
 
     <!-- Programmatic Control -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Programmatic Control</h2>
+        <h2 id="Programmatic-Control" class="text-lg font-semibold">
+<a href="#Programmatic-Control" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Programmatic Control
+                    </a>
+</h2>
         <div class="flex gap-3 rounded-lg bg-surface-container-high p-4">
             <Button
                 variant="outline"
@@ -433,7 +473,12 @@
 
     <!-- UI Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Modal
                 bind:open={uiOverrideOpen}
@@ -469,7 +514,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
         <div class="grid gap-4 sm:grid-cols-2">
             <!-- Confirmation Dialog -->
             <div class="rounded-lg bg-surface-container-high p-4">
@@ -647,7 +697,12 @@
     <Separator />
 
     <section>
-        <h2 class="mb-3 text-lg font-semibold">Size</h2>
+        <h2 id="Size" class="mb-3 text-lg font-semibold">
+<a href="#Size" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Size
+                    </a>
+</h2>
         <p class="mb-4 text-sm text-on-surface-variant">
             Use <code>size</code> to control the modal width: <code>sm</code> /
             <code>md</code> (default) / <code>lg</code> / <code>xl</code> /
@@ -678,7 +733,12 @@
     <Separator />
 
     <section>
-        <h2 class="mb-3 text-lg font-semibold">Transition</h2>
+        <h2 id="Transition" class="mb-3 text-lg font-semibold">
+<a href="#Transition" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Transition
+                    </a>
+</h2>
         <p class="mb-4 text-sm text-on-surface-variant">
             Pick how the modal animates in and out. Default is <code>scale</code>; pass
             <code>fade</code>, <code>slide</code>, or <code>none</code> to override. Boolean

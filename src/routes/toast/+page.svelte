@@ -35,7 +35,12 @@
 
     <!-- Toaster Configuration -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Toaster Configuration</h2>
+        <h2 id="Toaster-Configuration" class="text-lg font-semibold">
+<a href="#Toaster-Configuration" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Toaster Configuration
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Adjust the Toaster props to see how they affect all toasts.
         </p>
@@ -88,7 +93,12 @@
 
     <!-- Basic Usage -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic Usage</h2>
+        <h2 id="Basic-Usage" class="text-lg font-semibold">
+<a href="#Basic-Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic Usage
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Button variant="outline" onclick={() => toast('This is a default toast')}>
                 Default
@@ -113,7 +123,12 @@
 
     <!-- Types -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Types</h2>
+        <h2 id="Types" class="text-lg font-semibold">
+<a href="#Types" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Types
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Each type automatically maps to a semantic color from the theme.
         </p>
@@ -152,7 +167,12 @@
 
     <!-- Types with Description -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Types with Description</h2>
+        <h2 id="Types-with-Description" class="text-lg font-semibold">
+<a href="#Types-with-Description" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Types with Description
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Button
                 color="success"
@@ -199,7 +219,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >color</code
@@ -265,7 +290,12 @@
 
     <!-- Custom Icons -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Icons</h2>
+        <h2 id="Custom-Icons" class="text-lg font-semibold">
+<a href="#Custom-Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Icons
+                    </a>
+</h2>
 
         <!-- Global icons -->
         <div class="space-y-1.5">
@@ -383,7 +413,12 @@
 
     <!-- Avatar -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Avatar</h2>
+        <h2 id="Avatar" class="text-lg font-semibold">
+<a href="#Avatar" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Avatar
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >avatar</code
@@ -446,7 +481,12 @@
 
     <!-- Action & Cancel -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Action & Cancel</h2>
+        <h2 id="Action--Cancel" class="text-lg font-semibold">
+<a href="#Action--Cancel" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Action & Cancel
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Button
                 variant="outline"
@@ -516,7 +556,12 @@
 
     <!-- Promise -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Promise</h2>
+        <h2 id="Promise" class="text-lg font-semibold">
+<a href="#Promise" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Promise
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Automatically transitions between loading, success, and error states.
         </p>
@@ -580,7 +625,12 @@
 
     <!-- Duration -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Duration</h2>
+        <h2 id="Custom-Duration" class="text-lg font-semibold">
+<a href="#Custom-Duration" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Duration
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control how long a toast stays visible before auto-dismiss.
         </p>
@@ -612,7 +662,12 @@
 
     <!-- Update Existing Toast -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Update Existing Toast</h2>
+        <h2 id="Update-Existing-Toast" class="text-lg font-semibold">
+<a href="#Update-Existing-Toast" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Update Existing Toast
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Reuse the same ID to update an existing toast in-place.
         </p>
@@ -651,7 +706,12 @@
 
     <!-- Deduplicated -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Deduplicated Toasts</h2>
+        <h2 id="Deduplicated-Toasts" class="text-lg font-semibold">
+<a href="#Deduplicated-Toasts" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Deduplicated Toasts
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Pass the same <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >id</code
@@ -686,7 +746,12 @@
 
     <!-- Dismiss -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Programmatic Dismiss</h2>
+        <h2 id="Programmatic-Dismiss" class="text-lg font-semibold">
+<a href="#Programmatic-Dismiss" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Programmatic Dismiss
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Button
                 variant="outline"
@@ -718,7 +783,12 @@
 
     <!-- Stacking -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Stacking</h2>
+        <h2 id="Stacking" class="text-lg font-semibold">
+<a href="#Stacking" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Stacking
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Toggle "Expand" in the config above, then fire multiple toasts to see stacked vs
             expanded behavior.
@@ -756,7 +826,12 @@
 
     <!-- Non-dismissible -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Non-dismissible</h2>
+        <h2 id="Non-dismissible" class="text-lg font-semibold">
+<a href="#Non-dismissible" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Non-dismissible
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             A toast that cannot be swiped away or closed by the user.
         </p>
@@ -781,7 +856,12 @@
 
     <!-- All Types at Once (visual test) -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">All Types at Once</h2>
+        <h2 id="All-Types-at-Once" class="text-lg font-semibold">
+<a href="#All-Types-at-Once" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        All Types at Once
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Fire every type simultaneously to visually compare styling.
         </p>
@@ -822,7 +902,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Button
                 variant="outline"

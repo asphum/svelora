@@ -9,7 +9,12 @@
 
     <!-- Basic Usage -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Basic Usage</h2>
+        <h2 id="Basic-Usage" class="text-lg font-semibold text-on-surface">
+<a href="#Basic-Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic Usage
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Wrap multiple <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >Button</code
@@ -28,7 +33,12 @@
 
     <!-- Orientation -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Orientation</h2>
+        <h2 id="Orientation" class="text-lg font-semibold text-on-surface">
+<a href="#Orientation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Orientation
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >orientation</code
@@ -56,7 +66,12 @@
 
     <!-- Size -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Size</h2>
+        <h2 id="Size" class="text-lg font-semibold text-on-surface">
+<a href="#Size" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Size
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">size</code> to
             set the size of all child components.
@@ -77,7 +92,12 @@
 
     <!-- Variants -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">With Variants</h2>
+        <h2 id="With-Variants" class="text-lg font-semibold text-on-surface">
+<a href="#With-Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Variants
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             FieldGroup works with different button variants.
         </p>
@@ -104,7 +124,12 @@
 
     <!-- With Icons -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">With Icons</h2>
+        <h2 id="With-Icons" class="text-lg font-semibold text-on-surface">
+<a href="#With-Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Icons
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Icon-only button groups for toolbar-style layouts.
         </p>
@@ -127,7 +152,12 @@
 
     <!-- Vertical with Icons -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Vertical with Icons</h2>
+        <h2 id="Vertical-with-Icons" class="text-lg font-semibold text-on-surface">
+<a href="#Vertical-with-Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Vertical with Icons
+                    </a>
+</h2>
         <div class="flex flex-wrap items-start gap-6">
             <FieldGroup orientation="vertical">
                 <Button icon="lucide:zoom-in" variant="outline" color="surface" />
@@ -145,7 +175,12 @@
 
     <!-- With Input -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">With Input</h2>
+        <h2 id="With-Input" class="text-lg font-semibold text-on-surface">
+<a href="#With-Input" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Input
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Combine <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >Input</code
@@ -169,7 +204,12 @@
 
     <!-- With Input (Vertical) -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">With Input (Vertical)</h2>
+        <h2 id="With-Input-Vertical" class="text-lg font-semibold text-on-surface">
+<a href="#With-Input-Vertical" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Input (Vertical)
+                    </a>
+</h2>
         <div class="flex flex-wrap items-start gap-6">
             <div class="w-72">
                 <FieldGroup orientation="vertical">
@@ -191,7 +231,12 @@
 
     <!-- Input + Button Sizes -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Input + Button Sizes</h2>
+        <h2 id="Input--Button-Sizes" class="text-lg font-semibold text-on-surface">
+<a href="#Input--Button-Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Input + Button Sizes
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             FieldGroup propagates <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">size</code
@@ -214,7 +259,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold text-on-surface">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <div class="space-y-6">
             <div>

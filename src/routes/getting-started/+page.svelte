@@ -70,7 +70,12 @@
 
     <section class="space-y-6">
         <div class="space-y-2">
-            <h2 class="text-2xl font-semibold">Quick Start</h2>
+            <h2 id="Quick-Start" class="text-2xl font-semibold">
+<a href="#Quick-Start" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Quick Start
+                    </a>
+</h2>
             <p class="text-on-surface-variant">Install and start using Svelora in two steps.</p>
         </div>
 
@@ -129,7 +134,12 @@
 
     <section class="space-y-6">
         <div class="space-y-2">
-            <h2 class="text-2xl font-semibold">Components</h2>
+            <h2 id="Components" class="text-2xl font-semibold">
+<a href="#Components" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Components
+                    </a>
+</h2>
             <p class="text-on-surface-variant">
                 {totalComponents}+ components across {docsComponentGroups.length} categories.
             </p>
@@ -167,7 +177,12 @@
 
     <section class="space-y-6">
         <div class="space-y-2">
-            <h2 class="text-2xl font-semibold">Hooks</h2>
+            <h2 id="Hooks" class="text-2xl font-semibold">
+<a href="#Hooks" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Hooks
+                    </a>
+</h2>
             <p class="text-on-surface-variant">Utility hooks for common interactions and reactive patterns.</p>
         </div>
 
@@ -191,7 +206,12 @@
 
     <section class="space-y-6">
         <div class="space-y-2">
-            <h2 class="text-2xl font-semibold">Built With</h2>
+            <h2 id="Built-With" class="text-2xl font-semibold">
+<a href="#Built-With" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Built With
+                    </a>
+</h2>
             <p class="text-on-surface-variant">Powered by the modern Svelte ecosystem.</p>
         </div>
 

@@ -16,7 +16,12 @@
 
     <!-- Usage -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Usage</h2>
+        <h2 id="Usage" class="text-lg font-semibold">
+<a href="#Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Usage
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             The Link component is styled by default with <code
                 class="rounded bg-surface-container-highest px-1">text-on-surface-variant</code
@@ -33,7 +38,12 @@
 
     <!-- InactiveClass -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">InactiveClass</h2>
+        <h2 id="InactiveClass" class="text-lg font-semibold">
+<a href="#InactiveClass" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        InactiveClass
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">inactiveClass</code> prop
             to apply additional classes when the link is inactive.
@@ -46,7 +56,12 @@
 
     <!-- ActiveClass -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">ActiveClass</h2>
+        <h2 id="ActiveClass" class="text-lg font-semibold">
+<a href="#ActiveClass" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        ActiveClass
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">activeClass</code> prop to
             apply additional classes when the link is active.
@@ -64,7 +79,12 @@
 
     <!-- Active -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Active</h2>
+        <h2 id="Active" class="text-lg font-semibold">
+<a href="#Active" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Active
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">active</code> prop to force
             the active state, overriding auto-detection from the current route.
@@ -78,7 +98,12 @@
 
     <!-- Matching Modes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Matching Modes</h2>
+        <h2 id="Matching-Modes" class="text-lg font-semibold">
+<a href="#Matching-Modes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Matching Modes
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             By default, a link is active when the current URL starts with the <code
                 class="rounded bg-surface-container-highest px-1">href</code
@@ -158,7 +183,12 @@
 
     <!-- disabled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled</h2>
+        <h2 id="Disabled" class="text-lg font-semibold">
+<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">disabled</code> prop to
             disable the link. On anchors, it removes
@@ -176,7 +206,12 @@
 
     <!-- Raw -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Raw</h2>
+        <h2 id="Raw" class="text-lg font-semibold">
+<a href="#Raw" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Raw
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">raw</code> prop to strip
             all default styling. Only
@@ -214,7 +249,12 @@
 
     <!-- External -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">External</h2>
+        <h2 id="External" class="text-lg font-semibold">
+<a href="#External" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        External
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             External URLs (<code class="rounded bg-surface-container-highest px-1">http://</code>,
             <code class="rounded bg-surface-container-highest px-1">https://</code>,
@@ -244,7 +284,12 @@
 
     <!-- Prefetch -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Prefetch</h2>
+        <h2 id="Prefetch" class="text-lg font-semibold">
+<a href="#Prefetch" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Prefetch
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Since the Link component extends native HTML anchor attributes, you can use SvelteKit's
             <code class="rounded bg-surface-container-highest px-1"
@@ -266,7 +311,12 @@
 
     <!-- As Button -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">As Button</h2>
+        <h2 id="As-Button" class="text-lg font-semibold">
+<a href="#As-Button" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        As Button
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             When no <code class="rounded bg-surface-container-highest px-1">href</code> is provided,
             the component renders a button element with
@@ -283,7 +333,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI</h2>
+        <h2 id="UI" class="text-lg font-semibold">
+<a href="#UI" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">ui</code> prop to override
             styles on specific slots.
@@ -301,7 +356,12 @@
 
     <!-- States Overview -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">States</h2>
+        <h2 id="States" class="text-lg font-semibold">
+<a href="#States" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        States
+                    </a>
+</h2>
         <div class="overflow-x-auto">
             <table class="w-full">
                 <thead>
@@ -357,7 +417,12 @@
 
     <!-- Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Examples</h2>
+        <h2 id="Examples" class="text-lg font-semibold">
+<a href="#Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Examples
+                    </a>
+</h2>
 
         <!-- Navigation Bar -->
         <div class="space-y-2 rounded-lg bg-surface-container-high p-4">

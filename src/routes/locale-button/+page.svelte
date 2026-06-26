@@ -267,7 +267,12 @@ const locales: LocaleButtonLocale[] = [
     </div>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic Usage</h2>
+        <h2 id="Basic-Usage" class="text-lg font-semibold">
+<a href="#Basic-Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic Usage
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-4 rounded-lg bg-surface-container-high p-4">
             <LocaleButton
                 {locales}
@@ -281,7 +286,12 @@ const locales: LocaleButtonLocale[] = [
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold">Choose Your Strategy</h2>
+        <h2 id="Choose-Your-Strategy" class="text-lg font-semibold">
+<a href="#Choose-Your-Strategy" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Choose Your Strategy
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             <code class="rounded bg-surface-container-highest px-1">LocaleButton</code> is only
             the UI layer. Your app decides how locale changes are applied.
@@ -307,7 +317,12 @@ const locales: LocaleButtonLocale[] = [
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Paraglide with setLocale</h2>
+        <h2 id="Paraglide-with-setLocale" class="text-lg font-semibold">
+<a href="#Paraglide-with-setLocale" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Paraglide with setLocale
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the selection callback when your app already manages locale changes in code.
         </p>
@@ -324,7 +339,12 @@ const locales: LocaleButtonLocale[] = [
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Use In Consumer Apps</h2>
+        <h2 id="Use-In-Consumer-Apps" class="text-lg font-semibold">
+<a href="#Use-In-Consumer-Apps" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Use In Consumer Apps
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             <code class="rounded bg-surface-container-highest px-1">LocaleButton</code> is
             exported from the
@@ -343,7 +363,12 @@ const locales: LocaleButtonLocale[] = [
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Keep The Same Path</h2>
+        <h2 id="Keep-The-Same-Path" class="text-lg font-semibold">
+<a href="#Keep-The-Same-Path" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Keep The Same Path
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             With cookie-based Paraglide strategy, you can switch locale without adding
             <code class="rounded bg-surface-container-highest px-1">/th</code> or other locale
@@ -363,7 +388,12 @@ const locales: LocaleButtonLocale[] = [
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Use Locale Prefix URLs</h2>
+        <h2 id="Use-Locale-Prefix-URLs" class="text-lg font-semibold">
+<a href="#Use-Locale-Prefix-URLs" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Use Locale Prefix URLs
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             If your product intentionally uses locale-prefixed routes such as
             <code class="rounded bg-surface-container-highest px-1">/th/docs</code>, provide
@@ -374,7 +404,12 @@ const locales: LocaleButtonLocale[] = [
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Use Without Paraglide</h2>
+        <h2 id="Use-Without-Paraglide" class="text-lg font-semibold">
+<a href="#Use-Without-Paraglide" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Use Without Paraglide
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             The component works with any locale source of truth. You can connect it to a Svelte
             store, cookies, localStorage, an API-backed user preference, or another i18n runtime.
@@ -383,7 +418,12 @@ const locales: LocaleButtonLocale[] = [
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold">Locale Item Shape</h2>
+        <h2 id="Locale-Item-Shape" class="text-lg font-semibold">
+<a href="#Locale-Item-Shape" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Locale Item Shape
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Each locale entry is just data. Start with
             <code class="rounded bg-surface-container-highest px-1">code</code> and
@@ -414,7 +454,12 @@ const locales: LocaleButtonLocale[] = [
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold">Integration Checklist</h2>
+        <h2 id="Integration-Checklist" class="text-lg font-semibold">
+<a href="#Integration-Checklist" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Integration Checklist
+                    </a>
+</h2>
         <div class="rounded-2xl border border-outline-variant bg-surface-container/40 p-5">
             <ul class="space-y-3 text-sm text-on-surface-variant">
                 {#each integrationChecklist as item (item)}
@@ -425,7 +470,12 @@ const locales: LocaleButtonLocale[] = [
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-3 rounded-lg bg-surface-container-high p-4">
             {#each variants as variant (variant)}
                 <LocaleButton
@@ -442,7 +492,12 @@ const locales: LocaleButtonLocale[] = [
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="flex flex-wrap items-end gap-3 rounded-lg bg-surface-container-high p-4">
             {#each sizes as size (size)}
                 <LocaleButton
@@ -458,7 +513,12 @@ const locales: LocaleButtonLocale[] = [
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Trigger</h2>
+        <h2 id="Custom-Trigger" class="text-lg font-semibold">
+<a href="#Custom-Trigger" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Trigger
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the
             <code class="rounded bg-surface-container-highest px-1">children</code> snippet to
@@ -482,6 +542,99 @@ const locales: LocaleButtonLocale[] = [
                             {open ? 'Open' : currentLocale?.code.toUpperCase()}
                         </span>
                     </span>
+                {/snippet}
+            </LocaleButton>
+        </div>
+    </section>
+    <section class="space-y-3">
+        <h2 id="Custom-Menu-Items" class="text-lg font-semibold">
+<a href="#Custom-Menu-Items" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        
+            Custom Menu Items
+        
+                    </a>
+</h2>
+        <p class="text-sm text-on-surface-variant">
+            Use the
+            <code class="rounded bg-surface-container-highest px-1">item</code> snippet to completely
+            redesign how each language row looks inside the dropdown.
+        </p>
+        <div class="rounded-lg bg-surface-container-high p-4 flex gap-4">
+            <LocaleButton
+                {locales}
+                locale={customLocale}
+                onLocaleChange={(nextLocale) => {
+                    customLocale = nextLocale
+                }}
+            >
+                {#snippet item({ item, current, close })}
+                    <button
+                        class={`w-full flex items-center justify-between px-3 py-2 text-sm transition-colors ${
+                            current ? 'bg-primary/10 text-primary font-medium' : 'text-on-surface hover:bg-surface-container-highest'
+                        }`}
+                        onclick={() => {
+                            customLocale = item.code
+                            close()
+                        }}
+                    >
+                        <div class="flex items-center gap-2">
+                            <span>{item.code === 'th' ? '🇹🇭' : item.code === 'ja' ? '🇯🇵' : '🇺🇸'}</span>
+                            <span>{item.label}</span>
+                        </div>
+                        {#if current}
+                            <span class="text-primary text-xs">Active</span>
+                        {/if}
+                    </button>
+                {/snippet}
+            </LocaleButton>
+        </div>
+    </section>
+
+    <section class="space-y-3">
+        <h2 id="Custom-Menu-Layout" class="text-lg font-semibold">
+<a href="#Custom-Menu-Layout" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        
+            Custom Menu Layout
+        
+                    </a>
+</h2>
+        <p class="text-sm text-on-surface-variant">
+            If you need to break out of the standard vertical list, use the
+            <code class="rounded bg-surface-container-highest px-1">menu</code> snippet to build
+            an entirely custom dropdown grid or layout.
+        </p>
+        <div class="rounded-lg bg-surface-container-high p-4">
+            <LocaleButton
+                {locales}
+                locale={customLocale}
+                onLocaleChange={(nextLocale) => {
+                    customLocale = nextLocale
+                }}
+            >
+                {#snippet menu({ close })}
+                    <div class="grid grid-cols-2 gap-2 p-3 min-w-64 bg-surface rounded-xl border border-outline-variant shadow-lg">
+                        <div class="col-span-2 pb-2 mb-2 border-b border-outline-variant/50">
+                            <p class="text-xs font-medium text-on-surface-variant">Select Region</p>
+                        </div>
+                        {#each locales as item}
+                            <button
+                                class={`flex flex-col items-center gap-1 p-3 rounded-lg border transition-all ${
+                                    customLocale === item.code 
+                                        ? 'border-primary bg-primary/5 text-primary' 
+                                        : 'border-outline-variant bg-surface hover:bg-surface-container'
+                                }`}
+                                onclick={() => {
+                                    customLocale = item.code
+                                    close()
+                                }}
+                            >
+                                <span class="text-2xl">{item.code === 'th' ? '🇹🇭' : item.code === 'ja' ? '🇯🇵' : '🇺🇸'}</span>
+                                <span class="text-xs font-medium">{item.shortLabel}</span>
+                            </button>
+                        {/each}
+                    </div>
                 {/snippet}
             </LocaleButton>
         </div>

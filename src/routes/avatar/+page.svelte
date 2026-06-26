@@ -24,7 +24,12 @@
 
     <!-- Usage -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Usage</h2>
+        <h2 id="Usage" class="text-lg font-semibold">
+<a href="#Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Usage
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-4 rounded-lg bg-surface-container-high p-4">
             <Avatar src="https://i.pravatar.cc/150?img=1" alt="John Doe" />
             <Avatar src="https://i.pravatar.cc/150?img=2" alt="Jane Smith" />
@@ -37,7 +42,12 @@
 
     <!-- Size -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Size</h2>
+        <h2 id="Size" class="text-lg font-semibold">
+<a href="#Size" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Size
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">size</code> prop to
             control dimensions. Available sizes:
@@ -56,7 +66,12 @@
 
     <!-- Rounded -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Rounded</h2>
+        <h2 id="Rounded" class="text-lg font-semibold">
+<a href="#Rounded" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Rounded
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">rounded</code> prop to
             control the border radius. Use
@@ -82,7 +97,12 @@
 
     <!-- Fallback Initials -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Fallback Initials</h2>
+        <h2 id="Fallback-Initials" class="text-lg font-semibold">
+<a href="#Fallback-Initials" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Fallback Initials
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Auto-generates initials from <code class="rounded bg-surface-container-highest px-1"
                 >alt</code
@@ -101,7 +121,12 @@
 
     <!-- Icon Fallback -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Icon Fallback</h2>
+        <h2 id="Icon-Fallback" class="text-lg font-semibold">
+<a href="#Icon-Fallback" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Icon Fallback
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">icon</code> prop to display
             an Iconify icon as fallback when no image or text is available.
@@ -121,7 +146,12 @@
 
     <!-- Chip -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Chip</h2>
+        <h2 id="Chip" class="text-lg font-semibold">
+<a href="#Chip" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Chip
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">chip</code> prop to add
             a status indicator. Pass
@@ -205,7 +235,12 @@
 
     <!-- Avatar Group -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Avatar Group</h2>
+        <h2 id="Avatar-Group" class="text-lg font-semibold">
+<a href="#Avatar-Group" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Avatar Group
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1">AvatarGroup</code> to display
             multiple avatars with overlap.
@@ -320,7 +355,12 @@
 
     <!-- Custom Styling -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Styling</h2>
+        <h2 id="Custom-Styling" class="text-lg font-semibold">
+<a href="#Custom-Styling" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Styling
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1">class</code> and
             <code class="rounded bg-surface-container-highest px-1">ui</code> to customize individual
@@ -351,7 +391,12 @@
 
     <!-- Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Examples</h2>
+        <h2 id="Examples" class="text-lg font-semibold">
+<a href="#Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Examples
+                    </a>
+</h2>
 
         <div class="space-y-2 rounded-lg bg-surface-container-high p-4">
             <p class="text-xs font-medium text-on-surface-variant uppercase">

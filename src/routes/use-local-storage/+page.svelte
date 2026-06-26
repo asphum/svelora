@@ -17,7 +17,12 @@
     </div>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Persisted text</h2>
+        <h2 id="Persisted-text" class="text-lg font-semibold">
+<a href="#Persisted-text" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Persisted text
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Type below, then reload the page — the value persists. Open this page in a second tab to
             see live cross-tab sync.
@@ -31,7 +36,12 @@
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Persisted counter</h2>
+        <h2 id="Persisted-counter" class="text-lg font-semibold">
+<a href="#Persisted-counter" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Persisted counter
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-3 rounded-lg bg-surface-container-high p-4">
             <Button size="sm" variant="outline" onclick={() => (count.current -= 1)}>−</Button>
             <Badge label={count.current} color="primary" variant="soft" size="lg" />

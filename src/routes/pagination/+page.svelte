@@ -25,7 +25,12 @@
 
     <!-- Basic -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Basic Usage</h2>
+        <h2 id="Basic-Usage" class="text-lg font-semibold text-on-surface">
+<a href="#Basic-Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic Usage
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Simple pagination with previous/next controls and page numbers.
         </p>
@@ -34,7 +39,12 @@
 
     <!-- Default Page -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Default Page</h2>
+        <h2 id="Default-Page" class="text-lg font-semibold text-on-surface">
+<a href="#Default-Page" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Default Page
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set the initial page with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">defaultPage</code
@@ -45,7 +55,12 @@
 
     <!-- Show Edges -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Show Edges</h2>
+        <h2 id="Show-Edges" class="text-lg font-semibold text-on-surface">
+<a href="#Show-Edges" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Show Edges
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Display first/last page buttons with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">showEdges</code
@@ -56,7 +71,12 @@
 
     <!-- Without Controls -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Without Controls</h2>
+        <h2 id="Without-Controls" class="text-lg font-semibold text-on-surface">
+<a href="#Without-Controls" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Without Controls
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Hide prev/next buttons with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -77,7 +97,12 @@
 
     <!-- Sibling Count -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Sibling Count</h2>
+        <h2 id="Sibling-Count" class="text-lg font-semibold text-on-surface">
+<a href="#Sibling-Count" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sibling Count
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control visible siblings around current page with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -98,7 +123,12 @@
 
     <!-- Items Per Page -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Items Per Page</h2>
+        <h2 id="Items-Per-Page" class="text-lg font-semibold text-on-surface">
+<a href="#Items-Per-Page" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Items Per Page
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Same total (100) with different <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -119,7 +149,12 @@
 
     <!-- Controlled State -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Controlled State</h2>
+        <h2 id="Controlled-State" class="text-lg font-semibold text-on-surface">
+<a href="#Controlled-State" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Controlled State
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >bind:page</code
@@ -143,7 +178,12 @@
 
     <!-- Active Colors -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Active Colors</h2>
+        <h2 id="Active-Colors" class="text-lg font-semibold text-on-surface">
+<a href="#Active-Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Active Colors
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Customize the active page color with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">activeColor</code
@@ -161,7 +201,12 @@
 
     <!-- Active Variant -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Active Variant</h2>
+        <h2 id="Active-Variant" class="text-lg font-semibold text-on-surface">
+<a href="#Active-Variant" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Active Variant
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Change the selected page style with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -180,7 +225,12 @@
 
     <!-- Nav Button Variant -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Nav Button Variant</h2>
+        <h2 id="Nav-Button-Variant" class="text-lg font-semibold text-on-surface">
+<a href="#Nav-Button-Variant" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Nav Button Variant
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Change navigation button style with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">variant</code
@@ -207,7 +257,12 @@
 
     <!-- Sizes -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold text-on-surface">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control the pagination size with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">size</code
@@ -225,7 +280,12 @@
 
     <!-- Disabled -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Disabled</h2>
+        <h2 id="Disabled" class="text-lg font-semibold text-on-surface">
+<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Disable all controls with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">disabled</code
@@ -236,7 +296,12 @@
 
     <!-- Page Change Callback -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Page Change Callback</h2>
+        <h2 id="Page-Change-Callback" class="text-lg font-semibold text-on-surface">
+<a href="#Page-Change-Callback" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Page Change Callback
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Listen for page changes with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -257,7 +322,12 @@
 
     <!-- Custom Icons -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Custom Icons</h2>
+        <h2 id="Custom-Icons" class="text-lg font-semibold text-on-surface">
+<a href="#Custom-Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Icons
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Customize navigation icons with icon props.</p>
         <Pagination
             total={100}
@@ -272,7 +342,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold text-on-surface">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Customize individual parts with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">ui</code
@@ -310,7 +385,12 @@
 
     <!-- Custom Snippet Slots -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Custom Snippet Slots</h2>
+        <h2 id="Custom-Snippet-Slots" class="text-lg font-semibold text-on-surface">
+<a href="#Custom-Snippet-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Snippet Slots
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Override individual parts with snippet slots.</p>
         <div class="space-y-4">
             <div>
@@ -363,7 +443,12 @@
 
     <!-- Edge Cases -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Edge Cases</h2>
+        <h2 id="Edge-Cases" class="text-lg font-semibold text-on-surface">
+<a href="#Edge-Cases" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Edge Cases
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Handling special scenarios.</p>
         <div class="space-y-3">
             <div>
@@ -389,7 +474,12 @@
 
     <!-- Real World Example -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold text-on-surface">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <div class="space-y-6">
             <div>

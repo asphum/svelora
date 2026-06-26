@@ -93,7 +93,12 @@ npm install joi`
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-xl font-semibold">Prerequisites</h2>
+        <h2 id="Prerequisites" class="text-xl font-semibold">
+<a href="#Prerequisites" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Prerequisites
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Svelora requires Svelte 5, Tailwind CSS 4, and SvelteKit. Make sure your project uses
             these before installing.
@@ -103,7 +108,12 @@ npm install joi`
     <section class="space-y-4">
         <div class="flex items-center gap-3">
             <span class="inline-flex size-8 items-center justify-center rounded-full bg-primary-container font-semibold text-on-primary-container">1</span>
-            <h2 class="text-xl font-semibold">Create a SvelteKit project</h2>
+            <h2 id="Create-a-SvelteKit-project" class="text-xl font-semibold">
+<a href="#Create-a-SvelteKit-project" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Create a SvelteKit project
+                    </a>
+</h2>
         </div>
         <p class="text-on-surface-variant">If you don't have a SvelteKit project yet, create one first.</p>
         <Card class="border border-outline-variant/70">
@@ -114,7 +124,12 @@ npm install joi`
     <section class="space-y-4">
         <div class="flex items-center gap-3">
             <span class="inline-flex size-8 items-center justify-center rounded-full bg-primary-container font-semibold text-on-primary-container">2</span>
-            <h2 class="text-xl font-semibold">Install Svelora</h2>
+            <h2 id="Install-Svelora" class="text-xl font-semibold">
+<a href="#Install-Svelora" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Install Svelora
+                    </a>
+</h2>
         </div>
         <p class="text-on-surface-variant">Add `svelora` and its peer dependencies to your project.</p>
         <Card class="border border-outline-variant/70">
@@ -125,7 +140,12 @@ npm install joi`
     <section class="space-y-4">
         <div class="flex items-center gap-3">
             <span class="inline-flex size-8 items-center justify-center rounded-full bg-primary-container font-semibold text-on-primary-container">3</span>
-            <h2 class="text-xl font-semibold">Configure Tailwind CSS</h2>
+            <h2 id="Configure-Tailwind-CSS" class="text-xl font-semibold">
+<a href="#Configure-Tailwind-CSS" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Configure Tailwind CSS
+                    </a>
+</h2>
         </div>
         <p class="text-on-surface-variant">
             Import the Svelora theme in your `layout.css` file. This sets up the OKLCH color system,
@@ -140,7 +160,12 @@ npm install joi`
     <section class="space-y-4">
         <div class="flex items-center gap-3">
             <span class="inline-flex size-8 items-center justify-center rounded-full bg-primary-container font-semibold text-on-primary-container">4</span>
-            <h2 class="text-xl font-semibold">Set up dark mode</h2>
+            <h2 id="Set-up-dark-mode" class="text-xl font-semibold">
+<a href="#Set-up-dark-mode" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Set up dark mode
+                    </a>
+</h2>
         </div>
         <p class="text-on-surface-variant">
             Add `ModeWatcher` to your root layout for automatic dark mode support.
@@ -154,7 +179,12 @@ npm install joi`
     <section class="space-y-4">
         <div class="flex items-center gap-3">
             <span class="inline-flex size-8 items-center justify-center rounded-full bg-primary-container font-semibold text-on-primary-container">5</span>
-            <h2 class="text-xl font-semibold">Start using components</h2>
+            <h2 id="Start-using-components" class="text-xl font-semibold">
+<a href="#Start-using-components" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Start using components
+                    </a>
+</h2>
         </div>
         <p class="text-on-surface-variant">
             Import and use any Svelora component in your Svelte files.
@@ -168,7 +198,12 @@ npm install joi`
     <section class="space-y-4">
         <div class="flex items-center gap-3">
             <span class="inline-flex size-8 items-center justify-center rounded-full bg-primary-container font-semibold text-on-primary-container">6</span>
-            <h2 class="text-xl font-semibold">(Optional) Enable MCP for Cursor</h2>
+            <h2 id="Optional-Enable-MCP-for-Cursor" class="text-xl font-semibold">
+<a href="#Optional-Enable-MCP-for-Cursor" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        (Optional) Enable MCP for Cursor
+                    </a>
+</h2>
         </div>
         <p class="text-on-surface-variant">
             If you use Cursor, Svelora can install a ready-to-use MCP config for docs tools right
@@ -191,7 +226,12 @@ npm install joi`
     <section class="space-y-4">
         <div class="flex items-center gap-3">
             <span class="inline-flex size-8 items-center justify-center rounded-full bg-primary-container font-semibold text-on-primary-container">7</span>
-            <h2 class="text-xl font-semibold">(Optional) Install peers for advanced features</h2>
+            <h2 id="Optional-Install-peers-for-advanced-features" class="text-xl font-semibold">
+<a href="#Optional-Install-peers-for-advanced-features" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        (Optional) Install peers for advanced features
+                    </a>
+</h2>
         </div>
         <p class="text-on-surface-variant">
             A few components rely on optional peer dependencies. Only install the ones you actually use.

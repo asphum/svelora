@@ -29,7 +29,12 @@
 
     <!-- Element target -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Lock an element</h2>
+        <h2 id="Lock-an-element" class="text-lg font-semibold">
+<a href="#Lock-an-element" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Lock an element
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Toggle to lock scrolling inside the box below. Try scrolling it while locked.
         </p>
@@ -62,7 +67,12 @@
 
     <!-- Page target -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Lock the page (body)</h2>
+        <h2 id="Lock-the-page-body" class="text-lg font-semibold">
+<a href="#Lock-the-page-body" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Lock the page (body)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             The default target is <code>document.body</code> — this is what Modal / Slideover / Drawer
             use to freeze the page behind an overlay. Toggle and try scrolling the page.

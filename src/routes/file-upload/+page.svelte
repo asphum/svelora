@@ -74,7 +74,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <FileUpload bind:value={basicFiles} />
             <p class="mt-3 text-sm text-on-surface-variant">
@@ -85,7 +90,12 @@
 
     <!-- Multiple Files -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Multiple Files</h2>
+        <h2 id="Multiple-Files" class="text-lg font-semibold">
+<a href="#Multiple-Files" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Multiple Files
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <FileUpload
                 bind:value={multipleFiles}
@@ -98,7 +108,12 @@
 
     <!-- Variants -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-4 rounded-lg bg-surface-container-high p-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Area (default)</p>
@@ -118,7 +133,12 @@
 
     <!-- Layout -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Layout</h2>
+        <h2 id="Layout" class="text-lg font-semibold">
+<a href="#Layout" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Layout
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-4 rounded-lg bg-surface-container-high p-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">List (default)</p>
@@ -146,7 +166,12 @@
 
     <!-- Grid Single File -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Grid · Single File Preview</h2>
+        <h2 id="Grid--Single-File-Preview" class="text-lg font-semibold">
+<a href="#Grid--Single-File-Preview" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Grid · Single File Preview
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <div class="max-w-xs">
                 <FileUpload
@@ -163,7 +188,12 @@
 
     <!-- Dropzone vs No Dropzone -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Dropzone</h2>
+        <h2 id="Dropzone" class="text-lg font-semibold">
+<a href="#Dropzone" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Dropzone
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-4 rounded-lg bg-surface-container-high p-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">With dropzone (default)</p>
@@ -186,7 +216,12 @@
 
     <!-- Custom Actions Slot -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Actions</h2>
+        <h2 id="Custom-Actions" class="text-lg font-semibold">
+<a href="#Custom-Actions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Actions
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <FileUpload
                 bind:value={actionsFiles}
@@ -211,7 +246,12 @@
 
     <!-- Highlight -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Highlight</h2>
+        <h2 id="Highlight" class="text-lg font-semibold">
+<a href="#Highlight" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Highlight
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-4 rounded-lg bg-surface-container-high p-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Normal</p>
@@ -226,7 +266,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             {#each colors as color (color)}
                 <FileUpload
@@ -242,7 +287,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             {#each sizes as size (size)}
                 <div class="flex items-start gap-4">
@@ -260,7 +310,12 @@
 
     <!-- Disabled & Loading -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">States</h2>
+        <h2 id="States" class="text-lg font-semibold">
+<a href="#States" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        States
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-4 rounded-lg bg-surface-container-high p-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Disabled</p>
@@ -275,7 +330,12 @@
 
     <!-- No Preview -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Preview Disabled</h2>
+        <h2 id="Preview-Disabled" class="text-lg font-semibold">
+<a href="#Preview-Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Preview Disabled
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <FileUpload
                 bind:value={noPreviewFiles}
@@ -292,7 +352,12 @@
 
     <!-- Accept Filter -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Accept Filter</h2>
+        <h2 id="Accept-Filter" class="text-lg font-semibold">
+<a href="#Accept-Filter" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Accept Filter
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-4 rounded-lg bg-surface-container-high p-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Images only</p>
@@ -321,7 +386,12 @@
 
     <!-- Image Preview -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Image Preview</h2>
+        <h2 id="Image-Preview" class="text-lg font-semibold">
+<a href="#Image-Preview" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Image Preview
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-4 rounded-lg bg-surface-container-high p-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Preview enabled (default)</p>
@@ -350,7 +420,12 @@
 
     <!-- Custom Slots -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Slots</h2>
+        <h2 id="Custom-Slots" class="text-lg font-semibold">
+<a href="#Custom-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Slots
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <FileUpload multiple bind:value={basicFiles} color="success">
                 {#snippet leadingSlot()}
@@ -389,7 +464,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
         <div class="space-y-6 rounded-lg bg-surface-container-high p-4">
             <!-- Avatar Upload -->
             <div class="space-y-2">
@@ -456,7 +536,12 @@
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Max size per file</h2>
+        <h2 id="Max-size-per-file" class="text-lg font-semibold">
+<a href="#Max-size-per-file" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Max size per file
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code>maxSize</code> (bytes) to reject files above a threshold. Rejections are
             reported through <code>onReject</code>.
@@ -483,7 +568,12 @@
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Max files count</h2>
+        <h2 id="Max-files-count" class="text-lg font-semibold">
+<a href="#Max-files-count" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Max files count
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code>maxFiles</code> to cap the number of files in the selection. When the cap is
             reached, the root element exposes <code>data-full</code> so CSS can style the area as inactive.
@@ -506,7 +596,12 @@
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Combined validation</h2>
+        <h2 id="Combined-validation" class="text-lg font-semibold">
+<a href="#Combined-validation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Combined validation
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             All three rules (<code>accept</code>, <code>maxSize</code>, <code>maxFiles</code>) work
             together. <code>onReject</code> reports every rejected file in one call with its reason.
@@ -535,7 +630,12 @@
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Inside a Form (Zod schema)</h2>
+        <h2 id="Inside-a-Form-Zod-schema" class="text-lg font-semibold">
+<a href="#Inside-a-Form-Zod-schema" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Inside a Form (Zod schema)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             FileUpload reads the parent <code>FormField</code> + <code>Form</code> context. When the
             Zod schema fails, the FormField shows the error and FileUpload picks up

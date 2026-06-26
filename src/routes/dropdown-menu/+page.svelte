@@ -176,7 +176,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <DropdownMenu items={basicItems}>
                 {#snippet children({ props })}
@@ -191,7 +196,12 @@
 
     <!-- Positions -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Positions</h2>
+        <h2 id="Positions" class="text-lg font-semibold">
+<a href="#Positions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Positions
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control dropdown placement with the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">side</code>
@@ -212,7 +222,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-4 rounded-lg bg-surface-container-high p-4">
             {#each [{ size: 'xs' as const, label: 'XS' }, { size: 'sm' as const, label: 'SM' }, { size: 'md' as const, label: 'MD' }, { size: 'lg' as const, label: 'LG' }, { size: 'xl' as const, label: 'XL' }] as item (item.size)}
                 <DropdownMenu items={basicItems.slice(0, 4)} size={item.size}>
@@ -226,7 +241,12 @@
 
     <!-- Colored Items -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colored Items</h2>
+        <h2 id="Colored-Items" class="text-lg font-semibold">
+<a href="#Colored-Items" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colored Items
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">color</code>
@@ -245,7 +265,12 @@
 
     <!-- Checkbox Items -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Checkbox Items</h2>
+        <h2 id="Checkbox-Items" class="text-lg font-semibold">
+<a href="#Checkbox-Items" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Checkbox Items
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Toggle boolean states with checkbox items.</p>
         <div class="flex flex-wrap items-center gap-4 rounded-lg bg-surface-container-high p-4">
             <DropdownMenu items={checkboxItems}>
@@ -263,7 +288,12 @@
 
     <!-- Radio Items -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Radio Items</h2>
+        <h2 id="Radio-Items" class="text-lg font-semibold">
+<a href="#Radio-Items" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Radio Items
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Single selection with radio items and groups.</p>
         <div class="flex flex-wrap items-center gap-4 rounded-lg bg-surface-container-high p-4">
             <DropdownMenu items={radioItems} {radioGroups}>
@@ -279,7 +309,12 @@
 
     <!-- Submenus -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Submenus</h2>
+        <h2 id="Submenus" class="text-lg font-semibold">
+<a href="#Submenus" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Submenus
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <DropdownMenu items={submenuItems}>
                 {#snippet children({ props })}
@@ -291,7 +326,12 @@
 
     <!-- Close On Select -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Close On Select</h2>
+        <h2 id="Close-On-Select" class="text-lg font-semibold">
+<a href="#Close-On-Select" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Close On Select
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -323,7 +363,12 @@
 
     <!-- Controlled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Controlled</h2>
+        <h2 id="Controlled" class="text-lg font-semibold">
+<a href="#Controlled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Controlled
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control dropdown visibility programmatically with
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">open</code>
@@ -363,7 +408,12 @@
 
     <!-- Custom Header/Footer -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Header/Footer</h2>
+        <h2 id="Custom-HeaderFooter" class="text-lg font-semibold">
+<a href="#Custom-HeaderFooter" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Header/Footer
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <DropdownMenu items={basicItems.slice(0, 4)}>
                 {#snippet children({ props })}
@@ -397,7 +447,12 @@
 
     <!-- Custom Content -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Content</h2>
+        <h2 id="Custom-Content" class="text-lg font-semibold">
+<a href="#Custom-Content" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Content
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">content</code>
@@ -430,7 +485,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="grid gap-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Primary theme</p>
@@ -469,7 +529,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-6">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <div class="grid gap-4 md:grid-cols-2">
             <!-- Profile Menu -->

@@ -70,7 +70,12 @@
 
     <!-- Basic Navbar -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic Navigation</h2>
+        <h2 id="Basic-Navigation" class="text-lg font-semibold">
+<a href="#Basic-Navigation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic Navigation
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             A simple 1D list of links. Use the <code class="rounded bg-surface-container-highest px-1">items</code> prop to define your navigation.
         </p>
@@ -86,7 +91,12 @@
 
     <!-- 2D Array Grouping -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Grouping (2D Arrays)</h2>
+        <h2 id="Grouping-2D-Arrays" class="text-lg font-semibold">
+<a href="#Grouping-2D-Arrays" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Grouping (2D Arrays)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Pass a 2D array (<code class="rounded bg-surface-container-highest px-1">items=[ [leftItems], [rightItems] ]</code>) to easily group links on opposite sides of the navbar.
         </p>
@@ -101,7 +111,12 @@
 
     <!-- Vertical Orientation (Accordion) -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Vertical (Sidebar & Accordion)</h2>
+        <h2 id="Vertical-Sidebar--Accordion" class="text-lg font-semibold">
+<a href="#Vertical-Sidebar--Accordion" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Vertical (Sidebar & Accordion)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1">orientation="vertical"</code> to render as a sidebar menu. Nested sub-menus will automatically render as smoothly expanding accordions! Add <code class="rounded bg-surface-container-highest px-1">accordion="true"</code> to restrict opening to one group at a time.
         </p>

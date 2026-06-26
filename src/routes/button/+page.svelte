@@ -40,7 +40,12 @@
 
     <!-- Usage -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Usage</h2>
+        <h2 id="Usage" class="text-lg font-semibold">
+<a href="#Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Usage
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">label</code> prop or the default
             slot to set the button text.
@@ -52,7 +57,12 @@
 
     <!-- Variant -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variant</h2>
+        <h2 id="Variant" class="text-lg font-semibold">
+<a href="#Variant" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variant
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">variant</code> prop to
             change the visual style. Defaults to
@@ -67,7 +77,12 @@
 
     <!-- Color -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Color</h2>
+        <h2 id="Color" class="text-lg font-semibold">
+<a href="#Color" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Color
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">color</code> prop to
             change the color scheme. Defaults to
@@ -82,7 +97,12 @@
 
     <!-- Variant x Color Matrix -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variant & Color Matrix</h2>
+        <h2 id="Variant--Color-Matrix" class="text-lg font-semibold">
+<a href="#Variant--Color-Matrix" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variant & Color Matrix
+                    </a>
+</h2>
         <div class="overflow-x-auto">
             <table class="w-full">
                 <thead>
@@ -119,7 +139,12 @@
 
     <!-- Size -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Size</h2>
+        <h2 id="Size" class="text-lg font-semibold">
+<a href="#Size" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Size
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">size</code> prop to
             change the dimensions. Defaults to
@@ -134,7 +159,12 @@
 
     <!-- Icon -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Icon</h2>
+        <h2 id="Icon" class="text-lg font-semibold">
+<a href="#Icon" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Icon
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">icon</code> prop to
             display an icon in the button. By default the icon is placed on the leading side. Use
@@ -150,7 +180,12 @@
 
     <!-- Leading & Trailing Icon -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Leading & Trailing Icon</h2>
+        <h2 id="Leading--Trailing-Icon" class="text-lg font-semibold">
+<a href="#Leading--Trailing-Icon" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Leading & Trailing Icon
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1">leadingIcon</code> and
             <code class="rounded bg-surface-container-highest px-1">trailingIcon</code> to display icons
@@ -176,7 +211,12 @@
 
     <!-- Square (Icon Only) -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Square</h2>
+        <h2 id="Square" class="text-lg font-semibold">
+<a href="#Square" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Square
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">square</code> prop to
             force equal width and height — ideal for icon-only buttons. When only
@@ -198,7 +238,12 @@
 
     <!-- Avatar -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Avatar</h2>
+        <h2 id="Avatar" class="text-lg font-semibold">
+<a href="#Avatar" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Avatar
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">avatar</code> prop to
             display an avatar before the label. Takes precedence over
@@ -243,7 +288,12 @@
 
     <!-- Loading -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Loading</h2>
+        <h2 id="Loading" class="text-lg font-semibold">
+<a href="#Loading" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Loading
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">loading</code> prop to
             show a loading spinner and disable the button. The spinner replaces the leading icon by
@@ -261,7 +311,12 @@
 
     <!-- Loading Auto -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Loading Auto</h2>
+        <h2 id="Loading-Auto" class="text-lg font-semibold">
+<a href="#Loading-Auto" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Loading Auto
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">loadingAuto</code> prop
             to automatically show loading state while the
@@ -295,7 +350,12 @@
 
     <!-- Disabled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled</h2>
+        <h2 id="Disabled" class="text-lg font-semibold">
+<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">disabled</code> prop to disable
             the button and prevent interaction.
@@ -309,7 +369,12 @@
 
     <!-- Block -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Block</h2>
+        <h2 id="Block" class="text-lg font-semibold">
+<a href="#Block" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Block
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">block</code> prop to stretch
             the button to fill the full width of its container.
@@ -329,7 +394,12 @@
 
     <!-- As Link -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">As Link</h2>
+        <h2 id="As-Link" class="text-lg font-semibold">
+<a href="#As-Link" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        As Link
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">href</code> prop to
             render as an anchor element. External URLs are auto-detected with
@@ -361,7 +431,12 @@
 
     <!-- Type -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Type</h2>
+        <h2 id="Type" class="text-lg font-semibold">
+<a href="#Type" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Type
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">type</code> prop to set
             the button type attribute. Defaults to
@@ -378,7 +453,12 @@
 
     <!-- Native Form -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Native Form Submit</h2>
+        <h2 id="Native-Form-Submit" class="text-lg font-semibold">
+<a href="#Native-Form-Submit" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Native Form Submit
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             When <code class="rounded bg-surface-container-highest px-1">href</code> is omitted,
             <code class="rounded bg-surface-container-highest px-1">Button</code> renders a native
@@ -426,7 +506,12 @@
 
     <!-- Mode Notes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Mode Notes</h2>
+        <h2 id="Mode-Notes" class="text-lg font-semibold">
+<a href="#Mode-Notes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Mode Notes
+                    </a>
+</h2>
         <div class="overflow-x-auto rounded-lg bg-surface-container-high p-4">
             <table class="w-full text-sm">
                 <thead>
@@ -474,7 +559,12 @@
 
     <!-- Active Color & Variant -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Active Color & Variant</h2>
+        <h2 id="Active-Color--Variant" class="text-lg font-semibold">
+<a href="#Active-Color--Variant" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Active Color & Variant
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use
             <code class="rounded bg-surface-container-highest px-1">activeColor</code> and
@@ -516,7 +606,12 @@
 
     <!-- Children Slot -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Children</h2>
+        <h2 id="Children" class="text-lg font-semibold">
+<a href="#Children" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Children
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the default slot to render custom content inside the button instead of the
             <code class="rounded bg-surface-container-highest px-1">label</code> prop.
@@ -535,7 +630,12 @@
 
     <!-- Leading & Trailing Slots -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Leading & Trailing Slots</h2>
+        <h2 id="Leading--Trailing-Slots" class="text-lg font-semibold">
+<a href="#Leading--Trailing-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Leading & Trailing Slots
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1">leadingSlot</code> and
             <code class="rounded bg-surface-container-highest px-1">trailingSlot</code> for fully
@@ -585,7 +685,12 @@
 
     <!-- UI -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI</h2>
+        <h2 id="UI" class="text-lg font-semibold">
+<a href="#UI" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">ui</code> prop to
             override classes for specific slots:
@@ -674,7 +779,12 @@
 
     <!-- Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Examples</h2>
+        <h2 id="Examples" class="text-lg font-semibold">
+<a href="#Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Examples
+                    </a>
+</h2>
 
         <!-- Action Bar -->
         <div class="space-y-2 rounded-lg bg-surface-container-high p-4">

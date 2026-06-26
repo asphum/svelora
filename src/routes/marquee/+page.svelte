@@ -12,7 +12,12 @@
 
     <!-- Usage -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Horizontal Marquee</h2>
+        <h2 id="Horizontal-Marquee" class="text-lg font-semibold">
+<a href="#Horizontal-Marquee" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Horizontal Marquee
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             A standard left-scrolling marquee that pauses on hover.
         </p>
@@ -27,7 +32,12 @@
 
     <!-- Vertical -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Vertical Marquee</h2>
+        <h2 id="Vertical-Marquee" class="text-lg font-semibold">
+<a href="#Vertical-Marquee" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Vertical Marquee
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1">direction="up"</code> or <code class="rounded bg-surface-container-highest px-1">"down"</code> for vertical scrolling.
         </p>

@@ -15,7 +15,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Popover>
                 <Button variant="outline">Click me</Button>
@@ -33,7 +38,12 @@
 
     <!-- Positions -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Positions</h2>
+        <h2 id="Positions" class="text-lg font-semibold">
+<a href="#Positions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Positions
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control popover placement with the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">side</code>
@@ -57,7 +67,12 @@
 
     <!-- Alignment -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Alignment</h2>
+        <h2 id="Alignment" class="text-lg font-semibold">
+<a href="#Alignment" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Alignment
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control alignment with the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">align</code>
@@ -81,7 +96,12 @@
 
     <!-- Arrow -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Arrow</h2>
+        <h2 id="Arrow" class="text-lg font-semibold">
+<a href="#Arrow" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Arrow
+                    </a>
+</h2>
         <div class="grid gap-4 sm:grid-cols-2">
             {#each [{ side: 'top' as const, label: 'Top' }, { side: 'right' as const, label: 'Right' }, { side: 'bottom' as const, label: 'Bottom' }, { side: 'left' as const, label: 'Left' }] as item (item.side)}
                 <div
@@ -102,7 +122,12 @@
 
     <!-- Close Action -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Close Action</h2>
+        <h2 id="Close-Action" class="text-lg font-semibold">
+<a href="#Close-Action" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Close Action
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             The
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">content</code>
@@ -140,7 +165,12 @@
 
     <!-- Controlled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Controlled</h2>
+        <h2 id="Controlled" class="text-lg font-semibold">
+<a href="#Controlled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Controlled
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control popover visibility programmatically with
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">open</code>
@@ -184,7 +214,12 @@
 
     <!-- Non-dismissible -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Non-dismissible</h2>
+        <h2 id="Non-dismissible" class="text-lg font-semibold">
+<a href="#Non-dismissible" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Non-dismissible
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Prevent dismissing by clicking outside or pressing Escape.
         </p>
@@ -208,7 +243,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="grid gap-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Custom rounding</p>
@@ -247,7 +287,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-6">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <div class="grid gap-4 md:grid-cols-2">
             <!-- User Profile Card -->

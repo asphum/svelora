@@ -37,7 +37,12 @@
 
     <!-- Quick Example -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Quick Start</h2>
+        <h2 id="Quick-Start" class="text-lg font-semibold">
+<a href="#Quick-Start" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Quick Start
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1">variant="modal"</code> to create a "fake" input that triggers a global search modal. This is the modern best practice for application search.
         </p>
@@ -65,7 +70,12 @@
 
     <!-- Variant: Input -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Standard Input</h2>
+        <h2 id="Standard-Input" class="text-lg font-semibold">
+<a href="#Standard-Input" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Standard Input
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1">variant="input"</code> (default) for a standard text input. You can still pass <code class="rounded bg-surface-container-highest px-1">kbd</code> to show a keyboard shortcut visual.
         </p>
@@ -86,7 +96,12 @@
 
     <!-- Variant: Button -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Icon Button</h2>
+        <h2 id="Icon-Button" class="text-lg font-semibold">
+<a href="#Icon-Button" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Icon Button
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1">variant="button"</code> for an icon-only trigger that opens the command modal. Great for mobile navbars.
         </p>

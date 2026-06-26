@@ -60,7 +60,12 @@
 
     <!-- ==================== SIDE VARIANTS ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Side Variants</h2>
+        <h2 id="Side-Variants" class="text-lg font-semibold">
+<a href="#Side-Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Side Variants
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control which side the slideover appears from with the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">side</code> prop.
@@ -140,7 +145,12 @@
 
     <!-- ==================== INSET MODE ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Inset Mode</h2>
+        <h2 id="Inset-Mode" class="text-lg font-semibold">
+<a href="#Inset-Mode" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Inset Mode
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Enable <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >inset</code
@@ -247,7 +257,12 @@
 
     <!-- ==================== TRANSITION ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Transition</h2>
+        <h2 id="Transition" class="text-lg font-semibold">
+<a href="#Transition" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Transition
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Animations are enabled by default. Set
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -283,7 +298,12 @@
 
     <!-- ==================== CLOSE BUTTON ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Close Button</h2>
+        <h2 id="Close-Button" class="text-lg font-semibold">
+<a href="#Close-Button" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Close Button
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Hide the close button with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -319,7 +339,12 @@
 
     <!-- ==================== OVERLAY ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Overlay</h2>
+        <h2 id="Overlay" class="text-lg font-semibold">
+<a href="#Overlay" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Overlay
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Hide the overlay with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -355,7 +380,12 @@
 
     <!-- ==================== NON-DISMISSIBLE ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Non-Dismissible</h2>
+        <h2 id="Non-Dismissible" class="text-lg font-semibold">
+<a href="#Non-Dismissible" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Non-Dismissible
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >dismissible=&#123;false&#125;</code
@@ -392,7 +422,12 @@
 
     <!-- ==================== SLOTS ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Slots</h2>
+        <h2 id="Slots" class="text-lg font-semibold">
+<a href="#Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Slots
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Customize every part: <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">header</code
@@ -548,7 +583,12 @@
 
     <!-- ==================== CALLBACKS ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Lifecycle Callbacks</h2>
+        <h2 id="Lifecycle-Callbacks" class="text-lg font-semibold">
+<a href="#Lifecycle-Callbacks" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Lifecycle Callbacks
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >onOpenChange</code
@@ -597,7 +637,12 @@
 
     <!-- ==================== NO PORTAL ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Without Portal</h2>
+        <h2 id="Without-Portal" class="text-lg font-semibold">
+<a href="#Without-Portal" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Without Portal
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -633,7 +678,12 @@
 
     <!-- ==================== PROGRAMMATIC ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Programmatic Control</h2>
+        <h2 id="Programmatic-Control" class="text-lg font-semibold">
+<a href="#Programmatic-Control" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Programmatic Control
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control the slideover without a trigger by binding
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">open</code> externally.
@@ -670,7 +720,12 @@
 
     <!-- ==================== UI OVERRIDES ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Prop (Style Overrides)</h2>
+        <h2 id="UI-Prop-Style-Overrides" class="text-lg font-semibold">
+<a href="#UI-Prop-Style-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Prop (Style Overrides)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Override individual slot styles via the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">ui</code> prop.
@@ -721,7 +776,12 @@
 
     <!-- ==================== REAL WORLD EXAMPLES ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <div class="grid gap-4 sm:grid-cols-2">
             <!-- Filters Panel -->
@@ -1024,7 +1084,12 @@
     <Separator />
 
     <section>
-        <h2 class="mb-3 text-lg font-semibold">Size</h2>
+        <h2 id="Size" class="mb-3 text-lg font-semibold">
+<a href="#Size" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Size
+                    </a>
+</h2>
         <p class="mb-4 text-sm text-on-surface-variant">
             Use <code>size</code> to control the panel along its axis.
             <code>left</code> / <code>right</code> change <code>max-width</code>;
@@ -1057,7 +1122,12 @@
     <Separator />
 
     <section>
-        <h2 class="mb-3 text-lg font-semibold">Transition</h2>
+        <h2 id="Transition" class="mb-3 text-lg font-semibold">
+<a href="#Transition" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Transition
+                    </a>
+</h2>
         <p class="mb-4 text-sm text-on-surface-variant">
             Pick the entrance/exit animation. Default is <code>slide</code> (side-aware); pass
             <code>fade</code>, <code>scale</code>, or <code>none</code> to override. Boolean

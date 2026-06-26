@@ -200,7 +200,12 @@
                 <p class="text-sm font-semibold tracking-[0.16em] text-primary uppercase">
                     Quick Example
                 </p>
-                <h2 class="text-xl font-semibold">{hookMeta?.title ?? 'Hook'} Usage</h2>
+                <h2 id="hookMetatitle--Hook-Usage" class="text-xl font-semibold">
+<a href="#hookMetatitle--Hook-Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        {hookMeta?.title ?? 'Hook'} Usage
+                    </a>
+</h2>
                 <p class="text-sm text-on-surface-variant">
                     ตัวอย่าง import และการใช้งานแบบสั้นสำหรับหน้า `{data.slug}`
                 </p>

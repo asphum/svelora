@@ -50,19 +50,34 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <Banner title="Welcome to Svelora — a Svelte 5 component library." />
     </section>
 
     <!-- With icon -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Icon</h2>
+        <h2 id="With-Icon" class="text-lg font-semibold">
+<a href="#With-Icon" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Icon
+                    </a>
+</h2>
         <Banner icon="lucide:megaphone" title="New features available — check the changelog!" />
     </section>
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">All 8 design-token colors are supported.</p>
         <div class="space-y-2">
             {#each colors as color (color)}
@@ -73,7 +88,12 @@
 
     <!-- With actions -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Actions</h2>
+        <h2 id="With-Actions" class="text-lg font-semibold">
+<a href="#With-Actions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Actions
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Pass an <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >actions</code
@@ -114,7 +134,12 @@
 
     <!-- Dismissible (session-only) -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Dismissible (session-only)</h2>
+        <h2 id="Dismissible-session-only" class="text-lg font-semibold">
+<a href="#Dismissible-session-only" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Dismissible (session-only)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Without an
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">id</code>, the
@@ -144,7 +169,12 @@
 
     <!-- Persistent (localStorage) -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Persistent (localStorage)</h2>
+        <h2 id="Persistent-localStorage" class="text-lg font-semibold">
+<a href="#Persistent-localStorage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Persistent (localStorage)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set an
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">id</code> to
@@ -174,7 +204,12 @@
 
     <!-- Clickable -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Clickable</h2>
+        <h2 id="Clickable" class="text-lg font-semibold">
+<a href="#Clickable" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Clickable
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Provide a <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >to</code
@@ -195,7 +230,12 @@
 
     <!-- Custom snippets -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Snippets</h2>
+        <h2 id="Custom-Snippets" class="text-lg font-semibold">
+<a href="#Custom-Snippets" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Snippets
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Override <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >leading</code
@@ -239,7 +279,12 @@
 
     <!-- UI overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Overrides</h2>
+        <h2 id="UI-Overrides" class="text-lg font-semibold">
+<a href="#UI-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Overrides
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Override slot classes via the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">ui</code> prop,
@@ -258,7 +303,12 @@
 
     <!-- SSR note -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">SSR &amp; hydration notes</h2>
+        <h2 id="SSR-amp-hydration-notes" class="text-lg font-semibold">
+<a href="#SSR-amp-hydration-notes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        SSR &amp; hydration notes
+                    </a>
+</h2>
         <div class="rounded-lg border border-outline-variant bg-surface-container p-4 text-sm">
             <p class="mb-2 font-medium">
                 When using <code class="text-xs">id</code> for persistence:

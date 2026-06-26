@@ -40,7 +40,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-6 rounded-lg bg-surface-container-high p-4">
             <Chip>
                 <div class="size-10 rounded-lg bg-surface-container-highest"></div>
@@ -56,7 +61,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-6 rounded-lg bg-surface-container-high p-4">
             {#each colors as color (color)}
                 <Chip {color}>
@@ -68,7 +78,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-6 rounded-lg bg-surface-container-high p-4">
             {#each sizes as size (size)}
                 <div class="flex flex-col items-center gap-2">
@@ -83,7 +98,12 @@
 
     <!-- Positions -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Positions</h2>
+        <h2 id="Positions" class="text-lg font-semibold">
+<a href="#Positions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Positions
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-8 rounded-lg bg-surface-container-high p-4">
             {#each positions as position (position)}
                 <div class="flex flex-col items-center gap-2">
@@ -98,7 +118,12 @@
 
     <!-- With Text -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Text</h2>
+        <h2 id="With-Text" class="text-lg font-semibold">
+<a href="#With-Text" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Text
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-6 rounded-lg bg-surface-container-high p-4">
             <Chip text="5" size="lg" color="error">
                 <Button icon="lucide:bell" variant="ghost" size="lg" />
@@ -114,7 +139,12 @@
 
     <!-- Inset -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Inset</h2>
+        <h2 id="Inset" class="text-lg font-semibold">
+<a href="#Inset" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Inset
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Keep the chip inside the component bounds.</p>
         <div class="flex flex-wrap items-center gap-8 rounded-lg bg-surface-container-high p-4">
             <div class="flex flex-col items-center gap-2">
@@ -134,7 +164,12 @@
 
     <!-- Standalone -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Standalone</h2>
+        <h2 id="Standalone" class="text-lg font-semibold">
+<a href="#Standalone" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Standalone
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Render chip without positioning, useful for inline indicators.
         </p>
@@ -152,7 +187,12 @@
 
     <!-- Show/Hide -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Show / Hide</h2>
+        <h2 id="Show--Hide" class="text-lg font-semibold">
+<a href="#Show--Hide" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Show / Hide
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control visibility with <code class="rounded bg-surface-container-highest px-1"
                 >bind:show</code
@@ -190,7 +230,12 @@
 
     <!-- Status Cycling -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Status Indicator</h2>
+        <h2 id="Status-Indicator" class="text-lg font-semibold">
+<a href="#Status-Indicator" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Status Indicator
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Cycle through statuses by clicking the avatar. Combines color, position, and inset.
         </p>
@@ -209,7 +254,12 @@
 
     <!-- Colors x Positions Matrix -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors × Positions</h2>
+        <h2 id="Colors--Positions" class="text-lg font-semibold">
+<a href="#Colors--Positions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors × Positions
+                    </a>
+</h2>
         <div class="overflow-x-auto">
             <table class="w-full">
                 <thead>
@@ -252,7 +302,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
         <div class="space-y-6 rounded-lg bg-surface-container-high p-4">
             <!-- Notification Bell -->
             <div>
@@ -309,7 +364,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-6 rounded-lg bg-surface-container-high p-4">
             <Chip color="error" ui={{ base: 'animate-pulse' }}>
                 <Button icon="lucide:bell" variant="ghost" />

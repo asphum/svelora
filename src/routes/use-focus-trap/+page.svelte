@@ -23,7 +23,12 @@
     </div>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Toggle a focus trap</h2>
+        <h2 id="Toggle-a-focus-trap" class="text-lg font-semibold">
+<a href="#Toggle-a-focus-trap" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Toggle a focus trap
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Activate, then press <kbd class="rounded bg-surface-container-high px-1">Tab</kbd> — focus
             stays inside the panel and wraps around. Closing returns focus to the Activate button.

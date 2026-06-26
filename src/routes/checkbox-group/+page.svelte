@@ -63,7 +63,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <CheckboxGroup items={basicItems} bind:value={basicValue} legend="Frameworks" />
             <p class="mt-3 text-sm text-on-surface-variant">
@@ -74,7 +79,12 @@
 
     <!-- With Description -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Description</h2>
+        <h2 id="With-Description" class="text-lg font-semibold">
+<a href="#With-Description" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Description
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <CheckboxGroup
                 items={itemsWithDesc}
@@ -87,7 +97,12 @@
 
     <!-- Variants -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-4 rounded-lg bg-surface-container-high p-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">List (default)</p>
@@ -107,7 +122,12 @@
 
     <!-- Orientation -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Orientation</h2>
+        <h2 id="Orientation" class="text-lg font-semibold">
+<a href="#Orientation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Orientation
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             <div>
                 <p class="mb-2 text-sm font-medium text-on-surface-variant">Vertical (default)</p>
@@ -135,7 +155,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             {#each colors as color (color)}
                 <CheckboxGroup items={[{ value: color, label: color }]} value={[color]} {color} />
@@ -145,7 +170,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             {#each sizes as size (size)}
                 <div class="flex items-center gap-4">
@@ -163,7 +193,12 @@
 
     <!-- Indicator Position -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Indicator Position</h2>
+        <h2 id="Indicator-Position" class="text-lg font-semibold">
+<a href="#Indicator-Position" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Indicator Position
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-4 rounded-lg bg-surface-container-high p-4 sm:grid-cols-3">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Start (default)</p>
@@ -182,7 +217,12 @@
 
     <!-- Disabled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled</h2>
+        <h2 id="Disabled" class="text-lg font-semibold">
+<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-4 rounded-lg bg-surface-container-high p-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Entire group disabled</p>
@@ -201,7 +241,12 @@
 
     <!-- Custom Slots -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Slots</h2>
+        <h2 id="Custom-Slots" class="text-lg font-semibold">
+<a href="#Custom-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Slots
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <CheckboxGroup items={itemsWithDesc} value={['email', 'push']}>
                 {#snippet legendSlot()}
@@ -223,7 +268,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
         <div class="space-y-6 rounded-lg bg-surface-container-high p-4">
             <!-- Settings form -->
             <div class="space-y-2">

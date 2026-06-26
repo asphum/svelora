@@ -58,14 +58,24 @@ console.log(user)`
     </div>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <CodeBlock title="Code" code={sampleTs} />
         </div>
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With highlighted HTML</h2>
+        <h2 id="With-highlighted-HTML" class="text-lg font-semibold">
+<a href="#With-highlighted-HTML" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With highlighted HTML
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Provide pre-highlighted HTML (for example, from Shiki) via the <code>html</code> prop.
         </p>
@@ -75,7 +85,12 @@ console.log(user)`
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <div class="grid gap-3 md:grid-cols-2">
             <div class="rounded-lg bg-surface-container-high p-4">
                 <CodeBlock title="outline" variant="outline" code={sampleTs} />
@@ -99,7 +114,12 @@ console.log(user)`
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="grid gap-3 md:grid-cols-3">
             <div class="rounded-lg bg-surface-container-high p-4">
                 <CodeBlock title="sm" size="sm" code={sampleTs} />
@@ -114,7 +134,12 @@ console.log(user)`
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Copy controls</h2>
+        <h2 id="Copy-controls" class="text-lg font-semibold">
+<a href="#Copy-controls" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Copy controls
+                    </a>
+</h2>
         <div class="grid gap-3 md:grid-cols-2">
             <div class="rounded-lg bg-surface-container-high p-4">
                 <CodeBlock title="copyable=false" code={sampleTs} copyable={false} />

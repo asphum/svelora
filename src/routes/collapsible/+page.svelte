@@ -17,7 +17,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <Collapsible>
             {#snippet trigger({ open, props })}
                 <Button
@@ -40,7 +45,12 @@
 
     <!-- Initially Open -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Initially Open</h2>
+        <h2 id="Initially-Open" class="text-lg font-semibold">
+<a href="#Initially-Open" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Initially Open
+                    </a>
+</h2>
         <Collapsible open>
             {#snippet trigger({ open, props })}
                 <Button
@@ -63,7 +73,12 @@
 
     <!-- Controlled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Controlled (bind:open)</h2>
+        <h2 id="Controlled-bindopen" class="text-lg font-semibold">
+<a href="#Controlled-bindopen" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Controlled (bind:open)
+                    </a>
+</h2>
         <div class="flex items-center gap-2">
             <Badge
                 label={controlledOpen ? 'Open' : 'Closed'}
@@ -102,7 +117,12 @@
 
     <!-- onOpenChange callback -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">onOpenChange Callback</h2>
+        <h2 id="onOpenChange-Callback" class="text-lg font-semibold">
+<a href="#onOpenChange-Callback" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        onOpenChange Callback
+                    </a>
+</h2>
         <!-- eslint-disable-next-line no-console -->
         <Collapsible bind:open={basicOpen} onOpenChange={(v) => console.log('open changed:', v)}>
             {#snippet trigger({ open, props })}
@@ -131,7 +151,12 @@
 
     <!-- Disabled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled</h2>
+        <h2 id="Disabled" class="text-lg font-semibold">
+<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled
+                    </a>
+</h2>
         <Collapsible disabled>
             {#snippet trigger({ props })}
                 <Button {...props} variant="outline" disabled trailingIcon="lucide:chevron-down">
@@ -150,7 +175,12 @@
 
     <!-- Custom trigger (non-Button) -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Trigger</h2>
+        <h2 id="Custom-Trigger" class="text-lg font-semibold">
+<a href="#Custom-Trigger" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Trigger
+                    </a>
+</h2>
         <Collapsible>
             {#snippet trigger({ open, props })}
                 <div
@@ -188,7 +218,12 @@
 
     <!-- Custom UI Slots -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom UI Slots</h2>
+        <h2 id="Custom-UI-Slots" class="text-lg font-semibold">
+<a href="#Custom-UI-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom UI Slots
+                    </a>
+</h2>
         <Collapsible
             ui={{
                 root: 'rounded-xl border border-outline-variant p-4',
@@ -218,7 +253,12 @@
 
     <!-- Multiple collapsibles -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Multiple Collapsibles</h2>
+        <h2 id="Multiple-Collapsibles" class="text-lg font-semibold">
+<a href="#Multiple-Collapsibles" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Multiple Collapsibles
+                    </a>
+</h2>
         <div class="divide-y divide-outline-variant rounded-lg border border-outline-variant">
             {#each ['Getting Started', 'Installation', 'Configuration'] as title (title)}
                 <Collapsible ui={{ root: 'px-4' }}>

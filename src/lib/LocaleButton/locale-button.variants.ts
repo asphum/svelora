@@ -24,7 +24,30 @@ export const localeButtonVariants = tv({
             'shrink-0 rounded-md bg-surface-container px-1.5 py-0.5 text-[11px] font-medium text-on-surface-variant uppercase',
         itemIndicator: 'shrink-0 text-primary'
     },
-    variants: {},
+    variants: {
+        size: {
+            xs: {
+                triggerIcon: 'size-3.5',
+                triggerChevron: 'size-3.5'
+            },
+            sm: {
+                triggerIcon: 'size-4',
+                triggerChevron: 'size-4'
+            },
+            md: {
+                triggerIcon: 'size-5',
+                triggerChevron: 'size-5'
+            },
+            lg: {
+                triggerIcon: 'size-5',
+                triggerChevron: 'size-5'
+            },
+            xl: {
+                triggerIcon: 'size-6',
+                triggerChevron: 'size-6'
+            }
+        }
+    },
     defaultVariants: {}
 })
 

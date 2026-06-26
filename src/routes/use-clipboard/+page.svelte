@@ -25,7 +25,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-3 rounded-lg bg-surface-container-high p-4">
             <Button
                 onclick={() => clipboard.copy('Hello from Svelora!')}
@@ -45,7 +50,12 @@
 
     <!-- Custom Timeout -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Timeout</h2>
+        <h2 id="Custom-Timeout" class="text-lg font-semibold">
+<a href="#Custom-Timeout" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Timeout
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             The default timeout is 2 seconds. You can set a custom timeout for longer feedback.
         </p>
@@ -63,7 +73,12 @@
 
     <!-- Copy from Input -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Copy from Input</h2>
+        <h2 id="Copy-from-Input" class="text-lg font-semibold">
+<a href="#Copy-from-Input" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Copy from Input
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <div class="flex items-center gap-2">
                 <div class="flex-1">
@@ -82,7 +97,12 @@
 
     <!-- Copy Code Block -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Copy from Textarea</h2>
+        <h2 id="Copy-from-Textarea" class="text-lg font-semibold">
+<a href="#Copy-from-Textarea" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Copy from Textarea
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <Textarea bind:value={textareaValue} rows={3} />
             <Button
@@ -98,7 +118,12 @@
 
     <!-- Install Commands -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World: Install Commands</h2>
+        <h2 id="Real-World-Install-Commands" class="text-lg font-semibold">
+<a href="#Real-World-Install-Commands" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World: Install Commands
+                    </a>
+</h2>
         <div class="space-y-2 rounded-lg bg-surface-container-high p-4">
             {#each snippets as snippet (snippet.label)}
                 <div class="flex items-center justify-between rounded-md bg-surface-container p-3">
@@ -121,7 +146,12 @@
 
     <!-- Share Card -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World: Share Link</h2>
+        <h2 id="Real-World-Share-Link" class="text-lg font-semibold">
+<a href="#Real-World-Share-Link" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World: Share Link
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Card class="p-4">
                 <div class="space-y-3">

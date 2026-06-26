@@ -35,7 +35,12 @@
 
     <!-- useElementSize -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">useElementSize</h2>
+        <h2 id="useElementSize" class="text-lg font-semibold">
+<a href="#useElementSize" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        useElementSize
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Drag the bottom-right corner of the box — the size updates live.
         </p>
@@ -56,7 +61,12 @@
 
     <!-- useResizeObserver -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">useResizeObserver (lower-level callback)</h2>
+        <h2 id="useResizeObserver-lower-level-callback" class="text-lg font-semibold">
+<a href="#useResizeObserver-lower-level-callback" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        useResizeObserver (lower-level callback)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             The raw callback reads each entry's <code>contentRect</code>. Here it maps the width to
             a responsive breakpoint — resize horizontally to see it change.

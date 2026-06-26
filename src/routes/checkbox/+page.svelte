@@ -42,7 +42,12 @@
 
     <!-- Basic Usage -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Basic Usage</h2>
+        <h2 id="Basic-Usage" class="text-lg font-semibold text-on-surface">
+<a href="#Basic-Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic Usage
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             A checkbox component for boolean and indeterminate states.
         </p>
@@ -54,7 +59,12 @@
 
     <!-- Two-way Binding -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Two-way Binding</h2>
+        <h2 id="Two-way-Binding" class="text-lg font-semibold text-on-surface">
+<a href="#Two-way-Binding" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Two-way Binding
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >bind:checked</code
@@ -70,7 +80,12 @@
 
     <!-- Label & Description -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Label &amp; Description</h2>
+        <h2 id="Label-amp-Description" class="text-lg font-semibold text-on-surface">
+<a href="#Label-amp-Description" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Label &amp; Description
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">label</code
             >
@@ -94,7 +109,12 @@
 
     <!-- Indeterminate -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Indeterminate</h2>
+        <h2 id="Indeterminate" class="text-lg font-semibold text-on-surface">
+<a href="#Indeterminate" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Indeterminate
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >bind:indeterminate</code
@@ -121,7 +141,12 @@
 
     <!-- Colors -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold text-on-surface">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">color</code
             > to control the checked background color.
@@ -135,7 +160,12 @@
 
     <!-- Sizes -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold text-on-surface">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">size</code> to
             control the dimensions.
@@ -149,7 +179,12 @@
 
     <!-- Variant -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Variant</h2>
+        <h2 id="Variant" class="text-lg font-semibold text-on-surface">
+<a href="#Variant" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variant
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >variant="card"</code
@@ -186,7 +221,12 @@
 
     <!-- Indicator -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Indicator Position</h2>
+        <h2 id="Indicator-Position" class="text-lg font-semibold text-on-surface">
+<a href="#Indicator-Position" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Indicator Position
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >indicator</code
@@ -231,7 +271,12 @@
 
     <!-- Icons -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Icons</h2>
+        <h2 id="Icons" class="text-lg font-semibold text-on-surface">
+<a href="#Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Icons
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">icon</code>
             and
@@ -248,7 +293,12 @@
 
     <!-- Loading -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Loading</h2>
+        <h2 id="Loading" class="text-lg font-semibold text-on-surface">
+<a href="#Loading" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Loading
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >loading</code
@@ -262,7 +312,12 @@
 
     <!-- Disabled -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Disabled</h2>
+        <h2 id="Disabled" class="text-lg font-semibold text-on-surface">
+<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >disabled</code
@@ -276,7 +331,12 @@
 
     <!-- Required -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Required</h2>
+        <h2 id="Required" class="text-lg font-semibold text-on-surface">
+<a href="#Required" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Required
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >required</code
@@ -287,7 +347,12 @@
 
     <!-- Custom Slots -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Custom Slots</h2>
+        <h2 id="Custom-Slots" class="text-lg font-semibold text-on-surface">
+<a href="#Custom-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Slots
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >labelSlot</code
@@ -328,7 +393,12 @@
 
     <!-- FormField Integration -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">FormField Integration</h2>
+        <h2 id="FormField-Integration" class="text-lg font-semibold text-on-surface">
+<a href="#FormField-Integration" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        FormField Integration
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             When used inside a <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">FormField</code
@@ -348,7 +418,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold text-on-surface">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <div class="space-y-6">
             <div>

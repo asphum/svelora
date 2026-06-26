@@ -25,7 +25,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <p>Content above</p>
             <Separator class="my-4" />
@@ -35,7 +40,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             {#each colors as color (color)}
                 <Separator {color} label={color} />
@@ -45,7 +55,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             {#each sizes as size (size)}
                 <Separator {size} color="primary" label={size} />
@@ -55,7 +70,12 @@
 
     <!-- Types -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Types</h2>
+        <h2 id="Types" class="text-lg font-semibold">
+<a href="#Types" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Types
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             {#each types as type (type)}
                 <Separator {type} size="sm" color="primary" label={type} />
@@ -65,7 +85,12 @@
 
     <!-- With Label -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Label</h2>
+        <h2 id="With-Label" class="text-lg font-semibold">
+<a href="#With-Label" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Label
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             <Separator label="OR" color="primary" />
             <Separator label="Continue reading" color="secondary" size="sm" />
@@ -75,7 +100,12 @@
 
     <!-- With Icon -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Icon</h2>
+        <h2 id="With-Icon" class="text-lg font-semibold">
+<a href="#With-Icon" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Icon
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             <Separator icon="lucide:star" color="warning" size="sm" />
             <Separator icon="lucide:heart" color="error" size="md" />
@@ -85,7 +115,12 @@
 
     <!-- With Avatar -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Avatar</h2>
+        <h2 id="With-Avatar" class="text-lg font-semibold">
+<a href="#With-Avatar" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Avatar
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             <p class="text-xs text-on-surface-variant">Default avatarSize (2xs from config)</p>
             <Separator
@@ -107,7 +142,12 @@
 
     <!-- With Custom Content -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Content</h2>
+        <h2 id="Custom-Content" class="text-lg font-semibold">
+<a href="#Custom-Content" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Content
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             <Separator color="primary">
                 {#snippet content()}
@@ -128,7 +168,12 @@
 
     <!-- Vertical Orientation -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Vertical Orientation</h2>
+        <h2 id="Vertical-Orientation" class="text-lg font-semibold">
+<a href="#Vertical-Orientation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Vertical Orientation
+                    </a>
+</h2>
         <div class="flex h-24 items-center gap-4 rounded-lg bg-surface-container-high p-4">
             <span>Left</span>
             <Separator orientation="vertical" />
@@ -147,7 +192,12 @@
 
     <!-- Color x Size Matrix -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors × Sizes</h2>
+        <h2 id="Colors--Sizes" class="text-lg font-semibold">
+<a href="#Colors--Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors × Sizes
+                    </a>
+</h2>
         <div class="overflow-x-auto">
             <table class="w-full">
                 <thead>
@@ -186,7 +236,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
         <div class="space-y-6 rounded-lg bg-surface-container-high p-4">
             <!-- Login Form Divider -->
             <div>
@@ -249,7 +304,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             <Separator
                 label="Custom label style"
@@ -273,7 +333,12 @@
 
     <!-- Position -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Position</h2>
+        <h2 id="Position" class="text-lg font-semibold">
+<a href="#Position" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Position
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">position</code> prop to
             place the label/icon/avatar at the start, center, or end. Defaults to

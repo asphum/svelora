@@ -29,7 +29,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             <Progress value={25} />
             <Progress value={50} />
@@ -40,7 +45,12 @@
 
     <!-- Interactive -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Interactive</h2>
+        <h2 id="Interactive" class="text-lg font-semibold">
+<a href="#Interactive" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Interactive
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             <Progress {value} status />
             <div class="flex items-center gap-2">
@@ -65,7 +75,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             {#each colors as color (color)}
                 <div class="flex items-center gap-3">
@@ -78,7 +93,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             {#each sizes as size (size)}
                 <div class="flex items-center gap-3">
@@ -91,7 +111,12 @@
 
     <!-- With Status -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Status</h2>
+        <h2 id="With-Status" class="text-lg font-semibold">
+<a href="#With-Status" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Status
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Display percentage text alongside the progress bar.
         </p>
@@ -104,7 +129,12 @@
 
     <!-- Indeterminate -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Indeterminate</h2>
+        <h2 id="Indeterminate" class="text-lg font-semibold">
+<a href="#Indeterminate" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Indeterminate
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             When value is null, the progress shows an animated indeterminate state.
         </p>
@@ -117,7 +147,12 @@
 
     <!-- Animations -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Animations</h2>
+        <h2 id="Animations" class="text-lg font-semibold">
+<a href="#Animations" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Animations
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Different animation styles for the indeterminate state.
         </p>
@@ -133,7 +168,12 @@
 
     <!-- Vertical -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Vertical</h2>
+        <h2 id="Vertical" class="text-lg font-semibold">
+<a href="#Vertical" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Vertical
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-8 rounded-lg bg-surface-container-high p-4">
             <div class="flex flex-col items-center gap-2">
                 <div class="h-32">
@@ -166,7 +206,12 @@
 
     <!-- Inverted -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Inverted</h2>
+        <h2 id="Inverted" class="text-lg font-semibold">
+<a href="#Inverted" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Inverted
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Reverse the fill direction and status position.
         </p>
@@ -200,7 +245,12 @@
 
     <!-- Steps -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Steps</h2>
+        <h2 id="Steps" class="text-lg font-semibold">
+<a href="#Steps" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Steps
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Pass an array of strings as max to display labeled steps with overlay transitions.
         </p>
@@ -235,7 +285,12 @@
 
     <!-- Custom Status Slot -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Status Slot</h2>
+        <h2 id="Custom-Status-Slot" class="text-lg font-semibold">
+<a href="#Custom-Status-Slot" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Status Slot
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Customize the status display with a snippet.</p>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             <Progress value={75} status>
@@ -253,7 +308,12 @@
 
     <!-- Custom Step Slot -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Step Slot</h2>
+        <h2 id="Custom-Step-Slot" class="text-lg font-semibold">
+<a href="#Custom-Step-Slot" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Step Slot
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Customize individual step labels with a snippet.
         </p>
@@ -278,7 +338,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-4">
             <Progress
                 value={70}
@@ -301,7 +366,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
         <div class="space-y-6 rounded-lg bg-surface-container-high p-4">
             <!-- File Upload -->
             <div class="space-y-2">
@@ -372,7 +442,12 @@
 
     <!-- Colors x Sizes Matrix -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors x Sizes</h2>
+        <h2 id="Colors-x-Sizes" class="text-lg font-semibold">
+<a href="#Colors-x-Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors x Sizes
+                    </a>
+</h2>
         <div class="overflow-x-auto rounded-lg bg-surface-container-high p-4">
             <table class="w-full">
                 <thead>

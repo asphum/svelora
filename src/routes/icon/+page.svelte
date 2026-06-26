@@ -20,7 +20,12 @@
 
     <!-- Usage -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Usage</h2>
+        <h2 id="Usage" class="text-lg font-semibold">
+<a href="#Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Usage
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">name</code> prop with
             the Iconify format
@@ -40,7 +45,12 @@
 
     <!-- Size -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Size</h2>
+        <h2 id="Size" class="text-lg font-semibold">
+<a href="#Size" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Size
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">size</code> prop to set
             both width and height. Accepts a number (pixels) or CSS string value. Defaults to
@@ -62,7 +72,12 @@
 
     <!-- Color -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Color</h2>
+        <h2 id="Color" class="text-lg font-semibold">
+<a href="#Color" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Color
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             The icon inherits <code class="rounded bg-surface-container-highest px-1"
                 >currentColor</code
@@ -112,7 +127,12 @@
 
     <!-- Flip -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Flip</h2>
+        <h2 id="Flip" class="text-lg font-semibold">
+<a href="#Flip" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Flip
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1">flipH</code> and
             <code class="rounded bg-surface-container-highest px-1">flipV</code> to mirror the icon horizontally
@@ -140,7 +160,12 @@
 
     <!-- Rotate -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Rotate</h2>
+        <h2 id="Rotate" class="text-lg font-semibold">
+<a href="#Rotate" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Rotate
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">rotate</code> prop for
             quarter-turn rotation (<code class="rounded bg-surface-container-highest px-1">0</code>,
@@ -167,7 +192,12 @@
 
     <!-- Class -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Class</h2>
+        <h2 id="Class" class="text-lg font-semibold">
+<a href="#Class" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Class
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">class</code> prop to add
             Tailwind utilities. Classes are merged with
@@ -199,7 +229,12 @@
 
     <!-- Icon Sets -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Icon Sets</h2>
+        <h2 id="Icon-Sets" class="text-lg font-semibold">
+<a href="#Icon-Sets" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Icon Sets
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Supports any collection from the Iconify library. Use the format
             <code class="rounded bg-surface-container-highest px-1">collection:icon-name</code>.
@@ -234,7 +269,12 @@
 
     <!-- Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Examples</h2>
+        <h2 id="Examples" class="text-lg font-semibold">
+<a href="#Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Examples
+                    </a>
+</h2>
 
         <!-- Inline with text -->
         <div class="space-y-2 rounded-lg bg-surface-container-high p-4">

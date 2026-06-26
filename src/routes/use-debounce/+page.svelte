@@ -93,7 +93,12 @@
 
     <!-- Basic Search -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic: Search</h2>
+        <h2 id="Basic-Search" class="text-lg font-semibold">
+<a href="#Basic-Search" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic: Search
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Type in the input — the search only fires after 500ms of inactivity.
         </p>
@@ -122,7 +127,12 @@
 
     <!-- Auto-save -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Auto-save</h2>
+        <h2 id="Auto-save" class="text-lg font-semibold">
+<a href="#Auto-save" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Auto-save
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Content auto-saves 1 second after you stop typing.
         </p>
@@ -154,7 +164,12 @@
 
     <!-- API Search -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World: API Search</h2>
+        <h2 id="Real-World-API-Search" class="text-lg font-semibold">
+<a href="#Real-World-API-Search" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World: API Search
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Debounced API call with loading state. Try typing "alice", "bob", or "grace".
         </p>
@@ -186,7 +201,12 @@
 
     <!-- Cancel & Flush -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Cancel & Flush</h2>
+        <h2 id="Cancel--Flush" class="text-lg font-semibold">
+<a href="#Cancel--Flush" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Cancel & Flush
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Delay is 2 seconds. Use <strong>Cancel</strong> to discard, or <strong>Flush</strong> to execute
             immediately.

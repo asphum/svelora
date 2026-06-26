@@ -36,7 +36,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-6">
             <PinInput bind:value={basicValue} />
             <p class="text-sm text-on-surface-variant">Value: "{basicValue}"</p>
@@ -45,7 +50,12 @@
 
     <!-- Lengths -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Length</h2>
+        <h2 id="Length" class="text-lg font-semibold">
+<a href="#Length" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Length
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-6">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">4 cells</p>
@@ -64,7 +74,12 @@
 
     <!-- Type -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Type</h2>
+        <h2 id="Type" class="text-lg font-semibold">
+<a href="#Type" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Type
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-6">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">
@@ -78,7 +93,12 @@
 
     <!-- Mask -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Mask</h2>
+        <h2 id="Mask" class="text-lg font-semibold">
+<a href="#Mask" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Mask
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-6">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">
@@ -92,7 +112,12 @@
 
     <!-- Variants -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-6">
             {#each variants as variant (variant)}
                 <div class="flex items-center gap-4">
@@ -105,7 +130,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-6">
             {#each colors as color (color)}
                 <div class="flex items-center gap-4">
@@ -118,7 +148,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="space-y-5 rounded-lg bg-surface-container-high p-6">
             {#each sizes as size (size)}
                 <div class="flex items-center gap-4">
@@ -131,7 +166,12 @@
 
     <!-- Highlight -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Highlight</h2>
+        <h2 id="Highlight" class="text-lg font-semibold">
+<a href="#Highlight" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Highlight
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-6">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">
@@ -144,7 +184,12 @@
 
     <!-- Placeholder -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Placeholder</h2>
+        <h2 id="Placeholder" class="text-lg font-semibold">
+<a href="#Placeholder" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Placeholder
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-6">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Default (○)</p>
@@ -163,7 +208,12 @@
 
     <!-- Disabled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled</h2>
+        <h2 id="Disabled" class="text-lg font-semibold">
+<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-6">
             <PinInput defaultValue="12" disabled />
         </div>
@@ -171,7 +221,12 @@
 
     <!-- Form Integration -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Form Integration</h2>
+        <h2 id="Form-Integration" class="text-lg font-semibold">
+<a href="#Form-Integration" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Form Integration
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-6">
             <form
                 class="max-w-sm space-y-4"
@@ -207,7 +262,12 @@
 
     <!-- FormField Integration -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">FormField Integration</h2>
+        <h2 id="FormField-Integration" class="text-lg font-semibold">
+<a href="#FormField-Integration" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        FormField Integration
+                    </a>
+</h2>
         <div class="max-w-sm space-y-4 rounded-lg bg-surface-container-high p-6">
             <FormField label="Verification Code" description="Enter the 6-digit code sent to you.">
                 <PinInput bind:value={formFieldValue} length={6} type="number" otp class="mt-1" />
@@ -226,7 +286,12 @@
 
     <!-- Custom UI Slots -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom UI Slots</h2>
+        <h2 id="Custom-UI-Slots" class="text-lg font-semibold">
+<a href="#Custom-UI-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom UI Slots
+                    </a>
+</h2>
         <div class="space-y-4 rounded-lg bg-surface-container-high p-6">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Rounded full cells</p>
@@ -240,7 +305,12 @@
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold text-on-surface">Loading</h2>
+        <h2 id="Loading" class="text-lg font-semibold text-on-surface">
+<a href="#Loading" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Loading
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Pass <code>loading</code> to overlay a spinner and disable input while verifying the
             code (e.g. checking an OTP against the backend). Use <code>loadingIcon</code> to customize

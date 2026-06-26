@@ -8,6 +8,7 @@
         Icon,
         Pagination,
         DropdownMenu,
+        TableBulkActionBar,
         type TableColumn,
         type SortState,
         type TableCellSlotProps,
@@ -277,6 +278,7 @@
 
     // ==================== Row Selection ====================
     let selectedRows: User[] = $state([])
+    let bulkSelectedRows: User[] = $state([])
 
     // ==================== Column Visibility ====================
     let columnVisibility: Record<string, boolean> = $state({})
@@ -372,7 +374,12 @@
 
     <!-- ==================== BASIC ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Basic</h2>
+        <h2 id="Basic" class="text-xl font-semibold text-on-surface">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Auto-generates columns from data keys.</p>
         <Table
             data={[
@@ -385,7 +392,12 @@
 
     <!-- ==================== RICH COLUMNS ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Rich Columns</h2>
+        <h2 id="Rich-Columns" class="text-xl font-semibold text-on-surface">
+<a href="#Rich-Columns" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Rich Columns
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Custom cell snippets with Avatar, Badge components.
         </p>
@@ -394,7 +406,12 @@
 
     <!-- ==================== SORTING (default asc on name) ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Sorting</h2>
+        <h2 id="Sorting" class="text-xl font-semibold text-on-surface">
+<a href="#Sorting" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sorting
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Default sort on <strong>Name (asc)</strong>. Click headers to toggle.
         </p>
@@ -408,7 +425,12 @@
 
     <!-- ==================== GLOBAL FILTER ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Global Filter</h2>
+        <h2 id="Global-Filter" class="text-xl font-semibold text-on-surface">
+<a href="#Global-Filter" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Global Filter
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Filter across all columns.</p>
         <Input
             placeholder="Search users..."
@@ -422,7 +444,12 @@
 
     <!-- ==================== ROW ACTIONS ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Row Actions</h2>
+        <h2 id="Row-Actions" class="text-xl font-semibold text-on-surface">
+<a href="#Row-Actions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Row Actions
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             DropdownMenu in the last column for per-row actions.
         </p>
@@ -431,7 +458,12 @@
 
     <!-- ==================== COLUMN PINNING ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Column Pinning</h2>
+        <h2 id="Column-Pinning" class="text-xl font-semibold text-on-surface">
+<a href="#Column-Pinning" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Column Pinning
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             "#" pinned left, "Actions" pinned right. Scroll horizontally.
         </p>
@@ -447,7 +479,12 @@
 
     <!-- ==================== ROW PINNING ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Row Pinning</h2>
+        <h2 id="Row-Pinning" class="text-xl font-semibold text-on-surface">
+<a href="#Row-Pinning" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Row Pinning
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Pin rows to the top. Alice and Charlie are pinned by default. Click the pin icon to
             toggle.
@@ -462,7 +499,12 @@
 
     <!-- ==================== ROW PINNING + PAGINATION ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Row Pinning + Pagination</h2>
+        <h2 id="Row-Pinning--Pagination" class="text-xl font-semibold text-on-surface">
+<a href="#Row-Pinning--Pagination" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Row Pinning + Pagination
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Pinned rows (#1, #5, #12) stay at the top regardless of the current page.
         </p>
@@ -492,7 +534,12 @@
 
     <!-- ==================== EXPANDABLE ROWS ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Expandable Rows</h2>
+        <h2 id="Expandable-Rows" class="text-xl font-semibold text-on-surface">
+<a href="#Expandable-Rows" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Expandable Rows
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Click the chevron to expand row details.</p>
         <Table
             data={users}
@@ -531,7 +578,12 @@
 
     <!-- ==================== EXPANDABLE: PARENT-CHILD ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Parent-Child Rows</h2>
+        <h2 id="Parent-Child-Rows" class="text-xl font-semibold text-on-surface">
+<a href="#Parent-Child-Rows" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Parent-Child Rows
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Expand departments to see sub-departments as a nested table.
         </p>
@@ -563,7 +615,12 @@
 
     <!-- ==================== ROW SELECTION ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Row Selection</h2>
+        <h2 id="Row-Selection" class="text-xl font-semibold text-on-surface">
+<a href="#Row-Selection" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Row Selection
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Built-in checkbox column with select-all support.
         </p>
@@ -588,7 +645,12 @@
 
     <!-- ==================== SELECTION + PAGINATION ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Selection + Pagination</h2>
+        <h2 id="Selection--Pagination" class="text-xl font-semibold text-on-surface">
+<a href="#Selection--Pagination" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Selection + Pagination
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Selections persist across pages. Select some rows, then navigate.
         </p>
@@ -621,9 +683,46 @@
         </div>
     </section>
 
+    <!-- ==================== BULK ACTIONS ==================== -->
+    <section class="space-y-4">
+        <h2 id="Bulk-Actions" class="text-xl font-semibold text-on-surface">
+<a href="#Bulk-Actions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Bulk Actions
+                    </a>
+</h2>
+        <p class="text-sm text-on-surface-variant">
+            A real-world example of using <code>TableBulkActionBar</code> when items are selected. Try selecting some rows below.
+        </p>
+        <div class="relative">
+            <Table
+                data={users}
+                columns={richColumns}
+                selection="multiple"
+                bind:selectedRows={bulkSelectedRows}
+                rowKey="id"
+            />
+        </div>
+        {#if bulkSelectedRows.length > 0}
+            <TableBulkActionBar count={bulkSelectedRows.length} onClear={() => (bulkSelectedRows = [])}>
+                <Button color="error" size="sm" icon="lucide:trash-2" onclick={() => alert(`Deleted ${bulkSelectedRows.length} users`)}>
+                    Delete
+                </Button>
+                <Button variant="outline" color="surface" size="sm" icon="lucide:download" onclick={() => alert(`Exported CSV for ${bulkSelectedRows.length} users`)}>
+                    Export
+                </Button>
+            </TableBulkActionBar>
+        {/if}
+    </section>
+
     <!-- ==================== COLUMN VISIBILITY ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Column Visibility</h2>
+        <h2 id="Column-Visibility" class="text-xl font-semibold text-on-surface">
+<a href="#Column-Visibility" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Column Visibility
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Toggle columns on/off.</p>
         <div class="flex flex-wrap gap-1.5">
             {#each visibilityItems as item (item.value)}
@@ -645,7 +744,12 @@
 
     <!-- ==================== PAGINATION ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Pagination</h2>
+        <h2 id="Pagination" class="text-xl font-semibold text-on-surface">
+<a href="#Pagination" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Pagination
+                    </a>
+</h2>
         <Table data={manyUsers} columns={richColumns} page={tablePage} {pageSize} rowKey="id" />
         <div class="flex items-center justify-between">
             <p class="text-sm text-on-surface-variant">
@@ -664,7 +768,12 @@
 
     <!-- ==================== ROW CLICK ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Row Click</h2>
+        <h2 id="Row-Click" class="text-xl font-semibold text-on-surface">
+<a href="#Row-Click" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Row Click
+                    </a>
+</h2>
         <Table
             data={users}
             columns={richColumns}
@@ -692,7 +801,12 @@
 
     <!-- ==================== ROW HOVER ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Row Hover</h2>
+        <h2 id="Row-Hover" class="text-xl font-semibold text-on-surface">
+<a href="#Row-Hover" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Row Hover
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Hover over rows to see the callback in action.
         </p>
@@ -723,7 +837,12 @@
 
     <!-- ==================== CONTEXT MENU ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Context Menu (Right-Click)</h2>
+        <h2 id="Context-Menu-Right-Click" class="text-xl font-semibold text-on-surface">
+<a href="#Context-Menu-Right-Click" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Context Menu (Right-Click)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Right-click a row to trigger the callback.</p>
         <Table
             data={users}
@@ -750,7 +869,12 @@
 
     <!-- ==================== BODY SLOTS ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Body Top / Bottom Slots</h2>
+        <h2 id="Body-Top--Bottom-Slots" class="text-xl font-semibold text-on-surface">
+<a href="#Body-Top--Bottom-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Body Top / Bottom Slots
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Insert custom rows before and after data rows.
         </p>
@@ -785,7 +909,12 @@
 
     <!-- ==================== POLYMORPHIC (as prop) ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Polymorphic Root (as prop)</h2>
+        <h2 id="Polymorphic-Root-as-prop" class="text-xl font-semibold text-on-surface">
+<a href="#Polymorphic-Root-as-prop" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Polymorphic Root (as prop)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Render as <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs"
                 >&lt;section&gt;</code
@@ -805,13 +934,23 @@
 
     <!-- ==================== STRIPED ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Striped</h2>
+        <h2 id="Striped" class="text-xl font-semibold text-on-surface">
+<a href="#Striped" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Striped
+                    </a>
+</h2>
         <Table data={products} columns={productColumns} striped />
     </section>
 
     <!-- ==================== COLUMN RESIZING ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Column Resizing</h2>
+        <h2 id="Column-Resizing" class="text-xl font-semibold text-on-surface">
+<a href="#Column-Resizing" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Column Resizing
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Drag the right edge of Name, Email, or Role headers to resize.
         </p>
@@ -827,7 +966,12 @@
 
     <!-- ==================== STICKY HEADER ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Sticky Header</h2>
+        <h2 id="Sticky-Header" class="text-xl font-semibold text-on-surface">
+<a href="#Sticky-Header" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sticky Header
+                    </a>
+</h2>
         <Table
             data={[...users, ...users, ...users]}
             columns={richColumns}
@@ -838,7 +982,12 @@
 
     <!-- ==================== LOADING (REPLACE DATA) ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Loading — Replace Data</h2>
+        <h2 id="Loading--Replace-Data" class="text-xl font-semibold text-on-surface">
+<a href="#Loading--Replace-Data" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Loading — Replace Data
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Data is hidden during loading.</p>
         <Button onclick={simulateLoadingReplace} size="sm" variant="outline" color="surface">
             Simulate Loading (2s)
@@ -860,7 +1009,12 @@
 
     <!-- ==================== LOADING (OVERLAY) ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Loading — Overlay</h2>
+        <h2 id="Loading--Overlay" class="text-xl font-semibold text-on-surface">
+<a href="#Loading--Overlay" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Loading — Overlay
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Data stays visible with a frosted overlay.</p>
         <Button onclick={simulateLoadingOverlay} size="sm" variant="outline" color="surface">
             Simulate Loading (2s)
@@ -870,7 +1024,12 @@
 
     <!-- ==================== LOADING ANIMATIONS ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Loading Animations</h2>
+        <h2 id="Loading-Animations" class="text-xl font-semibold text-on-surface">
+<a href="#Loading-Animations" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Loading Animations
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
             {#each ['carousel', 'carousel-inverse', 'swing', 'elastic'] as anim (anim)}
                 <div class="space-y-1">
@@ -892,7 +1051,12 @@
 
     <!-- ==================== EMPTY ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Empty State</h2>
+        <h2 id="Empty-State" class="text-xl font-semibold text-on-surface">
+<a href="#Empty-State" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Empty State
+                    </a>
+</h2>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div class="space-y-1">
                 <p class="text-xs font-medium text-on-surface-variant">Default</p>
@@ -914,7 +1078,12 @@
 
     <!-- ==================== CUSTOM UI OVERRIDES ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Custom UI Overrides</h2>
+        <h2 id="Custom-UI-Overrides" class="text-xl font-semibold text-on-surface">
+<a href="#Custom-UI-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom UI Overrides
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs"
                 >ui</code
@@ -953,7 +1122,12 @@
 
     <!-- ==================== CUSTOM HEADER SLOT ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Custom Header Slot</h2>
+        <h2 id="Custom-Header-Slot" class="text-xl font-semibold text-on-surface">
+<a href="#Custom-Header-Slot" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Header Slot
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the global <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs"
                 >headerSlot</code
@@ -982,7 +1156,12 @@
 
     <!-- ==================== CUSTOM CELL SLOT ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Custom Cell Slot</h2>
+        <h2 id="Custom-Cell-Slot" class="text-xl font-semibold text-on-surface">
+<a href="#Custom-Cell-Slot" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Cell Slot
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the global <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs"
                 >cellSlot</code
@@ -1027,7 +1206,12 @@
 
     <!-- ==================== FOOTER SLOT ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Footer (Aggregation)</h2>
+        <h2 id="Footer-Aggregation" class="text-xl font-semibold text-on-surface">
+<a href="#Footer-Aggregation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Footer (Aggregation)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use per-column <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs"
                 >footer</code
@@ -1052,7 +1236,12 @@
 
     <!-- ==================== CAPTION ==================== -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-on-surface">Caption (Accessibility)</h2>
+        <h2 id="Caption-Accessibility" class="text-xl font-semibold text-on-surface">
+<a href="#Caption-Accessibility" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Caption (Accessibility)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             The <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs"
                 >caption</code

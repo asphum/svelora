@@ -130,7 +130,12 @@
 
     <!-- Basic List -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Scroll down inside the container to load more items. Stops at 100 items.
         </p>
@@ -173,7 +178,12 @@
 
     <!-- Table + Infinite Scroll -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Table + Infinite Scroll</h2>
+        <h2 id="Table--Infinite-Scroll" class="text-lg font-semibold">
+<a href="#Table--Infinite-Scroll" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Table + Infinite Scroll
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Combine with the Table component for paginated data loading. Scroll the table to
             automatically load more rows. Stops at 150 users.

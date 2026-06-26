@@ -181,7 +181,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">After `bun add svelora`</h2>
+        <h2 id="After-bun-add-svelora" class="text-xl font-semibold">
+<a href="#After-bun-add-svelora" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        After `bun add svelora`
+                    </a>
+</h2>
         <ol class="list-decimal space-y-2 pl-5 text-on-surface-variant">
             <li>ติดตั้งแพ็กเกจในโปรเจกต์ของคุณก่อนด้วย <span class="font-medium text-on-surface">bun add svelora</span></li>
             <li>เพิ่ม config MCP ใน <span class="font-medium text-on-surface">.cursor/mcp.json</span> ของโปรเจกต์นั้น</li>
@@ -192,7 +197,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Cursor Config For Consumer App</h2>
+        <h2 id="Cursor-Config-For-Consumer-App" class="text-xl font-semibold">
+<a href="#Cursor-Config-For-Consumer-App" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Cursor Config For Consumer App
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             ถ้าคุณติดตั้งผ่าน npm package ให้ชี้ไปที่ไฟล์ server ใน <span class="font-medium text-on-surface">node_modules/svelora/dist/mcp/server.mjs</span>
         </p>
@@ -218,7 +228,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Recommended Script For Consumer App</h2>
+        <h2 id="Recommended-Script-For-Consumer-App" class="text-xl font-semibold">
+<a href="#Recommended-Script-For-Consumer-App" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Recommended Script For Consumer App
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             ถ้าต้องการคำสั่งสั้น ๆ ในโปรเจกต์ของคุณ ให้เพิ่ม script นี้ใน <span class="font-medium text-on-surface">package.json</span>
         </p>
@@ -232,12 +247,22 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Run Server From Package</h2>
+        <h2 id="Run-Server-From-Package" class="text-xl font-semibold">
+<a href="#Run-Server-From-Package" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Run Server From Package
+                    </a>
+</h2>
         <CodeBlock title="Command" code={packageRunCode} html={packageRunHtml} />
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Use From The Svelora Repo</h2>
+        <h2 id="Use-From-The-Svelora-Repo" class="text-xl font-semibold">
+<a href="#Use-From-The-Svelora-Repo" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Use From The Svelora Repo
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             ถ้าคุณเปิด repo นี้โดยตรง ยังใช้ workflow เดิมได้ผ่าน <span class="font-medium text-on-surface">bun run mcp:svelora-docs</span>
         </p>
@@ -246,18 +271,33 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Available Tools</h2>
+        <h2 id="Available-Tools" class="text-xl font-semibold">
+<a href="#Available-Tools" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Available Tools
+                    </a>
+</h2>
         <p class="text-on-surface-variant">Tools จะปรากฏใน Cursor MCP tools เมื่อเปิดใช้งานสำเร็จ</p>
         <CodeBlock title="Tools" code={toolsCode} html={toolsHtml} />
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Cursor Prompt Examples</h2>
+        <h2 id="Cursor-Prompt-Examples" class="text-xl font-semibold">
+<a href="#Cursor-Prompt-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Cursor Prompt Examples
+                    </a>
+</h2>
         <CodeBlock title="Prompts" code={promptExamplesCode} html={promptsHtml} />
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Notes</h2>
+        <h2 id="Notes" class="text-xl font-semibold">
+<a href="#Notes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Notes
+                    </a>
+</h2>
         <ul class="list-disc space-y-2 pl-5 text-on-surface-variant">
             <li>consumer app ไม่จำเป็นต้องมี source docs ของ repo เพราะ MCP จะอ่าน data ที่ pack มากับแพ็กเกจ</li>
             <li>config แบบ package แนะนำให้ใช้ <span class="font-medium text-on-surface">node</span> เพื่อไม่ต้องพึ่ง bun ตอนรัน MCP server</li>

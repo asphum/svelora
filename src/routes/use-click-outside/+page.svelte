@@ -23,7 +23,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Click inside the blue box — nothing happens. Click outside — counter increments.
         </p>
@@ -46,7 +51,12 @@
 
     <!-- Dropdown -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Dropdown</h2>
+        <h2 id="Dropdown" class="text-lg font-semibold">
+<a href="#Dropdown" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Dropdown
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <div class="relative inline-block">
                 <Button onclick={() => (dropdownOpen = !dropdownOpen)}>
@@ -74,7 +84,12 @@
 
     <!-- Inline Edit -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Inline Edit</h2>
+        <h2 id="Inline-Edit" class="text-lg font-semibold">
+<a href="#Inline-Edit" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Inline Edit
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Click the text to edit. Click outside to save.
         </p>
@@ -100,7 +115,12 @@
 
     <!-- Enabled/Disabled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Enable / Disable</h2>
+        <h2 id="Enable--Disable" class="text-lg font-semibold">
+<a href="#Enable--Disable" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Enable / Disable
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Toggle the listener on and off with the <code class="rounded bg-surface-container px-1"
                 >enabled</code

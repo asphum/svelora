@@ -90,7 +90,12 @@ export const buttonVariants = tv({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Custom Component Defaults</h2>
+        <h2 id="Custom-Component-Defaults" class="text-xl font-semibold">
+<a href="#Custom-Component-Defaults" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Component Defaults
+                    </a>
+</h2>
         <p class="text-on-surface-variant">Create a config file to change default props for all instances.</p>
         <Card class="border border-outline-variant/70">
             <pre class="overflow-x-auto text-sm"><code>{configCode}</code></pre>
@@ -102,14 +107,24 @@ export const buttonVariants = tv({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Reset Config</h2>
+        <h2 id="Reset-Config" class="text-xl font-semibold">
+<a href="#Reset-Config" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Reset Config
+                    </a>
+</h2>
         <Card class="border border-outline-variant/70">
             <pre class="overflow-x-auto text-sm"><code>{resetCode}</code></pre>
         </Card>
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Fonts Provider Defaults</h2>
+        <h2 id="Fonts-Provider-Defaults" class="text-xl font-semibold">
+<a href="#Fonts-Provider-Defaults" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Fonts Provider Defaults
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Configure top-level `fonts` once, then render a single `&lt;Fonts /&gt;` in your root layout.
         </p>
@@ -122,7 +137,12 @@ export const buttonVariants = tv({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Customizing Variants</h2>
+        <h2 id="Customizing-Variants" class="text-xl font-semibold">
+<a href="#Customizing-Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Customizing Variants
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Add new variants or modify existing ones in the component variant definitions.
         </p>

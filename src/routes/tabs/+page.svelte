@@ -79,7 +79,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Tabs items={basicItems} />
         </div>
@@ -87,7 +92,12 @@
 
     <!-- Variants -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >variant</code
@@ -106,7 +116,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             The <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">color</code
             >
@@ -136,7 +151,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="space-y-4">
             {#each ['xs', 'sm', 'md', 'lg', 'xl'] as const as size (size)}
                 <div class="rounded-lg bg-surface-container-high p-4">
@@ -149,7 +169,12 @@
 
     <!-- With Icons -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Icons</h2>
+        <h2 id="With-Icons" class="text-lg font-semibold">
+<a href="#With-Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Icons
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Add leading icons via the <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">icon</code
@@ -170,7 +195,12 @@
 
     <!-- Orientation -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Orientation</h2>
+        <h2 id="Orientation" class="text-lg font-semibold">
+<a href="#Orientation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Orientation
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >orientation="vertical"</code
@@ -191,7 +221,12 @@
 
     <!-- Disabled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled</h2>
+        <h2 id="Disabled" class="text-lg font-semibold">
+<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled
+                    </a>
+</h2>
         <div class="grid gap-4 md:grid-cols-2">
             <div class="rounded-lg bg-surface-container-high p-4">
                 <p class="mb-3 text-sm font-medium">All disabled</p>
@@ -206,7 +241,12 @@
 
     <!-- Content -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">No Content</h2>
+        <h2 id="No-Content" class="text-lg font-semibold">
+<a href="#No-Content" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        No Content
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >content={'{false}'}</code
@@ -230,7 +270,12 @@
 
     <!-- Controlled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Controlled</h2>
+        <h2 id="Controlled" class="text-lg font-semibold">
+<a href="#Controlled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Controlled
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Bind <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >value</code
@@ -257,7 +302,12 @@
 
     <!-- Callback -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Value Change Callback</h2>
+        <h2 id="Value-Change-Callback" class="text-lg font-semibold">
+<a href="#Value-Change-Callback" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Value Change Callback
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >onValueChange</code
@@ -278,7 +328,12 @@
 
     <!-- Custom Slots -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Slots</h2>
+        <h2 id="Custom-Slots" class="text-lg font-semibold">
+<a href="#Custom-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Slots
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use snippets for custom rendering:
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">leading</code>,
@@ -351,7 +406,12 @@
 
     <!-- Per-Item Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Per-Item Overrides</h2>
+        <h2 id="Per-Item-Overrides" class="text-lg font-semibold">
+<a href="#Per-Item-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Per-Item Overrides
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Each item supports
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">class</code>
@@ -378,7 +438,12 @@
 
     <!-- UI Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Overrides</h2>
+        <h2 id="UI-Overrides" class="text-lg font-semibold">
+<a href="#UI-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Overrides
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Override slot styles via the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">ui</code> prop.
@@ -423,7 +488,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-6">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <div class="space-y-4">
             <!-- Settings Page -->

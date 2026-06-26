@@ -54,7 +54,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Drawer
                 bind:open={basicOpen}
@@ -79,7 +84,12 @@
 
     <!-- Directions -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Directions</h2>
+        <h2 id="Directions" class="text-lg font-semibold">
+<a href="#Directions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Directions
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             {#each directions as dir (dir)}
                 <Drawer
@@ -115,7 +125,12 @@
 
     <!-- Inset -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Inset</h2>
+        <h2 id="Inset" class="text-lg font-semibold">
+<a href="#Inset" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Inset
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Inset drawers have rounded corners and are offset from screen edges.
         </p>
@@ -155,7 +170,12 @@
 
     <!-- Handle Options -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Handle Options</h2>
+        <h2 id="Handle-Options" class="text-lg font-semibold">
+<a href="#Handle-Options" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Handle Options
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Drawer
                 bind:open={noHandleOpen}
@@ -205,7 +225,12 @@
 
     <!-- Overlay & Modal -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Overlay & Modal</h2>
+        <h2 id="Overlay--Modal" class="text-lg font-semibold">
+<a href="#Overlay--Modal" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Overlay & Modal
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Drawer
                 bind:open={noOverlayOpen}
@@ -258,7 +283,12 @@
 
     <!-- Non-Dismissible -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Non-Dismissible</h2>
+        <h2 id="Non-Dismissible" class="text-lg font-semibold">
+<a href="#Non-Dismissible" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Non-Dismissible
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Drawer
                 bind:open={nonDismissibleOpen}
@@ -288,7 +318,12 @@
 
     <!-- Snap Points -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Snap Points</h2>
+        <h2 id="Snap-Points" class="text-lg font-semibold">
+<a href="#Snap-Points" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Snap Points
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Drawer
                 bind:open={snapOpen}
@@ -358,7 +393,12 @@
 
     <!-- Nested Drawers -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Nested Drawers</h2>
+        <h2 id="Nested-Drawers" class="text-lg font-semibold">
+<a href="#Nested-Drawers" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Nested Drawers
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Drawer
                 bind:open={nestedOuterOpen}
@@ -416,7 +456,12 @@
 
     <!-- Slots -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Slots</h2>
+        <h2 id="Slots" class="text-lg font-semibold">
+<a href="#Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Slots
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <!-- Custom header -->
             <Drawer bind:open={slotsOpen}>
@@ -490,7 +535,12 @@
 
     <!-- Lifecycle Callbacks -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Lifecycle Callbacks</h2>
+        <h2 id="Lifecycle-Callbacks" class="text-lg font-semibold">
+<a href="#Lifecycle-Callbacks" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Lifecycle Callbacks
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <div class="mb-3 space-y-1">
                 {#if callbackLog.length === 0}
@@ -531,7 +581,12 @@
 
     <!-- Programmatic Control -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Programmatic Control</h2>
+        <h2 id="Programmatic-Control" class="text-lg font-semibold">
+<a href="#Programmatic-Control" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Programmatic Control
+                    </a>
+</h2>
         <div class="flex gap-3 rounded-lg bg-surface-container-high p-4">
             <Button
                 variant="outline"
@@ -561,7 +616,12 @@
 
     <!-- UI Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Drawer
                 bind:open={uiOverrideOpen}
@@ -599,7 +659,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
         <div class="grid gap-4 sm:grid-cols-2">
             <!-- Mobile Settings -->
             <div class="rounded-lg bg-surface-container-high p-4">

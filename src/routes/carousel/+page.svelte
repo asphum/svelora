@@ -118,7 +118,12 @@
     <!-- Basic -->
     <section class="space-y-3">
         <div class="flex items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Basic</h2>
+            <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">items + slide snippet</p>
         </div>
         <div class="rounded-xl border border-outline-variant/60 bg-surface-container p-4">
@@ -138,7 +143,12 @@
     <!-- Autoplay + Loop -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Loop &amp; autoplay</h2>
+            <h2 id="Loop-amp-autoplay" class="text-lg font-semibold">
+<a href="#Loop-amp-autoplay" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Loop &amp; autoplay
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 <code>loop</code> + <code>autoplay</code> (pauses on hover by default)
             </p>
@@ -192,7 +202,12 @@
     <!-- Responsive multi-slide -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Responsive · multiple slides per view</h2>
+            <h2 id="Responsive--multiple-slides-per-view" class="text-lg font-semibold">
+<a href="#Responsive--multiple-slides-per-view" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Responsive · multiple slides per view
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 <code>ui.slide</code> basis classes + <code>breakpoints</code>
             </p>
@@ -226,7 +241,12 @@
     <!-- Fade -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Fade transition</h2>
+            <h2 id="Fade-transition" class="text-lg font-semibold">
+<a href="#Fade-transition" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Fade transition
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 <code>fade</code> + <code>loop</code> + <code>autoplay</code>
             </p>
@@ -247,7 +267,12 @@
     <!-- Vertical -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Vertical orientation</h2>
+            <h2 id="Vertical-orientation" class="text-lg font-semibold">
+<a href="#Vertical-orientation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Vertical orientation
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 <code>orientation="vertical"</code> — arrows &amp; dots reposition automatically
             </p>
@@ -273,7 +298,12 @@
     <!-- Controlled -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Controlled · bind:index + bind:api</h2>
+            <h2 id="Controlled--bindindex--bindapi" class="text-lg font-semibold">
+<a href="#Controlled--bindindex--bindapi" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Controlled · bind:index + bind:api
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">Drive from outside, expose Embla API</p>
         </div>
         <div class="space-y-4 rounded-xl border border-outline-variant/60 bg-surface-container p-4">
@@ -349,7 +379,12 @@
     <!-- Custom snippets -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Custom arrows &amp; dots</h2>
+            <h2 id="Custom-arrows-amp-dots" class="text-lg font-semibold">
+<a href="#Custom-arrows-amp-dots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom arrows &amp; dots
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 <code>prevSlot</code>, <code>nextSlot</code>, <code>dot</code> snippets
             </p>
@@ -402,7 +437,12 @@
     <!-- Gallery · horizontal thumbnails -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Gallery · horizontal thumbnails</h2>
+            <h2 id="Gallery--horizontal-thumbnails" class="text-lg font-semibold">
+<a href="#Gallery--horizontal-thumbnails" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Gallery · horizontal thumbnails
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 Two carousels synced via <code>bind:index</code> + <code>bind:api</code>
             </p>
@@ -465,7 +505,12 @@
     <!-- Gallery · vertical thumbnails -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Gallery · vertical thumbnails</h2>
+            <h2 id="Gallery--vertical-thumbnails" class="text-lg font-semibold">
+<a href="#Gallery--vertical-thumbnails" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Gallery · vertical thumbnails
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 Vertical thumb rail synced with main slide
             </p>
@@ -540,7 +585,12 @@
     <!-- Colors -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Colors</h2>
+            <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 <code>color</code> drives the active dot &amp; arrow tint
             </p>
@@ -568,7 +618,12 @@
     <!-- Sizes -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Sizes</h2>
+            <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 <code>size</code> scales arrows and dot pills
             </p>
@@ -596,7 +651,12 @@
     <!-- Drag-free -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Drag-free content browser</h2>
+            <h2 id="Drag-free-content-browser" class="text-lg font-semibold">
+<a href="#Drag-free-content-browser" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Drag-free content browser
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 <code>dragFree</code> — free-form scroll without snapping
             </p>
@@ -629,7 +689,12 @@
     <!-- Minimal -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Minimal · no arrows or dots</h2>
+            <h2 id="Minimal--no-arrows-or-dots" class="text-lg font-semibold">
+<a href="#Minimal--no-arrows-or-dots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Minimal · no arrows or dots
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 <code>arrows={false}</code> + <code>dots={false}</code>
             </p>

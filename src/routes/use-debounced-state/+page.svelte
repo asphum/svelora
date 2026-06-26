@@ -37,7 +37,12 @@
     </div>
 
     <Card>
-        <h2 class="mb-1 font-semibold text-on-surface">Debounced filter (delay: 300ms)</h2>
+        <h2 id="Debounced-filter-delay-300ms" class="mb-1 font-semibold text-on-surface">
+<a href="#Debounced-filter-delay-300ms" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Debounced filter (delay: 300ms)
+                    </a>
+</h2>
         <p class="mb-4 text-sm text-on-surface-variant">
             <code>current</code> updates on every keystroke; the list re-filters only once typing settles.
         </p>

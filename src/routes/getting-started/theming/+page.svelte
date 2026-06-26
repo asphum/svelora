@@ -235,7 +235,12 @@ defineConfig({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Import Theme</h2>
+        <h2 id="Import-Theme" class="text-xl font-semibold">
+<a href="#Import-Theme" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Import Theme
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Import `svelora/theme.css` in your layout CSS to load all color tokens.
         </p>
@@ -246,7 +251,12 @@ defineConfig({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">OKLCH Color Space</h2>
+        <h2 id="OKLCH-Color-Space" class="text-xl font-semibold">
+<a href="#OKLCH-Color-Space" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        OKLCH Color Space
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Svelora uses OKLCH, a perceptually uniform color space. Colors stay more consistent across lightness levels.
         </p>
@@ -256,7 +266,12 @@ defineConfig({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Color Tokens</h2>
+        <h2 id="Color-Tokens" class="text-xl font-semibold">
+<a href="#Color-Tokens" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Color Tokens
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Each semantic color provides base, on-color, container, and on-container tokens.
         </p>
@@ -280,7 +295,12 @@ defineConfig({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Surface System</h2>
+        <h2 id="Surface-System" class="text-xl font-semibold">
+<a href="#Surface-System" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Surface System
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Surface tokens provide depth-based backgrounds for pages, cards, dialogs, drawers, and popovers.
         </p>
@@ -299,14 +319,24 @@ defineConfig({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Using in Tailwind</h2>
+        <h2 id="Using-in-Tailwind" class="text-xl font-semibold">
+<a href="#Using-in-Tailwind" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Using in Tailwind
+                    </a>
+</h2>
         <Card class="border border-outline-variant/70">
             <pre class="overflow-x-auto text-sm"><code>{tailwindCode}</code></pre>
         </Card>
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Customizing Colors</h2>
+        <h2 id="Customizing-Colors" class="text-xl font-semibold">
+<a href="#Customizing-Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Customizing Colors
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Override CSS custom properties to customize any color. Define both light and dark values.
         </p>
@@ -320,14 +350,24 @@ defineConfig({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Border Radius</h2>
+        <h2 id="Border-Radius" class="text-xl font-semibold">
+<a href="#Border-Radius" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Border Radius
+                    </a>
+</h2>
         <Card class="border border-outline-variant/70">
             <pre class="overflow-x-auto text-sm"><code>{radiusCode}</code></pre>
         </Card>
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Fonts Provider</h2>
+        <h2 id="Fonts-Provider" class="text-xl font-semibold">
+<a href="#Fonts-Provider" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Fonts Provider
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Use the `Fonts` provider to load either Google Fonts or local font files and map them to
             Svelora variables such as `--font-sans-family`, `--font-heading-family`, and
@@ -366,7 +406,12 @@ defineConfig({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Mode Watcher (Dark Mode)</h2>
+        <h2 id="Mode-Watcher-Dark-Mode" class="text-xl font-semibold">
+<a href="#Mode-Watcher-Dark-Mode" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Mode Watcher (Dark Mode)
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Svelora uses <a href="https://github.com/svecosystem/mode-watcher" target="_blank" class="text-primary hover:underline">mode-watcher</a> to handle dark mode seamlessly without a flash of unstyled content (FOUC).
             You must install it as a peer dependency: <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-sm">npm install mode-watcher</code>
@@ -383,7 +428,12 @@ defineConfig({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Global Configuration</h2>
+        <h2 id="Global-Configuration" class="text-xl font-semibold">
+<a href="#Global-Configuration" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Global Configuration
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Use `defineConfig` to set library-wide defaults for variants, slots, and icons.
         </p>
@@ -394,7 +444,12 @@ defineConfig({
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Per-Component Overrides</h2>
+        <h2 id="Per-Component-Overrides" class="text-xl font-semibold">
+<a href="#Per-Component-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Per-Component Overrides
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Every component accepts a `ui` prop to override specific slot classes on individual instances.
         </p>

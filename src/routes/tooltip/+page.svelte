@@ -14,7 +14,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-4 rounded-lg bg-surface-container-high p-4">
             <Tooltip text="This is a tooltip">
                 <Button variant="outline">Hover me</Button>
@@ -32,7 +37,12 @@
 
     <!-- Positions -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Positions</h2>
+        <h2 id="Positions" class="text-lg font-semibold">
+<a href="#Positions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Positions
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control tooltip placement with the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">side</code>
@@ -61,7 +71,12 @@
 
     <!-- Alignment -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Alignment</h2>
+        <h2 id="Alignment" class="text-lg font-semibold">
+<a href="#Alignment" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Alignment
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control alignment with the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">align</code>
@@ -86,7 +101,12 @@
 
     <!-- Arrow -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Arrow</h2>
+        <h2 id="Arrow" class="text-lg font-semibold">
+<a href="#Arrow" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Arrow
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Add an arrow pointing to the trigger element with the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">arrow</code>
@@ -107,7 +127,12 @@
 
     <!-- Keyboard Shortcuts -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Keyboard Shortcuts</h2>
+        <h2 id="Keyboard-Shortcuts" class="text-lg font-semibold">
+<a href="#Keyboard-Shortcuts" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Keyboard Shortcuts
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Display keyboard shortcuts alongside text using the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">kbds</code>
@@ -134,7 +159,12 @@
 
     <!-- Delay Duration -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Delay Duration</h2>
+        <h2 id="Delay-Duration" class="text-lg font-semibold">
+<a href="#Delay-Duration" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Delay Duration
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control how long to wait before showing the tooltip.
         </p>
@@ -159,7 +189,12 @@
 
     <!-- Controlled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Controlled</h2>
+        <h2 id="Controlled" class="text-lg font-semibold">
+<a href="#Controlled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Controlled
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Control tooltip visibility programmatically with
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">open</code>
@@ -193,7 +228,12 @@
 
     <!-- Disabled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled</h2>
+        <h2 id="Disabled" class="text-lg font-semibold">
+<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-4 rounded-lg bg-surface-container-high p-4">
             <Tooltip text="This won't show" disabled>
                 <Button>Tooltip Disabled</Button>
@@ -207,7 +247,12 @@
 
     <!-- Custom Content Snippet -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Content</h2>
+        <h2 id="Custom-Content" class="text-lg font-semibold">
+<a href="#Custom-Content" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Content
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">content</code>
@@ -251,7 +296,12 @@
 
     <!-- Hoverable Content -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Hoverable Content</h2>
+        <h2 id="Hoverable-Content" class="text-lg font-semibold">
+<a href="#Hoverable-Content" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Hoverable Content
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             By default, users can hover over tooltip content. Disable with
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -275,7 +325,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="grid gap-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Primary style</p>
@@ -327,7 +382,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-6">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <div class="grid gap-4 md:grid-cols-2">
             <!-- Editor Toolbar -->

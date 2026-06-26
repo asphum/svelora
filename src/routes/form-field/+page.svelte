@@ -16,7 +16,12 @@
 
     <!-- Basic Usage -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Basic Usage</h2>
+        <h2 id="Basic-Usage" class="text-lg font-semibold text-on-surface">
+<a href="#Basic-Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic Usage
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Wrap a form control with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">FormField</code
@@ -31,7 +36,12 @@
 
     <!-- Required -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Required</h2>
+        <h2 id="Required" class="text-lg font-semibold text-on-surface">
+<a href="#Required" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Required
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >required</code
@@ -46,7 +56,12 @@
 
     <!-- Description -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Description</h2>
+        <h2 id="Description" class="text-lg font-semibold text-on-surface">
+<a href="#Description" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Description
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >description</code
@@ -61,7 +76,12 @@
 
     <!-- Hint -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Hint</h2>
+        <h2 id="Hint" class="text-lg font-semibold text-on-surface">
+<a href="#Hint" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Hint
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">hint</code> to
             add text next to the label.
@@ -75,7 +95,12 @@
 
     <!-- Help -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Help</h2>
+        <h2 id="Help" class="text-lg font-semibold text-on-surface">
+<a href="#Help" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Help
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">help</code> to
             add help text below the form control.
@@ -89,7 +114,12 @@
 
     <!-- Error -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Error</h2>
+        <h2 id="Error" class="text-lg font-semibold text-on-surface">
+<a href="#Error" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Error
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">error</code
             > to display an error message. Replaces help text when present.
@@ -111,7 +141,12 @@
 
     <!-- Size -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Size</h2>
+        <h2 id="Size" class="text-lg font-semibold text-on-surface">
+<a href="#Size" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Size
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">size</code> to
             control the size of labels and text.
@@ -135,7 +170,12 @@
 
     <!-- Orientation -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Orientation</h2>
+        <h2 id="Orientation" class="text-lg font-semibold text-on-surface">
+<a href="#Orientation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Orientation
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >orientation</code
@@ -160,7 +200,12 @@
 
     <!-- With Different Controls -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">With Different Controls</h2>
+        <h2 id="With-Different-Controls" class="text-lg font-semibold text-on-surface">
+<a href="#With-Different-Controls" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Different Controls
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             FormField works with any form control component.
         </p>
@@ -187,7 +232,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-4">
-        <h2 class="text-lg font-semibold text-on-surface">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold text-on-surface">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <div class="space-y-6">
             <div>

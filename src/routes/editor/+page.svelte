@@ -46,7 +46,7 @@
         '<p>Click the YouTube button or use / → YouTube to embed a video.</p>'
     )
     let dragHandleValue = $state(
-        '<h2>Drag me!</h2><p>Hover any block to see the drag handle appear on the left. Drag to reorder.</p><ul><li>First item</li><li>Second item</li><li>Third item</li></ul>'
+        '<h2 id="Drag-me">Drag me!</h2><p>Hover any block to see the drag handle appear on the left. Drag to reorder.</p><ul><li>First item</li><li>Second item</li><li>Third item</li></ul>'
     )
 
     let mentionValue = $state('<p>Type @ to mention someone…</p>')
@@ -113,7 +113,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Minimal usage — default toolbar, HTML output, bindable
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">value</code>.
@@ -130,7 +135,12 @@
 
     <!-- JSON output -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">JSON output</h2>
+        <h2 id="JSON-output" class="text-lg font-semibold">
+<a href="#JSON-output" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        JSON output
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >output="json"</code
@@ -149,7 +159,12 @@
 
     <!-- Custom toolbar -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom toolbar config</h2>
+        <h2 id="Custom-toolbar-config" class="text-lg font-semibold">
+<a href="#Custom-toolbar-config" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom toolbar config
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Pass an array of action ids + <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">'|'</code
@@ -160,7 +175,12 @@
 
     <!-- Bubble menu only -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Bubble menu (no top toolbar)</h2>
+        <h2 id="Bubble-menu-no-top-toolbar" class="text-lg font-semibold">
+<a href="#Bubble-menu-no-top-toolbar" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Bubble menu (no top toolbar)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >toolbar={'{false}'}</code
@@ -176,7 +196,12 @@
 
     <!-- Character count + maxLength -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Character limit</h2>
+        <h2 id="Character-limit" class="text-lg font-semibold">
+<a href="#Character-limit" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Character limit
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">maxLength</code
             >
@@ -187,7 +212,12 @@
 
     <!-- Read-only / disabled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Read-only &amp; disabled</h2>
+        <h2 id="Read-only-amp-disabled" class="text-lg font-semibold">
+<a href="#Read-only-amp-disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Read-only &amp; disabled
+                    </a>
+</h2>
         <div class="grid gap-4 lg:grid-cols-2">
             <div>
                 <p class="mb-2 text-sm font-medium">readonly</p>
@@ -205,7 +235,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="space-y-4">
             {#each ['sm', 'md', 'lg'] as const as size (size)}
                 <div>
@@ -222,7 +257,12 @@
 
     <!-- Colors (focus ring) -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Focus ring colors</h2>
+        <h2 id="Focus-ring-colors" class="text-lg font-semibold">
+<a href="#Focus-ring-colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Focus ring colors
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">Click into each editor to see the focus ring.</p>
         <div class="grid gap-3 md:grid-cols-2">
             {#each colors as color (color)}
@@ -242,7 +282,12 @@
 
     <!-- Imperative API -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Imperative API — bind:api</h2>
+        <h2 id="Imperative-API--bindapi" class="text-lg font-semibold">
+<a href="#Imperative-API--bindapi" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Imperative API — bind:api
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Drive the editor from outside via <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">bind:api</code
@@ -334,7 +379,12 @@
 
     <!-- Phase 2: Markdown output -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Markdown output (Phase 2)</h2>
+        <h2 id="Markdown-output-Phase-2" class="text-lg font-semibold">
+<a href="#Markdown-output-Phase-2" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Markdown output (Phase 2)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >output="markdown"</code
@@ -360,7 +410,12 @@
 
     <!-- Phase 2: Image upload -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Image upload (Phase 2)</h2>
+        <h2 id="Image-upload-Phase-2" class="text-lg font-semibold">
+<a href="#Image-upload-Phase-2" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Image upload (Phase 2)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">image</code>
             toolbar action opens a file picker → calls
@@ -393,7 +448,12 @@
 
     <!-- Phase 2: Tables -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Tables (Phase 2)</h2>
+        <h2 id="Tables-Phase-2" class="text-lg font-semibold">
+<a href="#Tables-Phase-2" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Tables (Phase 2)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Enable with <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >tables</code
@@ -411,7 +471,12 @@
 
     <!-- Phase 2: Mentions -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Mentions (Phase 2)</h2>
+        <h2 id="Mentions-Phase-2" class="text-lg font-semibold">
+<a href="#Mentions-Phase-2" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Mentions (Phase 2)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Provide <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >onMention(query)</code
@@ -431,7 +496,12 @@
 
     <!-- Phase 3: Slash commands -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Slash commands (Phase 3)</h2>
+        <h2 id="Slash-commands-Phase-3" class="text-lg font-semibold">
+<a href="#Slash-commands-Phase-3" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Slash commands (Phase 3)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">slash</code
             >
@@ -450,7 +520,12 @@
 
     <!-- Phase 3: YouTube embed -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">YouTube embeds (Phase 3)</h2>
+        <h2 id="YouTube-embeds-Phase-3" class="text-lg font-semibold">
+<a href="#YouTube-embeds-Phase-3" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        YouTube embeds (Phase 3)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">youtube</code>
             enables the
@@ -466,7 +541,12 @@
 
     <!-- Phase 3: Drag handle -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Drag handle (Phase 3)</h2>
+        <h2 id="Drag-handle-Phase-3" class="text-lg font-semibold">
+<a href="#Drag-handle-Phase-3" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Drag handle (Phase 3)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >dragHandle</code
@@ -481,7 +561,12 @@
 
     <!-- Phase 2: Form integration -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Form integration (Phase 2)</h2>
+        <h2 id="Form-integration-Phase-2" class="text-lg font-semibold">
+<a href="#Form-integration-Phase-2" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Form integration (Phase 2)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Wrap in <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >&lt;FormField&gt;</code
@@ -531,7 +616,12 @@
 
     <!-- Real-world: comment box -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real-world — Comment box</h2>
+        <h2 id="Real-world--Comment-box" class="text-lg font-semibold">
+<a href="#Real-world--Comment-box" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real-world — Comment box
+                    </a>
+</h2>
         <Card class="space-y-3 p-4">
             <Editor
                 bind:value={limitedValue}
@@ -550,7 +640,12 @@
 
     <!-- Note about sub-export -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Import path</h2>
+        <h2 id="Import-path" class="text-lg font-semibold">
+<a href="#Import-path" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Import path
+                    </a>
+</h2>
         <div class="rounded-lg border border-outline-variant bg-surface-container p-4 text-sm">
             <p class="mb-2 flex items-center gap-2 font-medium">
                 <Icon name="lucide:package" size="18" class="text-primary" />

@@ -12,7 +12,12 @@
 
     <!-- Variants -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <div class="grid gap-4 md:grid-cols-2">
             <Card variant="outline">
                 {#snippet header()}
@@ -46,7 +51,12 @@
 
     <!-- With Header and Footer -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Header & Footer</h2>
+        <h2 id="With-Header--Footer" class="text-lg font-semibold">
+<a href="#With-Header--Footer" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Header & Footer
+                    </a>
+</h2>
         <div class="grid gap-4 md:grid-cols-2">
             <Card>
                 {#snippet header()}
@@ -109,7 +119,12 @@
 
     <!-- Body Only -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Body Only</h2>
+        <h2 id="Body-Only" class="text-lg font-semibold">
+<a href="#Body-Only" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Body Only
+                    </a>
+</h2>
         <div class="grid gap-4 md:grid-cols-3">
             <Card>
                 <div class="text-center">
@@ -139,7 +154,12 @@
 
     <!-- Custom Styling -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Styling</h2>
+        <h2 id="Custom-Styling" class="text-lg font-semibold">
+<a href="#Custom-Styling" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Styling
+                    </a>
+</h2>
         <div class="grid gap-4 md:grid-cols-2">
             <Card class="border-l-4 border-l-primary">
                 {#snippet header()}
@@ -164,7 +184,12 @@
 
     <!-- As Different Element -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">As Different Element</h2>
+        <h2 id="As-Different-Element" class="text-lg font-semibold">
+<a href="#As-Different-Element" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        As Different Element
+                    </a>
+</h2>
         <Card as="article" variant="soft">
             {#snippet header()}
                 <h3 class="font-semibold">Article Card</h3>

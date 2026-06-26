@@ -38,7 +38,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Child form controls automatically inherit size, error state, name, and ariaId from the
             parent FormField via <code class="rounded bg-surface-container px-1"
@@ -58,7 +63,12 @@
 
     <!-- Size Inheritance -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Size Inheritance</h2>
+        <h2 id="Size-Inheritance" class="text-lg font-semibold">
+<a href="#Size-Inheritance" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Size Inheritance
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             The Input automatically picks up the size from FormField — no need to pass it
             explicitly.
@@ -75,7 +85,12 @@
 
     <!-- Error Propagation -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Error Propagation</h2>
+        <h2 id="Error-Propagation" class="text-lg font-semibold">
+<a href="#Error-Propagation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Error Propagation
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             When FormField has an error, child inputs automatically get error styling and ARIA
             attributes via the shared context.
@@ -113,7 +128,12 @@
 
     <!-- Different Form Controls -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Works with All Form Controls</h2>
+        <h2 id="Works-with-All-Form-Controls" class="text-lg font-semibold">
+<a href="#Works-with-All-Form-Controls" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Works with All Form Controls
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             All form components (Input, Select, Switch, Checkbox, etc.) consume the same FormField
             context via useFormField().
@@ -153,7 +173,12 @@
 
     <!-- How it works -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">How It Works</h2>
+        <h2 id="How-It-Works" class="text-lg font-semibold">
+<a href="#How-It-Works" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        How It Works
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <div class="rounded-md bg-surface-container p-4">
                 <p class="mb-2 text-sm font-medium">Context Shape</p>

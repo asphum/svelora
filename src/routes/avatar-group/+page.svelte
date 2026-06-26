@@ -14,7 +14,12 @@
 
     <!-- Basic Usage -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic Usage</h2>
+        <h2 id="Basic-Usage" class="text-lg font-semibold">
+<a href="#Basic-Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic Usage
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-6 rounded-lg bg-surface-container-high p-4">
             <AvatarGroup
                 avatars={[
@@ -29,7 +34,12 @@
 
     <!-- Max Limit -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Max Limit</h2>
+        <h2 id="Max-Limit" class="text-lg font-semibold">
+<a href="#Max-Limit" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Max Limit
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1">max</code> to limit visible avatars.
             Excess shown as "+N".
@@ -51,7 +61,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="flex flex-wrap items-end gap-6 rounded-lg bg-surface-container-high p-4">
             {#each sizes as size (size)}
                 <div class="flex flex-col items-center gap-2">
@@ -71,7 +86,12 @@
 
     <!-- With Children -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Children</h2>
+        <h2 id="With-Children" class="text-lg font-semibold">
+<a href="#With-Children" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Children
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use slot content for full control over child avatars.
         </p>

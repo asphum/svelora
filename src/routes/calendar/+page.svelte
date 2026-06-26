@@ -97,7 +97,12 @@
 
     <!-- Date Picker -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Date Picker</h2>
+        <h2 id="Date-Picker" class="text-lg font-semibold">
+<a href="#Date-Picker" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Date Picker
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Combine Calendar with Button and Popover to create a date picker.
         </p>
@@ -160,7 +165,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="flex flex-wrap items-start gap-6 rounded-lg bg-surface-container-high p-4">
             <Calendar bind:value={singleValue} />
             <div class="text-sm text-on-surface-variant">
@@ -171,7 +181,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <div class="flex flex-wrap items-start gap-6 rounded-lg bg-surface-container-high p-4">
             {#each colors as color (color)}
                 <div class="space-y-2">
@@ -186,7 +201,12 @@
 
     <!-- Variants -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <div class="flex flex-wrap items-start gap-6 rounded-lg bg-surface-container-high p-4">
             {#each variants as variant (variant)}
                 <div class="space-y-2">
@@ -201,7 +221,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {#each ['xs', 'sm', 'md', 'lg', 'xl'] as size (size)}
                 {@const calendarSize = size as 'xs' | 'sm' | 'md' | 'lg' | 'xl'}
@@ -217,7 +242,12 @@
 
     <!-- Multiple Selection -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Multiple Selection</h2>
+        <h2 id="Multiple-Selection" class="text-lg font-semibold">
+<a href="#Multiple-Selection" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Multiple Selection
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -248,7 +278,12 @@
 
     <!-- Range Selection -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Range Selection</h2>
+        <h2 id="Range-Selection" class="text-lg font-semibold">
+<a href="#Range-Selection" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Range Selection
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">range</code>
@@ -276,7 +311,12 @@
 
     <!-- Multiple Months -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Multiple Months</h2>
+        <h2 id="Multiple-Months" class="text-lg font-semibold">
+<a href="#Multiple-Months" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Multiple Months
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Calendar numberOfMonths={2} />
         </div>
@@ -284,7 +324,12 @@
 
     <!-- Disabled & Unavailable Dates -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled & Unavailable Dates</h2>
+        <h2 id="Disabled--Unavailable-Dates" class="text-lg font-semibold">
+<a href="#Disabled--Unavailable-Dates" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled & Unavailable Dates
+                    </a>
+</h2>
         <div class="grid gap-4 sm:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Weekends disabled</p>
@@ -322,7 +367,12 @@
 
     <!-- Locale -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Locale</h2>
+        <h2 id="Locale" class="text-lg font-semibold">
+<a href="#Locale" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Locale
+                    </a>
+</h2>
         <div class="grid gap-4 sm:grid-cols-3">
             {#each [{ locale: 'en', label: 'English' }, { locale: 'vi', label: 'Vietnamese' }, { locale: 'ja', label: 'Japanese' }] as item (item.locale)}
                 <div class="space-y-2">
@@ -337,7 +387,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Calendar
                 ui={{
@@ -350,7 +405,12 @@
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold text-on-surface">Max days (multiple)</h2>
+        <h2 id="Max-days-multiple" class="text-lg font-semibold text-on-surface">
+<a href="#Max-days-multiple" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Max days (multiple)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Cap how many dates can be selected in <code>type="multiple"</code> via
             <code>maxDays</code>. The same prop is available on range calendars (and
@@ -365,7 +425,12 @@
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold text-on-surface">Highlight specific dates</h2>
+        <h2 id="Highlight-specific-dates" class="text-lg font-semibold text-on-surface">
+<a href="#Highlight-specific-dates" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Highlight specific dates
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code>isDateHighlightable</code> to mark special dates (holidays, events) with a
             small dot indicator. Marked dates remain selectable; only their appearance changes.
@@ -385,7 +450,12 @@
     </section>
 
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold text-on-surface">Inside a Form (Zod schema)</h2>
+        <h2 id="Inside-a-Form-Zod-schema" class="text-lg font-semibold text-on-surface">
+<a href="#Inside-a-Form-Zod-schema" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Inside a Form (Zod schema)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Calendar reads the parent <code>FormField</code> + <code>Form</code> context. Try
             submitting without picking a date — the Zod schema fails and the calendar switches to

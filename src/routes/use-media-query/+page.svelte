@@ -29,7 +29,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Resize the browser window to see values change in real time.
         </p>
@@ -47,7 +52,12 @@
 
     <!-- Current Breakpoint -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Current Breakpoint</h2>
+        <h2 id="Current-Breakpoint" class="text-lg font-semibold">
+<a href="#Current-Breakpoint" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Current Breakpoint
+                    </a>
+</h2>
         <div class="flex flex-col items-center gap-4 rounded-lg bg-surface-container-high p-8">
             <Icon
                 name={isMobile.matches
@@ -69,7 +79,12 @@
 
     <!-- User Preferences -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">User Preferences</h2>
+        <h2 id="User-Preferences" class="text-lg font-semibold">
+<a href="#User-Preferences" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        User Preferences
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Detect OS-level user preferences for dark mode, motion, and orientation.
         </p>
@@ -143,7 +158,12 @@
 
     <!-- Custom Query -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Query</h2>
+        <h2 id="Custom-Query" class="text-lg font-semibold">
+<a href="#Custom-Query" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Query
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Supports reactive query strings via getter functions.
         </p>
@@ -185,7 +205,12 @@
 
     <!-- Responsive Layout -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World: Responsive Layout</h2>
+        <h2 id="Real-World-Responsive-Layout" class="text-lg font-semibold">
+<a href="#Real-World-Responsive-Layout" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World: Responsive Layout
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Switch between layouts based on viewport. Resize the window to see the layout change.
         </p>

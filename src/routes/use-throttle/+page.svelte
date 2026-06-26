@@ -58,7 +58,12 @@
     </div>
 
     <Card>
-        <h2 class="mb-1 font-semibold text-on-surface">Throttled input (delay: 300ms)</h2>
+        <h2 id="Throttled-input-delay-300ms" class="mb-1 font-semibold text-on-surface">
+<a href="#Throttled-input-delay-300ms" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Throttled input (delay: 300ms)
+                    </a>
+</h2>
         <p class="mb-4 text-sm text-on-surface-variant">
             Type quickly. Unlike <code>useDebounce</code> (which waits for a pause), throttle
             updates the query at a steady rate <em>while</em> you type — good for live filtering.
@@ -78,7 +83,12 @@
     </Card>
 
     <Card>
-        <h2 class="mb-1 font-semibold text-on-surface">Mousemove rate (delay: 100ms)</h2>
+        <h2 id="Mousemove-rate-delay-100ms" class="mb-1 font-semibold text-on-surface">
+<a href="#Mousemove-rate-delay-100ms" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Mousemove rate (delay: 100ms)
+                    </a>
+</h2>
         <p class="mb-4 text-sm text-on-surface-variant">
             Move your cursor across the box. Raw events fire on every pixel; the throttled callback
             runs at most ~10×/second.
@@ -101,7 +111,12 @@
     </Card>
 
     <Card>
-        <h2 class="mb-1 font-semibold text-on-surface">Rapid clicks (delay: 600ms)</h2>
+        <h2 id="Rapid-clicks-delay-600ms" class="mb-1 font-semibold text-on-surface">
+<a href="#Rapid-clicks-delay-600ms" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Rapid clicks (delay: 600ms)
+                    </a>
+</h2>
         <p class="mb-4 text-sm text-on-surface-variant">
             Click fast: the first click fires immediately (leading), then bursts collapse into one
             trailing call per window.

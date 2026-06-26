@@ -222,7 +222,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="rounded-lg border border-outline-variant shadow-md">
             <Command groups={basicGroups} placeholder="Type a command or search..." />
         </div>
@@ -232,7 +237,12 @@
 
     <!-- With descriptions -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Items with Descriptions</h2>
+        <h2 id="Items-with-Descriptions" class="text-lg font-semibold">
+<a href="#Items-with-Descriptions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Items with Descriptions
+                    </a>
+</h2>
         <div class="rounded-lg border border-outline-variant shadow-md">
             <Command groups={multiGroups} placeholder="Search settings..." />
         </div>
@@ -242,7 +252,12 @@
 
     <!-- Disabled items -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled Items</h2>
+        <h2 id="Disabled-Items" class="text-lg font-semibold">
+<a href="#Disabled-Items" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled Items
+                    </a>
+</h2>
         <div class="rounded-lg border border-outline-variant shadow-md">
             <Command groups={disabledGroups} placeholder="Search actions..." />
         </div>
@@ -252,7 +267,12 @@
 
     <!-- Keywords search -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Keywords (search "help", "ui", "dashboard")</h2>
+        <h2 id="Keywords-search-help-ui-dashboard" class="text-lg font-semibold">
+<a href="#Keywords-search-help-ui-dashboard" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Keywords (search "help", "ui", "dashboard")
+                    </a>
+</h2>
         <div class="rounded-lg border border-outline-variant shadow-md">
             <Command groups={keywordGroups} placeholder="Try searching help or dashboard..." />
         </div>
@@ -262,7 +282,12 @@
 
     <!-- onSelect callback -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">onSelect Callback</h2>
+        <h2 id="onSelect-Callback" class="text-lg font-semibold">
+<a href="#onSelect-Callback" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        onSelect Callback
+                    </a>
+</h2>
         <div class="flex items-center gap-2">
             <span class="text-sm text-on-surface-variant">Last selected:</span>
             <Badge label={lastSelected || 'None'} color={lastSelected ? 'success' : 'surface'} />
@@ -276,7 +301,12 @@
 
     <!-- Loading -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Loading State</h2>
+        <h2 id="Loading-State" class="text-lg font-semibold">
+<a href="#Loading-State" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Loading State
+                    </a>
+</h2>
         <div class="rounded-lg border border-outline-variant shadow-md">
             <Command groups={[]} loading placeholder="Fetching results..." />
         </div>
@@ -286,7 +316,12 @@
 
     <!-- Empty state -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Empty State</h2>
+        <h2 id="Empty-State" class="text-lg font-semibold">
+<a href="#Empty-State" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Empty State
+                    </a>
+</h2>
         <div class="rounded-lg border border-outline-variant shadow-md">
             <Command
                 groups={[{ id: 'empty', items: [] }]}
@@ -300,7 +335,12 @@
 
     <!-- Custom empty slot -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Empty Slot</h2>
+        <h2 id="Custom-Empty-Slot" class="text-lg font-semibold">
+<a href="#Custom-Empty-Slot" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Empty Slot
+                    </a>
+</h2>
         <div class="rounded-lg border border-outline-variant shadow-md">
             <Command groups={basicGroups} placeholder="Search something that doesn't exist...">
                 {#snippet empty({ search })}
@@ -319,7 +359,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         {#each ['xs', 'sm', 'md', 'lg', 'xl'] as const as s (s)}
             <div>
                 <p class="mb-1 text-xs font-medium text-on-surface-variant">{s}</p>
@@ -347,7 +392,12 @@
 
     <!-- Custom UI slots -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom UI Slots</h2>
+        <h2 id="Custom-UI-Slots" class="text-lg font-semibold">
+<a href="#Custom-UI-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom UI Slots
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Available ui slots: root, input, list, empty, loading, group, groupHeading, groupItems,
             separator, item, itemIcon, itemLabel, itemDescription, itemTrailing
@@ -403,7 +453,12 @@
 
     <!-- Footer slot -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Footer Slot</h2>
+        <h2 id="Footer-Slot" class="text-lg font-semibold">
+<a href="#Footer-Slot" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Footer Slot
+                    </a>
+</h2>
         <div class="rounded-lg border border-outline-variant shadow-md">
             <Command groups={basicGroups} placeholder="Search...">
                 {#snippet footer()}
@@ -431,7 +486,12 @@
 
     <!-- shouldFilter=false -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">External Filtering (shouldFilter=false)</h2>
+        <h2 id="External-Filtering-shouldFilterfalse" class="text-lg font-semibold">
+<a href="#External-Filtering-shouldFilterfalse" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        External Filtering (shouldFilter=false)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Built-in filter is disabled. The search term is bound via
             <code class="rounded bg-surface-container-highest px-1 py-0.5 text-xs">bind:search</code
@@ -452,7 +512,12 @@
 
     <!-- Inside Popover -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Inside Popover</h2>
+        <h2 id="Inside-Popover" class="text-lg font-semibold">
+<a href="#Inside-Popover" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Inside Popover
+                    </a>
+</h2>
         <Popover>
             <Button variant="outline" leadingIcon="lucide:search">Open Command...</Button>
             {#snippet content()}
@@ -470,7 +535,12 @@
 
     <!-- Inside Modal -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Inside Modal</h2>
+        <h2 id="Inside-Modal" class="text-lg font-semibold">
+<a href="#Inside-Modal" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Inside Modal
+                    </a>
+</h2>
         <Modal>
             <Button variant="outline" leadingIcon="lucide:search">
                 Search...
@@ -487,7 +557,12 @@
 
     <!-- Inside Drawer -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Inside Drawer</h2>
+        <h2 id="Inside-Drawer" class="text-lg font-semibold">
+<a href="#Inside-Drawer" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Inside Drawer
+                    </a>
+</h2>
         <Drawer handle={false}>
             <Button variant="outline" leadingIcon="lucide:terminal">Open Command Drawer</Button>
             {#snippet content()}

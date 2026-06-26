@@ -38,7 +38,12 @@
 
     <!-- Basic Usage -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-xl font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <p class="text-on-surface-variant text-sm">A simple sidebar with a header, navigation links, and a footer.</p>
         <div class="rounded-xl bg-surface-container-high p-6 flex justify-center overflow-hidden border border-outline-variant/50">
             <div class="w-full max-w-[280px] h-[500px] border border-outline-variant/50 rounded-xl flex overflow-hidden bg-surface dark:bg-surface-900 shadow-sm">
@@ -73,7 +78,12 @@
 
     <!-- Grouped Sections -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Grouped Sections</h2>
+        <h2 id="Grouped-Sections" class="text-xl font-semibold">
+<a href="#Grouped-Sections" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Grouped Sections
+                    </a>
+</h2>
         <p class="text-on-surface-variant text-sm">Pass an array of arrays to <code class="rounded bg-surface-container px-1 text-sm">NavigationMenu</code> inside the sidebar to create distinct groupings.</p>
         <div class="rounded-xl bg-surface-container-high p-6 flex justify-center overflow-hidden border border-outline-variant/50">
             <div class="w-full max-w-[280px] h-[600px] border border-outline-variant/50 rounded-xl flex overflow-hidden bg-surface dark:bg-surface-900 shadow-sm">
@@ -101,7 +111,12 @@
 
     <!-- Collapsible App Shell -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Collapsible App Shell</h2>
+        <h2 id="Collapsible-App-Shell" class="text-xl font-semibold">
+<a href="#Collapsible-App-Shell" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Collapsible App Shell
+                    </a>
+</h2>
         <p class="text-on-surface-variant text-sm">
             Pass <code class="rounded bg-surface-container px-1 text-sm">collapsed</code> to the Sidebar. When collapsed, <code class="rounded bg-surface-container px-1 text-sm">NavigationMenu</code> items instantly convert to perfectly proportioned tooltips! Use the <code class="rounded bg-surface-container px-1 text-sm">{"{ collapsed }"}</code> snippet props to conditionally render the header/footer.
         </p>
@@ -183,7 +198,12 @@
                 
                 <main class="flex-1 p-8 bg-surface-50 dark:bg-surface-950 flex flex-col">
                     <header class="h-10 flex items-center justify-between border-b border-outline-variant/30 mb-8 pb-4">
-                        <h2 class="text-2xl font-bold">Dashboard</h2>
+                        <h2 id="Dashboard" class="text-2xl font-bold">
+<a href="#Dashboard" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Dashboard
+                    </a>
+</h2>
                         <div class="flex gap-2">
                             <Button variant="soft" icon="lucide:bell" square />
                             <Button variant="solid" color="primary" label="New Project" icon="lucide:plus" />
@@ -214,7 +234,12 @@
 
     <!-- Right Positioned (AI Chat Panel) -->
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Right Positioned & Responsive</h2>
+        <h2 id="Right-Positioned--Responsive" class="text-xl font-semibold">
+<a href="#Right-Positioned--Responsive" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Right Positioned & Responsive
+                    </a>
+</h2>
         <p class="text-on-surface-variant text-sm">
             Pass <code class="rounded bg-surface-container px-1 text-sm">position="right"</code> to dock the sidebar on the right side. The borders and Tooltips automatically adapt! 
             <br/><br/>
@@ -225,7 +250,12 @@
                 
                 <main class="flex-1 p-8 bg-surface-50 dark:bg-surface-950 flex flex-col">
                     <header class="h-10 flex items-center justify-between border-b border-outline-variant/30 mb-8 pb-4">
-                        <h2 class="text-2xl font-bold">Workspace</h2>
+                        <h2 id="Workspace" class="text-2xl font-bold">
+<a href="#Workspace" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Workspace
+                    </a>
+</h2>
                         <div class="flex gap-2">
                             <!-- Mobile toggle button (hidden on desktop) -->
                             <Button variant="soft" icon="lucide:menu" class="md:hidden" />

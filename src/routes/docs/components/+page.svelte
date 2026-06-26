@@ -25,7 +25,12 @@
     {#each docsComponentGroups as group (group.title)}
         <section class="space-y-4">
             <div class="flex items-baseline gap-2">
-                <h2 class="text-2xl font-semibold">{group.title}</h2>
+                <h2 id="grouptitle" class="text-2xl font-semibold">
+<a href="#grouptitle" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        {group.title}
+                    </a>
+</h2>
                 <span class="text-sm text-on-surface-variant">{group.items.length}</span>
             </div>
 

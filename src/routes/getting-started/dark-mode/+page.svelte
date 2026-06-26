@@ -75,7 +75,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Setup</h2>
+        <h2 id="Setup" class="text-xl font-semibold">
+<a href="#Setup" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Setup
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Two things are needed: the `ModeWatcher` component in your layout, and the `@custom-variant` CSS rule.
         </p>
@@ -90,7 +95,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Toggle Button</h2>
+        <h2 id="Toggle-Button" class="text-xl font-semibold">
+<a href="#Toggle-Button" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Toggle Button
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Use `ThemeModeButton` for a ready-to-use theme switcher with animated icons.
         </p>
@@ -106,7 +116,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Programmatic Control</h2>
+        <h2 id="Programmatic-Control" class="text-xl font-semibold">
+<a href="#Programmatic-Control" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Programmatic Control
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             Use `mode`, `setMode`, and `toggleMode` to control the theme manually.
         </p>
@@ -116,7 +131,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Styling with Dark Mode</h2>
+        <h2 id="Styling-with-Dark-Mode" class="text-xl font-semibold">
+<a href="#Styling-with-Dark-Mode" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Styling with Dark Mode
+                    </a>
+</h2>
         <p class="text-on-surface-variant">
             You can use Tailwind's `dark:` variant, but Svelora semantic colors usually remove the need for it.
         </p>
@@ -126,7 +146,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Why Semantic Colors?</h2>
+        <h2 id="Why-Semantic-Colors" class="text-xl font-semibold">
+<a href="#Why-Semantic-Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Why Semantic Colors?
+                    </a>
+</h2>
         <div class="overflow-hidden rounded-2xl border border-outline-variant">
             <table class="w-full text-left text-sm">
                 <thead class="bg-surface-container text-on-surface">

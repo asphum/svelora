@@ -25,7 +25,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-2 rounded-lg bg-surface-container-high p-4">
             <Badge label="Badge" />
             <Badge label="New" color="success" />
@@ -36,7 +41,12 @@
 
     <!-- Variants -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             {#each variants as variant (variant)}
                 <div class="flex flex-wrap items-center gap-2">
@@ -51,7 +61,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <div class="flex flex-wrap items-center gap-3 rounded-lg bg-surface-container-high p-4">
             {#each sizes as size (size)}
                 <Badge label={size} {size} />
@@ -61,7 +76,12 @@
 
     <!-- With Icons -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Icons</h2>
+        <h2 id="With-Icons" class="text-lg font-semibold">
+<a href="#With-Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Icons
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Add leading or trailing icons alongside the label.
         </p>
@@ -80,7 +100,12 @@
 
     <!-- Icon Only -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Icon Only</h2>
+        <h2 id="Icon-Only" class="text-lg font-semibold">
+<a href="#Icon-Only" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Icon Only
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the icon prop for square icon-only badges.
         </p>
@@ -100,7 +125,12 @@
 
     <!-- With Avatar -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Avatar</h2>
+        <h2 id="With-Avatar" class="text-lg font-semibold">
+<a href="#With-Avatar" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Avatar
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Display an avatar on the leading side of the badge.
         </p>
@@ -123,7 +153,12 @@
 
     <!-- Children Slot -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Children Slot</h2>
+        <h2 id="Children-Slot" class="text-lg font-semibold">
+<a href="#Children-Slot" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Children Slot
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the default snippet for custom content instead of the label prop.
         </p>
@@ -148,7 +183,12 @@
 
     <!-- Custom Leading/Trailing Slots -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Slots</h2>
+        <h2 id="Custom-Slots" class="text-lg font-semibold">
+<a href="#Custom-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Slots
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Override leading and trailing content with custom snippets.
         </p>
@@ -172,7 +212,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="flex flex-wrap gap-2 rounded-lg bg-surface-container-high p-4">
             <Badge label="Rounded Full" ui={{ base: 'rounded-full px-3' }} />
             <Badge
@@ -192,7 +237,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
         <div class="space-y-6 rounded-lg bg-surface-container-high p-4">
             <!-- Status Labels -->
             <div class="space-y-2">
@@ -252,7 +302,12 @@
 
     <!-- Variants x Colors Matrix -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants x Colors</h2>
+        <h2 id="Variants-x-Colors" class="text-lg font-semibold">
+<a href="#Variants-x-Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants x Colors
+                    </a>
+</h2>
         <div class="overflow-x-auto rounded-lg bg-surface-container-high p-4">
             <table class="w-full">
                 <thead>

@@ -62,7 +62,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Theme Colors</h2>
+        <h2 id="Theme-Colors" class="text-xl font-semibold">
+<a href="#Theme-Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Theme Colors
+                    </a>
+</h2>
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {#each colors as color (color.name)}
                 <Card class="border border-outline-variant/70">
@@ -80,7 +85,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Surface Colors</h2>
+        <h2 id="Surface-Colors" class="text-xl font-semibold">
+<a href="#Surface-Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Surface Colors
+                    </a>
+</h2>
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             <div class="rounded-2xl border border-outline-variant bg-surface p-5 text-on-surface">
                 Surface
@@ -104,7 +114,12 @@
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Outline Colors</h2>
+        <h2 id="Outline-Colors" class="text-xl font-semibold">
+<a href="#Outline-Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Outline Colors
+                    </a>
+</h2>
         <div class="grid gap-4 md:grid-cols-2">
             <div class="rounded-2xl border-2 border-outline p-5">
                 <p class="font-medium">outline</p>

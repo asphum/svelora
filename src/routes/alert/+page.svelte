@@ -28,7 +28,12 @@
 
     <!-- Basic Usage -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic Usage</h2>
+        <h2 id="Basic-Usage" class="text-lg font-semibold">
+<a href="#Basic-Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic Usage
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <Alert
                 title="Information"
@@ -41,7 +46,12 @@
 
     <!-- Variants -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants</h2>
+        <h2 id="Variants" class="text-lg font-semibold">
+<a href="#Variants" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <Alert
                 variant="solid"
@@ -60,7 +70,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <Alert color="primary" title="Primary" description="Primary color alert." />
             <Alert color="secondary" title="Secondary" description="Secondary color alert." />
@@ -79,7 +94,12 @@
 
     <!-- With Icons -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Icons</h2>
+        <h2 id="With-Icons" class="text-lg font-semibold">
+<a href="#With-Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Icons
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <Alert
                 color="info"
@@ -110,7 +130,12 @@
 
     <!-- With Avatar -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Avatar</h2>
+        <h2 id="With-Avatar" class="text-lg font-semibold">
+<a href="#With-Avatar" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Avatar
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <Alert
                 avatar={{ src: 'https://i.pravatar.cc/150?img=1', alt: 'John' }}
@@ -128,7 +153,12 @@
 
     <!-- With Close Button -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Close Button</h2>
+        <h2 id="With-Close-Button" class="text-lg font-semibold">
+<a href="#With-Close-Button" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Close Button
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <Alert
                 icon="lucide:bell"
@@ -148,7 +178,12 @@
 
     <!-- With Actions -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Actions</h2>
+        <h2 id="With-Actions" class="text-lg font-semibold">
+<a href="#With-Actions" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Actions
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <Alert
                 icon="lucide:download"
@@ -171,7 +206,12 @@
 
     <!-- Vertical Orientation -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Vertical Orientation</h2>
+        <h2 id="Vertical-Orientation" class="text-lg font-semibold">
+<a href="#Vertical-Orientation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Vertical Orientation
+                    </a>
+</h2>
         <div class="grid gap-3 rounded-lg bg-surface-container-high p-4 md:grid-cols-2">
             <Alert
                 orientation="vertical"
@@ -194,7 +234,12 @@
 
     <!-- Variants x Colors Matrix -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Variants x Colors</h2>
+        <h2 id="Variants-x-Colors" class="text-lg font-semibold">
+<a href="#Variants-x-Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Variants x Colors
+                    </a>
+</h2>
         <div class="overflow-x-auto">
             <table class="w-full">
                 <thead>
@@ -231,7 +276,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <Alert
                 variant="subtle"

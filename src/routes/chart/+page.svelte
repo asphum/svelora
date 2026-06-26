@@ -100,7 +100,12 @@
         
         <!-- Bar Chart -->
         <section class="space-y-3">
-            <h2 class="text-xl font-semibold">Bar Chart</h2>
+            <h2 id="Bar-Chart" class="text-xl font-semibold">
+<a href="#Bar-Chart" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Bar Chart
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">Simple comparisons with rounded corners.</p>
             <div class="rounded-xl bg-surface-container-low border border-outline-variant/60 p-6 shadow-sm">
                 <Chart options={barOptions} />
@@ -109,7 +114,12 @@
 
         <!-- Area Chart -->
         <section class="space-y-3">
-            <h2 class="text-xl font-semibold">Area Chart</h2>
+            <h2 id="Area-Chart" class="text-xl font-semibold">
+<a href="#Area-Chart" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Area Chart
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">Smooth curves with beautiful gradients for trends.</p>
             <div class="rounded-xl bg-surface-container-low border border-outline-variant/60 p-6 shadow-sm">
                 <Chart options={areaOptions} />
@@ -118,7 +128,12 @@
 
         <!-- Stacked Column Chart -->
         <section class="space-y-3">
-            <h2 class="text-xl font-semibold">Stacked Column Chart</h2>
+            <h2 id="Stacked-Column-Chart" class="text-xl font-semibold">
+<a href="#Stacked-Column-Chart" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Stacked Column Chart
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">Perfect for visualizing composition and parts-to-whole over time.</p>
             <div class="rounded-xl bg-surface-container-low border border-outline-variant/60 p-6 shadow-sm">
                 <Chart options={stackedOptions} />
@@ -127,7 +142,12 @@
 
         <!-- Mixed Chart -->
         <section class="space-y-3">
-            <h2 class="text-xl font-semibold">Mixed Chart (Line + Column)</h2>
+            <h2 id="Mixed-Chart-Line--Column" class="text-xl font-semibold">
+<a href="#Mixed-Chart-Line--Column" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Mixed Chart (Line + Column)
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">Combine different types to compare multiple metrics (e.g. Revenue vs Margin).</p>
             <div class="rounded-xl bg-surface-container-low border border-outline-variant/60 p-6 shadow-sm">
                 <Chart options={mixedOptions} />
@@ -136,7 +156,12 @@
 
         <!-- Donut Chart -->
         <section class="space-y-3">
-            <h2 class="text-xl font-semibold">Donut Chart</h2>
+            <h2 id="Donut-Chart" class="text-xl font-semibold">
+<a href="#Donut-Chart" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Donut Chart
+                    </a>
+</h2>
             <p class="text-sm text-on-surface-variant">Clear proportional breakdown with hover expansions.</p>
             <div class="rounded-xl bg-surface-container-low border border-outline-variant/60 p-6 shadow-sm flex items-center justify-center">
                 <div class="w-full max-w-[320px]">
@@ -148,7 +173,12 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 col-span-1 xl:col-span-2">
             <!-- Radar Chart -->
             <section class="space-y-3">
-                <h2 class="text-xl font-semibold">Radar Chart</h2>
+                <h2 id="Radar-Chart" class="text-xl font-semibold">
+<a href="#Radar-Chart" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Radar Chart
+                    </a>
+</h2>
                 <p class="text-sm text-on-surface-variant">Analyze multiple variables simultaneously.</p>
                 <div class="rounded-xl bg-surface-container-low border border-outline-variant/60 p-6 shadow-sm flex items-center justify-center">
                     <Chart options={radarOptions} />
@@ -157,7 +187,12 @@
 
             <!-- Radial Bar -->
             <section class="space-y-3">
-                <h2 class="text-xl font-semibold">Radial Bar Gauge</h2>
+                <h2 id="Radial-Bar-Gauge" class="text-xl font-semibold">
+<a href="#Radial-Bar-Gauge" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Radial Bar Gauge
+                    </a>
+</h2>
                 <p class="text-sm text-on-surface-variant">Ideal for scorecards and KPI dashboard indicators.</p>
                 <div class="rounded-xl bg-surface-container-low border border-outline-variant/60 p-6 shadow-sm flex items-center justify-center">
                     <Chart options={radialOptions} />

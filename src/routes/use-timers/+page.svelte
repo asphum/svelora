@@ -26,7 +26,12 @@
     </div>
 
     <Card>
-        <h2 class="mb-1 font-semibold text-on-surface">useInterval (1000ms)</h2>
+        <h2 id="useInterval-1000ms" class="mb-1 font-semibold text-on-surface">
+<a href="#useInterval-1000ms" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        useInterval (1000ms)
+                    </a>
+</h2>
         <p class="mb-4 text-sm text-on-surface-variant">
             Ticks every second. Pause and resume without leaking the timer.
         </p>
@@ -46,7 +51,12 @@
     </Card>
 
     <Card>
-        <h2 class="mb-1 font-semibold text-on-surface">useTimeout (3000ms)</h2>
+        <h2 id="useTimeout-3000ms" class="mb-1 font-semibold text-on-surface">
+<a href="#useTimeout-3000ms" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        useTimeout (3000ms)
+                    </a>
+</h2>
         <p class="mb-4 text-sm text-on-surface-variant">
             The message auto-dismisses after 3 seconds. <code>restart()</code> brings it back;
             <code>cancel()</code> keeps it.

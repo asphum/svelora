@@ -132,7 +132,12 @@
 
     <!-- ==================== BASIC ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic Usage</h2>
+        <h2 id="Basic-Usage" class="text-lg font-semibold">
+<a href="#Basic-Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic Usage
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Pass an array of items with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">label</code
@@ -147,7 +152,12 @@
 
     <!-- ==================== SINGLE VS MULTIPLE ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Single vs Multiple</h2>
+        <h2 id="Single-vs-Multiple" class="text-lg font-semibold">
+<a href="#Single-vs-Multiple" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Single vs Multiple
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >type="single"</code
@@ -172,7 +182,12 @@
 
     <!-- ==================== ICONS ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">With Icons</h2>
+        <h2 id="With-Icons" class="text-lg font-semibold">
+<a href="#With-Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        With Icons
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Add leading icons via the <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">icon</code
@@ -186,7 +201,12 @@
 
     <!-- ==================== TRAILING ICON ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Trailing Icon</h2>
+        <h2 id="Custom-Trailing-Icon" class="text-lg font-semibold">
+<a href="#Custom-Trailing-Icon" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Trailing Icon
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Override the default chevron with <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -208,7 +228,12 @@
 
     <!-- ==================== DISABLED ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled State</h2>
+        <h2 id="Disabled-State" class="text-lg font-semibold">
+<a href="#Disabled-State" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled State
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Disable the entire accordion or individual items.
         </p>
@@ -226,7 +251,12 @@
 
     <!-- ==================== CONTROLLED ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Controlled Value</h2>
+        <h2 id="Controlled-Value" class="text-lg font-semibold">
+<a href="#Controlled-Value" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Controlled Value
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Bind the <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >value</code
@@ -304,7 +334,12 @@
 
     <!-- ==================== CALLBACK ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Value Change Callback</h2>
+        <h2 id="Value-Change-Callback" class="text-lg font-semibold">
+<a href="#Value-Change-Callback" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Value Change Callback
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >onValueChange</code
@@ -329,7 +364,12 @@
 
     <!-- ==================== CUSTOM VALUES ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Item Values</h2>
+        <h2 id="Custom-Item-Values" class="text-lg font-semibold">
+<a href="#Custom-Item-Values" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Item Values
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Assign custom <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >value</code
@@ -359,7 +399,12 @@
 
     <!-- ==================== LOOP ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Keyboard Navigation (Loop)</h2>
+        <h2 id="Keyboard-Navigation-Loop" class="text-lg font-semibold">
+<a href="#Keyboard-Navigation-Loop" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Keyboard Navigation (Loop)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">loop</code> to
             cycle keyboard focus at boundaries.
@@ -374,7 +419,12 @@
 
     <!-- ==================== ORIENTATION ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Orientation</h2>
+        <h2 id="Orientation" class="text-lg font-semibold">
+<a href="#Orientation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Orientation
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >orientation</code
@@ -395,7 +445,12 @@
 
     <!-- ==================== FORCE MOUNT ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Force Mount</h2>
+        <h2 id="Force-Mount" class="text-lg font-semibold">
+<a href="#Force-Mount" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Force Mount
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >forceMount</code
@@ -424,7 +479,12 @@
 
     <!-- ==================== SLOTS ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Slots</h2>
+        <h2 id="Custom-Slots" class="text-lg font-semibold">
+<a href="#Custom-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Slots
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use snippets for custom rendering: <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">leading</code
@@ -549,7 +609,12 @@
 
     <!-- ==================== UI OVERRIDES ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Prop (Style Overrides)</h2>
+        <h2 id="UI-Prop-Style-Overrides" class="text-lg font-semibold">
+<a href="#UI-Prop-Style-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Prop (Style Overrides)
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Override slot styles via the <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">ui</code
@@ -573,7 +638,12 @@
 
     <!-- ==================== ITEM UI OVERRIDES ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Per-Item Style Overrides</h2>
+        <h2 id="Per-Item-Style-Overrides" class="text-lg font-semibold">
+<a href="#Per-Item-Style-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Per-Item Style Overrides
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Each item can have its own <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">ui</code
@@ -608,7 +678,12 @@
 
     <!-- ==================== REAL WORLD EXAMPLE: FAQ ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Example: FAQ</h2>
+        <h2 id="Real-World-Example-FAQ" class="text-lg font-semibold">
+<a href="#Real-World-Example-FAQ" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Example: FAQ
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <div class="mb-4 flex items-center gap-3">
                 <div class="flex size-10 items-center justify-center rounded-full bg-primary/10">
@@ -634,7 +709,12 @@
 
     <!-- ==================== REAL WORLD EXAMPLE: SETTINGS ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Example: Settings Sections</h2>
+        <h2 id="Real-World-Example-Settings-Sections" class="text-lg font-semibold">
+<a href="#Real-World-Example-Settings-Sections" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Example: Settings Sections
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Accordion
                 type="multiple"
@@ -677,7 +757,12 @@
 
     <!-- ==================== REAL WORLD EXAMPLE: SIDEBAR NAV ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Example: Sidebar Navigation</h2>
+        <h2 id="Real-World-Example-Sidebar-Navigation" class="text-lg font-semibold">
+<a href="#Real-World-Example-Sidebar-Navigation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Example: Sidebar Navigation
+                    </a>
+</h2>
         <div class="max-w-xs rounded-lg bg-surface-container-high p-4">
             <Accordion
                 type="multiple"
@@ -761,7 +846,12 @@
 
     <!-- ==================== REAL WORLD EXAMPLE: FEATURE COMPARISON ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World Example: Feature Comparison</h2>
+        <h2 id="Real-World-Example-Feature-Comparison" class="text-lg font-semibold">
+<a href="#Real-World-Example-Feature-Comparison" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Example: Feature Comparison
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-4">
             <Accordion
                 type="single"
@@ -820,7 +910,12 @@
 
     <!-- ==================== ADVANCED: UNIQUE UI PER ITEM ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Advanced: Unique UI Per Item</h2>
+        <h2 id="Advanced-Unique-UI-Per-Item" class="text-lg font-semibold">
+<a href="#Advanced-Unique-UI-Per-Item" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Advanced: Unique UI Per Item
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >body</code
@@ -952,7 +1047,12 @@
 
     <!-- ==================== ADVANCED: MIXED CONTENT TYPES ==================== -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Advanced: Mixed Content Types</h2>
+        <h2 id="Advanced-Mixed-Content-Types" class="text-lg font-semibold">
+<a href="#Advanced-Mixed-Content-Types" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Advanced: Mixed Content Types
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Combine different content types like forms, images, code blocks, and interactive
             elements.

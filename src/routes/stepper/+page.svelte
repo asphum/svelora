@@ -176,7 +176,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Pass <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
                 >items</code
@@ -190,7 +195,12 @@
 
     <!-- Orientation -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Orientation</h2>
+        <h2 id="Orientation" class="text-lg font-semibold">
+<a href="#Orientation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Orientation
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Switch between
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs"
@@ -218,7 +228,12 @@
 
     <!-- Sizes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Sizes</h2>
+        <h2 id="Sizes" class="text-lg font-semibold">
+<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Sizes
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Five sizes scale indicator and typography together.
         </p>
@@ -234,7 +249,12 @@
 
     <!-- Colors -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Colors</h2>
+        <h2 id="Colors" class="text-lg font-semibold">
+<a href="#Colors" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Colors
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             The <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">color</code
             >
@@ -258,7 +278,12 @@
 
     <!-- Icons -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Icons</h2>
+        <h2 id="Icons" class="text-lg font-semibold">
+<a href="#Icons" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Icons
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Set <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">icon</code>
             on an item to replace the default number indicator. Completed steps automatically show a check
@@ -285,7 +310,12 @@
 
     <!-- Linear vs Free -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Linear vs Free Navigation</h2>
+        <h2 id="Linear-vs-Free-Navigation" class="text-lg font-semibold">
+<a href="#Linear-vs-Free-Navigation" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Linear vs Free Navigation
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             By default Stepper is <code
                 class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">linear</code
@@ -319,7 +349,12 @@
 
     <!-- Disabled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Disabled</h2>
+        <h2 id="Disabled" class="text-lg font-semibold">
+<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Disabled
+                    </a>
+</h2>
         <div class="grid gap-4 lg:grid-cols-2">
             <div class="rounded-lg bg-surface-container-high p-6">
                 <p class="mb-3 text-sm font-medium">All steps disabled</p>
@@ -348,7 +383,12 @@
     <!-- Imperative API -->
     <section class="space-y-3">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 class="text-lg font-semibold">Imperative API — bind:api</h2>
+            <h2 id="Imperative-API--bindapi" class="text-lg font-semibold">
+<a href="#Imperative-API--bindapi" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Imperative API — bind:api
+                    </a>
+</h2>
             <p class="text-xs text-on-surface-variant">
                 Drive the Stepper from outside with Back / Next buttons.
             </p>
@@ -395,7 +435,12 @@
 
     <!-- Controlled -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Controlled — bind:value</h2>
+        <h2 id="Controlled--bindvalue" class="text-lg font-semibold">
+<a href="#Controlled--bindvalue" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Controlled — bind:value
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Two-way bind to drive Stepper from any UI; useful when navigation lives elsewhere on the
             page.
@@ -420,7 +465,12 @@
 
     <!-- Callback -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">onValueChange Callback</h2>
+        <h2 id="onValueChange-Callback" class="text-lg font-semibold">
+<a href="#onValueChange-Callback" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        onValueChange Callback
+                    </a>
+</h2>
         <div class="rounded-lg bg-surface-container-high p-6">
             <p class="mb-3 text-sm">
                 Last change:
@@ -440,7 +490,12 @@
 
     <!-- Custom Snippets -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Custom Snippets</h2>
+        <h2 id="Custom-Snippets" class="text-lg font-semibold">
+<a href="#Custom-Snippets" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Custom Snippets
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Override
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">indicator</code
@@ -537,7 +592,12 @@
 
     <!-- UI Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Overrides</h2>
+        <h2 id="UI-Overrides" class="text-lg font-semibold">
+<a href="#UI-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Overrides
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Override slot styles via the
             <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">ui</code> prop,
@@ -602,7 +662,12 @@
 
     <!-- Real World Example: Form Wizard -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World — Form Wizard</h2>
+        <h2 id="Real-World--Form-Wizard" class="text-lg font-semibold">
+<a href="#Real-World--Form-Wizard" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World — Form Wizard
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Multi-step form with per-step validation. The Next button calls a custom validator
             before invoking
@@ -746,7 +811,12 @@
 
     <!-- Real World Example: Onboarding -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Real World — Onboarding Checklist</h2>
+        <h2 id="Real-World--Onboarding-Checklist" class="text-lg font-semibold">
+<a href="#Real-World--Onboarding-Checklist" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World — Onboarding Checklist
+                    </a>
+</h2>
         <p class="text-sm text-on-surface-variant">
             Vertical Stepper with rich descriptions and inline actions per step.
         </p>

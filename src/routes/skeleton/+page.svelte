@@ -12,7 +12,12 @@
 
     <!-- Basic -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Basic</h2>
+        <h2 id="Basic" class="text-lg font-semibold">
+<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Basic
+                    </a>
+</h2>
         <div class="space-y-3 rounded-lg bg-surface-container-high p-4">
             <Skeleton class="h-4 w-3/4" />
             <Skeleton class="h-4 w-1/2" />
@@ -22,7 +27,12 @@
 
     <!-- Shapes -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">Shapes</h2>
+        <h2 id="Shapes" class="text-lg font-semibold">
+<a href="#Shapes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Shapes
+                    </a>
+</h2>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Text Lines</p>
@@ -61,7 +71,12 @@
 
     <!-- As Different Element -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">As Different Element</h2>
+        <h2 id="As-Different-Element" class="text-lg font-semibold">
+<a href="#As-Different-Element" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        As Different Element
+                    </a>
+</h2>
         <div class="space-y-2 rounded-lg bg-surface-container-high p-4">
             <Skeleton as="span" class="inline-block h-4 w-32" />
             <Skeleton as="div" class="h-4 w-48" />
@@ -71,7 +86,12 @@
 
     <!-- UI Slot Overrides -->
     <section class="space-y-3">
-        <h2 class="text-lg font-semibold">UI Slot Overrides</h2>
+        <h2 id="UI-Slot-Overrides" class="text-lg font-semibold">
+<a href="#UI-Slot-Overrides" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        UI Slot Overrides
+                    </a>
+</h2>
         <div class="grid gap-4 lg:grid-cols-2">
             <div class="space-y-2">
                 <p class="text-sm font-medium text-on-surface-variant">Custom background</p>
@@ -92,7 +112,12 @@
 
     <!-- Real World Examples -->
     <section class="space-y-6">
-        <h2 class="text-lg font-semibold">Real World Examples</h2>
+        <h2 id="Real-World-Examples" class="text-lg font-semibold">
+<a href="#Real-World-Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Real World Examples
+                    </a>
+</h2>
 
         <!-- Loading Card Comparison -->
         <div class="space-y-3">
