@@ -2,7 +2,7 @@ import type { Snippet } from 'svelte'
 import type { HTMLAttributes } from 'svelte/elements'
 import type { SidebarVariantProps } from './sidebar.variants.js'
 
-export interface SidebarProps extends HTMLAttributes<HTMLElement> {
+export interface SidebarProps extends Omit<HTMLAttributes<HTMLElement>, 'children'> {
     /**
      * Whether the sidebar is collapsed (icons only).
      * @default false
