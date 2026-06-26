@@ -1,85 +1,59 @@
 <script lang="ts">
+    import { onMount, onDestroy } from 'svelte'
     import { twMerge } from 'tailwind-merge'
-    import { onMount } from 'svelte'
-    import { 
-        Chart as ChartJS, 
-        Title, 
-        Tooltip, 
-        Legend, 
-        BarElement, 
-        CategoryScale, 
-        LinearScale, 
-        PointElement, 
-        LineElement, 
-        ArcElement,
-        RadialLinearScale,
-        Filler
-    } from 'chart.js'
-    import { Bar, Line, Pie, Doughnut, Radar, PolarArea, Scatter, Bubble } from 'svelte-chartjs'
     import type { ChartProps } from './chart.types.js'
-    import { chartVariants } from './chart.variants.js'
+    import type ApexChartsType from 'apexcharts'
 
-    // Register all common elements
-    ChartJS.register(
-        Title, 
-        Tooltip, 
-        Legend, 
-        BarElement, 
-        CategoryScale, 
-        LinearScale, 
-        PointElement, 
-        LineElement, 
-        ArcElement,
-        RadialLinearScale,
-        Filler
-    )
+    let { options, series, class: className }: ChartProps = $props()
 
-    // Set default styling to match Tailwind/Svelora theme
-    ChartJS.defaults.color = 'currentColor'
-    ChartJS.defaults.font.family = 'inherit'
-    ChartJS.defaults.plugins.tooltip.backgroundColor = 'rgba(0, 0, 0, 0.8)'
-    ChartJS.defaults.plugins.tooltip.titleColor = '#ffffff'
-    ChartJS.defaults.plugins.tooltip.bodyColor = '#ffffff'
-    ChartJS.defaults.plugins.tooltip.cornerRadius = 6
-    ChartJS.defaults.plugins.tooltip.padding = 10
+    let chartContainer: HTMLDivElement
+    let chartInstance: ApexChartsType | null = null
 
-    let {
-        type,
-        data,
-        options = {},
-        class: className,
-        ...restProps
-    }: ChartProps = $props()
+    // Helper to dynamically load apexcharts only on the client
+    onMount(async () => {
+        // Dynamic import so it doesn't break SSR
+        const ApexCharts = (await import('apexcharts')).default
 
-    let styles = $derived(chartVariants())
+        // Inject series if provided separately
+        const initialOptions = series ? { ...options, series } : options
 
-    // Map string types to components
-    const components = {
-        bar: Bar,
-        line: Line,
-        pie: Pie,
-        doughnut: Doughnut,
-        radar: Radar,
-        polarArea: PolarArea,
-        scatter: Scatter,
-        bubble: Bubble
-    }
+        // Default styling to match theme
+        const mergedOptions: ApexChartsType.ApexOptions = {
+            chart: {
+                background: 'transparent',
+                toolbar: { show: false },
+                fontFamily: 'inherit',
+                ...initialOptions.chart
+            },
+            theme: {
+                ...initialOptions.theme
+            },
+            tooltip: {
+                theme: 'dark', // Svelora default aesthetic
+                ...initialOptions.tooltip
+            },
+            ...initialOptions
+        }
 
-    // Default responsive options
-    const defaultOptions = {
-        responsive: true,
-        maintainAspectRatio: false
-    }
+        chartInstance = new ApexCharts(chartContainer, mergedOptions)
+        chartInstance.render()
+    })
 
-    let mergedOptions = $derived({ ...defaultOptions, ...options })
-    
-    // We must use "as any" or "as typeof SvelteComponent" because svelte-chartjs types 
-    // are sometimes tricky with svelte:component in Svelte 5.
-    const ChartComponent = $derived(components[type as keyof typeof components])
+    onDestroy(() => {
+        if (chartInstance) {
+            chartInstance.destroy()
+        }
+    })
+
+    // React to options/series changes
+    $effect(() => {
+        if (chartInstance) {
+            if (series) {
+                chartInstance.updateSeries(series)
+            }
+            // If options change fully, updateOptions is available, but updating series is most common
+        }
+    })
 </script>
 
-<div class={twMerge(styles, className)} {...restProps}>
-    {#if ChartComponent}
-        <ChartComponent data={data as any} options={mergedOptions as any} />
-    {/if}
-</div>
+<div class={twMerge('w-full', className)} bind:this={chartContainer}></div>

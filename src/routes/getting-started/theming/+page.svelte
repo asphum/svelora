@@ -61,7 +61,7 @@
  --radius-full: 9999px;
 }`
 
-    const fontsLayoutCode = `<script lang="ts">
+    const fontsLayoutCode = `<` + `script lang="ts">
  import { Fonts, ModeWatcher } from 'svelora';
  import 'svelora/theme.css';
 
@@ -79,7 +79,7 @@
 <ModeWatcher />
 {@render children?.()}`
 
-    const sarabunCode = `<script lang="ts">
+    const sarabunCode = `<` + `script lang="ts">
  import { Fonts } from 'svelora';
 <` + `/script>
 

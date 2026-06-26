@@ -1,5 +1,2 @@
-import Chart from './Chart.svelte'
-
-export { Chart }
+export { default as Chart } from './Chart.svelte'
 export * from './chart.types.js'
-export * from './chart.variants.js'

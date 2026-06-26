@@ -1,24 +1,19 @@
-import type { HTMLAttributes } from 'svelte/elements'
-import type { ChartData, ChartOptions, ChartType } from 'chart.js'
+import type { ApexOptions } from 'apexcharts'
+import type { ClassNameValue } from 'tailwind-merge'
 
-export interface ChartProps extends Omit<HTMLAttributes<HTMLDivElement>, 'type'> {
+export interface ChartProps {
     /**
-     * Type of the chart.
+     * Configuration options for ApexCharts.
      */
-    type: ChartType
-
-    /**
-     * The data object for the chart.
-     */
-    data: ChartData<ChartType, unknown, unknown>
+    options: ApexOptions
 
     /**
-     * Configuration options for the chart.
+     * Series data. If provided, overrides options.series.
      */
-    options?: ChartOptions<ChartType>
+    series?: ApexOptions['series']
 
     /**
-     * Additional CSS classes.
+     * Tailwind class to apply to the chart container wrapper.
      */
-    class?: string
+    class?: ClassNameValue
 }
