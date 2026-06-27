@@ -1,15 +1,37 @@
 import type { StandardSchemaV1 } from '@standard-schema/spec'
-import * as v from 'valibot'
 
 export type UrlSchema = StandardSchemaV1<string, string>
 
-export const httpUrlSchema: UrlSchema = v.pipe(
-    v.string(),
-    v.trim(),
-    v.nonEmpty('URL is required'),
-    v.url('Please enter a valid URL'),
-    v.regex(/^https?:\/\//i, 'URL must start with http:// or https://')
-)
+export function createUrlSchema(
+    validateFn: (input: unknown) => { issues: readonly StandardSchemaV1.Issue[] } | { value: string }
+): UrlSchema {
+    return {
+        '~standard': {
+            version: 1,
+            vendor: 'svelora',
+            validate: validateFn,
+        }
+    }
+}
+
+export const httpUrlSchema: UrlSchema = createUrlSchema((input) => {
+    if (typeof input !== 'string') {
+        return { issues: [{ message: 'Expected a string' }] }
+    }
+    const trimmed = input.trim()
+    if (!trimmed) {
+        return { issues: [{ message: 'URL is required' }] }
+    }
+    try {
+        new URL(trimmed)
+    } catch {
+        return { issues: [{ message: 'Please enter a valid URL' }] }
+    }
+    if (!/^https?:\/\//i.test(trimmed)) {
+        return { issues: [{ message: 'URL must start with http:// or https://' }] }
+    }
+    return { value: trimmed }
+})
 
 function normalizeUrl(src: string): string {
     const s = src.replace(/[\t\n\r]/g, '')
@@ -34,13 +56,21 @@ export function isSafeImageSrc(src: string): boolean {
     return false
 }
 
-export const youtubeUrlSchema: UrlSchema = v.pipe(
-    v.string(),
-    v.trim(),
-    v.nonEmpty('URL is required'),
-    v.url('Please enter a valid URL'),
-    v.regex(
-        /^https?:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be|youtube-nocookie\.com)\//i,
-        'Must be a YouTube URL (youtube.com or youtu.be)'
-    )
-)
+export const youtubeUrlSchema: UrlSchema = createUrlSchema((input) => {
+    if (typeof input !== 'string') {
+        return { issues: [{ message: 'Expected a string' }] }
+    }
+    const trimmed = input.trim()
+    if (!trimmed) {
+        return { issues: [{ message: 'URL is required' }] }
+    }
+    try {
+        new URL(trimmed)
+    } catch {
+        return { issues: [{ message: 'Please enter a valid URL' }] }
+    }
+    if (!/^https?:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be|youtube-nocookie\.com)\//i.test(trimmed)) {
+        return { issues: [{ message: 'Must be a YouTube URL (youtube.com or youtu.be)' }] }
+    }
+    return { value: trimmed }
+})
