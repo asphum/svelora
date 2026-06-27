@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.0.13] - 2026-06-27
+
+### Added
+
+- add 50+ Svelte components and utility hooks
+
 ## [3.0.12] - 2026-06-27
 
 ### Added
@@ -464,7 +470,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.12...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.13...HEAD
+[3.0.13]: https://github.com/asphum/svelora/compare/v3.0.12...v3.0.13
 [3.0.12]: https://github.com/asphum/svelora/compare/v3.0.11...v3.0.12
 [3.0.11]: https://github.com/asphum/svelora/compare/v3.0.10...v3.0.11
 [3.0.10]: https://github.com/asphum/svelora/compare/v3.0.9...v3.0.10
