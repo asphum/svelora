@@ -1,6 +1,6 @@
 <script lang="ts">
     import { CodeBlock } from '$lib/index.js'
-    import { renderHighlightedCode } from '$lib/docs/code-block.js'
+    import { renderHighlightedCode } from '$internal/docs/code-block.js'
 
     const sampleCode = `<script lang="ts">
  import { Button } from 'svelora';

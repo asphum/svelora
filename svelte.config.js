@@ -7,6 +7,9 @@ const config = {
     // not TS (Rolldown / Vite 8 compatibility). See #138.
     preprocess: vitePreprocess({ script: true }),
     kit: {
+        alias: {
+            $internal: 'src/internal'
+        },
         adapter: adapter({
             runtime: 'nodejs22.x'
         })

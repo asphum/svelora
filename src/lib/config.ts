@@ -1,4 +1,4 @@
-import type { FontsConfig } from './Fonts/fonts.types.js'
+import type { FontsConfig } from './components/Fonts/fonts.types.js'
 
 /**
  * Svelora Global Configuration

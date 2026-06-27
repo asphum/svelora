@@ -3,7 +3,7 @@ import path from 'node:path'
 
 const projectRoot = process.cwd()
 const packageJsonPath = path.join(projectRoot, 'package.json')
-const navigationPath = path.join(projectRoot, 'src/lib/docs/navigation.ts')
+const navigationPath = path.join(projectRoot, 'src/internal/docs/navigation.ts')
 const serverSourcePath = path.join(projectRoot, 'mcp/svelora-docs/server.mjs')
 const installTemplateSourcePath = path.join(projectRoot, 'mcp/svelora-docs/install-template.mjs')
 const distMcpDir = path.join(projectRoot, 'dist/mcp')

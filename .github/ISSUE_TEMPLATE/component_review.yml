@@ -1,0 +1,54 @@
+name: Component Review
+description: Track a thorough review of a component (props, types, a11y, performance, reference parity)
+title: '[Review]: '
+labels: ['status: needs-triage']
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Use this to track a full review of a component, following the Svelora review checklist.
+              Keep all findings in this single issue's table by default. Split a finding into its own issue only when it is large enough to need independent tracking (its own PR, deferred work, or a separate assignee), and link it back here.
+
+    - type: input
+      id: component
+      attributes:
+          label: Component under review
+          placeholder: Button
+      validations:
+          required: true
+
+    - type: checkboxes
+      id: scope
+      attributes:
+          label: Review scope
+          description: Tick each category as it is covered.
+          options:
+              - label: 'Layout & structure (DOM nesting, slot/snippet structure, `restProps` position)'
+              - label: 'Performance & reactivity (`$derived` vs `$derived.by`, no needless `$effect`, variants computed once)'
+              - label: 'TypeScript & type safety (no `any`/`unknown` in public types, correct `Omit`, exported surface)'
+              - label: 'Props & defaults (`$bindable` ref, config `defaultVariants`, sensible defaults)'
+              - label: 'Variant definitions (slot names, design tokens, compoundVariants, no hardcoded colors)'
+              - label: 'Bug detection (conditional rendering, spread order, context reactivity, edge cases)'
+              - label: 'Accessibility (roles, `aria-*`, keyboard, icon-only names)'
+              - label: 'Exports & public API (`index.ts` exposes only user-facing types)'
+              - label: 'Parity with the reference implementation'
+
+    - type: textarea
+      id: findings
+      attributes:
+          label: Findings
+          description: Summarize findings. Link each to its own bug/enhancement issue.
+          value: |
+              | # | Severity | Category | Summary | Issue | Decision |
+              | - | -------- | -------- | ------- | ----- | -------- |
+              |   |          |          |         |       |          |
+      validations:
+          required: false
+
+    - type: input
+      id: reference
+      attributes:
+          label: Reference implementation
+          placeholder: Link to the reference implementation used for parity (optional)
+      validations:
+          required: false

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Sidebar, Button, NavigationMenu, Avatar, Badge, DropdownMenu } from '$lib/index.js'
-    import type { NavigationMenuItemType } from '$lib/NavigationMenu/navigation-menu.types.js'
+    import type { NavigationMenuItemType } from '$lib/components/NavigationMenu/navigation-menu.types.js'
     
     let isCollapsed = $state(false)
 

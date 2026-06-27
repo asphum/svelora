@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import https from 'node:https'
 
-const content = fs.readFileSync('src/lib/docs/navigation.ts', 'utf-8')
+const content = fs.readFileSync('src/internal/docs/navigation.ts', 'utf-8')
 const regex = /icon:\s*'([^']+)'/g
 let match = regex.exec(content)
 const icons = new Set()

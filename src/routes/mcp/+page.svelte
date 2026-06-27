@@ -1,6 +1,6 @@
 <script lang="ts">
     import { CodeBlock, Link } from '$lib/index.js'
-    import { renderHighlightedCode } from '$lib/docs/code-block.js'
+    import { renderHighlightedCode } from '$internal/docs/code-block.js'
 
     const packageInstallCode = `bun add svelora`
 

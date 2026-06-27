@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { buildLocaleOptions } from '$lib/i18n.js'
+    import { buildLocaleOptions } from '$internal/i18n.js'
     import { Badge, Button, Card, Icon, Link, LocaleButton } from '$lib/index.js'
-    import { allComponentItems, docsIntroItems, docsMeta, totalComponents } from '$lib/docs/navigation.js'
+    import { allComponentItems, docsIntroItems, docsMeta, totalComponents } from '$internal/docs/navigation.js'
     import { m } from '$lib/paraglide/messages.js'
     import { getLocale, setLocale, toLocale } from '$lib/paraglide/runtime.js'
 

@@ -2,9 +2,9 @@
     import type { Component } from 'svelte'
     import { mount, tick, unmount } from 'svelte'
     import { CodeBlock, Link } from '$lib/index.js'
-    import { allComponentItems } from '$lib/docs/navigation.js'
-    import { buildDefaultComponentExample, getSectionSnippets, renderHighlightedCode } from '$lib/docs/code-block.js'
-    import type { DocSectionSnippetOverrides } from '$lib/docs/code-block.js'
+    import { allComponentItems } from '$internal/docs/navigation.js'
+    import { buildDefaultComponentExample, getSectionSnippets, renderHighlightedCode } from '$internal/docs/code-block.js'
+    import type { DocSectionSnippetOverrides } from '$internal/docs/code-block.js'
 
     type PageModule = {
         default: Component

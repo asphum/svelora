@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Card, CodeBlock, Fonts, defaultFontFamilies, fontsDefaults } from '$lib/index.js'
-    import { renderHighlightedCode } from '$lib/docs/code-block.js'
+    import { renderHighlightedCode } from '$internal/docs/code-block.js'
     import type { FontDefinition } from '$lib/index.js'
 
     const googleFamilies: FontDefinition[] = [
@@ -210,7 +210,8 @@ defineConfig({
 
     const layoutCode = `<script lang="ts">
  import 'svelora/theme.css';
- import { Fonts, ModeWatcher } from 'svelora';
+ import { Fonts } from 'svelora';
+ import { ModeWatcher } from 'mode-watcher';
 
  let { children } = $props();
 <` + `/script>

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Icon, Link } from '$lib/index.js'
-    import { docsComponentGroups, totalComponents } from '$lib/docs/navigation.js'
+    import { docsComponentGroups, totalComponents } from '$internal/docs/navigation.js'
 </script>
 
 <div class="space-y-8">

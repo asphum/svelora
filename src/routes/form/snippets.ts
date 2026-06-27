@@ -1,4 +1,4 @@
-import type { DocSectionSnippetOverrides } from '$lib/docs/code-block.js'
+import type { DocSectionSnippetOverrides } from '$internal/docs/code-block.js'
 
 export const sectionSnippets: DocSectionSnippetOverrides = {
     'Basic — Login form with Zod': `<script lang="ts">

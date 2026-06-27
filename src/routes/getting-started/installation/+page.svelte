@@ -4,7 +4,7 @@
     const createCode = `npx sv create my-app
 cd my-app`
 
-    const installCode = `npm install svelora`
+    const installCode = `npm install svelora mode-watcher`
 
     const mcpInstallCode = `svelora-mcp-install-template`
 
@@ -26,7 +26,7 @@ cd my-app`
 
     const layoutCode = `<script lang="ts">
  import './layout.css';
- import { ModeWatcher } from 'svelora';
+ import { ModeWatcher } from 'mode-watcher';
 
  let { children } = $props();
 <` + `/script>

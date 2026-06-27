@@ -3,7 +3,7 @@
 
     const layoutCode = `<script lang="ts">
  import './layout.css';
- import { ModeWatcher } from 'svelora';
+ import { ModeWatcher } from 'mode-watcher';
 
  let { children } = $props();
 <` + `/script>
@@ -27,7 +27,7 @@
 <ThemeModeButton lightIcon="lucide:sun-medium" darkIcon="lucide:moon-star" />`
 
     const programmaticCode = `<script lang="ts">
- import { mode, setMode, toggleMode } from 'svelora';
+ import { mode, setMode, toggleMode } from 'mode-watcher';
 <` + `/script>
 
 <p>Current: {mode.current}</p>

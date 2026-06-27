@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Modern UI component library for Svelte 5</strong><br/>
-  Tailwind CSS 4 &middot; OKLCH Color Tokens &middot; Fully Typed &middot; 50+ Components &middot; 7 Hooks
+  Tailwind CSS 4 &middot; OKLCH Color Tokens &middot; Fully Typed &middot; 60+ Components &middot; 16 Hooks
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
 
 <p align="center">
   <a href="https://svelora-ui.vercel.app/"><strong>Live Demo</strong></a> &middot;
-  <a href="https://svelora-ui.vercel.app//getting-started"><strong>Getting Started</strong></a> &middot;
+  <a href="https://svelora-ui.vercel.app/docs/installation"><strong>Getting Started</strong></a> &middot;
   <a href="https://github.com/asphum/svelora/blob/main/CHANGELOG.md"><strong>Changelog</strong></a>
 </p>
 
@@ -26,16 +26,16 @@
 ## Install
 
 ```bash
-npm install svelora
-# pnpm add svelora
-# yarn add svelora
-# bun add svelora
+bun add svelora mode-watcher
+# npm install svelora mode-watcher
+# pnpm add svelora mode-watcher
+# yarn add svelora mode-watcher
 ```
 
 ```svelte
 <script lang="ts">
     import 'svelora/theme.css'
-    import { ModeWatcher } from 'svelora'
+    import { ModeWatcher } from 'mode-watcher'
 </script>
 
 <ModeWatcher />
@@ -48,12 +48,13 @@ npm install svelora
 
 ```svelte
 <script lang="ts">
-    import { Avatar, Button, ModeWatcher, toggleMode, toast } from 'svelora'
+    import { Avatar, Button, ThemeModeButton, toast } from 'svelora'
+    import { ModeWatcher } from 'mode-watcher'
 </script>
 
 <ModeWatcher />
 <Button variant="soft" color="primary" leadingIcon="lucide:edit">Edit</Button>
-<Button variant="ghost" color="secondary" onclick={toggleMode}>Toggle theme</Button>
+<ThemeModeButton />
 <Avatar src="/photo.jpg" alt="Jane" size="lg" />
 ```
 
@@ -65,7 +66,7 @@ npm install svelora
 - **Accessible** — Built on [Bits UI](https://bits-ui.com) & [Vaul Svelte](https://vaul-svelte.com)
 - **200,000+ Icons** — [Iconify](https://iconify.design) integration
 - **Themeable** — OKLCH color tokens, light/dark mode, global config
-- **Hooks** — 7 reactive hooks for common UI patterns
+- **Hooks** — 16 reactive hooks for common UI patterns
 
 ## Hooks
 
@@ -73,11 +74,15 @@ Reactive hooks built on Svelte 5 runes and actions.
 
 ```svelte
 <script>
-    import { useMediaQuery, useClipboard, useDebounce } from 'svelora'
+    import { useMediaQuery, useClipboard, useEventListener } from 'svelora'
 
     const isMobile = useMediaQuery('(max-width: 640px)')
     const clipboard = useClipboard()
-    const debounce = useDebounce({ delay: 500 })
+    let width = $state(0)
+
+    useEventListener(() => window, 'resize', () => {
+        width = window.innerWidth
+    })
 </script>
 
 {#if isMobile.matches}
@@ -87,6 +92,8 @@ Reactive hooks built on Svelte 5 runes and actions.
 <Button onclick={() => clipboard.copy('Hello!')}>
     {clipboard.copied ? 'Copied!' : 'Copy'}
 </Button>
+
+<p>{width}px</p>
 ```
 
 | Hook                | Type           | Description                                    |
@@ -94,10 +101,21 @@ Reactive hooks built on Svelte 5 runes and actions.
 | `useMediaQuery`     | Runes          | Reactive CSS media query tracking              |
 | `useClipboard`      | Runes          | Copy text with auto-reset state                |
 | `useFormField`      | Context        | Access FormField context from child components |
-| `useDebounce`       | Runes          | Debounce with pending, cancel, flush           |
 | `useClickOutside`   | Action         | Detect clicks outside an element               |
 | `useInfiniteScroll` | Runes + Action | Auto-load on scroll with loading state         |
 | `useEscapeKeydown`  | Action         | Listen for Escape key                          |
+| `useDebounce`       | Runes          | Debounce with pending, cancel, flush           |
+| `useDebouncedState` | Runes          | Bindable debounced state helper                |
+| `useEventListener`  | Runes          | Reactive event listeners with cleanup          |
+| `useResizeObserver` | Runes          | Observe element size changes                   |
+| `useElementSize`    | Runes          | Read reactive element width and height         |
+| `useIntersectionObserver` | Runes    | Track viewport intersection state              |
+| `useScrollLock`     | Runes          | Lock and restore document scrolling            |
+| `useFocusTrap`      | Runes          | Keep focus inside a container                  |
+| `useLocalStorage`   | Runes          | SSR-safe localStorage binding                  |
+| `useThrottle`       | Runes          | Throttle reactive updates                      |
+| `useTimeout`        | Runes          | Schedule cancellable one-shot timers           |
+| `useInterval`       | Runes          | Schedule cancellable repeating timers          |
 
 ## Customization
 

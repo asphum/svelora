@@ -15,7 +15,7 @@ defineConfig({
     const layoutCode = `<script lang="ts">
  import './layout.css';
  import '../lib/config';
- import { ModeWatcher } from 'svelora';
+ import { ModeWatcher } from 'mode-watcher';
 
  let { children } = $props();
 <` + `/script>`

@@ -5,13 +5,13 @@ Thanks for your interest in contributing! This guide explains how to set up the 
 ## Prerequisites
 
 - **Node.js** 22+
-- **pnpm** 10+ (the repo is pinned to pnpm; do not use npm/yarn for installs)
+- **Bun** 1.3+
 
 ## Setup
 
 ```bash
-pnpm install
-pnpm dev        # start the docs/demo app (src/routes)
+bun install
+bun dev        # start the docs/demo app (src/routes)
 ```
 
 ## Quality gates
@@ -19,10 +19,10 @@ pnpm dev        # start the docs/demo app (src/routes)
 Every change must pass these locally before opening a PR (CI runs the same on `main`):
 
 ```bash
-pnpm check      # svelte-check — type checking (must be 0 errors, 0 warnings)
-pnpm lint       # biome check
-pnpm test       # vitest (browser + node projects)
-pnpm build      # package build
+bun check       # svelte-check — type checking (must be 0 errors, 0 warnings)
+bun lint        # biome check
+bun test        # vitest (browser + node projects)
+bun build       # package build
 ```
 
 Use `bun format` to auto-fix formatting. Use `bun lint:fix` to apply safe lint fixes.

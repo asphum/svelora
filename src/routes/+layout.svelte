@@ -1,8 +1,8 @@
 <script lang="ts">
     import { page } from '$app/state'
     import './layout.css'
-    import type { DocsGroup, DocsItem } from '$lib/docs/navigation.js'
-    import { buildLocaleOptions } from '$lib/i18n.js'
+    import type { DocsGroup, DocsItem } from '$internal/docs/navigation.js'
+    import { buildLocaleOptions } from '$internal/i18n.js'
     import {
         Button,
         Icon,
@@ -28,9 +28,9 @@
         docsPathAliases,
         docsThemeItems,
         docsTopNav
-    } from '$lib/docs/navigation.js'
+    } from '$internal/docs/navigation.js'
 
-    import '../svelora.config.js'
+    import '../sv5ui.config.js'
 
     const { children, data } = $props<{
         children: () => unknown

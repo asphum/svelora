@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+    - name: Documentation
+      url: https://svelora-ui.vercel.app
+      about: Read the component documentation and live examples.
+    - name: GitHub Repository
+      url: https://github.com/asphum/svelora
+      about: Browse the source code, releases, and project information.

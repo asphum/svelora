@@ -387,7 +387,7 @@ defineConfig({
             </Card>
         </div>
         <Card class="border border-outline-variant/70">
-            <p class="mb-3 text-sm text-on-surface-variant">`src/svelora.config.ts`</p>
+            <p class="mb-3 text-sm text-on-surface-variant">`src/sv5ui.config.ts`</p>
             <pre class="overflow-x-auto text-sm"><code>{fontsConfigCode}</code></pre>
         </Card>
         <p class="text-sm text-on-surface-variant">

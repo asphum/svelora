@@ -241,7 +241,7 @@ async function readRouteSource(slug) {
 }
 
 async function readDocsNavigationSource() {
-    const filePath = resolveRepoPath('src/lib/docs/navigation.ts')
+    const filePath = resolveRepoPath('src/internal/docs/navigation.ts')
     return await readFile(filePath, 'utf8')
 }
 
@@ -280,7 +280,7 @@ const server = new McpServer({
 
 server.tool(
     'svelora_docs_list_slugs',
-    'List docs slugs from src/lib/docs/navigation.ts (components + hooks)',
+    'List docs slugs from src/internal/docs/navigation.ts (components + hooks)',
     {},
     async () => {
         const slugs = await listDocSlugs()

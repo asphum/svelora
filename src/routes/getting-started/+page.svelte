@@ -7,7 +7,7 @@
         docsMeta,
         docsThemeItems,
         totalComponents
-    } from '$lib/docs/navigation.js'
+    } from '$internal/docs/navigation.js'
 
     const usageCode = `<script lang="ts">
  import { Button, Card, Badge } from 'svelora';
