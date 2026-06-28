@@ -144,19 +144,11 @@
     ._sft-base {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        background: #fff;
-        color: #363636;
         line-height: 1.3;
         will-change: transform;
-        box-shadow:
-            0 3px 10px rgba(0, 0, 0, 0.1),
-            0 3px 3px rgba(0, 0, 0, 0.05);
-        max-width: 350px;
         pointer-events: auto;
-        padding: 8px 10px;
-        border-radius: 8px;
         position: relative;
+        width: 100%;
     }
 
     ._sft-transparent {
@@ -180,18 +172,8 @@
     }
 
     [data-content] {
-        display: flex;
-        flex-direction: column;
         flex: 1 1 auto;
         min-width: 0;
-    }
-
-    [data-title] {
-        font-weight: 600;
-    }
-
-    [data-description] {
-        opacity: 0.85;
     }
 
     [data-button],
@@ -202,19 +184,12 @@
     }
 
     [data-close-button] {
-        position: absolute;
-        top: 0.375rem;
-        right: 0.375rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.25rem;
-        height: 1.25rem;
-        border: 1px solid transparent;
-        border-radius: 50%;
-        background: transparent;
-        cursor: pointer;
-        padding: 0;
-        line-height: 1;
+        background-color: var(--toast-close-bg, var(--color-surface-container-highest));
+        border-color: var(--toast-close-border, transparent);
+        color: var(--toast-close-color, var(--color-on-surface-variant));
+    }
+
+    [data-close-button]:hover {
+        background-color: var(--toast-close-hover-bg, var(--color-surface-container-high));
     }
 </style>

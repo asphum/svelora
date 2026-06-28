@@ -6,6 +6,7 @@ import type {
     ToastOptions,
     ValueOrFunction
 } from './internal/french-toast/core/types.js'
+import ToastProcessing from './internal/toast-icons/ToastProcessing.svelte'
 import Avatar from '../Avatar/Avatar.svelte'
 import type { AvatarProps } from '../Avatar/avatar.types.js'
 import Icon from '../Icon/Icon.svelte'
@@ -144,6 +145,15 @@ toastFn.info = (message: string, data?: SveloraToastOptions) =>
 
 toastFn.loading = (message: string, data?: SveloraToastOptions) =>
     internalToast.loading(message, resolveOptions(data))
+
+toastFn.processing = (message: string, data?: SveloraToastOptions) => {
+    const resolved = resolveOptions({
+        duration: Number.POSITIVE_INFINITY,
+        ...data,
+        icon: data?.icon ?? (ToastProcessing as unknown as ToastOptions['icon'])
+    })
+    return internalToast.loading(message, resolved)
+}
 
 toastFn.promise = <T>(
     promise: Promise<T>,

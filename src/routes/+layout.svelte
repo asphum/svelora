@@ -5,6 +5,7 @@
     import { buildLocaleOptions } from '$internal/i18n.js'
     import {
         Button,
+        ConfirmDialog,
         Icon,
         Input,
         LINK_LOCATION_CONTEXT_KEY,
@@ -13,12 +14,14 @@
         LocaleButton,
         NavigationMenu,
         type NavigationMenuItemType,
-        Search
+        registerConfirmDialog,
+        Search,
+        type ConfirmOptions
     } from '$lib/index.js'
     import { ModeWatcher, mode, toggleMode } from 'mode-watcher'
     import { m } from '$lib/paraglide/messages.js'
     import { getLocale, setLocale, toLocale } from '$lib/paraglide/runtime.js'
-    import { setContext } from 'svelte'
+    import { onMount, setContext } from 'svelte'
 
     import {
         docsComponentGroups,
@@ -48,6 +51,18 @@
 
     let sidebarOpen = $state(false)
     let searchQuery = $state('')
+    let confirmDialogRef = $state<{ show: (options?: ConfirmOptions) => Promise<boolean> } | undefined>(
+        undefined
+    )
+
+    onMount(() => {
+        registerConfirmDialog((options) => {
+            if (!confirmDialogRef) {
+                return Promise.resolve(false)
+            }
+            return confirmDialogRef.show(options)
+        })
+    })
 
     const isLanding = $derived(data.pathname === '/')
     const activePath = $derived(docsPathAliases.get(data.pathname) ?? data.pathname)
@@ -316,6 +331,8 @@
         </div>
     </div>
 {/if}
+
+<ConfirmDialog bind:this={confirmDialogRef} />
 
 <style global>
     :global(html) {

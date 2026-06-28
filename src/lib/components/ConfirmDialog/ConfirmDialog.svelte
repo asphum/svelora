@@ -1,0 +1,190 @@
+<script lang="ts" module>
+    export type Props = {
+        confirmText?: string
+        cancelText?: string
+    }
+</script>
+
+<script lang="ts">
+    import { Dialog } from 'bits-ui'
+    import Button from '../Button/Button.svelte'
+    import Input from '../Input/Input.svelte'
+    import Textarea from '../Textarea/Textarea.svelte'
+    import AnimatedIcon from '../Toast/internal/AnimatedIcon.svelte'
+    import { modalVariants } from '../Modal/modal.variants.js'
+    import type { ConfirmOptions } from './confirm.types.js'
+
+    interface PendingDialog {
+        options: ConfirmOptions
+        resolve: (value: boolean) => void
+    }
+
+    let {
+        confirmText: defaultConfirmText = 'Confirm',
+        cancelText: defaultCancelText = 'Cancel'
+    }: Props = $props()
+
+    let open = $state(false)
+    let pending = $state<PendingDialog | null>(null)
+    let currentInputValue = $state('')
+
+    const classes = $derived(
+        modalVariants({
+            transition: 'scale',
+            size: 'sm',
+            overlay: true,
+            scrollable: false
+        })
+    )
+
+    const dismissible = $derived(pending?.options.dismissible !== false)
+    const showCancel = $derived(pending?.options.showCancel !== false)
+
+    export function show(options: ConfirmOptions = {}): Promise<boolean> {
+        return new Promise((resolve) => {
+            currentInputValue = options.inputValue ?? ''
+            pending = { options, resolve }
+            open = true
+        })
+    }
+
+    function settle(result: boolean) {
+        const current = pending
+        pending = null
+        open = false
+        current?.resolve(result)
+    }
+
+    function handleConfirm() {
+        pending?.options.onConfirm?.(currentInputValue)
+        settle(true)
+    }
+
+    function handleCancel() {
+        pending?.options.onCancel?.()
+        settle(false)
+    }
+
+    function handleOpenChange(value: boolean) {
+        if (!value && pending) {
+            handleCancel()
+            return
+        }
+        open = value
+    }
+
+    const contentProps = $derived.by(() => {
+        const behavior = dismissible ? ('close' as const) : ('ignore' as const)
+        return {
+            trapFocus: true,
+            preventScroll: true,
+            escapeKeydownBehavior: behavior,
+            interactOutsideBehavior: behavior
+        }
+    })
+</script>
+
+<Dialog.Root bind:open onOpenChange={handleOpenChange}>
+    <Dialog.Portal>
+        <Dialog.Overlay class={classes.overlay()} />
+        {#if pending}
+            <Dialog.Content
+                {...contentProps}
+                class={[classes.content(), 'p-6 text-center']}
+            >
+                {#if pending.options.title}
+                    <Dialog.Title class="sr-only">{pending.options.title}</Dialog.Title>
+                {/if}
+                {#if pending.options.message}
+                    <Dialog.Description class="sr-only"
+                        >{pending.options.message}</Dialog.Description
+                    >
+                {/if}
+
+                {#if pending.options.icon}
+                    {#key pending.options.icon}
+                        <div class="mb-4 flex min-h-20 justify-center">
+                            <AnimatedIcon
+                                type={pending.options.icon}
+                                size={80}
+                                forceMotion
+                                idle={false}
+                            />
+                        </div>
+                    {/key}
+                {/if}
+
+                {#if pending.options.title}
+                    <h3 class="mb-2 text-lg font-semibold text-on-surface">
+                        {pending.options.title}
+                    </h3>
+                {/if}
+
+                {#if pending.options.message}
+                    <p class="mb-6 text-sm text-on-surface-variant">
+                        {pending.options.message}
+                    </p>
+                {:else if !pending.options.inputPlaceholder}
+                    <div class="mb-6"></div>
+                {/if}
+
+                {#if pending.options.inputPlaceholder}
+                    {#if pending.options.inputChoices && pending.options.inputChoices.length > 0}
+                        <div class="mb-3 flex flex-wrap justify-center gap-1">
+                            {#each pending.options.inputChoices as choice (choice)}
+                                <Button
+                                    label={choice}
+                                    size="xs"
+                                    variant={currentInputValue === choice ? 'solid' : 'outline'}
+                                    color={currentInputValue === choice ? 'primary' : 'surface'}
+                                    onclick={() => (currentInputValue = choice)}
+                                />
+                            {/each}
+                        </div>
+                    {/if}
+
+                    <div class="mb-6 text-left">
+                        {#if pending.options.inputType === 'textarea'}
+                            <Textarea
+                                bind:value={currentInputValue}
+                                placeholder={pending.options.inputPlaceholder}
+                                class="w-full"
+                            />
+                        {:else}
+                            <Input
+                                type={pending.options.inputType ?? 'text'}
+                                bind:value={currentInputValue}
+                                placeholder={pending.options.inputPlaceholder}
+                                class="w-full"
+                                onkeydown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        e.preventDefault()
+                                        handleConfirm()
+                                    }
+                                }}
+                            />
+                        {/if}
+                    </div>
+                {/if}
+
+                <div class="flex justify-center gap-2">
+                    {#if showCancel}
+                        <Button
+                            label={pending.options.cancelText ?? defaultCancelText}
+                            variant="outline"
+                            class="flex-1"
+                            onclick={handleCancel}
+                        />
+                    {/if}
+                    <Button
+                        label={pending.options.confirmText ?? defaultConfirmText}
+                        variant="solid"
+                        color={pending.options.confirmColor ?? 'primary'}
+                        class={showCancel ? 'flex-1' : 'w-full'}
+                        onclick={handleConfirm}
+                    />
+                </div>
+            </Dialog.Content>
+        {/if}
+    </Dialog.Portal>
+</Dialog.Root>

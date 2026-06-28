@@ -525,6 +525,14 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:square-stack'
             },
             {
+                title: 'Confirm Dialog',
+                href: '/docs/components/confirm-dialog',
+                legacyHref: '/confirm-dialog',
+                icon: 'lucide:circle-help',
+                description:
+                    'Imperative confirmation dialogs with animated icons and notify integration.'
+            },
+            {
                 title: 'Drawer',
                 href: '/docs/components/drawer',
                 legacyHref: '/drawer',

@@ -22,6 +22,7 @@
         infoIcon?: Snippet
         loadingIcon?: Snippet
         closeIcon?: Snippet
+        iconTone?: import('../toast-context.js').ToastIconTone
     }
 
     let {
@@ -34,6 +35,7 @@
         closeButton = false,
         closeButtonAriaLabel = 'Close toast',
         theme = 'light',
+        iconTone = 'standard',
         successIcon,
         errorIcon,
         warningIcon,
@@ -45,6 +47,7 @@
     setToastToasterContext(() => ({
         closeButton,
         closeButtonAriaLabel,
+        iconTone,
         successIcon,
         errorIcon,
         warningIcon,

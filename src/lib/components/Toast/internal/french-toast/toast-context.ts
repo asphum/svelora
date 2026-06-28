@@ -12,9 +12,13 @@ export type ToastIconSnippets = {
     closeIcon?: Snippet
 }
 
+export type ToastIconTone = 'standard' | 'on-color'
+
 export type ToastToasterContext = ToastIconSnippets & {
     closeButton?: boolean
     closeButtonAriaLabel?: string
+    /** Use high-contrast icons on solid semantic backgrounds. */
+    iconTone?: ToastIconTone
 }
 
 const TOAST_TOASTER_CONTEXT = Symbol('svelora-toast-toaster')

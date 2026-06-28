@@ -46,6 +46,7 @@ const mergedToastOptions = $derived({
     {reverseOrder}
     containerClassName={toasterClass}
     toastOptions={mergedToastOptions}
+    iconTone={variant === 'solid' ? 'on-color' : 'standard'}
     {successIcon}
     {errorIcon}
     {warningIcon}
@@ -65,10 +66,17 @@ const mergedToastOptions = $derived({
 
     :global([data-svelora-toaster][class*='ps-toast-'] [data-svelora-toast][data-styled='true']) {
         font-family: inherit;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+        min-width: min(100%, 18.5rem);
+        max-width: 24rem;
+        padding: 0.75rem 2.5rem 0.75rem 0.875rem;
         border-radius: 0.75rem;
         box-shadow:
-            0 4px 6px -1px oklch(0 0 0 / 0.1),
-            0 2px 4px -2px oklch(0 0 0 / 0.1);
+            0 1px 3px oklch(0 0 0 / 0.08),
+            0 1px 2px oklch(0 0 0 / 0.05);
     }
 
     :global(
@@ -76,7 +84,25 @@ const mergedToastOptions = $derived({
             [data-svelora-toast][data-styled='true']
             [data-content]
     ) {
-        gap: 2px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.125rem;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    :global(
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
+            [data-icon]
+    ) {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 0;
     }
 
     :global(
@@ -86,8 +112,6 @@ const mergedToastOptions = $derived({
     ) {
         width: auto;
         height: auto;
-        margin: 0;
-        margin-right: 4px;
     }
 
     :global(
@@ -107,7 +131,7 @@ const mergedToastOptions = $derived({
     ) {
         font-size: 0.8125rem;
         line-height: 1.25rem;
-        opacity: 0.85;
+        font-weight: 400;
     }
 
     :global(
@@ -127,7 +151,20 @@ const mergedToastOptions = $derived({
             [data-svelora-toast][data-styled='true']
             [data-close-button]
     ) {
+        position: absolute;
+        top: 0.625rem;
+        right: 0.625rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.375rem;
+        height: 1.375rem;
+        padding: 0;
         border-radius: 50%;
+        border: 1px solid transparent;
+        cursor: pointer;
+        line-height: 1;
+        font-size: 0.875rem;
         transition:
             opacity 150ms,
             background-color 150ms,
@@ -216,56 +253,64 @@ const mergedToastOptions = $derived({
      * OUTLINE VARIANT
      * ============================================ */
     :global([data-svelora-toaster].ps-toast-outline [data-svelora-toast][data-styled='true']) {
-        --toast-bg: var(--color-surface-container);
+        --toast-bg: var(--color-surface-container-lowest);
         --toast-border: var(--color-outline-variant);
         --toast-color: var(--color-on-surface);
         --toast-desc: var(--color-on-surface-variant);
-        --toast-icon: inherit;
-        --toast-title: inherit;
+        --toast-icon: var(--color-on-surface-variant);
+        --toast-title: var(--color-on-surface);
         --toast-action-bg: var(--color-primary);
         --toast-action-color: var(--color-on-primary);
         --toast-cancel-bg: var(--color-surface-container-highest);
         --toast-cancel-color: var(--color-on-surface);
-        --toast-close-bg: var(--color-surface-container);
-        --toast-close-border: var(--color-outline-variant);
+        --toast-close-bg: var(--color-surface-container-highest);
+        --toast-close-border: transparent;
         --toast-close-color: var(--color-on-surface-variant);
-        --toast-close-hover-bg: var(--color-surface-container-highest);
+        --toast-close-hover-bg: var(--color-surface-container-high);
     }
 
     :global(
         [data-svelora-toaster].ps-toast-outline
             [data-svelora-toast][data-type='success'][data-styled='true']
     ) {
-        --toast-border: oklch(from var(--color-success) l c h / 0.4);
+        --toast-bg: oklch(from var(--color-success) l c h / 0.07);
+        --toast-border: oklch(from var(--color-success) l c h / 0.55);
         --toast-icon: var(--color-success);
         --toast-title: var(--color-success);
+        --toast-desc: var(--color-on-surface-variant);
     }
 
     :global(
         [data-svelora-toaster].ps-toast-outline
             [data-svelora-toast][data-type='error'][data-styled='true']
     ) {
-        --toast-border: oklch(from var(--color-error) l c h / 0.4);
+        --toast-bg: oklch(from var(--color-error) l c h / 0.07);
+        --toast-border: oklch(from var(--color-error) l c h / 0.55);
         --toast-icon: var(--color-error);
         --toast-title: var(--color-error);
+        --toast-desc: var(--color-on-surface-variant);
     }
 
     :global(
         [data-svelora-toaster].ps-toast-outline
             [data-svelora-toast][data-type='warning'][data-styled='true']
     ) {
-        --toast-border: oklch(from var(--color-warning) l c h / 0.4);
+        --toast-bg: oklch(from var(--color-warning) l c h / 0.07);
+        --toast-border: oklch(from var(--color-warning) l c h / 0.55);
         --toast-icon: var(--color-warning);
         --toast-title: var(--color-warning);
+        --toast-desc: var(--color-on-surface-variant);
     }
 
     :global(
         [data-svelora-toaster].ps-toast-outline
             [data-svelora-toast][data-type='info'][data-styled='true']
     ) {
-        --toast-border: oklch(from var(--color-info) l c h / 0.4);
+        --toast-bg: oklch(from var(--color-info) l c h / 0.07);
+        --toast-border: oklch(from var(--color-info) l c h / 0.55);
         --toast-icon: var(--color-info);
         --toast-title: var(--color-info);
+        --toast-desc: var(--color-on-surface-variant);
     }
 
     /* ============================================
@@ -412,8 +457,8 @@ const mergedToastOptions = $derived({
         --toast-border: transparent;
         --toast-color: var(--color-inverse-on-surface);
         --toast-desc: var(--color-inverse-on-surface);
-        --toast-icon: inherit;
-        --toast-title: inherit;
+        --toast-icon: var(--color-inverse-on-surface);
+        --toast-title: var(--color-inverse-on-surface);
         --toast-action-bg: oklch(from var(--color-inverse-on-surface) l c h / 0.2);
         --toast-action-color: var(--color-inverse-on-surface);
         --toast-cancel-bg: oklch(from var(--color-inverse-on-surface) l c h / 0.1);
@@ -439,6 +484,8 @@ const mergedToastOptions = $derived({
         --toast-bg: var(--color-success);
         --toast-color: var(--color-on-success);
         --toast-desc: var(--color-on-success);
+        --toast-icon: var(--color-on-success);
+        --toast-title: var(--color-on-success);
         --toast-close-bg: var(--color-success);
         --toast-close-color: var(--color-on-success);
     }
@@ -450,6 +497,8 @@ const mergedToastOptions = $derived({
         --toast-bg: var(--color-error);
         --toast-color: var(--color-on-error);
         --toast-desc: var(--color-on-error);
+        --toast-icon: var(--color-on-error);
+        --toast-title: var(--color-on-error);
         --toast-close-bg: var(--color-error);
         --toast-close-color: var(--color-on-error);
     }
@@ -461,6 +510,8 @@ const mergedToastOptions = $derived({
         --toast-bg: var(--color-warning);
         --toast-color: var(--color-on-warning);
         --toast-desc: var(--color-on-warning);
+        --toast-icon: var(--color-on-warning);
+        --toast-title: var(--color-on-warning);
         --toast-close-bg: var(--color-warning);
         --toast-close-color: var(--color-on-warning);
     }
@@ -472,6 +523,8 @@ const mergedToastOptions = $derived({
         --toast-bg: var(--color-info);
         --toast-color: var(--color-on-info);
         --toast-desc: var(--color-on-info);
+        --toast-icon: var(--color-on-info);
+        --toast-title: var(--color-on-info);
         --toast-close-bg: var(--color-info);
         --toast-close-color: var(--color-on-info);
     }
@@ -572,9 +625,11 @@ const mergedToastOptions = $derived({
         [data-svelora-toaster].ps-toast-outline
             [data-svelora-toast][class*='ps-color-'][data-styled='true']
     ) {
-        --toast-border: oklch(from var(--svelora-c) l c h / 0.4);
+        --toast-bg: oklch(from var(--svelora-c) l c h / 0.07);
+        --toast-border: oklch(from var(--svelora-c) l c h / 0.55);
         --toast-icon: var(--svelora-c);
         --toast-title: var(--svelora-c);
+        --toast-desc: var(--color-on-surface-variant);
     }
 
     /* Soft + color class */
@@ -611,6 +666,8 @@ const mergedToastOptions = $derived({
         --toast-bg: var(--svelora-c);
         --toast-color: var(--svelora-c-on);
         --toast-desc: var(--svelora-c-on);
+        --toast-icon: var(--svelora-c-on);
+        --toast-title: var(--svelora-c-on);
         --toast-close-bg: var(--svelora-c);
         --toast-close-color: var(--svelora-c-on);
     }

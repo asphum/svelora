@@ -1,24 +1,41 @@
 <script lang="ts">
     import type { Toast } from '../core/types.js'
     import { getToastToasterContext } from '../toast-context.js'
-    import CheckmarkIcon from './CheckmarkIcon.svelte'
-    import ErrorIcon from './ErrorIcon.svelte'
-    import LoaderIcon from './LoaderIcon.svelte'
+    import {
+        ToastError,
+        ToastInfo,
+        ToastLoading,
+        ToastSuccess,
+        ToastWarning
+    } from '../../toast-icons/index.js'
 
     interface Props {
         toast: Toast
     }
 
     let { toast }: Props = $props()
-    let { type, icon, iconTheme } = $derived(toast)
+    let { type, icon } = $derived(toast)
     const toasterContext = $derived(getToastToasterContext())
+    const iconTone = $derived(toasterContext.iconTone ?? 'standard')
+
+    const hasIcon = $derived.by(() => {
+        if (icon === null) return false
+        if (typeof icon === 'string') return true
+        if (typeof icon !== 'undefined') return true
+        return (
+            type === 'loading' ||
+            type === 'error' ||
+            type === 'success' ||
+            type === 'warning' ||
+            type === 'info'
+        )
+    })
 </script>
 
+{#if hasIcon}
 <div data-icon="">
     {#if typeof icon === 'string'}
         <div class="_sft-animated">{icon}</div>
-    {:else if icon === null}
-        <!-- hidden -->
     {:else if typeof icon !== 'undefined'}
         {@const IconComponent = icon}
         <IconComponent />
@@ -26,55 +43,41 @@
         {#if toasterContext.loadingIcon}
             {@render toasterContext.loadingIcon()}
         {:else}
-            <div class="_sft-indicator">
-                <LoaderIcon {...iconTheme} />
-            </div>
+            <ToastLoading tone={iconTone} />
         {/if}
     {:else if type === 'error'}
         {#if toasterContext.errorIcon}
             {@render toasterContext.errorIcon()}
         {:else}
-            <div class="_sft-indicator">
-                <ErrorIcon {...iconTheme} />
-            </div>
+            <ToastError tone={iconTone} />
         {/if}
     {:else if type === 'success'}
         {#if toasterContext.successIcon}
             {@render toasterContext.successIcon()}
         {:else}
-            <div class="_sft-indicator">
-                <CheckmarkIcon {...iconTheme} />
-            </div>
+            <ToastSuccess tone={iconTone} />
         {/if}
     {:else if type === 'warning'}
         {#if toasterContext.warningIcon}
             {@render toasterContext.warningIcon()}
         {:else}
-            <div class="_sft-indicator _sft-warning">!</div>
+            <ToastWarning tone={iconTone} />
         {/if}
     {:else if type === 'info'}
         {#if toasterContext.infoIcon}
             {@render toasterContext.infoIcon()}
         {:else}
-            <div class="_sft-indicator _sft-info">i</div>
+            <ToastInfo tone={iconTone} />
         {/if}
     {/if}
 </div>
+{/if}
 
 <style>
-    ._sft-indicator {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-width: 20px;
-        min-height: 20px;
-    }
-
-    ._sft-warning,
-    ._sft-info {
-        font-weight: 700;
-        font-size: 0.875rem;
+    [data-icon] :global(.animated-icon-root) {
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 0;
     }
 
     ._sft-animated {
