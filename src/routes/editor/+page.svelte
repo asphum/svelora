@@ -552,7 +552,9 @@
                 >dragHandle</code
             >
             shows a draggable handle on the left of each block on hover. Drag to reorder paragraphs, headings,
-            lists, etc.
+            lists, etc. This is built into Editor (TipTap) — for app-level list reordering use
+            <a href="/docs/hooks/use-sortable" class="text-primary underline">useSortable</a>
+            instead.
         </p>
         <Editor bind:value={dragHandleValue} dragHandle />
     </section>

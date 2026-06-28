@@ -68,7 +68,11 @@
     <div class="space-y-2">
         <h1 class="text-2xl font-bold">FileUpload</h1>
         <p class="text-on-surface-variant">
-            Upload files via drag-and-drop or file dialog with preview and removal.
+            Upload files via drag-and-drop or file dialog with preview and removal. This is for
+            <strong>OS file drops</strong> — to reorder UI lists use
+            <a href="/docs/hooks/use-sortable" class="text-primary underline">useSortable</a>
+            or
+            <a href="/docs/components/sortable-list" class="text-primary underline">SortableList</a>.
         </p>
     </div>
 

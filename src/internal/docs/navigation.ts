@@ -357,6 +357,13 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:sliders-horizontal'
             },
             {
+                title: 'SortableList',
+                href: '/docs/components/sortable-list',
+                legacyHref: '/sortable-list',
+                icon: 'lucide:list-ordered',
+                description: 'Styled sortable list built on useSortable.'
+            },
+            {
                 title: 'Switch',
                 href: '/docs/components/switch',
                 legacyHref: '/switch',
@@ -614,6 +621,20 @@ export const docsHookItems: DocsItem[] = [
         href: '/docs/hooks/use-click-outside',
         legacyHref: '/use-click-outside',
         icon: 'lucide:pointer'
+    },
+    {
+        title: 'useSortable',
+        href: '/docs/hooks/use-sortable',
+        legacyHref: '/use-sortable',
+        icon: 'lucide:grip-vertical',
+        description: 'Pointer-based reordering for sortable lists.'
+    },
+    {
+        title: 'useDragDrop',
+        href: '/docs/hooks/use-drag-drop',
+        legacyHref: '/use-drag-drop',
+        icon: 'lucide:move',
+        description: 'HTML5 drag-and-drop between containers.'
     },
     {
         title: 'useInfiniteScroll',
