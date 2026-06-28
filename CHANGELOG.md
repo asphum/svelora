@@ -19,6 +19,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.0.16] - 2026-06-28
+
+### Added
+
+- ปรับปรุงโครงสร้าง: แทนที่ svelte-sonner ด้วยการใช้งาน toast ภายใน
+- ปรับปรุงโครงสร้าง: อัปเดตการใช้งาน toast ให้ใช้ไลบรารี French-toast
+- add ConfirmDialog component for imperative confirmation dialogs
+- introduce SortableList component and useSortable hook for enhanced list reordering
+- integrate @dnd-kit for enhanced drag-and-drop functionality
+- enhance drag-and-drop functionality with grid support and new documentation
+
+### Changed
+
+- ฟีเจอร์: อัปเดตการพึ่งพาและปรับปรุงฟังก์ชันการลากและวาง
+
 ## [3.0.15] - 2026-06-28
 
 ### Changed
@@ -482,7 +497,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.15...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.16...HEAD
+[3.0.16]: https://github.com/asphum/svelora/compare/v3.0.15...v3.0.16
 [3.0.15]: https://github.com/asphum/svelora/compare/v3.0.14...v3.0.15
 [3.0.14]: https://github.com/asphum/svelora/compare/v3.0.13...v3.0.14
 [3.0.13]: https://github.com/asphum/svelora/compare/v3.0.12...v3.0.13
