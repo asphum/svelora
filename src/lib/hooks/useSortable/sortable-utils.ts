@@ -15,43 +15,14 @@ export function moveArrayItem<T>(items: T[], fromIndex: number, toIndex: number)
     return next
 }
 
-export function getReorderIndex(
-    pointer: number,
-    rects: Array<{ id: string | number; start: number; end: number }>,
-    activeId: string | number,
-    axis: 'vertical' | 'horizontal'
-): number {
-    const activeIndex = rects.findIndex((rect) => rect.id === activeId)
-    if (activeIndex === -1) return activeIndex
-
-    const midpoint = (rect: { start: number; end: number }) => (rect.start + rect.end) / 2
-
-    for (let index = 0; index < rects.length; index++) {
-        const rect = rects[index]
-        if (pointer < midpoint(rect)) {
-            return index
-        }
-    }
-
-    return rects.length - 1
-}
-
-export function measureSortableRects(
-    container: HTMLElement,
-    axis: 'vertical' | 'horizontal'
-): Array<{ id: string | number; start: number; end: number; element: HTMLElement }> {
-    const items = Array.from(
-        container.querySelectorAll<HTMLElement>('[data-sortable-item][data-sortable-id]')
-    )
-
-    return items.map((element) => {
-        const rect = element.getBoundingClientRect()
-        const id = element.dataset.sortableId!
-
-        if (axis === 'horizontal') {
-            return { id, start: rect.left, end: rect.right, element }
-        }
-
-        return { id, start: rect.top, end: rect.bottom, element }
-    })
+export function resolveSortableDropIndex(
+    dragIndex: number,
+    targetContainer: string | null,
+    dropPosition: 'before' | 'after' | null
+): number | null {
+    let dropIndex = Number.parseInt(targetContainer ?? '', 10)
+    if (Number.isNaN(dropIndex)) return null
+    if (dropPosition === 'after') dropIndex += 1
+    const adjusted = dragIndex < dropIndex ? dropIndex - 1 : dropIndex
+    return adjusted
 }

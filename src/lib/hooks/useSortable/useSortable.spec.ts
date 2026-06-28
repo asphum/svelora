@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { getReorderIndex, moveArrayItem } from './sortable-utils.js'
+import { moveArrayItem, resolveSortableDropIndex } from './sortable-utils.js'
 
 describe('sortable-utils', () => {
     it('moveArrayItem moves an entry to a new index', () => {
@@ -13,15 +13,10 @@ describe('sortable-utils', () => {
         expect(moveArrayItem(items, -1, 1)).toBe(items)
     })
 
-    it('getReorderIndex finds the insertion index from pointer position', () => {
-        const rects = [
-            { id: 'a', start: 0, end: 40 },
-            { id: 'b', start: 40, end: 80 },
-            { id: 'c', start: 80, end: 120 }
-        ]
-
-        expect(getReorderIndex(10, rects, 'a', 'vertical')).toBe(0)
-        expect(getReorderIndex(50, rects, 'a', 'vertical')).toBe(1)
-        expect(getReorderIndex(110, rects, 'a', 'vertical')).toBe(2)
+    it('resolveSortableDropIndex matches sveltednd before/after semantics', () => {
+        expect(resolveSortableDropIndex(0, '2', 'before')).toBe(1)
+        expect(resolveSortableDropIndex(0, '2', 'after')).toBe(2)
+        expect(resolveSortableDropIndex(2, '0', 'before')).toBe(0)
+        expect(resolveSortableDropIndex(2, '0', 'after')).toBe(1)
     })
 })

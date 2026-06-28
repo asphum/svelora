@@ -42,8 +42,8 @@
 
     const itemClasses = $derived(
         twMerge(
-            'flex items-center gap-3 rounded-lg border border-outline-variant/60 bg-surface-container-low px-3 py-2 transition-shadow',
-            'data-[sortable-dragging=true]:shadow-md data-[sortable-dragging=true]:opacity-90',
+            'relative flex items-center gap-3 rounded-lg border border-outline-variant/60 bg-surface-container-low px-3 py-2 transition-shadow select-none',
+            'dragging:z-10 dragging:shadow-md dragging:opacity-95',
             itemClass
         )
     )
@@ -54,9 +54,8 @@
         {@const id = getKey(item)}
         {@const dragging = sortable.draggingId === String(id)}
         <div
+            use:sortable.item={{ index, item }}
             role="listitem"
-            data-sortable-item
-            data-sortable-id={String(id)}
             class={itemClasses}
             aria-grabbed={dragging}
         >
@@ -76,8 +75,14 @@
 </div>
 
 <style>
-    :global([data-droppable-active='true']) {
-        outline: 2px dashed var(--color-primary);
-        outline-offset: 2px;
+    :global([data-sortable-active='true']) {
+        user-select: none;
+    }
+
+    :global(.drop-before::before),
+    :global(.drop-after::after),
+    :global(.drop-left::before),
+    :global(.drop-right::after) {
+        background-color: var(--color-primary);
     }
 </style>

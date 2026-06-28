@@ -32,8 +32,10 @@
 
     const draggableOptionsReference = [
         { name: 'id', type: 'string', description: 'Unique id for the draggable element.' },
+        { name: 'container', type: 'string', description: 'Source zone id — must match the droppable id of the column this item is in.' },
         { name: 'data', type: 'unknown', description: 'Payload passed to droppable onDrop.' },
-        { name: 'disabled', type: 'boolean | (() => boolean)', description: 'Prevent dragging.' }
+        { name: 'disabled', type: 'boolean | (() => boolean)', description: 'Prevent dragging.' },
+        { name: 'handle', type: 'string', description: 'Optional CSS selector for a drag handle.' }
     ] as const
 
     const droppableOptionsReference = [
@@ -54,7 +56,9 @@
     <div class="space-y-2">
         <h1 class="text-2xl font-bold">useDragDrop</h1>
         <p class="text-on-surface-variant">
-            HTML5 drag-and-drop for moving items between containers. Use
+            Cross-container drag and drop powered by
+            <a href="https://github.com/thisuxhq/sveltednd" class="text-primary underline" target="_blank" rel="noreferrer">@thisux/sveltednd</a>.
+            Use
             <code class="rounded bg-surface-container-high px-1">use:dragDrop.draggable</code>
             on sources and
             <code class="rounded bg-surface-container-high px-1">use:dragDrop.droppable</code>
@@ -103,8 +107,8 @@
                 <div class="space-y-2">
                     {#each board.todo as task (task.id)}
                         <div
-                            use:dragDrop.draggable={{ id: task.id, data: task }}
-                            class="cursor-grab rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 active:cursor-grabbing"
+                            use:dragDrop.draggable={{ id: task.id, container: 'todo', data: task }}
+                            class="cursor-grab rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 active:cursor-grabbing dragging:opacity-80"
                         >
                             {task.label}
                         </div>
@@ -126,8 +130,8 @@
                 <div class="space-y-2">
                     {#each board.done as task (task.id)}
                         <div
-                            use:dragDrop.draggable={{ id: task.id, data: task }}
-                            class="cursor-grab rounded-lg border border-success/30 bg-success/10 px-3 py-2 active:cursor-grabbing"
+                            use:dragDrop.draggable={{ id: task.id, container: 'done', data: task }}
+                            class="cursor-grab rounded-lg border border-success/30 bg-success/10 px-3 py-2 active:cursor-grabbing dragging:opacity-80"
                         >
                             {task.label}
                         </div>

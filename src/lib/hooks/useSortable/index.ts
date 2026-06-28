@@ -1,2 +1,2 @@
 export * from './useSortable.svelte.js'
-export { moveArrayItem, getReorderIndex } from './sortable-utils.js'
+export { moveArrayItem, resolveSortableDropIndex } from './sortable-utils.js'

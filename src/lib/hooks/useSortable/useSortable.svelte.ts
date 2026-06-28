@@ -1,5 +1,12 @@
+import '@thisux/sveltednd'
 import type { Action } from 'svelte/action'
-import { getReorderIndex, measureSortableRects, moveArrayItem } from './sortable-utils.js'
+import { draggable, droppable, type DragDropState } from '@thisux/sveltednd'
+import { moveArrayItem, resolveSortableDropIndex } from './sortable-utils.js'
+
+export interface UseSortableItemParams<T> {
+    index: number
+    item: T
+}
 
 export interface UseSortableOptions<T> {
     /** Reactive getter for the current item array. */
@@ -31,21 +38,24 @@ export interface UseSortableOptions<T> {
     disabled?: boolean | (() => boolean)
 }
 
-export interface UseSortableReturn {
-    /** Attach to the list container element. */
+export interface UseSortableReturn<T> {
+    /** Attach to the list container element (optional wrapper). */
     readonly container: Action<HTMLElement>
+
+    /** Attach to each sortable row with the current index and item. */
+    readonly item: Action<HTMLElement, UseSortableItemParams<T>>
 
     /** Id of the item currently being dragged, or null. */
     readonly draggingId: string | number | null
 }
 
 /**
- * Pointer-based sortable list hook.
+ * Sortable list hook powered by [@thisux/sveltednd](https://github.com/thisuxhq/sveltednd).
  *
- * Mark each row with `data-sortable-item` and `data-sortable-id`.
- * Optionally add `data-sortable-handle` on a handle button.
+ * Attach `use:sortable.item={{ index, item }}` to each row.
+ * Optionally wrap the list with `use:sortable.container`.
  */
-export function useSortable<T>(options: UseSortableOptions<T>): UseSortableReturn {
+export function useSortable<T>(options: UseSortableOptions<T>): UseSortableReturn<T> {
     const { getItems, getId, onReorder } = options
 
     let draggingId = $state<string | number | null>(null)
@@ -66,136 +76,113 @@ export function useSortable<T>(options: UseSortableOptions<T>): UseSortableRetur
             : (options.disabled ?? false)
     }
 
-    function resolveDragTarget(item: HTMLElement, target: EventTarget | null): boolean {
-        if (!(target instanceof Element)) return !getHandle()
+    function ownsItem(item: T): boolean {
+        const id = getId(item)
+        return getItems().some((entry) => getId(entry) === id)
+    }
 
-        const handle = getHandle()
-        if (handle) {
-            return Boolean(target.closest(handle) && item.contains(target))
+    function handleDrop(state: DragDropState<T>) {
+        if (isDisabled()) return
+
+        const items = getItems()
+        const dragIndex = items.findIndex((entry) => getId(entry) === getId(state.draggedItem))
+        if (dragIndex === -1) return
+
+        const toIndex = resolveSortableDropIndex(
+            dragIndex,
+            state.targetContainer,
+            state.dropPosition
+        )
+        if (toIndex === null || dragIndex === toIndex) return
+
+        onReorder(moveArrayItem(items, dragIndex, toIndex))
+    }
+
+    let listNode = $state<HTMLElement | null>(null)
+
+    $effect(() => {
+        const node = listNode
+        if (!node) return
+
+        if (draggingId != null) {
+            node.setAttribute('data-sortable-active', 'true')
+        } else {
+            node.removeAttribute('data-sortable-active')
         }
+    })
 
-        return item.contains(target)
+    function buildDraggableOptions(index: number, item: T) {
+        return {
+            container: String(index),
+            dragData: item,
+            disabled: isDisabled(),
+            handle: getHandle(),
+            attributes: {
+                draggingClass: 'dragging'
+            },
+            callbacks: {
+                onDragStart: (state: DragDropState<T>) => {
+                    if (!ownsItem(state.draggedItem)) return
+                    draggingId = getId(state.draggedItem)
+                },
+                onDragEnd: () => {
+                    draggingId = null
+                }
+            }
+        } satisfies Parameters<typeof draggable<T>>[1]
+    }
+
+    function buildDroppableOptions(index: number) {
+        return {
+            container: String(index),
+            direction: getAxis(),
+            disabled: isDisabled(),
+            callbacks: {
+                onDrop: handleDrop
+            }
+        } satisfies Parameters<typeof droppable<T>>[1]
     }
 
     const container: Action<HTMLElement> = (node) => {
-        let activePointerId: number | null = null
-        let activeItem: HTMLElement | null = null
-        let activeId: string | number | null = null
-        let startIndex = -1
-        let currentIndex = -1
-        let offset = 0
-
-        function resetDrag() {
-            if (activeItem) {
-                activeItem.style.transform = ''
-                activeItem.style.zIndex = ''
-                activeItem.style.position = ''
-                activeItem.removeAttribute('data-sortable-dragging')
-            }
-
-            activePointerId = null
-            activeItem = null
-            activeId = null
-            startIndex = -1
-            currentIndex = -1
-            offset = 0
-            draggingId = null
-        }
-
-        function applyPreviewTransform(pointer: number) {
-            if (!activeItem) return
-
-            const delta =
-                getAxis() === 'horizontal'
-                    ? pointer - (activeItem.getBoundingClientRect().left + offset)
-                    : pointer - (activeItem.getBoundingClientRect().top + offset)
-
-            activeItem.style.transform =
-                getAxis() === 'horizontal' ? `translateX(${delta}px)` : `translateY(${delta}px)`
-        }
-
-        function handlePointerDown(event: PointerEvent) {
-            if (isDisabled() || event.button !== 0) return
-
-            const item = (event.target as Element | null)?.closest<HTMLElement>(
-                '[data-sortable-item][data-sortable-id]'
-            )
-
-            if (!item || !node.contains(item)) return
-            if (!resolveDragTarget(item, event.target)) return
-
-            const id = item.dataset.sortableId
-            if (!id) return
-
-            const items = getItems()
-            const fromIndex = items.findIndex((entry) => String(getId(entry)) === id)
-            if (fromIndex === -1) return
-
-            event.preventDefault()
-
-            const rect = item.getBoundingClientRect()
-            offset =
-                getAxis() === 'horizontal' ? event.clientX - rect.left : event.clientY - rect.top
-
-            activePointerId = event.pointerId
-            activeItem = item
-            activeId = id
-            startIndex = fromIndex
-            currentIndex = fromIndex
-            draggingId = getId(items[fromIndex])
-
-            item.setPointerCapture(event.pointerId)
-            item.style.position = 'relative'
-            item.style.zIndex = '10'
-            item.setAttribute('data-sortable-dragging', 'true')
-        }
-
-        function handlePointerMove(event: PointerEvent) {
-            if (activePointerId !== event.pointerId || activeId == null) return
-
-            const pointer = getAxis() === 'horizontal' ? event.clientX : event.clientY
-            const rects = measureSortableRects(node, getAxis())
-            const nextIndex = getReorderIndex(pointer, rects, activeId, getAxis())
-
-            if (nextIndex !== -1 && nextIndex !== currentIndex) {
-                currentIndex = nextIndex
-            }
-
-            applyPreviewTransform(pointer)
-        }
-
-        function handlePointerUp(event: PointerEvent) {
-            if (activePointerId !== event.pointerId || activeId == null) return
-
-            if (startIndex !== -1 && currentIndex !== -1 && startIndex !== currentIndex) {
-                onReorder(moveArrayItem(getItems(), startIndex, currentIndex))
-            }
-
-            if (activeItem?.hasPointerCapture(event.pointerId)) {
-                activeItem.releasePointerCapture(event.pointerId)
-            }
-
-            resetDrag()
-        }
-
-        node.addEventListener('pointerdown', handlePointerDown)
-        node.addEventListener('pointermove', handlePointerMove)
-        node.addEventListener('pointerup', handlePointerUp)
-        node.addEventListener('pointercancel', handlePointerUp)
+        listNode = node
 
         return {
             destroy() {
-                node.removeEventListener('pointerdown', handlePointerDown)
-                node.removeEventListener('pointermove', handlePointerMove)
-                node.removeEventListener('pointerup', handlePointerUp)
-                node.removeEventListener('pointercancel', handlePointerUp)
-                resetDrag()
+                if (listNode === node) {
+                    listNode = null
+                }
+                node.removeAttribute('data-sortable-active')
+            }
+        }
+    }
+
+    const item: Action<HTMLElement, UseSortableItemParams<T>> = (node, params) => {
+        let current = params!
+        let dragApi = draggable(node, buildDraggableOptions(current.index, current.item))
+        let dropApi = droppable(node, buildDroppableOptions(current.index))
+
+        node.setAttribute('data-sortable-item', '')
+        node.dataset.sortableId = String(getId(current.item))
+
+        return {
+            update(nextParams) {
+                current = nextParams
+                dragApi.update(buildDraggableOptions(current.index, current.item))
+                dropApi.update(buildDroppableOptions(current.index))
+                node.dataset.sortableId = String(getId(current.item))
+            },
+            destroy() {
+                dragApi.destroy()
+                dropApi.destroy()
+                node.removeAttribute('data-sortable-item')
+                delete node.dataset.sortableId
             }
         }
     }
 
     return {
         container,
+        item,
         get draggingId() {
             return draggingId
         }

@@ -48,15 +48,15 @@
     ] as const
 
     const sortableReturnReference = [
-        { name: 'container', type: 'Action<HTMLElement>', description: 'Attach to the list wrapper with use:sortable.container.' },
+        { name: 'container', type: 'Action<HTMLElement>', description: 'Optional list wrapper — sets data-sortable-active while dragging.' },
+        { name: 'item', type: 'Action<HTMLElement, { index, item }>', description: 'Attach to each row with the current index and item.' },
         { name: 'draggingId', type: 'string | number | null', description: 'Readonly id of the row currently being dragged.' }
     ] as const
 
     const markupReference = [
-        { name: 'data-sortable-item', description: 'Marks a draggable row.' },
-        { name: 'data-sortable-id', description: 'Unique id string matching getId(item).' },
+        { name: 'use:sortable.item', description: 'Required on each row — pass { index, item } from the #each block.' },
         { name: 'data-sortable-handle', description: 'Optional handle element when using handle selector.' },
-        { name: 'data-sortable-dragging', description: 'Set on the active row while dragging (for styling).' }
+        { name: 'data-sortable-item / data-sortable-id', description: 'Set automatically by use:sortable.item for styling hooks.' }
     ] as const
 
     function resetOrder() {
@@ -73,12 +73,12 @@
     <div class="space-y-2">
         <h1 class="text-2xl font-bold">useSortable</h1>
         <p class="text-on-surface-variant">
-            Pointer-based reordering for lists. Attach
-            <code class="rounded bg-surface-container-high px-1">use:sortable.container</code>
-            to the list wrapper and mark rows with
-            <code class="rounded bg-surface-container-high px-1">data-sortable-item</code>
-            and
-            <code class="rounded bg-surface-container-high px-1">data-sortable-id</code>.
+            Sortable list reordering powered by
+            <a href="https://github.com/thisuxhq/sveltednd" class="text-primary underline" target="_blank" rel="noreferrer">@thisux/sveltednd</a>.
+            Attach
+            <code class="rounded bg-surface-container-high px-1">use:sortable.item</code>
+            to each row and optionally wrap with
+            <code class="rounded bg-surface-container-high px-1">use:sortable.container</code>.
         </p>
     </div>
 
@@ -123,11 +123,10 @@
             </a>
         </h2>
         <div use:sortable.container class="space-y-2 rounded-lg bg-surface-container-high p-4">
-            {#each tasks as task (task.id)}
+            {#each tasks as task, index (task.id)}
                 <div
-                    data-sortable-item
-                    data-sortable-id={task.id}
-                    class="flex items-center gap-3 rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 data-[sortable-dragging=true]:shadow-md"
+                    use:sortable.item={{ index, item: task }}
+                    class="flex items-center gap-3 rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 dragging:shadow-md"
                     aria-grabbed={sortable.draggingId === task.id}
                 >
                     <button
@@ -161,11 +160,10 @@
             </a>
         </h2>
         <div use:horizontalSortable.container class="flex flex-wrap gap-2 rounded-lg bg-surface-container-high p-4">
-            {#each horizontalItems as item (item.id)}
+            {#each horizontalItems as item, index (item.id)}
                 <div
-                    data-sortable-item
-                    data-sortable-id={item.id}
-                    class="flex items-center gap-2 rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 data-[sortable-dragging=true]:shadow-md"
+                    use:horizontalSortable.item={{ index, item }}
+                    class="flex items-center gap-2 rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 dragging:shadow-md"
                 >
                     <button type="button" data-sortable-handle class="cursor-grab px-1" aria-label="Drag">::</button>
                     <span class="text-sm font-medium">{item.label}</span>

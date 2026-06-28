@@ -27,7 +27,7 @@ export const quickExample = `<script lang="ts">
    class="rounded-lg border p-4"
  >
    {#each columns.todo as task (task)}
-     <div use:dragDrop.draggable={{ id: task, data: task }} class="rounded-md border p-2">{task}</div>
+     <div use:dragDrop.draggable={{ id: task, container: 'todo', data: task }} class="rounded-md border p-2">{task}</div>
    {/each}
  </div>
 
@@ -36,7 +36,7 @@ export const quickExample = `<script lang="ts">
    class="rounded-lg border p-4"
  >
    {#each columns.done as task (task)}
-     <div class="rounded-md border p-2">{task}</div>
+     <div use:dragDrop.draggable={{ id: task, container: 'done', data: task }} class="rounded-md border p-2">{task}</div>
    {/each}
  </div>
 </div>`
