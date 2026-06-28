@@ -1,7 +1,13 @@
-import '@thisux/sveltednd'
 import type { Action } from 'svelte/action'
-import { draggable, droppable, type DragDropState } from '@thisux/sveltednd'
-import { moveArrayItem, resolveSortableDropIndex } from './sortable-utils.js'
+import type { Component } from 'svelte'
+import { setContext, type Snippet } from 'svelte'
+import type { Data } from '@dnd-kit/abstract'
+import { createSortable } from '@dnd-kit/svelte/sortable'
+import SortableProvider from '../internal/SortableProvider.svelte'
+import {
+    SORTABLE_CONTEXT_KEY,
+    type SortableContextValue
+} from '../internal/sortable-context.js'
 
 export interface UseSortableItemParams<T> {
     index: number
@@ -39,6 +45,12 @@ export interface UseSortableOptions<T> {
 }
 
 export interface UseSortableReturn<T> {
+    /**
+     * Wrap sortable markup with this provider.
+     * Required — [@dnd-kit/svelte](https://clauderic-dnd-kit.mintlify.app/frameworks/svelte) needs a DragDropProvider ancestor.
+     */
+    readonly Provider: Component<{ children?: Snippet }>
+
     /** Attach to the list container element (optional wrapper). */
     readonly container: Action<HTMLElement>
 
@@ -49,16 +61,19 @@ export interface UseSortableReturn<T> {
     readonly draggingId: string | number | null
 }
 
+let sortableGroupCounter = 0
+
 /**
- * Sortable list hook powered by [@thisux/sveltednd](https://github.com/thisuxhq/sveltednd).
+ * Sortable list hook powered by [@dnd-kit/svelte](https://clauderic-dnd-kit.mintlify.app/frameworks/svelte).
  *
- * Attach `use:sortable.item={{ index, item }}` to each row.
- * Optionally wrap the list with `use:sortable.container`.
+ * Wrap markup in `sortable.Provider`, then attach `use:sortable.item` to each row.
  */
 export function useSortable<T>(options: UseSortableOptions<T>): UseSortableReturn<T> {
     const { getItems, getId, onReorder } = options
+    const groupId = `svelora-sortable-${++sortableGroupCounter}`
 
     let draggingId = $state<string | number | null>(null)
+    let listNode = $state<HTMLElement | null>(null)
 
     function getAxis(): 'vertical' | 'horizontal' {
         const axis = options.axis
@@ -76,29 +91,20 @@ export function useSortable<T>(options: UseSortableOptions<T>): UseSortableRetur
             : (options.disabled ?? false)
     }
 
-    function ownsItem(item: T): boolean {
-        const id = getId(item)
-        return getItems().some((entry) => getId(entry) === id)
+    const context: SortableContextValue<T> = {
+        groupId,
+        getItems,
+        getId,
+        onReorder,
+        isDisabled,
+        getAxis,
+        getHandle,
+        setDraggingId(id) {
+            draggingId = id
+        }
     }
 
-    function handleDrop(state: DragDropState<T>) {
-        if (isDisabled()) return
-
-        const items = getItems()
-        const dragIndex = items.findIndex((entry) => getId(entry) === getId(state.draggedItem))
-        if (dragIndex === -1) return
-
-        const toIndex = resolveSortableDropIndex(
-            dragIndex,
-            state.targetContainer,
-            state.dropPosition
-        )
-        if (toIndex === null || dragIndex === toIndex) return
-
-        onReorder(moveArrayItem(items, dragIndex, toIndex))
-    }
-
-    let listNode = $state<HTMLElement | null>(null)
+    setContext(SORTABLE_CONTEXT_KEY, context as SortableContextValue<unknown>)
 
     $effect(() => {
         const node = listNode
@@ -110,38 +116,6 @@ export function useSortable<T>(options: UseSortableOptions<T>): UseSortableRetur
             node.removeAttribute('data-sortable-active')
         }
     })
-
-    function buildDraggableOptions(index: number, item: T) {
-        return {
-            container: String(index),
-            dragData: item,
-            disabled: isDisabled(),
-            handle: getHandle(),
-            attributes: {
-                draggingClass: 'dragging'
-            },
-            callbacks: {
-                onDragStart: (state: DragDropState<T>) => {
-                    if (!ownsItem(state.draggedItem)) return
-                    draggingId = getId(state.draggedItem)
-                },
-                onDragEnd: () => {
-                    draggingId = null
-                }
-            }
-        } satisfies Parameters<typeof draggable<T>>[1]
-    }
-
-    function buildDroppableOptions(index: number) {
-        return {
-            container: String(index),
-            direction: getAxis(),
-            disabled: isDisabled(),
-            callbacks: {
-                onDrop: handleDrop
-            }
-        } satisfies Parameters<typeof droppable<T>>[1]
-    }
 
     const container: Action<HTMLElement> = (node) => {
         listNode = node
@@ -158,8 +132,39 @@ export function useSortable<T>(options: UseSortableOptions<T>): UseSortableRetur
 
     const item: Action<HTMLElement, UseSortableItemParams<T>> = (node, params) => {
         let current = params!
-        let dragApi = draggable(node, buildDraggableOptions(current.index, current.item))
-        let dropApi = droppable(node, buildDroppableOptions(current.index))
+
+        const sortable = createSortable({
+            id: String(getId(current.item)),
+            index: current.index,
+            group: groupId,
+            data: current.item as Data,
+            disabled: isDisabled()
+        })
+
+        const detach = sortable.attach(node)
+        let detachHandle: (() => void) | undefined
+
+        function bindHandle() {
+            detachHandle?.()
+
+            const selector = getHandle()
+            if (!selector) {
+                sortable.sortable.handle = undefined
+                detachHandle = undefined
+                return
+            }
+
+            const handle = node.querySelector<HTMLElement>(selector)
+            if (!handle) {
+                sortable.sortable.handle = undefined
+                detachHandle = undefined
+                return
+            }
+
+            detachHandle = sortable.attachHandle(handle)
+        }
+
+        bindHandle()
 
         node.setAttribute('data-sortable-item', '')
         node.dataset.sortableId = String(getId(current.item))
@@ -167,13 +172,16 @@ export function useSortable<T>(options: UseSortableOptions<T>): UseSortableRetur
         return {
             update(nextParams) {
                 current = nextParams
-                dragApi.update(buildDraggableOptions(current.index, current.item))
-                dropApi.update(buildDroppableOptions(current.index))
-                node.dataset.sortableId = String(getId(current.item))
+                sortable.sortable.id = String(getId(nextParams.item))
+                sortable.sortable.index = nextParams.index
+                sortable.sortable.data = nextParams.item as Data
+                sortable.sortable.disabled = isDisabled()
+                node.dataset.sortableId = String(getId(nextParams.item))
+                bindHandle()
             },
             destroy() {
-                dragApi.destroy()
-                dropApi.destroy()
+                detach()
+                detachHandle?.()
                 node.removeAttribute('data-sortable-item')
                 delete node.dataset.sortableId
             }
@@ -181,6 +189,7 @@ export function useSortable<T>(options: UseSortableOptions<T>): UseSortableRetur
     }
 
     return {
+        Provider: SortableProvider,
         container,
         item,
         get draggingId() {

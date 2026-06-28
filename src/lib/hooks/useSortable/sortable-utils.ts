@@ -14,15 +14,3 @@ export function moveArrayItem<T>(items: T[], fromIndex: number, toIndex: number)
     next.splice(toIndex, 0, removed)
     return next
 }
-
-export function resolveSortableDropIndex(
-    dragIndex: number,
-    targetContainer: string | null,
-    dropPosition: 'before' | 'after' | null
-): number | null {
-    let dropIndex = Number.parseInt(targetContainer ?? '', 10)
-    if (Number.isNaN(dropIndex)) return null
-    if (dropPosition === 'after') dropIndex += 1
-    const adjusted = dragIndex < dropIndex ? dropIndex - 1 : dropIndex
-    return adjusted
-}

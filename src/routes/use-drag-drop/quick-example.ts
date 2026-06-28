@@ -18,25 +18,27 @@ export const quickExample = `<script lang="ts">
  }
 </script>
 
-<div class="grid gap-4 md:grid-cols-2">
- <div
-   use:dragDrop.droppable={{
-     id: 'todo',
-     onDrop: ({ data }) => console.log('dropped on todo', data)
-   }}
-   class="rounded-lg border p-4"
- >
+<dragDrop.Provider>
+ <div class="grid gap-4 md:grid-cols-2">
+  <div
+    use:dragDrop.droppable={{
+      id: 'todo',
+      onDrop: ({ data }) => console.log('dropped on todo', data)
+    }}
+    class="rounded-lg border p-4"
+  >
    {#each columns.todo as task (task)}
-     <div use:dragDrop.draggable={{ id: task, container: 'todo', data: task }} class="rounded-md border p-2">{task}</div>
+    <div use:dragDrop.draggable={{ id: task, container: 'todo', data: task }} class="rounded-md border p-2">{task}</div>
    {/each}
- </div>
+  </div>
 
- <div
-   use:dragDrop.droppable={{ id: 'done', onDrop: ({ data }) => moveToDone(String(data)) }}
-   class="rounded-lg border p-4"
- >
+  <div
+    use:dragDrop.droppable={{ id: 'done', onDrop: ({ data }) => moveToDone(String(data)) }}
+    class="rounded-lg border p-4"
+  >
    {#each columns.done as task (task)}
-     <div use:dragDrop.draggable={{ id: task, container: 'done', data: task }} class="rounded-md border p-2">{task}</div>
+    <div use:dragDrop.draggable={{ id: task, container: 'done', data: task }} class="rounded-md border p-2">{task}</div>
    {/each}
+  </div>
  </div>
-</div>`
+</dragDrop.Provider>`

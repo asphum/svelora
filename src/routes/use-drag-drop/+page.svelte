@@ -46,6 +46,7 @@
     ] as const
 
     const returnReference = [
+        { name: 'Provider', type: 'Component', description: 'Required wrapper — mounts @dnd-kit/svelte DragDropProvider.' },
         { name: 'draggable', type: 'Action<HTMLElement, UseDraggableOptions>', description: 'Attach to drag sources.' },
         { name: 'droppable', type: 'Action<HTMLElement, UseDroppableOptions>', description: 'Attach to drop targets.' },
         { name: 'draggingId', type: 'string | null', description: 'Id of the item currently being dragged.' }
@@ -57,8 +58,10 @@
         <h1 class="text-2xl font-bold">useDragDrop</h1>
         <p class="text-on-surface-variant">
             Cross-container drag and drop powered by
-            <a href="https://github.com/thisuxhq/sveltednd" class="text-primary underline" target="_blank" rel="noreferrer">@thisux/sveltednd</a>.
-            Use
+            <a href="https://clauderic-dnd-kit.mintlify.app/frameworks/svelte" class="text-primary underline" target="_blank" rel="noreferrer">@dnd-kit/svelte</a>.
+            Wrap markup in
+            <code class="rounded bg-surface-container-high px-1">dragDrop.Provider</code>,
+            use
             <code class="rounded bg-surface-container-high px-1">use:dragDrop.draggable</code>
             on sources and
             <code class="rounded bg-surface-container-high px-1">use:dragDrop.droppable</code>
@@ -94,51 +97,59 @@
                 Kanban board
             </a>
         </h2>
-        <div class="grid gap-4 md:grid-cols-2">
-            <div
-                class="space-y-3 rounded-lg border border-outline-variant/70 bg-surface-container-low p-4"
-                use:dragDrop.droppable={{
-                    id: 'todo',
-                    disabled: () => dropDisabled,
-                    onDrop: ({ data }) => moveTask(data as Task, 'todo')
-                }}
-            >
-                <h3 class="font-semibold">To do</h3>
-                <div class="space-y-2">
-                    {#each board.todo as task (task.id)}
-                        <div
-                            use:dragDrop.draggable={{ id: task.id, container: 'todo', data: task }}
-                            class="cursor-grab rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 active:cursor-grabbing dragging:opacity-80"
-                        >
-                            {task.label}
-                        </div>
-                    {/each}
+        <dragDrop.Provider>
+            <div class="grid gap-4 md:grid-cols-2">
+                <div
+                    class="space-y-3 rounded-lg border border-outline-variant/70 bg-surface-container-low p-4"
+                    use:dragDrop.droppable={{
+                        id: 'todo',
+                        disabled: () => dropDisabled,
+                        onDrop: ({ data }) => moveTask(data as Task, 'todo')
+                    }}
+                >
+                    <h3 class="font-semibold">To do</h3>
+                    <div class="space-y-2">
+                        {#each board.todo as task (task.id)}
+                            <div
+                                use:dragDrop.draggable={{ id: task.id, container: 'todo', data: task }}
+                                class={[
+                                    'cursor-grab rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 active:cursor-grabbing',
+                                    dragDrop.draggingId === task.id && 'opacity-80'
+                                ]}
+                            >
+                                {task.label}
+                            </div>
+                        {/each}
+                    </div>
                 </div>
-            </div>
 
-            <div
-                class="space-y-3 rounded-lg border border-outline-variant/70 bg-surface-container-low p-4"
-                use:dragDrop.droppable={{
-                    id: 'done',
-                    disabled: () => dropDisabled,
-                    accept: (payload) => String((payload.data as Task)?.label ?? '').length > 0,
-                    onDrop: ({ data }) => moveTask(data as Task, 'done')
-                }}
-            >
-                <h3 class="font-semibold">Done</h3>
-                <p class="text-xs text-on-surface-variant">accept — rejects empty labels</p>
-                <div class="space-y-2">
-                    {#each board.done as task (task.id)}
-                        <div
-                            use:dragDrop.draggable={{ id: task.id, container: 'done', data: task }}
-                            class="cursor-grab rounded-lg border border-success/30 bg-success/10 px-3 py-2 active:cursor-grabbing dragging:opacity-80"
-                        >
-                            {task.label}
-                        </div>
-                    {/each}
+                <div
+                    class="space-y-3 rounded-lg border border-outline-variant/70 bg-surface-container-low p-4"
+                    use:dragDrop.droppable={{
+                        id: 'done',
+                        disabled: () => dropDisabled,
+                        accept: (payload) => String((payload.data as Task)?.label ?? '').length > 0,
+                        onDrop: ({ data }) => moveTask(data as Task, 'done')
+                    }}
+                >
+                    <h3 class="font-semibold">Done</h3>
+                    <p class="text-xs text-on-surface-variant">accept — rejects empty labels</p>
+                    <div class="space-y-2">
+                        {#each board.done as task (task.id)}
+                            <div
+                                use:dragDrop.draggable={{ id: task.id, container: 'done', data: task }}
+                                class={[
+                                    'cursor-grab rounded-lg border border-success/30 bg-success/10 px-3 py-2 active:cursor-grabbing',
+                                    dragDrop.draggingId === task.id && 'opacity-80'
+                                ]}
+                            >
+                                {task.label}
+                            </div>
+                        {/each}
+                    </div>
                 </div>
             </div>
-        </div>
+        </dragDrop.Provider>
 
         <div class="flex flex-wrap items-center gap-2">
             {#if dragDrop.draggingId}

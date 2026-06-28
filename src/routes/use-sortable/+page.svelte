@@ -48,6 +48,7 @@
     ] as const
 
     const sortableReturnReference = [
+        { name: 'Provider', type: 'Component', description: 'Required wrapper — mounts @dnd-kit/svelte DragDropProvider.' },
         { name: 'container', type: 'Action<HTMLElement>', description: 'Optional list wrapper — sets data-sortable-active while dragging.' },
         { name: 'item', type: 'Action<HTMLElement, { index, item }>', description: 'Attach to each row with the current index and item.' },
         { name: 'draggingId', type: 'string | number | null', description: 'Readonly id of the row currently being dragged.' }
@@ -74,11 +75,14 @@
         <h1 class="text-2xl font-bold">useSortable</h1>
         <p class="text-on-surface-variant">
             Sortable list reordering powered by
-            <a href="https://github.com/thisuxhq/sveltednd" class="text-primary underline" target="_blank" rel="noreferrer">@thisux/sveltednd</a>.
-            Attach
+            <a href="https://clauderic-dnd-kit.mintlify.app/frameworks/svelte" class="text-primary underline" target="_blank" rel="noreferrer">@dnd-kit/svelte</a>.
+            Wrap markup in
+            <code class="rounded bg-surface-container-high px-1">sortable.Provider</code>,
+            attach
             <code class="rounded bg-surface-container-high px-1">use:sortable.item</code>
-            to each row and optionally wrap with
-            <code class="rounded bg-surface-container-high px-1">use:sortable.container</code>.
+            to each row, and optionally use
+            <code class="rounded bg-surface-container-high px-1">use:sortable.container</code>
+            on the list wrapper.
         </p>
     </div>
 
@@ -122,13 +126,17 @@
                 Manual markup
             </a>
         </h2>
-        <div use:sortable.container class="space-y-2 rounded-lg bg-surface-container-high p-4">
-            {#each tasks as task, index (task.id)}
-                <div
-                    use:sortable.item={{ index, item: task }}
-                    class="flex items-center gap-3 rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 dragging:shadow-md"
-                    aria-grabbed={sortable.draggingId === task.id}
-                >
+        <sortable.Provider>
+            <div use:sortable.container class="space-y-2 rounded-lg bg-surface-container-high p-4">
+                {#each tasks as task, index (task.id)}
+                    <div
+                        use:sortable.item={{ index, item: task }}
+                        class={[
+                            'flex items-center gap-3 rounded-lg border border-outline-variant/60 bg-surface px-3 py-2',
+                            sortable.draggingId === task.id && 'opacity-80 shadow-md'
+                        ]}
+                        aria-grabbed={sortable.draggingId === task.id}
+                    >
                     <button
                         type="button"
                         data-sortable-handle
@@ -140,7 +148,8 @@
                     <Badge label={task.title} color={task.color} variant="soft" />
                 </div>
             {/each}
-        </div>
+            </div>
+        </sortable.Provider>
         <div class="flex flex-wrap gap-2">
             <Button variant="outline" size="sm" label="Reset order" onclick={resetOrder} />
             <Button
@@ -159,17 +168,22 @@
                 Horizontal axis
             </a>
         </h2>
-        <div use:horizontalSortable.container class="flex flex-wrap gap-2 rounded-lg bg-surface-container-high p-4">
-            {#each horizontalItems as item, index (item.id)}
-                <div
-                    use:horizontalSortable.item={{ index, item }}
-                    class="flex items-center gap-2 rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 dragging:shadow-md"
-                >
-                    <button type="button" data-sortable-handle class="cursor-grab px-1" aria-label="Drag">::</button>
-                    <span class="text-sm font-medium">{item.label}</span>
-                </div>
-            {/each}
-        </div>
+        <horizontalSortable.Provider>
+            <div use:horizontalSortable.container class="flex flex-wrap gap-2 rounded-lg bg-surface-container-high p-4">
+                {#each horizontalItems as item, index (item.id)}
+                    <div
+                        use:horizontalSortable.item={{ index, item }}
+                        class={[
+                            'flex items-center gap-2 rounded-lg border border-outline-variant/60 bg-surface px-3 py-2',
+                            horizontalSortable.draggingId === item.id && 'opacity-80 shadow-md'
+                        ]}
+                    >
+                        <button type="button" data-sortable-handle class="cursor-grab px-1" aria-label="Drag">::</button>
+                        <span class="text-sm font-medium">{item.label}</span>
+                    </div>
+                {/each}
+            </div>
+        </horizontalSortable.Provider>
     </section>
 
     <section class="space-y-3">

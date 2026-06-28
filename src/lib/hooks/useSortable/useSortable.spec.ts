@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { moveArrayItem, resolveSortableDropIndex } from './sortable-utils.js'
+import { moveArrayItem } from './sortable-utils.js'
 
 describe('sortable-utils', () => {
     it('moveArrayItem moves an entry to a new index', () => {
@@ -11,12 +11,5 @@ describe('sortable-utils', () => {
         const items = ['a', 'b']
         expect(moveArrayItem(items, 0, 0)).toBe(items)
         expect(moveArrayItem(items, -1, 1)).toBe(items)
-    })
-
-    it('resolveSortableDropIndex matches sveltednd before/after semantics', () => {
-        expect(resolveSortableDropIndex(0, '2', 'before')).toBe(1)
-        expect(resolveSortableDropIndex(0, '2', 'after')).toBe(2)
-        expect(resolveSortableDropIndex(2, '0', 'before')).toBe(0)
-        expect(resolveSortableDropIndex(2, '0', 'after')).toBe(1)
     })
 })

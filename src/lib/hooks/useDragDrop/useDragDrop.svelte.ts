@@ -1,11 +1,13 @@
-import '@thisux/sveltednd'
 import type { Action } from 'svelte/action'
+import type { Component } from 'svelte'
+import { setContext, type Snippet } from 'svelte'
+import type { Data } from '@dnd-kit/abstract'
+import { createDraggable, createDroppable } from '@dnd-kit/svelte'
+import DragDropProviderScope from '../internal/DragDropProviderScope.svelte'
 import {
-    draggable,
-    droppable,
-    dndState,
-    type DragDropState
-} from '@thisux/sveltednd'
+    DRAG_DROP_CONTEXT_KEY,
+    type DragDropContextValue
+} from '../internal/drag-drop-context.js'
 
 export interface DragPayload<T = unknown> {
     id: string
@@ -16,7 +18,7 @@ export interface UseDraggableOptions<T = unknown> {
     /** Unique id for the draggable element. */
     id: string
 
-    /** Source drop zone id — must match the droppable `id` of the container this item is in. */
+    /** Source drop zone id — used as the draggable type for cross-container matching. */
     container: string
 
     data?: T
@@ -32,33 +34,48 @@ export interface UseDroppableOptions<T = unknown> {
 }
 
 export interface UseDragDropReturn {
+    /**
+     * Wrap drag-and-drop markup with this provider.
+     * Required — [@dnd-kit/svelte](https://clauderic-dnd-kit.mintlify.app/frameworks/svelte) needs a DragDropProvider ancestor.
+     */
+    readonly Provider: Component<{ children?: Snippet }>
+
     readonly draggingId: string | null
     readonly draggable: Action<HTMLElement, UseDraggableOptions>
     readonly droppable: Action<HTMLElement, UseDroppableOptions>
 }
 
-type DragDropPayload<T> = DragPayload<T> & { __sveloraDragDrop: true }
-
-function toPayload<T>(value: DragDropPayload<T>): DragPayload<T> {
-    return { id: value.id, data: value.data }
-}
-
-function isDragDropPayload<T>(value: unknown): value is DragDropPayload<T> {
-    return (
-        typeof value === 'object' &&
-        value !== null &&
-        '__sveloraDragDrop' in value &&
-        'id' in value
-    )
-}
-
 /**
- * Cross-container drag and drop powered by [@thisux/sveltednd](https://github.com/thisuxhq/sveltednd).
+ * Cross-container drag and drop powered by [@dnd-kit/svelte](https://clauderic-dnd-kit.mintlify.app/frameworks/svelte).
  *
- * Attach `draggable` to sources and `droppable` to targets.
+ * Wrap markup in `dragDrop.Provider`, then attach `draggable` and `droppable` actions.
  */
 export function useDragDrop(): UseDragDropReturn {
     let draggingId = $state<string | null>(null)
+    const droppables = new Map<string, UseDroppableOptions>()
+
+    const context: DragDropContextValue = {
+        registerDroppable(id, options) {
+            droppables.set(id, options as UseDroppableOptions)
+        },
+        unregisterDroppable(id) {
+            droppables.delete(id)
+        },
+        setDraggingId(id) {
+            draggingId = id
+        },
+        getDroppable(id) {
+            return droppables.get(id) as UseDroppableOptions | undefined
+        },
+        toPayload(source) {
+            return {
+                id: String(source.id),
+                data: source.data
+            }
+        }
+    }
+
+    setContext(DRAG_DROP_CONTEXT_KEY, context)
 
     const draggableAction: Action<HTMLElement, UseDraggableOptions> = (node, initialOptions) => {
         let currentOptions = initialOptions!
@@ -69,43 +86,50 @@ export function useDragDrop(): UseDragDropReturn {
                 : (currentOptions.disabled ?? false)
         }
 
-        function buildOptions() {
-            const payload: DragDropPayload<unknown> = {
-                __sveloraDragDrop: true,
-                id: currentOptions.id,
-                data: currentOptions.data
+        const drag = createDraggable({
+            id: currentOptions.id,
+            type: currentOptions.container,
+            data: (currentOptions.data ?? {}) as Data,
+            disabled: isDisabled()
+        })
+
+        const detach = drag.attach(node)
+        let detachHandle: (() => void) | undefined
+
+        function bindHandle() {
+            detachHandle?.()
+
+            const selector = currentOptions.handle
+            if (!selector) {
+                drag.draggable.handle = undefined
+                detachHandle = undefined
+                return
             }
 
-            return {
-                container: currentOptions.container,
-                dragData: payload,
-                disabled: isDisabled(),
-                handle: currentOptions.handle,
-                attributes: {
-                    draggingClass: 'dragging'
-                },
-                callbacks: {
-                    onDragStart: () => {
-                        draggingId = currentOptions.id
-                        node.setAttribute('data-dragging', 'true')
-                    },
-                    onDragEnd: () => {
-                        draggingId = null
-                        node.removeAttribute('data-dragging')
-                    }
-                }
-            } satisfies Parameters<typeof draggable<DragDropPayload<unknown>>>[1]
+            const handle = node.querySelector<HTMLElement>(selector)
+            if (!handle) {
+                drag.draggable.handle = undefined
+                detachHandle = undefined
+                return
+            }
+
+            detachHandle = drag.attachHandle(handle)
         }
 
-        const api = draggable(node, buildOptions())
+        bindHandle()
 
         return {
             update(newOptions) {
                 currentOptions = newOptions
-                api.update(buildOptions())
+                drag.draggable.id = newOptions.id
+                drag.draggable.type = newOptions.container
+                drag.draggable.data = (newOptions.data ?? {}) as Data
+                drag.draggable.disabled = isDisabled()
+                bindHandle()
             },
             destroy() {
-                api.destroy()
+                detach()
+                detachHandle?.()
                 node.removeAttribute('data-dragging')
                 if (draggingId === currentOptions.id) {
                     draggingId = null
@@ -123,55 +147,34 @@ export function useDragDrop(): UseDragDropReturn {
                 : (currentOptions.disabled ?? false)
         }
 
-        function readPayload(state: DragDropState<DragDropPayload<unknown>>): DragPayload | null {
-            if (!isDragDropPayload(state.draggedItem)) return null
-            return toPayload(state.draggedItem)
-        }
+        context.registerDroppable(currentOptions.id, currentOptions)
 
-        function buildOptions() {
-            return {
-                container: currentOptions.id,
-                disabled: isDisabled(),
-                attributes: {
-                    dragOverClass: 'drag-over data-droppable-active'
-                },
-                callbacks: {
-                    onDragOver: (state: DragDropState<DragDropPayload<unknown>>) => {
-                        const payload = readPayload(state)
-                        if (!payload) {
-                            dndState.invalidDrop = true
-                            return
-                        }
-
-                        if (currentOptions.accept && !currentOptions.accept(payload)) {
-                            dndState.invalidDrop = true
-                            return
-                        }
-
-                        dndState.invalidDrop = false
-                    },
-                    onDrop: (state: DragDropState<DragDropPayload<unknown>>) => {
-                        if (dndState.invalidDrop || isDisabled()) return
-
-                        const payload = readPayload(state)
-                        if (!payload) return
-                        if (currentOptions.accept && !currentOptions.accept(payload)) return
-
-                        currentOptions.onDrop(payload)
-                    }
+        const drop = createDroppable({
+            id: currentOptions.id,
+            disabled: isDisabled(),
+            accept(source) {
+                const payload = context.toPayload({ id: source.id, data: source.data })
+                if (currentOptions.accept) {
+                    return currentOptions.accept(payload)
                 }
-            } satisfies Parameters<typeof droppable<DragDropPayload<unknown>>>[1]
-        }
+                return true
+            }
+        })
 
-        const api = droppable(node, buildOptions())
+        const detach = drop.attach(node)
 
         return {
             update(newOptions) {
+                context.unregisterDroppable(currentOptions.id)
                 currentOptions = newOptions
-                api.update(buildOptions())
+                context.registerDroppable(currentOptions.id, currentOptions)
+                drop.droppable.id = newOptions.id
+                drop.droppable.disabled = isDisabled()
             },
             destroy() {
-                api.destroy()
+                detach()
+                context.unregisterDroppable(currentOptions.id)
+                node.removeAttribute('data-droppable-active')
             }
         }
     }
@@ -180,6 +183,7 @@ export function useDragDrop(): UseDragDropReturn {
         get draggingId() {
             return draggingId
         },
+        Provider: DragDropProviderScope,
         draggable: draggableAction,
         droppable: droppableAction
     }

@@ -43,46 +43,40 @@
     const itemClasses = $derived(
         twMerge(
             'relative flex items-center gap-3 rounded-lg border border-outline-variant/60 bg-surface-container-low px-3 py-2 transition-shadow select-none',
-            'dragging:z-10 dragging:shadow-md dragging:opacity-95',
             itemClass
         )
     )
 </script>
 
-<div use:sortable.container class={listClass} role="list">
-    {#each items as item, index (getKey(item))}
-        {@const id = getKey(item)}
-        {@const dragging = sortable.draggingId === String(id)}
-        <div
-            use:sortable.item={{ index, item }}
-            role="listitem"
-            class={itemClasses}
-            aria-grabbed={dragging}
-        >
-            {#if handle}
-                <button
-                    type="button"
-                    data-sortable-handle
-                    class="inline-flex shrink-0 cursor-grab rounded-md p-1 text-on-surface-variant hover:bg-surface-container-high active:cursor-grabbing"
-                    aria-label="Drag to reorder"
-                >
-                    <Icon name="lucide:grip-vertical" size="16" />
-                </button>
-            {/if}
-            {@render children({ item, index, dragging })}
-        </div>
-    {/each}
-</div>
+<sortable.Provider>
+    <div use:sortable.container class={listClass} role="list">
+        {#each items as item, index (getKey(item))}
+            {@const id = getKey(item)}
+            {@const dragging = sortable.draggingId === String(id)}
+            <div
+                use:sortable.item={{ index, item }}
+                role="listitem"
+                class={twMerge(itemClasses, dragging && 'z-10 opacity-95 shadow-md')}
+                aria-grabbed={dragging}
+            >
+                {#if handle}
+                    <button
+                        type="button"
+                        data-sortable-handle
+                        class="inline-flex shrink-0 cursor-grab rounded-md p-1 text-on-surface-variant hover:bg-surface-container-high active:cursor-grabbing"
+                        aria-label="Drag to reorder"
+                    >
+                        <Icon name="lucide:grip-vertical" size="16" />
+                    </button>
+                {/if}
+                {@render children({ item, index, dragging })}
+            </div>
+        {/each}
+    </div>
+</sortable.Provider>
 
 <style>
     :global([data-sortable-active='true']) {
         user-select: none;
-    }
-
-    :global(.drop-before::before),
-    :global(.drop-after::after),
-    :global(.drop-left::before),
-    :global(.drop-right::after) {
-        background-color: var(--color-primary);
     }
 </style>
