@@ -1,7 +1,11 @@
 import type { Component } from 'svelte'
 import { mount, unmount } from 'svelte'
-import type { ExternalToast } from './internal/types.js'
-import { toast as internalToast } from './internal/toast-state.svelte.js'
+import internalToast from './internal/french-toast/core/toast.js'
+import type {
+    DefaultToastOptions,
+    ToastOptions,
+    ValueOrFunction
+} from './internal/french-toast/core/types.js'
 import Avatar from '../Avatar/Avatar.svelte'
 import type { AvatarProps } from '../Avatar/avatar.types.js'
 import Icon from '../Icon/Icon.svelte'
@@ -9,27 +13,33 @@ import type { ToastColor } from './toast.variants.js'
 
 type ToastAvatarOptions = Pick<AvatarProps, 'src' | 'alt' | 'text' | 'icon' | 'size'>
 
-type SveloraToastOptions = Omit<ExternalToast, 'icon'> & {
+type SveloraToastOptions = Omit<ToastOptions, 'icon' | 'className'> & {
     /**
      * Semantic color for the toast.
-     * Works with all Toaster variants (outline, soft, subtle, solid, accent).
      * @example toast('Message', { color: 'primary' })
      */
     color?: ToastColor
 
     /**
      * Iconify icon name to display in the toast.
-     * Replaces the default type icon (success checkmark, error X, etc.)
      * @example toast('Launched!', { icon: 'lucide:rocket' })
      */
-    icon?: string | ExternalToast['icon']
+    icon?: string | ToastOptions['icon']
 
     /**
      * Avatar to display in the icon slot.
-     * Pass an object with Avatar props (src, alt, text, icon, size).
      * @example toast('John commented', { avatar: { src: '/avatar.jpg', alt: 'John' } })
      */
     avatar?: ToastAvatarOptions
+
+    /**
+     * When false, toast stays until programmatically dismissed or updated.
+     * Also sets `duration: Infinity` and hides the close button.
+     */
+    dismissible?: boolean
+
+    /** Alias for className. */
+    class?: string
 }
 
 function createIconComponent(name: string): Component {
@@ -66,19 +76,26 @@ function createAvatarComponent(props: ToastAvatarOptions): Component {
     return SveloraAvatar as unknown as Component
 }
 
-function resolveOptions(data?: SveloraToastOptions): ExternalToast | undefined {
+function resolveOptions(data?: SveloraToastOptions): ToastOptions | undefined {
     if (!data) return data
 
-    const { color, icon, avatar, ...rest } = data
-    const resolved: ExternalToast = { ...rest }
+    const { color, icon, avatar, class: className, dismissible, ...rest } = data
+    const resolved: ToastOptions = { ...rest }
 
-    // Color → class
-    if (color) {
-        const existing = resolved.class ?? ''
-        resolved.class = `${existing} ps-color-${color}`.trim()
+    if (dismissible === false) {
+        resolved.duration = Number.POSITIVE_INFINITY
+        resolved.closeButton = false
     }
 
-    // Avatar takes priority over icon
+    if (className) {
+        resolved.className = className
+    }
+
+    if (color) {
+        const existing = resolved.className ?? ''
+        resolved.className = `${existing} ps-color-${color}`.trim()
+    }
+
     if (avatar) {
         resolved.icon = createAvatarComponent(avatar)
     } else if (typeof icon === 'string') {
@@ -88,6 +105,25 @@ function resolveOptions(data?: SveloraToastOptions): ExternalToast | undefined {
     }
 
     return resolved
+}
+
+type SveloraPromiseOptions = SveloraToastOptions & {
+    loading?: SveloraToastOptions
+    success?: SveloraToastOptions
+    error?: SveloraToastOptions
+}
+
+function resolveDefaultOptions(opts?: SveloraPromiseOptions): DefaultToastOptions | undefined {
+    if (!opts) return opts
+
+    const { loading, success, error, ...rest } = opts
+
+    return {
+        ...resolveOptions(rest),
+        loading: resolveOptions(loading),
+        success: resolveOptions(success),
+        error: resolveOptions(error)
+    }
 }
 
 function toastFn(message: string, data?: SveloraToastOptions) {
@@ -109,7 +145,15 @@ toastFn.info = (message: string, data?: SveloraToastOptions) =>
 toastFn.loading = (message: string, data?: SveloraToastOptions) =>
     internalToast.loading(message, resolveOptions(data))
 
-toastFn.promise = internalToast.promise
+toastFn.promise = <T>(
+    promise: Promise<T>,
+    msgs: {
+        loading: string
+        success: ValueOrFunction<string, T>
+        error: ValueOrFunction<string, unknown>
+    },
+    opts?: SveloraPromiseOptions
+) => internalToast.promise(promise, msgs, resolveDefaultOptions(opts))
 
 toastFn.dismiss = internalToast.dismiss
 

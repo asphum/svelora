@@ -5,7 +5,7 @@ export type Props = ToasterProps
 </script>
 
 <script lang="ts">
-import InternalToaster from './internal/Toaster.svelte'
+import InternalToaster from './internal/french-toast/components/Toaster.svelte'
 import { getComponentConfig } from '../../config.js'
 import { toastDefaults } from './toast.variants.js'
 
@@ -14,39 +14,56 @@ const config = getComponentConfig('toast', toastDefaults)
 let {
     variant = config.defaultVariants.variant,
     position = 'bottom-right',
-    visibleToasts = 3,
+    visibleToasts: _visibleToasts = 3,
     duration = 5000,
     closeButton = true,
-    expand = false,
+    expand: _expand = false,
     gap = 14,
     class: className,
-    ...restProps
+    theme = 'light',
+    reverseOrder = false,
+    toastOptions,
+    successIcon,
+    errorIcon,
+    warningIcon,
+    infoIcon,
+    loadingIcon,
+    closeIcon
 }: Props = $props()
 
 const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean).join(' '))
+const mergedToastOptions = $derived({
+    duration,
+    ...toastOptions
+})
 </script>
 
 <InternalToaster
     {position}
-    {visibleToasts}
-    {duration}
     {closeButton}
-    {expand}
-    {gap}
-    class={toasterClass}
-    {...restProps}
+    gutter={gap}
+    {theme}
+    {reverseOrder}
+    containerClassName={toasterClass}
+    toastOptions={mergedToastOptions}
+    {successIcon}
+    {errorIcon}
+    {warningIcon}
+    {infoIcon}
+    {loadingIcon}
+    {closeIcon}
 />
 
 <style>
     /* ============================================
      * BASE OVERRIDES — applied to all variants
      *
-     * Selector: [data-sonner-toaster] with our variant class.
+     * Selector: [data-svelora-toaster] with our variant class.
      * Toaster renders via portal, so we use :global() selectors
      * scoped by our variant class on the toaster <ol> element.
      * ============================================ */
 
-    :global([data-sonner-toaster][class*='ps-toast-'] [data-sonner-toast][data-styled='true']) {
+    :global([data-svelora-toaster][class*='ps-toast-'] [data-svelora-toast][data-styled='true']) {
         font-family: inherit;
         border-radius: 0.75rem;
         box-shadow:
@@ -55,16 +72,16 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-content]
     ) {
         gap: 2px;
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-icon]:has([data-avatar-root])
     ) {
         width: auto;
@@ -74,8 +91,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-title]
     ) {
         font-weight: 600;
@@ -84,8 +101,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-description]
     ) {
         font-size: 0.8125rem;
@@ -94,8 +111,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-button]
     ) {
         font-weight: 600;
@@ -106,8 +123,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-close-button]
     ) {
         border-radius: 50%;
@@ -118,8 +135,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-close-button]:hover
     ) {
         opacity: 1;
@@ -129,39 +146,39 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
      * SHARED — CSS custom properties per toast type
      * ============================================ */
 
-    :global([data-sonner-toaster][class*='ps-toast-'] [data-sonner-toast][data-styled='true']) {
+    :global([data-svelora-toaster][class*='ps-toast-'] [data-svelora-toast][data-styled='true']) {
         background-color: var(--toast-bg);
         border: 1px solid var(--toast-border);
         color: var(--toast-color);
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-description]
     ) {
         color: var(--toast-desc);
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-icon]
     ) {
         color: var(--toast-icon, inherit);
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-title]
     ) {
         color: var(--toast-title, inherit);
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-button]
     ) {
         background-color: var(--toast-action-bg);
@@ -169,8 +186,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-cancel]
     ) {
         background-color: var(--toast-cancel-bg);
@@ -178,8 +195,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']
             [data-close-button]
     ) {
         background-color: var(--toast-close-bg);
@@ -188,8 +205,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster][class*='ps-toast-']
-            [data-sonner-toast][data-styled='true']:hover
+        [data-svelora-toaster][class*='ps-toast-']
+            [data-svelora-toast][data-styled='true']:hover
             [data-close-button]:hover
     ) {
         background-color: var(--toast-close-hover-bg);
@@ -198,7 +215,7 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     /* ============================================
      * OUTLINE VARIANT
      * ============================================ */
-    :global([data-sonner-toaster].ps-toast-outline [data-sonner-toast][data-styled='true']) {
+    :global([data-svelora-toaster].ps-toast-outline [data-svelora-toast][data-styled='true']) {
         --toast-bg: var(--color-surface-container);
         --toast-border: var(--color-outline-variant);
         --toast-color: var(--color-on-surface);
@@ -216,8 +233,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-outline
-            [data-sonner-toast][data-type='success'][data-styled='true']
+        [data-svelora-toaster].ps-toast-outline
+            [data-svelora-toast][data-type='success'][data-styled='true']
     ) {
         --toast-border: oklch(from var(--color-success) l c h / 0.4);
         --toast-icon: var(--color-success);
@@ -225,8 +242,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-outline
-            [data-sonner-toast][data-type='error'][data-styled='true']
+        [data-svelora-toaster].ps-toast-outline
+            [data-svelora-toast][data-type='error'][data-styled='true']
     ) {
         --toast-border: oklch(from var(--color-error) l c h / 0.4);
         --toast-icon: var(--color-error);
@@ -234,8 +251,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-outline
-            [data-sonner-toast][data-type='warning'][data-styled='true']
+        [data-svelora-toaster].ps-toast-outline
+            [data-svelora-toast][data-type='warning'][data-styled='true']
     ) {
         --toast-border: oklch(from var(--color-warning) l c h / 0.4);
         --toast-icon: var(--color-warning);
@@ -243,8 +260,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-outline
-            [data-sonner-toast][data-type='info'][data-styled='true']
+        [data-svelora-toaster].ps-toast-outline
+            [data-svelora-toast][data-type='info'][data-styled='true']
     ) {
         --toast-border: oklch(from var(--color-info) l c h / 0.4);
         --toast-icon: var(--color-info);
@@ -254,7 +271,7 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     /* ============================================
      * SOFT VARIANT
      * ============================================ */
-    :global([data-sonner-toaster].ps-toast-soft [data-sonner-toast][data-styled='true']) {
+    :global([data-svelora-toaster].ps-toast-soft [data-svelora-toast][data-styled='true']) {
         --toast-bg: var(--color-surface-container-high);
         --toast-border: transparent;
         --toast-color: var(--color-on-surface);
@@ -272,8 +289,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-soft
-            [data-sonner-toast][data-type='success'][data-styled='true']
+        [data-svelora-toaster].ps-toast-soft
+            [data-svelora-toast][data-type='success'][data-styled='true']
     ) {
         --toast-bg: oklch(from var(--color-success) l c h / 0.1);
         --toast-color: var(--color-success);
@@ -283,8 +300,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-soft
-            [data-sonner-toast][data-type='error'][data-styled='true']
+        [data-svelora-toaster].ps-toast-soft
+            [data-svelora-toast][data-type='error'][data-styled='true']
     ) {
         --toast-bg: oklch(from var(--color-error) l c h / 0.1);
         --toast-color: var(--color-error);
@@ -294,8 +311,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-soft
-            [data-sonner-toast][data-type='warning'][data-styled='true']
+        [data-svelora-toaster].ps-toast-soft
+            [data-svelora-toast][data-type='warning'][data-styled='true']
     ) {
         --toast-bg: oklch(from var(--color-warning) l c h / 0.1);
         --toast-color: var(--color-warning);
@@ -305,8 +322,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-soft
-            [data-sonner-toast][data-type='info'][data-styled='true']
+        [data-svelora-toaster].ps-toast-soft
+            [data-svelora-toast][data-type='info'][data-styled='true']
     ) {
         --toast-bg: oklch(from var(--color-info) l c h / 0.1);
         --toast-color: var(--color-info);
@@ -318,7 +335,7 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     /* ============================================
      * SUBTLE VARIANT
      * ============================================ */
-    :global([data-sonner-toaster].ps-toast-subtle [data-sonner-toast][data-styled='true']) {
+    :global([data-svelora-toaster].ps-toast-subtle [data-svelora-toast][data-styled='true']) {
         --toast-bg: var(--color-surface-container-high);
         --toast-border: var(--color-outline-variant);
         --toast-color: var(--color-on-surface);
@@ -336,8 +353,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-subtle
-            [data-sonner-toast][data-type='success'][data-styled='true']
+        [data-svelora-toaster].ps-toast-subtle
+            [data-svelora-toast][data-type='success'][data-styled='true']
     ) {
         --toast-bg: oklch(from var(--color-success) l c h / 0.1);
         --toast-border: oklch(from var(--color-success) l c h / 0.3);
@@ -349,8 +366,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-subtle
-            [data-sonner-toast][data-type='error'][data-styled='true']
+        [data-svelora-toaster].ps-toast-subtle
+            [data-svelora-toast][data-type='error'][data-styled='true']
     ) {
         --toast-bg: oklch(from var(--color-error) l c h / 0.1);
         --toast-border: oklch(from var(--color-error) l c h / 0.3);
@@ -362,8 +379,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-subtle
-            [data-sonner-toast][data-type='warning'][data-styled='true']
+        [data-svelora-toaster].ps-toast-subtle
+            [data-svelora-toast][data-type='warning'][data-styled='true']
     ) {
         --toast-bg: oklch(from var(--color-warning) l c h / 0.1);
         --toast-border: oklch(from var(--color-warning) l c h / 0.3);
@@ -375,8 +392,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-subtle
-            [data-sonner-toast][data-type='info'][data-styled='true']
+        [data-svelora-toaster].ps-toast-subtle
+            [data-svelora-toast][data-type='info'][data-styled='true']
     ) {
         --toast-bg: oklch(from var(--color-info) l c h / 0.1);
         --toast-border: oklch(from var(--color-info) l c h / 0.3);
@@ -390,7 +407,7 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     /* ============================================
      * SOLID VARIANT
      * ============================================ */
-    :global([data-sonner-toaster].ps-toast-solid [data-sonner-toast][data-styled='true']) {
+    :global([data-svelora-toaster].ps-toast-solid [data-svelora-toast][data-styled='true']) {
         --toast-bg: var(--color-inverse-surface);
         --toast-border: transparent;
         --toast-color: var(--color-inverse-on-surface);
@@ -408,16 +425,16 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-solid
-            [data-sonner-toast][data-styled='true']
+        [data-svelora-toaster].ps-toast-solid
+            [data-svelora-toast][data-styled='true']
             [data-description]
     ) {
         opacity: 0.8;
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-solid
-            [data-sonner-toast][data-type='success'][data-styled='true']
+        [data-svelora-toaster].ps-toast-solid
+            [data-svelora-toast][data-type='success'][data-styled='true']
     ) {
         --toast-bg: var(--color-success);
         --toast-color: var(--color-on-success);
@@ -427,8 +444,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-solid
-            [data-sonner-toast][data-type='error'][data-styled='true']
+        [data-svelora-toaster].ps-toast-solid
+            [data-svelora-toast][data-type='error'][data-styled='true']
     ) {
         --toast-bg: var(--color-error);
         --toast-color: var(--color-on-error);
@@ -438,8 +455,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-solid
-            [data-sonner-toast][data-type='warning'][data-styled='true']
+        [data-svelora-toaster].ps-toast-solid
+            [data-svelora-toast][data-type='warning'][data-styled='true']
     ) {
         --toast-bg: var(--color-warning);
         --toast-color: var(--color-on-warning);
@@ -449,8 +466,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-solid
-            [data-sonner-toast][data-type='info'][data-styled='true']
+        [data-svelora-toaster].ps-toast-solid
+            [data-svelora-toast][data-type='info'][data-styled='true']
     ) {
         --toast-bg: var(--color-info);
         --toast-color: var(--color-on-info);
@@ -462,7 +479,7 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     /* ============================================
      * ACCENT VARIANT — left border accent strip
      * ============================================ */
-    :global([data-sonner-toaster].ps-toast-accent [data-sonner-toast][data-styled='true']) {
+    :global([data-svelora-toaster].ps-toast-accent [data-svelora-toast][data-styled='true']) {
         --toast-bg: var(--color-surface-container);
         --toast-border: var(--color-outline-variant);
         --toast-color: var(--color-on-surface);
@@ -482,8 +499,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-accent
-            [data-sonner-toast][data-type='success'][data-styled='true']
+        [data-svelora-toaster].ps-toast-accent
+            [data-svelora-toast][data-type='success'][data-styled='true']
     ) {
         border-left-color: var(--color-success);
         --toast-icon: var(--color-success);
@@ -491,8 +508,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-accent
-            [data-sonner-toast][data-type='error'][data-styled='true']
+        [data-svelora-toaster].ps-toast-accent
+            [data-svelora-toast][data-type='error'][data-styled='true']
     ) {
         border-left-color: var(--color-error);
         --toast-icon: var(--color-error);
@@ -500,8 +517,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-accent
-            [data-sonner-toast][data-type='warning'][data-styled='true']
+        [data-svelora-toaster].ps-toast-accent
+            [data-svelora-toast][data-type='warning'][data-styled='true']
     ) {
         border-left-color: var(--color-warning);
         --toast-icon: var(--color-warning);
@@ -509,8 +526,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
     }
 
     :global(
-        [data-sonner-toaster].ps-toast-accent
-            [data-sonner-toast][data-type='info'][data-styled='true']
+        [data-svelora-toaster].ps-toast-accent
+            [data-svelora-toast][data-type='info'][data-styled='true']
     ) {
         border-left-color: var(--color-info);
         --toast-icon: var(--color-info);
@@ -521,39 +538,39 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
      * COLOR CLASSES — per-toast color override via class
      * ============================================ */
 
-    :global([data-sonner-toast].ps-color-primary) {
+    :global([data-svelora-toast].ps-color-primary) {
         --svelora-c: var(--color-primary);
         --svelora-c-on: var(--color-on-primary);
     }
-    :global([data-sonner-toast].ps-color-secondary) {
+    :global([data-svelora-toast].ps-color-secondary) {
         --svelora-c: var(--color-secondary);
         --svelora-c-on: var(--color-on-secondary);
     }
-    :global([data-sonner-toast].ps-color-tertiary) {
+    :global([data-svelora-toast].ps-color-tertiary) {
         --svelora-c: var(--color-tertiary);
         --svelora-c-on: var(--color-on-tertiary);
     }
-    :global([data-sonner-toast].ps-color-success) {
+    :global([data-svelora-toast].ps-color-success) {
         --svelora-c: var(--color-success);
         --svelora-c-on: var(--color-on-success);
     }
-    :global([data-sonner-toast].ps-color-warning) {
+    :global([data-svelora-toast].ps-color-warning) {
         --svelora-c: var(--color-warning);
         --svelora-c-on: var(--color-on-warning);
     }
-    :global([data-sonner-toast].ps-color-error) {
+    :global([data-svelora-toast].ps-color-error) {
         --svelora-c: var(--color-error);
         --svelora-c-on: var(--color-on-error);
     }
-    :global([data-sonner-toast].ps-color-info) {
+    :global([data-svelora-toast].ps-color-info) {
         --svelora-c: var(--color-info);
         --svelora-c-on: var(--color-on-info);
     }
 
     /* Outline + color class */
     :global(
-        [data-sonner-toaster].ps-toast-outline
-            [data-sonner-toast][class*='ps-color-'][data-styled='true']
+        [data-svelora-toaster].ps-toast-outline
+            [data-svelora-toast][class*='ps-color-'][data-styled='true']
     ) {
         --toast-border: oklch(from var(--svelora-c) l c h / 0.4);
         --toast-icon: var(--svelora-c);
@@ -562,8 +579,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
 
     /* Soft + color class */
     :global(
-        [data-sonner-toaster].ps-toast-soft
-            [data-sonner-toast][class*='ps-color-'][data-styled='true']
+        [data-svelora-toaster].ps-toast-soft
+            [data-svelora-toast][class*='ps-color-'][data-styled='true']
     ) {
         --toast-bg: oklch(from var(--svelora-c) l c h / 0.1);
         --toast-color: var(--svelora-c);
@@ -574,8 +591,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
 
     /* Subtle + color class */
     :global(
-        [data-sonner-toaster].ps-toast-subtle
-            [data-sonner-toast][class*='ps-color-'][data-styled='true']
+        [data-svelora-toaster].ps-toast-subtle
+            [data-svelora-toast][class*='ps-color-'][data-styled='true']
     ) {
         --toast-bg: oklch(from var(--svelora-c) l c h / 0.1);
         --toast-border: oklch(from var(--svelora-c) l c h / 0.3);
@@ -588,8 +605,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
 
     /* Solid + color class */
     :global(
-        [data-sonner-toaster].ps-toast-solid
-            [data-sonner-toast][class*='ps-color-'][data-styled='true']
+        [data-svelora-toaster].ps-toast-solid
+            [data-svelora-toast][class*='ps-color-'][data-styled='true']
     ) {
         --toast-bg: var(--svelora-c);
         --toast-color: var(--svelora-c-on);
@@ -600,8 +617,8 @@ const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean)
 
     /* Accent + color class */
     :global(
-        [data-sonner-toaster].ps-toast-accent
-            [data-sonner-toast][class*='ps-color-'][data-styled='true']
+        [data-svelora-toaster].ps-toast-accent
+            [data-svelora-toast][class*='ps-color-'][data-styled='true']
     ) {
         border-left-color: var(--svelora-c);
         --toast-icon: var(--svelora-c);

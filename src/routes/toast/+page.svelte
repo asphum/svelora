@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { toast, Toaster } from '$lib/index.js'
-    import { Button, Icon } from '$lib/index.js'
+    import { toast, Toaster, Button, Icon, Card } from '$lib/index.js'
     import type { ToasterProps } from '$lib/components/Toast/toast.types.js'
 
     type Variant = NonNullable<ToasterProps['variant']>
     type Position = NonNullable<ToasterProps['position']>
+    type Theme = NonNullable<ToasterProps['theme']>
 
     const variants: Variant[] = ['outline', 'soft', 'subtle', 'solid', 'accent']
     const positions: Position[] = [
@@ -15,10 +15,51 @@
         'bottom-center',
         'bottom-right'
     ]
+    const themes: Theme[] = ['light', 'dark', 'system']
+    const gaps = [8, 14, 24] as const
+
+    const toastOptionsReference = [
+        { name: 'description', type: 'string', description: 'Secondary text below the title.' },
+        { name: 'duration', type: 'number', description: 'Auto-dismiss delay in ms. Use Infinity to persist.' },
+        { name: 'dismissible', type: 'boolean', description: 'When false, persists and hides the close button.' },
+        { name: 'closeButton', type: 'boolean', description: 'Show close button on this toast (overrides Toaster default).' },
+        { name: 'id', type: 'string', description: 'Reuse to update or deduplicate an existing toast.' },
+        { name: 'color', type: 'ToastColor', description: 'Semantic color override (primary, success, error, …).' },
+        { name: 'icon', type: 'string | Component | null', description: 'Iconify name, custom component, or null to hide.' },
+        { name: 'avatar', type: 'AvatarProps', description: 'Avatar in the icon slot (takes priority over icon).' },
+        { name: 'action', type: '{ label, onClick }', description: 'Primary action button.' },
+        { name: 'cancel', type: '{ label, onClick }', description: 'Secondary cancel button.' },
+        { name: 'position', type: 'ToastPosition', description: 'Override Toaster position for this toast.' },
+        { name: 'class', type: 'string', description: 'Extra CSS class on the toast element.' }
+    ] as const
+
+    const toasterPropsReference = [
+        { name: 'variant', type: "'outline' | 'soft' | …", description: 'Visual style. Default: outline.' },
+        { name: 'position', type: 'ToastPosition', description: 'Screen position. Default: bottom-right.' },
+        { name: 'duration', type: 'number', description: 'Default auto-dismiss for all toasts.' },
+        { name: 'closeButton', type: 'boolean', description: 'Show close button on every toast by default.' },
+        { name: 'gap', type: 'number', description: 'Vertical spacing between stacked toasts in px.' },
+        { name: 'theme', type: "'light' | 'dark' | 'system'", description: 'Toaster theme attribute for styling.' },
+        { name: 'reverseOrder', type: 'boolean', description: 'Reverse stack offset calculation.' },
+        { name: 'successIcon', type: 'Snippet', description: 'Global icon snippet for success toasts.' },
+        { name: 'errorIcon', type: 'Snippet', description: 'Global icon snippet for error toasts.' },
+        { name: 'warningIcon', type: 'Snippet', description: 'Global icon snippet for warning toasts.' },
+        { name: 'infoIcon', type: 'Snippet', description: 'Global icon snippet for info toasts.' }
+    ] as const
+
+    const toastMethodsReference = [
+        { name: 'toast(message, opts?)', description: 'Show a default toast.' },
+        { name: 'toast.success / .error / .warning / .info / .loading', description: 'Typed toasts with semantic styling.' },
+        { name: 'toast.promise(promise, msgs, opts?)', description: 'Loading → success/error lifecycle.' },
+        { name: 'toast.dismiss(id?)', description: 'Dismiss one toast by id, or all when id is omitted.' },
+        { name: 'toast.custom(component, opts?)', description: 'Render a custom Svelte component as the toast body.' },
+        { name: 'toast.message(message, opts?)', description: 'Alias for toast().' }
+    ] as const
 
     let activeVariant: Variant = $state('outline')
     let activePosition: Position = $state('bottom-right')
-    let expandToasts = $state(false)
+    let activeTheme: Theme = $state('light')
+    let activeGap = $state(14)
     let showCloseButton = $state(true)
 
     let counter = $state(0)
@@ -77,16 +118,42 @@
                 </div>
             </div>
 
-            <!-- Toggles -->
+            <!-- Toggles & layout -->
             <div class="flex flex-wrap gap-4">
                 <label class="flex items-center gap-2 text-sm">
-                    <input type="checkbox" bind:checked={expandToasts} class="accent-primary" />
-                    Expand
-                </label>
-                <label class="flex items-center gap-2 text-sm">
                     <input type="checkbox" bind:checked={showCloseButton} class="accent-primary" />
-                    Close Button
+                    Close Button (global)
                 </label>
+            </div>
+
+            <div class="space-y-1.5">
+                <p class="text-sm font-medium">Theme</p>
+                <div class="flex flex-wrap gap-2">
+                    {#each themes as t (t)}
+                        <Button
+                            variant={activeTheme === t ? 'solid' : 'outline'}
+                            size="xs"
+                            onclick={() => (activeTheme = t)}
+                        >
+                            {t}
+                        </Button>
+                    {/each}
+                </div>
+            </div>
+
+            <div class="space-y-1.5">
+                <p class="text-sm font-medium">Gap</p>
+                <div class="flex flex-wrap gap-2">
+                    {#each gaps as g (g)}
+                        <Button
+                            variant={activeGap === g ? 'solid' : 'outline'}
+                            size="xs"
+                            onclick={() => (activeGap = g)}
+                        >
+                            {g}px
+                        </Button>
+                    {/each}
+                </div>
             </div>
         </div>
     </section>
@@ -301,7 +368,7 @@
         <div class="space-y-1.5">
             <p class="text-sm font-medium">Global Icons (via Toaster snippets)</p>
             <p class="text-sm text-on-surface-variant">
-                The Toaster below uses Iconify icons instead of sonner's default SVGs. All typed
+                The Toaster below uses Iconify icons instead of the default SVGs. All typed
                 toasts inherit them automatically.
             </p>
             <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
@@ -620,6 +687,61 @@
             >
                 Deploy
             </Button>
+            <Button
+                variant="outline"
+                color="success"
+                onclick={() => {
+                    toast.promise(new Promise((resolve) => setTimeout(resolve, 2500)), {
+                        loading: 'Publishing...',
+                        success: 'Published!',
+                        error: 'Publish failed'
+                    }, { color: 'success' })
+                }}
+            >
+                Promise + color
+            </Button>
+        </div>
+    </section>
+
+    <!-- Close Button -->
+    <section class="space-y-3">
+        <h2 id="Close-Button" class="text-lg font-semibold">
+<a href="#Close-Button" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Close Button
+                    </a>
+</h2>
+        <p class="text-sm text-on-surface-variant">
+            Enable globally via
+            <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">&lt;Toaster closeButton /&gt;</code>
+            or per toast with
+            <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">closeButton: true</code>.
+            <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">dismissible: false</code>
+            always hides the close button.
+        </p>
+        <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
+            <Button
+                variant="outline"
+                onclick={() =>
+                    toast('With close button', {
+                        description: 'closeButton: true on this toast',
+                        closeButton: true,
+                        duration: Infinity
+                    })}
+            >
+                Force close button
+            </Button>
+            <Button
+                variant="outline"
+                onclick={() =>
+                    toast('No close button', {
+                        description: 'closeButton: false overrides global toggle',
+                        closeButton: false,
+                        duration: Infinity
+                    })}
+            >
+                Hide close button
+            </Button>
         </div>
     </section>
 
@@ -790,8 +912,8 @@
                     </a>
 </h2>
         <p class="text-sm text-on-surface-variant">
-            Toggle "Expand" in the config above, then fire multiple toasts to see stacked vs
-            expanded behavior.
+            Fire multiple toasts to see them stack. Hover the toaster area to pause auto-dismiss
+            timers while you read.
         </p>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Button
@@ -799,7 +921,7 @@
                 onclick={() => {
                     counter++
                     toast.success(`Notification #${counter}`, {
-                        description: 'Hover or expand to see all stacked toasts.'
+                        description: 'Hover the toaster to pause dismissal.'
                     })
                 }}
             >
@@ -833,7 +955,11 @@
                     </a>
 </h2>
         <p class="text-sm text-on-surface-variant">
-            A toast that cannot be swiped away or closed by the user.
+            Keep a toast on screen until it is updated or dismissed programmatically. Use
+            <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">dismissible: false</code>
+            (hides close button + infinite duration) or
+            <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">duration: Infinity</code>
+            alone.
         </p>
         <div class="flex flex-wrap gap-3 rounded-lg bg-surface-container-high p-4">
             <Button
@@ -993,13 +1119,67 @@
             </Button>
         </div>
     </section>
+
+    <!-- API Reference -->
+    <section class="space-y-3">
+        <h2 id="API-Reference" class="text-lg font-semibold">
+<a href="#API-Reference" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        API Reference
+                    </a>
+</h2>
+        <div class="grid gap-4 lg:grid-cols-2">
+            <Card class="border border-outline-variant/70">
+                <div class="space-y-4">
+                    <h3 class="text-base font-semibold">toast() methods</h3>
+                    <div class="space-y-3">
+                        {#each toastMethodsReference as item (item.name)}
+                            <div class="border-b border-outline-variant/60 pb-3 last:border-b-0 last:pb-0">
+                                <p class="font-mono text-xs text-primary">{item.name}</p>
+                                <p class="mt-1 text-sm text-on-surface-variant">{item.description}</p>
+                            </div>
+                        {/each}
+                    </div>
+                </div>
+            </Card>
+            <Card class="border border-outline-variant/70">
+                <div class="space-y-4">
+                    <h3 class="text-base font-semibold">Toast options</h3>
+                    <div class="space-y-3">
+                        {#each toastOptionsReference as item (item.name)}
+                            <div class="border-b border-outline-variant/60 pb-3 last:border-b-0 last:pb-0">
+                                <p class="font-mono text-xs text-on-surface-variant">{item.name}</p>
+                                <p class="mt-1 text-sm font-medium">{item.type}</p>
+                                <p class="mt-1 text-sm text-on-surface-variant">{item.description}</p>
+                            </div>
+                        {/each}
+                    </div>
+                </div>
+            </Card>
+        </div>
+        <Card class="border border-outline-variant/70">
+            <div class="space-y-4">
+                <h3 class="text-base font-semibold">Toaster props</h3>
+                <div class="grid gap-3 md:grid-cols-2">
+                    {#each toasterPropsReference as item (item.name)}
+                        <div class="rounded-xl border border-outline-variant/60 p-4">
+                            <p class="font-mono text-xs text-on-surface-variant">{item.name}</p>
+                            <p class="mt-1 text-sm font-medium">{item.type}</p>
+                            <p class="mt-1 text-sm text-on-surface-variant">{item.description}</p>
+                        </div>
+                    {/each}
+                </div>
+            </div>
+        </Card>
+    </section>
 </div>
 
 <!-- Dynamic Toaster with configurable props -->
 <Toaster
     variant={activeVariant}
     position={activePosition}
-    expand={expandToasts}
+    theme={activeTheme}
+    gap={activeGap}
     closeButton={showCloseButton}
 >
     {#snippet successIcon()}<Icon name="lucide:circle-check" size="18" />{/snippet}

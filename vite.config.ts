@@ -17,7 +17,7 @@ export default defineConfig({
     optimizeDeps: {
         include: ['bits-ui', 'tailwind-variants', 'vaul-svelte', 'joi', 'yup', 'zod']
     },
-    ssr: { noExternal: ['svelte-sonner', 'mode-watcher', 'runed'] },
+    ssr: { noExternal: ['mode-watcher', 'runed'] },
     test: {
         expect: { requireAssertions: true },
         onConsoleLog(log: string, type: string) {

@@ -1,36 +1,33 @@
-import { toast } from './internal/toast-state.svelte.js'
+import internalToast from './internal/french-toast/core/toast.js'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { page } from 'vitest/browser'
 import { cleanup, render } from 'vitest-browser-svelte'
 import Toaster from './Toaster.svelte'
 
 async function fireToastAndGetToaster() {
-    toast('Test toast')
-    // Wait for sonner to render the toaster <ol> into the DOM
+    internalToast('Test toast')
     await vi.waitFor(
         () => {
-            const el = document.querySelector('[data-sonner-toaster]')
+            const el = document.querySelector('[data-svelora-toaster]')
             if (!el) throw new Error('Toaster not found')
             return el
         },
         { timeout: 3000 }
     )
-    return page.elementLocator(document.querySelector('[data-sonner-toaster]')!)
+    return page.elementLocator(document.querySelector('[data-svelora-toaster]')!)
 }
 
 describe('Toaster', () => {
     afterEach(() => {
-        toast.dismiss()
+        internalToast.dismiss()
         cleanup()
         document
-            .querySelectorAll('[data-sonner-toaster]')
+            .querySelectorAll('[data-svelora-toaster]')
             .forEach((el) => el.closest('section')?.remove())
     })
 
-    // ==================== RENDERING ====================
-
     describe('rendering', () => {
-        it('should render the sonner toaster element after a toast is fired', async () => {
+        it('should render the toaster element after a toast is fired', async () => {
             render(Toaster)
             const toaster = await fireToastAndGetToaster()
             await expect.element(toaster).toBeInTheDocument()
@@ -43,8 +40,6 @@ describe('Toaster', () => {
             await expect.element(toaster).toHaveAttribute('data-y-position', 'bottom')
         })
     })
-
-    // ==================== VARIANT CLASS ====================
 
     describe('variant class', () => {
         it('should apply outline variant class by default', async () => {
@@ -78,8 +73,6 @@ describe('Toaster', () => {
         })
     })
 
-    // ==================== POSITION ====================
-
     describe('position', () => {
         it('should apply top-left position', async () => {
             render(Toaster, { position: 'top-left' })
@@ -103,8 +96,6 @@ describe('Toaster', () => {
         })
     })
 
-    // ==================== CUSTOM CLASS ====================
-
     describe('custom class', () => {
         it('should apply custom class alongside variant class', async () => {
             render(Toaster, { class: 'my-custom-toaster' })
@@ -114,13 +105,11 @@ describe('Toaster', () => {
         })
     })
 
-    // ==================== PROPS FORWARDING ====================
-
     describe('props forwarding', () => {
         it('should forward theme prop', async () => {
             render(Toaster, { theme: 'dark' })
             const toaster = await fireToastAndGetToaster()
-            await expect.element(toaster).toHaveAttribute('data-sonner-theme', 'dark')
+            await expect.element(toaster).toHaveAttribute('data-svelora-theme', 'dark')
         })
     })
 })
