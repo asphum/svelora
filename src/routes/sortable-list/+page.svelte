@@ -28,7 +28,7 @@
         { name: 'getKey', type: '(item: T) => string | number', description: 'Stable key per item (used in #each).' },
         { name: 'onReorder', type: '(items: T[]) => void', description: 'Optional callback after bind:items updates.' },
         { name: 'handle', type: 'boolean', description: 'Show grip handle. Default true. Set false to drag the whole row.' },
-        { name: 'axis', type: "'vertical' | 'horizontal'", description: 'List layout axis. Default vertical.' },
+        { name: 'axis', type: "'vertical' | 'horizontal' | 'grid'", description: 'List layout axis. Default vertical. Use grid with CSS grid classes.' },
         { name: 'disabled', type: 'boolean', description: 'Disable sorting.' },
         { name: 'class', type: 'ClassNameValue', description: 'Classes on the list container.' },
         { name: 'itemClass', type: 'ClassNameValue', description: 'Classes on each sortable row.' }
@@ -57,7 +57,9 @@
             Opinionated sortable list built on
             <Link href="/docs/hooks/use-sortable" class="text-primary underline">useSortable</Link>.
             Uses <code class="rounded bg-surface-container-high px-1">bind:items</code>
-            to keep array state in sync. For kanban or cross-column moves, use
+            to keep array state in sync. See the
+            <Link href="/docs/drag-and-drop" class="text-primary underline">Drag & Drop playground</Link>
+            for more examples. For kanban or cross-column moves, use
             <Link href="/docs/hooks/use-drag-drop" class="text-primary underline">useDragDrop</Link>.
         </p>
     </div>

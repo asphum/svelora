@@ -34,8 +34,7 @@
 
     const listClass = $derived(
         twMerge(
-            'flex gap-2',
-            axis === 'vertical' ? 'flex-col' : 'flex-row flex-wrap',
+            axis === 'vertical' ? 'flex flex-col gap-2' : axis === 'horizontal' ? 'flex flex-row flex-wrap gap-2' : 'gap-3',
             className
         )
     )

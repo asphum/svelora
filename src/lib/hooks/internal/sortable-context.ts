@@ -8,7 +8,7 @@ export interface SortableContextValue<T> {
     getId: UseSortableOptions<T>['getId']
     onReorder: UseSortableOptions<T>['onReorder']
     isDisabled: () => boolean
-    getAxis: () => 'vertical' | 'horizontal'
+    getAxis: () => 'vertical' | 'horizontal' | 'grid'
     getHandle: () => string | undefined
     setDraggingId: (id: string | number | null) => void
 }

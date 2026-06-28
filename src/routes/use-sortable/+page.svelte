@@ -42,7 +42,7 @@
         { name: 'getItems', type: '() => T[]', description: 'Reactive getter for the current array.' },
         { name: 'getId', type: '(item: T) => string | number', description: 'Stable id per row (must match data-sortable-id).' },
         { name: 'onReorder', type: '(items: T[]) => void', description: 'Called with the reordered array after drop.' },
-        { name: 'axis', type: "'vertical' | 'horizontal' | (() => ...)", description: 'Drag axis. Default: vertical.' },
+        { name: 'axis', type: "'vertical' | 'horizontal' | 'grid' | (() => ...)", description: 'Drag axis. Default: vertical. Use grid for CSS grid layouts.' },
         { name: 'handle', type: 'string | (() => string | undefined)', description: 'Handle selector. Omit to drag the whole row.' },
         { name: 'disabled', type: 'boolean | (() => boolean)', description: 'Disable sorting. Default: false.' }
     ] as const
@@ -82,7 +82,8 @@
             <code class="rounded bg-surface-container-high px-1">use:sortable.item</code>
             to each row, and optionally use
             <code class="rounded bg-surface-container-high px-1">use:sortable.container</code>
-            on the list wrapper.
+            on the list wrapper. Browse all demos in the
+            <Link href="/docs/drag-and-drop" class="text-primary underline">Drag & Drop playground</Link>.
         </p>
     </div>
 

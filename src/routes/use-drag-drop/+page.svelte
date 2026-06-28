@@ -65,7 +65,9 @@
             <code class="rounded bg-surface-container-high px-1">use:dragDrop.draggable</code>
             on sources and
             <code class="rounded bg-surface-container-high px-1">use:dragDrop.droppable</code>
-            on targets. For reordering within one list, use
+            on targets. Browse all demos in the
+            <Link href="/docs/drag-and-drop" class="text-primary underline">Drag & Drop playground</Link>.
+            For reordering within one list, use
             <Link href="/docs/hooks/use-sortable" class="text-primary underline">useSortable</Link>.
         </p>
     </div>

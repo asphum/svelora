@@ -19,7 +19,11 @@
     const ctx = getContext<SortableContextValue<unknown>>(SORTABLE_CONTEXT_KEY)
 
     const modifiers = $derived(
-        ctx.getAxis() === 'horizontal' ? [RestrictToHorizontalAxis] : [RestrictToVerticalAxis]
+        ctx.getAxis() === 'horizontal'
+            ? [RestrictToHorizontalAxis]
+            : ctx.getAxis() === 'vertical'
+              ? [RestrictToVerticalAxis]
+              : []
     )
 
     function handleDragStart(event: DragStartEvent) {

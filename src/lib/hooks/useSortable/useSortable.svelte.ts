@@ -28,7 +28,7 @@ export interface UseSortableOptions<T> {
      * Drag axis.
      * @default 'vertical'
      */
-    axis?: 'vertical' | 'horizontal' | (() => 'vertical' | 'horizontal')
+    axis?: 'vertical' | 'horizontal' | 'grid' | (() => 'vertical' | 'horizontal' | 'grid')
 
     /**
      * CSS selector for the drag handle, relative to each item.
@@ -75,7 +75,7 @@ export function useSortable<T>(options: UseSortableOptions<T>): UseSortableRetur
     let draggingId = $state<string | number | null>(null)
     let listNode = $state<HTMLElement | null>(null)
 
-    function getAxis(): 'vertical' | 'horizontal' {
+    function getAxis(): 'vertical' | 'horizontal' | 'grid' {
         const axis = options.axis
         return typeof axis === 'function' ? axis() : (axis ?? 'vertical')
     }

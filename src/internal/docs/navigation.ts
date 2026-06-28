@@ -56,6 +56,13 @@ export const docsIntroItems: DocsItem[] = [
         legacyHref: '/mcp',
         icon: 'lucide:plug',
         description: 'Connect Svelora docs helpers to Cursor IDE via MCP.'
+    },
+    {
+        title: 'Drag & Drop',
+        href: '/docs/drag-and-drop',
+        legacyHref: '/drag-and-drop',
+        icon: 'lucide:layers',
+        description: 'Interactive playground — sortable lists, kanban, and cross-container drag.'
     }
 ]
 
