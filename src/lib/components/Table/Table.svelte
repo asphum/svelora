@@ -37,7 +37,7 @@ expandedRows = $bindable([]), onExpandedChange,
 // Column Resizing
 columnSizing = $bindable({}), onColumnSizingChange, 
 // Visual
-loading = false, loadingColor = config.defaultVariants.loadingColor ?? 'primary', loadingAnimation = config.defaultVariants.loadingAnimation ?? 'carousel', empty = 'No data.', striped = false, hoverable = config.defaultVariants.hoverable ?? true, sticky = false, action, 
+loading = false, loadingColor = config.defaultVariants.loadingColor ?? 'primary', loadingAnimation = config.defaultVariants.loadingAnimation ?? 'carousel', size = config.defaultVariants.size ?? 'md', empty = 'No data.', striped = false, hoverable = config.defaultVariants.hoverable ?? true, sticky = false, action, 
 // Callbacks
 onRowClick, onRowHover, onRowContextmenu, 
 // Styling
@@ -109,6 +109,7 @@ const resolvedColumns = $derived.by((): TableColumn<T>[] => {
 });
 const visibleColumns = $derived(resolveVisibleColumns(resolvedColumns, columnVisibility, columnPinning));
 const hasFooter = $derived(visibleColumns.some((col) => col.footer));
+const hasColumnFilterRow = $derived(visibleColumns.some((col) => col.filterable === true));
 const totalColspan = $derived(visibleColumns.length + (selection === 'multiple' ? 1 : 0));
 // =========================================================================
 // Data Pipeline: filter → sort → paginate
@@ -359,6 +360,7 @@ function getAlignClass(align: ('left' | 'center' | 'right') | undefined): string
 // Variant Classes
 // =========================================================================
 const variantSlots = $derived(tableVariants({
+    size,
     hoverable: hoverable || undefined,
     striped: striped || undefined,
     sticky: sticky || undefined,
@@ -574,6 +576,60 @@ function tdClass(key: string): string {
                     </th>
                 {/each}
             </tr>
+
+            {#if hasColumnFilterRow}
+                <tr class="{classes.tr} border-t border-outline-variant/30">
+                    {#if selection === 'multiple'}
+                        <th class={classes.th} style="width: 48px"></th>
+                    {/if}
+                    {#each visibleColumns as col (col.key)}
+                        <th
+                            class="px-2 py-1.5"
+                            data-pinned={isPinned(col.key) || undefined}
+                            style={getPinStyle(col.key)}
+                        >
+                            {#if col.filterable}
+                                <!-- svelte-ignore a11y_no_static_element_interactions -->
+                                <div class="relative">
+                                    <input
+                                        type="text"
+                                        value={columnFilters[col.key] ?? ''}
+                                        placeholder="Filter…"
+                                        aria-label="Filter {col.label ?? col.key}"
+                                        oninput={(e) => {
+                                            const val = (e.currentTarget as HTMLInputElement).value;
+                                            if (val) {
+                                                columnFilters = { ...columnFilters, [col.key]: val };
+                                            } else {
+                                                const { [col.key]: _removed, ...rest } = columnFilters;
+                                                columnFilters = rest;
+                                            }
+                                            onColumnFiltersChange?.(columnFilters);
+                                            page = 0;
+                                        }}
+                                        class="w-full rounded-md border border-outline-variant/40 bg-surface-container-low px-2 py-1 text-xs text-on-surface placeholder:text-on-surface-variant/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30 transition-colors"
+                                    />
+                                    {#if columnFilters[col.key]}
+                                        <button
+                                            type="button"
+                                            aria-label="Clear filter for {col.label ?? col.key}"
+                                            class="absolute right-1.5 top-1/2 -translate-y-1/2 text-on-surface-variant/50 hover:text-on-surface transition-colors"
+                                            onclick={() => {
+                                                const { [col.key]: _removed, ...rest } = columnFilters;
+                                                columnFilters = rest;
+                                                onColumnFiltersChange?.(columnFilters);
+                                                page = 0;
+                                            }}
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                                        </button>
+                                    {/if}
+                                </div>
+                            {/if}
+                        </th>
+                    {/each}
+                </tr>
+            {/if}
         </thead>
 
         <!-- TBODY -->

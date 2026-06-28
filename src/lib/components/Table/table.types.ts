@@ -267,6 +267,9 @@ export interface TableProps<T extends Record<string, any> = Record<string, any>>
     /** Loading bar animation. @default 'carousel' */
     loadingAnimation?: NonNullable<TableVariantProps['loadingAnimation']>
 
+    /** Table density preset. @default 'md' */
+    size?: NonNullable<TableVariantProps['size']>
+
     /** Text shown when data is empty. @default 'No data.' */
     empty?: string
 

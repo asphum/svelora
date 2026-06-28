@@ -271,6 +271,30 @@ describe('Table', () => {
         })
     })
 
+    // ==================== SIZE ====================
+
+    describe('size', () => {
+        it('should apply compact classes when size is sm', () => {
+            render(Table, {
+                data: testData,
+                columns: testColumns,
+                size: 'sm'
+            } as any)
+            expect((getHeaderCells()[0] as HTMLElement).className).toContain('px-3')
+            expect((getCells(0)[0] as HTMLElement).className).toContain('text-xs')
+        })
+
+        it('should apply spacious classes when size is lg', () => {
+            render(Table, {
+                data: testData,
+                columns: testColumns,
+                size: 'lg'
+            } as any)
+            expect((getHeaderCells()[0] as HTMLElement).className).toContain('px-5')
+            expect((getCells(0)[0] as HTMLElement).className).toContain('text-base')
+        })
+    })
+
     // ==================== STICKY HEADER ====================
 
     describe('sticky header', () => {

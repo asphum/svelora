@@ -28,6 +28,17 @@ export const tableVariants = tv({
         loading: 'py-10 text-center'
     },
     variants: {
+        size: {
+            sm: {
+                th: 'px-3 py-2 text-[11px]',
+                td: 'px-3 py-2 text-xs'
+            },
+            md: {},
+            lg: {
+                th: 'px-5 py-3.5 text-sm',
+                td: 'px-5 py-4 text-base'
+            }
+        },
         pinned: {
             true: {
                 th: 'sticky bg-surface-container-low/95 backdrop-blur-sm z-1',
@@ -112,6 +123,7 @@ export const tableVariants = tv({
         }
     ],
     defaultVariants: {
+        size: 'md',
         hoverable: true,
         loadingColor: 'primary',
         loadingAnimation: 'carousel'
@@ -124,6 +136,7 @@ export type TableSlots = keyof ReturnType<typeof tableVariants>
 export const tableDefaults = {
     defaultVariants: {
         ...tableVariants.defaultVariants,
+        size: 'md' as const,
         hoverable: true as const,
         loadingColor: 'primary' as const,
         loadingAnimation: 'carousel' as const

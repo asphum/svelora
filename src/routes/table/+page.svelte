@@ -325,6 +325,32 @@
     // ==================== Global Filter ====================
     let globalFilter = $state('')
 
+    // ==================== Column Filters ====================
+    let columnFilterValues: Record<string, string> = $state({})
+
+    const filterableColumns: TableColumn<User>[] = [
+        { key: 'id', label: '#' },
+        { key: 'name', label: 'Name', cell: userCell, filterable: true },
+        { key: 'email', label: 'Email', filterable: true },
+        { key: 'role', label: 'Role', cell: roleCell, filterable: true },
+        { key: 'status', label: 'Status', cell: statusCell, filterable: true }
+    ]
+
+    // ==================== Full-Featured ====================
+    let fullFeatSearch = $state('')
+    let fullFeatSort: SortState = $state([])
+    let fullFeatPage = $state(1)
+    const fullFeatTablePage = $derived(fullFeatPage - 1)
+    const fullFeatPageSize = 5
+
+    const fullFeatColumns: TableColumn<User>[] = [
+        { key: 'id', label: '#', sortable: true },
+        { key: 'name', label: 'Name', cell: userCell, sortable: true, filterable: true },
+        { key: 'email', label: 'Email', filterable: true },
+        { key: 'role', label: 'Role', cell: roleCell, sortable: true, filterable: true },
+        { key: 'status', label: 'Status', cell: statusCell, filterable: true }
+    ]
+
     // ==================== Loading (Replace data) ====================
     let isLoadingReplace = $state(false)
     function simulateLoadingReplace() {
@@ -440,6 +466,91 @@
             class="max-w-sm"
         />
         <Table data={users} columns={richColumns} bind:globalFilter rowKey="id" />
+    </section>
+
+    <!-- ==================== COLUMN FILTERS ==================== -->
+    <section class="space-y-4">
+        <h2 id="Column-Filters" class="text-xl font-semibold text-on-surface">
+<a href="#Column-Filters" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Column Filters
+                    </a>
+</h2>
+        <p class="text-sm text-on-surface-variant">
+            Add <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs">filterable: true</code> to a column definition to show an inline filter input below its header.
+            Supports <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs">filterFn</code> for custom matching logic.
+        </p>
+        <Table
+            data={manyUsers}
+            columns={filterableColumns}
+            bind:columnFilters={columnFilterValues}
+            rowKey="id"
+        />
+        {#if Object.keys(columnFilterValues).length > 0}
+            <div class="flex flex-wrap items-center gap-1.5">
+                <span class="text-xs text-on-surface-variant">Active filters:</span>
+                {#each Object.entries(columnFilterValues) as [key, val] (key)}
+                    <Badge label="{key}: {val}" variant="soft" color="primary" size="xs" />
+                {/each}
+                <Button
+                    variant="ghost"
+                    color="surface"
+                    size="xs"
+                    icon="lucide:x"
+                    onclick={() => (columnFilterValues = {})}
+                    aria-label="Clear all column filters"
+                />
+            </div>
+        {/if}
+    </section>
+
+    <!-- ==================== FULL-FEATURED ==================== -->
+    <section class="space-y-4">
+        <h2 id="Full-Featured" class="text-xl font-semibold text-on-surface">
+<a href="#Full-Featured" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Full-Featured (Search + Filter + Sort + Pagination)
+                    </a>
+</h2>
+        <p class="text-sm text-on-surface-variant">
+            Compose <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs">&lt;Input&gt;</code>,
+            <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs">&lt;Table&gt;</code>, and
+            <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs">&lt;Pagination&gt;</code>
+            together using <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs">bind:</code> for a full data-grid experience with no coupling.
+        </p>
+        <Input
+            placeholder="Search across all columns…"
+            bind:value={fullFeatSearch}
+            leadingIcon="lucide:search"
+            variant="outline"
+            class="max-w-sm"
+        />
+        <Table
+            data={manyUsers}
+            columns={fullFeatColumns}
+            bind:globalFilter={fullFeatSearch}
+            bind:sorting={fullFeatSort}
+            page={fullFeatTablePage}
+            pageSize={fullFeatPageSize}
+            rowKey="id"
+            multiSort
+        />
+        <div class="flex items-center justify-between">
+            <p class="text-sm text-on-surface-variant">
+                {#if fullFeatSearch}
+                    Showing results for <strong>&ldquo;{fullFeatSearch}&rdquo;</strong>
+                {:else}
+                    {manyUsers.length} users total
+                {/if}
+            </p>
+            <Pagination
+                bind:page={fullFeatPage}
+                total={manyUsers.length}
+                itemsPerPage={fullFeatPageSize}
+                showEdges
+                size="sm"
+            />
+        </div>
     </section>
 
     <!-- ==================== ROW ACTIONS ==================== -->
@@ -1076,6 +1187,35 @@
         </div>
     </section>
 
+    <!-- ==================== SIZE ==================== -->
+    <section class="space-y-4">
+        <h2 id="Size" class="text-xl font-semibold text-on-surface">
+<a href="#Size" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                        Size
+                    </a>
+</h2>
+        <p class="text-sm text-on-surface-variant">
+            Use the <code class="rounded-md bg-surface-container-high px-1.5 py-0.5 text-xs"
+                >size</code
+            > prop to switch between compact, default, and spacious density presets.
+        </p>
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <div class="space-y-1">
+                <p class="text-xs font-medium text-on-surface-variant">sm</p>
+                <Table data={products} columns={productColumns} size="sm" />
+            </div>
+            <div class="space-y-1">
+                <p class="text-xs font-medium text-on-surface-variant">md</p>
+                <Table data={products} columns={productColumns} size="md" />
+            </div>
+            <div class="space-y-1">
+                <p class="text-xs font-medium text-on-surface-variant">lg</p>
+                <Table data={products} columns={productColumns} size="lg" />
+            </div>
+        </div>
+    </section>
+
     <!-- ==================== CUSTOM UI OVERRIDES ==================== -->
     <section class="space-y-4">
         <h2 id="Custom-UI-Overrides" class="text-xl font-semibold text-on-surface">
@@ -1110,10 +1250,10 @@
                 <Table
                     data={products}
                     columns={productColumns}
+                    size="sm"
                     ui={{
                         root: 'border-0 rounded-none',
-                        th: 'py-2 px-3 text-[10px]',
-                        td: 'py-2 px-3 text-xs'
+                        th: 'text-[10px]'
                     }}
                 />
             </div>
