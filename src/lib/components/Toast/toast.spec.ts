@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest'
 
-// Mock svelte-sonner before importing toast
-vi.mock('svelte-sonner', () => {
+// Mock internal toast state before importing toast
+vi.mock('./internal/toast-state.svelte.js', () => {
     const fn = Object.assign(vi.fn(), {
         success: vi.fn(),
         error: vi.fn(),
@@ -26,10 +26,10 @@ vi.mock('svelte', async (importOriginal) => {
     }
 })
 
-import { toast as sonnerToast } from 'svelte-sonner'
+import { toast as internalToast } from './internal/toast-state.svelte.js'
 import { toast } from './toast.js'
 
-const mockSonner = sonnerToast as unknown as Mock & {
+const mockSonner = internalToast as unknown as Mock & {
     success: Mock
     error: Mock
     warning: Mock

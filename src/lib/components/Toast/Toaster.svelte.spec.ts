@@ -1,4 +1,4 @@
-import { toast } from 'svelte-sonner'
+import { toast } from './internal/toast-state.svelte.js'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { page } from 'vitest/browser'
 import { cleanup, render } from 'vitest-browser-svelte'

@@ -1,8 +1,8 @@
-import type { ToasterProps as SonnerToasterProps } from 'svelte-sonner'
 import type { ClassNameValue } from 'tailwind-merge'
+import type { ToasterProps as InternalToasterProps } from './internal/types.js'
 import type { ToastVariant } from './toast.variants.js'
 
-export type ToasterProps = Omit<SonnerToasterProps, 'class' | 'toastOptions' | 'richColors'> & {
+export type ToasterProps = Omit<InternalToasterProps, 'class' | 'toastOptions' | 'richColors'> & {
     /**
      * The visual style variant.
      * - `outline`: Border with surface background, semantic border accent per type (default)

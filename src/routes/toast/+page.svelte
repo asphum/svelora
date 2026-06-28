@@ -28,7 +28,7 @@
     <div class="space-y-2">
         <h1 class="text-2xl font-bold">Toast</h1>
         <p class="text-on-surface-variant">
-            Non-intrusive notification messages that appear temporarily. Powered by svelte-sonner
+            Non-intrusive notification messages that appear temporarily.
             with Svelora semantic color theming.
         </p>
     </div>

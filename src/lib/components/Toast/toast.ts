@@ -1,7 +1,7 @@
 import type { Component } from 'svelte'
 import { mount, unmount } from 'svelte'
-import type { ExternalToast } from 'svelte-sonner'
-import { toast as sonnerToast } from 'svelte-sonner'
+import type { ExternalToast } from './internal/types.js'
+import { toast as internalToast } from './internal/toast-state.svelte.js'
 import Avatar from '../Avatar/Avatar.svelte'
 import type { AvatarProps } from '../Avatar/avatar.types.js'
 import Icon from '../Icon/Icon.svelte'
@@ -33,7 +33,7 @@ type SveloraToastOptions = Omit<ExternalToast, 'icon'> & {
 }
 
 function createIconComponent(name: string): Component {
-    function SvelteSonnerIcon(anchor: Node) {
+    function SveloraIcon(anchor: Node) {
         if (!anchor.parentNode) return { destroy() {} }
         const instance = mount(Icon, {
             target: anchor.parentNode as Element,
@@ -46,11 +46,11 @@ function createIconComponent(name: string): Component {
             }
         }
     }
-    return SvelteSonnerIcon as unknown as Component
+    return SveloraIcon as unknown as Component
 }
 
 function createAvatarComponent(props: ToastAvatarOptions): Component {
-    function SvelteSonnerAvatar(anchor: Node) {
+    function SveloraAvatar(anchor: Node) {
         if (!anchor.parentNode) return { destroy() {} }
         const instance = mount(Avatar, {
             target: anchor.parentNode as Element,
@@ -63,7 +63,7 @@ function createAvatarComponent(props: ToastAvatarOptions): Component {
             }
         }
     }
-    return SvelteSonnerAvatar as unknown as Component
+    return SveloraAvatar as unknown as Component
 }
 
 function resolveOptions(data?: SveloraToastOptions): ExternalToast | undefined {
@@ -72,7 +72,7 @@ function resolveOptions(data?: SveloraToastOptions): ExternalToast | undefined {
     const { color, icon, avatar, ...rest } = data
     const resolved: ExternalToast = { ...rest }
 
-    // Color -> class
+    // Color → class
     if (color) {
         const existing = resolved.class ?? ''
         resolved.class = `${existing} ps-color-${color}`.trim()
@@ -91,31 +91,31 @@ function resolveOptions(data?: SveloraToastOptions): ExternalToast | undefined {
 }
 
 function toastFn(message: string, data?: SveloraToastOptions) {
-    return sonnerToast(message, resolveOptions(data))
+    return internalToast(message, resolveOptions(data))
 }
 
 toastFn.success = (message: string, data?: SveloraToastOptions) =>
-    sonnerToast.success(message, resolveOptions(data))
+    internalToast.success(message, resolveOptions(data))
 
 toastFn.error = (message: string, data?: SveloraToastOptions) =>
-    sonnerToast.error(message, resolveOptions(data))
+    internalToast.error(message, resolveOptions(data))
 
 toastFn.warning = (message: string, data?: SveloraToastOptions) =>
-    sonnerToast.warning(message, resolveOptions(data))
+    internalToast.warning(message, resolveOptions(data))
 
 toastFn.info = (message: string, data?: SveloraToastOptions) =>
-    sonnerToast.info(message, resolveOptions(data))
+    internalToast.info(message, resolveOptions(data))
 
 toastFn.loading = (message: string, data?: SveloraToastOptions) =>
-    sonnerToast.loading(message, resolveOptions(data))
+    internalToast.loading(message, resolveOptions(data))
 
-toastFn.promise = sonnerToast.promise
+toastFn.promise = internalToast.promise
 
-toastFn.dismiss = sonnerToast.dismiss
+toastFn.dismiss = internalToast.dismiss
 
-toastFn.custom = sonnerToast.custom
+toastFn.custom = internalToast.custom
 
-toastFn.message = sonnerToast.message
+toastFn.message = internalToast.message
 
 export type { SveloraToastOptions as ToastOptions }
 export { toastFn as toast }

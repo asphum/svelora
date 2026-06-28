@@ -1,33 +1,32 @@
 <script lang="ts" module>
-    import type { ToasterProps } from './toast.types.js'
+import type { ToasterProps } from './toast.types.js'
 
-    export type Props = ToasterProps
+export type Props = ToasterProps
 </script>
 
 <script lang="ts">
-    // biome-ignore lint/correctness/noUnusedImports: used in template below
-    import { Toaster as SonnerToaster } from 'svelte-sonner'
-    import { getComponentConfig } from '../../config.js'
-    import { toastDefaults } from './toast.variants.js'
+import InternalToaster from './internal/Toaster.svelte'
+import { getComponentConfig } from '../../config.js'
+import { toastDefaults } from './toast.variants.js'
 
-    const config = getComponentConfig('toast', toastDefaults)
+const config = getComponentConfig('toast', toastDefaults)
 
-    let {
-        variant = config.defaultVariants.variant,
-        position = 'bottom-right',
-        visibleToasts = 3,
-        duration = 5000,
-        closeButton = true,
-        expand = false,
-        gap = 14,
-        class: className,
-        ...restProps
-    }: Props = $props()
+let {
+    variant = config.defaultVariants.variant,
+    position = 'bottom-right',
+    visibleToasts = 3,
+    duration = 5000,
+    closeButton = true,
+    expand = false,
+    gap = 14,
+    class: className,
+    ...restProps
+}: Props = $props()
 
-    const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean).join(' '))
+const toasterClass = $derived([`ps-toast-${variant}`, className].filter(Boolean).join(' '))
 </script>
 
-<SonnerToaster
+<InternalToaster
     {position}
     {visibleToasts}
     {duration}
@@ -43,7 +42,7 @@
      * BASE OVERRIDES — applied to all variants
      *
      * Selector: [data-sonner-toaster] with our variant class.
-     * Sonner renders via portal, so we use :global() selectors
+     * Toaster renders via portal, so we use :global() selectors
      * scoped by our variant class on the toaster <ol> element.
      * ============================================ */
 
@@ -128,10 +127,6 @@
 
     /* ============================================
      * SHARED — CSS custom properties per toast type
-     *
-     * Each variant sets --toast-bg, --toast-border, --toast-color,
-     * --toast-desc, --toast-close-bg, --toast-close-border per type.
-     * The shared rules below consume them.
      * ============================================ */
 
     :global([data-sonner-toaster][class*='ps-toast-'] [data-sonner-toast][data-styled='true']) {
@@ -201,7 +196,7 @@
     }
 
     /* ============================================
-     * OUTLINE VARIANT — surface bg, semantic border + icon + title
+     * OUTLINE VARIANT
      * ============================================ */
     :global([data-sonner-toaster].ps-toast-outline [data-sonner-toast][data-styled='true']) {
         --toast-bg: var(--color-surface-container);
@@ -257,7 +252,7 @@
     }
 
     /* ============================================
-     * SOFT VARIANT — tinted bg, semantic text
+     * SOFT VARIANT
      * ============================================ */
     :global([data-sonner-toaster].ps-toast-soft [data-sonner-toast][data-styled='true']) {
         --toast-bg: var(--color-surface-container-high);
@@ -321,7 +316,7 @@
     }
 
     /* ============================================
-     * SUBTLE VARIANT — tinted bg + semantic border
+     * SUBTLE VARIANT
      * ============================================ */
     :global([data-sonner-toaster].ps-toast-subtle [data-sonner-toast][data-styled='true']) {
         --toast-bg: var(--color-surface-container-high);
@@ -393,7 +388,7 @@
     }
 
     /* ============================================
-     * SOLID VARIANT — full semantic bg
+     * SOLID VARIANT
      * ============================================ */
     :global([data-sonner-toaster].ps-toast-solid [data-sonner-toast][data-styled='true']) {
         --toast-bg: var(--color-inverse-surface);
@@ -524,10 +519,6 @@
 
     /* ============================================
      * COLOR CLASSES — per-toast color override via class
-     *
-     * Usage: toast('msg', { class: 'ps-color-primary' })
-     * These set --svelora-c (main) and --svelora-c-on (contrast)
-     * which are consumed by variant-specific rules below.
      * ============================================ */
 
     :global([data-sonner-toast].ps-color-primary) {
