@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.0.17] - 2026-06-29
+
+### Changed
+
+- update all dependencies to latest and remove redundant aria-hidden attribute from SelectMenu input
+
 ## [3.0.16] - 2026-06-28
 
 ### Added
@@ -497,7 +503,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.16...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.17...HEAD
+[3.0.17]: https://github.com/asphum/svelora/compare/v3.0.16...v3.0.17
 [3.0.16]: https://github.com/asphum/svelora/compare/v3.0.15...v3.0.16
 [3.0.15]: https://github.com/asphum/svelora/compare/v3.0.14...v3.0.15
 [3.0.14]: https://github.com/asphum/svelora/compare/v3.0.13...v3.0.14
