@@ -593,7 +593,6 @@
         <Combobox.Input
             class="pointer-events-none absolute inset-0 opacity-0"
             tabindex={-1}
-            aria-hidden="true"
         />
 
         <Combobox.Trigger
