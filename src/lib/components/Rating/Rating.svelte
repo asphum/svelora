@@ -1,34 +1,53 @@
 <script lang="ts">
     import { twMerge } from 'tailwind-merge'
+    import { getComponentConfig } from '../../config.js'
     import Icon from '../Icon/Icon.svelte'
     import type { RatingProps } from './rating.types.js'
-    import { ratingVariants } from './rating.variants.js'
+    import { ratingDefaults, ratingVariants } from './rating.variants.js'
+
+    const config = getComponentConfig('rating', ratingDefaults)
 
     let {
         value = $bindable(0),
         max = 5,
-        size = 'md',
+        variant = config.defaultVariants.variant,
+        color = config.defaultVariants.color,
+        size = config.defaultVariants.size,
         allowHalf = false,
         disabled = false,
         readonly = false,
-        iconFull = 'lucide:star',
-        iconEmpty = 'lucide:star',
-        activeColor = 'text-warning-500 fill-warning-500',
-        inactiveColor = 'text-surface-300 dark:text-surface-600',
+        iconFull,
+        iconEmpty,
+        ui,
         class: className,
         onchange,
         ...restProps
     }: RatingProps = $props()
 
-    let styles = $derived(ratingVariants({ size, disabled, readonly }))
+    const resolvedIconFull = $derived(
+        iconFull ?? (variant === 'solid' ? 'mdi:star' : 'lucide:star')
+    )
+    const resolvedIconEmpty = $derived(
+        iconEmpty ?? (variant === 'solid' ? 'mdi:star-outline' : 'lucide:star')
+    )
+
+    const styles = $derived.by(() => {
+        const slots = ratingVariants({ variant, color, size, disabled, readonly })
+        return {
+            base: slots.base({ class: [config.slots.base, className, ui?.base] }),
+            starWrapper: slots.starWrapper({ class: [config.slots.starWrapper, ui?.starWrapper] }),
+            starFull: slots.starFull({ class: [config.slots.starFull, ui?.starFull] }),
+            starEmpty: slots.starEmpty({ class: [config.slots.starEmpty, ui?.starEmpty] })
+        }
+    })
+
     let hoverValue = $state<number | null>(null)
 
-    // Calculate array of stars
     let stars = $derived(Array.from({ length: max }, (_, i) => i + 1))
 
     function handleMouseMove(e: MouseEvent, index: number) {
         if (disabled || readonly) return
-        
+
         if (allowHalf) {
             const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
             const x = e.clientX - rect.left
@@ -52,7 +71,7 @@
 
     function handleKeyDown(e: KeyboardEvent, index: number) {
         if (disabled || readonly) return
-        
+
         let newValue = value
         if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
             newValue = Math.min(max, value + (allowHalf ? 0.5 : 1))
@@ -63,7 +82,7 @@
         } else {
             return
         }
-        
+
         e.preventDefault()
         value = newValue
         onchange?.(value)
@@ -77,21 +96,21 @@
     }
 </script>
 
-<div 
-    class={twMerge(styles.base() as string, className)} 
+<div
+    class={styles.base}
     onmouseleave={handleMouseLeave}
     {...restProps}
     role="radiogroup"
 >
     {#each stars as starIndex}
         {@const state = getStarState(starIndex)}
-        
+
         <button
             type="button"
             role="radio"
             aria-checked={value >= starIndex}
             aria-label={`Rate ${starIndex} out of ${max} stars`}
-            class={styles.starWrapper() as string}
+            class={styles.starWrapper}
             disabled={disabled || readonly}
             tabindex={disabled || readonly ? -1 : 0}
             onmousemove={(e) => handleMouseMove(e, starIndex)}
@@ -99,17 +118,16 @@
             onkeydown={(e) => handleKeyDown(e, starIndex)}
         >
             {#if state === 'full'}
-                <Icon name={iconFull} class={twMerge(styles.star() as string, activeColor)} />
+                <Icon name={resolvedIconFull} class={styles.starFull} />
             {:else if state === 'half'}
-                <!-- Simple half star implementation using CSS clip-path or two icons -->
                 <div class="relative">
-                    <Icon name={iconEmpty} class={twMerge(styles.star() as string, inactiveColor)} />
+                    <Icon name={resolvedIconEmpty} class={styles.starEmpty} />
                     <div class="absolute inset-0 overflow-hidden w-1/2">
-                        <Icon name={iconFull} class={twMerge(styles.star() as string, activeColor)} />
+                        <Icon name={resolvedIconFull} class={styles.starFull} />
                     </div>
                 </div>
             {:else}
-                <Icon name={iconEmpty} class={twMerge(styles.star() as string, inactiveColor)} />
+                <Icon name={resolvedIconEmpty} class={styles.starEmpty} />
             {/if}
         </button>
     {/each}

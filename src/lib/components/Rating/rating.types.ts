@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from 'svelte/elements'
-import type { RatingVariantProps } from './rating.variants.js'
+import type { ClassNameValue } from 'tailwind-merge'
+import type { RatingSlots, RatingVariantProps } from './rating.variants.js'
 
 export interface RatingProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
     /**
@@ -12,6 +13,18 @@ export interface RatingProps extends Omit<HTMLAttributes<HTMLDivElement>, 'oncha
      * @default 5
      */
     max?: number
+
+    /**
+     * Visual style of the stars.
+     * @default 'solid'
+     */
+    variant?: NonNullable<RatingVariantProps['variant']>
+
+    /**
+     * Color scheme for active stars.
+     * @default 'warning'
+     */
+    color?: NonNullable<RatingVariantProps['color']>
 
     /**
      * Size of the stars.
@@ -36,28 +49,19 @@ export interface RatingProps extends Omit<HTMLAttributes<HTMLDivElement>, 'oncha
     readonly?: boolean
 
     /**
-     * Icon to use for the full star.
-     * @default 'lucide:star'
+     * Icon for active/full stars. Defaults based on `variant`.
      */
     iconFull?: string
 
     /**
-     * Icon to use for the empty star.
-     * @default 'lucide:star'
+     * Icon for inactive/empty stars. Defaults based on `variant`.
      */
     iconEmpty?: string
 
     /**
-     * Color class for the active/filled stars.
-     * @default 'text-warning-500 fill-warning-500'
+     * Override styles for specific rating slots.
      */
-    activeColor?: string
-
-    /**
-     * Color class for the inactive/empty stars.
-     * @default 'text-surface-300 dark:text-surface-600'
-     */
-    inactiveColor?: string
+    ui?: Partial<Record<RatingSlots, ClassNameValue>>
 
     /**
      * Additional CSS classes.
