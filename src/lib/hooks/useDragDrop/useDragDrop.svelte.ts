@@ -4,10 +4,7 @@ import { setContext, type Snippet } from 'svelte'
 import type { Data } from '@dnd-kit/abstract'
 import { createDraggable, createDroppable } from '@dnd-kit/svelte'
 import DragDropProviderScope from '../internal/DragDropProviderScope.svelte'
-import {
-    DRAG_DROP_CONTEXT_KEY,
-    type DragDropContextValue
-} from '../internal/drag-drop-context.js'
+import { DRAG_DROP_CONTEXT_KEY, type DragDropContextValue } from '../internal/drag-drop-context.js'
 
 export interface DragPayload<T = unknown> {
     id: string

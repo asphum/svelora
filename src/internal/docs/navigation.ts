@@ -340,6 +340,12 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:text-cursor-input'
             },
             {
+                title: 'InputNumber',
+                href: '/docs/components/input-number',
+                legacyHref: '/input-number',
+                icon: 'lucide:hash'
+            },
+            {
                 title: 'RadioGroup',
                 href: '/docs/components/radio-group',
                 legacyHref: '/radio-group',

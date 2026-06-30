@@ -4,10 +4,7 @@ import { setContext, type Snippet } from 'svelte'
 import type { Data } from '@dnd-kit/abstract'
 import { createSortable } from '@dnd-kit/svelte/sortable'
 import SortableProvider from '../internal/SortableProvider.svelte'
-import {
-    SORTABLE_CONTEXT_KEY,
-    type SortableContextValue
-} from '../internal/sortable-context.js'
+import { SORTABLE_CONTEXT_KEY, type SortableContextValue } from '../internal/sortable-context.js'
 
 export interface UseSortableItemParams<T> {
     index: number
