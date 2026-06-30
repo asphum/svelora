@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.0.19] - 2026-06-30
+
+### Changed
+
+- upgrade tailwindcss to version 4.3.2
+
 ## [3.0.18] - 2026-06-29
 
 ### Added
@@ -509,7 +515,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.18...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.19...HEAD
+[3.0.19]: https://github.com/asphum/svelora/compare/v3.0.18...v3.0.19
 [3.0.18]: https://github.com/asphum/svelora/compare/v3.0.17...v3.0.18
 [3.0.17]: https://github.com/asphum/svelora/compare/v3.0.16...v3.0.17
 [3.0.16]: https://github.com/asphum/svelora/compare/v3.0.15...v3.0.16
