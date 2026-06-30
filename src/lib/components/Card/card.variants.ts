@@ -3,9 +3,9 @@ import { tv, type VariantProps } from 'tailwind-variants'
 export const cardVariants = tv({
     slots: {
         root: 'rounded-lg overflow-hidden',
-        header: 'p-4 sm:px-6',
-        body: 'p-4 sm:p-6',
-        footer: 'p-4 sm:px-6'
+        header: 'p-3 sm:px-5',
+        body: 'p-3 sm:p-5',
+        footer: 'p-3 sm:px-5'
     },
     variants: {
         variant: {
