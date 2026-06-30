@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.1.0] - 2026-06-30
+
+### Added
+
+- implement InputNumber component with variants, testing, and documentation
+
 ## [3.0.19] - 2026-06-30
 
 ### Changed
@@ -515,7 +521,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.0.19...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.0...HEAD
+[3.1.0]: https://github.com/asphum/svelora/compare/v3.0.19...v3.1.0
 [3.0.19]: https://github.com/asphum/svelora/compare/v3.0.18...v3.0.19
 [3.0.18]: https://github.com/asphum/svelora/compare/v3.0.17...v3.0.18
 [3.0.17]: https://github.com/asphum/svelora/compare/v3.0.16...v3.0.17
