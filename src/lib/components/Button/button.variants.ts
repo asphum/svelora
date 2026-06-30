@@ -74,6 +74,9 @@ export const buttonVariants = tv({
         square: {
             true: ''
         },
+        circle: {
+            true: ''
+        },
         leading: {
             true: ''
         },
@@ -439,6 +442,13 @@ export const buttonVariants = tv({
         { square: true, size: 'md', class: { base: 'p-1.5' } },
         { square: true, size: 'lg', class: { base: 'p-2' } },
         { square: true, size: 'xl', class: { base: 'p-2.5' } },
+
+        // ========== CIRCLE SIZE ADJUSTMENTS ==========
+        { circle: true, size: 'xs', class: { base: 'p-1 rounded-full' } },
+        { circle: true, size: 'sm', class: { base: 'p-1.5 rounded-full' } },
+        { circle: true, size: 'md', class: { base: 'p-1.5 rounded-full' } },
+        { circle: true, size: 'lg', class: { base: 'p-2 rounded-full' } },
+        { circle: true, size: 'xl', class: { base: 'p-2.5 rounded-full' } },
 
         // ========== LOADING ICON ANIMATION ==========
         {

@@ -31,6 +31,7 @@
         disabled = false,
         block = false,
         square = false,
+        circle = false,
         icon,
         leadingIcon,
         trailingIcon,
@@ -72,7 +73,7 @@
     let pendingPromise: Promise<unknown> | null = null
     const isLoading = $derived(loading || autoLoading)
 
-    const isIconOnly = $derived(square || (!label && !children))
+    const isIconOnly = $derived(square || circle || (!label && !children))
     const isLeading = $derived((!!icon && !trailing) || (isLoading && !trailing) || !!leadingIcon)
     const isTrailing = $derived((!!icon && trailing) || (isLoading && trailing) || !!trailingIcon)
 
@@ -96,7 +97,8 @@
             color: resolvedColor,
             size: resolvedSize,
             block,
-            square: isIconOnly,
+            square: isIconOnly && !circle,
+            circle: isIconOnly && circle,
             loading: isLoading,
             leading: spinLeading,
             trailing: spinTrailing

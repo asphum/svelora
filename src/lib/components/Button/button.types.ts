@@ -86,6 +86,12 @@ export type ButtonProps = Omit<HTMLAttributes<HTMLElement>, 'class' | 'color'> &
         square?: boolean
 
         /**
+         * Forces equal width and height, and fully rounded corners, ideal for icon-only circular buttons.
+         * @default false
+         */
+        circle?: boolean
+
+        /**
          * Renders the button in icon-only mode without a label.
          * Supports any valid Iconify icon name.
          */
