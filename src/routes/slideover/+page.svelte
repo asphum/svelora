@@ -450,7 +450,7 @@
                     <Button {...props} variant="outline" label="Custom Header" />
                 {/snippet}
                 {#snippet header()}
-                    <div class="flex items-center gap-3 p-4 sm:px-6">
+                    <div class="flex items-center gap-3 p-3 sm:px-5">
                         <div
                             class="flex size-10 items-center justify-center rounded-full bg-primary text-on-primary"
                         >

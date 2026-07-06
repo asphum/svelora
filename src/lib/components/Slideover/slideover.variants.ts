@@ -5,10 +5,10 @@ export const slideoverVariants = tv({
         overlay: 'fixed inset-0 z-50',
         content:
             'z-50 bg-surface-container-low divide-y divide-outline-variant flex flex-col focus:outline-none',
-        header: 'flex items-center gap-1.5 p-4 sm:px-6 min-h-16',
+        header: 'flex items-center gap-1.5 p-3 sm:px-5 min-h-16',
         wrapper: '',
         body: 'flex-1 overflow-y-auto p-4 sm:p-6',
-        footer: 'flex items-center gap-1.5 p-4 sm:px-6',
+        footer: 'flex items-center gap-1.5 p-3 sm:px-5',
         title: 'text-on-surface font-semibold',
         description: 'mt-1 text-on-surface-variant text-sm',
         actions: 'flex items-center gap-1.5 shrink-0',
