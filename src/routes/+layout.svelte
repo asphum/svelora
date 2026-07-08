@@ -7,11 +7,11 @@
         Button,
         ConfirmDialog,
         Icon,
-        Input,
         LINK_LOCATION_CONTEXT_KEY,
         Link,
         type LinkLocationContext,
         LocaleButton,
+        Main,
         NavigationMenu,
         type NavigationMenuItemType,
         registerConfirmDialog,
@@ -163,8 +163,8 @@
     <div class="min-h-screen bg-surface text-on-surface">{@render children()}</div>
 {:else}
     <div class="min-h-screen bg-surface text-on-surface">
-        <header class="sticky top-0 z-50 border-b border-outline-variant/70 bg-surface/90 backdrop-blur">
-            <div class="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-4 py-3 lg:px-6">
+        <header class="sticky top-0 z-50 h-(--ui-header-height) border-b border-outline-variant/70 bg-surface/90 backdrop-blur">
+            <div class="mx-auto flex h-full max-w-[1600px] items-center justify-between gap-4 px-4 lg:px-6">
                 <div class="flex items-center gap-3">
                     <button
                         class="rounded-lg border border-outline-variant bg-surface-container p-2 text-on-surface-variant transition-colors hover:bg-surface-container-high lg:hidden"
@@ -279,7 +279,7 @@
             {/if}
 
             <aside
-                class={`fixed inset-y-0 left-0 top-16.25 z-40 flex h-[calc(100vh-65px)] w-80 shrink-0 flex-col border-r border-outline-variant bg-surface/95 backdrop-blur transition-transform duration-200 lg:sticky lg:translate-x-0 ${
+                class={`fixed inset-y-0 left-0 top-(--ui-header-height) z-40 flex h-[calc(100svh-var(--ui-header-height))] w-80 shrink-0 flex-col border-r border-outline-variant bg-surface/95 backdrop-blur transition-transform duration-200 lg:sticky lg:translate-x-0 ${
                     sidebarOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
             >
@@ -323,11 +323,11 @@
                 </div>
             </aside>
 
-            <main class="min-w-0 flex-1 px-4 py-8 sm:px-6 lg:px-10 lg:py-10">
+            <Main class="min-w-0 flex-1 px-4 py-8 sm:px-6 lg:px-10 lg:py-10">
                 <div class="mx-auto max-w-5xl">
                     {@render children()}
                 </div>
-            </main>
+            </Main>
         </div>
     </div>
 {/if}
@@ -337,7 +337,7 @@
 <style global>
     :global(html) {
         scroll-behavior: smooth;
-        scroll-padding-top: 80px;
+        scroll-padding-top: var(--ui-header-height, 4rem);
     }
 
     :global(body) {

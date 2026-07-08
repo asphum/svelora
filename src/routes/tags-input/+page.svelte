@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { TagsInput, Button } from '$lib/index.js'
+    import { TagsInput } from '$lib/index.js'
     
     let tags1 = $state(['svelte', 'tailwind', 'typescript'])
     let tags2 = $state(['apple', 'banana'])

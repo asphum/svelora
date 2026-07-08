@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Card, Icon, Link } from '$lib/index.js'
+    import { Icon, Link } from '$lib/index.js'
 
     type Item = { name: string; href: string; icon: string }
 

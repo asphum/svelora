@@ -9,11 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- _None yet._
+- **Tour** — spotlight product tour พร้อม floating step panel, guards แบบ async, centered dialog mode, และ snippets สำหรับ header/footer/content
+- **useTour** — headless Tour controller (`start`/`stop`/`next`/`prev`/`goTo`) รองรับ `persist` สำหรับ multi-page tours
+- **Error** — หน้า error สำเร็จรูป พร้อม status display, clear action และ snippet overrides
+- **Header** — sticky app header รองรับ mobile menu (Modal/Slideover/Drawer)
+- **Main** — content container ที่คำนวณความสูงจาก `--ui-header-height`
+- **Footer / FooterColumns** — footer พร้อม link columns และ active route links
+- Icons config — เพิ่มค่า default `menu`, `external`
+- `theme.css` — กำหนด `--ui-header-height` (default `4rem`)
 
 ### Changed
 
-- _None yet._
+- อัปเดต docs layout ให้ใช้ `Main` component และ height contract ร่วมกับ `--ui-header-height`
 
 ### Fixed
 

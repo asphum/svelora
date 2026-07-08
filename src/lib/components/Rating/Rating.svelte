@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { twMerge } from 'tailwind-merge'
     import { getComponentConfig } from '../../config.js'
     import Icon from '../Icon/Icon.svelte'
     import type { RatingProps } from './rating.types.js'

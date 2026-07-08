@@ -167,6 +167,34 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:box'
             },
             {
+                title: 'Error',
+                href: '/docs/components/error',
+                legacyHref: '/error',
+                icon: 'lucide:triangle-alert',
+                description: 'Pre-built error page with status display and clear action.'
+            },
+            {
+                title: 'Footer',
+                href: '/docs/components/footer',
+                legacyHref: '/footer',
+                icon: 'lucide:panel-bottom-dashed',
+                description: 'App footer with aligned areas and link columns.'
+            },
+            {
+                title: 'Header',
+                href: '/docs/components/header',
+                legacyHref: '/header',
+                icon: 'lucide:panel-top-dashed',
+                description: 'Sticky app header with mobile menu modes.'
+            },
+            {
+                title: 'Main',
+                href: '/docs/components/main',
+                legacyHref: '/main',
+                icon: 'lucide:layout-template',
+                description: 'Content container sized below the app header.'
+            },
+            {
                 title: 'Resizable',
                 href: '/docs/components/resizable',
                 legacyHref: '/resizable',
@@ -581,6 +609,13 @@ export const docsComponentGroups: DocsGroup[] = [
                 href: '/docs/components/tooltip',
                 legacyHref: '/tooltip',
                 icon: 'lucide:message-square'
+            },
+            {
+                title: 'Tour',
+                href: '/docs/components/tour',
+                legacyHref: '/tour',
+                icon: 'lucide:route',
+                description: 'Spotlight product tour with floating step panel.'
             }
         ]
     },
@@ -714,6 +749,13 @@ export const docsHookItems: DocsItem[] = [
         href: '/docs/hooks/use-throttle',
         legacyHref: '/use-throttle',
         icon: 'lucide:gauge'
+    },
+    {
+        title: 'useTour',
+        href: '/docs/hooks/use-tour',
+        legacyHref: '/use-tour',
+        icon: 'lucide:route',
+        description: 'Headless Tour controller for multi-page tours with optional persist.'
     },
     {
         title: 'useTimeout / useInterval',
