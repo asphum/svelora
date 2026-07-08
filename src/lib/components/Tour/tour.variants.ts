@@ -2,16 +2,16 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const tourVariants = tv({
     slots: {
-        overlay: 'fixed inset-0 z-[var(--sv5ui-tour-overlay-z,100)]',
+        overlay: 'fixed inset-0 z-[var(--svelora-tour-overlay-z,100)]',
         spotlight: [
-            'fixed top-0 left-0 z-[var(--sv5ui-tour-overlay-z,100)] pointer-events-none',
+            'fixed top-0 left-0 z-[var(--svelora-tour-overlay-z,100)] pointer-events-none',
             'shadow-[0_0_0_9999px_rgba(0,0,0,0.5)]'
         ],
         panel: [
-            'z-[var(--sv5ui-tour-panel-z,101)] flex flex-col',
+            'z-[var(--svelora-tour-panel-z,101)] flex flex-col',
             'bg-surface-container-lowest text-on-surface ring ring-surface-container-highest',
             'rounded-xl shadow-xl focus:outline-none',
-            'w-[var(--sv5ui-tour-w)] max-w-[calc(100vw-2rem)]'
+            'w-[var(--svelora-tour-w)] max-w-[calc(100vw-2rem)]'
         ],
         arrow: 'bg-surface-container-lowest border-surface-container-highest',
         header: 'relative flex items-start justify-between gap-2 p-4 pb-0',
@@ -29,9 +29,9 @@ export const tourVariants = tv({
     },
     variants: {
         size: {
-            sm: { panel: '[--sv5ui-tour-w:280px]' },
-            md: { panel: '[--sv5ui-tour-w:340px]' },
-            lg: { panel: '[--sv5ui-tour-w:420px]' }
+            sm: { panel: '[--svelora-tour-w:280px]' },
+            md: { panel: '[--svelora-tour-w:340px]' },
+            lg: { panel: '[--svelora-tour-w:420px]' }
         },
         transition: {
             true: {

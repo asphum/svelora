@@ -126,7 +126,7 @@ describe('useTour', () => {
     })
 
     it('persists and restores across instances', () => {
-        const key = `sv5ui-tour-test-${Math.random()}`
+        const key = `svelora-tour-test-${Math.random()}`
         localStorage.removeItem(key)
 
         const first = setup({ steps, persist: { key } })
@@ -146,7 +146,7 @@ describe('useTour', () => {
     })
 
     it('clears persisted state when the tour closes', () => {
-        const key = `sv5ui-tour-test-${Math.random()}`
+        const key = `svelora-tour-test-${Math.random()}`
         const { api, cleanup } = setup({ steps, persist: { key } })
 
         api.start()

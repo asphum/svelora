@@ -10,7 +10,7 @@ type ResolvedPersist = Required<TourPersistOptions>
 function normalizePersist(persist: UseTourOptions['persist']): ResolvedPersist | null {
     if (!persist) return null
     const opts = persist === true ? {} : persist
-    return { key: opts.key ?? 'sv5ui-tour', storage: opts.storage ?? 'local' }
+    return { key: opts.key ?? 'svelora-tour', storage: opts.storage ?? 'local' }
 }
 
 /**

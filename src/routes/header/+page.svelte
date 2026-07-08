@@ -28,7 +28,7 @@
             Resize below the lg breakpoint to see the toggle button and mobile menu.
         </p>
         <div class="overflow-hidden rounded-lg ring ring-outline-variant">
-            <Header title="SV5UI" class="static">
+            <Header title="Svelora" class="static">
                 {#each navLinks as link (link.href)}
                     <Link href={link.href} class="px-3 py-2 text-sm font-medium">
                         {link.label}
@@ -64,7 +64,7 @@
                 <div class="space-y-2">
                     <p class="text-sm font-medium text-on-surface-variant capitalize">{mode}</p>
                     <div class="overflow-hidden rounded-lg ring ring-outline-variant">
-                        <Header title="SV5UI" {mode} class="static" ui={{ toggle: 'lg:flex' }}>
+                        <Header title="Svelora" {mode} class="static" ui={{ toggle: 'lg:flex' }}>
                             {#snippet body()}
                                 <div class="flex flex-col gap-1">
                                     {#each navLinks as link (link.href)}
@@ -93,7 +93,7 @@
         <h2 class="text-lg font-semibold">Toggle side</h2>
         <div class="overflow-hidden rounded-lg ring ring-outline-variant">
             <Header
-                title="SV5UI"
+                title="Svelora"
                 toggleSide="left"
                 class="static"
                 ui={{ toggle: 'lg:flex' }}
@@ -114,7 +114,7 @@
                         >
                             S5
                         </span>
-                        SV5UI
+                        Svelora
                     </Link>
                 {/snippet}
 

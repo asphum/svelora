@@ -33,7 +33,7 @@
         docsTopNav
     } from '$internal/docs/navigation.js'
 
-    import '../sv5ui.config.js'
+    import '../svelora.config.js'
 
     const { children, data } = $props<{
         children: () => unknown
@@ -201,7 +201,7 @@
                         showChevron={false}
                         ariaLabel={m.locale_change_language()}
                         menuLabel={m.locale_language()}
-                        class="rounded-full !p-1 overflow-hidden"
+                        class="rounded-full p-1! overflow-hidden"
                         onLocaleChange={(nextLocale) => {
                             const locale = toLocale(nextLocale)
                             if (locale) {

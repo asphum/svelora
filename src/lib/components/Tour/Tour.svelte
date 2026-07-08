@@ -94,7 +94,7 @@
     const index = $derived(ctrl.currentIndex)
     const step = $derived<TourStep | undefined>(index >= 0 ? steps[index] : undefined)
 
-    const uid = `sv5ui-tour-${++uidCounter}`
+    const uid = `svelora-tour-${++uidCounter}`
     const titleId = `${uid}-title`
     const descId = `${uid}-desc`
 

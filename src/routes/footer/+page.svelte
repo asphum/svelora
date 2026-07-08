@@ -117,7 +117,7 @@
                 {/snippet}
 
                 {#snippet left()}
-                    <span>Copyright 2026 SV5UI. All rights reserved.</span>
+                    <span>Copyright 2026 Svelora. All rights reserved.</span>
                 {/snippet}
 
                 {#snippet right()}
@@ -155,7 +155,7 @@
         <div class="overflow-hidden rounded-xl bg-surface ring ring-outline-variant">
             <Footer>
                 {#snippet left()}
-                    <span>Copyright 2026 SV5UI.</span>
+                    <span>Copyright 2026 Svelora.</span>
                 {/snippet}
 
                 {#each navLinks as link (link.href)}

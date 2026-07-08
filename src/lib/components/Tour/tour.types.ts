@@ -285,7 +285,7 @@ export interface TourController {
 export interface TourPersistOptions {
     /**
      * Storage key.
-     * @default 'sv5ui-tour'
+     * @default 'svelora-tour'
      */
     key?: string
 
