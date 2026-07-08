@@ -9,22 +9,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **Tour** — spotlight product tour พร้อม floating step panel, guards แบบ async, centered dialog mode, และ snippets สำหรับ header/footer/content
-- **useTour** — headless Tour controller (`start`/`stop`/`next`/`prev`/`goTo`) รองรับ `persist` สำหรับ multi-page tours
-- **Error** — หน้า error สำเร็จรูป พร้อม status display, clear action และ snippet overrides
-- **Header** — sticky app header รองรับ mobile menu (Modal/Slideover/Drawer)
-- **Main** — content container ที่คำนวณความสูงจาก `--ui-header-height`
-- **Footer / FooterColumns** — footer พร้อม link columns และ active route links
-- Icons config — เพิ่มค่า default `menu`, `external`
-- `theme.css` — กำหนด `--ui-header-height` (default `4rem`)
+- _None yet._
 
 ### Changed
 
-- อัปเดต docs layout ให้ใช้ `Main` component และ height contract ร่วมกับ `--ui-header-height`
+- _None yet._
 
 ### Fixed
 
 - _None yet._
+
+## [3.1.4] - 2026-07-08
+
+### Added
+
+- add Error and Footer components with documentation and styling updates
+
+### Changed
+
+- reformat code in button documentation page using Prettier
+- rename SV5UI references to Svelora and remove unused sv5ui.config.ts file
 
 ## [3.1.3] - 2026-07-06
 
@@ -546,7 +550,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.3...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.4...HEAD
+[3.1.4]: https://github.com/asphum/svelora/compare/v3.1.3...v3.1.4
 [3.1.3]: https://github.com/asphum/svelora/compare/v3.1.2...v3.1.3
 [3.1.2]: https://github.com/asphum/svelora/compare/v3.1.1...v3.1.2
 [3.1.1]: https://github.com/asphum/svelora/compare/v3.1.0...v3.1.1
