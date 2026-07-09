@@ -19,6 +19,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.1.5] - 2026-07-09
+
+### Added
+
+- introduce field name resolution helper and update form components to support array-style naming conventions
+
+### Changed
+
+- update project dependencies to latest versions
+
 ## [3.1.4] - 2026-07-08
 
 ### Added
@@ -550,7 +560,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.4...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.5...HEAD
+[3.1.5]: https://github.com/asphum/svelora/compare/v3.1.4...v3.1.5
 [3.1.4]: https://github.com/asphum/svelora/compare/v3.1.3...v3.1.4
 [3.1.3]: https://github.com/asphum/svelora/compare/v3.1.2...v3.1.3
 [3.1.2]: https://github.com/asphum/svelora/compare/v3.1.1...v3.1.2
