@@ -8,6 +8,7 @@
     import { Slider, useId } from 'bits-ui'
     import { getComponentConfig } from '../../config.js'
     import { useFormField, useFormFieldEmit } from '../../hooks/useFormField/index.js'
+    import { resolveFormFieldName } from '../../form/resolve-form-field-name.js'
     import { sliderDefaults, sliderVariants } from './slider.variants.js'
 
     const config = getComponentConfig('slider', sliderDefaults)
@@ -57,6 +58,9 @@
 
     const asArray = $derived(Array.isArray(value) ? value : [value ?? min])
     const isMultiple = $derived(Array.isArray(value))
+    const formFieldName = $derived(
+        resolveFormFieldName(resolvedName, isMultiple && asArray.length > 1)
+    )
 
     function handleValueChange(v: number[]) {
         value = isMultiple ? v : (v[0] ?? min)
@@ -87,9 +91,9 @@
 </script>
 
 <div bind:this={ref} class={classes.root} {...restProps}>
-    {#if resolvedName}
+    {#if formFieldName}
         {#each asArray as v, i (i)}
-            <input type="hidden" name={resolvedName} value={v} />
+            <input type="hidden" name={formFieldName} value={v} />
         {/each}
     {/if}
 

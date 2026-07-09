@@ -22,6 +22,7 @@
     } from '../FieldGroup/field-group.variants.js'
     import { useDebounce } from '../../hooks/useDebounce/index.js'
     import { useFormField, useFormFieldEmit } from '../../hooks/useFormField/index.js'
+    import { resolveFormFieldName } from '../../form/resolve-form-field-name.js'
     import Icon from '../Icon/Icon.svelte'
     import { selectMenuDefaults, selectMenuVariants } from './select-menu.variants.js'
 
@@ -113,6 +114,7 @@
     )
     const resolvedId = $derived(id ?? formFieldContext?.ariaId)
     const resolvedName = $derived(name ?? formFieldContext?.name)
+    const formFieldName = $derived(resolveFormFieldName(resolvedName, multiple))
 
     // ---- ARIA ----
     const ariaDescribedBy = $derived(
@@ -651,7 +653,7 @@
             value = val
             emit.onChange()
         }}
-        name={resolvedName}
+        name={formFieldName}
     >
         {@render rootChildren()}
     </Combobox.Root>
@@ -671,7 +673,7 @@
             value = val
             emit.onChange()
         }}
-        name={resolvedName}
+        name={formFieldName}
     >
         {@render rootChildren()}
     </Combobox.Root>

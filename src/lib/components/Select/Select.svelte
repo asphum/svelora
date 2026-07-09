@@ -15,6 +15,7 @@
         fieldGroupVariantWithRoot
     } from '../FieldGroup/field-group.variants.js'
     import { useFormField, useFormFieldEmit } from '../../hooks/useFormField/index.js'
+    import { resolveFormFieldName } from '../../form/resolve-form-field-name.js'
     import Icon from '../Icon/Icon.svelte'
     import { selectDefaults, selectVariants } from './select.variants.js'
 
@@ -98,6 +99,7 @@
     )
     const resolvedId = $derived(id ?? formFieldContext?.ariaId)
     const resolvedName = $derived(name ?? formFieldContext?.name)
+    const formFieldName = $derived(resolveFormFieldName(resolvedName, multiple))
 
     // ---- ARIA ----
     const ariaDescribedBy = $derived(
@@ -374,7 +376,6 @@
         <Select.Trigger
             {...restProps}
             id={resolvedId}
-            name={resolvedName}
             aria-describedby={ariaDescribedBy}
             aria-invalid={resolvedHighlight ? true : undefined}
             class={baseClass}
@@ -426,6 +427,7 @@
         }}
         {disabled}
         {required}
+        name={formFieldName}
         items={bitsItems}
         value={selectedValues}
         onValueChange={(val) => {
@@ -449,6 +451,7 @@
         }}
         {disabled}
         {required}
+        name={formFieldName}
         items={bitsItems}
         value={selectedValues[0] ?? ''}
         onValueChange={(val) => {

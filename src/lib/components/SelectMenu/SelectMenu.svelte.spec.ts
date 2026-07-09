@@ -59,6 +59,18 @@ describe('SelectMenu', () => {
             const { container } = render(SelectMenu, { items: [] })
             expect(getTrigger(container)).not.toBeNull()
         })
+
+        it('should render hidden inputs with [] suffix for multiple form fields', () => {
+            render(SelectMenu, {
+                items: defaultItems,
+                name: 'fruits',
+                multiple: true,
+                value: ['apple', 'cherry']
+            })
+            const hidden = document.querySelectorAll<HTMLInputElement>('input[name="fruits[]"]')
+            expect(hidden.length).toBe(2)
+            expect([...hidden].map((input) => input.value).sort()).toEqual(['apple', 'cherry'])
+        })
     })
 
     // ==================== DROPDOWN INTERACTION ====================

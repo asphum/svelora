@@ -8,6 +8,7 @@
     import { Checkbox, Label, useId } from 'bits-ui'
     import { getComponentConfig, iconsDefaults } from '../../config.js'
     import { useFormField, useFormFieldEmit } from '../../hooks/useFormField/index.js'
+    import { resolveFormFieldName } from '../../form/resolve-form-field-name.js'
     import Icon from '../Icon/Icon.svelte'
     import type { CheckboxGroupItem } from './checkbox-group.types.js'
     import { checkboxGroupDefaults, checkboxGroupVariants } from './checkbox-group.variants.js'
@@ -52,6 +53,7 @@
     const autoId = useId()
     const resolvedId = $derived(id ?? formFieldContext?.ariaId ?? autoId)
     const resolvedName = $derived(name ?? formFieldContext?.name)
+    const formFieldName = $derived(resolveFormFieldName(resolvedName, true))
     const isDisabled = $derived(disabled || loading)
 
     const ariaDescribedBy = $derived(
@@ -117,7 +119,7 @@
             checked={value.includes(checkboxItem.value)}
             onCheckedChange={(checked) => toggleItem(checkboxItem.value, checked)}
             id={itemId}
-            name={resolvedName}
+            name={formFieldName}
             value={checkboxItem.value}
             disabled={itemDisabled}
             class={elementClasses.base}

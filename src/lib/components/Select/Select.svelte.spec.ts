@@ -54,10 +54,24 @@ describe('Select', () => {
             expect(getTrigger()!.id).toBe('my-select')
         })
 
-        it('should render with name attribute', () => {
-            render(Select, { items: defaultItems, name: 'fruit' })
-            const trigger = getTrigger()!
-            expect(trigger.getAttribute('name')).toBe('fruit')
+        it('should render hidden input for form submission when name is set', () => {
+            render(Select, { items: defaultItems, name: 'fruit', value: 'apple' })
+            const hidden = document.querySelector<HTMLInputElement>('input[name="fruit"]')
+            expect(hidden).not.toBeNull()
+            expect(hidden!.value).toBe('apple')
+            expect(getTrigger()!.getAttribute('name')).toBeNull()
+        })
+
+        it('should use [] suffix for multiple selection form fields', () => {
+            render(Select, {
+                items: defaultItems,
+                name: 'fruits',
+                multiple: true,
+                value: ['apple', 'banana']
+            })
+            const hidden = document.querySelectorAll<HTMLInputElement>('input[name="fruits[]"]')
+            expect(hidden.length).toBe(2)
+            expect([...hidden].map((input) => input.value).sort()).toEqual(['apple', 'banana'])
         })
 
         it('should render empty when no items provided', () => {

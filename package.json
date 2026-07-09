@@ -198,7 +198,7 @@
         }
     },
     "devDependencies": {
-        "@biomejs/biome": "2.5.2",
+        "@biomejs/biome": "2.5.3",
         "@inlang/paraglide-js": "^2.20.2",
         "@sveltejs/adapter-vercel": "^6.3.4",
         "@sveltejs/kit": "^2.69.2",
@@ -282,6 +282,7 @@
         "embla-carousel-autoplay": "9.0.0-rc02",
         "embla-carousel-class-names": "9.0.0-rc02",
         "embla-carousel-fade": "9.0.0-rc02",
-        "embla-carousel-svelte": "9.0.0-rc02"
+        "embla-carousel-svelte": "9.0.0-rc02",
+        "typescript": "6.0.3"
     }
 }
