@@ -127,6 +127,7 @@
         "valibot": "^1.0.0",
         "yup": "^1.7.0",
         "zod": "^3.24.0 || ^4.0.0",
+        "@sveltejs/kit": "^2.0.0",
         "mode-watcher": "^1.1.0"
     },
     "peerDependenciesMeta": {
@@ -194,6 +195,9 @@
             "optional": true
         },
         "zod": {
+            "optional": true
+        },
+        "@sveltejs/kit": {
             "optional": true
         }
     },
