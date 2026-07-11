@@ -19,6 +19,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.1.7] - 2026-07-11
+
+### Added
+
+- add SortableGroup component and custom overlay support for multi-list drag-and-drop
+
+### Changed
+
+- pin all dependencies to latest and refactor sortable list components to use the updated dnd-kit API
+- prepare public release
+
 ## [3.1.6] - 2026-07-09
 
 ### Added
@@ -566,7 +577,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.6...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.7...HEAD
+[3.1.7]: https://github.com/asphum/svelora/compare/v3.1.6...v3.1.7
 [3.1.6]: https://github.com/asphum/svelora/compare/v3.1.5...v3.1.6
 [3.1.5]: https://github.com/asphum/svelora/compare/v3.1.4...v3.1.5
 [3.1.4]: https://github.com/asphum/svelora/compare/v3.1.3...v3.1.4
