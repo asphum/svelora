@@ -6,7 +6,7 @@ export interface SortableListProps<T> {
     getKey: (item: T) => string | number
     onReorder?: (items: T[]) => void
     axis?: 'vertical' | 'horizontal' | 'grid'
-    handle?: boolean
+    handle?: boolean | string
     disabled?: boolean
     class?: ClassNameValue
     itemClass?: ClassNameValue

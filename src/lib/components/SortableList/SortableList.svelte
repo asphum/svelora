@@ -27,7 +27,7 @@
         getId: (item) => getKey(item),
         group: () => group,
         axis: () => axis,
-        handle: () => (handle ? '[data-sortable-handle]' : undefined),
+        handle: () => (handle === true ? '[data-sortable-handle]' : typeof handle === 'string' ? handle : undefined),
         disabled: () => disabled,
         onReorder(nextItems) {
             items = nextItems
@@ -68,8 +68,8 @@
                 {#if overlay && dragging}
                     <div class="absolute inset-0 z-10 rounded-[inherit] border-2 border-dashed border-primary/50 bg-primary/5 pointer-events-none"></div>
                 {/if}
-                <div class={['flex items-center gap-3', overlay && dragging && 'invisible']}>
-                    {#if handle}
+                <div class={['flex w-full items-center gap-3', overlay && dragging && 'invisible']}>
+                    {#if handle === true}
                         <button
                             type="button"
                             data-sortable-handle
