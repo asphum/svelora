@@ -534,7 +534,7 @@ describe('Button', () => {
 
     describe('loading icon placement', () => {
         it('should spin only the leading icon when loading with both icons', async () => {
-            const { container } = render(Button, {
+            const { container } = await render(Button, {
                 label: 'Confirm',
                 loading: true,
                 leadingIcon: 'lucide:check',
@@ -557,7 +557,7 @@ describe('Button', () => {
         })
 
         it('should spin only the trailing icon when loading with trailing=true', async () => {
-            const { container } = render(Button, {
+            const { container } = await render(Button, {
                 label: 'Submit',
                 loading: true,
                 trailing: true,

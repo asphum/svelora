@@ -51,7 +51,7 @@ describe('useIntersectionObserver', () => {
         globalThis.IntersectionObserver = OriginalIO
     })
 
-    it('observes the target and defaults isIntersecting to false', () => {
+    it('observes the target and defaults isIntersecting to false', async () => {
         const el = document.createElement('div')
         let api: ReturnType<typeof useIntersectionObserver>
         const cleanup = $effect.root(() => {
@@ -65,7 +65,7 @@ describe('useIntersectionObserver', () => {
         cleanup()
     })
 
-    it('updates isIntersecting and invokes the callback when the observer fires', () => {
+    it('updates isIntersecting and invokes the callback when the observer fires', async () => {
         const el = document.createElement('div')
         const cb = vi.fn()
         let api: ReturnType<typeof useIntersectionObserver>
@@ -86,7 +86,7 @@ describe('useIntersectionObserver', () => {
         cleanup()
     })
 
-    it('forwards options to the IntersectionObserver', () => {
+    it('forwards options to the IntersectionObserver', async () => {
         const el = document.createElement('div')
         const cleanup = $effect.root(() => {
             useIntersectionObserver(() => el, undefined, { rootMargin: '200px', threshold: 0.5 })
@@ -97,7 +97,7 @@ describe('useIntersectionObserver', () => {
         cleanup()
     })
 
-    it('disconnects on teardown (no leak)', () => {
+    it('disconnects on teardown (no leak)', async () => {
         const el = document.createElement('div')
         const cleanup = $effect.root(() => {
             useIntersectionObserver(() => el)
@@ -109,7 +109,7 @@ describe('useIntersectionObserver', () => {
         expect(observers[0].disconnected).toBe(true)
     })
 
-    it('re-observes when the target getter changes', () => {
+    it('re-observes when the target getter changes', async () => {
         const a = document.createElement('div')
         const b = document.createElement('div')
         let current = $state<Element>(a)
@@ -128,7 +128,7 @@ describe('useIntersectionObserver', () => {
         cleanup()
     })
 
-    it('is a no-op for a nullish target', () => {
+    it('is a no-op for a nullish target', async () => {
         const cleanup = $effect.root(() => {
             useIntersectionObserver(() => null)
         })

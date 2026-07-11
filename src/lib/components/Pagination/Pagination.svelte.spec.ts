@@ -20,8 +20,8 @@ describe('Pagination', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render without crashing', () => {
-            const { container } = render(Pagination, defaultProps)
+        it('should render without crashing', async () => {
+            const { container } = await render(Pagination, defaultProps)
             expect(container).not.toBeNull()
         })
 

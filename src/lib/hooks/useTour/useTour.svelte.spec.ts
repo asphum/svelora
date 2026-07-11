@@ -19,7 +19,7 @@ function setup(opts: Parameters<typeof useTour>[0]) {
 }
 
 describe('useTour', () => {
-    it('is inactive before start', () => {
+    it('is inactive before start', async () => {
         const { api, cleanup } = setup({ steps })
         expect(api.isActive).toBe(false)
         expect(api.currentIndex).toBe(-1)
@@ -28,7 +28,7 @@ describe('useTour', () => {
         cleanup()
     })
 
-    it('starts, advances and goes back', () => {
+    it('starts, advances and goes back', async () => {
         const { api, cleanup } = setup({ steps })
 
         api.start()
@@ -50,7 +50,7 @@ describe('useTour', () => {
         cleanup()
     })
 
-    it('starts at a given index or id', () => {
+    it('starts at a given index or id', async () => {
         const { api, cleanup } = setup({ steps })
         api.start(2)
         flushSync()
@@ -63,7 +63,7 @@ describe('useTour', () => {
         cleanup()
     })
 
-    it('completes (not skip) when advancing past the last step', () => {
+    it('completes (not skip) when advancing past the last step', async () => {
         const onComplete = vi.fn()
         const onSkip = vi.fn()
         const { api, cleanup } = setup({ steps, onComplete, onSkip })
@@ -79,7 +79,7 @@ describe('useTour', () => {
         cleanup()
     })
 
-    it('fires onSkip when stopped before completing', () => {
+    it('fires onSkip when stopped before completing', async () => {
         const onComplete = vi.fn()
         const onSkip = vi.fn()
         const { api, cleanup } = setup({ steps, onComplete, onSkip })
@@ -96,7 +96,7 @@ describe('useTour', () => {
         cleanup()
     })
 
-    it('reports step transitions through onStepChange', () => {
+    it('reports step transitions through onStepChange', async () => {
         const onStepChange = vi.fn()
         const { api, cleanup } = setup({ steps, onStepChange })
 
@@ -109,7 +109,7 @@ describe('useTour', () => {
         cleanup()
     })
 
-    it('skips disabled steps in both directions', () => {
+    it('skips disabled steps in both directions', async () => {
         const withDisabled: TourStep[] = [{ id: 'a' }, { id: 'b', disabled: true }, { id: 'c' }]
         const { api, cleanup } = setup({ steps: withDisabled })
 
@@ -125,7 +125,7 @@ describe('useTour', () => {
         cleanup()
     })
 
-    it('persists and restores across instances', () => {
+    it('persists and restores across instances', async () => {
         const key = `svelora-tour-test-${Math.random()}`
         localStorage.removeItem(key)
 
@@ -145,7 +145,7 @@ describe('useTour', () => {
         localStorage.removeItem(key)
     })
 
-    it('clears persisted state when the tour closes', () => {
+    it('clears persisted state when the tour closes', async () => {
         const key = `svelora-tour-test-${Math.random()}`
         const { api, cleanup } = setup({ steps, persist: { key } })
 

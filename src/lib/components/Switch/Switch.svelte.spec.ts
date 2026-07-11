@@ -16,34 +16,34 @@ describe('Switch', () => {
             await expect.element(sw).toBeInTheDocument()
         })
 
-        it('should render unchecked by default', () => {
+        it('should render unchecked by default', async () => {
             render(Switch)
             expect(getSwitch()!.getAttribute('data-state')).toBe('unchecked')
         })
 
-        it('should render checked when checked prop is true', () => {
+        it('should render checked when checked prop is true', async () => {
             render(Switch, { checked: true })
             expect(getSwitch()!.getAttribute('data-state')).toBe('checked')
         })
 
-        it('should render with id', () => {
+        it('should render with id', async () => {
             render(Switch, { id: 'my-switch' })
             expect(getSwitch()!.id).toBe('my-switch')
         })
 
-        it('should generate an id automatically', () => {
+        it('should generate an id automatically', async () => {
             render(Switch)
             expect(getSwitch()!.id).toBeTruthy()
         })
 
-        it('should render with name attribute', () => {
-            const { container } = render(Switch, { name: 'notifications' })
+        it('should render with name attribute', async () => {
+            const { container } = await render(Switch, { name: 'notifications' })
             // bits-ui Switch renders a hidden input as sibling of the button for form submission
             const hidden = container.querySelector('input[name="notifications"]')
             expect(hidden).toBeTruthy()
         })
 
-        it('should render thumb element', () => {
+        it('should render thumb element', async () => {
             render(Switch)
             const thumb = getThumb()
             expect(thumb).not.toBeNull()
@@ -85,13 +85,13 @@ describe('Switch', () => {
             await expect.element(sw).toBeEnabled()
         })
 
-        it('should apply disabled styling to root', () => {
-            const { container } = render(Switch, { disabled: true })
+        it('should apply disabled styling to root', async () => {
+            const { container } = await render(Switch, { disabled: true })
             const root = container.firstElementChild as HTMLElement
             expect(root.className).toMatch(/opacity-75/)
         })
 
-        it('should apply cursor-not-allowed to base', () => {
+        it('should apply cursor-not-allowed to base', async () => {
             render(Switch, { disabled: true })
             expect(getSwitch()!.className).toMatch(/cursor-not-allowed/)
         })
@@ -144,18 +144,18 @@ describe('Switch', () => {
         ] as const
 
         for (const color of colors) {
-            it(`should render with color="${color}"`, () => {
+            it(`should render with color="${color}"`, async () => {
                 render(Switch, { color })
                 expect(getSwitch()!.className).toMatch(new RegExp(`bg-${color}`))
             })
         }
 
-        it('should apply surface color', () => {
+        it('should apply surface color', async () => {
             render(Switch, { color: 'surface' })
             expect(getSwitch()!.className).toMatch(/bg-on-surface/)
         })
 
-        it('should apply focus-visible outline per color', () => {
+        it('should apply focus-visible outline per color', async () => {
             render(Switch, { color: 'primary' })
             expect(getSwitch()!.className).toMatch(/outline-primary/)
         })
@@ -164,35 +164,35 @@ describe('Switch', () => {
     // ==================== SIZES ====================
 
     describe('sizes', () => {
-        it('should apply xs size classes', () => {
-            const { container } = render(Switch, { size: 'xs' })
+        it('should apply xs size classes', async () => {
+            const { container } = await render(Switch, { size: 'xs' })
             expect(getSwitch()!.className).toMatch(/w-7/)
             const containerEl = container.querySelector('.flex.items-center') as HTMLElement
             expect(containerEl.className).toMatch(/h-4/)
         })
 
-        it('should apply sm size classes', () => {
+        it('should apply sm size classes', async () => {
             render(Switch, { size: 'sm' })
             expect(getSwitch()!.className).toMatch(/w-8/)
         })
 
-        it('should apply md size classes by default', () => {
+        it('should apply md size classes by default', async () => {
             render(Switch)
             expect(getSwitch()!.className).toMatch(/w-9/)
         })
 
-        it('should apply lg size classes', () => {
+        it('should apply lg size classes', async () => {
             render(Switch, { size: 'lg' })
             expect(getSwitch()!.className).toMatch(/w-10/)
         })
 
-        it('should apply xl size classes', () => {
+        it('should apply xl size classes', async () => {
             render(Switch, { size: 'xl' })
             expect(getSwitch()!.className).toMatch(/w-11/)
         })
 
-        it('should apply wrapper text size per size variant', () => {
-            const { container } = render(Switch, { size: 'xs', label: 'Test' })
+        it('should apply wrapper text size per size variant', async () => {
+            const { container } = await render(Switch, { size: 'xs', label: 'Test' })
             const wrapper = container.querySelector('.ms-2') as HTMLElement
             expect(wrapper.className).toMatch(/text-xs/)
         })
@@ -213,8 +213,8 @@ describe('Switch', () => {
             await expect.element(desc).toBeInTheDocument()
         })
 
-        it('should render both label and description', () => {
-            const { container } = render(Switch, {
+        it('should render both label and description', async () => {
+            const { container } = await render(Switch, {
                 label: 'Dark mode',
                 description: 'Toggle theme appearance'
             })
@@ -224,30 +224,30 @@ describe('Switch', () => {
             expect(desc.textContent).toBe('Toggle theme appearance')
         })
 
-        it('should not render wrapper when no label or description', () => {
-            const { container } = render(Switch)
+        it('should not render wrapper when no label or description', async () => {
+            const { container } = await render(Switch)
             expect(container.querySelector('.ms-2')).toBeNull()
         })
 
-        it('should associate label with switch via for attribute', () => {
+        it('should associate label with switch via for attribute', async () => {
             render(Switch, { id: 'test-switch', label: 'My Label' })
             const label = document.querySelector('label') as HTMLLabelElement
             expect(label.getAttribute('for')).toBe('test-switch')
         })
 
-        it('should apply required asterisk styling to label', () => {
+        it('should apply required asterisk styling to label', async () => {
             render(Switch, { label: 'Accept terms', required: true })
             const label = document.querySelector('label') as HTMLElement
             expect(label.className).toMatch(/after:content/)
         })
 
-        it('should apply cursor-not-allowed to label when disabled', () => {
+        it('should apply cursor-not-allowed to label when disabled', async () => {
             render(Switch, { label: 'Disabled', disabled: true })
             const label = document.querySelector('label') as HTMLElement
             expect(label.className).toMatch(/cursor-not-allowed/)
         })
 
-        it('should apply cursor-not-allowed to description when disabled', () => {
+        it('should apply cursor-not-allowed to description when disabled', async () => {
             render(Switch, { description: 'Desc', disabled: true })
             const desc = document.querySelector('p') as HTMLElement
             expect(desc.className).toMatch(/cursor-not-allowed/)
@@ -285,14 +285,14 @@ describe('Switch', () => {
             })
         })
 
-        it('should not render icons when none provided', () => {
+        it('should not render icons when none provided', async () => {
             render(Switch)
             const thumb = getThumb()
             expect(thumb!.children.length).toBe(0)
         })
 
         it('should apply checked icon opacity class', async () => {
-            const { container } = render(Switch, { checkedIcon: 'lucide:check' })
+            const { container } = await render(Switch, { checkedIcon: 'lucide:check' })
             await vi.waitFor(() => {
                 const iconEl = container.querySelector('[class*="opacity-0"]')
                 expect(iconEl).not.toBeNull()
@@ -303,7 +303,7 @@ describe('Switch', () => {
         })
 
         it('should apply unchecked icon opacity class', async () => {
-            const { container } = render(Switch, { uncheckedIcon: 'lucide:x' })
+            const { container } = await render(Switch, { uncheckedIcon: 'lucide:x' })
             await vi.waitFor(() => {
                 const iconEl = container.querySelector('[class*="opacity-0"]')
                 expect(iconEl).not.toBeNull()
@@ -317,43 +317,43 @@ describe('Switch', () => {
     // ==================== CUSTOM CLASS & UI ====================
 
     describe('custom class & ui', () => {
-        it('should apply custom class to root element', () => {
-            const { container } = render(Switch, { class: 'my-custom-class' })
+        it('should apply custom class to root element', async () => {
+            const { container } = await render(Switch, { class: 'my-custom-class' })
             const root = container.firstElementChild as HTMLElement
             expect(root.className).toContain('my-custom-class')
         })
 
-        it('should apply ui slot override to base', () => {
+        it('should apply ui slot override to base', async () => {
             render(Switch, { ui: { base: 'my-base-class' } })
             expect(getSwitch()!.className).toContain('my-base-class')
         })
 
-        it('should apply ui slot override to root', () => {
-            const { container } = render(Switch, { ui: { root: 'my-root-class' } })
+        it('should apply ui slot override to root', async () => {
+            const { container } = await render(Switch, { ui: { root: 'my-root-class' } })
             const root = container.firstElementChild as HTMLElement
             expect(root.className).toContain('my-root-class')
         })
 
-        it('should apply ui slot override to thumb', () => {
+        it('should apply ui slot override to thumb', async () => {
             render(Switch, { ui: { thumb: 'my-thumb-class' } })
             const thumb = getThumb()
             expect(thumb!.className).toContain('my-thumb-class')
         })
 
-        it('should apply ui slot override to label', () => {
+        it('should apply ui slot override to label', async () => {
             render(Switch, { label: 'Test', ui: { label: 'my-label-class' } })
             const label = document.querySelector('label') as HTMLElement
             expect(label.className).toContain('my-label-class')
         })
 
-        it('should apply ui slot override to description', () => {
+        it('should apply ui slot override to description', async () => {
             render(Switch, { description: 'Desc', ui: { description: 'my-desc-class' } })
             const desc = document.querySelector('p') as HTMLElement
             expect(desc.className).toContain('my-desc-class')
         })
 
-        it('should apply ui slot override to wrapper', () => {
-            const { container } = render(Switch, {
+        it('should apply ui slot override to wrapper', async () => {
+            const { container } = await render(Switch, {
                 label: 'Test',
                 ui: { wrapper: 'my-wrapper-class' }
             })
@@ -371,17 +371,17 @@ describe('Switch', () => {
             await expect.element(sw).toBeInTheDocument()
         })
 
-        it('should set aria-checked based on checked state', () => {
+        it('should set aria-checked based on checked state', async () => {
             render(Switch, { checked: true })
             expect(getSwitch()!.getAttribute('aria-checked')).toBe('true')
         })
 
-        it('should set aria-checked false when unchecked', () => {
+        it('should set aria-checked false when unchecked', async () => {
             render(Switch)
             expect(getSwitch()!.getAttribute('aria-checked')).toBe('false')
         })
 
-        it('should support required attribute', () => {
+        it('should support required attribute', async () => {
             render(Switch, { required: true })
             expect(getSwitch()!.getAttribute('aria-required')).toBe('true')
         })
@@ -390,8 +390,8 @@ describe('Switch', () => {
     // ==================== COMBINED PROPS ====================
 
     describe('combined props', () => {
-        it('should render with label, description, and checked', () => {
-            const { container } = render(Switch, {
+        it('should render with label, description, and checked', async () => {
+            const { container } = await render(Switch, {
                 label: 'Email alerts',
                 description: 'Receive email when updates arrive',
                 checked: true
@@ -403,7 +403,7 @@ describe('Switch', () => {
             expect(getSwitch()!.getAttribute('data-state')).toBe('checked')
         })
 
-        it('should render disabled with checked state', () => {
+        it('should render disabled with checked state', async () => {
             render(Switch, { disabled: true, checked: true })
             expect(getSwitch()!.getAttribute('data-state')).toBe('checked')
             expect(getSwitch()!.disabled).toBe(true)
@@ -422,15 +422,15 @@ describe('Switch', () => {
             })
         })
 
-        it('should render with color and size combined', () => {
+        it('should render with color and size combined', async () => {
             render(Switch, { color: 'success', size: 'xl' })
             const sw = getSwitch()!
             expect(sw.className).toMatch(/bg-success/)
             expect(sw.className).toMatch(/w-11/)
         })
 
-        it('should render with all props combined', () => {
-            const { container } = render(Switch, {
+        it('should render with all props combined', async () => {
+            const { container } = await render(Switch, {
                 checked: true,
                 color: 'error',
                 size: 'lg',

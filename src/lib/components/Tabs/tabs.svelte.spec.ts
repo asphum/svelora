@@ -18,8 +18,8 @@ describe('Tabs', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render without crashing', () => {
-            const { container } = render(Tabs, { items: sampleItems })
+        it('should render without crashing', async () => {
+            const { container } = await render(Tabs, { items: sampleItems })
             expect(container).not.toBeNull()
         })
 
@@ -190,7 +190,7 @@ describe('Tabs', () => {
             const itemsWithIcon = [
                 { label: 'Home', content: 'Home content', value: 'home', icon: 'lucide:home' }
             ]
-            const { container } = render(Tabs, { items: itemsWithIcon })
+            const { container } = await render(Tabs, { items: itemsWithIcon })
             // Iconify loads icons asynchronously
             await expect.poll(() => container.querySelector('svg'), { timeout: 5000 }).toBeTruthy()
         })

@@ -21,13 +21,13 @@ describe('Form', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('renders a <form> element by default', () => {
-            const { container } = render(Form, { children: snippet('<p>Hi</p>') })
+        it('renders a <form> element by default', async () => {
+            const { container } = await render(Form, { children: snippet('<p>Hi</p>') })
             expect(container.querySelector('form')).toBeTruthy()
         })
 
-        it('renders a <div> when nested=true', () => {
-            const { container } = render(Form, {
+        it('renders a <div> when nested=true', async () => {
+            const { container } = await render(Form, {
                 nested: true,
                 children: snippet('<p>Hi</p>')
             })
@@ -41,24 +41,24 @@ describe('Form', () => {
             await expect.element(el).toBeInTheDocument()
         })
 
-        it('applies custom class to the root', () => {
-            const { container } = render(Form, {
+        it('applies custom class to the root', async () => {
+            const { container } = await render(Form, {
                 class: 'my-custom-form',
                 children: snippet('<p>Hi</p>')
             })
             expect(container.querySelector('form.my-custom-form')).toBeTruthy()
         })
 
-        it('applies ui.root slot class', () => {
-            const { container } = render(Form, {
+        it('applies ui.root slot class', async () => {
+            const { container } = await render(Form, {
                 ui: { root: 'ui-root-class' },
                 children: snippet('<p>Hi</p>')
             })
             expect(container.querySelector('form.ui-root-class')).toBeTruthy()
         })
 
-        it('passes id attribute through', () => {
-            const { container } = render(Form, {
+        it('passes id attribute through', async () => {
+            const { container } = await render(Form, {
                 id: 'my-form',
                 children: snippet('<p>Hi</p>')
             })
@@ -69,8 +69,8 @@ describe('Form', () => {
     // ==================== RESTPROPS PASS-THROUGH ====================
 
     describe('restProps', () => {
-        it('spreads attributes onto the <form> root', () => {
-            const { container } = render(Form, {
+        it('spreads attributes onto the <form> root', async () => {
+            const { container } = await render(Form, {
                 'data-test': 'value',
                 children: snippet('<p>Hi</p>')
             } as unknown as Record<string, unknown>)
@@ -78,8 +78,8 @@ describe('Form', () => {
             expect(form?.getAttribute('data-test')).toBe('value')
         })
 
-        it('spreads attributes onto the <div> root when nested', () => {
-            const { container } = render(Form, {
+        it('spreads attributes onto the <div> root when nested', async () => {
+            const { container } = await render(Form, {
                 nested: true,
                 'data-test': 'nested-value',
                 children: snippet('<p>Hi</p>')
@@ -94,7 +94,7 @@ describe('Form', () => {
     describe('submit', () => {
         it('prevents default and invokes onsubmit with data', async () => {
             const onsubmit = vi.fn()
-            const { container } = render(Form, {
+            const { container } = await render(Form, {
                 state: { name: 'Alice' } as never,
                 onsubmit,
                 children: snippet('<button type="submit">Go</button>')
@@ -111,7 +111,7 @@ describe('Form', () => {
         it('calls onerror when custom validate returns errors', async () => {
             const onsubmit = vi.fn()
             const onerror = vi.fn()
-            const { container } = render(Form, {
+            const { container } = await render(Form, {
                 state: { email: '' } as never,
                 validate: () => [{ name: 'email', message: 'Required' }],
                 onsubmit,
@@ -136,7 +136,7 @@ describe('Form', () => {
             // We can't test bind:api through render() props directly (the binding
             // requires a host component). Instead we call the form's internal
             // handler via requestSubmit and verify loading/errors through the DOM.
-            const { container } = render(Form, {
+            const { container } = await render(Form, {
                 state: { x: '' } as never,
                 validate: () => [{ name: 'x', message: 'bad' }],
                 children: snippet('<button type="submit">Submit</button>')

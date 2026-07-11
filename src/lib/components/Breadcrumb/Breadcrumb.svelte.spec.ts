@@ -61,14 +61,14 @@ describe('Breadcrumb', () => {
 
     describe('accessibility', () => {
         it('should set aria-current="page" on the last item', async () => {
-            const { container } = render(Breadcrumb, { items: basicItems })
+            const { container } = await render(Breadcrumb, { items: basicItems })
             const current = container.querySelector('[aria-current="page"]')
             expect(current).not.toBeNull()
             expect(current?.textContent).toContain('Detail')
         })
 
         it('should not set aria-current on non-last items', async () => {
-            const { container } = render(Breadcrumb, { items: basicItems })
+            const { container } = await render(Breadcrumb, { items: basicItems })
             const links = container.querySelectorAll('a')
             links.forEach((link) => {
                 expect(link.getAttribute('aria-current')).toBeNull()
@@ -76,7 +76,7 @@ describe('Breadcrumb', () => {
         })
 
         it('should mark separators with role="presentation" and aria-hidden', async () => {
-            const { container } = render(Breadcrumb, { items: basicItems })
+            const { container } = await render(Breadcrumb, { items: basicItems })
             const separators = container.querySelectorAll('[role="presentation"]')
             expect(separators.length).toBe(2)
             separators.forEach((sep) => {
@@ -89,13 +89,13 @@ describe('Breadcrumb', () => {
 
     describe('separators', () => {
         it('should render N-1 separators for N items', async () => {
-            const { container } = render(Breadcrumb, { items: basicItems })
+            const { container } = await render(Breadcrumb, { items: basicItems })
             const separators = container.querySelectorAll('[role="presentation"]')
             expect(separators.length).toBe(basicItems.length - 1)
         })
 
         it('should render 0 separators for a single item', async () => {
-            const { container } = render(Breadcrumb, {
+            const { container } = await render(Breadcrumb, {
                 items: [{ label: 'Only' }]
             })
             const separators = container.querySelectorAll('[role="presentation"]')
@@ -113,14 +113,14 @@ describe('Breadcrumb', () => {
         })
 
         it('should render as a different element when as prop is set', async () => {
-            const { container } = render(Breadcrumb, { items: basicItems, as: 'div' })
+            const { container } = await render(Breadcrumb, { items: basicItems, as: 'div' })
             const div = container.querySelector('div')
             expect(div).not.toBeNull()
             expect(div?.getAttribute('aria-label')).toBeNull()
         })
 
         it('should only apply aria-label when as="nav"', async () => {
-            const { container } = render(Breadcrumb, { items: basicItems, as: 'section' })
+            const { container } = await render(Breadcrumb, { items: basicItems, as: 'section' })
             const section = container.querySelector('section')
             expect(section?.getAttribute('aria-label')).toBeNull()
         })
@@ -130,7 +130,7 @@ describe('Breadcrumb', () => {
 
     describe('disabled items', () => {
         it('should set aria-disabled on disabled links', async () => {
-            const { container } = render(Breadcrumb, {
+            const { container } = await render(Breadcrumb, {
                 items: [
                     { label: 'Home', href: '/' },
                     { label: 'Disabled', href: '/disabled', disabled: true },
@@ -143,7 +143,7 @@ describe('Breadcrumb', () => {
         })
 
         it('should apply disabled variant classes', async () => {
-            const { container } = render(Breadcrumb, {
+            const { container } = await render(Breadcrumb, {
                 items: [
                     { label: 'Home', href: '/' },
                     { label: 'Disabled', href: '/disabled', disabled: true },
@@ -160,28 +160,28 @@ describe('Breadcrumb', () => {
 
     describe('active variant', () => {
         it('should apply active classes to the last item', async () => {
-            const { container } = render(Breadcrumb, { items: basicItems })
+            const { container } = await render(Breadcrumb, { items: basicItems })
             const current = container.querySelector('[aria-current="page"]')
             expect(current?.className).toMatch(/text-primary/)
             expect(current?.className).toMatch(/font-semibold/)
         })
 
         it('should apply inactive classes to non-last items', async () => {
-            const { container } = render(Breadcrumb, { items: basicItems })
+            const { container } = await render(Breadcrumb, { items: basicItems })
             const firstLink = container.querySelector('a')
             expect(firstLink?.className).toMatch(/text-on-surface-variant/)
             expect(firstLink?.className).toMatch(/font-medium/)
         })
 
         it('should apply hover transition on non-active, non-disabled linked items', async () => {
-            const { container } = render(Breadcrumb, { items: basicItems })
+            const { container } = await render(Breadcrumb, { items: basicItems })
             const firstLink = container.querySelector('a')
             expect(firstLink?.className).toMatch(/hover:text-on-surface/)
             expect(firstLink?.className).toMatch(/transition-colors/)
         })
 
         it('should not apply hover on non-linked items', async () => {
-            const { container } = render(Breadcrumb, {
+            const { container } = await render(Breadcrumb, {
                 items: [{ label: 'Home', href: '/' }, { label: 'No Link' }, { label: 'Current' }]
             })
             const spans = container.querySelectorAll('span[class]')
@@ -200,7 +200,7 @@ describe('Breadcrumb', () => {
         })
 
         it('should apply per-item custom class', async () => {
-            const { container } = render(Breadcrumb, {
+            const { container } = await render(Breadcrumb, {
                 items: [{ label: 'Home', href: '/', class: 'custom-home' }, { label: 'Current' }]
             })
             const link = container.querySelector('a')
@@ -222,7 +222,7 @@ describe('Breadcrumb', () => {
         })
 
         it('should apply ui.list classes', async () => {
-            const { container } = render(Breadcrumb, {
+            const { container } = await render(Breadcrumb, {
                 items: basicItems,
                 ui: { list: 'gap-4' }
             })
@@ -231,7 +231,7 @@ describe('Breadcrumb', () => {
         })
 
         it('should apply ui.link classes', async () => {
-            const { container } = render(Breadcrumb, {
+            const { container } = await render(Breadcrumb, {
                 items: basicItems,
                 ui: { link: 'text-lg' }
             })
@@ -240,7 +240,7 @@ describe('Breadcrumb', () => {
         })
 
         it('should apply ui.separator classes', async () => {
-            const { container } = render(Breadcrumb, {
+            const { container } = await render(Breadcrumb, {
                 items: basicItems,
                 ui: { separator: 'gap-2' }
             })
@@ -253,7 +253,7 @@ describe('Breadcrumb', () => {
 
     describe('combined props', () => {
         it('should render with icons, custom class, and ui overrides together', async () => {
-            const { container } = render(Breadcrumb, {
+            const { container } = await render(Breadcrumb, {
                 items: [
                     { label: 'Home', href: '/', icon: 'lucide:home' },
                     { label: 'Settings', icon: 'lucide:settings' }
@@ -270,7 +270,7 @@ describe('Breadcrumb', () => {
         })
 
         it('should handle single item breadcrumb', async () => {
-            const { container } = render(Breadcrumb, {
+            const { container } = await render(Breadcrumb, {
                 items: [{ label: 'Home' }]
             })
             const current = container.querySelector('[aria-current="page"]')
@@ -286,7 +286,7 @@ describe('Breadcrumb', () => {
                 label: `Level ${i}`,
                 href: i < 9 ? `/level-${i}` : undefined
             }))
-            const { container } = render(Breadcrumb, { items: manyItems })
+            const { container } = await render(Breadcrumb, { items: manyItems })
 
             const links = container.querySelectorAll('a')
             expect(links.length).toBe(9)

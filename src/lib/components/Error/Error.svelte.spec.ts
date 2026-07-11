@@ -16,7 +16,7 @@ describe('Error', () => {
 
     describe('rendering', () => {
         it('should render the root element', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 }
             })
             const root = page.elementLocator(container.firstElementChild!)
@@ -24,14 +24,14 @@ describe('Error', () => {
         })
 
         it('should render as main by default', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 }
             })
             expect(container.firstElementChild!.tagName).toBe('MAIN')
         })
 
         it('should apply base root classes', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 }
             })
             const root = page.elementLocator(container.firstElementChild!)
@@ -42,7 +42,7 @@ describe('Error', () => {
         })
 
         it('should render without an error object', async () => {
-            const { container } = render(ErrorComponent, {})
+            const { container } = await render(ErrorComponent, {})
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toBeInTheDocument()
         })
@@ -52,21 +52,21 @@ describe('Error', () => {
 
     describe('error data', () => {
         it('should render statusCode', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 }
             })
             expect(container.textContent).toContain('404')
         })
 
         it('should render statusCode as string', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: '500' }
             })
             expect(container.textContent).toContain('500')
         })
 
         it('should render statusMessage as heading', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404, statusMessage: 'Page not found' }
             })
             const heading = container.querySelector('h1')
@@ -75,7 +75,7 @@ describe('Error', () => {
         })
 
         it('should render message', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: {
                     statusCode: 404,
                     statusMessage: 'Page not found',
@@ -86,7 +86,7 @@ describe('Error', () => {
         })
 
         it('should hide message when identical to statusMessage', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: {
                     statusCode: 404,
                     statusMessage: 'Page not found',
@@ -98,7 +98,7 @@ describe('Error', () => {
         })
 
         it('should not render statusCode element when missing', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusMessage: 'Something went wrong' }
             })
             const paragraphs = container.querySelectorAll('p')
@@ -106,7 +106,7 @@ describe('Error', () => {
         })
 
         it('should not render heading when statusMessage is missing', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 }
             })
             expect(container.querySelector('h1')).toBeNull()
@@ -117,7 +117,7 @@ describe('Error', () => {
 
     describe('icon', () => {
         it('should render with icon prop', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 icon: 'lucide:triangle-alert',
                 error: { statusCode: 404 }
             })
@@ -127,7 +127,7 @@ describe('Error', () => {
         })
 
         it('should not render leading area when icon is not provided', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 ui: { leading: 'leading-probe' }
             })
@@ -139,7 +139,7 @@ describe('Error', () => {
 
     describe('clear button', () => {
         it('should render clear button as link by default', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 }
             })
             const link = container.querySelector('a')
@@ -149,7 +149,7 @@ describe('Error', () => {
         })
 
         it('should use redirect prop as link target', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 redirect: '/dashboard'
             })
@@ -158,7 +158,7 @@ describe('Error', () => {
         })
 
         it('should hide clear button when clear is false', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 clear: false
             })
@@ -167,7 +167,7 @@ describe('Error', () => {
         })
 
         it('should customize clear button with ButtonProps', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 clear: { label: 'Go back', variant: 'outline' }
             })
@@ -177,7 +177,7 @@ describe('Error', () => {
 
         it('should render as button and fire onClear when provided', async () => {
             const onClear = vi.fn()
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 onClear
             })
@@ -190,7 +190,7 @@ describe('Error', () => {
 
         it('should allow href override alongside onClear via clear props', async () => {
             const onClear = vi.fn()
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 onClear,
                 clear: { href: '/home' }
@@ -205,7 +205,7 @@ describe('Error', () => {
 
     describe('as prop', () => {
         it('should render as div element', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 as: 'div'
             })
@@ -213,7 +213,7 @@ describe('Error', () => {
         })
 
         it('should render as section element', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 as: 'section'
             })
@@ -225,7 +225,7 @@ describe('Error', () => {
 
     describe('custom class', () => {
         it('should apply custom class to root', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 class: 'my-custom-error'
             })
@@ -234,7 +234,7 @@ describe('Error', () => {
         })
 
         it('should merge min-height override via class', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 class: 'min-h-0'
             })
@@ -248,7 +248,7 @@ describe('Error', () => {
 
     describe('ui slot overrides', () => {
         it('should apply ui.root class', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 ui: { root: 'custom-root' }
             })
@@ -257,7 +257,7 @@ describe('Error', () => {
         })
 
         it('should apply ui.statusCode class', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 ui: { statusCode: 'custom-code' }
             })
@@ -267,7 +267,7 @@ describe('Error', () => {
         })
 
         it('should apply ui.statusMessage class', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404, statusMessage: 'Not found' },
                 ui: { statusMessage: 'custom-status-message' }
             })
@@ -277,7 +277,7 @@ describe('Error', () => {
         })
 
         it('should apply ui.message class', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404, message: 'Details here' },
                 ui: { message: 'custom-message' }
             })
@@ -287,7 +287,7 @@ describe('Error', () => {
         })
 
         it('should apply ui.links class', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 ui: { links: 'custom-links' }
             })
@@ -299,7 +299,7 @@ describe('Error', () => {
 
     describe('snippets', () => {
         it('should render leading snippet instead of icon', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 icon: 'lucide:triangle-alert',
                 leading: snippet('<span data-testid="custom-leading">Logo</span>')
@@ -308,7 +308,7 @@ describe('Error', () => {
         })
 
         it('should render statusCode snippet instead of default', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 statusCode: snippet('<span data-testid="custom-code">Oops 404</span>')
             })
@@ -317,7 +317,7 @@ describe('Error', () => {
         })
 
         it('should render statusMessage snippet instead of default heading', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404, statusMessage: 'Not found' },
                 statusMessage: snippet('<h2 data-testid="custom-heading">Custom</h2>')
             })
@@ -326,7 +326,7 @@ describe('Error', () => {
         })
 
         it('should render message snippet instead of default', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404, message: 'Default message' },
                 message: snippet('<span data-testid="custom-msg">Custom message</span>')
             })
@@ -335,7 +335,7 @@ describe('Error', () => {
         })
 
         it('should render links snippet instead of clear button', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 links: snippet('<span data-testid="custom-links">Links</span>')
             })
@@ -344,7 +344,7 @@ describe('Error', () => {
         })
 
         it('should render children content', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 children: snippet('<span data-testid="extra">Extra content</span>')
             })
@@ -356,7 +356,7 @@ describe('Error', () => {
 
     describe('native attributes', () => {
         it('should pass through native attributes', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 404 },
                 id: 'error-page',
                 'data-testid': 'error-root'
@@ -371,7 +371,7 @@ describe('Error', () => {
 
     describe('combined features', () => {
         it('should render a complete 404 page', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 icon: 'lucide:triangle-alert',
                 error: {
                     statusCode: 404,
@@ -394,7 +394,7 @@ describe('Error', () => {
         })
 
         it('should render a 500 page without clear button', async () => {
-            const { container } = render(ErrorComponent, {
+            const { container } = await render(ErrorComponent, {
                 error: { statusCode: 500, statusMessage: 'Server error' },
                 clear: false
             })

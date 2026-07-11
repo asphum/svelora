@@ -6,18 +6,18 @@ describe('Chip', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render as div by default', () => {
-            const { container } = render(Chip)
+        it('should render as div by default', async () => {
+            const { container } = await render(Chip)
             expect(container.firstElementChild!.tagName).toBe('DIV')
         })
 
-        it('should render chip indicator span', () => {
-            const { container } = render(Chip)
+        it('should render chip indicator span', async () => {
+            const { container } = await render(Chip)
             expect(container.querySelector('span')).not.toBeNull()
         })
 
-        it('should apply base classes', () => {
-            const { container } = render(Chip)
+        it('should apply base classes', async () => {
+            const { container } = await render(Chip)
             const root = container.firstElementChild!
             expect(root.className).toMatch(/relative/)
             expect(root.className).toMatch(/inline-flex/)
@@ -27,20 +27,20 @@ describe('Chip', () => {
     // ==================== COLORS ====================
 
     describe('colors', () => {
-        it('should default to primary color', () => {
-            const { container } = render(Chip)
+        it('should default to primary color', async () => {
+            const { container } = await render(Chip)
             const chip = container.querySelector('span')!
             expect(chip.className).toMatch(/bg-primary/)
         })
 
-        it('should apply error color', () => {
-            const { container } = render(Chip, { color: 'error' })
+        it('should apply error color', async () => {
+            const { container } = await render(Chip, { color: 'error' })
             const chip = container.querySelector('span')!
             expect(chip.className).toMatch(/bg-error/)
         })
 
-        it('should apply surface color (inverse-surface)', () => {
-            const { container } = render(Chip, { color: 'surface' })
+        it('should apply surface color (inverse-surface)', async () => {
+            const { container } = await render(Chip, { color: 'surface' })
             const chip = container.querySelector('span')!
             expect(chip.className).toMatch(/bg-inverse-surface/)
         })
@@ -49,15 +49,15 @@ describe('Chip', () => {
     // ==================== SIZES ====================
 
     describe('sizes', () => {
-        it('should default to md size', () => {
-            const { container } = render(Chip)
+        it('should default to md size', async () => {
+            const { container } = await render(Chip)
             const chip = container.querySelector('span')!
             expect(chip.className).toMatch(/h-\[8px\]/)
             expect(chip.className).toMatch(/min-w-\[8px\]/)
         })
 
-        it('should apply lg size', () => {
-            const { container } = render(Chip, { size: 'lg' })
+        it('should apply lg size', async () => {
+            const { container } = await render(Chip, { size: 'lg' })
             const chip = container.querySelector('span')!
             expect(chip.className).toMatch(/h-\[9px\]/)
             expect(chip.className).toMatch(/min-w-\[9px\]/)
@@ -67,15 +67,15 @@ describe('Chip', () => {
     // ==================== POSITIONS ====================
 
     describe('positions', () => {
-        it('should apply top-right position by default', () => {
-            const { container } = render(Chip)
+        it('should apply top-right position by default', async () => {
+            const { container } = await render(Chip)
             const chip = container.querySelector('span')!
             expect(chip.className).toMatch(/top-0/)
             expect(chip.className).toMatch(/right-0/)
         })
 
-        it('should apply bottom-left position', () => {
-            const { container } = render(Chip, { position: 'bottom-left' })
+        it('should apply bottom-left position', async () => {
+            const { container } = await render(Chip, { position: 'bottom-left' })
             const chip = container.querySelector('span')!
             expect(chip.className).toMatch(/bottom-0/)
             expect(chip.className).toMatch(/left-0/)
@@ -85,18 +85,18 @@ describe('Chip', () => {
     // ==================== TEXT ====================
 
     describe('text', () => {
-        it('should render text content', () => {
-            const { container } = render(Chip, { text: '5' })
+        it('should render text content', async () => {
+            const { container } = await render(Chip, { text: '5' })
             expect(container.textContent).toContain('5')
         })
 
-        it('should render number as text', () => {
-            const { container } = render(Chip, { text: 99 })
+        it('should render number as text', async () => {
+            const { container } = await render(Chip, { text: 99 })
             expect(container.textContent).toContain('99')
         })
 
-        it('should render zero', () => {
-            const { container } = render(Chip, { text: 0 })
+        it('should render zero', async () => {
+            const { container } = await render(Chip, { text: 0 })
             expect(container.textContent).toContain('0')
         })
     })
@@ -104,14 +104,14 @@ describe('Chip', () => {
     // ==================== INSET ====================
 
     describe('inset', () => {
-        it('should apply transform when inset=false', () => {
-            const { container } = render(Chip)
+        it('should apply transform when inset=false', async () => {
+            const { container } = await render(Chip)
             const chip = container.querySelector('span')!
             expect(chip.className).toMatch(/-translate-y-1\/2/)
         })
 
-        it('should not apply transform when inset=true', () => {
-            const { container } = render(Chip, { inset: true })
+        it('should not apply transform when inset=true', async () => {
+            const { container } = await render(Chip, { inset: true })
             const chip = container.querySelector('span')!
             expect(chip.className).not.toMatch(/-translate-y-1\/2/)
         })
@@ -120,14 +120,14 @@ describe('Chip', () => {
     // ==================== STANDALONE ====================
 
     describe('standalone', () => {
-        it('should apply absolute positioning by default', () => {
-            const { container } = render(Chip)
+        it('should apply absolute positioning by default', async () => {
+            const { container } = await render(Chip)
             const chip = container.querySelector('span')!
             expect(chip.className).toMatch(/absolute/)
         })
 
-        it('should not apply absolute when standalone=true', () => {
-            const { container } = render(Chip, { standalone: true })
+        it('should not apply absolute when standalone=true', async () => {
+            const { container } = await render(Chip, { standalone: true })
             const chip = container.querySelector('span')!
             expect(chip.className).not.toMatch(/absolute/)
         })
@@ -136,13 +136,13 @@ describe('Chip', () => {
     // ==================== SHOW ====================
 
     describe('show', () => {
-        it('should render chip when show=true', () => {
-            const { container } = render(Chip)
+        it('should render chip when show=true', async () => {
+            const { container } = await render(Chip)
             expect(container.querySelector('span')).not.toBeNull()
         })
 
-        it('should not render chip when show=false', () => {
-            const { container } = render(Chip, { show: false })
+        it('should not render chip when show=false', async () => {
+            const { container } = await render(Chip, { show: false })
             expect(container.querySelector('span')).toBeNull()
         })
     })
@@ -150,8 +150,8 @@ describe('Chip', () => {
     // ==================== AS PROP ====================
 
     describe('as prop', () => {
-        it('should render as span element', () => {
-            const { container } = render(Chip, { as: 'span' })
+        it('should render as span element', async () => {
+            const { container } = await render(Chip, { as: 'span' })
             expect(container.firstElementChild!.tagName).toBe('SPAN')
         })
     })
@@ -159,8 +159,8 @@ describe('Chip', () => {
     // ==================== CUSTOM CLASS ====================
 
     describe('custom class', () => {
-        it('should apply custom class to root', () => {
-            const { container } = render(Chip, { class: 'my-chip' })
+        it('should apply custom class to root', async () => {
+            const { container } = await render(Chip, { class: 'my-chip' })
             expect(container.firstElementChild!.className).toMatch(/my-chip/)
         })
     })
@@ -168,8 +168,8 @@ describe('Chip', () => {
     // ==================== UI SLOT OVERRIDES ====================
 
     describe('ui slot overrides', () => {
-        it('should apply ui.root and ui.base classes', () => {
-            const { container } = render(Chip, {
+        it('should apply ui.root and ui.base classes', async () => {
+            const { container } = await render(Chip, {
                 ui: { root: 'custom-root', base: 'custom-base' }
             })
             expect(container.firstElementChild!.className).toMatch(/custom-root/)
@@ -180,8 +180,8 @@ describe('Chip', () => {
     // ==================== COMBINED ====================
 
     describe('combined features', () => {
-        it('should render with text, color, position', () => {
-            const { container } = render(Chip, {
+        it('should render with text, color, position', async () => {
+            const { container } = await render(Chip, {
                 text: '99+',
                 color: 'error',
                 position: 'bottom-right'
@@ -192,8 +192,8 @@ describe('Chip', () => {
             expect(chip.className).toMatch(/bottom-0/)
         })
 
-        it('should render standalone with surface color', () => {
-            const { container } = render(Chip, {
+        it('should render standalone with surface color', async () => {
+            const { container } = await render(Chip, {
                 standalone: true,
                 color: 'surface'
             })

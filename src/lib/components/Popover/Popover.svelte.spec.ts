@@ -9,12 +9,12 @@ describe('Popover', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render without crashing', () => {
-            const { container } = render(Popover)
+        it('should render without crashing', async () => {
+            const { container } = await render(Popover)
             expect(container).not.toBeNull()
         })
 
-        it('should not render content when closed', () => {
+        it('should not render content when closed', async () => {
             render(Popover)
             expect(getContent()).toBeNull()
         })
@@ -151,7 +151,7 @@ describe('Popover', () => {
 
     describe('portal', () => {
         it('should render in portal by default', async () => {
-            const { container } = render(Popover, { open: true })
+            const { container } = await render(Popover, { open: true })
             await vi.waitFor(() => {
                 const content = getContent()
                 expect(content).not.toBeNull()

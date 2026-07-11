@@ -12,12 +12,12 @@ describe('Slideover', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render without crashing', () => {
-            const { container } = render(Slideover)
+        it('should render without crashing', async () => {
+            const { container } = await render(Slideover)
             expect(container).not.toBeNull()
         })
 
-        it('should not render content when closed', () => {
+        it('should not render content when closed', async () => {
             render(Slideover, { title: 'Test' })
             expect(getContent()).toBeNull()
         })
@@ -414,7 +414,7 @@ describe('Slideover', () => {
 
     describe('portal', () => {
         it('should render content in body when portal is true (default)', async () => {
-            const { container } = render(Slideover, { open: true, title: 'Test' })
+            const { container } = await render(Slideover, { open: true, title: 'Test' })
             await vi.waitFor(() => {
                 const content = getContent()
                 expect(content).not.toBeNull()
@@ -621,7 +621,7 @@ describe('Slideover', () => {
 
     describe('trigger', () => {
         it('forwards trigger props to the caller element without nesting a button', async () => {
-            const { container } = render(SlideoverTriggerTestWrapper)
+            const { container } = await render(SlideoverTriggerTestWrapper)
             const btn = container.querySelector('[data-testid="trigger"]') as HTMLButtonElement
             expect(btn).not.toBeNull()
             expect(btn.tagName).toBe('BUTTON')

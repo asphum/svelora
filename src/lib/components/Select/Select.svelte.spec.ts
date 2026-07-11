@@ -19,7 +19,7 @@ describe('Select', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render a select trigger element', () => {
+        it('should render a select trigger element', async () => {
             render(Select, { items: defaultItems })
             expect(getTrigger()).not.toBeNull()
         })
@@ -49,12 +49,12 @@ describe('Select', () => {
             await expect.element(text).toBeInTheDocument()
         })
 
-        it('should render with id', () => {
+        it('should render with id', async () => {
             render(Select, { items: defaultItems, id: 'my-select' })
             expect(getTrigger()!.id).toBe('my-select')
         })
 
-        it('should render hidden input for form submission when name is set', () => {
+        it('should render hidden input for form submission when name is set', async () => {
             render(Select, { items: defaultItems, name: 'fruit', value: 'apple' })
             const hidden = document.querySelector<HTMLInputElement>('input[name="fruit"]')
             expect(hidden).not.toBeNull()
@@ -62,7 +62,7 @@ describe('Select', () => {
             expect(getTrigger()!.getAttribute('name')).toBeNull()
         })
 
-        it('should use [] suffix for multiple selection form fields', () => {
+        it('should use [] suffix for multiple selection form fields', async () => {
             render(Select, {
                 items: defaultItems,
                 name: 'fruits',
@@ -74,7 +74,7 @@ describe('Select', () => {
             expect([...hidden].map((input) => input.value).sort()).toEqual(['apple', 'banana'])
         })
 
-        it('should render empty when no items provided', () => {
+        it('should render empty when no items provided', async () => {
             render(Select, { placeholder: 'Select...' })
             expect(getTrigger()).not.toBeNull()
         })
@@ -167,12 +167,12 @@ describe('Select', () => {
     // ==================== DISABLED STATE ====================
 
     describe('disabled', () => {
-        it('should be disabled when disabled prop is true', () => {
+        it('should be disabled when disabled prop is true', async () => {
             render(Select, { items: defaultItems, disabled: true })
             expect(getTrigger()!.disabled).toBe(true)
         })
 
-        it('should not be disabled by default', () => {
+        it('should not be disabled by default', async () => {
             render(Select, { items: defaultItems })
             expect(getTrigger()!.disabled).toBe(false)
         })
@@ -239,23 +239,23 @@ describe('Select', () => {
         const variants = ['outline', 'soft', 'subtle', 'ghost', 'none'] as const
 
         for (const variant of variants) {
-            it(`should render with variant="${variant}"`, () => {
+            it(`should render with variant="${variant}"`, async () => {
                 render(Select, { items: defaultItems, variant })
                 expect(getTrigger()).not.toBeNull()
             })
         }
 
-        it('should apply outline variant ring classes by default', () => {
+        it('should apply outline variant ring classes by default', async () => {
             render(Select, { items: defaultItems })
             expect(getTrigger()!.className).toMatch(/ring/)
         })
 
-        it('should apply ghost variant transparent background', () => {
+        it('should apply ghost variant transparent background', async () => {
             render(Select, { items: defaultItems, variant: 'ghost' })
             expect(getTrigger()!.className).toMatch(/bg-transparent/)
         })
 
-        it('should apply soft variant container background', () => {
+        it('should apply soft variant container background', async () => {
             render(Select, { items: defaultItems, variant: 'soft', color: 'primary' })
             expect(getTrigger()!.className).toMatch(/bg-primary-container/)
         })
@@ -275,13 +275,13 @@ describe('Select', () => {
         ] as const
 
         for (const color of colors) {
-            it(`should render with color="${color}"`, () => {
+            it(`should render with color="${color}"`, async () => {
                 render(Select, { items: defaultItems, color })
                 expect(getTrigger()!.className).toMatch(new RegExp(`ring-${color}`))
             })
         }
 
-        it('should apply surface color', () => {
+        it('should apply surface color', async () => {
             render(Select, { items: defaultItems, color: 'surface' })
             expect(getTrigger()!.className).toMatch(/ring-outline/)
         })
@@ -290,37 +290,37 @@ describe('Select', () => {
     // ==================== SIZES ====================
 
     describe('sizes', () => {
-        it('should apply xs size classes', () => {
+        it('should apply xs size classes', async () => {
             render(Select, { items: defaultItems, size: 'xs' })
             expect(getTrigger()!.className).toMatch(/text-xs/)
         })
 
-        it('should apply sm size classes', () => {
+        it('should apply sm size classes', async () => {
             render(Select, { items: defaultItems, size: 'sm' })
             expect(getTrigger()!.className).toMatch(/text-xs/)
         })
 
-        it('should apply md size classes by default', () => {
+        it('should apply md size classes by default', async () => {
             render(Select, { items: defaultItems })
             expect(getTrigger()!.className).toMatch(/text-sm/)
         })
 
-        it('should apply lg size classes', () => {
+        it('should apply lg size classes', async () => {
             render(Select, { items: defaultItems, size: 'lg' })
             expect(getTrigger()!.className).toMatch(/text-sm/)
         })
 
-        it('should apply xl size classes', () => {
+        it('should apply xl size classes', async () => {
             render(Select, { items: defaultItems, size: 'xl' })
             expect(getTrigger()!.className).toMatch(/text-base/)
         })
 
-        it('should apply xs padding', () => {
+        it('should apply xs padding', async () => {
             render(Select, { items: defaultItems, size: 'xs' })
             expect(getTrigger()!.className).toMatch(/px-2/)
         })
 
-        it('should apply xl padding', () => {
+        it('should apply xl padding', async () => {
             render(Select, { items: defaultItems, size: 'xl' })
             expect(getTrigger()!.className).toMatch(/px-5/)
         })
@@ -329,13 +329,13 @@ describe('Select', () => {
     // ==================== HIGHLIGHT ====================
 
     describe('highlight', () => {
-        it('should apply highlight ring classes', () => {
+        it('should apply highlight ring classes', async () => {
             render(Select, { items: defaultItems, highlight: true, color: 'error' })
             expect(getTrigger()!.className).toMatch(/ring-2/)
             expect(getTrigger()!.className).toMatch(/ring-error/)
         })
 
-        it('should not apply highlight by default', () => {
+        it('should not apply highlight by default', async () => {
             render(Select, { items: defaultItems })
             const classes = getTrigger()!.className.split(' ')
             expect(classes).not.toContain('ring-2')
@@ -345,26 +345,26 @@ describe('Select', () => {
     // ==================== ICONS ====================
 
     describe('icons', () => {
-        it('should render trailing icon by default', () => {
+        it('should render trailing icon by default', async () => {
             render(Select, { items: defaultItems })
             const root = getRootWrapper()!
             const trailingSpan = root.querySelector('span:last-child') as HTMLElement
             expect(trailingSpan.querySelector('svg')).not.toBeNull()
         })
 
-        it('should render leading icon when leadingIcon is set', () => {
+        it('should render leading icon when leadingIcon is set', async () => {
             render(Select, { items: defaultItems, leadingIcon: 'lucide:search' })
             const root = getRootWrapper()!
             const leadingSpan = root.querySelector('span:first-child') as HTMLElement
             expect(leadingSpan).not.toBeNull()
         })
 
-        it('should adjust padding when leading icon is present', () => {
+        it('should adjust padding when leading icon is present', async () => {
             render(Select, { items: defaultItems, leadingIcon: 'lucide:search' })
             expect(getTrigger()!.className).toMatch(/ps-9/)
         })
 
-        it('should always have trailing padding', () => {
+        it('should always have trailing padding', async () => {
             render(Select, { items: defaultItems })
             expect(getTrigger()!.className).toMatch(/pe-9/)
         })
@@ -373,24 +373,24 @@ describe('Select', () => {
     // ==================== AVATAR ====================
 
     describe('avatar', () => {
-        it('should render avatar with alt initials as fallback', () => {
-            const { container } = render(Select, {
+        it('should render avatar with alt initials as fallback', async () => {
+            const { container } = await render(Select, {
                 items: defaultItems,
                 avatar: { alt: 'John Doe' }
             })
             expect(container.textContent).toContain('JD')
         })
 
-        it('should apply leading padding when avatar is present', () => {
+        it('should apply leading padding when avatar is present', async () => {
             render(Select, { items: defaultItems, avatar: { alt: 'User' } })
             expect(getTrigger()!.className).toMatch(/ps-9/)
         })
 
-        it('should render selected item avatar when value is set', () => {
+        it('should render selected item avatar when value is set', async () => {
             const items: SelectItemType[] = [
                 { value: 'user1', label: 'User One', avatar: { alt: 'Jane Smith' } }
             ]
-            const { container } = render(Select, { items, value: 'user1' })
+            const { container } = await render(Select, { items, value: 'user1' })
             expect(container.textContent).toContain('JS')
         })
     })
@@ -398,8 +398,8 @@ describe('Select', () => {
     // ==================== CUSTOM CLASS & UI ====================
 
     describe('custom class & ui', () => {
-        it('should apply custom class to root element', () => {
-            const { container } = render(Select, {
+        it('should apply custom class to root element', async () => {
+            const { container } = await render(Select, {
                 items: defaultItems,
                 class: 'my-custom-class'
             })
@@ -407,13 +407,13 @@ describe('Select', () => {
             expect(root).not.toBeNull()
         })
 
-        it('should apply ui slot override to base', () => {
+        it('should apply ui slot override to base', async () => {
             render(Select, { items: defaultItems, ui: { base: 'my-base-class' } })
             expect(getTrigger()!.className).toContain('my-base-class')
         })
 
-        it('should apply ui slot override to root', () => {
-            const { container } = render(Select, {
+        it('should apply ui slot override to root', async () => {
+            const { container } = await render(Select, {
                 items: defaultItems,
                 ui: { root: 'my-root-class' }
             })
@@ -421,7 +421,7 @@ describe('Select', () => {
             expect(root).not.toBeNull()
         })
 
-        it('should apply ui slot override to placeholder', () => {
+        it('should apply ui slot override to placeholder', async () => {
             render(Select, {
                 items: defaultItems,
                 placeholder: 'Pick',
@@ -431,7 +431,7 @@ describe('Select', () => {
             expect(placeholderEl).not.toBeNull()
         })
 
-        it('should apply ui slot override to value', () => {
+        it('should apply ui slot override to value', async () => {
             render(Select, {
                 items: defaultItems,
                 value: 'apple',
@@ -445,37 +445,37 @@ describe('Select', () => {
     // ==================== ACCESSIBILITY ====================
 
     describe('accessibility', () => {
-        it('should render trigger with data-select-trigger', () => {
+        it('should render trigger with data-select-trigger', async () => {
             render(Select, { items: defaultItems })
             expect(getTrigger()).not.toBeNull()
         })
 
-        it('should set data-state="closed" when closed', () => {
+        it('should set data-state="closed" when closed', async () => {
             render(Select, { items: defaultItems })
             expect(getTrigger()!.getAttribute('data-state')).toBe('closed')
         })
 
-        it('should have aria-expanded="false" when closed', () => {
+        it('should have aria-expanded="false" when closed', async () => {
             render(Select, { items: defaultItems })
             expect(getTrigger()!.getAttribute('aria-expanded')).toBe('false')
         })
 
-        it('should have aria-haspopup="listbox"', () => {
+        it('should have aria-haspopup="listbox"', async () => {
             render(Select, { items: defaultItems })
             expect(getTrigger()!.getAttribute('aria-haspopup')).toBe('listbox')
         })
 
-        it('should set aria-invalid when highlight is true', () => {
+        it('should set aria-invalid when highlight is true', async () => {
             render(Select, { items: defaultItems, highlight: true })
             expect(getTrigger()!.getAttribute('aria-invalid')).toBe('true')
         })
 
-        it('should not set aria-invalid by default', () => {
+        it('should not set aria-invalid by default', async () => {
             render(Select, { items: defaultItems })
             expect(getTrigger()!.getAttribute('aria-invalid')).toBeNull()
         })
 
-        it('should render without errors when required is true', () => {
+        it('should render without errors when required is true', async () => {
             render(Select, { items: defaultItems, required: true })
             expect(getTrigger()).not.toBeNull()
         })
@@ -496,7 +496,7 @@ describe('Select', () => {
             expect(getTrigger()!.disabled).toBe(true)
         })
 
-        it('should render with variant, color, and size combined', () => {
+        it('should render with variant, color, and size combined', async () => {
             render(Select, {
                 items: defaultItems,
                 variant: 'soft',
@@ -508,7 +508,7 @@ describe('Select', () => {
             expect(trigger.className).toMatch(/text-base/)
         })
 
-        it('should render with highlight and error color', () => {
+        it('should render with highlight and error color', async () => {
             render(Select, {
                 items: defaultItems,
                 highlight: true,
@@ -605,7 +605,7 @@ describe('Select', () => {
     // ==================== NATIVE ATTRIBUTES ====================
 
     describe('native attributes', () => {
-        it('should forward id, aria-label and data-* to the trigger', () => {
+        it('should forward id, aria-label and data-* to the trigger', async () => {
             render(Select, {
                 items: defaultItems,
                 id: 'fruit-select',

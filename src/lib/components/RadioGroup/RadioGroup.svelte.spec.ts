@@ -25,7 +25,7 @@ describe('RadioGroup', () => {
             expect(getRadios().length).toBe(3)
         })
 
-        it('should render all items unchecked by default', () => {
+        it('should render all items unchecked by default', async () => {
             render(RadioGroup, { items: defaultItems })
             const radios = getRadios()
             for (const radio of radios) {
@@ -33,18 +33,18 @@ describe('RadioGroup', () => {
             }
         })
 
-        it('should render with value pre-selected', () => {
+        it('should render with value pre-selected', async () => {
             render(RadioGroup, { items: defaultItems, value: 'b' })
             expect(getRadio(1)!.getAttribute('data-state')).toBe('checked')
         })
 
-        it('should render with third item selected', () => {
+        it('should render with third item selected', async () => {
             render(RadioGroup, { items: defaultItems, value: 'c' })
             expect(getRadio(2)!.getAttribute('data-state')).toBe('checked')
         })
 
-        it('should render with name attribute', () => {
-            const { container } = render(RadioGroup, {
+        it('should render with name attribute', async () => {
+            const { container } = await render(RadioGroup, {
                 items: defaultItems,
                 name: 'my-radio'
             })
@@ -52,19 +52,19 @@ describe('RadioGroup', () => {
             expect(hidden).toBeTruthy()
         })
 
-        it('should render with id', () => {
+        it('should render with id', async () => {
             render(RadioGroup, { items: defaultItems, id: 'my-group' })
             const radios = getRadios()
             expect(radios[0]!.id).toBe('my-group-a')
             expect(radios[1]!.id).toBe('my-group-b')
         })
 
-        it('should generate ids automatically', () => {
+        it('should generate ids automatically', async () => {
             render(RadioGroup, { items: defaultItems })
             expect(getRadio()!.id).toBeTruthy()
         })
 
-        it('should render empty when no items', () => {
+        it('should render empty when no items', async () => {
             render(RadioGroup)
             expect(getRadios().length).toBe(0)
         })
@@ -156,7 +156,7 @@ describe('RadioGroup', () => {
         ] as const
 
         for (const color of colors) {
-            it(`should render with color="${color}"`, () => {
+            it(`should render with color="${color}"`, async () => {
                 render(RadioGroup, { items: defaultItems, color, value: 'a' })
                 expect(getRadio(0)!.className).toMatch(new RegExp(`bg-${color}`))
             })
@@ -165,17 +165,17 @@ describe('RadioGroup', () => {
 
     // ==================== SIZES ====================
     describe('sizes', () => {
-        it('should apply xs size classes', () => {
+        it('should apply xs size classes', async () => {
             render(RadioGroup, { items: defaultItems, size: 'xs' })
             expect(getRadio()!.className).toMatch(/size-3\.5/)
         })
 
-        it('should apply md size classes by default', () => {
+        it('should apply md size classes by default', async () => {
             render(RadioGroup, { items: defaultItems })
             expect(getRadio()!.className).toMatch(/size-4\.5/)
         })
 
-        it('should apply xl size classes', () => {
+        it('should apply xl size classes', async () => {
             render(RadioGroup, { items: defaultItems, size: 'xl' })
             expect(getRadio()!.className).toMatch(/size-5\.5/)
         })
@@ -183,19 +183,19 @@ describe('RadioGroup', () => {
 
     // ==================== ORIENTATION ====================
     describe('orientation', () => {
-        it('should render vertical by default', () => {
+        it('should render vertical by default', async () => {
             render(RadioGroup, { items: defaultItems })
             const group = document.querySelector('[role="radiogroup"]')
             expect(group!.className).toMatch(/flex-col/)
         })
 
-        it('should render horizontal', () => {
+        it('should render horizontal', async () => {
             render(RadioGroup, { items: defaultItems, orientation: 'horizontal' })
             const group = document.querySelector('[role="radiogroup"]')
             expect(group!.className).toMatch(/flex-row/)
         })
 
-        it('should set data-orientation attribute', () => {
+        it('should set data-orientation attribute', async () => {
             render(RadioGroup, { items: defaultItems, orientation: 'horizontal' })
             const group = document.querySelector('[role="radiogroup"]')
             expect(group!.getAttribute('data-orientation')).toBe('horizontal')
@@ -210,7 +210,7 @@ describe('RadioGroup', () => {
             await expect.element(legend).toBeInTheDocument()
         })
 
-        it('should not render legend when not provided', () => {
+        it('should not render legend when not provided', async () => {
             render(RadioGroup, { items: defaultItems })
             const legends = document.querySelectorAll('legend, .legend')
             // Should not have a legend element with text content
@@ -237,7 +237,7 @@ describe('RadioGroup', () => {
             await expect.element(desc).toBeInTheDocument()
         })
 
-        it('should associate label with radio via for attribute', () => {
+        it('should associate label with radio via for attribute', async () => {
             render(RadioGroup, { items: defaultItems, id: 'test-group' })
             const label = document.querySelector('label[for="test-group-a"]')
             expect(label).toBeTruthy()
@@ -253,19 +253,19 @@ describe('RadioGroup', () => {
             await expect.element(group).toBeInTheDocument()
         })
 
-        it('should have role="radio" on each item', () => {
+        it('should have role="radio" on each item', async () => {
             render(RadioGroup, { items: defaultItems })
             expect(getRadios().length).toBe(3)
         })
 
-        it('should set data-state="checked" on selected item', () => {
+        it('should set data-state="checked" on selected item', async () => {
             render(RadioGroup, { items: defaultItems, value: 'b' })
             expect(getRadio(0)!.getAttribute('data-state')).toBe('unchecked')
             expect(getRadio(1)!.getAttribute('data-state')).toBe('checked')
             expect(getRadio(2)!.getAttribute('data-state')).toBe('unchecked')
         })
 
-        it('should set aria-required when required', () => {
+        it('should set aria-required when required', async () => {
             render(RadioGroup, { items: defaultItems, required: true })
             const group = document.querySelector('[role="radiogroup"]')
             expect(group!.getAttribute('aria-required')).toBe('true')

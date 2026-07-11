@@ -48,27 +48,27 @@ describe('Command', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render a command root element', () => {
+        it('should render a command root element', async () => {
             render(CommandTestWrapper, { groups: sampleGroups })
             expect(getRoot()).not.toBeNull()
         })
 
-        it('should render a search input', () => {
+        it('should render a search input', async () => {
             render(CommandTestWrapper, { groups: sampleGroups })
             expect(getInput()).not.toBeNull()
         })
 
-        it('should render a list element', () => {
+        it('should render a list element', async () => {
             render(CommandTestWrapper, { groups: sampleGroups })
             expect(getList()).not.toBeNull()
         })
 
-        it('should render items from groups', () => {
+        it('should render items from groups', async () => {
             render(CommandTestWrapper, { groups: sampleGroups })
             expect(getItems()).toHaveLength(3)
         })
 
-        it('should render placeholder text', () => {
+        it('should render placeholder text', async () => {
             render(CommandTestWrapper, { groups: sampleGroups, placeholder: 'Search here...' })
             expect(getInput()!.placeholder).toBe('Search here...')
         })
@@ -77,12 +77,12 @@ describe('Command', () => {
     // ==================== GROUPS ====================
 
     describe('groups', () => {
-        it('should render group containers', () => {
+        it('should render group containers', async () => {
             render(CommandTestWrapper, { groups: multiGroups })
             expect(getGroups()).toHaveLength(2)
         })
 
-        it('should render group headings', () => {
+        it('should render group headings', async () => {
             render(CommandTestWrapper, { groups: multiGroups })
             const headings = getGroupHeadings()
             expect(headings).toHaveLength(2)
@@ -90,12 +90,12 @@ describe('Command', () => {
             expect(headings[1]!.textContent).toContain('Edit')
         })
 
-        it('should render all items across groups', () => {
+        it('should render all items across groups', async () => {
             render(CommandTestWrapper, { groups: multiGroups })
             expect(getItems()).toHaveLength(4)
         })
 
-        it('should not render heading when group has no label', () => {
+        it('should not render heading when group has no label', async () => {
             render(CommandTestWrapper, {
                 groups: [{ id: 'no-label', items: [{ value: 'test', label: 'Test' }] }]
             })
@@ -132,7 +132,7 @@ describe('Command', () => {
             })
         })
 
-        it('should not filter when shouldFilter=false', () => {
+        it('should not filter when shouldFilter=false', async () => {
             render(CommandTestWrapper, { groups: sampleGroups, shouldFilter: false })
             expect(getItems()).toHaveLength(3)
         })
@@ -141,7 +141,7 @@ describe('Command', () => {
     // ==================== DISABLED ITEMS ====================
 
     describe('disabled items', () => {
-        it('should render data-disabled on disabled items', () => {
+        it('should render data-disabled on disabled items', async () => {
             const groups: CommandGroup[] = [
                 {
                     id: 'test',
@@ -181,13 +181,13 @@ describe('Command', () => {
     // ==================== LOADING ====================
 
     describe('loading', () => {
-        it('should show loading state when loading=true', () => {
+        it('should show loading state when loading=true', async () => {
             render(CommandTestWrapper, { groups: [], loading: true })
             const loading = document.querySelector('[data-command-loading]')
             expect(loading).not.toBeNull()
         })
 
-        it('should not show items when loading', () => {
+        it('should not show items when loading', async () => {
             render(CommandTestWrapper, { groups: sampleGroups, loading: true })
             expect(getItems()).toHaveLength(0)
         })
@@ -196,17 +196,17 @@ describe('Command', () => {
     // ==================== SIZES ====================
 
     describe('sizes', () => {
-        it('should apply md size classes by default', () => {
+        it('should apply md size classes by default', async () => {
             render(CommandTestWrapper, { groups: sampleGroups })
             expect(getInput()!.className).toMatch(/h-12/)
         })
 
-        it('should apply xs size classes', () => {
+        it('should apply xs size classes', async () => {
             render(CommandTestWrapper, { groups: sampleGroups, size: 'xs' })
             expect(getInput()!.className).toMatch(/h-9/)
         })
 
-        it('should apply xl size classes', () => {
+        it('should apply xl size classes', async () => {
             render(CommandTestWrapper, { groups: sampleGroups, size: 'xl' })
             expect(getInput()!.className).toMatch(/h-14/)
         })
@@ -215,17 +215,17 @@ describe('Command', () => {
     // ==================== CUSTOM CLASS & UI ====================
 
     describe('custom class & ui', () => {
-        it('should apply custom class to root', () => {
+        it('should apply custom class to root', async () => {
             render(CommandTestWrapper, { groups: sampleGroups, class: 'my-command' })
             expect(getRoot()!.className).toContain('my-command')
         })
 
-        it('should apply ui.root override', () => {
+        it('should apply ui.root override', async () => {
             render(CommandTestWrapper, { groups: sampleGroups, ui: { root: 'custom-root' } })
             expect(getRoot()!.className).toContain('custom-root')
         })
 
-        it('should apply ui.input override', () => {
+        it('should apply ui.input override', async () => {
             render(CommandTestWrapper, { groups: sampleGroups, ui: { input: 'custom-input' } })
             expect(getInput()!.className).toContain('custom-input')
         })
@@ -234,7 +234,7 @@ describe('Command', () => {
     // ==================== ROOT ATTRIBUTES ====================
 
     describe('root html attributes', () => {
-        it('should forward id and data-* attributes to the root element', () => {
+        it('should forward id and data-* attributes to the root element', async () => {
             render(CommandTestWrapper, {
                 groups: sampleGroups,
                 id: 'my-command',
@@ -249,7 +249,7 @@ describe('Command', () => {
     // ==================== COMBINED ====================
 
     describe('combined', () => {
-        it('should render multiple groups with size and custom class', () => {
+        it('should render multiple groups with size and custom class', async () => {
             render(CommandTestWrapper, {
                 groups: multiGroups,
                 size: 'lg',

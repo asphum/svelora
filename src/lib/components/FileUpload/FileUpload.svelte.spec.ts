@@ -45,14 +45,14 @@ describe('FileUpload', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render a hidden file input', () => {
+        it('should render a hidden file input', async () => {
             render(FileUpload)
             const input = getInput()
             expect(input).not.toBeNull()
             expect(input.type).toBe('file')
         })
 
-        it('should render area variant by default', () => {
+        it('should render area variant by default', async () => {
             render(FileUpload)
             expect(getArea()).not.toBeNull()
         })
@@ -74,7 +74,7 @@ describe('FileUpload', () => {
             await expect.element(page.getByText('Max 10MB')).toBeInTheDocument()
         })
 
-        it('should not render file list when value is empty', () => {
+        it('should not render file list when value is empty', async () => {
             render(FileUpload)
             expect(document.querySelector('[aria-label^="Remove"]')).toBeNull()
         })
@@ -89,37 +89,37 @@ describe('FileUpload', () => {
     // ==================== INPUT ATTRIBUTES ====================
 
     describe('input attributes', () => {
-        it('should set accept attribute', () => {
+        it('should set accept attribute', async () => {
             render(FileUpload, { accept: 'image/*' })
             expect(getInput().accept).toBe('image/*')
         })
 
-        it('should set multiple attribute', () => {
+        it('should set multiple attribute', async () => {
             render(FileUpload, { multiple: true })
             expect(getInput().multiple).toBe(true)
         })
 
-        it('should not set multiple by default', () => {
+        it('should not set multiple by default', async () => {
             render(FileUpload)
             expect(getInput().multiple).toBe(false)
         })
 
-        it('should set name attribute', () => {
+        it('should set name attribute', async () => {
             render(FileUpload, { name: 'avatar' })
             expect(getInput().name).toBe('avatar')
         })
 
-        it('should set required attribute', () => {
+        it('should set required attribute', async () => {
             render(FileUpload, { required: true })
             expect(getInput().required).toBe(true)
         })
 
-        it('should disable the input when disabled', () => {
+        it('should disable the input when disabled', async () => {
             render(FileUpload, { disabled: true })
             expect(getInput().disabled).toBe(true)
         })
 
-        it('should disable the input when loading', () => {
+        it('should disable the input when loading', async () => {
             render(FileUpload, { loading: true })
             expect(getInput().disabled).toBe(true)
         })
@@ -337,17 +337,17 @@ describe('FileUpload', () => {
     // ==================== DISABLED / LOADING ====================
 
     describe('disabled and loading', () => {
-        it('should set aria-disabled on area when disabled', () => {
+        it('should set aria-disabled on area when disabled', async () => {
             render(FileUpload, { disabled: true })
             expect(getArea()?.getAttribute('aria-disabled')).toBe('true')
         })
 
-        it('should set aria-disabled on area when loading', () => {
+        it('should set aria-disabled on area when loading', async () => {
             render(FileUpload, { loading: true })
             expect(getArea()?.getAttribute('aria-disabled')).toBe('true')
         })
 
-        it('should not have tabindex on area when disabled', () => {
+        it('should not have tabindex on area when disabled', async () => {
             render(FileUpload, { disabled: true })
             expect(getArea()?.getAttribute('tabindex')).toBeNull()
         })
@@ -356,22 +356,22 @@ describe('FileUpload', () => {
     // ==================== ACCESSIBILITY ====================
 
     describe('accessibility', () => {
-        it('should mark file input as aria-hidden', () => {
+        it('should mark file input as aria-hidden', async () => {
             render(FileUpload)
             expect(getInput().getAttribute('aria-hidden')).toBe('true')
         })
 
-        it('should set aria-label on area equal to label', () => {
+        it('should set aria-label on area equal to label', async () => {
             render(FileUpload, { label: 'Upload avatar' })
             expect(getArea()?.getAttribute('aria-label')).toBe('Upload avatar')
         })
 
-        it('should set role=button on interactive area', () => {
+        it('should set role=button on interactive area', async () => {
             render(FileUpload)
             expect(getArea()?.getAttribute('role')).toBe('button')
         })
 
-        it('should not set role on non-interactive area', () => {
+        it('should not set role on non-interactive area', async () => {
             render(FileUpload, { interactive: false })
             expect(document.querySelector('[role="button"]')).toBeNull()
         })
@@ -541,7 +541,7 @@ describe('FileUpload', () => {
         })
 
         it('should expose data-full attribute when limit is reached', async () => {
-            const { container } = render(FileUpload, {
+            const { container } = await render(FileUpload, {
                 multiple: true,
                 maxFiles: 2,
                 value: [makeFile('a.txt'), makeFile('b.txt')]
@@ -551,7 +551,7 @@ describe('FileUpload', () => {
         })
 
         it('should not expose data-full attribute below the limit', async () => {
-            const { container } = render(FileUpload, {
+            const { container } = await render(FileUpload, {
                 multiple: true,
                 maxFiles: 5,
                 value: [makeFile('a.txt')]
@@ -606,31 +606,31 @@ describe('FileUpload', () => {
     // ==================== FORMFIELD / ARIA ====================
 
     describe('formfield + aria', () => {
-        it('should put id on the focusable area (variant=area)', () => {
+        it('should put id on the focusable area (variant=area)', async () => {
             render(FileUpload, { id: 'upload-1' })
             const area = getArea()
             expect(area?.id).toBe('upload-1')
         })
 
-        it('should put id on the button (variant=button)', () => {
+        it('should put id on the button (variant=button)', async () => {
             render(FileUpload, { id: 'upload-btn', variant: 'button', label: 'Upload' })
             const btn = document.querySelector('button[id="upload-btn"]')
             expect(btn).not.toBeNull()
         })
 
-        it('should set aria-invalid when highlight is true', () => {
+        it('should set aria-invalid when highlight is true', async () => {
             render(FileUpload, { highlight: true })
             const area = getArea()
             expect(area?.getAttribute('aria-invalid')).toBe('true')
         })
 
-        it('should not set aria-invalid when highlight is false', () => {
+        it('should not set aria-invalid when highlight is false', async () => {
             render(FileUpload, {})
             const area = getArea()
             expect(area?.getAttribute('aria-invalid')).toBeNull()
         })
 
-        it('should pass name through to hidden file input', () => {
+        it('should pass name through to hidden file input', async () => {
             render(FileUpload, { name: 'avatar' })
             expect(getInput().name).toBe('avatar')
         })

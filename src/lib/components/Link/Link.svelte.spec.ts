@@ -9,35 +9,35 @@ describe('Link', () => {
 
     describe('rendering', () => {
         it('should render an anchor element when href is provided', async () => {
-            const { container } = render(Link, { href: '/', active: false })
+            const { container } = await render(Link, { href: '/', active: false })
             const el = container.querySelector('a')
             expect(el).not.toBeNull()
         })
 
         it('should render as <a> tag when href is provided', async () => {
-            const { container } = render(Link, { href: '/', active: false })
+            const { container } = await render(Link, { href: '/', active: false })
             expect(container.firstElementChild!.tagName).toBe('A')
         })
 
         it('should render as <button> tag when no href is provided', async () => {
-            const { container } = render(Link, { active: false })
+            const { container } = await render(Link, { active: false })
             expect(container.firstElementChild!.tagName).toBe('BUTTON')
         })
 
         it('should render button with type="button" by default', async () => {
-            const { container } = render(Link, { active: false })
+            const { container } = await render(Link, { active: false })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveAttribute('type', 'button')
         })
 
         it('should render button with custom type', async () => {
-            const { container } = render(Link, { type: 'submit', active: false })
+            const { container } = await render(Link, { type: 'submit', active: false })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveAttribute('type', 'submit')
         })
 
         it('should apply base classes', async () => {
-            const { container } = render(Link, { href: '/', active: false })
+            const { container } = await render(Link, { href: '/', active: false })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveClass(/focus-visible:outline-primary/)
         })
@@ -47,13 +47,17 @@ describe('Link', () => {
 
     describe('href', () => {
         it('should apply href attribute', async () => {
-            const { container } = render(Link, { href: '/about', active: false })
+            const { container } = await render(Link, { href: '/about', active: false })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveAttribute('href', '/about')
         })
 
         it('should remove href when disabled', async () => {
-            const { container } = render(Link, { href: '/about', disabled: true, active: false })
+            const { container } = await render(Link, {
+                href: '/about',
+                disabled: true,
+                active: false
+            })
             const el = container.firstElementChild!
             expect(el.hasAttribute('href')).toBe(false)
         })
@@ -63,7 +67,7 @@ describe('Link', () => {
 
     describe('active state', () => {
         it('should read the active route from context when provided', async () => {
-            const { container } = render(LinkContextHarness, {
+            const { container } = await render(LinkContextHarness, {
                 url: new URL('https://example.com/from-context')
             })
             const el = page.elementLocator(container.querySelector('a')!)
@@ -74,14 +78,14 @@ describe('Link', () => {
         it('should auto-detect the active route from the current URL', async () => {
             window.history.replaceState({}, '', '/link')
 
-            const { container } = render(Link, { href: '/link' })
+            const { container } = await render(Link, { href: '/link' })
             const el = page.elementLocator(container.firstElementChild!)
 
             await expect.element(el).toHaveClass(/text-primary/)
         })
 
         it('should update auto-detected active state after a history change', async () => {
-            const { container } = render(Link, { href: '/about' })
+            const { container } = await render(Link, { href: '/about' })
             const el = page.elementLocator(container.firstElementChild!)
 
             await expect.element(el).toHaveClass(/text-on-surface-variant/)
@@ -93,25 +97,25 @@ describe('Link', () => {
         })
 
         it('should apply active styles when active=true', async () => {
-            const { container } = render(Link, { href: '/', active: true })
+            const { container } = await render(Link, { href: '/', active: true })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveClass(/text-primary/)
         })
 
         it('should apply inactive styles when active=false', async () => {
-            const { container } = render(Link, { href: '/', active: false })
+            const { container } = await render(Link, { href: '/', active: false })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveClass(/text-on-surface-variant/)
         })
 
         it('should apply active styles on button when active=true', async () => {
-            const { container } = render(Link, { active: true })
+            const { container } = await render(Link, { active: true })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveClass(/text-primary/)
         })
 
         it('should apply activeClass when active', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/',
                 active: true,
                 activeClass: 'font-bold'
@@ -121,7 +125,7 @@ describe('Link', () => {
         })
 
         it('should apply inactiveClass when inactive', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/',
                 active: false,
                 inactiveClass: 'opacity-50'
@@ -131,7 +135,7 @@ describe('Link', () => {
         })
 
         it('should not apply activeClass when inactive', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/',
                 active: false,
                 activeClass: 'font-bold'
@@ -141,7 +145,7 @@ describe('Link', () => {
         })
 
         it('should not apply inactiveClass when active', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/',
                 active: true,
                 inactiveClass: 'opacity-50'
@@ -155,45 +159,45 @@ describe('Link', () => {
 
     describe('disabled', () => {
         it('should set aria-disabled="true" when disabled (link)', async () => {
-            const { container } = render(Link, { href: '/', disabled: true, active: false })
+            const { container } = await render(Link, { href: '/', disabled: true, active: false })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveAttribute('aria-disabled', 'true')
         })
 
         it('should set role="link" on disabled anchor', async () => {
-            const { container } = render(Link, { href: '/', disabled: true, active: false })
+            const { container } = await render(Link, { href: '/', disabled: true, active: false })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveAttribute('role', 'link')
         })
 
         it('should set tabindex="-1" when disabled (link)', async () => {
-            const { container } = render(Link, { href: '/', disabled: true, active: false })
+            const { container } = await render(Link, { href: '/', disabled: true, active: false })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveAttribute('tabindex', '-1')
         })
 
         it('should use native disabled attribute on button', async () => {
-            const { container } = render(Link, { disabled: true, active: false })
+            const { container } = await render(Link, { disabled: true, active: false })
             const el = container.firstElementChild! as HTMLButtonElement
             expect(el.tagName).toBe('BUTTON')
             expect(el.disabled).toBe(true)
         })
 
         it('should apply disabled styling classes', async () => {
-            const { container } = render(Link, { href: '/', disabled: true, active: false })
+            const { container } = await render(Link, { href: '/', disabled: true, active: false })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveClass(/cursor-not-allowed/)
             await expect.element(el).toHaveClass(/opacity-75/)
         })
 
         it('should not set aria-disabled when not disabled', async () => {
-            const { container } = render(Link, { href: '/', active: false })
+            const { container } = await render(Link, { href: '/', active: false })
             const el = container.firstElementChild!
             expect(el.hasAttribute('aria-disabled')).toBe(false)
         })
 
         it('should not set tabindex when not disabled', async () => {
-            const { container } = render(Link, { href: '/', active: false })
+            const { container } = await render(Link, { href: '/', active: false })
             const el = container.firstElementChild!
             expect(el.hasAttribute('tabindex')).toBe(false)
         })
@@ -203,38 +207,38 @@ describe('Link', () => {
 
     describe('external links', () => {
         it('should auto-detect https external links', async () => {
-            const { container } = render(Link, { href: 'https://example.com' })
+            const { container } = await render(Link, { href: 'https://example.com' })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveAttribute('target', '_blank')
             await expect.element(el).toHaveAttribute('rel', 'noopener noreferrer')
         })
 
         it('should auto-detect http external links', async () => {
-            const { container } = render(Link, { href: 'http://example.com' })
+            const { container } = await render(Link, { href: 'http://example.com' })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveAttribute('target', '_blank')
         })
 
         it('should auto-detect protocol-relative external links', async () => {
-            const { container } = render(Link, { href: '//example.com' })
+            const { container } = await render(Link, { href: '//example.com' })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveAttribute('target', '_blank')
         })
 
         it('should not set target for internal links', async () => {
-            const { container } = render(Link, { href: '/about', active: false })
+            const { container } = await render(Link, { href: '/about', active: false })
             const el = container.firstElementChild!
             expect(el.hasAttribute('target')).toBe(false)
         })
 
         it('should not set rel for internal links', async () => {
-            const { container } = render(Link, { href: '/about', active: false })
+            const { container } = await render(Link, { href: '/about', active: false })
             const el = container.firstElementChild!
             expect(el.hasAttribute('rel')).toBe(false)
         })
 
         it('should allow overriding target', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 props: { href: '/about', active: false, target: '_blank' }
             })
             const el = page.elementLocator(container.firstElementChild!)
@@ -242,7 +246,7 @@ describe('Link', () => {
         })
 
         it('should set rel when target is _blank for internal links', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 props: { href: '/about', active: false, target: '_blank' }
             })
             const el = page.elementLocator(container.firstElementChild!)
@@ -250,7 +254,7 @@ describe('Link', () => {
         })
 
         it('should force external with external prop', async () => {
-            const { container } = render(Link, { href: '/local-path', external: true })
+            const { container } = await render(Link, { href: '/local-path', external: true })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveAttribute('target', '_blank')
             await expect.element(el).toHaveAttribute('rel', 'noopener noreferrer')
@@ -261,14 +265,14 @@ describe('Link', () => {
 
     describe('raw mode', () => {
         it('should strip default variant classes in raw mode', async () => {
-            const { container } = render(Link, { href: '/', raw: true, active: false })
+            const { container } = await render(Link, { href: '/', raw: true, active: false })
             const el = container.firstElementChild!
             expect(el.className).not.toMatch(/text-primary/)
             expect(el.className).not.toMatch(/text-on-surface-variant/)
         })
 
         it('should still apply custom class in raw mode', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/',
                 raw: true,
                 active: false,
@@ -279,7 +283,7 @@ describe('Link', () => {
         })
 
         it('should apply activeClass in raw mode when active', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/',
                 raw: true,
                 active: true,
@@ -290,7 +294,7 @@ describe('Link', () => {
         })
 
         it('should apply inactiveClass in raw mode when inactive', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/',
                 raw: true,
                 active: false,
@@ -305,7 +309,7 @@ describe('Link', () => {
 
     describe('custom class', () => {
         it('should apply custom class to root', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/',
                 active: false,
                 class: 'my-custom-link'
@@ -319,7 +323,7 @@ describe('Link', () => {
 
     describe('ui slot overrides', () => {
         it('should apply ui.base class', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/',
                 active: false,
                 ui: { base: 'custom-base-class' }
@@ -333,19 +337,19 @@ describe('Link', () => {
 
     describe('accessibility', () => {
         it('should set aria-current="page" when active and exact', async () => {
-            const { container } = render(Link, { href: '/', active: true, exact: true })
+            const { container } = await render(Link, { href: '/', active: true, exact: true })
             const el = page.elementLocator(container.firstElementChild!)
             await expect.element(el).toHaveAttribute('aria-current', 'page')
         })
 
         it('should not set aria-current when active but not exact', async () => {
-            const { container } = render(Link, { href: '/', active: true })
+            const { container } = await render(Link, { href: '/', active: true })
             const el = container.firstElementChild!
             expect(el.hasAttribute('aria-current')).toBe(false)
         })
 
         it('should not set aria-current when not active', async () => {
-            const { container } = render(Link, { href: '/', active: false, exact: true })
+            const { container } = await render(Link, { href: '/', active: false, exact: true })
             const el = container.firstElementChild!
             expect(el.hasAttribute('aria-current')).toBe(false)
         })
@@ -355,7 +359,7 @@ describe('Link', () => {
 
     describe('combined features', () => {
         it('should render active link with custom classes', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/',
                 active: true,
                 activeClass: 'font-semibold',
@@ -368,7 +372,7 @@ describe('Link', () => {
         })
 
         it('should render disabled external link correctly', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: 'https://example.com',
                 disabled: true
             })
@@ -382,7 +386,7 @@ describe('Link', () => {
         })
 
         it('should render button with active state and custom class', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 active: true,
                 activeClass: 'font-bold',
                 class: 'px-4'
@@ -399,7 +403,7 @@ describe('Link', () => {
 
     describe('native attributes', () => {
         it('should forward button form attributes (name, value, formaction)', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 type: 'submit',
                 name: 'action',
                 value: 'save',
@@ -413,7 +417,7 @@ describe('Link', () => {
         })
 
         it('should forward anchor attributes (download, hreflang)', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/file.pdf',
                 download: 'report.pdf',
                 hreflang: 'en',
@@ -429,7 +433,7 @@ describe('Link', () => {
 
     describe('restProps precedence', () => {
         it('disabled-state tabindex/role are not overridden by restProps', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/x',
                 disabled: true,
                 active: false,
@@ -446,7 +450,7 @@ describe('Link', () => {
 
     describe('raw class array', () => {
         it('joins an array class with spaces, not commas', async () => {
-            const { container } = render(Link, {
+            const { container } = await render(Link, {
                 href: '/x',
                 raw: true,
                 active: false,

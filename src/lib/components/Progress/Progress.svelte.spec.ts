@@ -13,23 +13,23 @@ describe('Progress', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render root element', () => {
-            const { container } = render(Progress)
+        it('should render root element', async () => {
+            const { container } = await render(Progress)
             expect(getRoot(container)).not.toBeNull()
         })
 
-        it('should render base element', () => {
-            const { container } = render(Progress)
+        it('should render base element', async () => {
+            const { container } = await render(Progress)
             expect(getBase(container)).not.toBeNull()
         })
 
-        it('should render indicator element', () => {
-            const { container } = render(Progress)
+        it('should render indicator element', async () => {
+            const { container } = await render(Progress)
             expect(getIndicator(container)).not.toBeNull()
         })
 
-        it('should have progressbar role', () => {
-            const { container } = render(Progress)
+        it('should have progressbar role', async () => {
+            const { container } = await render(Progress)
             expect(getRoot(container).getAttribute('role')).toBe('progressbar')
         })
     })
@@ -37,37 +37,37 @@ describe('Progress', () => {
     // ==================== VALUE ====================
 
     describe('value', () => {
-        it('should be indeterminate when value is null', () => {
-            const { container } = render(Progress, { value: null })
+        it('should be indeterminate when value is null', async () => {
+            const { container } = await render(Progress, { value: null })
             expect(getIndicator(container).getAttribute('data-state')).toBe('indeterminate')
         })
 
-        it('should be determinate when value is set', () => {
-            const { container } = render(Progress, { value: 50 })
+        it('should be determinate when value is set', async () => {
+            const { container } = await render(Progress, { value: 50 })
             expect(getIndicator(container).getAttribute('data-state')).toBe('determinate')
         })
 
-        it('should apply transform based on value', () => {
-            const { container } = render(Progress, { value: 75 })
+        it('should apply transform based on value', async () => {
+            const { container } = await render(Progress, { value: 75 })
             const indicator = getIndicator(container)
             expect(indicator.style.transform).toContain('translateX(-25%)')
         })
 
-        it('should handle 0 value', () => {
-            const { container } = render(Progress, { value: 0 })
+        it('should handle 0 value', async () => {
+            const { container } = await render(Progress, { value: 0 })
             const indicator = getIndicator(container)
             expect(indicator.getAttribute('data-state')).toBe('determinate')
             expect(indicator.style.transform).toContain('translateX(-100%)')
         })
 
-        it('should handle 100 value', () => {
-            const { container } = render(Progress, { value: 100 })
+        it('should handle 100 value', async () => {
+            const { container } = await render(Progress, { value: 100 })
             const indicator = getIndicator(container)
             expect(indicator.style.transform).toMatch(/translateX\(-?0%\)/)
         })
 
-        it('should cap value at max', () => {
-            const { container } = render(Progress, { value: 150, max: 100 })
+        it('should cap value at max', async () => {
+            const { container } = await render(Progress, { value: 150, max: 100 })
             const indicator = getIndicator(container)
             expect(indicator.style.transform).toMatch(/translateX\(-?0%\)/)
         })
@@ -76,43 +76,43 @@ describe('Progress', () => {
     // ==================== COLORS ====================
 
     describe('colors', () => {
-        it('should default to primary color', () => {
-            const { container } = render(Progress, { value: 50 })
+        it('should default to primary color', async () => {
+            const { container } = await render(Progress, { value: 50 })
             expect(getIndicator(container).className).toContain('bg-primary')
         })
 
-        it('should apply secondary color', () => {
-            const { container } = render(Progress, { value: 50, color: 'secondary' })
+        it('should apply secondary color', async () => {
+            const { container } = await render(Progress, { value: 50, color: 'secondary' })
             expect(getIndicator(container).className).toContain('bg-secondary')
         })
 
-        it('should apply tertiary color', () => {
-            const { container } = render(Progress, { value: 50, color: 'tertiary' })
+        it('should apply tertiary color', async () => {
+            const { container } = await render(Progress, { value: 50, color: 'tertiary' })
             expect(getIndicator(container).className).toContain('bg-tertiary')
         })
 
-        it('should apply success color', () => {
-            const { container } = render(Progress, { value: 50, color: 'success' })
+        it('should apply success color', async () => {
+            const { container } = await render(Progress, { value: 50, color: 'success' })
             expect(getIndicator(container).className).toContain('bg-success')
         })
 
-        it('should apply warning color', () => {
-            const { container } = render(Progress, { value: 50, color: 'warning' })
+        it('should apply warning color', async () => {
+            const { container } = await render(Progress, { value: 50, color: 'warning' })
             expect(getIndicator(container).className).toContain('bg-warning')
         })
 
-        it('should apply error color', () => {
-            const { container } = render(Progress, { value: 50, color: 'error' })
+        it('should apply error color', async () => {
+            const { container } = await render(Progress, { value: 50, color: 'error' })
             expect(getIndicator(container).className).toContain('bg-error')
         })
 
-        it('should apply info color', () => {
-            const { container } = render(Progress, { value: 50, color: 'info' })
+        it('should apply info color', async () => {
+            const { container } = await render(Progress, { value: 50, color: 'info' })
             expect(getIndicator(container).className).toContain('bg-info')
         })
 
-        it('should apply surface color', () => {
-            const { container } = render(Progress, { value: 50, color: 'surface' })
+        it('should apply surface color', async () => {
+            const { container } = await render(Progress, { value: 50, color: 'surface' })
             expect(getIndicator(container).className).toContain('bg-on-surface')
         })
     })
@@ -120,28 +120,28 @@ describe('Progress', () => {
     // ==================== SIZES ====================
 
     describe('sizes', () => {
-        it('should apply md size by default (h-2)', () => {
-            const { container } = render(Progress, { value: 50 })
+        it('should apply md size by default (h-2)', async () => {
+            const { container } = await render(Progress, { value: 50 })
             expect(getBase(container).className).toContain('h-2')
         })
 
-        it('should apply xs size', () => {
-            const { container } = render(Progress, { value: 50, size: 'xs' })
+        it('should apply xs size', async () => {
+            const { container } = await render(Progress, { value: 50, size: 'xs' })
             expect(getBase(container).className).toContain('h-0.5')
         })
 
-        it('should apply sm size', () => {
-            const { container } = render(Progress, { value: 50, size: 'sm' })
+        it('should apply sm size', async () => {
+            const { container } = await render(Progress, { value: 50, size: 'sm' })
             expect(getBase(container).className).toContain('h-1')
         })
 
-        it('should apply lg size', () => {
-            const { container } = render(Progress, { value: 50, size: 'lg' })
+        it('should apply lg size', async () => {
+            const { container } = await render(Progress, { value: 50, size: 'lg' })
             expect(getBase(container).className).toContain('h-3')
         })
 
-        it('should apply xl size', () => {
-            const { container } = render(Progress, { value: 50, size: 'xl' })
+        it('should apply xl size', async () => {
+            const { container } = await render(Progress, { value: 50, size: 'xl' })
             expect(getBase(container).className).toContain('h-4')
         })
     })
@@ -149,20 +149,20 @@ describe('Progress', () => {
     // ==================== ORIENTATION ====================
 
     describe('orientation', () => {
-        it('should be horizontal by default', () => {
-            const { container } = render(Progress, { value: 50 })
+        it('should be horizontal by default', async () => {
+            const { container } = await render(Progress, { value: 50 })
             expect(getRoot(container).className).toContain('flex-col')
             expect(getBase(container).className).toContain('w-full')
         })
 
-        it('should apply vertical orientation', () => {
-            const { container } = render(Progress, { value: 50, orientation: 'vertical' })
+        it('should apply vertical orientation', async () => {
+            const { container } = await render(Progress, { value: 50, orientation: 'vertical' })
             expect(getRoot(container).className).toContain('flex-row-reverse')
             expect(getRoot(container).className).toContain('h-full')
         })
 
-        it('should apply width for vertical sizes', () => {
-            const { container } = render(Progress, {
+        it('should apply width for vertical sizes', async () => {
+            const { container } = await render(Progress, {
                 value: 50,
                 orientation: 'vertical',
                 size: 'md'
@@ -170,8 +170,8 @@ describe('Progress', () => {
             expect(getBase(container).className).toContain('w-2')
         })
 
-        it('should use translateY for vertical', () => {
-            const { container } = render(Progress, { value: 75, orientation: 'vertical' })
+        it('should use translateY for vertical', async () => {
+            const { container } = await render(Progress, { value: 75, orientation: 'vertical' })
             const indicator = getIndicator(container)
             expect(indicator.style.transform).toContain('translateY(-25%)')
         })
@@ -180,14 +180,14 @@ describe('Progress', () => {
     // ==================== INVERTED ====================
 
     describe('inverted', () => {
-        it('should invert horizontal direction', () => {
-            const { container } = render(Progress, { value: 75, inverted: true })
+        it('should invert horizontal direction', async () => {
+            const { container } = await render(Progress, { value: 75, inverted: true })
             const indicator = getIndicator(container)
             expect(indicator.style.transform).toContain('translateX(25%)')
         })
 
-        it('should invert vertical direction', () => {
-            const { container } = render(Progress, {
+        it('should invert vertical direction', async () => {
+            const { container } = await render(Progress, {
                 value: 75,
                 orientation: 'vertical',
                 inverted: true
@@ -200,23 +200,23 @@ describe('Progress', () => {
     // ==================== STATUS ====================
 
     describe('status', () => {
-        it('should not render status by default', () => {
-            const { container } = render(Progress, { value: 50 })
+        it('should not render status by default', async () => {
+            const { container } = await render(Progress, { value: 50 })
             expect(container.textContent).not.toContain('%')
         })
 
-        it('should render status when enabled', () => {
-            const { container } = render(Progress, { value: 50, status: true })
+        it('should render status when enabled', async () => {
+            const { container } = await render(Progress, { value: 50, status: true })
             expect(container.textContent).toContain('50%')
         })
 
-        it('should display correct percentage', () => {
-            const { container } = render(Progress, { value: 75, status: true })
+        it('should display correct percentage', async () => {
+            const { container } = await render(Progress, { value: 75, status: true })
             expect(container.textContent).toContain('75%')
         })
 
-        it('should not render status for indeterminate', () => {
-            const { container } = render(Progress, { value: null, status: true })
+        it('should not render status for indeterminate', async () => {
+            const { container } = await render(Progress, { value: null, status: true })
             expect(container.textContent).not.toContain('%')
         })
     })
@@ -224,8 +224,8 @@ describe('Progress', () => {
     // ==================== STEPS ====================
 
     describe('steps', () => {
-        it('should render steps when max is array', () => {
-            const { container } = render(Progress, {
+        it('should render steps when max is array', async () => {
+            const { container } = await render(Progress, {
                 value: 1,
                 max: ['Step 1', 'Step 2', 'Step 3']
             })
@@ -234,15 +234,15 @@ describe('Progress', () => {
             expect(container.textContent).toContain('Step 3')
         })
 
-        it('should render correct number of step divs', () => {
-            const { container } = render(Progress, { value: 1, max: ['A', 'B', 'C', 'D'] })
+        it('should render correct number of step divs', async () => {
+            const { container } = await render(Progress, { value: 1, max: ['A', 'B', 'C', 'D'] })
             const stepsContainer = container.querySelector('[class*="grid"]')
             const steps = stepsContainer?.querySelectorAll(':scope > div')
             expect(steps?.length).toBe(4)
         })
 
-        it('should apply active opacity to current step', () => {
-            const { container } = render(Progress, { value: 1, max: ['A', 'B', 'C'] })
+        it('should apply active opacity to current step', async () => {
+            const { container } = await render(Progress, { value: 1, max: ['A', 'B', 'C'] })
             const stepsContainer = container.querySelector('[class*="grid"]')
             const steps = stepsContainer?.querySelectorAll(':scope > div')
             // index 0 is first + not active => 'other' (opacity-0)
@@ -253,16 +253,16 @@ describe('Progress', () => {
             expect(steps?.[2].className).toContain('opacity-0')
         })
 
-        it('should apply first variant when value is 0', () => {
-            const { container } = render(Progress, { value: 0, max: ['A', 'B', 'C'] })
+        it('should apply first variant when value is 0', async () => {
+            const { container } = await render(Progress, { value: 0, max: ['A', 'B', 'C'] })
             const stepsContainer = container.querySelector('[class*="grid"]')
             const steps = stepsContainer?.querySelectorAll(':scope > div')
             // index 0 is first + active => 'first' (opacity-100 text-on-surface-variant)
             expect(steps?.[0].className).toContain('opacity-100')
         })
 
-        it('should calculate progress based on step count', () => {
-            const { container } = render(Progress, { value: 2, max: ['A', 'B', 'C', 'D'] })
+        it('should calculate progress based on step count', async () => {
+            const { container } = await render(Progress, { value: 2, max: ['A', 'B', 'C', 'D'] })
             const indicator = getIndicator(container)
             // max = 3 (array.length - 1), value = 2, percent = 67%
             expect(indicator.style.transform).toContain('translateX(-33%)')
@@ -272,26 +272,29 @@ describe('Progress', () => {
     // ==================== ANIMATION ====================
 
     describe('animation', () => {
-        it('should apply carousel animation by default', () => {
-            const { container } = render(Progress, { value: null })
+        it('should apply carousel animation by default', async () => {
+            const { container } = await render(Progress, { value: null })
             const indicator = getIndicator(container)
             expect(indicator.className).toContain('carousel')
         })
 
-        it('should apply swing animation', () => {
-            const { container } = render(Progress, { value: null, animation: 'swing' })
+        it('should apply swing animation', async () => {
+            const { container } = await render(Progress, { value: null, animation: 'swing' })
             const indicator = getIndicator(container)
             expect(indicator.className).toContain('swing')
         })
 
-        it('should apply elastic animation', () => {
-            const { container } = render(Progress, { value: null, animation: 'elastic' })
+        it('should apply elastic animation', async () => {
+            const { container } = await render(Progress, { value: null, animation: 'elastic' })
             const indicator = getIndicator(container)
             expect(indicator.className).toContain('elastic')
         })
 
-        it('should apply carousel-inverse animation', () => {
-            const { container } = render(Progress, { value: null, animation: 'carousel-inverse' })
+        it('should apply carousel-inverse animation', async () => {
+            const { container } = await render(Progress, {
+                value: null,
+                animation: 'carousel-inverse'
+            })
             const indicator = getIndicator(container)
             expect(indicator.className).toContain('carousel-inverse')
         })
@@ -300,8 +303,8 @@ describe('Progress', () => {
     // ==================== CUSTOM CLASS ====================
 
     describe('custom class', () => {
-        it('should apply custom class to root', () => {
-            const { container } = render(Progress, { value: 50, class: 'my-progress' })
+        it('should apply custom class to root', async () => {
+            const { container } = await render(Progress, { value: 50, class: 'my-progress' })
             expect(getRoot(container).className).toContain('my-progress')
         })
     })
@@ -309,26 +312,26 @@ describe('Progress', () => {
     // ==================== UI SLOT OVERRIDES ====================
 
     describe('ui slot overrides', () => {
-        it('should apply ui.root class', () => {
-            const { container } = render(Progress, { value: 50, ui: { root: 'custom-root' } })
+        it('should apply ui.root class', async () => {
+            const { container } = await render(Progress, { value: 50, ui: { root: 'custom-root' } })
             expect(getRoot(container).className).toContain('custom-root')
         })
 
-        it('should apply ui.base class', () => {
-            const { container } = render(Progress, { value: 50, ui: { base: 'custom-base' } })
+        it('should apply ui.base class', async () => {
+            const { container } = await render(Progress, { value: 50, ui: { base: 'custom-base' } })
             expect(getBase(container).className).toContain('custom-base')
         })
 
-        it('should apply ui.indicator class', () => {
-            const { container } = render(Progress, {
+        it('should apply ui.indicator class', async () => {
+            const { container } = await render(Progress, {
                 value: 50,
                 ui: { indicator: 'custom-indicator' }
             })
             expect(getIndicator(container).className).toContain('custom-indicator')
         })
 
-        it('should apply ui.status class', () => {
-            const { container } = render(Progress, {
+        it('should apply ui.status class', async () => {
+            const { container } = await render(Progress, {
                 value: 50,
                 status: true,
                 ui: { status: 'custom-status' }
@@ -340,8 +343,8 @@ describe('Progress', () => {
     // ==================== COMBINED ====================
 
     describe('combined features', () => {
-        it('should render with color, size and status', () => {
-            const { container } = render(Progress, {
+        it('should render with color, size and status', async () => {
+            const { container } = await render(Progress, {
                 value: 80,
                 color: 'success',
                 size: 'lg',
@@ -352,8 +355,8 @@ describe('Progress', () => {
             expect(getBase(container).className).toContain('h-3')
         })
 
-        it('should render vertical with inverted', () => {
-            const { container } = render(Progress, {
+        it('should render vertical with inverted', async () => {
+            const { container } = await render(Progress, {
                 value: 60,
                 orientation: 'vertical',
                 inverted: true,
@@ -364,8 +367,8 @@ describe('Progress', () => {
             expect(indicator.className).toContain('bg-tertiary')
         })
 
-        it('should render steps with color', () => {
-            const { container } = render(Progress, {
+        it('should render steps with color', async () => {
+            const { container } = await render(Progress, {
                 value: 2,
                 max: ['Cart', 'Shipping', 'Payment', 'Done'],
                 color: 'success'

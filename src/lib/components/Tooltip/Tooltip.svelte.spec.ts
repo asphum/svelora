@@ -11,12 +11,12 @@ describe('Tooltip', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render without crashing', () => {
-            const { container } = render(Tooltip, { text: 'Test' })
+        it('should render without crashing', async () => {
+            const { container } = await render(Tooltip, { text: 'Test' })
             expect(container).not.toBeNull()
         })
 
-        it('should not render content when closed', () => {
+        it('should not render content when closed', async () => {
             render(Tooltip, { text: 'Test' })
             expect(getContent()).toBeNull()
         })
@@ -191,10 +191,10 @@ describe('Tooltip', () => {
             })
         })
 
-        it('should accept disabled prop', () => {
+        it('should accept disabled prop', async () => {
             // Tooltip disabled state is controlled via the disabled prop
             // When disabled, it prevents opening on hover/focus but may still show if open=true
-            const { container } = render(Tooltip, { text: 'Test', disabled: true })
+            const { container } = await render(Tooltip, { text: 'Test', disabled: true })
             expect(container).not.toBeNull()
         })
     })
@@ -203,7 +203,7 @@ describe('Tooltip', () => {
 
     describe('portal', () => {
         it('should render in portal by default', async () => {
-            const { container } = render(Tooltip, { open: true, text: 'Test' })
+            const { container } = await render(Tooltip, { open: true, text: 'Test' })
             await vi.waitFor(() => {
                 const content = getContent()
                 expect(content).not.toBeNull()

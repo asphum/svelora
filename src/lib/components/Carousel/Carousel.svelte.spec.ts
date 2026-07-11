@@ -50,8 +50,8 @@ describe('Carousel', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render without crashing', () => {
-            const { container } = render(Carousel, { items, ui: sizedUi })
+        it('should render without crashing', async () => {
+            const { container } = await render(Carousel, { items, ui: sizedUi })
             expect(container).not.toBeNull()
         })
 
@@ -81,7 +81,7 @@ describe('Carousel', () => {
         })
 
         it('should call slide snippet for each item', async () => {
-            const { container } = render(Carousel, {
+            const { container } = await render(Carousel, {
                 items,
                 ui: sizedUi,
                 slide: labelSnippet
@@ -254,7 +254,7 @@ describe('Carousel', () => {
 
     describe('custom snippets', () => {
         it('should render custom prev/next snippets in place of default arrows', async () => {
-            const { container } = render(Carousel, {
+            const { container } = await render(Carousel, {
                 items,
                 ui: sizedUi,
                 prevSlot: customPrev,
@@ -268,7 +268,7 @@ describe('Carousel', () => {
         })
 
         it('should render custom dot snippet in place of default dots', async () => {
-            const { container } = render(Carousel, {
+            const { container } = await render(Carousel, {
                 items,
                 ui: sizedUi,
                 dot: customDot
@@ -286,7 +286,7 @@ describe('Carousel', () => {
 
     describe('styling', () => {
         it('should apply custom class to root', async () => {
-            const { container } = render(Carousel, {
+            const { container } = await render(Carousel, {
                 items,
                 class: 'my-carousel',
                 ui: sizedUi
@@ -333,7 +333,7 @@ describe('Carousel', () => {
 
     describe('accessibility', () => {
         it('should expose role=tablist on dots container', async () => {
-            const { container } = render(Carousel, { items, ui: sizedUi })
+            const { container } = await render(Carousel, { items, ui: sizedUi })
             await vi.waitFor(() => {
                 expect(container.querySelector('[role="tablist"]')).not.toBeNull()
             })

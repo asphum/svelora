@@ -24,7 +24,7 @@ describe('CodeBlock', () => {
 
     describe('rendering', () => {
         it('should render the root element', async () => {
-            const { container } = render(CodeBlock, { code: '<div />' })
+            const { container } = await render(CodeBlock, { code: '<div />' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toBeInTheDocument()
         })
@@ -48,13 +48,13 @@ describe('CodeBlock', () => {
     // ==================== COPY ====================
 
     describe('copy', () => {
-        it('should disable copy when code is empty', () => {
+        it('should disable copy when code is empty', async () => {
             render(CodeBlock, { code: '' })
             const button = page.getByRole('button', { name: 'Copy' })
             expect((button.element() as HTMLButtonElement).disabled).toBe(true)
         })
 
-        it('should disable copy when copyable=false', () => {
+        it('should disable copy when copyable=false', async () => {
             render(CodeBlock, { code: 'const x = 1', copyable: false })
             const button = page.getByRole('button', { name: 'Copy' })
             expect((button.element() as HTMLButtonElement).disabled).toBe(true)
@@ -105,13 +105,13 @@ describe('CodeBlock', () => {
 
     describe('variants', () => {
         it('should render with variant="ghost"', async () => {
-            const { container } = render(CodeBlock, { code: 'x', variant: 'ghost' })
+            const { container } = await render(CodeBlock, { code: 'x', variant: 'ghost' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toBeInTheDocument()
         })
 
         it('should render with size="sm"', async () => {
-            const { container } = render(CodeBlock, { code: 'x', size: 'sm' })
+            const { container } = await render(CodeBlock, { code: 'x', size: 'sm' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toBeInTheDocument()
         })

@@ -19,8 +19,8 @@ describe('Calendar', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render without crashing', () => {
-            const { container } = render(Calendar)
+        it('should render without crashing', async () => {
+            const { container } = await render(Calendar)
             expect(container).not.toBeNull()
         })
 
@@ -273,7 +273,7 @@ describe('Calendar', () => {
         })
 
         it('should move to the value month when value is set after mount', async () => {
-            const screen = render(Calendar, {})
+            const screen = await render(Calendar, {})
             await vi.waitFor(() => expect(getHeading()).not.toBeNull())
             await screen.rerender({ value: new CalendarDate(2019, 7, 4) })
             await vi.waitFor(() => {

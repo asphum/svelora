@@ -7,7 +7,7 @@ describe('useClipboard', () => {
         vi.restoreAllMocks()
     })
 
-    it('should default copied to false', () => {
+    it('should default copied to false', async () => {
         let api: ReturnType<typeof useClipboard>
         const cleanup = $effect.root(() => {
             api = useClipboard()

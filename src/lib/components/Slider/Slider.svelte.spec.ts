@@ -22,27 +22,27 @@ describe('Slider', () => {
             await expect.element(slider).toBeInTheDocument()
         })
 
-        it('should render a track element', () => {
+        it('should render a track element', async () => {
             render(Slider)
             expect(getTrack()).not.toBeNull()
         })
 
-        it('should render a range element', () => {
+        it('should render a range element', async () => {
             render(Slider)
             expect(getRange()).not.toBeNull()
         })
 
-        it('should render one thumb by default (single value)', () => {
+        it('should render one thumb by default (single value)', async () => {
             render(Slider)
             expect(getThumbs()).toHaveLength(1)
         })
 
-        it('should render multiple thumbs for array value', () => {
+        it('should render multiple thumbs for array value', async () => {
             render(Slider, { value: [20, 80] })
             expect(getThumbs()).toHaveLength(2)
         })
 
-        it('should render three thumbs for three-value array', () => {
+        it('should render three thumbs for three-value array', async () => {
             render(Slider, { value: [10, 50, 90] })
             expect(getThumbs()).toHaveLength(3)
         })
@@ -51,24 +51,24 @@ describe('Slider', () => {
     // ==================== VALUE ====================
 
     describe('value', () => {
-        it('should reflect single value via aria-valuenow', () => {
+        it('should reflect single value via aria-valuenow', async () => {
             render(Slider, { value: 42 })
             expect(getThumb()!.getAttribute('aria-valuenow')).toBe('42')
         })
 
-        it('should reflect multiple values via aria-valuenow on each thumb', () => {
+        it('should reflect multiple values via aria-valuenow on each thumb', async () => {
             render(Slider, { value: [25, 75] })
             const thumbs = getThumbs()
             expect(thumbs[0]!.getAttribute('aria-valuenow')).toBe('25')
             expect(thumbs[1]!.getAttribute('aria-valuenow')).toBe('75')
         })
 
-        it('should default value to 0 when not provided', () => {
+        it('should default value to 0 when not provided', async () => {
             render(Slider)
             expect(getThumb()!.getAttribute('aria-valuenow')).toBe('0')
         })
 
-        it('should set aria-valuemin and aria-valuemax from min/max props', () => {
+        it('should set aria-valuemin and aria-valuemax from min/max props', async () => {
             render(Slider, { min: 10, max: 90, value: 50 })
             expect(getThumb()!.getAttribute('aria-valuemin')).toBe('10')
             expect(getThumb()!.getAttribute('aria-valuemax')).toBe('90')
@@ -156,12 +156,12 @@ describe('Slider', () => {
             await expect.element(thumb).toBeDisabled()
         })
 
-        it('should apply disabled variant class to base', () => {
+        it('should apply disabled variant class to base', async () => {
             render(Slider, { disabled: true })
             expect(getRoot()!.className).toMatch(/opacity-50/)
         })
 
-        it('should apply cursor-not-allowed when disabled', () => {
+        it('should apply cursor-not-allowed when disabled', async () => {
             render(Slider, { disabled: true })
             expect(getRoot()!.className).toMatch(/cursor-not-allowed/)
         })
@@ -190,23 +190,23 @@ describe('Slider', () => {
         ] as const
 
         for (const color of colors) {
-            it(`should apply range color for color="${color}"`, () => {
+            it(`should apply range color for color="${color}"`, async () => {
                 render(Slider, { color, value: 50 })
                 expect(getRange()!.className).toMatch(new RegExp(`bg-${color}`))
             })
 
-            it(`should apply thumb ring color for color="${color}"`, () => {
+            it(`should apply thumb ring color for color="${color}"`, async () => {
                 render(Slider, { color, value: 50 })
                 expect(getThumb()!.className).toMatch(new RegExp(`ring-${color}`))
             })
         }
 
-        it('should apply surface color to range', () => {
+        it('should apply surface color to range', async () => {
             render(Slider, { color: 'surface', value: 50 })
             expect(getRange()!.className).toMatch(/bg-on-surface/)
         })
 
-        it('should apply surface color to thumb ring', () => {
+        it('should apply surface color to thumb ring', async () => {
             render(Slider, { color: 'surface', value: 50 })
             expect(getThumb()!.className).toMatch(/ring-on-surface/)
         })
@@ -215,42 +215,42 @@ describe('Slider', () => {
     // ==================== SIZES ====================
 
     describe('sizes', () => {
-        it('should apply xs thumb size', () => {
+        it('should apply xs thumb size', async () => {
             render(Slider, { size: 'xs' })
             expect(getThumb()!.className).toMatch(/size-3/)
         })
 
-        it('should apply sm thumb size', () => {
+        it('should apply sm thumb size', async () => {
             render(Slider, { size: 'sm' })
             expect(getThumb()!.className).toMatch(/size-3\.5/)
         })
 
-        it('should apply md thumb size by default', () => {
+        it('should apply md thumb size by default', async () => {
             render(Slider)
             expect(getThumb()!.className).toMatch(/size-4/)
         })
 
-        it('should apply lg thumb size', () => {
+        it('should apply lg thumb size', async () => {
             render(Slider, { size: 'lg' })
             expect(getThumb()!.className).toMatch(/size-4\.5/)
         })
 
-        it('should apply xl thumb size', () => {
+        it('should apply xl thumb size', async () => {
             render(Slider, { size: 'xl' })
             expect(getThumb()!.className).toMatch(/size-5/)
         })
 
-        it('should apply xs track height for horizontal', () => {
+        it('should apply xs track height for horizontal', async () => {
             render(Slider, { size: 'xs', orientation: 'horizontal' })
             expect(getTrack()!.className).toMatch(/h-1/)
         })
 
-        it('should apply md track height for horizontal', () => {
+        it('should apply md track height for horizontal', async () => {
             render(Slider, { size: 'md', orientation: 'horizontal' })
             expect(getTrack()!.className).toMatch(/h-2/)
         })
 
-        it('should apply md track width for vertical', () => {
+        it('should apply md track width for vertical', async () => {
             render(Slider, { size: 'md', orientation: 'vertical' })
             expect(getTrack()!.className).toMatch(/w-2/)
         })
@@ -259,17 +259,17 @@ describe('Slider', () => {
     // ==================== ORIENTATION ====================
 
     describe('orientation', () => {
-        it('should apply horizontal layout class by default', () => {
+        it('should apply horizontal layout class by default', async () => {
             render(Slider)
             expect(getRoot()!.className).toMatch(/flex-row|w-full/)
         })
 
-        it('should apply vertical layout class', () => {
+        it('should apply vertical layout class', async () => {
             render(Slider, { orientation: 'vertical' })
             expect(getRoot()!.className).toMatch(/flex-col|h-full/)
         })
 
-        it('should set aria-orientation on thumb for vertical', () => {
+        it('should set aria-orientation on thumb for vertical', async () => {
             render(Slider, { orientation: 'vertical' })
             expect(getThumb()!.getAttribute('aria-orientation')).toBe('vertical')
         })
@@ -278,8 +278,8 @@ describe('Slider', () => {
     // ==================== FORM (name / hidden inputs) ====================
 
     describe('form integration', () => {
-        it('should render a hidden input when name is set', () => {
-            const { container } = render(Slider, { name: 'volume', value: 50 })
+        it('should render a hidden input when name is set', async () => {
+            const { container } = await render(Slider, { name: 'volume', value: 50 })
             const hidden = container.querySelector(
                 'input[type="hidden"][name="volume"]'
             ) as HTMLInputElement
@@ -287,16 +287,16 @@ describe('Slider', () => {
             expect(hidden!.value).toBe('50')
         })
 
-        it('should render one hidden input per thumb for range values', () => {
-            const { container } = render(Slider, { name: 'range', value: [20, 80] })
+        it('should render one hidden input per thumb for range values', async () => {
+            const { container } = await render(Slider, { name: 'range', value: [20, 80] })
             const inputs = container.querySelectorAll('input[type="hidden"][name="range"]')
             expect(inputs).toHaveLength(2)
             expect((inputs[0] as HTMLInputElement).value).toBe('20')
             expect((inputs[1] as HTMLInputElement).value).toBe('80')
         })
 
-        it('should not render hidden inputs when name is not set', () => {
-            const { container } = render(Slider, { value: 50 })
+        it('should not render hidden inputs when name is not set', async () => {
+            const { container } = await render(Slider, { value: 50 })
             expect(container.querySelector('input[type="hidden"]')).toBeNull()
         })
     })
@@ -313,7 +313,7 @@ describe('Slider', () => {
             })
         })
 
-        it('should not render thumb label when tooltip=false', () => {
+        it('should not render thumb label when tooltip=false', async () => {
             render(Slider, { tooltip: false, value: 50 })
             const labels = document.querySelectorAll('[data-slider-thumb-label]')
             expect(labels).toHaveLength(0)
@@ -331,28 +331,28 @@ describe('Slider', () => {
     // ==================== CUSTOM CLASS & UI ====================
 
     describe('custom class & ui', () => {
-        it('should apply custom class to root element', () => {
-            const { container } = render(Slider, { class: 'my-root-class' })
+        it('should apply custom class to root element', async () => {
+            const { container } = await render(Slider, { class: 'my-root-class' })
             const root = container.firstElementChild as HTMLElement
             expect(root.className).toContain('my-root-class')
         })
 
-        it('should apply ui.base override to slider root', () => {
+        it('should apply ui.base override to slider root', async () => {
             render(Slider, { ui: { base: 'my-base-class' } })
             expect(getRoot()!.className).toContain('my-base-class')
         })
 
-        it('should apply ui.track override', () => {
+        it('should apply ui.track override', async () => {
             render(Slider, { ui: { track: 'my-track-class' } })
             expect(getTrack()!.className).toContain('my-track-class')
         })
 
-        it('should apply ui.range override', () => {
+        it('should apply ui.range override', async () => {
             render(Slider, { ui: { range: 'my-range-class' } })
             expect(getRange()!.className).toContain('my-range-class')
         })
 
-        it('should apply ui.thumb override', () => {
+        it('should apply ui.thumb override', async () => {
             render(Slider, { ui: { thumb: 'my-thumb-class' } })
             expect(getThumb()!.className).toContain('my-thumb-class')
         })
@@ -367,17 +367,17 @@ describe('Slider', () => {
             await expect.element(thumb).toBeInTheDocument()
         })
 
-        it('should have correct aria-valuemin', () => {
+        it('should have correct aria-valuemin', async () => {
             render(Slider, { min: 5 })
             expect(getThumb()!.getAttribute('aria-valuemin')).toBe('5')
         })
 
-        it('should have correct aria-valuemax', () => {
+        it('should have correct aria-valuemax', async () => {
             render(Slider, { max: 200 })
             expect(getThumb()!.getAttribute('aria-valuemax')).toBe('200')
         })
 
-        it('should have aria-disabled when disabled', () => {
+        it('should have aria-disabled when disabled', async () => {
             render(Slider, { disabled: true })
             const thumb = getThumb()!
             // bits-ui sets disabled attribute or aria-disabled
@@ -390,14 +390,14 @@ describe('Slider', () => {
     // ==================== COMBINED PROPS ====================
 
     describe('combined props', () => {
-        it('should render range slider with color and size', () => {
+        it('should render range slider with color and size', async () => {
             render(Slider, { value: [10, 90], color: 'success', size: 'lg' })
             expect(getThumbs()).toHaveLength(2)
             expect(getRange()!.className).toMatch(/bg-success/)
             expect(getThumb()!.className).toMatch(/size-4\.5/)
         })
 
-        it('should render disabled range slider with correct initial values', () => {
+        it('should render disabled range slider with correct initial values', async () => {
             render(Slider, { value: [20, 80], disabled: true })
             const thumbs = getThumbs()
             expect(thumbs[0]!.getAttribute('aria-valuenow')).toBe('20')
@@ -405,7 +405,7 @@ describe('Slider', () => {
             expect(getRoot()!.className).toMatch(/opacity-50/)
         })
 
-        it('should render with all variant props combined', () => {
+        it('should render with all variant props combined', async () => {
             render(Slider, {
                 value: 60,
                 min: 0,

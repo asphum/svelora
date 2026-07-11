@@ -9,7 +9,7 @@ afterEach(() => {
 })
 
 describe('useLocalStorage', () => {
-    it('returns the initial value when the key is absent', () => {
+    it('returns the initial value when the key is absent', async () => {
         let store: ReturnType<typeof useLocalStorage<string>>
         const cleanup = $effect.root(() => {
             store = useLocalStorage(KEY, 'fallback')
@@ -19,7 +19,7 @@ describe('useLocalStorage', () => {
         cleanup()
     })
 
-    it('reads an existing stored value on mount', () => {
+    it('reads an existing stored value on mount', async () => {
         localStorage.setItem(KEY, JSON.stringify({ count: 7 }))
         let store: ReturnType<typeof useLocalStorage<{ count: number }>>
         const cleanup = $effect.root(() => {
@@ -30,7 +30,7 @@ describe('useLocalStorage', () => {
         cleanup()
     })
 
-    it('persists writes to localStorage', () => {
+    it('persists writes to localStorage', async () => {
         let store: ReturnType<typeof useLocalStorage<number>>
         const cleanup = $effect.root(() => {
             store = useLocalStorage(KEY, 1)
@@ -42,7 +42,7 @@ describe('useLocalStorage', () => {
         cleanup()
     })
 
-    it('tolerates malformed stored JSON (falls back to initial)', () => {
+    it('tolerates malformed stored JSON (falls back to initial)', async () => {
         localStorage.setItem(KEY, '{not valid json')
         let store: ReturnType<typeof useLocalStorage<string>>
         const cleanup = $effect.root(() => {
@@ -53,7 +53,7 @@ describe('useLocalStorage', () => {
         cleanup()
     })
 
-    it('updates when another tab changes the key (syncTabs)', () => {
+    it('updates when another tab changes the key (syncTabs)', async () => {
         let store: ReturnType<typeof useLocalStorage<string>>
         const cleanup = $effect.root(() => {
             store = useLocalStorage(KEY, 'a')
@@ -71,7 +71,7 @@ describe('useLocalStorage', () => {
         cleanup()
     })
 
-    it('resets to initial when the key is removed in another tab', () => {
+    it('resets to initial when the key is removed in another tab', async () => {
         let store: ReturnType<typeof useLocalStorage<string>>
         const cleanup = $effect.root(() => {
             store = useLocalStorage(KEY, 'init')
@@ -87,7 +87,7 @@ describe('useLocalStorage', () => {
         cleanup()
     })
 
-    it('removes the storage listener on unmount with matching args (no leak)', () => {
+    it('removes the storage listener on unmount with matching args (no leak)', async () => {
         const addSpy = vi.spyOn(window, 'addEventListener')
         const removeSpy = vi.spyOn(window, 'removeEventListener')
         const cleanup = $effect.root(() => {
@@ -105,7 +105,7 @@ describe('useLocalStorage', () => {
         removeSpy.mockRestore()
     })
 
-    it('does not add a storage listener when syncTabs is false', () => {
+    it('does not add a storage listener when syncTabs is false', async () => {
         const addSpy = vi.spyOn(window, 'addEventListener')
         const cleanup = $effect.root(() => {
             useLocalStorage(KEY, 'x', { syncTabs: false })
@@ -116,7 +116,7 @@ describe('useLocalStorage', () => {
         cleanup()
     })
 
-    it('supports a custom serializer', () => {
+    it('supports a custom serializer', async () => {
         const serializer = {
             parse: (raw: string) => Number(raw),
             stringify: (value: number) => String(value)
@@ -132,7 +132,7 @@ describe('useLocalStorage', () => {
         cleanup()
     })
 
-    it('does not write back to storage when synced from a storage event (no echo, objects)', () => {
+    it('does not write back to storage when synced from a storage event (no echo, objects)', async () => {
         let store: ReturnType<typeof useLocalStorage<{ v: number }>>
         const cleanup = $effect.root(() => {
             store = useLocalStorage(KEY, { v: 0 })
@@ -155,7 +155,7 @@ describe('useLocalStorage', () => {
         cleanup()
     })
 
-    it('does not rewrite storage when set to an equal value', () => {
+    it('does not rewrite storage when set to an equal value', async () => {
         localStorage.setItem(KEY, JSON.stringify('same'))
         let store: ReturnType<typeof useLocalStorage<string>>
         const cleanup = $effect.root(() => {

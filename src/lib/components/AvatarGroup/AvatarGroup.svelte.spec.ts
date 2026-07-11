@@ -19,18 +19,18 @@ describe('AvatarGroup', () => {
 
     describe('rendering', () => {
         it('should render the root element', async () => {
-            const { container } = render(AvatarGroup, { avatars: avatars.slice(0, 2) })
+            const { container } = await render(AvatarGroup, { avatars: avatars.slice(0, 2) })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toBeInTheDocument()
         })
 
         it('should render as div by default', async () => {
-            const { container } = render(AvatarGroup, { avatars: avatars.slice(0, 2) })
+            const { container } = await render(AvatarGroup, { avatars: avatars.slice(0, 2) })
             expect(container.firstElementChild!.tagName).toBe('DIV')
         })
 
         it('should apply base root classes', async () => {
-            const { container } = render(AvatarGroup, { avatars: avatars.slice(0, 2) })
+            const { container } = await render(AvatarGroup, { avatars: avatars.slice(0, 2) })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toHaveClass(/inline-flex/)
         })
@@ -40,19 +40,19 @@ describe('AvatarGroup', () => {
 
     describe('avatars prop', () => {
         it('should render all avatars when no max is set', async () => {
-            const { container } = render(AvatarGroup, { avatars })
+            const { container } = await render(AvatarGroup, { avatars })
             const rendered = container.querySelectorAll('[data-avatar-root]')
             expect(rendered.length).toBe(5)
         })
 
         it('should render correct number of avatars', async () => {
-            const { container } = render(AvatarGroup, { avatars: avatars.slice(0, 3) })
+            const { container } = await render(AvatarGroup, { avatars: avatars.slice(0, 3) })
             const rendered = container.querySelectorAll('[data-avatar-root]')
             expect(rendered.length).toBe(3)
         })
 
         it('should render nothing when avatars is empty', async () => {
-            const { container } = render(AvatarGroup, { avatars: [] })
+            const { container } = await render(AvatarGroup, { avatars: [] })
             const rendered = container.querySelectorAll('[data-avatar-root]')
             expect(rendered.length).toBe(0)
         })
@@ -62,14 +62,14 @@ describe('AvatarGroup', () => {
 
     describe('max prop', () => {
         it('should limit visible avatars', async () => {
-            const { container } = render(AvatarGroup, { avatars, max: 3 })
+            const { container } = await render(AvatarGroup, { avatars, max: 3 })
             // 3 visible + 1 overflow indicator
             const rendered = container.querySelectorAll('[data-avatar-root]')
             expect(rendered.length).toBe(4)
         })
 
         it('should show overflow indicator with correct count', async () => {
-            const { container } = render(AvatarGroup, { avatars, max: 2 })
+            const { container } = await render(AvatarGroup, { avatars, max: 2 })
             const fallbacks = container.querySelectorAll('[data-avatar-fallback]')
             const overflowEl = Array.from(fallbacks).find((el) => el.textContent?.startsWith('+'))
             expect(overflowEl).not.toBeNull()
@@ -77,26 +77,26 @@ describe('AvatarGroup', () => {
         })
 
         it('should not show overflow when max >= avatars count', async () => {
-            const { container } = render(AvatarGroup, { avatars, max: 5 })
+            const { container } = await render(AvatarGroup, { avatars, max: 5 })
             const fallbacks = container.querySelectorAll('[data-avatar-fallback]')
             const overflowEl = Array.from(fallbacks).find((el) => el.textContent?.startsWith('+'))
             expect(overflowEl).toBeUndefined()
         })
 
         it('should not show overflow when max >= avatars count (larger)', async () => {
-            const { container } = render(AvatarGroup, { avatars, max: 10 })
+            const { container } = await render(AvatarGroup, { avatars, max: 10 })
             const rendered = container.querySelectorAll('[data-avatar-root]')
             expect(rendered.length).toBe(5)
         })
 
         it('should show all avatars when max is 0', async () => {
-            const { container } = render(AvatarGroup, { avatars, max: 0 })
+            const { container } = await render(AvatarGroup, { avatars, max: 0 })
             const rendered = container.querySelectorAll('[data-avatar-root]')
             expect(rendered.length).toBe(5)
         })
 
         it('should show all avatars when max is negative', async () => {
-            const { container } = render(AvatarGroup, { avatars, max: -1 })
+            const { container } = await render(AvatarGroup, { avatars, max: -1 })
             const rendered = container.querySelectorAll('[data-avatar-root]')
             expect(rendered.length).toBe(5)
         })
@@ -119,7 +119,7 @@ describe('AvatarGroup', () => {
 
         for (const { size, ring } of sizeMap) {
             it(`should apply ring "${ring}" for size="${size}"`, async () => {
-                const { container } = render(AvatarGroup, {
+                const { container } = await render(AvatarGroup, {
                     avatars: avatars.slice(0, 2),
                     size
                 })
@@ -134,7 +134,7 @@ describe('AvatarGroup', () => {
 
     describe('as prop', () => {
         it('should render as section element', async () => {
-            const { container } = render(AvatarGroup, {
+            const { container } = await render(AvatarGroup, {
                 avatars: avatars.slice(0, 2),
                 as: 'section'
             })
@@ -142,7 +142,7 @@ describe('AvatarGroup', () => {
         })
 
         it('should render as span element', async () => {
-            const { container } = render(AvatarGroup, {
+            const { container } = await render(AvatarGroup, {
                 avatars: avatars.slice(0, 2),
                 as: 'span'
             })
@@ -154,7 +154,7 @@ describe('AvatarGroup', () => {
 
     describe('custom class', () => {
         it('should apply custom class to root', async () => {
-            const { container } = render(AvatarGroup, {
+            const { container } = await render(AvatarGroup, {
                 avatars: avatars.slice(0, 2),
                 class: 'my-group'
             })
@@ -167,14 +167,14 @@ describe('AvatarGroup', () => {
 
     describe('rounded', () => {
         it('should default to rounded-full on child avatars', async () => {
-            const { container } = render(AvatarGroup, { avatars: avatars.slice(0, 2) })
+            const { container } = await render(AvatarGroup, { avatars: avatars.slice(0, 2) })
             const avatarRoot = container.querySelectorAll('[data-avatar-root]')[0]
             const root = page.elementLocator(avatarRoot)
             await expect.element(root).toHaveClass(/rounded-full/)
         })
 
         it('should apply rounded-lg to child avatars', async () => {
-            const { container } = render(AvatarGroup, {
+            const { container } = await render(AvatarGroup, {
                 avatars: avatars.slice(0, 2),
                 rounded: 'lg'
             })
@@ -185,7 +185,7 @@ describe('AvatarGroup', () => {
         })
 
         it('should apply rounded-none to child avatars', async () => {
-            const { container } = render(AvatarGroup, {
+            const { container } = await render(AvatarGroup, {
                 avatars: avatars.slice(0, 2),
                 rounded: 'none'
             })
@@ -199,7 +199,7 @@ describe('AvatarGroup', () => {
 
     describe('ui slot overrides', () => {
         it('should apply ui.root class', async () => {
-            const { container } = render(AvatarGroup, {
+            const { container } = await render(AvatarGroup, {
                 avatars: avatars.slice(0, 2),
                 ui: { root: 'custom-root' }
             })
@@ -208,7 +208,7 @@ describe('AvatarGroup', () => {
         })
 
         it('should apply ui.base class to child avatars', async () => {
-            const { container } = render(AvatarGroup, {
+            const { container } = await render(AvatarGroup, {
                 avatars: avatars.slice(0, 2),
                 ui: { base: 'custom-base' }
             })
@@ -225,7 +225,7 @@ describe('AvatarGroup', () => {
 
     describe('display order', () => {
         it('reverses DOM order so the array reads left-to-right visually', async () => {
-            const { container } = render(AvatarGroup, {
+            const { container } = await render(AvatarGroup, {
                 avatars: [{ text: '1' }, { text: '2' }, { text: '3' }]
             })
             const texts = Array.from(container.querySelectorAll('[data-avatar-fallback]')).map(
@@ -235,7 +235,7 @@ describe('AvatarGroup', () => {
         })
 
         it('places the overflow indicator at the visual end', async () => {
-            const { container } = render(AvatarGroup, {
+            const { container } = await render(AvatarGroup, {
                 avatars: [
                     { text: '1' },
                     { text: '2' },

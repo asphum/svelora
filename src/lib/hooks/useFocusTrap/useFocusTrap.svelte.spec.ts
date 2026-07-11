@@ -30,7 +30,7 @@ afterEach(() => {
 })
 
 describe('useFocusTrap', () => {
-    it('focuses the first focusable element on activate', () => {
+    it('focuses the first focusable element on activate', async () => {
         const { container, a } = makeTrap()
         const cleanup = $effect.root(() => useFocusTrap(() => container))
         flushSync()
@@ -38,7 +38,7 @@ describe('useFocusTrap', () => {
         cleanup()
     })
 
-    it('respects an explicit initialFocus', () => {
+    it('respects an explicit initialFocus', async () => {
         const { container, b } = makeTrap()
         const cleanup = $effect.root(() => useFocusTrap(() => container, { initialFocus: b }))
         flushSync()
@@ -46,7 +46,7 @@ describe('useFocusTrap', () => {
         cleanup()
     })
 
-    it('skips auto-focus when initialFocus is false', () => {
+    it('skips auto-focus when initialFocus is false', async () => {
         const { outside, container } = makeTrap()
         outside.focus()
         const cleanup = $effect.root(() => useFocusTrap(() => container, { initialFocus: false }))
@@ -55,7 +55,7 @@ describe('useFocusTrap', () => {
         cleanup()
     })
 
-    it('wraps Tab from the last element to the first', () => {
+    it('wraps Tab from the last element to the first', async () => {
         const { container, a, c } = makeTrap()
         const cleanup = $effect.root(() => useFocusTrap(() => container))
         flushSync()
@@ -65,7 +65,7 @@ describe('useFocusTrap', () => {
         cleanup()
     })
 
-    it('wraps Shift+Tab from the first element to the last', () => {
+    it('wraps Shift+Tab from the first element to the last', async () => {
         const { container, a, c } = makeTrap()
         const cleanup = $effect.root(() => useFocusTrap(() => container))
         flushSync()
@@ -75,7 +75,7 @@ describe('useFocusTrap', () => {
         cleanup()
     })
 
-    it('restores focus on deactivate', () => {
+    it('restores focus on deactivate', async () => {
         const { outside, container } = makeTrap()
         outside.focus()
         const cleanup = $effect.root(() => useFocusTrap(() => container))
@@ -85,7 +85,7 @@ describe('useFocusTrap', () => {
         expect(document.activeElement).toBe(outside)
     })
 
-    it('does nothing when inactive', () => {
+    it('does nothing when inactive', async () => {
         const { outside, container } = makeTrap()
         outside.focus()
         const cleanup = $effect.root(() => useFocusTrap(() => container, { active: false }))
@@ -94,13 +94,13 @@ describe('useFocusTrap', () => {
         cleanup()
     })
 
-    it('is a no-op for a nullish target', () => {
+    it('is a no-op for a nullish target', async () => {
         const cleanup = $effect.root(() => useFocusTrap(null))
         expect(() => flushSync()).not.toThrow()
         cleanup()
     })
 
-    it('reacts to a reactive active getter', () => {
+    it('reacts to a reactive active getter', async () => {
         const { outside, container, a } = makeTrap()
         outside.focus()
         let active = $state(false)
@@ -114,7 +114,7 @@ describe('useFocusTrap', () => {
         cleanup()
     })
 
-    it('removes the keydown listener on deactivate with matching args (no leak)', () => {
+    it('removes the keydown listener on deactivate with matching args (no leak)', async () => {
         const { container } = makeTrap()
         const addSpy = vi.spyOn(document, 'addEventListener')
         const removeSpy = vi.spyOn(document, 'removeEventListener')
@@ -132,7 +132,7 @@ describe('useFocusTrap', () => {
         removeSpy.mockRestore()
     })
 
-    it('stops trapping once active becomes false', () => {
+    it('stops trapping once active becomes false', async () => {
         const { container, c } = makeTrap()
         let active = $state(true)
         const cleanup = $effect.root(() =>

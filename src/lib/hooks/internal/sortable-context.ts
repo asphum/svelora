@@ -9,6 +9,7 @@ export interface SortableGroupContextValue {
     registerOverlay: (groupId: string, snippet: Snippet<[{ item: unknown }]>) => void
     unregisterOverlay: (groupId: string) => void
     getOverlay: (groupId: string) => Snippet<[{ item: unknown }]> | undefined
+    setDraggingGroupId: (groupId: string | null) => void
 }
 
 export interface SortableContextValue<T> {

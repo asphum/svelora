@@ -11,7 +11,7 @@ import {
 import type { FontDefinition, GoogleFontDefinition } from './fonts.types.js'
 
 describe('fonts provider', () => {
-    it('should build a Google Fonts URL for normal weights', () => {
+    it('should build a Google Fonts URL for normal weights', async () => {
         const fonts: GoogleFontDefinition[] = [
             {
                 name: 'Inter',
@@ -25,7 +25,7 @@ describe('fonts provider', () => {
         )
     })
 
-    it('should build a Google Fonts URL with italic pairs', () => {
+    it('should build a Google Fonts URL with italic pairs', async () => {
         const fonts: GoogleFontDefinition[] = [
             {
                 name: 'Inter',
@@ -39,7 +39,7 @@ describe('fonts provider', () => {
         )
     })
 
-    it('should build font family with sensible fallback', () => {
+    it('should build font family with sensible fallback', async () => {
         expect(
             buildFontFamily({
                 name: 'JetBrains Mono',
@@ -48,7 +48,7 @@ describe('fonts provider', () => {
         ).toContain('ui-monospace')
     })
 
-    it('should build CSS variables only for fonts that define a variable', () => {
+    it('should build CSS variables only for fonts that define a variable', async () => {
         const fonts: GoogleFontDefinition[] = [
             {
                 name: 'Inter',
@@ -71,7 +71,7 @@ describe('fonts provider', () => {
 }`)
     })
 
-    it('should support custom project variable names such as sarabun', () => {
+    it('should support custom project variable names such as sarabun', async () => {
         const fonts: GoogleFontDefinition[] = [
             {
                 name: 'Sarabun',
@@ -85,7 +85,7 @@ describe('fonts provider', () => {
 }`)
     })
 
-    it('should build local @font-face rules', () => {
+    it('should build local @font-face rules', async () => {
         const fonts: FontDefinition[] = [
             {
                 provider: 'local',
@@ -104,17 +104,17 @@ describe('fonts provider', () => {
 }`)
     })
 
-    it('should resolve top-level fonts config and keep defaults when enabled', () => {
+    it('should resolve top-level fonts config and keep defaults when enabled', async () => {
         expect(resolveFontsOptions(true)).toEqual(fontsDefaults)
         const resolved = resolveFontsOptions(undefined)
         expect(resolved === false ? [] : resolved.families).toEqual(defaultFontFamilies)
     })
 
-    it('should allow disabling global defaults with fonts=false', () => {
+    it('should allow disabling global defaults with fonts=false', async () => {
         expect(resolveFontsOptions(false)).toBe(false)
     })
 
-    it('should support the new top-level fonts config shape', () => {
+    it('should support the new top-level fonts config shape', async () => {
         const resolved = resolveFontsOptions({
             families: [{ name: 'Sarabun', variable: '--font-sarabun-family', weights: [400, 700] }],
             preconnect: false

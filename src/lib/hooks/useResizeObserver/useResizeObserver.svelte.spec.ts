@@ -36,7 +36,7 @@ describe('useResizeObserver / useElementSize', () => {
         globalThis.ResizeObserver = originalRO
     })
 
-    it('observes the target on mount', () => {
+    it('observes the target on mount', async () => {
         const el = document.createElement('div')
         const cleanup = $effect.root(() => {
             useResizeObserver(el, () => {})
@@ -47,7 +47,7 @@ describe('useResizeObserver / useElementSize', () => {
         cleanup()
     })
 
-    it('invokes the callback when the observer fires', () => {
+    it('invokes the callback when the observer fires', async () => {
         const el = document.createElement('div')
         const cb = vi.fn()
         const cleanup = $effect.root(() => {
@@ -59,7 +59,7 @@ describe('useResizeObserver / useElementSize', () => {
         cleanup()
     })
 
-    it('disconnects on cleanup', () => {
+    it('disconnects on cleanup', async () => {
         const el = document.createElement('div')
         const cleanup = $effect.root(() => {
             useResizeObserver(el, () => {})
@@ -70,7 +70,7 @@ describe('useResizeObserver / useElementSize', () => {
         expect(instances[0].disconnected).toBe(1)
     })
 
-    it('accepts a getter target', () => {
+    it('accepts a getter target', async () => {
         const el = document.createElement('div')
         const cleanup = $effect.root(() => {
             useResizeObserver(
@@ -83,7 +83,7 @@ describe('useResizeObserver / useElementSize', () => {
         cleanup()
     })
 
-    it('is a no-op for a nullish target', () => {
+    it('is a no-op for a nullish target', async () => {
         const cleanup = $effect.root(() => {
             useResizeObserver(null, () => {})
         })
@@ -92,7 +92,7 @@ describe('useResizeObserver / useElementSize', () => {
         cleanup()
     })
 
-    it('re-observes when a reactive getter target changes', () => {
+    it('re-observes when a reactive getter target changes', async () => {
         const a = document.createElement('div')
         const b = document.createElement('div')
         let current = $state(a)
@@ -114,7 +114,7 @@ describe('useResizeObserver / useElementSize', () => {
         cleanup()
     })
 
-    it('useElementSize reflects content-box size reactively', () => {
+    it('useElementSize reflects content-box size reactively', async () => {
         const el = document.createElement('div')
         let size: ReturnType<typeof useElementSize>
         const cleanup = $effect.root(() => {
@@ -131,7 +131,7 @@ describe('useResizeObserver / useElementSize', () => {
         cleanup()
     })
 
-    it('disconnects every observer it creates (no dangling observers)', () => {
+    it('disconnects every observer it creates (no dangling observers)', async () => {
         const a = document.createElement('div')
         const b = document.createElement('div')
         let current = $state(a)
@@ -149,7 +149,7 @@ describe('useResizeObserver / useElementSize', () => {
         expect(instances.every((i) => i.disconnected === 1)).toBe(true)
     })
 
-    it('observes once for a static target despite unrelated state changes', () => {
+    it('observes once for a static target despite unrelated state changes', async () => {
         const el = document.createElement('div')
         let unrelated = $state(0)
         let ticks = 0
@@ -171,7 +171,7 @@ describe('useResizeObserver / useElementSize', () => {
         cleanup()
     })
 
-    it('useElementSize does not trigger updates when the size is unchanged', () => {
+    it('useElementSize does not trigger updates when the size is unchanged', async () => {
         const el = document.createElement('div')
         let renders = 0
         let size: ReturnType<typeof useElementSize>

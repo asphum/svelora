@@ -10,19 +10,19 @@ describe('Separator', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render root element', () => {
-            const { container } = render(Separator)
+        it('should render root element', async () => {
+            const { container } = await render(Separator)
             expect(container.firstElementChild).not.toBeNull()
         })
 
-        it('should have data-orientation attribute', () => {
-            const { container } = render(Separator)
+        it('should have data-orientation attribute', async () => {
+            const { container } = await render(Separator)
             const root = container.firstElementChild!
             expect(root.getAttribute('data-orientation')).toBe('horizontal')
         })
 
-        it('should render border element', () => {
-            const { container } = render(Separator)
+        it('should render border element', async () => {
+            const { container } = await render(Separator)
             expect(getBorder(container)).not.toBeNull()
         })
     })
@@ -30,28 +30,28 @@ describe('Separator', () => {
     // ==================== COLORS ====================
 
     describe('colors', () => {
-        it('should default to surface color', () => {
-            const { container } = render(Separator)
+        it('should default to surface color', async () => {
+            const { container } = await render(Separator)
             expect(getBorder(container).className).toContain('border-outline-variant')
         })
 
-        it('should apply primary color', () => {
-            const { container } = render(Separator, { color: 'primary' })
+        it('should apply primary color', async () => {
+            const { container } = await render(Separator, { color: 'primary' })
             expect(getBorder(container).className).toContain('border-primary')
         })
 
-        it('should apply secondary color', () => {
-            const { container } = render(Separator, { color: 'secondary' })
+        it('should apply secondary color', async () => {
+            const { container } = await render(Separator, { color: 'secondary' })
             expect(getBorder(container).className).toContain('border-secondary')
         })
 
-        it('should apply error color', () => {
-            const { container } = render(Separator, { color: 'error' })
+        it('should apply error color', async () => {
+            const { container } = await render(Separator, { color: 'error' })
             expect(getBorder(container).className).toContain('border-error')
         })
 
-        it('should apply success color', () => {
-            const { container } = render(Separator, { color: 'success' })
+        it('should apply success color', async () => {
+            const { container } = await render(Separator, { color: 'success' })
             expect(getBorder(container).className).toContain('border-success')
         })
     })
@@ -59,18 +59,18 @@ describe('Separator', () => {
     // ==================== TYPES ====================
 
     describe('types', () => {
-        it('should apply solid type by default', () => {
-            const { container } = render(Separator)
+        it('should apply solid type by default', async () => {
+            const { container } = await render(Separator)
             expect(getBorder(container).className).toContain('border-solid')
         })
 
-        it('should apply dashed type', () => {
-            const { container } = render(Separator, { type: 'dashed' })
+        it('should apply dashed type', async () => {
+            const { container } = await render(Separator, { type: 'dashed' })
             expect(getBorder(container).className).toContain('border-dashed')
         })
 
-        it('should apply dotted type', () => {
-            const { container } = render(Separator, { type: 'dotted' })
+        it('should apply dotted type', async () => {
+            const { container } = await render(Separator, { type: 'dotted' })
             expect(getBorder(container).className).toContain('border-dotted')
         })
     })
@@ -78,15 +78,15 @@ describe('Separator', () => {
     // ==================== ORIENTATION ====================
 
     describe('orientation', () => {
-        it('should apply horizontal orientation by default', () => {
-            const { container } = render(Separator)
+        it('should apply horizontal orientation by default', async () => {
+            const { container } = await render(Separator)
             const root = container.firstElementChild!
             expect(root.className).toContain('flex-row')
             expect(root.getAttribute('data-orientation')).toBe('horizontal')
         })
 
-        it('should apply vertical orientation', () => {
-            const { container } = render(Separator, { orientation: 'vertical' })
+        it('should apply vertical orientation', async () => {
+            const { container } = await render(Separator, { orientation: 'vertical' })
             const root = container.firstElementChild!
             expect(root.className).toContain('flex-col')
             expect(root.getAttribute('data-orientation')).toBe('vertical')
@@ -96,18 +96,18 @@ describe('Separator', () => {
     // ==================== SIZES ====================
 
     describe('sizes', () => {
-        it('should apply xs size (border-t)', () => {
-            const { container } = render(Separator, { size: 'xs' })
+        it('should apply xs size (border-t)', async () => {
+            const { container } = await render(Separator, { size: 'xs' })
             expect(getBorder(container).className).toContain('border-t')
         })
 
-        it('should apply md size (border-t-[3px])', () => {
-            const { container } = render(Separator, { size: 'md' })
+        it('should apply md size (border-t-[3px])', async () => {
+            const { container } = await render(Separator, { size: 'md' })
             expect(getBorder(container).className).toContain('border-t-')
         })
 
-        it('should apply vertical size (border-s)', () => {
-            const { container } = render(Separator, { orientation: 'vertical', size: 'xs' })
+        it('should apply vertical size (border-s)', async () => {
+            const { container } = await render(Separator, { orientation: 'vertical', size: 'xs' })
             expect(getBorder(container).className).toContain('border-s')
         })
     })
@@ -115,27 +115,27 @@ describe('Separator', () => {
     // ==================== LABEL ====================
 
     describe('label', () => {
-        it('should render label text', () => {
-            const { container } = render(Separator, { label: 'OR' })
+        it('should render label text', async () => {
+            const { container } = await render(Separator, { label: 'OR' })
             expect(container.textContent).toContain('OR')
         })
 
-        it('should render label in span', () => {
-            const { container } = render(Separator, { label: 'Test' })
+        it('should render label in span', async () => {
+            const { container } = await render(Separator, { label: 'Test' })
             const span = container.querySelector('span')
             expect(span).not.toBeNull()
             expect(span!.textContent).toBe('Test')
         })
 
-        it('should render two borders when label present', () => {
-            const { container } = render(Separator, { label: 'OR' })
+        it('should render two borders when label present', async () => {
+            const { container } = await render(Separator, { label: 'OR' })
             const root = container.firstElementChild!
             // root > border + container + border = 3 children
             expect(root.children.length).toBe(3)
         })
 
-        it('should not render span when no label', () => {
-            const { container } = render(Separator)
+        it('should not render span when no label', async () => {
+            const { container } = await render(Separator)
             expect(container.querySelector('span')).toBeNull()
         })
     })
@@ -143,8 +143,8 @@ describe('Separator', () => {
     // ==================== ICON ====================
 
     describe('icon', () => {
-        it('should render content when icon provided', () => {
-            const { container } = render(Separator, { icon: 'lucide:star' })
+        it('should render content when icon provided', async () => {
+            const { container } = await render(Separator, { icon: 'lucide:star' })
             const root = container.firstElementChild!
             expect(root.children.length).toBeGreaterThan(1)
         })
@@ -153,8 +153,8 @@ describe('Separator', () => {
     // ==================== AVATAR ====================
 
     describe('avatar', () => {
-        it('should render avatar', () => {
-            const { container } = render(Separator, { avatar: { alt: 'User' } })
+        it('should render avatar', async () => {
+            const { container } = await render(Separator, { avatar: { alt: 'User' } })
             expect(container.querySelector('[data-avatar-root]')).not.toBeNull()
         })
     })
@@ -162,14 +162,14 @@ describe('Separator', () => {
     // ==================== DECORATIVE ====================
 
     describe('decorative', () => {
-        it('should have role="separator" by default', () => {
-            const { container } = render(Separator)
+        it('should have role="separator" by default', async () => {
+            const { container } = await render(Separator)
             const root = container.firstElementChild!
             expect(root.getAttribute('role')).toBe('separator')
         })
 
-        it('should have role="none" when decorative', () => {
-            const { container } = render(Separator, { decorative: true })
+        it('should have role="none" when decorative', async () => {
+            const { container } = await render(Separator, { decorative: true })
             const root = container.firstElementChild!
             expect(root.getAttribute('role')).toBe('none')
         })
@@ -178,8 +178,8 @@ describe('Separator', () => {
     // ==================== CUSTOM CLASS ====================
 
     describe('custom class', () => {
-        it('should apply custom class', () => {
-            const { container } = render(Separator, { class: 'my-separator' })
+        it('should apply custom class', async () => {
+            const { container } = await render(Separator, { class: 'my-separator' })
             expect(container.firstElementChild!.className).toContain('my-separator')
         })
     })
@@ -187,18 +187,18 @@ describe('Separator', () => {
     // ==================== UI OVERRIDES ====================
 
     describe('ui slot overrides', () => {
-        it('should apply ui.root class', () => {
-            const { container } = render(Separator, { ui: { root: 'custom-root' } })
+        it('should apply ui.root class', async () => {
+            const { container } = await render(Separator, { ui: { root: 'custom-root' } })
             expect(container.firstElementChild!.className).toContain('custom-root')
         })
 
-        it('should apply ui.border class', () => {
-            const { container } = render(Separator, { ui: { border: 'custom-border' } })
+        it('should apply ui.border class', async () => {
+            const { container } = await render(Separator, { ui: { border: 'custom-border' } })
             expect(getBorder(container).className).toContain('custom-border')
         })
 
-        it('should apply ui.label class', () => {
-            const { container } = render(Separator, {
+        it('should apply ui.label class', async () => {
+            const { container } = await render(Separator, {
                 label: 'Test',
                 ui: { label: 'custom-label' }
             })
@@ -209,30 +209,30 @@ describe('Separator', () => {
     // ==================== POSITION ====================
 
     describe('position', () => {
-        it('center (default) renders border, content, border', () => {
-            const { container } = render(Separator, { label: 'OR' })
+        it('center (default) renders border, content, border', async () => {
+            const { container } = await render(Separator, { label: 'OR' })
             const root = container.firstElementChild!
             expect(root.children.length).toBe(3)
             // middle child is the content container
             expect(root.children[1].textContent).toContain('OR')
         })
 
-        it('start renders content first, then a single border', () => {
-            const { container } = render(Separator, { label: 'OR', position: 'start' })
+        it('start renders content first, then a single border', async () => {
+            const { container } = await render(Separator, { label: 'OR', position: 'start' })
             const root = container.firstElementChild!
             expect(root.children.length).toBe(2)
             expect(root.children[0].textContent).toContain('OR')
         })
 
-        it('end renders a single border, then content', () => {
-            const { container } = render(Separator, { label: 'OR', position: 'end' })
+        it('end renders a single border, then content', async () => {
+            const { container } = await render(Separator, { label: 'OR', position: 'end' })
             const root = container.firstElementChild!
             expect(root.children.length).toBe(2)
             expect(root.children[1].textContent).toContain('OR')
         })
 
-        it('ignores position when there is no content (single border)', () => {
-            const { container } = render(Separator, { position: 'start' })
+        it('ignores position when there is no content (single border)', async () => {
+            const { container } = await render(Separator, { position: 'start' })
             const root = container.firstElementChild!
             expect(root.children.length).toBe(1)
         })
@@ -241,8 +241,8 @@ describe('Separator', () => {
     // ==================== COMBINED ====================
 
     describe('combined', () => {
-        it('should render with all options', () => {
-            const { container } = render(Separator, {
+        it('should render with all options', async () => {
+            const { container } = await render(Separator, {
                 label: 'Section',
                 color: 'primary',
                 type: 'dashed',

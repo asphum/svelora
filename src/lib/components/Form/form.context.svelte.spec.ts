@@ -59,7 +59,7 @@ function makeCtx(overrides: Partial<FormContextOptions<unknown>> = {}) {
 // ==================== TESTS ====================
 
 describe('FormContext — construction & initial state', () => {
-    it('initializes with empty state', () => {
+    it('initializes with empty state', async () => {
         const { ctx, cleanup } = makeCtx()
         expect(ctx.errors).toEqual([])
         expect(ctx.loading).toBe(false)
@@ -71,7 +71,7 @@ describe('FormContext — construction & initial state', () => {
         cleanup()
     })
 
-    it('exposes formId', () => {
+    it('exposes formId', async () => {
         const { ctx, cleanup } = makeCtx()
         expect(ctx.formId).toBe('test-form')
         cleanup()
@@ -221,7 +221,7 @@ describe('FormContext — submit lifecycle', () => {
 })
 
 describe('FormContext — event handlers', () => {
-    it('onBlur adds to blurredFields and touchedFields', () => {
+    it('onBlur adds to blurredFields and touchedFields', async () => {
         const { ctx, cleanup } = makeCtx()
         ctx.onBlur('email')
         expect(ctx.blurredFields.has('email')).toBe(true)
@@ -229,7 +229,7 @@ describe('FormContext — event handlers', () => {
         cleanup()
     })
 
-    it('onChange adds to dirtyFields and touchedFields', () => {
+    it('onChange adds to dirtyFields and touchedFields', async () => {
         const { ctx, cleanup } = makeCtx()
         ctx.onChange('email')
         expect(ctx.dirtyFields.has('email')).toBe(true)
@@ -237,7 +237,7 @@ describe('FormContext — event handlers', () => {
         cleanup()
     })
 
-    it('onFocus adds to touchedFields', () => {
+    it('onFocus adds to touchedFields', async () => {
         const { ctx, cleanup } = makeCtx()
         ctx.onFocus('email')
         expect(ctx.touchedFields.has('email')).toBe(true)
@@ -279,7 +279,7 @@ describe('FormContext — event handlers', () => {
         vi.useRealTimers()
     })
 
-    it('dispose clears pending timers', () => {
+    it('dispose clears pending timers', async () => {
         vi.useFakeTimers()
         const { ctx, cleanup } = makeCtx({
             getSchema: () => makeSchema(),
@@ -296,7 +296,7 @@ describe('FormContext — event handlers', () => {
 })
 
 describe('FormContext — error querying (getErrors / setErrors / clear)', () => {
-    it('getErrors with no name returns all', () => {
+    it('getErrors with no name returns all', async () => {
         const { ctx, cleanup } = makeCtx()
         ctx.setErrors([
             { name: 'email', message: 'a' },
@@ -306,7 +306,7 @@ describe('FormContext — error querying (getErrors / setErrors / clear)', () =>
         cleanup()
     })
 
-    it('getErrors by exact name', () => {
+    it('getErrors by exact name', async () => {
         const { ctx, cleanup } = makeCtx()
         ctx.setErrors([
             { name: 'email', message: 'a' },
@@ -316,7 +316,7 @@ describe('FormContext — error querying (getErrors / setErrors / clear)', () =>
         cleanup()
     })
 
-    it('getErrors by prefix (dotted path)', () => {
+    it('getErrors by prefix (dotted path)', async () => {
         const { ctx, cleanup } = makeCtx()
         ctx.setErrors([
             { name: 'address.street', message: 'a' },
@@ -327,7 +327,7 @@ describe('FormContext — error querying (getErrors / setErrors / clear)', () =>
         cleanup()
     })
 
-    it('getErrors by regex', () => {
+    it('getErrors by regex', async () => {
         const { ctx, cleanup } = makeCtx()
         ctx.setErrors([
             { name: 'items.0.name', message: 'a' },
@@ -338,7 +338,7 @@ describe('FormContext — error querying (getErrors / setErrors / clear)', () =>
         cleanup()
     })
 
-    it('setErrors scoped by name replaces only matching', () => {
+    it('setErrors scoped by name replaces only matching', async () => {
         const { ctx, cleanup } = makeCtx()
         ctx.setErrors([
             { name: 'email', message: 'e1' },
@@ -350,7 +350,7 @@ describe('FormContext — error querying (getErrors / setErrors / clear)', () =>
         cleanup()
     })
 
-    it('clear removes all errors', () => {
+    it('clear removes all errors', async () => {
         const { ctx, cleanup } = makeCtx()
         ctx.setErrors([{ name: 'email', message: 'a' }])
         ctx.clear()
@@ -358,7 +358,7 @@ describe('FormContext — error querying (getErrors / setErrors / clear)', () =>
         cleanup()
     })
 
-    it('clear by name removes only matching', () => {
+    it('clear by name removes only matching', async () => {
         const { ctx, cleanup } = makeCtx()
         ctx.setErrors([
             { name: 'email', message: 'a' },
@@ -421,7 +421,7 @@ describe('FormContext — reset()', () => {
         cleanup()
     })
 
-    it('does not modify state (caller owns it)', () => {
+    it('does not modify state (caller owns it)', async () => {
         const state = { email: 'a@b.com', age: 30 }
         const { ctx, cleanup } = makeCtx({ getState: () => state })
         ctx.reset()
@@ -431,7 +431,7 @@ describe('FormContext — reset()', () => {
 })
 
 describe('FormContext — submitCount', () => {
-    it('starts at 0', () => {
+    it('starts at 0', async () => {
         const { ctx, cleanup } = makeCtx()
         expect(ctx.submitCount).toBe(0)
         cleanup()
@@ -540,7 +540,7 @@ describe('FormContext — nested form state fallback', () => {
 })
 
 describe('FormContext — disabled getter', () => {
-    it('reflects disabled option', () => {
+    it('reflects disabled option', async () => {
         const { ctx, cleanup } = makeCtx({ getDisabled: () => true })
         expect(ctx.disabled).toBe(true)
         cleanup()
@@ -564,7 +564,7 @@ describe('FormContext — disabled getter', () => {
 // ============================================================================
 
 describe('FormContext — setErrors cascade', () => {
-    it('propagates matching errors to nested child forms', () => {
+    it('propagates matching errors to nested child forms', async () => {
         let parentCtx: FormContext<unknown>
         const parentCleanup = $effect.root(() => {
             parentCtx = new FormContext(makeOpts(), 'parent')
@@ -601,7 +601,7 @@ describe('FormContext — setErrors cascade', () => {
         parentCleanup()
     })
 
-    it('scoped setErrors with matching path also cascades', () => {
+    it('scoped setErrors with matching path also cascades', async () => {
         let parentCtx: FormContext<unknown>
         const parentCleanup = $effect.root(() => {
             parentCtx = new FormContext(makeOpts(), 'parent')
@@ -628,7 +628,7 @@ describe('FormContext — setErrors cascade', () => {
 })
 
 describe('FormContext — dispose() clears reactive state', () => {
-    it('clears errors, field sets, loading, submitCount', () => {
+    it('clears errors, field sets, loading, submitCount', async () => {
         const { ctx, cleanup } = makeCtx()
         ctx.errors = [{ name: 'x', message: 'err' }]
         ctx.loading = true
@@ -650,7 +650,7 @@ describe('FormContext — dispose() clears reactive state', () => {
 })
 
 describe('FormContext — validateOnSet cache invalidation', () => {
-    it('picks up new validateOn value when the array reference changes', () => {
+    it('picks up new validateOn value when the array reference changes', async () => {
         let validateOn: Array<'input' | 'blur' | 'change' | 'focus'> = ['blur']
         const { ctx, cleanup } = makeCtx({ getValidateOn: () => validateOn })
 

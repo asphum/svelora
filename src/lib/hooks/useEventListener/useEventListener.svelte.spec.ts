@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { useEventListener } from './useEventListener.svelte.js'
 
 describe('useEventListener', () => {
-    it('binds a listener on a value target and fires on the event', () => {
+    it('binds a listener on a value target and fires on the event', async () => {
         const el = document.createElement('div')
         const handler = vi.fn()
         const cleanup = $effect.root(() => {
@@ -15,7 +15,7 @@ describe('useEventListener', () => {
         cleanup()
     })
 
-    it('accepts a getter target', () => {
+    it('accepts a getter target', async () => {
         const el = document.createElement('div')
         const handler = vi.fn()
         const cleanup = $effect.root(() => {
@@ -27,7 +27,7 @@ describe('useEventListener', () => {
         cleanup()
     })
 
-    it('binds multiple event types', () => {
+    it('binds multiple event types', async () => {
         const el = document.createElement('div')
         const handler = vi.fn()
         const cleanup = $effect.root(() => {
@@ -40,7 +40,7 @@ describe('useEventListener', () => {
         cleanup()
     })
 
-    it('removes the listener on cleanup', () => {
+    it('removes the listener on cleanup', async () => {
         const el = document.createElement('div')
         const handler = vi.fn()
         const cleanup = $effect.root(() => {
@@ -52,7 +52,7 @@ describe('useEventListener', () => {
         expect(handler).not.toHaveBeenCalled()
     })
 
-    it('is a no-op for a nullish target', () => {
+    it('is a no-op for a nullish target', async () => {
         const handler = vi.fn()
         const cleanup = $effect.root(() => {
             useEventListener(null, 'click', handler)
@@ -61,7 +61,7 @@ describe('useEventListener', () => {
         cleanup()
     })
 
-    it('respects listener options (once)', () => {
+    it('respects listener options (once)', async () => {
         const el = document.createElement('div')
         const handler = vi.fn()
         const cleanup = $effect.root(() => {
@@ -74,7 +74,7 @@ describe('useEventListener', () => {
         cleanup()
     })
 
-    it('re-binds when a reactive getter target changes', () => {
+    it('re-binds when a reactive getter target changes', async () => {
         const a = document.createElement('div')
         const b = document.createElement('div')
         const handler = vi.fn()
@@ -95,7 +95,7 @@ describe('useEventListener', () => {
         cleanup()
     })
 
-    it('does not leak: every addEventListener is matched by removeEventListener with identical args', () => {
+    it('does not leak: every addEventListener is matched by removeEventListener with identical args', async () => {
         const el = document.createElement('div')
         const addSpy = vi.spyOn(el, 'addEventListener')
         const removeSpy = vi.spyOn(el, 'removeEventListener')
@@ -111,7 +111,7 @@ describe('useEventListener', () => {
         expect(removeSpy.mock.calls).toEqual(addSpy.mock.calls)
     })
 
-    it('binds once for a static target and does not re-bind on unrelated state changes', () => {
+    it('binds once for a static target and does not re-bind on unrelated state changes', async () => {
         const el = document.createElement('div')
         const addSpy = vi.spyOn(el, 'addEventListener')
         let unrelated = $state(0)
@@ -134,7 +134,7 @@ describe('useEventListener', () => {
         cleanup()
     })
 
-    it('on target change, removes the old target exactly once and binds the new one', () => {
+    it('on target change, removes the old target exactly once and binds the new one', async () => {
         const a = document.createElement('div')
         const b = document.createElement('div')
         const aRemove = vi.spyOn(a, 'removeEventListener')

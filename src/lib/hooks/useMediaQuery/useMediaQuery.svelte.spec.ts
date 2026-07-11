@@ -32,7 +32,7 @@ describe('useMediaQuery', () => {
         window.matchMedia = originalMatchMedia
     })
 
-    it('should default to false before the effect runs', () => {
+    it('should default to false before the effect runs', async () => {
         let api: ReturnType<typeof useMediaQuery>
         const cleanup = $effect.root(() => {
             api = useMediaQuery('(max-width: 640px)')
@@ -41,7 +41,7 @@ describe('useMediaQuery', () => {
         cleanup()
     })
 
-    it('should respect a custom initialValue', () => {
+    it('should respect a custom initialValue', async () => {
         let api: ReturnType<typeof useMediaQuery>
         const cleanup = $effect.root(() => {
             api = useMediaQuery('(max-width: 640px)', { initialValue: true })
@@ -50,7 +50,7 @@ describe('useMediaQuery', () => {
         cleanup()
     })
 
-    it('should reflect the fake matchMedia value after the effect runs', () => {
+    it('should reflect the fake matchMedia value after the effect runs', async () => {
         fakeMatches = true
         let api: ReturnType<typeof useMediaQuery>
         const cleanup = $effect.root(() => {
@@ -61,7 +61,7 @@ describe('useMediaQuery', () => {
         cleanup()
     })
 
-    it('should update matches when the change listener fires', () => {
+    it('should update matches when the change listener fires', async () => {
         let api: ReturnType<typeof useMediaQuery>
         const cleanup = $effect.root(() => {
             api = useMediaQuery('(max-width: 640px)')
@@ -79,7 +79,7 @@ describe('useMediaQuery', () => {
         cleanup()
     })
 
-    it('should accept a getter function for the query', () => {
+    it('should accept a getter function for the query', async () => {
         fakeMatches = true
         let api: ReturnType<typeof useMediaQuery>
         const cleanup = $effect.root(() => {
@@ -90,7 +90,7 @@ describe('useMediaQuery', () => {
         cleanup()
     })
 
-    it('should remove the listener on cleanup', () => {
+    it('should remove the listener on cleanup', async () => {
         const cleanup = $effect.root(() => {
             useMediaQuery('(max-width: 640px)')
         })

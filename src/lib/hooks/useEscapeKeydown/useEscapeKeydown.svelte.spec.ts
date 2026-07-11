@@ -13,7 +13,7 @@ describe('useEscapeKeydown', () => {
         node.remove()
     })
 
-    it('should call the handler on Escape keydown', () => {
+    it('should call the handler on Escape keydown', async () => {
         const handler = vi.fn()
         const action = useEscapeKeydown(node, { handler })
 
@@ -22,7 +22,7 @@ describe('useEscapeKeydown', () => {
         action?.destroy?.()
     })
 
-    it('should not call the handler for other keys', () => {
+    it('should not call the handler for other keys', async () => {
         const handler = vi.fn()
         const action = useEscapeKeydown(node, { handler })
 
@@ -31,7 +31,7 @@ describe('useEscapeKeydown', () => {
         action?.destroy?.()
     })
 
-    it('should not call the handler when disabled', () => {
+    it('should not call the handler when disabled', async () => {
         const handler = vi.fn()
         const action = useEscapeKeydown(node, { handler, enabled: false })
 
@@ -40,7 +40,7 @@ describe('useEscapeKeydown', () => {
         action?.destroy?.()
     })
 
-    it('should react to enabled toggled via update', () => {
+    it('should react to enabled toggled via update', async () => {
         const handler = vi.fn()
         const action = useEscapeKeydown(node, { handler, enabled: false })
 
@@ -50,7 +50,7 @@ describe('useEscapeKeydown', () => {
         action?.destroy?.()
     })
 
-    it('should stop calling the handler after destroy', () => {
+    it('should stop calling the handler after destroy', async () => {
         const handler = vi.fn()
         const action = useEscapeKeydown(node, { handler })
 

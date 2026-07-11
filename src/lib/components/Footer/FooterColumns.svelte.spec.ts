@@ -32,22 +32,22 @@ describe('FooterColumns', () => {
 
     describe('rendering', () => {
         it('should render as nav by default', async () => {
-            const { container } = render(FooterColumns, { columns })
+            const { container } = await render(FooterColumns, { columns })
             expect(container.firstElementChild!.tagName).toBe('NAV')
         })
 
         it('should render as div via as prop', async () => {
-            const { container } = render(FooterColumns, { columns, as: 'div' })
+            const { container } = await render(FooterColumns, { columns, as: 'div' })
             expect(container.firstElementChild!.tagName).toBe('DIV')
         })
 
         it('should render nothing inside without columns', async () => {
-            const { container } = render(FooterColumns, {})
+            const { container } = await render(FooterColumns, {})
             expect(container.firstElementChild!.childElementCount).toBe(0)
         })
 
         it('should render one section per column with its heading', async () => {
-            const { container } = render(FooterColumns, { columns })
+            const { container } = await render(FooterColumns, { columns })
             expect(container.textContent).toContain('Product')
             expect(container.textContent).toContain('Community')
             expect(container.querySelectorAll('ul').length).toBe(2)
@@ -58,33 +58,33 @@ describe('FooterColumns', () => {
 
     describe('links', () => {
         it('should render links with href and label', async () => {
-            const { container } = render(FooterColumns, { columns })
+            const { container } = await render(FooterColumns, { columns })
             const link = container.querySelector('a[href="/components"]')
             expect(link).not.toBeNull()
             expect(link!.textContent).toContain('Components')
         })
 
         it('should render links inside list items', async () => {
-            const { container } = render(FooterColumns, { columns })
+            const { container } = await render(FooterColumns, { columns })
             expect(container.querySelectorAll('li').length).toBe(4)
             expect(container.querySelectorAll('li a').length).toBe(4)
         })
 
         it('should forward target blank so the external indicator condition holds', async () => {
-            const { container } = render(FooterColumns, { columns })
+            const { container } = await render(FooterColumns, { columns })
             expect(container.querySelectorAll('a[target="_blank"]').length).toBe(2)
             const internal = container.querySelector('a[href="/components"]')!
             expect(internal.getAttribute('target')).toBeNull()
         })
 
         it('should render links with icons without error', async () => {
-            const { container } = render(FooterColumns, { columns })
+            const { container } = await render(FooterColumns, { columns })
             const discord = container.querySelector('a[href="https://discord.com"]')!
             expect(discord.textContent).toContain('Discord')
         })
 
         it('should forward extra link props to the anchor', async () => {
-            const { container } = render(FooterColumns, {
+            const { container } = await render(FooterColumns, {
                 columns: [
                     {
                         label: 'Meta',
@@ -114,7 +114,7 @@ describe('FooterColumns', () => {
         })
 
         it('should render link snippet instead of default Link', async () => {
-            const { container } = render(FooterColumns, {
+            const { container } = await render(FooterColumns, {
                 columns,
                 link: createRawSnippet((args: () => { link: { label: string } }) => ({
                     render: () => `<span data-testid="custom-link">${args().link.label}</span>`,
@@ -126,7 +126,7 @@ describe('FooterColumns', () => {
         })
 
         it('should render left and right sections beside the columns', async () => {
-            const { container } = render(FooterColumns, {
+            const { container } = await render(FooterColumns, {
                 columns,
                 left: createRawSnippet(() => ({
                     render: () => '<div data-testid="cols-left">About</div>',
@@ -142,7 +142,7 @@ describe('FooterColumns', () => {
         })
 
         it('should style links by active state', async () => {
-            const { container } = render(FooterColumns, {
+            const { container } = await render(FooterColumns, {
                 columns: [
                     {
                         label: 'Nav',
@@ -160,7 +160,7 @@ describe('FooterColumns', () => {
         })
 
         it('should render children after the columns', async () => {
-            const { container } = render(FooterColumns, {
+            const { container } = await render(FooterColumns, {
                 columns,
                 children: createRawSnippet(() => ({
                     render: () => '<div data-testid="extra">Newsletter</div>',
@@ -175,14 +175,14 @@ describe('FooterColumns', () => {
 
     describe('custom class and ui overrides', () => {
         it('should apply custom class and grid base to root', async () => {
-            const { container } = render(FooterColumns, { columns, class: 'my-columns' })
+            const { container } = await render(FooterColumns, { columns, class: 'my-columns' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toHaveClass(/my-columns/)
             await expect.element(root).toHaveClass(/grid/)
         })
 
         it('should apply ui.label and ui.list classes', async () => {
-            const { container } = render(FooterColumns, {
+            const { container } = await render(FooterColumns, {
                 columns,
                 ui: { label: 'custom-label-class', list: 'custom-list' }
             })
@@ -195,7 +195,7 @@ describe('FooterColumns', () => {
 
     describe('native attributes', () => {
         it('should pass through native attributes', async () => {
-            const { container } = render(FooterColumns, {
+            const { container } = await render(FooterColumns, {
                 columns,
                 'aria-label': 'Footer navigation',
                 'data-testid': 'columns-root'

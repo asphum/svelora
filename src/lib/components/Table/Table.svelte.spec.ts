@@ -38,7 +38,7 @@ describe('Table', () => {
             await expect.element(table).toBeInTheDocument()
         })
 
-        it('should render header cells from columns', () => {
+        it('should render header cells from columns', async () => {
             render(Table, { data: testData, columns: testColumns } as any)
             const headers = getHeaderCells()
             expect(headers.length).toBe(3)
@@ -47,12 +47,12 @@ describe('Table', () => {
             expect(headers[2].textContent).toContain('Age')
         })
 
-        it('should render data rows', () => {
+        it('should render data rows', async () => {
             render(Table, { data: testData, columns: testColumns } as any)
             expect(getRows().length).toBe(3)
         })
 
-        it('should render cell values', () => {
+        it('should render cell values', async () => {
             render(Table, { data: testData, columns: testColumns } as any)
             const cells = getCells(0)
             expect(cells[0].textContent).toContain('Alice')
@@ -60,7 +60,7 @@ describe('Table', () => {
             expect(cells[2].textContent).toContain('30')
         })
 
-        it('should render caption as sr-only', () => {
+        it('should render caption as sr-only', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -72,7 +72,7 @@ describe('Table', () => {
             expect(caption!.className).toMatch(/sr-only/)
         })
 
-        it('should render null/undefined as non-breaking space', () => {
+        it('should render null/undefined as non-breaking space', async () => {
             const data = [{ name: 'Alice', email: null }]
             const cols = [
                 { key: 'name', label: 'Name' },
@@ -91,7 +91,7 @@ describe('Table', () => {
     // ==================== AUTO COLUMNS ====================
 
     describe('auto columns', () => {
-        it('should auto-generate columns from data keys', () => {
+        it('should auto-generate columns from data keys', async () => {
             render(Table, { data: testData } as any)
             const headers = getHeaderCells()
             expect(headers.length).toBe(4) // id, name, email, age
@@ -99,7 +99,7 @@ describe('Table', () => {
             expect(headers[1].textContent).toContain('Name')
         })
 
-        it('should render no headers when data is empty and no columns', () => {
+        it('should render no headers when data is empty and no columns', async () => {
             render(Table, { data: [] } as any)
             expect(getHeaderCells().length).toBe(0)
         })
@@ -124,7 +124,7 @@ describe('Table', () => {
             await expect.element(emptyText).toBeInTheDocument()
         })
 
-        it('should span full width for empty cell', () => {
+        it('should span full width for empty cell', async () => {
             render(Table, { data: [], columns: testColumns } as any)
             const td = getRows()[0]?.querySelector('td')
             expect(td?.getAttribute('colspan')).toBe('3')
@@ -134,12 +134,12 @@ describe('Table', () => {
     // ==================== LOADING STATE ====================
 
     describe('loading state', () => {
-        it('should show data rows when loading with data', () => {
+        it('should show data rows when loading with data', async () => {
             render(Table, { data: testData, columns: testColumns, loading: true } as any)
             expect(getRows().length).toBe(3)
         })
 
-        it('should show empty text when loading without loadingSlot', () => {
+        it('should show empty text when loading without loadingSlot', async () => {
             render(Table, { data: [], columns: testColumns, loading: true } as any)
             const td = getRows()[0]?.querySelector('td')
             expect(td?.getAttribute('colspan')).toBe('3')
@@ -149,7 +149,7 @@ describe('Table', () => {
     // ==================== SORTING ====================
 
     describe('sorting', () => {
-        it('should render ascending sorted data', () => {
+        it('should render ascending sorted data', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -159,7 +159,7 @@ describe('Table', () => {
             expect(firstCell.textContent).toContain('Alice')
         })
 
-        it('should render descending sorted data', () => {
+        it('should render descending sorted data', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -169,7 +169,7 @@ describe('Table', () => {
             expect(firstCell.textContent).toContain('Charlie')
         })
 
-        it('should sort numbers correctly', () => {
+        it('should sort numbers correctly', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -180,7 +180,7 @@ describe('Table', () => {
             expect(getCells(2)[2].textContent).toContain('35')
         })
 
-        it('should show sort icon on sortable column header', () => {
+        it('should show sort icon on sortable column header', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -194,26 +194,26 @@ describe('Table', () => {
     // ==================== ROW CLICK ====================
 
     describe('row click (onRowClick)', () => {
-        it('should call onRowClick when row is clicked', () => {
+        it('should call onRowClick when row is clicked', async () => {
             const onRowClick = vi.fn()
             render(Table, { data: testData, columns: testColumns, onRowClick } as any)
             ;(getRows()[1] as HTMLElement).click()
             expect(onRowClick).toHaveBeenCalledTimes(1)
         })
 
-        it('should set data-selectable on rows', () => {
+        it('should set data-selectable on rows', async () => {
             const onRowClick = vi.fn()
             render(Table, { data: testData, columns: testColumns, onRowClick } as any)
             expect(getRows()[0].getAttribute('data-selectable')).not.toBeNull()
         })
 
-        it('should set tabindex on selectable rows', () => {
+        it('should set tabindex on selectable rows', async () => {
             const onRowClick = vi.fn()
             render(Table, { data: testData, columns: testColumns, onRowClick } as any)
             expect(getRows()[0].getAttribute('tabindex')).toBe('0')
         })
 
-        it('should not set tabindex when not selectable', () => {
+        it('should not set tabindex when not selectable', async () => {
             render(Table, { data: testData, columns: testColumns } as any)
             expect(getRows()[0].getAttribute('tabindex')).toBeNull()
         })
@@ -222,7 +222,7 @@ describe('Table', () => {
     // ==================== ROW SELECTION STATE ====================
 
     describe('row selection', () => {
-        it('should set data-selected on selected rows', () => {
+        it('should set data-selected on selected rows', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -233,7 +233,7 @@ describe('Table', () => {
             expect(getRows()[0].getAttribute('data-selected')).not.toBeNull()
         })
 
-        it('should not set data-selected on unselected rows', () => {
+        it('should not set data-selected on unselected rows', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -244,7 +244,7 @@ describe('Table', () => {
             expect(getRows()[0].getAttribute('data-selected')).toBeNull()
         })
 
-        it('should render checkbox column in multiple mode', () => {
+        it('should render checkbox column in multiple mode', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -260,8 +260,8 @@ describe('Table', () => {
     // ==================== STRIPED ====================
 
     describe('striped', () => {
-        it('should apply striped class to tbody', () => {
-            const { container } = render(Table, {
+        it('should apply striped class to tbody', async () => {
+            const { container } = await render(Table, {
                 data: testData,
                 columns: testColumns,
                 striped: true
@@ -274,7 +274,7 @@ describe('Table', () => {
     // ==================== SIZE ====================
 
     describe('size', () => {
-        it('should apply compact classes when size is sm', () => {
+        it('should apply compact classes when size is sm', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -284,7 +284,7 @@ describe('Table', () => {
             expect((getCells(0)[0] as HTMLElement).className).toContain('text-xs')
         })
 
-        it('should apply spacious classes when size is lg', () => {
+        it('should apply spacious classes when size is lg', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -298,8 +298,8 @@ describe('Table', () => {
     // ==================== STICKY HEADER ====================
 
     describe('sticky header', () => {
-        it('should apply sticky class to thead', () => {
-            const { container } = render(Table, {
+        it('should apply sticky class to thead', async () => {
+            const { container } = await render(Table, {
                 data: testData,
                 columns: testColumns,
                 sticky: 'header'
@@ -308,8 +308,8 @@ describe('Table', () => {
             expect(thead.className).toMatch(/sticky/)
         })
 
-        it('should not apply sticky class by default', () => {
-            const { container } = render(Table, {
+        it('should not apply sticky class by default', async () => {
+            const { container } = await render(Table, {
                 data: testData,
                 columns: testColumns
             } as any)
@@ -328,7 +328,7 @@ describe('Table', () => {
             age: 20 + i
         }))
 
-        it('should paginate data', () => {
+        it('should paginate data', async () => {
             render(Table, {
                 data: manyRows,
                 columns: testColumns,
@@ -338,7 +338,7 @@ describe('Table', () => {
             expect(getRows().length).toBe(10)
         })
 
-        it('should show second page', () => {
+        it('should show second page', async () => {
             render(Table, {
                 data: manyRows,
                 columns: testColumns,
@@ -348,7 +348,7 @@ describe('Table', () => {
             expect(getCells(0)[0].textContent).toContain('User 10')
         })
 
-        it('should show last page remainder', () => {
+        it('should show last page remainder', async () => {
             render(Table, {
                 data: manyRows,
                 columns: testColumns,
@@ -362,7 +362,7 @@ describe('Table', () => {
     // ==================== COLUMN VISIBILITY ====================
 
     describe('column visibility', () => {
-        it('should hide columns', () => {
+        it('should hide columns', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -377,8 +377,8 @@ describe('Table', () => {
     // ==================== CUSTOM CLASS & UI ====================
 
     describe('custom class & ui', () => {
-        it('should apply custom class to root', () => {
-            const { container } = render(Table, {
+        it('should apply custom class to root', async () => {
+            const { container } = await render(Table, {
                 data: testData,
                 columns: testColumns,
                 class: 'my-custom'
@@ -386,7 +386,7 @@ describe('Table', () => {
             expect((container.firstElementChild as HTMLElement).className).toContain('my-custom')
         })
 
-        it('should apply ui.th override', () => {
+        it('should apply ui.th override', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -395,7 +395,7 @@ describe('Table', () => {
             expect((getHeaderCells()[0] as HTMLElement).className).toContain('my-th')
         })
 
-        it('should apply ui.td override', () => {
+        it('should apply ui.td override', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,
@@ -404,8 +404,8 @@ describe('Table', () => {
             expect((getCells(0)[0] as HTMLElement).className).toContain('my-td')
         })
 
-        it('should apply ui.thead override', () => {
-            const { container } = render(Table, {
+        it('should apply ui.thead override', async () => {
+            const { container } = await render(Table, {
                 data: testData,
                 columns: testColumns,
                 ui: { thead: 'my-thead' }
@@ -415,8 +415,8 @@ describe('Table', () => {
             )
         })
 
-        it('should apply ui.tbody override', () => {
-            const { container } = render(Table, {
+        it('should apply ui.tbody override', async () => {
+            const { container } = await render(Table, {
                 data: testData,
                 columns: testColumns,
                 ui: { tbody: 'my-tbody' }
@@ -430,15 +430,21 @@ describe('Table', () => {
     // ==================== VISUAL ====================
 
     describe('visual', () => {
-        it('should render tbody with row transitions', () => {
-            const { container } = render(Table, { data: testData, columns: testColumns } as any)
+        it('should render tbody with row transitions', async () => {
+            const { container } = await render(Table, {
+                data: testData,
+                columns: testColumns
+            } as any)
             expect((container.querySelector('tbody') as HTMLElement).className).toMatch(
                 /transition/
             )
         })
 
-        it('should render root with rounded border', () => {
-            const { container } = render(Table, { data: testData, columns: testColumns } as any)
+        it('should render root with rounded border', async () => {
+            const { container } = await render(Table, {
+                data: testData,
+                columns: testColumns
+            } as any)
             expect((container.firstElementChild as HTMLElement).className).toMatch(/rounded/)
         })
     })
@@ -451,7 +457,7 @@ describe('Table', () => {
             await expect.element(page.getByRole('table')).toBeInTheDocument()
         })
 
-        it('should not have role on non-selectable rows', () => {
+        it('should not have role on non-selectable rows', async () => {
             render(Table, { data: testData, columns: testColumns } as any)
             expect(getRows()[0].getAttribute('role')).toBeNull()
         })
@@ -460,7 +466,7 @@ describe('Table', () => {
     // ==================== GLOBAL FILTER ====================
 
     describe('global filter', () => {
-        it('should filter data by global filter', () => {
+        it('should filter data by global filter', async () => {
             render(Table, {
                 data: testData,
                 columns: testColumns,

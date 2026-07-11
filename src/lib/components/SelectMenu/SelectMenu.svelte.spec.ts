@@ -29,8 +29,8 @@ describe('SelectMenu', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render a trigger button', () => {
-            const { container } = render(SelectMenu, { items: defaultItems })
+        it('should render a trigger button', async () => {
+            const { container } = await render(SelectMenu, { items: defaultItems })
             expect(getTrigger(container)).not.toBeNull()
         })
 
@@ -50,17 +50,17 @@ describe('SelectMenu', () => {
             await expect.element(page.getByText('no-label-item')).toBeInTheDocument()
         })
 
-        it('should render with id on trigger', () => {
-            const { container } = render(SelectMenu, { items: defaultItems, id: 'my-select' })
+        it('should render with id on trigger', async () => {
+            const { container } = await render(SelectMenu, { items: defaultItems, id: 'my-select' })
             expect(getTrigger(container)!.id).toBe('my-select')
         })
 
-        it('should render without crashing when items is empty', () => {
-            const { container } = render(SelectMenu, { items: [] })
+        it('should render without crashing when items is empty', async () => {
+            const { container } = await render(SelectMenu, { items: [] })
             expect(getTrigger(container)).not.toBeNull()
         })
 
-        it('should render hidden inputs with [] suffix for multiple form fields', () => {
+        it('should render hidden inputs with [] suffix for multiple form fields', async () => {
             render(SelectMenu, {
                 items: defaultItems,
                 name: 'fruits',
@@ -241,18 +241,18 @@ describe('SelectMenu', () => {
     // ==================== DISABLED STATE ====================
 
     describe('disabled', () => {
-        it('should be disabled when disabled prop is true', () => {
-            const { container } = render(SelectMenu, { items: defaultItems, disabled: true })
+        it('should be disabled when disabled prop is true', async () => {
+            const { container } = await render(SelectMenu, { items: defaultItems, disabled: true })
             expect(getTrigger(container)!.disabled).toBe(true)
         })
 
-        it('should not be disabled by default', () => {
-            const { container } = render(SelectMenu, { items: defaultItems })
+        it('should not be disabled by default', async () => {
+            const { container } = await render(SelectMenu, { items: defaultItems })
             expect(getTrigger(container)!.disabled).toBe(false)
         })
 
         it('should not open when disabled', async () => {
-            const { container } = render(SelectMenu, {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 disabled: true,
                 portal: false
@@ -282,7 +282,7 @@ describe('SelectMenu', () => {
 
     describe('loading', () => {
         it('should render loading icon when loading without leadingIcon', async () => {
-            const { container } = render(SelectMenu, { items: defaultItems, loading: true })
+            const { container } = await render(SelectMenu, { items: defaultItems, loading: true })
             const root = getRootWrapper(container)!
             await vi.waitFor(() => {
                 expect(root.querySelector('svg')).not.toBeNull()
@@ -290,7 +290,7 @@ describe('SelectMenu', () => {
         })
 
         it('should apply animate-spin to trailing icon when loading without leading', async () => {
-            const { container } = render(SelectMenu, { items: defaultItems, loading: true })
+            const { container } = await render(SelectMenu, { items: defaultItems, loading: true })
             const root = getRootWrapper(container)!
             await vi.waitFor(() => {
                 const trailingSpan = root.querySelector('span:last-child')
@@ -299,7 +299,7 @@ describe('SelectMenu', () => {
         })
 
         it('should apply animate-spin to leading icon when loading with leadingIcon', async () => {
-            const { container } = render(SelectMenu, {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 loading: true,
                 leadingIcon: 'lucide:search'
@@ -318,24 +318,27 @@ describe('SelectMenu', () => {
         const variants = ['outline', 'soft', 'subtle', 'ghost', 'none'] as const
 
         for (const variant of variants) {
-            it(`should render with variant="${variant}"`, () => {
-                const { container } = render(SelectMenu, { items: defaultItems, variant })
+            it(`should render with variant="${variant}"`, async () => {
+                const { container } = await render(SelectMenu, { items: defaultItems, variant })
                 expect(getTrigger(container)).not.toBeNull()
             })
         }
 
-        it('should apply outline ring classes by default', () => {
-            const { container } = render(SelectMenu, { items: defaultItems })
+        it('should apply outline ring classes by default', async () => {
+            const { container } = await render(SelectMenu, { items: defaultItems })
             expect(getTrigger(container)!.className).toMatch(/ring/)
         })
 
-        it('should apply ghost transparent background', () => {
-            const { container } = render(SelectMenu, { items: defaultItems, variant: 'ghost' })
+        it('should apply ghost transparent background', async () => {
+            const { container } = await render(SelectMenu, {
+                items: defaultItems,
+                variant: 'ghost'
+            })
             expect(getTrigger(container)!.className).toMatch(/bg-transparent/)
         })
 
-        it('should apply soft container background', () => {
-            const { container } = render(SelectMenu, {
+        it('should apply soft container background', async () => {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 variant: 'soft',
                 color: 'primary'
@@ -358,14 +361,17 @@ describe('SelectMenu', () => {
         ] as const
 
         for (const color of colors) {
-            it(`should render with color="${color}"`, () => {
-                const { container } = render(SelectMenu, { items: defaultItems, color })
+            it(`should render with color="${color}"`, async () => {
+                const { container } = await render(SelectMenu, { items: defaultItems, color })
                 expect(getTrigger(container)!.className).toMatch(new RegExp(`ring-${color}`))
             })
         }
 
-        it('should apply surface color ring', () => {
-            const { container } = render(SelectMenu, { items: defaultItems, color: 'surface' })
+        it('should apply surface color ring', async () => {
+            const { container } = await render(SelectMenu, {
+                items: defaultItems,
+                color: 'surface'
+            })
             expect(getTrigger(container)!.className).toMatch(/ring-outline/)
         })
     })
@@ -373,18 +379,18 @@ describe('SelectMenu', () => {
     // ==================== SIZES ====================
 
     describe('sizes', () => {
-        it('should apply xs size', () => {
-            const { container } = render(SelectMenu, { items: defaultItems, size: 'xs' })
+        it('should apply xs size', async () => {
+            const { container } = await render(SelectMenu, { items: defaultItems, size: 'xs' })
             expect(getTrigger(container)!.className).toMatch(/text-xs/)
         })
 
-        it('should apply md size by default', () => {
-            const { container } = render(SelectMenu, { items: defaultItems })
+        it('should apply md size by default', async () => {
+            const { container } = await render(SelectMenu, { items: defaultItems })
             expect(getTrigger(container)!.className).toMatch(/text-sm/)
         })
 
-        it('should apply xl size', () => {
-            const { container } = render(SelectMenu, { items: defaultItems, size: 'xl' })
+        it('should apply xl size', async () => {
+            const { container } = await render(SelectMenu, { items: defaultItems, size: 'xl' })
             expect(getTrigger(container)!.className).toMatch(/text-base/)
         })
     })
@@ -392,8 +398,8 @@ describe('SelectMenu', () => {
     // ==================== HIGHLIGHT ====================
 
     describe('highlight', () => {
-        it('should apply ring-2 when highlight is true', () => {
-            const { container } = render(SelectMenu, {
+        it('should apply ring-2 when highlight is true', async () => {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 highlight: true,
                 color: 'error'
@@ -401,13 +407,13 @@ describe('SelectMenu', () => {
             expect(getTrigger(container)!.className).toMatch(/ring-2/)
         })
 
-        it('should apply aria-invalid when highlight is true', () => {
-            const { container } = render(SelectMenu, { items: defaultItems, highlight: true })
+        it('should apply aria-invalid when highlight is true', async () => {
+            const { container } = await render(SelectMenu, { items: defaultItems, highlight: true })
             expect(getTrigger(container)!.getAttribute('aria-invalid')).toBe('true')
         })
 
-        it('should not set aria-invalid by default', () => {
-            const { container } = render(SelectMenu, { items: defaultItems })
+        it('should not set aria-invalid by default', async () => {
+            const { container } = await render(SelectMenu, { items: defaultItems })
             expect(getTrigger(container)!.getAttribute('aria-invalid')).toBeNull()
         })
     })
@@ -415,15 +421,15 @@ describe('SelectMenu', () => {
     // ==================== ICONS ====================
 
     describe('icons', () => {
-        it('should render trailing icon by default', () => {
-            const { container } = render(SelectMenu, { items: defaultItems })
+        it('should render trailing icon by default', async () => {
+            const { container } = await render(SelectMenu, { items: defaultItems })
             const root = getRootWrapper(container)!
             const trailingSpan = root.querySelector('span:last-child')
             expect(trailingSpan?.querySelector('svg')).not.toBeNull()
         })
 
-        it('should render leading icon when leadingIcon is set', () => {
-            const { container } = render(SelectMenu, {
+        it('should render leading icon when leadingIcon is set', async () => {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 leadingIcon: 'lucide:search'
             })
@@ -436,19 +442,19 @@ describe('SelectMenu', () => {
     // ==================== AVATAR ====================
 
     describe('avatar', () => {
-        it('should render avatar with initials as fallback', () => {
-            const { container } = render(SelectMenu, {
+        it('should render avatar with initials as fallback', async () => {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 avatar: { alt: 'John Doe' }
             })
             expect(container.textContent).toContain('JD')
         })
 
-        it('should render selected item avatar', () => {
+        it('should render selected item avatar', async () => {
             const items: SelectMenuItemType[] = [
                 { value: 'u1', label: 'User One', avatar: { alt: 'Jane Smith' } }
             ]
-            const { container } = render(SelectMenu, { items, value: 'u1' })
+            const { container } = await render(SelectMenu, { items, value: 'u1' })
             expect(container.textContent).toContain('JS')
         })
     })
@@ -456,24 +462,24 @@ describe('SelectMenu', () => {
     // ==================== CUSTOM CLASS & UI ====================
 
     describe('custom class & ui', () => {
-        it('should apply custom class to root wrapper', () => {
-            const { container } = render(SelectMenu, {
+        it('should apply custom class to root wrapper', async () => {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 class: 'my-select-menu'
             })
             expect(container.querySelector('.my-select-menu')).not.toBeNull()
         })
 
-        it('should apply ui.base override to trigger', () => {
-            const { container } = render(SelectMenu, {
+        it('should apply ui.base override to trigger', async () => {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 ui: { base: 'my-base-class' }
             })
             expect(getTrigger(container)!.className).toContain('my-base-class')
         })
 
-        it('should apply ui.placeholder override', () => {
-            const { container } = render(SelectMenu, {
+        it('should apply ui.placeholder override', async () => {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 placeholder: 'Pick',
                 ui: { placeholder: 'my-placeholder' }
@@ -481,8 +487,8 @@ describe('SelectMenu', () => {
             expect(container.querySelector('.my-placeholder')).not.toBeNull()
         })
 
-        it('should apply ui.value override', () => {
-            const { container } = render(SelectMenu, {
+        it('should apply ui.value override', async () => {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 value: 'apple',
                 ui: { value: 'my-value-class' }
@@ -495,7 +501,7 @@ describe('SelectMenu', () => {
 
     describe('combined props', () => {
         it('should render with value, placeholder, and disabled', async () => {
-            const { container } = render(SelectMenu, {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 value: 'cherry',
                 placeholder: 'Pick',
@@ -505,8 +511,8 @@ describe('SelectMenu', () => {
             expect(getTrigger(container)!.disabled).toBe(true)
         })
 
-        it('should render with variant, color, and size combined', () => {
-            const { container } = render(SelectMenu, {
+        it('should render with variant, color, and size combined', async () => {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 variant: 'soft',
                 color: 'success',
@@ -517,8 +523,8 @@ describe('SelectMenu', () => {
             expect(trigger.className).toMatch(/text-base/)
         })
 
-        it('should render with highlight and error color combined', () => {
-            const { container } = render(SelectMenu, {
+        it('should render with highlight and error color combined', async () => {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 highlight: true,
                 color: 'error'
@@ -562,7 +568,7 @@ describe('SelectMenu', () => {
         })
 
         it('should keep dropdown open after selecting an item', async () => {
-            const { container } = render(SelectMenu, {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 multiple: true,
                 value: [],
@@ -679,7 +685,7 @@ describe('SelectMenu', () => {
         })
 
         it('should append to value in multiple mode and keep dropdown open', async () => {
-            const { container } = render(SelectMenu, {
+            const { container } = await render(SelectMenu, {
                 items: defaultItems,
                 multiple: true,
                 value: ['apple'],

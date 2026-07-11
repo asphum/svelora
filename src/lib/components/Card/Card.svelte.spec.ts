@@ -16,18 +16,18 @@ describe('Card', () => {
 
     describe('rendering', () => {
         it('should render the root element', async () => {
-            const { container } = render(Card, { children: snippet('<p>Content</p>') })
+            const { container } = await render(Card, { children: snippet('<p>Content</p>') })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toBeInTheDocument()
         })
 
         it('should render as div by default', async () => {
-            const { container } = render(Card, { children: snippet('<p>Content</p>') })
+            const { container } = await render(Card, { children: snippet('<p>Content</p>') })
             expect(container.firstElementChild!.tagName).toBe('DIV')
         })
 
         it('should apply base root classes', async () => {
-            const { container } = render(Card, { children: snippet('<p>Content</p>') })
+            const { container } = await render(Card, { children: snippet('<p>Content</p>') })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toHaveClass(/rounded-lg/)
             await expect.element(root).toHaveClass(/overflow-hidden/)
@@ -38,14 +38,14 @@ describe('Card', () => {
 
     describe('variants', () => {
         it('should apply outline variant by default', async () => {
-            const { container } = render(Card, { children: snippet('<p>Content</p>') })
+            const { container } = await render(Card, { children: snippet('<p>Content</p>') })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toHaveClass(/bg-surface/)
             await expect.element(root).toHaveClass(/ring/)
         })
 
         it('should apply solid variant classes', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 variant: 'solid',
                 children: snippet('<p>Content</p>')
             })
@@ -55,7 +55,7 @@ describe('Card', () => {
         })
 
         it('should apply outline variant classes', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 variant: 'outline',
                 children: snippet('<p>Content</p>')
             })
@@ -66,7 +66,7 @@ describe('Card', () => {
         })
 
         it('should apply soft variant classes', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 variant: 'soft',
                 children: snippet('<p>Content</p>')
             })
@@ -75,7 +75,7 @@ describe('Card', () => {
         })
 
         it('should apply subtle variant classes', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 variant: 'subtle',
                 children: snippet('<p>Content</p>')
             })
@@ -90,7 +90,7 @@ describe('Card', () => {
 
     describe('as prop', () => {
         it('should render as section element', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 as: 'section',
                 children: snippet('<p>Content</p>')
             })
@@ -98,7 +98,7 @@ describe('Card', () => {
         })
 
         it('should render as article element', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 as: 'article',
                 children: snippet('<p>Content</p>')
             })
@@ -106,7 +106,7 @@ describe('Card', () => {
         })
 
         it('should render as aside element', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 as: 'aside',
                 children: snippet('<p>Content</p>')
             })
@@ -118,14 +118,14 @@ describe('Card', () => {
 
     describe('slots', () => {
         it('should render body content', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 children: snippet('<p>Body content</p>')
             })
             expect(container.textContent).toContain('Body content')
         })
 
         it('should render header section', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 header: snippet('<h3>Card Header</h3>'),
                 children: snippet('<p>Body</p>')
             })
@@ -133,7 +133,7 @@ describe('Card', () => {
         })
 
         it('should render footer section', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 children: snippet('<p>Body</p>'),
                 footer: snippet('<p>Card Footer</p>')
             })
@@ -141,7 +141,7 @@ describe('Card', () => {
         })
 
         it('should render all three sections', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 header: snippet('<h3>Header</h3>'),
                 children: snippet('<p>Body</p>'),
                 footer: snippet('<p>Footer</p>')
@@ -152,7 +152,7 @@ describe('Card', () => {
         })
 
         it('should render sections in correct order', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 header: snippet('<h3>Header</h3>'),
                 children: snippet('<p>Body</p>'),
                 footer: snippet('<p>Footer</p>')
@@ -163,7 +163,7 @@ describe('Card', () => {
         })
 
         it('should not render header div when header is not provided', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 children: snippet('<p>Body</p>')
             })
             const root = container.firstElementChild!
@@ -172,7 +172,7 @@ describe('Card', () => {
         })
 
         it('should not render footer div when footer is not provided', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 children: snippet('<p>Body</p>')
             })
             const root = container.firstElementChild!
@@ -180,7 +180,7 @@ describe('Card', () => {
         })
 
         it('should not render body div when children is not provided', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 header: snippet('<h3>Header</h3>')
             })
             const root = container.firstElementChild!
@@ -189,7 +189,7 @@ describe('Card', () => {
         })
 
         it('should apply slot classes to header', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 header: snippet('<h3>Header</h3>'),
                 children: snippet('<p>Body</p>')
             })
@@ -199,7 +199,7 @@ describe('Card', () => {
         })
 
         it('should apply slot classes to body', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 children: snippet('<p>Body</p>')
             })
             const root = container.firstElementChild!
@@ -208,7 +208,7 @@ describe('Card', () => {
         })
 
         it('should apply slot classes to footer', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 children: snippet('<p>Body</p>'),
                 footer: snippet('<p>Footer</p>')
             })
@@ -222,7 +222,7 @@ describe('Card', () => {
 
     describe('custom class', () => {
         it('should apply custom class to root', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 class: 'my-custom-card',
                 children: snippet('<p>Content</p>')
             })
@@ -235,7 +235,7 @@ describe('Card', () => {
 
     describe('ui slot overrides', () => {
         it('should apply ui.root class', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 ui: { root: 'custom-root' },
                 children: snippet('<p>Content</p>')
             })
@@ -244,7 +244,7 @@ describe('Card', () => {
         })
 
         it('should apply ui.header class', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 ui: { header: 'custom-header' },
                 header: snippet('<h3>Header</h3>'),
                 children: snippet('<p>Body</p>')
@@ -254,7 +254,7 @@ describe('Card', () => {
         })
 
         it('should apply ui.body class', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 ui: { body: 'custom-body' },
                 children: snippet('<p>Body</p>')
             })
@@ -263,7 +263,7 @@ describe('Card', () => {
         })
 
         it('should apply ui.footer class', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 ui: { footer: 'custom-footer' },
                 children: snippet('<p>Body</p>'),
                 footer: snippet('<p>Footer</p>')
@@ -277,7 +277,7 @@ describe('Card', () => {
 
     describe('combined features', () => {
         it('should render solid card with all sections and custom class', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 variant: 'solid',
                 class: 'shadow-xl',
                 header: snippet('<h3>Title</h3>'),
@@ -294,7 +294,7 @@ describe('Card', () => {
         })
 
         it('should render as article with soft variant and ui overrides', async () => {
-            const { container } = render(Card, {
+            const { container } = await render(Card, {
                 as: 'article',
                 variant: 'soft',
                 ui: { root: 'extra-root-class' },

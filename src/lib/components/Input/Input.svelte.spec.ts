@@ -25,22 +25,22 @@ describe('Input', () => {
             expect(getInput()!.placeholder).toBe('Enter text...')
         })
 
-        it('should render with type text by default', () => {
+        it('should render with type text by default', async () => {
             render(Input)
             expect(getInput()!.type).toBe('text')
         })
 
-        it('should render with custom type', () => {
+        it('should render with custom type', async () => {
             render(Input, { type: 'email' })
             expect(getInput()!.type).toBe('email')
         })
 
-        it('should render with id', () => {
+        it('should render with id', async () => {
             render(Input, { id: 'my-input' })
             expect(getInput()!.id).toBe('my-input')
         })
 
-        it('should render with name', () => {
+        it('should render with name', async () => {
             render(Input, { name: 'email' })
             expect(getInput()!.name).toBe('email')
         })
@@ -83,20 +83,20 @@ describe('Input', () => {
             await expect.element(input).toBeDisabled()
         })
 
-        it('should render loading icon on leading side by default', () => {
-            const { container } = render(Input, { loading: true })
+        it('should render loading icon on leading side by default', async () => {
+            const { container } = await render(Input, { loading: true })
             const spans = container.querySelectorAll('span')
             expect(spans.length).toBeGreaterThanOrEqual(1)
         })
 
-        it('should render loading icon on trailing side when trailing is true', () => {
-            const { container } = render(Input, { loading: true, trailing: true })
+        it('should render loading icon on trailing side when trailing is true', async () => {
+            const { container } = await render(Input, { loading: true, trailing: true })
             const spans = container.querySelectorAll('span')
             expect(spans.length).toBeGreaterThanOrEqual(1)
         })
 
-        it('should spin the leading loader and keep the trailing icon static (both icons)', () => {
-            const { container } = render(Input, {
+        it('should spin the leading loader and keep the trailing icon static (both icons)', async () => {
+            const { container } = await render(Input, {
                 loading: true,
                 leadingIcon: 'lucide:mail',
                 trailingIcon: 'lucide:check'
@@ -106,8 +106,8 @@ describe('Input', () => {
             expect(container.querySelector('.end-0')).not.toBeNull()
         })
 
-        it('should keep a trailing-only icon static and not duplicate the loader there', () => {
-            const { container } = render(Input, {
+        it('should keep a trailing-only icon static and not duplicate the loader there', async () => {
+            const { container } = await render(Input, {
                 loading: true,
                 trailingIcon: 'lucide:eye'
             })
@@ -115,8 +115,8 @@ describe('Input', () => {
             expect(container.querySelector('.start-0 .animate-spin')).not.toBeNull()
         })
 
-        it('should spin the trailing loader and keep the leading icon static when trailing', () => {
-            const { container } = render(Input, {
+        it('should spin the trailing loader and keep the leading icon static when trailing', async () => {
+            const { container } = await render(Input, {
                 loading: true,
                 trailing: true,
                 leadingIcon: 'lucide:mail',
@@ -246,12 +246,12 @@ describe('Input', () => {
             await expect.element(input).toHaveClass(/ring-error/)
         })
 
-        it('should set aria-invalid when highlight is true', () => {
+        it('should set aria-invalid when highlight is true', async () => {
             render(Input, { highlight: true })
             expect(getInput()!.getAttribute('aria-invalid')).toBe('true')
         })
 
-        it('should not set aria-invalid when highlight is false', () => {
+        it('should not set aria-invalid when highlight is false', async () => {
             render(Input)
             expect(getInput()!.getAttribute('aria-invalid')).toBeNull()
         })
@@ -312,8 +312,8 @@ describe('Input', () => {
     // ==================== AVATAR ====================
 
     describe('avatar', () => {
-        it('should render avatar with alt initials as fallback', () => {
-            const { container } = render(Input, {
+        it('should render avatar with alt initials as fallback', async () => {
+            const { container } = await render(Input, {
                 avatar: { alt: 'John Doe' }
             })
             expect(container.textContent).toContain('JD')
@@ -333,16 +333,16 @@ describe('Input', () => {
             await expect.element(input).toHaveClass(/ps-9/)
         })
 
-        it('should render avatar over leadingIcon when both are provided (avatar takes precedence)', () => {
-            const { container } = render(Input, {
+        it('should render avatar over leadingIcon when both are provided (avatar takes precedence)', async () => {
+            const { container } = await render(Input, {
                 leadingIcon: 'lucide:user',
                 avatar: { alt: 'John Doe' }
             })
             expect(container.textContent).toContain('JD')
         })
 
-        it('should not render avatar when loading', () => {
-            const { container } = render(Input, {
+        it('should not render avatar when loading', async () => {
+            const { container } = await render(Input, {
                 avatar: { alt: 'John Doe' },
                 loading: true
             })
@@ -381,8 +381,8 @@ describe('Input', () => {
     // ==================== CUSTOM CLASS ====================
 
     describe('custom class', () => {
-        it('should apply custom class to root element', () => {
-            const { container } = render(Input, { class: 'my-custom-class' })
+        it('should apply custom class to root element', async () => {
+            const { container } = await render(Input, { class: 'my-custom-class' })
             const root = container.firstElementChild as HTMLElement
             expect(root.className).toContain('my-custom-class')
         })
@@ -393,8 +393,8 @@ describe('Input', () => {
             await expect.element(input).toHaveClass(/my-input-class/)
         })
 
-        it('should apply ui slot overrides to root element', () => {
-            const { container } = render(Input, { ui: { root: 'my-root-class' } })
+        it('should apply ui slot overrides to root element', async () => {
+            const { container } = await render(Input, { ui: { root: 'my-root-class' } })
             const root = container.firstElementChild as HTMLElement
             expect(root.className).toContain('my-root-class')
         })
@@ -403,22 +403,22 @@ describe('Input', () => {
     // ==================== ACCESSIBILITY ====================
 
     describe('accessibility', () => {
-        it('should support aria-label', () => {
+        it('should support aria-label', async () => {
             render(Input, { 'aria-label': 'Search input' })
             expect(getInput()!.getAttribute('aria-label')).toBe('Search input')
         })
 
-        it('should support readonly', () => {
+        it('should support readonly', async () => {
             render(Input, { readonly: true })
             expect(getInput()!.readOnly).toBe(true)
         })
 
-        it('should support required', () => {
+        it('should support required', async () => {
             render(Input, { required: true })
             expect(getInput()!.required).toBe(true)
         })
 
-        it('should support autocomplete', () => {
+        it('should support autocomplete', async () => {
             render(Input, { autocomplete: 'email' })
             expect(getInput()!.autocomplete).toBe('email')
         })

@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { useDebounce } from './useDebounce.svelte.js'
 
 describe('useDebounce', () => {
-    it('should default pending to false', () => {
+    it('should default pending to false', async () => {
         let api: ReturnType<typeof useDebounce>
         const cleanup = $effect.root(() => {
             api = useDebounce({ delay: 20 })
@@ -72,7 +72,7 @@ describe('useDebounce', () => {
         cleanup()
     })
 
-    it('should run the callback immediately and clear pending on flush', () => {
+    it('should run the callback immediately and clear pending on flush', async () => {
         const cb = vi.fn()
         let api: ReturnType<typeof useDebounce>
         const cleanup = $effect.root(() => {

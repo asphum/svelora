@@ -53,6 +53,7 @@
         if (!ownsItem) return
 
         ctx.setDraggingId(source.id)
+        groupCtx?.setDraggingGroupId(ctx.groupId)
     }
 
     function handleDragOver(event: DragOverEvent) {

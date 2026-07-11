@@ -26,12 +26,12 @@ describe('DropdownMenu', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render without crashing', () => {
-            const { container } = render(DropdownMenu)
+        it('should render without crashing', async () => {
+            const { container } = await render(DropdownMenu)
             expect(container).not.toBeNull()
         })
 
-        it('should not render content when closed', () => {
+        it('should not render content when closed', async () => {
             render(DropdownMenu, { items: basicItems })
             expect(getContent()).toBeNull()
         })
@@ -471,7 +471,7 @@ describe('DropdownMenu', () => {
 
     describe('portal', () => {
         it('should render in portal by default', async () => {
-            const { container } = render(DropdownMenu, { open: true, items: basicItems })
+            const { container } = await render(DropdownMenu, { open: true, items: basicItems })
             await vi.waitFor(() => {
                 const content = getContent()
                 expect(content).not.toBeNull()
@@ -695,7 +695,7 @@ describe('DropdownMenu', () => {
         const getTrigger = () =>
             document.querySelector('[data-testid="trigger"]') as HTMLElement | null
 
-        it('should wire trigger props onto the caller element, not a wrapper', () => {
+        it('should wire trigger props onto the caller element, not a wrapper', async () => {
             render(DropdownMenuTriggerTestWrapper, { items: basicItems })
             const trigger = getTrigger()
             expect(trigger).not.toBeNull()
@@ -704,7 +704,7 @@ describe('DropdownMenu', () => {
             expect(trigger!.hasAttribute('data-dropdown-menu-trigger')).toBe(true)
         })
 
-        it('should not insert an extra span wrapper around the trigger', () => {
+        it('should not insert an extra span wrapper around the trigger', async () => {
             render(DropdownMenuTriggerTestWrapper, { items: basicItems })
             const trigger = getTrigger()
             expect(trigger!.parentElement?.tagName).not.toBe('SPAN')

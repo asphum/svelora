@@ -8,18 +8,18 @@ describe('User', () => {
 
     describe('rendering', () => {
         it('should render the root element', async () => {
-            const { container } = render(User, { name: 'Test' })
+            const { container } = await render(User, { name: 'Test' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toBeInTheDocument()
         })
 
         it('should render as div by default', async () => {
-            const { container } = render(User, { name: 'Test' })
+            const { container } = await render(User, { name: 'Test' })
             expect(container.firstElementChild!.tagName).toBe('DIV')
         })
 
         it('should apply base root classes', async () => {
-            const { container } = render(User, { name: 'Test' })
+            const { container } = await render(User, { name: 'Test' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toHaveClass(/inline-flex/)
             await expect.element(root).toHaveClass(/items-center/)
@@ -31,17 +31,17 @@ describe('User', () => {
 
     describe('name and description', () => {
         it('should render name', async () => {
-            const { container } = render(User, { name: 'John Doe' })
+            const { container } = await render(User, { name: 'John Doe' })
             expect(container.textContent).toContain('John Doe')
         })
 
         it('should render description', async () => {
-            const { container } = render(User, { description: 'Engineer' })
+            const { container } = await render(User, { description: 'Engineer' })
             expect(container.textContent).toContain('Engineer')
         })
 
         it('should render both name and description', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'John Doe',
                 description: 'Engineer'
             })
@@ -50,7 +50,7 @@ describe('User', () => {
         })
 
         it('should not render wrapper when no name or description', async () => {
-            const { container } = render(User, { avatar: { alt: 'User' } })
+            const { container } = await render(User, { avatar: { alt: 'User' } })
             const root = container.firstElementChild!
             // Only avatar, no wrapper div
             expect(root.children.length).toBe(1)
@@ -61,7 +61,7 @@ describe('User', () => {
 
     describe('avatar', () => {
         it('should render avatar when avatar prop is provided', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 avatar: { alt: 'User' }
             })
@@ -70,13 +70,13 @@ describe('User', () => {
         })
 
         it('should not render avatar when avatar prop is not provided', async () => {
-            const { container } = render(User, { name: 'Test' })
+            const { container } = await render(User, { name: 'Test' })
             const avatar = container.querySelector('[data-avatar-root]')
             expect(avatar).toBeNull()
         })
 
         it('should pass size to avatar', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 avatar: { alt: 'User' },
                 size: 'lg'
@@ -90,7 +90,7 @@ describe('User', () => {
 
     describe('chip', () => {
         it('should not render chip by default', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 avatar: { alt: 'User' }
             })
@@ -99,7 +99,7 @@ describe('User', () => {
         })
 
         it('should render chip when chip=true and avatar is provided', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 avatar: { alt: 'User' },
                 chip: true
@@ -109,7 +109,7 @@ describe('User', () => {
         })
 
         it('should not render chip when avatar is not provided', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 chip: true
             })
@@ -118,7 +118,7 @@ describe('User', () => {
         })
 
         it('should accept ChipProps for chip', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 avatar: { alt: 'User' },
                 chip: { color: 'success' }
@@ -135,7 +135,7 @@ describe('User', () => {
 
         for (const size of sizes) {
             it(`should render with size="${size}"`, async () => {
-                const { container } = render(User, {
+                const { container } = await render(User, {
                     name: 'Test',
                     avatar: { alt: 'User' },
                     size
@@ -150,13 +150,13 @@ describe('User', () => {
 
     describe('orientation', () => {
         it('should apply horizontal orientation by default', async () => {
-            const { container } = render(User, { name: 'Test' })
+            const { container } = await render(User, { name: 'Test' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toHaveClass(/flex-row/)
         })
 
         it('should apply vertical orientation classes', async () => {
-            const { container } = render(User, { name: 'Test', orientation: 'vertical' })
+            const { container } = await render(User, { name: 'Test', orientation: 'vertical' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toHaveClass(/flex-col/)
             await expect.element(root).toHaveClass(/text-center/)
@@ -167,7 +167,7 @@ describe('User', () => {
 
     describe('clickable', () => {
         it('should apply clickable classes when onclick is provided', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 onclick: vi.fn()
             })
@@ -176,7 +176,7 @@ describe('User', () => {
         })
 
         it('should not apply clickable classes by default', async () => {
-            const { container } = render(User, { name: 'Test' })
+            const { container } = await render(User, { name: 'Test' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).not.toHaveClass(/cursor-pointer/)
         })
@@ -186,7 +186,7 @@ describe('User', () => {
 
     describe('href', () => {
         it('should render as anchor when href is provided', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 href: '/profile'
             })
@@ -194,12 +194,12 @@ describe('User', () => {
         })
 
         it('should not render as anchor when href is not provided', async () => {
-            const { container } = render(User, { name: 'Test' })
+            const { container } = await render(User, { name: 'Test' })
             expect(container.firstElementChild!.tagName).toBe('DIV')
         })
 
         it('should set href attribute', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 href: '/profile'
             })
@@ -212,17 +212,17 @@ describe('User', () => {
 
     describe('as prop', () => {
         it('should render as span element', async () => {
-            const { container } = render(User, { name: 'Test', as: 'span' })
+            const { container } = await render(User, { name: 'Test', as: 'span' })
             expect(container.firstElementChild!.tagName).toBe('SPAN')
         })
 
         it('should render as section element', async () => {
-            const { container } = render(User, { name: 'Test', as: 'section' })
+            const { container } = await render(User, { name: 'Test', as: 'section' })
             expect(container.firstElementChild!.tagName).toBe('SECTION')
         })
 
         it('should ignore as prop when href is provided', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 as: 'span',
                 href: '/profile'
@@ -235,7 +235,7 @@ describe('User', () => {
 
     describe('custom class', () => {
         it('should apply custom class to root', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 class: 'my-custom-user'
             })
@@ -248,7 +248,7 @@ describe('User', () => {
 
     describe('ui slot overrides', () => {
         it('should apply ui.root class', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 ui: { root: 'custom-root' }
             })
@@ -257,7 +257,7 @@ describe('User', () => {
         })
 
         it('should apply ui.name class', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test Name',
                 ui: { name: 'custom-name' }
             })
@@ -267,7 +267,7 @@ describe('User', () => {
         })
 
         it('should apply ui.description class', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 description: 'Test Desc',
                 ui: { description: 'custom-desc' }
             })
@@ -277,7 +277,7 @@ describe('User', () => {
         })
 
         it('should apply ui.wrapper class', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Test',
                 ui: { wrapper: 'custom-wrapper' }
             })
@@ -290,7 +290,7 @@ describe('User', () => {
 
     describe('combined features', () => {
         it('should render with avatar, name, description and chip', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'John Doe',
                 description: 'Engineer',
                 avatar: { alt: 'John' },
@@ -308,7 +308,7 @@ describe('User', () => {
         })
 
         it('should render vertical orientation with all features', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Jane',
                 description: 'Designer',
                 avatar: { alt: 'Jane' },
@@ -323,7 +323,7 @@ describe('User', () => {
         })
 
         it('should render as clickable link with avatar and chip', async () => {
-            const { container } = render(User, {
+            const { container } = await render(User, {
                 name: 'Link User',
                 avatar: { alt: 'User' },
                 chip: true,

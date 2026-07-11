@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { isSafeImageSrc } from './editor.schemas.js'
 
 describe('isSafeImageSrc', () => {
-    it('allows http(s) and relative/protocol-relative urls', () => {
+    it('allows http(s) and relative/protocol-relative urls', async () => {
         expect(isSafeImageSrc('https://example.com/a.png')).toBe(true)
         expect(isSafeImageSrc('http://example.com/a.png')).toBe(true)
         expect(isSafeImageSrc('/uploads/a.png')).toBe(true)
@@ -12,32 +12,32 @@ describe('isSafeImageSrc', () => {
         expect(isSafeImageSrc('//cdn.example.com/a.png')).toBe(true)
     })
 
-    it('allows raster data:image URIs', () => {
+    it('allows raster data:image URIs', async () => {
         expect(isSafeImageSrc('data:image/png;base64,iVBORw0KGgo=')).toBe(true)
         expect(isSafeImageSrc('data:image/jpeg;base64,/9j/4AAQ')).toBe(true)
         expect(isSafeImageSrc('data:image/gif;base64,R0lGOD')).toBe(true)
         expect(isSafeImageSrc('data:image/webp;base64,UklGR')).toBe(true)
     })
 
-    it('blocks dangerous schemes (case/space-insensitive)', () => {
+    it('blocks dangerous schemes (case/space-insensitive)', async () => {
         expect(isSafeImageSrc('javascript:alert(1)')).toBe(false)
         expect(isSafeImageSrc('  JavaScript:alert(1)')).toBe(false)
         expect(isSafeImageSrc('vbscript:msgbox(1)')).toBe(false)
         expect(isSafeImageSrc('file:///etc/passwd')).toBe(false)
     })
 
-    it('blocks svg and non-image data: URIs', () => {
+    it('blocks svg and non-image data: URIs', async () => {
         expect(isSafeImageSrc('data:image/svg+xml,<svg onload=alert(1)>')).toBe(false)
         expect(isSafeImageSrc('data:image/svg+xml;base64,PHN2Zz4=')).toBe(false)
         expect(isSafeImageSrc('data:text/html,<script>alert(1)</script>')).toBe(false)
     })
 
-    it('rejects empty input', () => {
+    it('rejects empty input', async () => {
         expect(isSafeImageSrc('')).toBe(false)
         expect(isSafeImageSrc('   ')).toBe(false)
     })
 
-    it('resists control-character and embedded-newline scheme bypasses', () => {
+    it('resists control-character and embedded-newline scheme bypasses', async () => {
         const ctrl = String.fromCharCode(1)
         expect(isSafeImageSrc(`${ctrl}javascript:alert(1)`)).toBe(false)
         expect(isSafeImageSrc(`${ctrl}data:image/svg+xml,<svg onload=alert(1)>`)).toBe(false)

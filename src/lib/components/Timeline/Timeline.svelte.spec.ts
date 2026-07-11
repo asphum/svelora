@@ -31,64 +31,64 @@ describe('Timeline', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render root element', () => {
-            const { container } = render(Timeline, { items: basicItems })
+        it('should render root element', async () => {
+            const { container } = await render(Timeline, { items: basicItems })
             expect(getRoot(container)).not.toBeNull()
         })
 
-        it('should render as div by default', () => {
-            const { container } = render(Timeline, { items: basicItems })
+        it('should render as div by default', async () => {
+            const { container } = await render(Timeline, { items: basicItems })
             expect(getRoot(container).tagName).toBe('DIV')
         })
 
-        it('should render as custom element', () => {
-            const { container } = render(Timeline, { items: basicItems, as: 'section' })
+        it('should render as custom element', async () => {
+            const { container } = await render(Timeline, { items: basicItems, as: 'section' })
             expect(getRoot(container).tagName).toBe('SECTION')
         })
 
-        it('should render correct number of items', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 2 })
+        it('should render correct number of items', async () => {
+            const { container } = await render(Timeline, { items: basicItems, value: 2 })
             expect(getItems(container).length).toBe(3)
         })
 
-        it('should render indicators for each item', () => {
-            const { container } = render(Timeline, { items: basicItems })
+        it('should render indicators for each item', async () => {
+            const { container } = await render(Timeline, { items: basicItems })
             const indicators = getIndicators(container)
             expect(indicators.length).toBeGreaterThanOrEqual(basicItems.length)
         })
 
-        it('should render separators between items', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 1 })
+        it('should render separators between items', async () => {
+            const { container } = await render(Timeline, { items: basicItems, value: 1 })
             const separators = getSeparators(container)
             // Should have n-1 separators for n items
             expect(separators.length).toBe(basicItems.length - 1)
         })
 
-        it('should render item titles', () => {
-            const { container } = render(Timeline, { items: basicItems })
+        it('should render item titles', async () => {
+            const { container } = await render(Timeline, { items: basicItems })
             expect(container.textContent).toContain('Step 1')
             expect(container.textContent).toContain('Step 2')
             expect(container.textContent).toContain('Step 3')
         })
 
-        it('should render item dates', () => {
+        it('should render item dates', async () => {
             const items = [
                 { value: 1, title: 'Event', date: 'Jan 1' },
                 { value: 2, title: 'Event 2', date: 'Jan 2' }
             ]
-            const { container } = render(Timeline, { items })
+            const { container } = await render(Timeline, { items })
             expect(container.textContent).toContain('Jan 1')
             expect(container.textContent).toContain('Jan 2')
         })
 
-        it('should render item descriptions', () => {
+        it('should render item descriptions', async () => {
             const items = [{ value: 1, title: 'Step', description: 'First step description' }]
-            const { container } = render(Timeline, { items })
+            const { container } = await render(Timeline, { items })
             expect(container.textContent).toContain('First step description')
         })
 
-        it('should have flex class on root', () => {
-            const { container } = render(Timeline, { items: basicItems })
+        it('should have flex class on root', async () => {
+            const { container } = await render(Timeline, { items: basicItems })
             expect(getRoot(container).className).toContain('flex')
         })
     })
@@ -96,55 +96,55 @@ describe('Timeline', () => {
     // ==================== STATE MANAGEMENT ====================
 
     describe('state management', () => {
-        it('should mark items as pending when no value', () => {
-            const { container } = render(Timeline, { items: basicItems })
+        it('should mark items as pending when no value', async () => {
+            const { container } = await render(Timeline, { items: basicItems })
             const items = getItems(container)
             items.forEach((item) => {
                 expect(item.getAttribute('data-state')).toBe('pending')
             })
         })
 
-        it('should mark item as active when value matches', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 2 })
+        it('should mark item as active when value matches', async () => {
+            const { container } = await render(Timeline, { items: basicItems, value: 2 })
             const items = getItems(container)
             expect(items[1].getAttribute('data-state')).toBe('active')
         })
 
-        it('should mark items before active as completed', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 2 })
+        it('should mark items before active as completed', async () => {
+            const { container } = await render(Timeline, { items: basicItems, value: 2 })
             const items = getItems(container)
             expect(items[0].getAttribute('data-state')).toBe('completed')
         })
 
-        it('should mark items after active as pending', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 2 })
+        it('should mark items after active as pending', async () => {
+            const { container } = await render(Timeline, { items: basicItems, value: 2 })
             const items = getItems(container)
             expect(items[2].getAttribute('data-state')).toBe('pending')
         })
 
-        it('should handle first item as active', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 1 })
+        it('should handle first item as active', async () => {
+            const { container } = await render(Timeline, { items: basicItems, value: 1 })
             const items = getItems(container)
             expect(items[0].getAttribute('data-state')).toBe('active')
             expect(items[1].getAttribute('data-state')).toBe('pending')
             expect(items[2].getAttribute('data-state')).toBe('pending')
         })
 
-        it('should handle last item as active', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 3 })
+        it('should handle last item as active', async () => {
+            const { container } = await render(Timeline, { items: basicItems, value: 3 })
             const items = getItems(container)
             expect(items[0].getAttribute('data-state')).toBe('completed')
             expect(items[1].getAttribute('data-state')).toBe('completed')
             expect(items[2].getAttribute('data-state')).toBe('active')
         })
 
-        it('should handle string values', () => {
+        it('should handle string values', async () => {
             const items = [
                 { value: 'start', title: 'Start' },
                 { value: 'middle', title: 'Middle' },
                 { value: 'end', title: 'End' }
             ]
-            const { container } = render(Timeline, { items, value: 'middle' })
+            const { container } = await render(Timeline, { items, value: 'middle' })
             const itemElements = getItems(container)
             expect(itemElements[0].getAttribute('data-state')).toBe('completed')
             expect(itemElements[1].getAttribute('data-state')).toBe('active')
@@ -155,8 +155,12 @@ describe('Timeline', () => {
     // ==================== REVERSE ====================
 
     describe('reverse', () => {
-        it('should not change state logic when reversed', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 2, reverse: true })
+        it('should not change state logic when reversed', async () => {
+            const { container } = await render(Timeline, {
+                items: basicItems,
+                value: 2,
+                reverse: true
+            })
             const items = getItems(container)
             // State logic stays the same: items before active = completed, items after = pending
             expect(items[0].getAttribute('data-state')).toBe('completed')
@@ -164,16 +168,24 @@ describe('Timeline', () => {
             expect(items[2].getAttribute('data-state')).toBe('pending')
         })
 
-        it('should keep same states as non-reversed with value 1', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 1, reverse: true })
+        it('should keep same states as non-reversed with value 1', async () => {
+            const { container } = await render(Timeline, {
+                items: basicItems,
+                value: 1,
+                reverse: true
+            })
             const items = getItems(container)
             expect(items[0].getAttribute('data-state')).toBe('active')
             expect(items[1].getAttribute('data-state')).toBe('pending')
             expect(items[2].getAttribute('data-state')).toBe('pending')
         })
 
-        it('should keep same states as non-reversed with value 3', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 3, reverse: true })
+        it('should keep same states as non-reversed with value 3', async () => {
+            const { container } = await render(Timeline, {
+                items: basicItems,
+                value: 3,
+                reverse: true
+            })
             const items = getItems(container)
             expect(items[0].getAttribute('data-state')).toBe('completed')
             expect(items[1].getAttribute('data-state')).toBe('completed')
@@ -184,15 +196,15 @@ describe('Timeline', () => {
     // ==================== COLORS ====================
 
     describe('colors', () => {
-        it('should default to primary color', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 1 })
+        it('should default to primary color', async () => {
+            const { container } = await render(Timeline, { items: basicItems, value: 1 })
             const indicators = getIndicators(container)
             // Active/completed indicators should have primary styles
             expect(indicators[0].className).toContain('group-data-[state=completed]:bg-primary')
         })
 
-        it('should apply secondary color', () => {
-            const { container } = render(Timeline, {
+        it('should apply secondary color', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 value: 1,
                 color: 'secondary'
@@ -201,8 +213,8 @@ describe('Timeline', () => {
             expect(indicators[0].className).toContain('group-data-[state=completed]:bg-secondary')
         })
 
-        it('should apply tertiary color', () => {
-            const { container } = render(Timeline, {
+        it('should apply tertiary color', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 value: 1,
                 color: 'tertiary'
@@ -211,8 +223,8 @@ describe('Timeline', () => {
             expect(indicators[0].className).toContain('group-data-[state=completed]:bg-tertiary')
         })
 
-        it('should apply success color', () => {
-            const { container } = render(Timeline, {
+        it('should apply success color', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 value: 1,
                 color: 'success'
@@ -221,8 +233,8 @@ describe('Timeline', () => {
             expect(indicators[0].className).toContain('group-data-[state=completed]:bg-success')
         })
 
-        it('should apply warning color', () => {
-            const { container } = render(Timeline, {
+        it('should apply warning color', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 value: 1,
                 color: 'warning'
@@ -231,20 +243,28 @@ describe('Timeline', () => {
             expect(indicators[0].className).toContain('group-data-[state=completed]:bg-warning')
         })
 
-        it('should apply error color', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 1, color: 'error' })
+        it('should apply error color', async () => {
+            const { container } = await render(Timeline, {
+                items: basicItems,
+                value: 1,
+                color: 'error'
+            })
             const indicators = getIndicators(container)
             expect(indicators[0].className).toContain('group-data-[state=completed]:bg-error')
         })
 
-        it('should apply info color', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 1, color: 'info' })
+        it('should apply info color', async () => {
+            const { container } = await render(Timeline, {
+                items: basicItems,
+                value: 1,
+                color: 'info'
+            })
             const indicators = getIndicators(container)
             expect(indicators[0].className).toContain('group-data-[state=completed]:bg-info')
         })
 
-        it('should apply surface color', () => {
-            const { container } = render(Timeline, {
+        it('should apply surface color', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 value: 1,
                 color: 'surface'
@@ -259,56 +279,56 @@ describe('Timeline', () => {
     // ==================== SIZES ====================
 
     describe('sizes', () => {
-        it('should apply md size by default', () => {
-            const { container } = render(Timeline, { items: basicItems })
+        it('should apply md size by default', async () => {
+            const { container } = await render(Timeline, { items: basicItems })
             const indicators = getIndicators(container)
             expect(indicators[0].className).toContain('size-8')
         })
 
-        it('should apply 3xs size', () => {
-            const { container } = render(Timeline, { items: basicItems, size: '3xs' })
+        it('should apply 3xs size', async () => {
+            const { container } = await render(Timeline, { items: basicItems, size: '3xs' })
             const indicators = getIndicators(container)
             expect(indicators[0].className).toContain('size-4')
         })
 
-        it('should apply 2xs size', () => {
-            const { container } = render(Timeline, { items: basicItems, size: '2xs' })
+        it('should apply 2xs size', async () => {
+            const { container } = await render(Timeline, { items: basicItems, size: '2xs' })
             const indicators = getIndicators(container)
             expect(indicators[0].className).toContain('size-5')
         })
 
-        it('should apply xs size', () => {
-            const { container } = render(Timeline, { items: basicItems, size: 'xs' })
+        it('should apply xs size', async () => {
+            const { container } = await render(Timeline, { items: basicItems, size: 'xs' })
             const indicators = getIndicators(container)
             expect(indicators[0].className).toContain('size-6')
         })
 
-        it('should apply sm size', () => {
-            const { container } = render(Timeline, { items: basicItems, size: 'sm' })
+        it('should apply sm size', async () => {
+            const { container } = await render(Timeline, { items: basicItems, size: 'sm' })
             const indicators = getIndicators(container)
             expect(indicators[0].className).toContain('size-7')
         })
 
-        it('should apply lg size', () => {
-            const { container } = render(Timeline, { items: basicItems, size: 'lg' })
+        it('should apply lg size', async () => {
+            const { container } = await render(Timeline, { items: basicItems, size: 'lg' })
             const indicators = getIndicators(container)
             expect(indicators[0].className).toContain('size-9')
         })
 
-        it('should apply xl size', () => {
-            const { container } = render(Timeline, { items: basicItems, size: 'xl' })
+        it('should apply xl size', async () => {
+            const { container } = await render(Timeline, { items: basicItems, size: 'xl' })
             const indicators = getIndicators(container)
             expect(indicators[0].className).toContain('size-10')
         })
 
-        it('should apply 2xl size', () => {
-            const { container } = render(Timeline, { items: basicItems, size: '2xl' })
+        it('should apply 2xl size', async () => {
+            const { container } = await render(Timeline, { items: basicItems, size: '2xl' })
             const indicators = getIndicators(container)
             expect(indicators[0].className).toContain('size-11')
         })
 
-        it('should apply 3xl size', () => {
-            const { container } = render(Timeline, { items: basicItems, size: '3xl' })
+        it('should apply 3xl size', async () => {
+            const { container } = await render(Timeline, { items: basicItems, size: '3xl' })
             const indicators = getIndicators(container)
             expect(indicators[0].className).toContain('size-12')
         })
@@ -317,27 +337,30 @@ describe('Timeline', () => {
     // ==================== ORIENTATION ====================
 
     describe('orientation', () => {
-        it('should be vertical by default', () => {
-            const { container } = render(Timeline, { items: basicItems })
+        it('should be vertical by default', async () => {
+            const { container } = await render(Timeline, { items: basicItems })
             expect(getRoot(container).className).toContain('flex-col')
         })
 
-        it('should apply horizontal orientation', () => {
-            const { container } = render(Timeline, { items: basicItems, orientation: 'horizontal' })
+        it('should apply horizontal orientation', async () => {
+            const { container } = await render(Timeline, {
+                items: basicItems,
+                orientation: 'horizontal'
+            })
             expect(getRoot(container).className).toContain('flex-row')
             expect(getRoot(container).className).toContain('w-full')
         })
 
-        it('should apply vertical separator width', () => {
-            const { container } = render(Timeline, { items: basicItems, value: 1 })
+        it('should apply vertical separator width', async () => {
+            const { container } = await render(Timeline, { items: basicItems, value: 1 })
             const separators = getSeparators(container)
             if (separators.length > 0) {
                 expect(separators[0].className).toContain('w-0.5')
             }
         })
 
-        it('should apply horizontal separator height', () => {
-            const { container } = render(Timeline, {
+        it('should apply horizontal separator height', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 orientation: 'horizontal',
                 value: 1
@@ -352,14 +375,14 @@ describe('Timeline', () => {
     // ==================== ICONS ====================
 
     describe('icons', () => {
-        it('should render with icons without crashing', () => {
-            const { container } = render(Timeline, { items: itemsWithIcons })
+        it('should render with icons without crashing', async () => {
+            const { container } = await render(Timeline, { items: itemsWithIcons })
             expect(getRoot(container)).not.toBeNull()
             expect(container.textContent).toContain('Done')
         })
 
-        it('should render indicators for items with icons', () => {
-            const { container } = render(Timeline, { items: itemsWithIcons })
+        it('should render indicators for items with icons', async () => {
+            const { container } = await render(Timeline, { items: itemsWithIcons })
             const indicators = getIndicators(container)
             expect(indicators.length).toBeGreaterThanOrEqual(itemsWithIcons.length)
         })
@@ -368,21 +391,21 @@ describe('Timeline', () => {
     // ==================== AVATARS ====================
 
     describe('avatars', () => {
-        it('should render with avatars without crashing', () => {
+        it('should render with avatars without crashing', async () => {
             const items = [
                 {
                     avatar: { src: 'https://example.com/avatar.jpg', alt: 'User' },
                     title: 'User action'
                 }
             ]
-            const { container } = render(Timeline, { items })
+            const { container } = await render(Timeline, { items })
             expect(getRoot(container)).not.toBeNull()
             expect(container.textContent).toContain('User action')
         })
 
-        it('should render avatar without src (fallback)', () => {
+        it('should render avatar without src (fallback)', async () => {
             const items = [{ avatar: { alt: 'JD' }, title: 'John Doe' }]
-            const { container } = render(Timeline, { items })
+            const { container } = await render(Timeline, { items })
             expect(getRoot(container)).not.toBeNull()
             expect(container.textContent).toContain('John Doe')
         })
@@ -391,13 +414,16 @@ describe('Timeline', () => {
     // ==================== CUSTOM CLASS ====================
 
     describe('custom class', () => {
-        it('should apply custom class to root', () => {
-            const { container } = render(Timeline, { items: basicItems, class: 'my-timeline' })
+        it('should apply custom class to root', async () => {
+            const { container } = await render(Timeline, {
+                items: basicItems,
+                class: 'my-timeline'
+            })
             expect(getRoot(container).className).toContain('my-timeline')
         })
 
-        it('should merge custom class with variant classes', () => {
-            const { container } = render(Timeline, {
+        it('should merge custom class with variant classes', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 class: 'my-timeline',
                 orientation: 'horizontal'
@@ -411,12 +437,12 @@ describe('Timeline', () => {
     // ==================== ITEM CLASS ====================
 
     describe('item class', () => {
-        it('should apply custom class to individual items', () => {
+        it('should apply custom class to individual items', async () => {
             const items = [
                 { value: 1, title: 'Step 1', class: 'custom-item-class' },
                 { value: 2, title: 'Step 2' }
             ]
-            const { container } = render(Timeline, { items, value: 1 })
+            const { container } = await render(Timeline, { items, value: 1 })
             const itemElements = getItems(container)
             expect(itemElements[0].className).toContain('custom-item-class')
         })
@@ -425,16 +451,16 @@ describe('Timeline', () => {
     // ==================== UI SLOT OVERRIDES ====================
 
     describe('ui slot overrides', () => {
-        it('should apply ui.root class', () => {
-            const { container } = render(Timeline, {
+        it('should apply ui.root class', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 ui: { root: 'custom-root' }
             })
             expect(getRoot(container).className).toContain('custom-root')
         })
 
-        it('should apply ui.item class', () => {
-            const { container } = render(Timeline, {
+        it('should apply ui.item class', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 value: 1,
                 ui: { item: 'custom-item' }
@@ -443,8 +469,8 @@ describe('Timeline', () => {
             expect(items[0].className).toContain('custom-item')
         })
 
-        it('should apply ui.indicator class', () => {
-            const { container } = render(Timeline, {
+        it('should apply ui.indicator class', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 ui: { indicator: 'custom-indicator' }
             })
@@ -452,8 +478,8 @@ describe('Timeline', () => {
             expect(indicators[0].className).toContain('custom-indicator')
         })
 
-        it('should apply ui.separator class', () => {
-            const { container } = render(Timeline, {
+        it('should apply ui.separator class', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 value: 1,
                 ui: { separator: 'custom-separator' }
@@ -464,8 +490,8 @@ describe('Timeline', () => {
             }
         })
 
-        it('should apply ui.title class', () => {
-            const { container } = render(Timeline, {
+        it('should apply ui.title class', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 ui: { title: 'custom-title' }
             })
@@ -473,15 +499,18 @@ describe('Timeline', () => {
             expect(titles.length).toBeGreaterThan(0)
         })
 
-        it('should apply ui.date class', () => {
+        it('should apply ui.date class', async () => {
             const items = [{ value: 1, title: 'Event', date: 'Jan 1' }]
-            const { container } = render(Timeline, { items, ui: { date: 'custom-date' } })
+            const { container } = await render(Timeline, { items, ui: { date: 'custom-date' } })
             expect(container.querySelector('.custom-date')).not.toBeNull()
         })
 
-        it('should apply ui.description class', () => {
+        it('should apply ui.description class', async () => {
             const items = [{ value: 1, title: 'Event', description: 'Desc' }]
-            const { container } = render(Timeline, { items, ui: { description: 'custom-desc' } })
+            const { container } = await render(Timeline, {
+                items,
+                ui: { description: 'custom-desc' }
+            })
             expect(container.querySelector('.custom-desc')).not.toBeNull()
         })
     })
@@ -489,8 +518,8 @@ describe('Timeline', () => {
     // ==================== HTML ATTRIBUTES ====================
 
     describe('html attributes', () => {
-        it('should pass through HTML attributes', () => {
-            const { container } = render(Timeline, {
+        it('should pass through HTML attributes', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 id: 'my-timeline',
                 title: 'Timeline'
@@ -500,8 +529,8 @@ describe('Timeline', () => {
             expect(root.getAttribute('title')).toBe('Timeline')
         })
 
-        it('should apply data attributes', () => {
-            const { container } = render(Timeline, {
+        it('should apply data attributes', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 'data-testid': 'timeline-1'
             } as Record<string, unknown>)
@@ -512,16 +541,16 @@ describe('Timeline', () => {
     // ==================== EMPTY STATE ====================
 
     describe('empty state', () => {
-        it('should render empty root when no items', () => {
-            const { container } = render(Timeline, { items: [] })
+        it('should render empty root when no items', async () => {
+            const { container } = await render(Timeline, { items: [] })
             const root = getRoot(container)
             expect(root).not.toBeNull()
             expect(getItems(container).length).toBe(0)
         })
 
-        it('should render with single item', () => {
+        it('should render with single item', async () => {
             const items = [{ value: 1, title: 'Only item' }]
-            const { container } = render(Timeline, { items, value: 1 })
+            const { container } = await render(Timeline, { items, value: 1 })
             expect(getItems(container).length).toBe(1)
             expect(container.textContent).toContain('Only item')
         })
@@ -530,8 +559,8 @@ describe('Timeline', () => {
     // ==================== COMBINED FEATURES ====================
 
     describe('combined features', () => {
-        it('should render with color, size, and orientation', () => {
-            const { container } = render(Timeline, {
+        it('should render with color, size, and orientation', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 value: 2,
                 color: 'success',
@@ -545,8 +574,8 @@ describe('Timeline', () => {
             expect(indicators[0].className).toContain('group-data-[state=completed]:bg-success')
         })
 
-        it('should render horizontal with reverse', () => {
-            const { container } = render(Timeline, {
+        it('should render horizontal with reverse', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 value: 2,
                 orientation: 'horizontal',
@@ -559,8 +588,8 @@ describe('Timeline', () => {
             expect(items[2].getAttribute('data-state')).toBe('pending')
         })
 
-        it('should render with icons, color, and size', () => {
-            const { container } = render(Timeline, {
+        it('should render with icons, color, and size', async () => {
+            const { container } = await render(Timeline, {
                 items: itemsWithIcons,
                 value: 2,
                 color: 'error',
@@ -571,8 +600,8 @@ describe('Timeline', () => {
             expect(indicators[0].className).toContain('group-data-[state=completed]:bg-error')
         })
 
-        it('should render with multiple ui overrides', () => {
-            const { container } = render(Timeline, {
+        it('should render with multiple ui overrides', async () => {
+            const { container } = await render(Timeline, {
                 items: basicItems,
                 value: 2,
                 ui: {
@@ -586,8 +615,8 @@ describe('Timeline', () => {
             expect(getIndicators(container)[0].className).toContain('custom-indicator')
         })
 
-        it('should handle all props together', () => {
-            const { container } = render(Timeline, {
+        it('should handle all props together', async () => {
+            const { container } = await render(Timeline, {
                 items: itemsWithIcons,
                 value: 2,
                 color: 'tertiary',

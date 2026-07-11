@@ -23,12 +23,12 @@ describe('ContextMenu', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render without crashing', () => {
-            const { container } = render(ContextMenu)
+        it('should render without crashing', async () => {
+            const { container } = await render(ContextMenu)
             expect(container).not.toBeNull()
         })
 
-        it('should not render content when closed', () => {
+        it('should not render content when closed', async () => {
             render(ContextMenu, { items: basicItems })
             expect(getContent()).toBeNull()
         })
@@ -399,7 +399,7 @@ describe('ContextMenu', () => {
 
     describe('portal', () => {
         it('should render in portal by default', async () => {
-            const { container } = render(ContextMenu, { open: true, items: basicItems })
+            const { container } = await render(ContextMenu, { open: true, items: basicItems })
             await vi.waitFor(() => {
                 const content = getContent()
                 expect(content).not.toBeNull()

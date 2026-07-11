@@ -25,7 +25,7 @@ describe('useInfiniteScroll', () => {
         node.remove()
     })
 
-    it('should default loading to false', () => {
+    it('should default loading to false', async () => {
         let api: ReturnType<typeof useInfiniteScroll>
         const cleanup = $effect.root(() => {
             api = useInfiniteScroll({ onLoad: () => {} })

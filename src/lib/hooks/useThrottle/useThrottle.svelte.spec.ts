@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { useThrottle } from './useThrottle.svelte.js'
 
 describe('useThrottle', () => {
-    it('should default pending to false', () => {
+    it('should default pending to false', async () => {
         let api: ReturnType<typeof useThrottle>
         const cleanup = $effect.root(() => {
             api = useThrottle({ delay: 20 })
@@ -12,7 +12,7 @@ describe('useThrottle', () => {
         cleanup()
     })
 
-    it('should run the callback immediately on the leading edge', () => {
+    it('should run the callback immediately on the leading edge', async () => {
         const cb = vi.fn()
         let api: ReturnType<typeof useThrottle>
         const cleanup = $effect.root(() => {

@@ -23,7 +23,7 @@ function makeController(opts: Parameters<typeof useTour>[0]) {
 const panel = () => document.body.querySelector('[role="dialog"]') as HTMLElement | null
 
 describe('Tour', () => {
-    it('renders nothing until started', () => {
+    it('renders nothing until started', async () => {
         const { api, cleanup } = makeController({ steps: dialogSteps })
         render(Tour, { steps: dialogSteps, controller: api })
         flushSync()

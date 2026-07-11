@@ -45,12 +45,12 @@ describe('toast wrapper', () => {
     })
 
     describe('basic forwarding', () => {
-        it('should forward message and options to french-toast', () => {
+        it('should forward message and options to french-toast', async () => {
             toast('Hello')
             expect(mockFrenchToast).toHaveBeenCalledWith('Hello', undefined)
         })
 
-        it('should forward description option', () => {
+        it('should forward description option', async () => {
             toast('Title', { description: 'Desc' })
             expect(mockFrenchToast).toHaveBeenCalledWith(
                 'Title',
@@ -58,7 +58,7 @@ describe('toast wrapper', () => {
             )
         })
 
-        it('should forward typed methods', () => {
+        it('should forward typed methods', async () => {
             toast.success('OK')
             expect(mockFrenchToast.success).toHaveBeenCalledWith('OK', undefined)
 
@@ -77,7 +77,7 @@ describe('toast wrapper', () => {
     })
 
     describe('color option', () => {
-        it('should inject ps-color-{color} class', () => {
+        it('should inject ps-color-{color} class', async () => {
             toast('Test', { color: 'primary' })
             expect(mockFrenchToast).toHaveBeenCalledWith(
                 'Test',
@@ -85,7 +85,7 @@ describe('toast wrapper', () => {
             )
         })
 
-        it('should preserve existing class alongside color class', () => {
+        it('should preserve existing class alongside color class', async () => {
             toast('Test', { color: 'tertiary', class: 'my-class' })
             expect(mockFrenchToast).toHaveBeenCalledWith(
                 'Test',
@@ -93,7 +93,7 @@ describe('toast wrapper', () => {
             )
         })
 
-        it('should work with typed methods', () => {
+        it('should work with typed methods', async () => {
             toast.success('OK', { color: 'secondary' })
             expect(mockFrenchToast.success).toHaveBeenCalledWith(
                 'OK',
@@ -101,7 +101,7 @@ describe('toast wrapper', () => {
             )
         })
 
-        it('should not add color class when color is not provided', () => {
+        it('should not add color class when color is not provided', async () => {
             toast('Test', { description: 'Desc' })
             const call = mockFrenchToast.mock.calls[0][1]
             expect(call?.className).toBeUndefined()
@@ -109,19 +109,19 @@ describe('toast wrapper', () => {
     })
 
     describe('icon option', () => {
-        it('should convert string icon to a component', () => {
+        it('should convert string icon to a component', async () => {
             toast('Test', { icon: 'lucide:rocket' })
             const call = mockFrenchToast.mock.calls[0][1]
             expect(typeof call?.icon).toBe('function')
         })
 
-        it('should pass null icon through', () => {
+        it('should pass null icon through', async () => {
             toast.success('Test', { icon: null })
             const call = mockFrenchToast.success.mock.calls[0][1]
             expect(call?.icon).toBeNull()
         })
 
-        it('should not set icon when not provided', () => {
+        it('should not set icon when not provided', async () => {
             toast('Test', { description: 'Desc' })
             const call = mockFrenchToast.mock.calls[0][1]
             expect(call?.icon).toBeUndefined()
@@ -129,13 +129,13 @@ describe('toast wrapper', () => {
     })
 
     describe('avatar option', () => {
-        it('should convert avatar to a component in icon slot', () => {
+        it('should convert avatar to a component in icon slot', async () => {
             toast('Test', { avatar: { src: '/img.jpg', alt: 'User' } })
             const call = mockFrenchToast.mock.calls[0][1]
             expect(typeof call?.icon).toBe('function')
         })
 
-        it('should prioritize avatar over icon', () => {
+        it('should prioritize avatar over icon', async () => {
             toast('Test', { avatar: { alt: 'User' }, icon: 'lucide:rocket' })
             const call = mockFrenchToast.mock.calls[0][1]
             expect(typeof call?.icon).toBe('function')
@@ -143,21 +143,21 @@ describe('toast wrapper', () => {
     })
 
     describe('combined options', () => {
-        it('should handle color + icon together', () => {
+        it('should handle color + icon together', async () => {
             toast('Test', { color: 'warning', icon: 'lucide:shield' })
             const call = mockFrenchToast.mock.calls[0][1]
             expect(call?.className).toBe('ps-color-warning')
             expect(typeof call?.icon).toBe('function')
         })
 
-        it('should handle color + avatar together', () => {
+        it('should handle color + avatar together', async () => {
             toast('Test', { color: 'info', avatar: { src: '/a.jpg', alt: 'A' } })
             const call = mockFrenchToast.mock.calls[0][1]
             expect(call?.className).toBe('ps-color-info')
             expect(typeof call?.icon).toBe('function')
         })
 
-        it('should strip color/icon/avatar from resolved options', () => {
+        it('should strip color/icon/avatar from resolved options', async () => {
             toast('Test', { color: 'primary', icon: 'lucide:x', description: 'D' })
             const call = mockFrenchToast.mock.calls[0][1] as Record<string, unknown>
             expect(call).not.toHaveProperty('color')
@@ -167,7 +167,7 @@ describe('toast wrapper', () => {
     })
 
     describe('dismissible option', () => {
-        it('should set infinite duration and hide close button when dismissible is false', () => {
+        it('should set infinite duration and hide close button when dismissible is false', async () => {
             toast('Test', { dismissible: false })
             expect(mockFrenchToast).toHaveBeenCalledWith(
                 'Test',
@@ -180,12 +180,12 @@ describe('toast wrapper', () => {
     })
 
     describe('passthrough methods', () => {
-        it('should pass through dismiss', () => {
+        it('should pass through dismiss', async () => {
             toast.dismiss()
             expect(mockFrenchToast.dismiss).toHaveBeenCalled()
         })
 
-        it('should resolve promise options including color', () => {
+        it('should resolve promise options including color', async () => {
             const p = Promise.resolve()
             toast.promise(p, { loading: 'L', success: 'S', error: 'E' }, { color: 'primary' })
             expect(mockFrenchToast.promise).toHaveBeenCalledWith(
@@ -195,7 +195,7 @@ describe('toast wrapper', () => {
             )
         })
 
-        it('should resolve nested promise phase options', () => {
+        it('should resolve nested promise phase options', async () => {
             const p = Promise.resolve()
             toast.promise(
                 p,

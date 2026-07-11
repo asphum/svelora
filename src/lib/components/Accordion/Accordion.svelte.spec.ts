@@ -18,8 +18,8 @@ describe('Accordion', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render without crashing', () => {
-            const { container } = render(Accordion, { type: 'single', items: sampleItems })
+        it('should render without crashing', async () => {
+            const { container } = await render(Accordion, { type: 'single', items: sampleItems })
             expect(container).not.toBeNull()
         })
 

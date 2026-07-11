@@ -132,11 +132,11 @@ function makeJoiMock(): JoiSchema {
 // ==================== TESTS ====================
 
 describe('isStandardSchema', () => {
-    it('returns true for a Standard Schema object', () => {
+    it('returns true for a Standard Schema object', async () => {
         expect(isStandardSchema(makeStandardSchema())).toBe(true)
     })
 
-    it('returns false for non-standard objects', () => {
+    it('returns false for non-standard objects', async () => {
         expect(isStandardSchema({})).toBe(false)
         expect(isStandardSchema(null)).toBe(false)
         expect(isStandardSchema(undefined)).toBe(false)
@@ -144,21 +144,21 @@ describe('isStandardSchema', () => {
         expect(isStandardSchema(42)).toBe(false)
     })
 
-    it('returns false for a Joi-shaped object', () => {
+    it('returns false for a Joi-shaped object', async () => {
         expect(isStandardSchema(makeJoiMock())).toBe(false)
     })
 })
 
 describe('isJoiSchema', () => {
-    it('returns true for a Joi-shaped object', () => {
+    it('returns true for a Joi-shaped object', async () => {
         expect(isJoiSchema(makeJoiMock())).toBe(true)
     })
 
-    it('returns false for a Standard Schema object', () => {
+    it('returns false for a Standard Schema object', async () => {
         expect(isJoiSchema(makeStandardSchema())).toBe(false)
     })
 
-    it('returns false for plain objects', () => {
+    it('returns false for plain objects', async () => {
         expect(isJoiSchema({})).toBe(false)
         expect(isJoiSchema({ validate: () => undefined })).toBe(false)
     })
@@ -225,7 +225,7 @@ describe('validateSchema (dispatch)', () => {
         expect(result.errors).not.toBeNull()
     })
 
-    it('throws on unsupported schema', () => {
+    it('throws on unsupported schema', async () => {
         expect(() =>
             validateSchema({}, {} as unknown as ReturnType<typeof makeStandardSchema>)
         ).toThrow('Unsupported')
@@ -233,46 +233,46 @@ describe('validateSchema (dispatch)', () => {
 })
 
 describe('getAtPath', () => {
-    it('returns root when path is empty', () => {
+    it('returns root when path is empty', async () => {
         expect(getAtPath({ a: 1 }, '')).toEqual({ a: 1 })
         expect(getAtPath({ a: 1 }, undefined)).toEqual({ a: 1 })
     })
 
-    it('reads shallow paths', () => {
+    it('reads shallow paths', async () => {
         expect(getAtPath({ a: 1 }, 'a')).toBe(1)
     })
 
-    it('reads nested paths', () => {
+    it('reads nested paths', async () => {
         expect(getAtPath({ a: { b: { c: 42 } } }, 'a.b.c')).toBe(42)
     })
 
-    it('returns undefined for missing paths', () => {
+    it('returns undefined for missing paths', async () => {
         expect(getAtPath({ a: 1 }, 'b.c')).toBeUndefined()
         expect(getAtPath({} as Record<string, unknown>, 'a.b')).toBeUndefined()
     })
 })
 
 describe('setAtPath', () => {
-    it('sets shallow properties', () => {
+    it('sets shallow properties', async () => {
         const obj: Record<string, unknown> = {}
         setAtPath(obj, 'name', 'Alice')
         expect(obj.name).toBe('Alice')
     })
 
-    it('creates nested objects when missing', () => {
+    it('creates nested objects when missing', async () => {
         const obj: Record<string, unknown> = {}
         setAtPath(obj, 'a.b.c', 42)
         expect(obj).toEqual({ a: { b: { c: 42 } } })
     })
 
-    it('creates arrays when next key is numeric', () => {
+    it('creates arrays when next key is numeric', async () => {
         const obj: Record<string, unknown> = {}
         setAtPath(obj, 'items.0', 'first')
         expect(Array.isArray((obj as { items: unknown }).items)).toBe(true)
         expect((obj as { items: unknown[] }).items[0]).toBe('first')
     })
 
-    it('overwrites existing values', () => {
+    it('overwrites existing values', async () => {
         const obj = { a: { b: 1 } } as Record<string, unknown>
         setAtPath(obj, 'a.b', 99)
         expect((obj.a as { b: number }).b).toBe(99)

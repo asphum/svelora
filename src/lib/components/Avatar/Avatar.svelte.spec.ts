@@ -17,19 +17,19 @@ describe('Avatar', () => {
 
     describe('rendering', () => {
         it('should render the avatar root element', async () => {
-            const { container } = render(Avatar, { alt: 'User' })
+            const { container } = await render(Avatar, { alt: 'User' })
             const root = getByData(container, 'data-avatar-root')
             await expect.element(root).toBeInTheDocument()
         })
 
         it('should render with default size md', async () => {
-            const { container } = render(Avatar, { alt: 'User' })
+            const { container } = await render(Avatar, { alt: 'User' })
             const root = getByData(container, 'data-avatar-root')
             await expect.element(root).toHaveClass(/size-8/)
         })
 
         it('should render with default rounded-full', async () => {
-            const { container } = render(Avatar, { alt: 'User' })
+            const { container } = await render(Avatar, { alt: 'User' })
             const root = getByData(container, 'data-avatar-root')
             await expect.element(root).toHaveClass(/rounded-full/)
         })
@@ -39,44 +39,44 @@ describe('Avatar', () => {
 
     describe('initials fallback', () => {
         it('should generate initials from two-word alt', async () => {
-            const { container } = render(Avatar, { alt: 'John Doe' })
+            const { container } = await render(Avatar, { alt: 'John Doe' })
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toHaveTextContent('JD')
         })
 
         it('should generate single initial from one-word alt', async () => {
-            const { container } = render(Avatar, { alt: 'Alice' })
+            const { container } = await render(Avatar, { alt: 'Alice' })
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toHaveTextContent('A')
         })
 
         it('should take only first two words for initials', async () => {
-            const { container } = render(Avatar, { alt: 'John Michael Doe' })
+            const { container } = await render(Avatar, { alt: 'John Michael Doe' })
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toHaveTextContent('JM')
         })
 
         it('should uppercase initials', async () => {
-            const { container } = render(Avatar, { alt: 'john doe' })
+            const { container } = await render(Avatar, { alt: 'john doe' })
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toHaveTextContent('JD')
         })
 
         it('should show empty fallback when no alt and no text', async () => {
-            const { container } = render(Avatar)
+            const { container } = await render(Avatar)
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toBeInTheDocument()
             await expect.element(fallback).toHaveTextContent('')
         })
 
         it('should filter empty words from extra spaces in alt', async () => {
-            const { container } = render(Avatar, { alt: '  John   Doe  ' })
+            const { container } = await render(Avatar, { alt: '  John   Doe  ' })
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toHaveTextContent('JD')
         })
 
         it('should handle alt with leading spaces correctly', async () => {
-            const { container } = render(Avatar, { alt: '  Alice' })
+            const { container } = await render(Avatar, { alt: '  Alice' })
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toHaveTextContent('A')
         })
@@ -86,19 +86,19 @@ describe('Avatar', () => {
 
     describe('text prop', () => {
         it('should display custom text', async () => {
-            const { container } = render(Avatar, { text: 'AB' })
+            const { container } = await render(Avatar, { text: 'AB' })
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toHaveTextContent('AB')
         })
 
         it('should override alt initials when text is provided', async () => {
-            const { container } = render(Avatar, { alt: 'John Doe', text: 'XX' })
+            const { container } = await render(Avatar, { alt: 'John Doe', text: 'XX' })
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toHaveTextContent('XX')
         })
 
         it('should show empty fallback when text is empty string', async () => {
-            const { container } = render(Avatar, { alt: 'John Doe', text: '' })
+            const { container } = await render(Avatar, { alt: 'John Doe', text: '' })
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toHaveTextContent('')
         })
@@ -108,14 +108,14 @@ describe('Avatar', () => {
 
     describe('icon fallback', () => {
         it('should render icon when no image and no text', async () => {
-            const { container } = render(Avatar, { icon: 'lucide:user' })
+            const { container } = await render(Avatar, { icon: 'lucide:user' })
             await expect.poll(() => container.querySelector('svg'), { timeout: 5000 }).toBeTruthy()
             const svg = container.querySelector('svg')!
             expect(svg).toBeTruthy()
         })
 
         it('should not render icon when text/initials are present', async () => {
-            const { container } = render(Avatar, { alt: 'John', icon: 'lucide:user' })
+            const { container } = await render(Avatar, { alt: 'John', icon: 'lucide:user' })
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toHaveTextContent('J')
         })
@@ -137,7 +137,7 @@ describe('Avatar', () => {
         })
 
         it('should set empty alt when alt is not provided', async () => {
-            const { container } = render(Avatar, { src: AVATAR_SRC })
+            const { container } = await render(Avatar, { src: AVATAR_SRC })
             const img = page.elementLocator(container.querySelector('img')!)
             await expect.element(img).toHaveAttribute('alt', '')
         })
@@ -150,7 +150,7 @@ describe('Avatar', () => {
         })
 
         it('should still render fallback alongside img', async () => {
-            const { container } = render(Avatar, {
+            const { container } = await render(Avatar, {
                 src: AVATAR_SRC,
                 alt: 'John Doe'
             })
@@ -160,7 +160,7 @@ describe('Avatar', () => {
         })
 
         it('should not render img when src is not provided', async () => {
-            const { container } = render(Avatar, { alt: 'John Doe' })
+            const { container } = await render(Avatar, { alt: 'John Doe' })
             const img = container.querySelector('[data-avatar-image]')
             expect(img).toBeNull()
         })
@@ -183,7 +183,7 @@ describe('Avatar', () => {
 
         for (const { size, class: expected } of sizeMap) {
             it(`should apply size="${size}" with class "${expected}"`, async () => {
-                const { container } = render(Avatar, { alt: 'User', size })
+                const { container } = await render(Avatar, { alt: 'User', size })
                 const root = getByData(container, 'data-avatar-root')
                 await expect.element(root).toHaveClass(new RegExp(expected))
             })
@@ -219,26 +219,26 @@ describe('Avatar', () => {
 
     describe('rounded', () => {
         it('should default to rounded-full', async () => {
-            const { container } = render(Avatar, { alt: 'User' })
+            const { container } = await render(Avatar, { alt: 'User' })
             const root = getByData(container, 'data-avatar-root')
             await expect.element(root).toHaveClass(/rounded-full/)
         })
 
         it('should apply rounded-lg', async () => {
-            const { container } = render(Avatar, { alt: 'User', rounded: 'lg' })
+            const { container } = await render(Avatar, { alt: 'User', rounded: 'lg' })
             const root = getByData(container, 'data-avatar-root')
             await expect.element(root).toHaveClass(/rounded-lg/)
             await expect.element(root).not.toHaveClass(/rounded-full/)
         })
 
         it('should apply rounded-md', async () => {
-            const { container } = render(Avatar, { alt: 'User', rounded: 'md' })
+            const { container } = await render(Avatar, { alt: 'User', rounded: 'md' })
             const root = getByData(container, 'data-avatar-root')
             await expect.element(root).toHaveClass(/rounded-md/)
         })
 
         it('should apply rounded-none', async () => {
-            const { container } = render(Avatar, { alt: 'User', rounded: 'none' })
+            const { container } = await render(Avatar, { alt: 'User', rounded: 'none' })
             const root = getByData(container, 'data-avatar-root')
             await expect.element(root).toHaveClass(/rounded-none/)
         })
@@ -248,7 +248,7 @@ describe('Avatar', () => {
 
     describe('custom class', () => {
         it('should apply custom class to root', async () => {
-            const { container } = render(Avatar, { alt: 'User', class: 'my-avatar' })
+            const { container } = await render(Avatar, { alt: 'User', class: 'my-avatar' })
             const root = getByData(container, 'data-avatar-root')
             await expect.element(root).toHaveClass(/my-avatar/)
         })
@@ -258,13 +258,13 @@ describe('Avatar', () => {
 
     describe('ui slot overrides', () => {
         it('should apply ui.root class', async () => {
-            const { container } = render(Avatar, { alt: 'User', ui: { root: 'custom-root' } })
+            const { container } = await render(Avatar, { alt: 'User', ui: { root: 'custom-root' } })
             const root = getByData(container, 'data-avatar-root')
             await expect.element(root).toHaveClass(/custom-root/)
         })
 
         it('should apply ui.fallback class', async () => {
-            const { container } = render(Avatar, {
+            const { container } = await render(Avatar, {
                 alt: 'User',
                 ui: { fallback: 'custom-fallback' }
             })
@@ -287,14 +287,14 @@ describe('Avatar', () => {
 
     describe('base classes', () => {
         it('should apply root base classes', async () => {
-            const { container } = render(Avatar, { alt: 'User' })
+            const { container } = await render(Avatar, { alt: 'User' })
             const root = getByData(container, 'data-avatar-root')
             await expect.element(root).toHaveClass(/rounded-full/)
             await expect.element(root).toHaveClass(/shrink-0/)
         })
 
         it('should apply fallback base classes', async () => {
-            const { container } = render(Avatar, { alt: 'User' })
+            const { container } = await render(Avatar, { alt: 'User' })
             const fallback = getByData(container, 'data-avatar-fallback')
             await expect.element(fallback).toHaveClass(/font-medium/)
         })

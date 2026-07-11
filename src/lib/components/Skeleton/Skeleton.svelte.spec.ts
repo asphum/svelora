@@ -8,18 +8,18 @@ describe('Skeleton', () => {
 
     describe('rendering', () => {
         it('should render the root element', async () => {
-            const { container } = render(Skeleton)
+            const { container } = await render(Skeleton)
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toBeInTheDocument()
         })
 
         it('should render as div by default', async () => {
-            const { container } = render(Skeleton)
+            const { container } = await render(Skeleton)
             expect(container.firstElementChild!.tagName).toBe('DIV')
         })
 
         it('should apply base skeleton classes', async () => {
-            const { container } = render(Skeleton)
+            const { container } = await render(Skeleton)
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toHaveClass(/animate-pulse/)
             await expect.element(root).toHaveClass(/rounded-md/)
@@ -27,7 +27,7 @@ describe('Skeleton', () => {
         })
 
         it('should have pulse animation', async () => {
-            const { container } = render(Skeleton)
+            const { container } = await render(Skeleton)
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toHaveClass(/animate-pulse/)
         })
@@ -37,17 +37,17 @@ describe('Skeleton', () => {
 
     describe('as prop', () => {
         it('should render as span element', async () => {
-            const { container } = render(Skeleton, { as: 'span' })
+            const { container } = await render(Skeleton, { as: 'span' })
             expect(container.firstElementChild!.tagName).toBe('SPAN')
         })
 
         it('should render as p element', async () => {
-            const { container } = render(Skeleton, { as: 'p' })
+            const { container } = await render(Skeleton, { as: 'p' })
             expect(container.firstElementChild!.tagName).toBe('P')
         })
 
         it('should render as section element', async () => {
-            const { container } = render(Skeleton, { as: 'section' })
+            const { container } = await render(Skeleton, { as: 'section' })
             expect(container.firstElementChild!.tagName).toBe('SECTION')
         })
     })
@@ -56,7 +56,7 @@ describe('Skeleton', () => {
 
     describe('custom class', () => {
         it('should apply custom class to root', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 class: 'my-custom-skeleton'
             })
             const root = page.elementLocator(container.firstElementChild!)
@@ -64,7 +64,7 @@ describe('Skeleton', () => {
         })
 
         it('should apply size classes', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 class: 'h-4 w-48'
             })
             const root = page.elementLocator(container.firstElementChild!)
@@ -73,7 +73,7 @@ describe('Skeleton', () => {
         })
 
         it('should apply rounded classes', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 class: 'rounded-full'
             })
             const root = page.elementLocator(container.firstElementChild!)
@@ -81,7 +81,7 @@ describe('Skeleton', () => {
         })
 
         it('should apply custom background color', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 class: 'bg-primary/20'
             })
             const root = page.elementLocator(container.firstElementChild!)
@@ -93,7 +93,7 @@ describe('Skeleton', () => {
 
     describe('ui slot overrides', () => {
         it('should apply ui.root class', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 ui: { root: 'custom-skeleton' }
             })
             const root = page.elementLocator(container.firstElementChild!)
@@ -101,7 +101,7 @@ describe('Skeleton', () => {
         })
 
         it('should combine ui.root with custom class', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 class: 'h-4',
                 ui: { root: 'w-32' }
             })
@@ -115,7 +115,7 @@ describe('Skeleton', () => {
 
     describe('different shapes', () => {
         it('should render as circle', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 class: 'size-12 rounded-full'
             })
             const root = page.elementLocator(container.firstElementChild!)
@@ -124,7 +124,7 @@ describe('Skeleton', () => {
         })
 
         it('should render as rectangle', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 class: 'h-32 w-48'
             })
             const root = page.elementLocator(container.firstElementChild!)
@@ -133,7 +133,7 @@ describe('Skeleton', () => {
         })
 
         it('should render as text line', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 class: 'h-4 w-full'
             })
             const root = page.elementLocator(container.firstElementChild!)
@@ -142,7 +142,7 @@ describe('Skeleton', () => {
         })
 
         it('should render with custom border radius', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 class: 'rounded-2xl'
             })
             const root = page.elementLocator(container.firstElementChild!)
@@ -154,9 +154,11 @@ describe('Skeleton', () => {
 
     describe('multiple instances', () => {
         it('should render multiple skeletons independently', async () => {
-            const { container: container1 } = render(Skeleton, { class: 'h-4 w-32' })
-            const { container: container2 } = render(Skeleton, { class: 'h-8 w-64' })
-            const { container: container3 } = render(Skeleton, { class: 'size-12 rounded-full' })
+            const { container: container1 } = await render(Skeleton, { class: 'h-4 w-32' })
+            const { container: container2 } = await render(Skeleton, { class: 'h-8 w-64' })
+            const { container: container3 } = await render(Skeleton, {
+                class: 'size-12 rounded-full'
+            })
 
             const root1 = page.elementLocator(container1.firstElementChild!)
             const root2 = page.elementLocator(container2.firstElementChild!)
@@ -177,7 +179,7 @@ describe('Skeleton', () => {
 
     describe('children', () => {
         it('should render without children by default', async () => {
-            const { container } = render(Skeleton)
+            const { container } = await render(Skeleton)
             const root = container.firstElementChild!
             expect(root.textContent).toBe('')
         })
@@ -185,7 +187,7 @@ describe('Skeleton', () => {
         it('should accept children prop', async () => {
             // Children prop is supported but testing content requires actual component usage
             // Just verify the component accepts the prop without error
-            const { container } = render(Skeleton)
+            const { container } = await render(Skeleton)
             expect(container.firstElementChild).not.toBeNull()
         })
     })
@@ -194,7 +196,7 @@ describe('Skeleton', () => {
 
     describe('accessibility', () => {
         it('should allow aria attributes', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 'aria-label': 'Loading content'
             } as Record<string, unknown>)
             const root = page.elementLocator(container.firstElementChild!)
@@ -202,7 +204,7 @@ describe('Skeleton', () => {
         })
 
         it('should allow role attribute', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 role: 'status'
             } as Record<string, unknown>)
             const root = page.elementLocator(container.firstElementChild!)
@@ -214,7 +216,7 @@ describe('Skeleton', () => {
 
     describe('combined usage', () => {
         it('should work with multiple classes and custom element', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 as: 'span',
                 class: 'inline-block h-4 w-32 rounded-full'
             })
@@ -229,7 +231,7 @@ describe('Skeleton', () => {
         })
 
         it('should preserve animation with custom classes', async () => {
-            const { container } = render(Skeleton, {
+            const { container } = await render(Skeleton, {
                 class: 'h-64 w-full rounded-lg bg-primary/10'
             })
             const root = page.elementLocator(container.firstElementChild!)

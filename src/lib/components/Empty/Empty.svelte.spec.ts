@@ -11,18 +11,18 @@ describe('Empty', () => {
 
     describe('rendering', () => {
         it('should render the root element', async () => {
-            const { container } = render(Empty, { title: 'Test' })
+            const { container } = await render(Empty, { title: 'Test' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toBeInTheDocument()
         })
 
         it('should render as div by default', async () => {
-            const { container } = render(Empty, { title: 'Test' })
+            const { container } = await render(Empty, { title: 'Test' })
             expect(container.firstElementChild!.tagName).toBe('DIV')
         })
 
         it('should apply base root classes', async () => {
-            const { container } = render(Empty, { title: 'Test' })
+            const { container } = await render(Empty, { title: 'Test' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toHaveClass(/flex/)
             await expect.element(root).toHaveClass(/flex-col/)
@@ -34,17 +34,17 @@ describe('Empty', () => {
 
     describe('title and description', () => {
         it('should render title', async () => {
-            const { container } = render(Empty, { title: 'No messages' })
+            const { container } = await render(Empty, { title: 'No messages' })
             expect(container.textContent).toContain('No messages')
         })
 
         it('should render description', async () => {
-            const { container } = render(Empty, { description: 'You have no items yet.' })
+            const { container } = await render(Empty, { description: 'You have no items yet.' })
             expect(container.textContent).toContain('You have no items yet.')
         })
 
         it('should render both title and description', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'No data',
                 description: 'Try adding some items'
             })
@@ -53,7 +53,7 @@ describe('Empty', () => {
         })
 
         it('should render without title or description', async () => {
-            const { container } = render(Empty, { icon: 'lucide:inbox' })
+            const { container } = await render(Empty, { icon: 'lucide:inbox' })
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toBeInTheDocument()
         })
@@ -63,7 +63,7 @@ describe('Empty', () => {
 
     describe('icon', () => {
         it('should render with icon prop', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 icon: 'lucide:inbox'
             })
@@ -72,7 +72,7 @@ describe('Empty', () => {
         })
 
         it('should not render icon when not provided', async () => {
-            const { container } = render(Empty, { title: 'Test' })
+            const { container } = await render(Empty, { title: 'Test' })
             // Just verify it renders without error
             expect(container.firstElementChild).not.toBeNull()
         })
@@ -82,7 +82,7 @@ describe('Empty', () => {
 
     describe('avatar', () => {
         it('should render avatar when avatar prop is provided', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 avatar: { alt: 'User' }
             })
@@ -91,7 +91,7 @@ describe('Empty', () => {
         })
 
         it('should prioritize icon over avatar', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 icon: 'lucide:inbox',
                 avatar: { alt: 'User' }
@@ -102,7 +102,7 @@ describe('Empty', () => {
         })
 
         it('should render avatar with src', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 avatar: { src: AVATAR_SRC, alt: 'User Avatar' }
             })
@@ -115,7 +115,7 @@ describe('Empty', () => {
 
     describe('variants', () => {
         it('should apply solid variant classes', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 variant: 'solid'
             })
@@ -124,7 +124,7 @@ describe('Empty', () => {
         })
 
         it('should apply outline variant classes', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 variant: 'outline'
             })
@@ -134,7 +134,7 @@ describe('Empty', () => {
         })
 
         it('should apply soft variant classes', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 variant: 'soft'
             })
@@ -143,7 +143,7 @@ describe('Empty', () => {
         })
 
         it('should apply subtle variant classes', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 variant: 'subtle'
             })
@@ -153,7 +153,7 @@ describe('Empty', () => {
         })
 
         it('should apply naked variant without background or ring', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 variant: 'naked'
             })
@@ -169,7 +169,7 @@ describe('Empty', () => {
 
         for (const size of sizes) {
             it(`should render with size="${size}"`, async () => {
-                const { container } = render(Empty, {
+                const { container } = await render(Empty, {
                     title: 'Test',
                     icon: 'lucide:inbox',
                     size
@@ -180,7 +180,7 @@ describe('Empty', () => {
         }
 
         it('should apply xs size title text', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 size: 'xs'
             })
@@ -190,7 +190,7 @@ describe('Empty', () => {
         })
 
         it('should apply md size title text by default', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test'
             })
             const title = container.querySelector('p')
@@ -199,7 +199,7 @@ describe('Empty', () => {
         })
 
         it('should apply xl size title text', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 size: 'xl'
             })
@@ -213,13 +213,13 @@ describe('Empty', () => {
 
     describe('actions', () => {
         it('should not render actions when not provided', async () => {
-            const { container } = render(Empty, { title: 'Test' })
+            const { container } = await render(Empty, { title: 'Test' })
             const buttons = container.querySelectorAll('button')
             expect(buttons.length).toBe(0)
         })
 
         it('should render action buttons', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 actions: [{ label: 'Action 1' }, { label: 'Action 2' }]
             })
@@ -228,7 +228,7 @@ describe('Empty', () => {
         })
 
         it('should render correct number of action buttons', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 actions: [{ label: 'A' }, { label: 'B' }, { label: 'C' }]
             })
@@ -237,7 +237,7 @@ describe('Empty', () => {
         })
 
         it('should not render actions when actions array is empty', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 actions: []
             })
@@ -246,7 +246,7 @@ describe('Empty', () => {
         })
 
         it('should render actions with custom props', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 actions: [
                     { label: 'Primary', color: 'primary' },
@@ -258,7 +258,7 @@ describe('Empty', () => {
         })
 
         it('should render actions with small size by default', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 actions: [{ label: 'Small Button' }]
             })
@@ -273,7 +273,7 @@ describe('Empty', () => {
 
     describe('as prop', () => {
         it('should render as section element', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 as: 'section'
             })
@@ -281,7 +281,7 @@ describe('Empty', () => {
         })
 
         it('should render as article element', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 as: 'article'
             })
@@ -293,7 +293,7 @@ describe('Empty', () => {
 
     describe('custom class', () => {
         it('should apply custom class to root', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 class: 'my-custom-empty'
             })
@@ -306,7 +306,7 @@ describe('Empty', () => {
 
     describe('ui slot overrides', () => {
         it('should apply ui.root class', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 ui: { root: 'custom-root' }
             })
@@ -315,7 +315,7 @@ describe('Empty', () => {
         })
 
         it('should apply ui.title class', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test Title',
                 ui: { title: 'custom-title' }
             })
@@ -325,7 +325,7 @@ describe('Empty', () => {
         })
 
         it('should apply ui.description class', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 description: 'Test Description',
                 ui: { description: 'custom-desc' }
             })
@@ -335,7 +335,7 @@ describe('Empty', () => {
         })
 
         it('should accept ui.avatar class override', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 icon: 'lucide:inbox',
                 ui: { avatar: 'custom-avatar' }
@@ -345,7 +345,7 @@ describe('Empty', () => {
         })
 
         it('should apply ui.actions class', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 actions: [{ label: 'Action' }],
                 ui: { actions: 'custom-actions' }
@@ -359,7 +359,7 @@ describe('Empty', () => {
 
     describe('combined features', () => {
         it('should render with icon, title, description, and actions', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 icon: 'lucide:inbox',
                 title: 'No messages',
                 description: 'You have no messages yet.',
@@ -375,7 +375,7 @@ describe('Empty', () => {
         })
 
         it('should apply variant and size together', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Empty State',
                 variant: 'soft',
                 size: 'lg',
@@ -387,7 +387,7 @@ describe('Empty', () => {
         })
 
         it('should render outline variant with lg size', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Test',
                 variant: 'outline',
                 size: 'lg'
@@ -399,7 +399,7 @@ describe('Empty', () => {
         })
 
         it('should render with avatar and actions', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 avatar: { alt: 'User' },
                 title: 'No notifications',
                 description: 'All caught up!',
@@ -413,7 +413,7 @@ describe('Empty', () => {
         })
 
         it('should render solid variant with multiple actions', async () => {
-            const { container } = render(Empty, {
+            const { container } = await render(Empty, {
                 title: 'Cart is empty',
                 variant: 'solid',
                 icon: 'lucide:shopping-cart',

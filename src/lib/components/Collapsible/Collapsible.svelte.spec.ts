@@ -11,22 +11,22 @@ describe('Collapsible', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render a collapsible root element', () => {
+        it('should render a collapsible root element', async () => {
             render(CollapsibleTestWrapper)
             expect(getRoot()).not.toBeNull()
         })
 
-        it('should render a trigger element', () => {
+        it('should render a trigger element', async () => {
             render(CollapsibleTestWrapper)
             expect(getTrigger()).not.toBeNull()
         })
 
-        it('should render with data-state=closed by default', () => {
+        it('should render with data-state=closed by default', async () => {
             render(CollapsibleTestWrapper)
             expect(getRoot()!.getAttribute('data-state')).toBe('closed')
         })
 
-        it('should render with data-state=open when open=true', () => {
+        it('should render with data-state=open when open=true', async () => {
             render(CollapsibleTestWrapper, { open: true })
             expect(getRoot()!.getAttribute('data-state')).toBe('open')
         })
@@ -74,14 +74,14 @@ describe('Collapsible', () => {
     // ==================== CONTENT ====================
 
     describe('content', () => {
-        it('should have content hidden when closed', () => {
+        it('should have content hidden when closed', async () => {
             render(CollapsibleTestWrapper)
             const content = getContent()
             expect(content).not.toBeNull()
             expect(content!.hasAttribute('hidden')).toBe(true)
         })
 
-        it('should render content element when open', () => {
+        it('should render content element when open', async () => {
             render(CollapsibleTestWrapper, { open: true })
             expect(getContent()).not.toBeNull()
         })
@@ -94,12 +94,12 @@ describe('Collapsible', () => {
             })
         })
 
-        it('should have data-state=open on content when open', () => {
+        it('should have data-state=open on content when open', async () => {
             render(CollapsibleTestWrapper, { open: true })
             expect(getContent()!.getAttribute('data-state')).toBe('open')
         })
 
-        it('should render content text when open', () => {
+        it('should render content text when open', async () => {
             render(CollapsibleTestWrapper, { open: true })
             expect(getContent()!.textContent).toContain('Collapsible content')
         })
@@ -108,17 +108,17 @@ describe('Collapsible', () => {
     // ==================== DISABLED ====================
 
     describe('disabled', () => {
-        it('should apply data-disabled on root when disabled', () => {
+        it('should apply data-disabled on root when disabled', async () => {
             render(CollapsibleTestWrapper, { disabled: true })
             expect(getRoot()!.hasAttribute('data-disabled')).toBe(true)
         })
 
-        it('should apply opacity class when disabled', () => {
+        it('should apply opacity class when disabled', async () => {
             render(CollapsibleTestWrapper, { disabled: true })
             expect(getRoot()!.className).toMatch(/opacity-75/)
         })
 
-        it('should apply cursor-not-allowed when disabled', () => {
+        it('should apply cursor-not-allowed when disabled', async () => {
             render(CollapsibleTestWrapper, { disabled: true })
             expect(getRoot()!.className).toMatch(/cursor-not-allowed/)
         })
@@ -135,7 +135,7 @@ describe('Collapsible', () => {
     // ==================== TRIGGER ====================
 
     describe('trigger', () => {
-        it('should have data-state=closed on trigger by default', () => {
+        it('should have data-state=closed on trigger by default', async () => {
             render(CollapsibleTestWrapper)
             expect(getTrigger()!.getAttribute('data-state')).toBe('closed')
         })
@@ -148,12 +148,12 @@ describe('Collapsible', () => {
             })
         })
 
-        it('should show "Open" text when closed', () => {
+        it('should show "Open" text when closed', async () => {
             render(CollapsibleTestWrapper)
             expect(getTrigger()!.textContent).toContain('Open')
         })
 
-        it('should show "Close" text when open', () => {
+        it('should show "Close" text when open', async () => {
             render(CollapsibleTestWrapper, { open: true })
             expect(getTrigger()!.textContent).toContain('Close')
         })
@@ -162,22 +162,22 @@ describe('Collapsible', () => {
     // ==================== CUSTOM CLASS & UI ====================
 
     describe('custom class & ui', () => {
-        it('should apply custom class to root', () => {
+        it('should apply custom class to root', async () => {
             render(CollapsibleTestWrapper, { class: 'my-custom-class' })
             expect(getRoot()!.className).toContain('my-custom-class')
         })
 
-        it('should apply ui.root override', () => {
+        it('should apply ui.root override', async () => {
             render(CollapsibleTestWrapper, { ui: { root: 'my-root-class' } })
             expect(getRoot()!.className).toContain('my-root-class')
         })
 
-        it('should apply ui.content override when open', () => {
+        it('should apply ui.content override when open', async () => {
             render(CollapsibleTestWrapper, { open: true, ui: { content: 'my-content-class' } })
             expect(getContent()!.className).toContain('my-content-class')
         })
 
-        it('should not have extra default classes on root', () => {
+        it('should not have extra default classes on root', async () => {
             render(CollapsibleTestWrapper)
             // root slot is empty by default (matching Nuxt UI)
             expect(getRoot()).not.toBeNull()
@@ -187,20 +187,20 @@ describe('Collapsible', () => {
     // ==================== COMBINED PROPS ====================
 
     describe('combined props', () => {
-        it('should render open and disabled', () => {
+        it('should render open and disabled', async () => {
             render(CollapsibleTestWrapper, { open: true, disabled: true })
             expect(getRoot()!.getAttribute('data-state')).toBe('open')
             expect(getRoot()!.hasAttribute('data-disabled')).toBe(true)
             expect(getRoot()!.className).toMatch(/opacity-75/)
         })
 
-        it('should render with open and custom class', () => {
+        it('should render with open and custom class', async () => {
             render(CollapsibleTestWrapper, { open: true, class: 'combined-class' })
             expect(getRoot()!.getAttribute('data-state')).toBe('open')
             expect(getRoot()!.className).toContain('combined-class')
         })
 
-        it('should render disabled with data-disabled on trigger', () => {
+        it('should render disabled with data-disabled on trigger', async () => {
             render(CollapsibleTestWrapper, { disabled: true })
             expect(getTrigger()!.hasAttribute('data-disabled')).toBe(true)
         })
@@ -209,7 +209,7 @@ describe('Collapsible', () => {
     // ==================== FORWARDED ROOT ATTRIBUTES ====================
 
     describe('forwarded root attributes', () => {
-        it('forwards id, aria-label, and data-* to the root element', () => {
+        it('forwards id, aria-label, and data-* to the root element', async () => {
             render(Collapsible, { id: 'c1', 'aria-label': 'section', 'data-testid': 'collap' })
             const root = getRoot()!
             expect(root.getAttribute('id')).toBe('c1')

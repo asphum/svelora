@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { useScrollLock } from './useScrollLock.svelte.js'
 
 describe('useScrollLock', () => {
-    it('sets overflow hidden while locked (reactive getter)', () => {
+    it('sets overflow hidden while locked (reactive getter)', async () => {
         const el = document.createElement('div')
         let locked = $state(true)
         const cleanup = $effect.root(() => {
@@ -21,7 +21,7 @@ describe('useScrollLock', () => {
         cleanup()
     })
 
-    it('restores the original overflow value on unlock', () => {
+    it('restores the original overflow value on unlock', async () => {
         const el = document.createElement('div')
         el.style.overflow = 'auto'
         let locked = $state(false)
@@ -44,7 +44,7 @@ describe('useScrollLock', () => {
         cleanup()
     })
 
-    it('reference-counts nested locks on the same target', () => {
+    it('reference-counts nested locks on the same target', async () => {
         const el = document.createElement('div')
         let a = $state(true)
         let b = $state(true)
@@ -74,7 +74,7 @@ describe('useScrollLock', () => {
         c2()
     })
 
-    it('releases the lock on teardown', () => {
+    it('releases the lock on teardown', async () => {
         const el = document.createElement('div')
         const cleanup = $effect.root(() => {
             useScrollLock(true, () => el)
@@ -85,7 +85,7 @@ describe('useScrollLock', () => {
         expect(el.style.overflow).toBe('')
     })
 
-    it('is a no-op for a nullish target', () => {
+    it('is a no-op for a nullish target', async () => {
         const cleanup = $effect.root(() => {
             useScrollLock(true, () => null)
         })
@@ -93,7 +93,7 @@ describe('useScrollLock', () => {
         cleanup()
     })
 
-    it('supports imperative lock / unlock', () => {
+    it('supports imperative lock / unlock', async () => {
         const el = document.createElement('div')
         let api: ReturnType<typeof useScrollLock>
         const cleanup = $effect.root(() => {

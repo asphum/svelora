@@ -22,12 +22,12 @@ describe('Textarea', () => {
             expect(getTextarea()!.placeholder).toBe('Enter text...')
         })
 
-        it('should render with id', () => {
+        it('should render with id', async () => {
             render(Textarea, { id: 'my-textarea' })
             expect(getTextarea()!.id).toBe('my-textarea')
         })
 
-        it('should render with name', () => {
+        it('should render with name', async () => {
             render(Textarea, { name: 'description' })
             expect(getTextarea()!.name).toBe('description')
         })
@@ -38,12 +38,12 @@ describe('Textarea', () => {
             await expect.element(textarea).toHaveValue('hello')
         })
 
-        it('should render with default rows of 3', () => {
+        it('should render with default rows of 3', async () => {
             render(Textarea)
             expect(getTextarea()!.rows).toBe(3)
         })
 
-        it('should render with custom rows', () => {
+        it('should render with custom rows', async () => {
             render(Textarea, { rows: 5 })
             expect(getTextarea()!.rows).toBe(5)
         })
@@ -80,14 +80,14 @@ describe('Textarea', () => {
             await expect.element(textarea).toBeDisabled()
         })
 
-        it('should render loading icon on leading side by default', () => {
-            const { container } = render(Textarea, { loading: true })
+        it('should render loading icon on leading side by default', async () => {
+            const { container } = await render(Textarea, { loading: true })
             const spans = container.querySelectorAll('span')
             expect(spans.length).toBeGreaterThanOrEqual(1)
         })
 
-        it('should render loading icon on trailing side when trailing is true', () => {
-            const { container } = render(Textarea, { loading: true, trailing: true })
+        it('should render loading icon on trailing side when trailing is true', async () => {
+            const { container } = await render(Textarea, { loading: true, trailing: true })
             const spans = container.querySelectorAll('span')
             expect(spans.length).toBeGreaterThanOrEqual(1)
         })
@@ -212,12 +212,12 @@ describe('Textarea', () => {
             await expect.element(textarea).toHaveClass(/ring-error/)
         })
 
-        it('should set aria-invalid when highlight is true', () => {
+        it('should set aria-invalid when highlight is true', async () => {
             render(Textarea, { highlight: true })
             expect(getTextarea()!.getAttribute('aria-invalid')).toBe('true')
         })
 
-        it('should not set aria-invalid when highlight is false', () => {
+        it('should not set aria-invalid when highlight is false', async () => {
             render(Textarea)
             expect(getTextarea()!.getAttribute('aria-invalid')).toBeNull()
         })
@@ -322,8 +322,8 @@ describe('Textarea', () => {
     // ==================== CUSTOM CLASS ====================
 
     describe('custom class', () => {
-        it('should apply custom class to root element', () => {
-            const { container } = render(Textarea, { class: 'my-custom-class' })
+        it('should apply custom class to root element', async () => {
+            const { container } = await render(Textarea, { class: 'my-custom-class' })
             const root = container.firstElementChild as HTMLElement
             expect(root.className).toContain('my-custom-class')
         })
@@ -334,8 +334,8 @@ describe('Textarea', () => {
             await expect.element(textarea).toHaveClass(/my-textarea-class/)
         })
 
-        it('should apply ui slot overrides to root element', () => {
-            const { container } = render(Textarea, { ui: { root: 'my-root-class' } })
+        it('should apply ui slot overrides to root element', async () => {
+            const { container } = await render(Textarea, { ui: { root: 'my-root-class' } })
             const root = container.firstElementChild as HTMLElement
             expect(root.className).toContain('my-root-class')
         })
@@ -344,22 +344,22 @@ describe('Textarea', () => {
     // ==================== ACCESSIBILITY ====================
 
     describe('accessibility', () => {
-        it('should support aria-label', () => {
+        it('should support aria-label', async () => {
             render(Textarea, { 'aria-label': 'Description input' })
             expect(getTextarea()!.getAttribute('aria-label')).toBe('Description input')
         })
 
-        it('should support readonly', () => {
+        it('should support readonly', async () => {
             render(Textarea, { readonly: true })
             expect(getTextarea()!.readOnly).toBe(true)
         })
 
-        it('should support required', () => {
+        it('should support required', async () => {
             render(Textarea, { required: true })
             expect(getTextarea()!.required).toBe(true)
         })
 
-        it('should support autocomplete', () => {
+        it('should support autocomplete', async () => {
             render(Textarea, { autocomplete: 'off' })
             expect(getTextarea()!.autocomplete).toBe('off')
         })

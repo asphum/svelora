@@ -25,44 +25,47 @@ describe('CheckboxGroup', () => {
             expect(getCheckboxes().length).toBe(3)
         })
 
-        it('should render all items unchecked by default', () => {
+        it('should render all items unchecked by default', async () => {
             render(CheckboxGroup, { items: defaultItems })
             for (const cb of getCheckboxes()) {
                 expect(cb.getAttribute('data-state')).toBe('unchecked')
             }
         })
 
-        it('should render with pre-selected values', () => {
+        it('should render with pre-selected values', async () => {
             render(CheckboxGroup, { items: defaultItems, value: ['a', 'c'] })
             expect(getCheckbox(0).getAttribute('data-state')).toBe('checked')
             expect(getCheckbox(1).getAttribute('data-state')).toBe('unchecked')
             expect(getCheckbox(2).getAttribute('data-state')).toBe('checked')
         })
 
-        it('should render with name attribute', () => {
-            const { container } = render(CheckboxGroup, { items: defaultItems, name: 'my-group' })
+        it('should render with name attribute', async () => {
+            const { container } = await render(CheckboxGroup, {
+                items: defaultItems,
+                name: 'my-group'
+            })
             const hidden = container.querySelector('input[name="my-group"]')
             expect(hidden).toBeTruthy()
         })
 
-        it('should render item ids with prefix', () => {
+        it('should render item ids with prefix', async () => {
             render(CheckboxGroup, { items: defaultItems, id: 'test' })
             expect(getCheckbox(0).id).toBe('test-a')
             expect(getCheckbox(1).id).toBe('test-b')
         })
 
-        it('should auto-generate ids', () => {
+        it('should auto-generate ids', async () => {
             render(CheckboxGroup, { items: defaultItems })
             expect(getCheckbox(0).id).toBeTruthy()
         })
 
-        it('should render empty when no items provided', () => {
+        it('should render empty when no items provided', async () => {
             render(CheckboxGroup)
             expect(getCheckboxes().length).toBe(0)
         })
 
-        it('should render fieldset element', () => {
-            const { container } = render(CheckboxGroup, { items: defaultItems })
+        it('should render fieldset element', async () => {
+            const { container } = await render(CheckboxGroup, { items: defaultItems })
             expect(container.querySelector('fieldset')).toBeTruthy()
         })
     })
@@ -170,7 +173,7 @@ describe('CheckboxGroup', () => {
         ] as const
 
         for (const color of colors) {
-            it(`should apply color="${color}" on checked state`, () => {
+            it(`should apply color="${color}" on checked state`, async () => {
                 render(CheckboxGroup, { items: defaultItems, value: ['a'], color })
                 expect(getCheckbox(0).className).toMatch(new RegExp(`bg-${color}`))
             })
@@ -180,17 +183,17 @@ describe('CheckboxGroup', () => {
     // ==================== SIZES ====================
 
     describe('sizes', () => {
-        it('should apply xs size', () => {
+        it('should apply xs size', async () => {
             render(CheckboxGroup, { items: defaultItems, size: 'xs' })
             expect(getCheckbox().className).toMatch(/size-3\.5/)
         })
 
-        it('should apply md size by default', () => {
+        it('should apply md size by default', async () => {
             render(CheckboxGroup, { items: defaultItems })
             expect(getCheckbox().className).toMatch(/size-4\.5/)
         })
 
-        it('should apply xl size', () => {
+        it('should apply xl size', async () => {
             render(CheckboxGroup, { items: defaultItems, size: 'xl' })
             expect(getCheckbox().className).toMatch(/size-5\.5/)
         })
@@ -199,14 +202,14 @@ describe('CheckboxGroup', () => {
     // ==================== ORIENTATION ====================
 
     describe('orientation', () => {
-        it('should render vertical by default', () => {
-            const { container } = render(CheckboxGroup, { items: defaultItems })
+        it('should render vertical by default', async () => {
+            const { container } = await render(CheckboxGroup, { items: defaultItems })
             const fieldset = container.querySelector('fieldset')
             expect(fieldset!.className).toMatch(/flex-col/)
         })
 
-        it('should render horizontal', () => {
-            const { container } = render(CheckboxGroup, {
+        it('should render horizontal', async () => {
+            const { container } = await render(CheckboxGroup, {
                 items: defaultItems,
                 orientation: 'horizontal'
             })
@@ -223,8 +226,8 @@ describe('CheckboxGroup', () => {
             await expect.element(page.getByText('Choose options')).toBeInTheDocument()
         })
 
-        it('should not render legend element when not provided', () => {
-            const { container } = render(CheckboxGroup, { items: defaultItems })
+        it('should not render legend element when not provided', async () => {
+            const { container } = await render(CheckboxGroup, { items: defaultItems })
             expect(container.querySelector('legend')).toBeNull()
         })
     })
@@ -247,7 +250,7 @@ describe('CheckboxGroup', () => {
             await expect.element(page.getByText('First description')).toBeInTheDocument()
         })
 
-        it('should associate label with checkbox via for attribute', () => {
+        it('should associate label with checkbox via for attribute', async () => {
             render(CheckboxGroup, { items: defaultItems, id: 'grp' })
             const label = document.querySelector('label[for="grp-a"]')
             expect(label).toBeTruthy()
@@ -258,12 +261,12 @@ describe('CheckboxGroup', () => {
     // ==================== ACCESSIBILITY ====================
 
     describe('accessibility', () => {
-        it('should have role="checkbox" on each item', () => {
+        it('should have role="checkbox" on each item', async () => {
             render(CheckboxGroup, { items: defaultItems })
             expect(getCheckboxes().length).toBe(3)
         })
 
-        it('should set data-state="checked" on selected items only', () => {
+        it('should set data-state="checked" on selected items only', async () => {
             render(CheckboxGroup, { items: defaultItems, value: ['a', 'c'] })
             expect(getCheckbox(0).getAttribute('data-state')).toBe('checked')
             expect(getCheckbox(1).getAttribute('data-state')).toBe('unchecked')
@@ -274,8 +277,8 @@ describe('CheckboxGroup', () => {
     // ==================== CUSTOM CLASS & UI ====================
 
     describe('custom class & ui', () => {
-        it('should apply custom class to root element', () => {
-            const { container } = render(CheckboxGroup, {
+        it('should apply custom class to root element', async () => {
+            const { container } = await render(CheckboxGroup, {
                 items: defaultItems,
                 class: 'my-group'
             })
@@ -283,13 +286,13 @@ describe('CheckboxGroup', () => {
             expect(root.className).toContain('my-group')
         })
 
-        it('should apply ui.base override to checkbox buttons', () => {
+        it('should apply ui.base override to checkbox buttons', async () => {
             render(CheckboxGroup, { items: defaultItems, ui: { base: 'my-base' } })
             expect(getCheckbox().className).toContain('my-base')
         })
 
-        it('should apply ui.fieldset override', () => {
-            const { container } = render(CheckboxGroup, {
+        it('should apply ui.fieldset override', async () => {
+            const { container } = await render(CheckboxGroup, {
                 items: defaultItems,
                 ui: { fieldset: 'my-fieldset' }
             })
@@ -311,7 +314,7 @@ describe('CheckboxGroup', () => {
             await expect.element(page.getByText('Pick some')).toBeInTheDocument()
         })
 
-        it('should render with color, size, and orientation combined', () => {
+        it('should render with color, size, and orientation combined', async () => {
             render(CheckboxGroup, {
                 items: defaultItems,
                 value: ['a'],

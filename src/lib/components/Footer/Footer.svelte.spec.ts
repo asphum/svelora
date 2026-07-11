@@ -16,18 +16,18 @@ describe('Footer', () => {
 
     describe('rendering', () => {
         it('should render the root element', async () => {
-            const { container } = render(Footer, {})
+            const { container } = await render(Footer, {})
             const root = page.elementLocator(container.firstElementChild!)
             await expect.element(root).toBeInTheDocument()
         })
 
         it('should render as footer by default', async () => {
-            const { container } = render(Footer, {})
+            const { container } = await render(Footer, {})
             expect(container.firstElementChild!.tagName).toBe('FOOTER')
         })
 
         it('should render as div via as prop', async () => {
-            const { container } = render(Footer, { as: 'div' })
+            const { container } = await render(Footer, { as: 'div' })
             expect(container.firstElementChild!.tagName).toBe('DIV')
         })
     })
@@ -36,28 +36,28 @@ describe('Footer', () => {
 
     describe('areas', () => {
         it('should render left content', async () => {
-            const { container } = render(Footer, {
+            const { container } = await render(Footer, {
                 left: snippet('<span data-testid="copyright">(c) 2026</span>')
             })
             expect(container.querySelector('[data-testid="copyright"]')).not.toBeNull()
         })
 
         it('should render children in the center area', async () => {
-            const { container } = render(Footer, {
+            const { container } = await render(Footer, {
                 children: snippet('<span data-testid="nav">Links</span>')
             })
             expect(container.querySelector('[data-testid="nav"]')).not.toBeNull()
         })
 
         it('should render right content', async () => {
-            const { container } = render(Footer, {
+            const { container } = await render(Footer, {
                 right: snippet('<span data-testid="social">Social</span>')
             })
             expect(container.querySelector('[data-testid="social"]')).not.toBeNull()
         })
 
         it('should render top and bottom areas', async () => {
-            const { container } = render(Footer, {
+            const { container } = await render(Footer, {
                 top: snippet('<span data-testid="top">Columns</span>'),
                 bottom: snippet('<span data-testid="bottom">Legal</span>')
             })
@@ -66,7 +66,7 @@ describe('Footer', () => {
         })
 
         it('should not render area wrappers without content', async () => {
-            const { container } = render(Footer, {
+            const { container } = await render(Footer, {
                 ui: {
                     top: 'top-probe',
                     left: 'left-probe',
@@ -83,7 +83,7 @@ describe('Footer', () => {
         })
 
         it('should order areas right, center, left in the DOM for mobile stacking', async () => {
-            const { container } = render(Footer, {
+            const { container } = await render(Footer, {
                 left: snippet('<span data-testid="l">L</span>'),
                 children: snippet('<span data-testid="c">C</span>'),
                 right: snippet('<span data-testid="r">R</span>')
@@ -96,7 +96,7 @@ describe('Footer', () => {
         })
 
         it('should restore visual order left, center, right on lg via order classes', async () => {
-            const { container } = render(Footer, {
+            const { container } = await render(Footer, {
                 left: snippet('<span data-testid="l">L</span>'),
                 children: snippet('<span data-testid="c">C</span>'),
                 right: snippet('<span data-testid="r">R</span>')
@@ -117,12 +117,12 @@ describe('Footer', () => {
 
     describe('custom class and ui overrides', () => {
         it('should apply custom class to root', async () => {
-            const { container } = render(Footer, { class: 'my-footer' })
+            const { container } = await render(Footer, { class: 'my-footer' })
             expect(container.firstElementChild!.className).toContain('my-footer')
         })
 
         it('should apply ui overrides on rendered areas', async () => {
-            const { container } = render(Footer, {
+            const { container } = await render(Footer, {
                 left: snippet('<span>L</span>'),
                 ui: { left: 'custom-left', container: 'custom-container' }
             })
@@ -135,7 +135,7 @@ describe('Footer', () => {
 
     describe('native attributes', () => {
         it('should pass through native attributes', async () => {
-            const { container } = render(Footer, {
+            const { container } = await render(Footer, {
                 id: 'app-footer',
                 'data-testid': 'footer-root',
                 'aria-label': 'Site footer'

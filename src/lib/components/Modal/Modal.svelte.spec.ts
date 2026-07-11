@@ -25,12 +25,12 @@ describe('Modal', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('should render without crashing', () => {
-            const { container } = render(Modal)
+        it('should render without crashing', async () => {
+            const { container } = await render(Modal)
             expect(container).not.toBeNull()
         })
 
-        it('should not render content when closed', () => {
+        it('should not render content when closed', async () => {
             render(Modal, { title: 'Test' })
             expect(getContent()).toBeNull()
         })
@@ -360,7 +360,7 @@ describe('Modal', () => {
 
     describe('portal', () => {
         it('should render content in body when portal is true (default)', async () => {
-            const { container } = render(Modal, { open: true, title: 'Test' })
+            const { container } = await render(Modal, { open: true, title: 'Test' })
             await vi.waitFor(() => {
                 const content = getContent()
                 expect(content).not.toBeNull()
@@ -565,7 +565,7 @@ describe('Modal', () => {
 
     describe('trigger', () => {
         it('forwards trigger props to the caller element without nesting a button', async () => {
-            const { container } = render(ModalTriggerTestWrapper)
+            const { container } = await render(ModalTriggerTestWrapper)
             const btn = container.querySelector('[data-testid="trigger"]') as HTMLButtonElement
             expect(btn).not.toBeNull()
             expect(btn.tagName).toBe('BUTTON')

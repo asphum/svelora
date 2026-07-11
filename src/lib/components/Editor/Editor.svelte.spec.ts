@@ -23,25 +23,25 @@ describe('Editor', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('renders root element', () => {
-            const { container } = render(Editor, {})
+        it('renders root element', async () => {
+            const { container } = await render(Editor, {})
             expect(getRoot(container)).not.toBeNull()
         })
 
-        it('renders the content area immediately (SSR-safe placeholder)', () => {
-            const { container } = render(Editor, {})
+        it('renders the content area immediately (SSR-safe placeholder)', async () => {
+            const { container } = await render(Editor, {})
             expect(getContent(container)).not.toBeNull()
         })
 
         it('mounts Tiptap into the content area client-side', async () => {
-            const { container } = render(Editor, {})
+            const { container } = await render(Editor, {})
             await vi.waitFor(() => {
                 expect(getProseMirror(container)).not.toBeNull()
             })
         })
 
         it('renders default toolbar', async () => {
-            const { container } = render(Editor, {})
+            const { container } = await render(Editor, {})
             await vi.waitFor(() => {
                 expect(getToolbar(container)).not.toBeNull()
                 expect(getToolbarButtons(container).length).toBeGreaterThan(5)
@@ -49,7 +49,7 @@ describe('Editor', () => {
         })
 
         it('renders custom toolbar config', async () => {
-            const { container } = render(Editor, {
+            const { container } = await render(Editor, {
                 toolbar: ['bold', 'italic']
             })
             await vi.waitFor(() => {
@@ -61,7 +61,7 @@ describe('Editor', () => {
         })
 
         it('hides toolbar when toolbar={false}', async () => {
-            const { container } = render(Editor, { toolbar: false })
+            const { container } = await render(Editor, { toolbar: false })
             await vi.waitFor(() => {
                 expect(getProseMirror(container)).not.toBeNull()
             })
@@ -69,7 +69,7 @@ describe('Editor', () => {
         })
 
         it('renders separator markers in toolbar', async () => {
-            const { container } = render(Editor, {
+            const { container } = await render(Editor, {
                 toolbar: ['bold', '|', 'italic']
             })
             await vi.waitFor(() => {
@@ -83,14 +83,14 @@ describe('Editor', () => {
 
     describe('content I/O', () => {
         it('renders initial value as HTML', async () => {
-            const { container } = render(Editor, { value: '<p>Hello World</p>' })
+            const { container } = await render(Editor, { value: '<p>Hello World</p>' })
             await vi.waitFor(() => {
                 expect(getProseMirror(container)?.textContent).toContain('Hello World')
             })
         })
 
         it('renders placeholder via data attribute', async () => {
-            const { container } = render(Editor, { placeholder: 'Write here...' })
+            const { container } = await render(Editor, { placeholder: 'Write here...' })
             await vi.waitFor(() => {
                 const pm = getProseMirror(container)
                 const p = pm?.querySelector('[data-placeholder]')
@@ -100,7 +100,7 @@ describe('Editor', () => {
         })
 
         it('accepts initial JSON content', async () => {
-            const { container } = render(Editor, {
+            const { container } = await render(Editor, {
                 output: 'json',
                 value: {
                     type: 'doc',
@@ -119,7 +119,7 @@ describe('Editor', () => {
 
         it('applies an external value change after the editor has emitted (echo-dedup stays correct)', async () => {
             let api: EditorApi | undefined
-            const screen = render(Editor, {
+            const screen = await render(Editor, {
                 value: '<p>start</p>',
                 get api() {
                     return api
@@ -141,7 +141,7 @@ describe('Editor', () => {
 
         it('treats output as fixed at mount (changing the prop later has no effect)', async () => {
             let api: EditorApi | undefined
-            const screen = render(Editor, {
+            const screen = await render(Editor, {
                 output: 'html',
                 value: '<p>hi</p>',
                 get api() {
@@ -162,14 +162,14 @@ describe('Editor', () => {
 
     describe('editability', () => {
         it('marks content as readonly via aria when readonly={true}', async () => {
-            const { container } = render(Editor, { readonly: true })
+            const { container } = await render(Editor, { readonly: true })
             await vi.waitFor(() => {
                 expect(getContent(container)?.getAttribute('aria-readonly')).toBe('true')
             })
         })
 
         it('marks content as disabled via aria when disabled={true}', async () => {
-            const { container } = render(Editor, { disabled: true })
+            const { container } = await render(Editor, { disabled: true })
             await vi.waitFor(() => {
                 expect(getContent(container)?.getAttribute('aria-disabled')).toBe('true')
             })
@@ -177,7 +177,7 @@ describe('Editor', () => {
         })
 
         it('ProseMirror contenteditable is false when readonly', async () => {
-            const { container } = render(Editor, { readonly: true })
+            const { container } = await render(Editor, { readonly: true })
             await vi.waitFor(() => {
                 const pm = getProseMirror(container)
                 expect(pm?.getAttribute('contenteditable')).toBe('false')
@@ -185,7 +185,7 @@ describe('Editor', () => {
         })
 
         it('ProseMirror contenteditable is true by default', async () => {
-            const { container } = render(Editor, {})
+            const { container } = await render(Editor, {})
             await vi.waitFor(() => {
                 const pm = getProseMirror(container)
                 expect(pm?.getAttribute('contenteditable')).toBe('true')
@@ -197,7 +197,7 @@ describe('Editor', () => {
 
     describe('toolbar interactions', () => {
         it('toolbar buttons have aria-label', async () => {
-            const { container } = render(Editor, { toolbar: ['bold'] })
+            const { container } = await render(Editor, { toolbar: ['bold'] })
             await vi.waitFor(() => {
                 const btn = getToolbarButtons(container)[0]
                 expect(btn?.getAttribute('aria-label')).toBe('Bold')
@@ -205,7 +205,7 @@ describe('Editor', () => {
         })
 
         it('toolbar has role="toolbar"', async () => {
-            const { container } = render(Editor, {})
+            const { container } = await render(Editor, {})
             await vi.waitFor(() => {
                 expect(getToolbar(container)?.getAttribute('role')).toBe('toolbar')
             })
@@ -223,7 +223,7 @@ describe('Editor', () => {
                     api = v
                 }
             }
-            const { container } = render(Editor, props)
+            const { container } = await render(Editor, props)
             await vi.waitFor(() => expect(api?.editor).not.toBeNull())
             api?.editor?.commands.selectAll()
             const btn = getToolbarButtons(container)[0]
@@ -235,7 +235,7 @@ describe('Editor', () => {
         })
 
         it('undo button disabled when no history', async () => {
-            const { container } = render(Editor, { toolbar: ['undo'] })
+            const { container } = await render(Editor, { toolbar: ['undo'] })
             await vi.waitFor(() => {
                 const btn = getToolbarButtons(container)[0]
                 expect(btn.hasAttribute('disabled')).toBe(true)
@@ -247,14 +247,14 @@ describe('Editor', () => {
 
     describe('character count footer', () => {
         it('renders footer when showCount={true}', async () => {
-            const { container } = render(Editor, { showCount: true })
+            const { container } = await render(Editor, { showCount: true })
             await vi.waitFor(() => {
                 expect(getFooter(container)).not.toBeNull()
             })
         })
 
         it('renders footer when maxLength is provided', async () => {
-            const { container } = render(Editor, { maxLength: 100 })
+            const { container } = await render(Editor, { maxLength: 100 })
             await vi.waitFor(() => {
                 expect(getFooter(container)).not.toBeNull()
                 expect(getFooter(container)?.textContent).toContain('/')
@@ -263,7 +263,7 @@ describe('Editor', () => {
         })
 
         it('omits footer by default', async () => {
-            const { container } = render(Editor, {})
+            const { container } = await render(Editor, {})
             await vi.waitFor(() => {
                 expect(getContent(container)).not.toBeNull()
             })
@@ -275,14 +275,14 @@ describe('Editor', () => {
 
     describe('bubble menu', () => {
         it('renders bubble menu element when bubbleMenu={true}', async () => {
-            const { container } = render(Editor, { bubbleMenu: true })
+            const { container } = await render(Editor, { bubbleMenu: true })
             await vi.waitFor(() => {
                 expect(getBubble(container)).not.toBeNull()
             })
         })
 
         it('omits bubble menu when bubbleMenu={false}', async () => {
-            const { container } = render(Editor, {})
+            const { container } = await render(Editor, {})
             await vi.waitFor(() => {
                 expect(getContent(container)).not.toBeNull()
             })
@@ -290,7 +290,7 @@ describe('Editor', () => {
         })
 
         it('default bubble buttons include bold, italic, link', async () => {
-            const { container } = render(Editor, { bubbleMenu: true })
+            const { container } = await render(Editor, { bubbleMenu: true })
             await vi.waitFor(() => {
                 const buttons = getBubble(container)?.querySelectorAll('button[data-action]')
                 expect(buttons?.length).toBe(3)
@@ -323,7 +323,7 @@ describe('Editor', () => {
 
         it('api.setValue updates content', async () => {
             let api: EditorApi | undefined
-            const { container } = render(Editor, {
+            const { container } = await render(Editor, {
                 get api() {
                     return api
                 },
@@ -340,7 +340,7 @@ describe('Editor', () => {
 
         it('api.clear empties the editor', async () => {
             let api: EditorApi | undefined
-            const { container } = render(Editor, {
+            const { container } = await render(Editor, {
                 value: '<p>Some text</p>',
                 get api() {
                     return api
@@ -433,23 +433,23 @@ describe('Editor', () => {
     // ==================== VISUAL VARIANTS ====================
 
     describe('variants', () => {
-        it('applies sm size', () => {
-            const { container } = render(Editor, { size: 'sm' })
+        it('applies sm size', async () => {
+            const { container } = await render(Editor, { size: 'sm' })
             expect(getContent(container)?.className).toContain('text-sm')
         })
 
-        it('applies lg size', () => {
-            const { container } = render(Editor, { size: 'lg' })
+        it('applies lg size', async () => {
+            const { container } = await render(Editor, { size: 'lg' })
             expect(getContent(container)?.className).toContain('text-base')
         })
 
-        it('applies color focus ring', () => {
-            const { container } = render(Editor, { color: 'success' })
+        it('applies color focus ring', async () => {
+            const { container } = await render(Editor, { color: 'success' })
             expect(getRoot(container).className).toContain('focus-within:ring-success')
         })
 
         it('applies sticky toolbar', async () => {
-            const { container } = render(Editor, { stickyToolbar: true })
+            const { container } = await render(Editor, { stickyToolbar: true })
             await vi.waitFor(() => {
                 expect(getToolbar(container)?.className).toContain('sticky')
             })
@@ -460,14 +460,14 @@ describe('Editor', () => {
 
     describe('image extension (Phase 2)', () => {
         it('renders hidden file input when image={true}', async () => {
-            const { container } = render(Editor, { image: true })
+            const { container } = await render(Editor, { image: true })
             await vi.waitFor(() => {
                 expect(container.querySelector('[data-editor-image-input]')).not.toBeNull()
             })
         })
 
         it('omits file input when image={false}', async () => {
-            const { container } = render(Editor, {})
+            const { container } = await render(Editor, {})
             await vi.waitFor(() => {
                 expect(getContent(container)).not.toBeNull()
             })
@@ -475,7 +475,7 @@ describe('Editor', () => {
         })
 
         it('image toolbar action renders when configured', async () => {
-            const { container } = render(Editor, { image: true, toolbar: ['image'] })
+            const { container } = await render(Editor, { image: true, toolbar: ['image'] })
             await vi.waitFor(() => {
                 const btn = container.querySelector('button[data-action="image"]')
                 expect(btn).not.toBeNull()
@@ -492,7 +492,7 @@ describe('Editor', () => {
 
         it('blocks an unsafe image src returned by onImageUpload', async () => {
             const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
-            const { container } = render(Editor, {
+            const { container } = await render(Editor, {
                 image: true,
                 onImageUpload: async () => 'javascript:alert(1)'
             })
@@ -504,7 +504,7 @@ describe('Editor', () => {
         })
 
         it('inserts an image for a safe https src from onImageUpload', async () => {
-            const { container } = render(Editor, {
+            const { container } = await render(Editor, {
                 image: true,
                 onImageUpload: async () => 'https://example.com/a.png'
             })
@@ -517,7 +517,7 @@ describe('Editor', () => {
 
         it('calls onImageUploadError when the upload rejects', async () => {
             const onImageUploadError = vi.fn()
-            const { container } = render(Editor, {
+            const { container } = await render(Editor, {
                 image: true,
                 onImageUpload: async () => {
                     throw new Error('upload failed')
@@ -534,7 +534,7 @@ describe('Editor', () => {
 
     describe('table extension (Phase 2)', () => {
         it('table toolbar action renders when configured', async () => {
-            const { container } = render(Editor, { tables: true, toolbar: ['table'] })
+            const { container } = await render(Editor, { tables: true, toolbar: ['table'] })
             await vi.waitFor(() => {
                 const btn = container.querySelector('button[data-action="table"]')
                 expect(btn).not.toBeNull()
@@ -542,7 +542,7 @@ describe('Editor', () => {
         })
 
         it('clicking table button opens dimension picker', async () => {
-            const { container } = render(Editor, { tables: true, toolbar: ['table'] })
+            const { container } = await render(Editor, { tables: true, toolbar: ['table'] })
             await vi.waitFor(() => {
                 expect(container.querySelector('.ProseMirror')).not.toBeNull()
                 const btn = container.querySelector(
@@ -559,7 +559,7 @@ describe('Editor', () => {
         })
 
         it('clicking a dimension cell button inserts a table (UI flow)', async () => {
-            const { container } = render(Editor, { tables: true, toolbar: ['table'] })
+            const { container } = await render(Editor, { tables: true, toolbar: ['table'] })
             await vi.waitFor(() => {
                 expect(container.querySelector('.ProseMirror')).not.toBeNull()
                 const btn = container.querySelector(
@@ -599,7 +599,7 @@ describe('Editor', () => {
                     api = v
                 }
             }
-            const { container } = render(Editor, props)
+            const { container } = await render(Editor, props)
             await vi.waitFor(() => expect(api?.editor).not.toBeNull())
             const result = api!
                 .editor!.chain()
@@ -639,7 +639,7 @@ describe('Editor', () => {
 
     describe('form integration (Phase 2)', () => {
         it('accepts custom id and forwards to ProseMirror', async () => {
-            const { container } = render(Editor, { id: 'my-editor' })
+            const { container } = await render(Editor, { id: 'my-editor' })
             await vi.waitFor(() => {
                 const pm = getProseMirror(container)
                 expect(pm?.id).toBe('my-editor')
@@ -647,7 +647,7 @@ describe('Editor', () => {
         })
 
         it('exposes data attributes for form state hooks', async () => {
-            const { container } = render(Editor, { disabled: true })
+            const { container } = await render(Editor, { disabled: true })
             await vi.waitFor(() => {
                 expect(getRoot(container).getAttribute('data-disabled')).toBe('true')
             })
@@ -721,7 +721,7 @@ describe('Editor', () => {
 
     describe('youtube embed (Phase 3)', () => {
         it('youtube toolbar action renders when configured', async () => {
-            const { container } = render(Editor, { youtube: true, toolbar: ['youtube'] })
+            const { container } = await render(Editor, { youtube: true, toolbar: ['youtube'] })
             await vi.waitFor(() => {
                 expect(container.querySelector('button[data-action="youtube"]')).not.toBeNull()
             })
@@ -788,13 +788,13 @@ describe('Editor', () => {
     // ==================== UI OVERRIDES ====================
 
     describe('ui overrides', () => {
-        it('applies root class prop', () => {
-            const { container } = render(Editor, { class: 'custom-root-cls' })
+        it('applies root class prop', async () => {
+            const { container } = await render(Editor, { class: 'custom-root-cls' })
             expect(getRoot(container).className).toContain('custom-root-cls')
         })
 
         it('applies ui slot overrides', async () => {
-            const { container } = render(Editor, {
+            const { container } = await render(Editor, {
                 ui: { content: 'custom-content-cls' }
             })
             await vi.waitFor(() => {
@@ -806,13 +806,13 @@ describe('Editor', () => {
     // ==================== LAZY EXTENSION LOADING ====================
 
     describe('lazy extension loading', () => {
-        it('mounts synchronously when no lazy feature (markdown/tables) is enabled', () => {
-            const { container } = render(Editor, { toolbar: ['bold'] })
+        it('mounts synchronously when no lazy feature (markdown/tables) is enabled', async () => {
+            const { container } = await render(Editor, { toolbar: ['bold'] })
             expect(container.querySelector('.ProseMirror')).not.toBeNull()
         })
 
         it('mounts asynchronously when tables are enabled (lazy chunk)', async () => {
-            const { container } = render(Editor, { tables: true })
+            const { container } = await render(Editor, { tables: true })
             expect(container.querySelector('.ProseMirror')).toBeNull()
             await vi.waitFor(() => {
                 expect(container.querySelector('.ProseMirror')).not.toBeNull()
@@ -820,7 +820,7 @@ describe('Editor', () => {
         })
 
         it('mounts asynchronously for markdown output (lazy chunk)', async () => {
-            const { container } = render(Editor, { output: 'markdown' })
+            const { container } = await render(Editor, { output: 'markdown' })
             expect(container.querySelector('.ProseMirror')).toBeNull()
             await vi.waitFor(() => {
                 expect(container.querySelector('.ProseMirror')).not.toBeNull()
@@ -833,7 +833,7 @@ describe('Editor', () => {
     describe('popup accessibility', () => {
         it('slash popup exposes role=option, aria-selected, and editor aria-activedescendant', async () => {
             let api: EditorApi | undefined
-            const { container } = render(Editor, {
+            const { container } = await render(Editor, {
                 slash: true,
                 get api() {
                     return api
@@ -876,7 +876,7 @@ describe('Editor', () => {
 
         it('mention popup exposes role=option, aria-selected, and editor aria-activedescendant', async () => {
             let api: EditorApi | undefined
-            const { container } = render(Editor, {
+            const { container } = await render(Editor, {
                 onMention: async () => [
                     { id: 'alice', label: 'Alice' },
                     { id: 'bob', label: 'Bob' }

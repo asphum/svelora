@@ -25,45 +25,45 @@ describe('Stepper', () => {
     // ==================== RENDERING ====================
 
     describe('rendering', () => {
-        it('renders root element', () => {
-            const { container } = render(Stepper, { items: sampleItems })
+        it('renders root element', async () => {
+            const { container } = await render(Stepper, { items: sampleItems })
             expect(getRoot(container)).not.toBeNull()
         })
 
-        it('renders as div by default', () => {
-            const { container } = render(Stepper, { items: sampleItems })
+        it('renders as div by default', async () => {
+            const { container } = await render(Stepper, { items: sampleItems })
             expect(getRoot(container).tagName).toBe('DIV')
         })
 
-        it('renders as custom element', () => {
-            const { container } = render(Stepper, { items: sampleItems, as: 'section' })
+        it('renders as custom element', async () => {
+            const { container } = await render(Stepper, { items: sampleItems, as: 'section' })
             expect(getRoot(container).tagName).toBe('SECTION')
         })
 
-        it('renders correct number of items', () => {
-            const { container } = render(Stepper, { items: sampleItems })
+        it('renders correct number of items', async () => {
+            const { container } = await render(Stepper, { items: sampleItems })
             expect(getItems(container).length).toBe(3)
         })
 
-        it('renders item titles', () => {
-            const { container } = render(Stepper, { items: sampleItems })
+        it('renders item titles', async () => {
+            const { container } = await render(Stepper, { items: sampleItems })
             expect(container.textContent).toContain('Step A')
             expect(container.textContent).toContain('Step B')
             expect(container.textContent).toContain('Step C')
         })
 
-        it('renders item descriptions', () => {
-            const { container } = render(Stepper, { items: sampleItems })
+        it('renders item descriptions', async () => {
+            const { container } = await render(Stepper, { items: sampleItems })
             expect(container.textContent).toContain('First step')
         })
 
-        it('renders n-1 separators for n items', () => {
-            const { container } = render(Stepper, { items: sampleItems })
+        it('renders n-1 separators for n items', async () => {
+            const { container } = await render(Stepper, { items: sampleItems })
             expect(getSeparators(container).length).toBe(2)
         })
 
-        it('renders numeric indicator for pending/active steps', () => {
-            const { container } = render(Stepper, { items: sampleItems, value: 'a' })
+        it('renders numeric indicator for pending/active steps', async () => {
+            const { container } = await render(Stepper, { items: sampleItems, value: 'a' })
             const indicators = getIndicators(container)
             expect(indicators[0].textContent?.trim()).toBe('1')
             expect(indicators[1].textContent?.trim()).toBe('2')
@@ -71,7 +71,7 @@ describe('Stepper', () => {
         })
 
         it('renders check icon for completed steps', async () => {
-            const { container } = render(Stepper, { items: sampleItems, value: 'c' })
+            const { container } = await render(Stepper, { items: sampleItems, value: 'c' })
             const indicators = getIndicators(container)
             expect(indicators[0].textContent?.trim()).not.toBe('1')
             expect(indicators[1].textContent?.trim()).not.toBe('2')
@@ -82,7 +82,7 @@ describe('Stepper', () => {
                 { value: 1, title: 'Step', icon: 'lucide:star' },
                 { value: 2, title: 'Step 2' }
             ]
-            const { container } = render(Stepper, { items, value: 1 })
+            const { container } = await render(Stepper, { items, value: 1 })
             const indicators = getIndicators(container)
             expect(indicators[0].textContent?.trim()).not.toBe('1')
         })
@@ -91,15 +91,15 @@ describe('Stepper', () => {
     // ==================== STATE MANAGEMENT ====================
 
     describe('state management', () => {
-        it('defaults active to first item when value omitted', () => {
-            const { container } = render(Stepper, { items: sampleItems })
+        it('defaults active to first item when value omitted', async () => {
+            const { container } = await render(Stepper, { items: sampleItems })
             const items = getItems(container)
             expect(items[0].getAttribute('data-state')).toBe('active')
             expect(items[1].getAttribute('data-state')).toBe('pending')
         })
 
-        it('uses defaultValue when value undefined', () => {
-            const { container } = render(Stepper, {
+        it('uses defaultValue when value undefined', async () => {
+            const { container } = await render(Stepper, {
                 items: sampleItems,
                 defaultValue: 'b'
             })
@@ -108,16 +108,16 @@ describe('Stepper', () => {
             expect(items[1].getAttribute('data-state')).toBe('active')
         })
 
-        it('marks active item correctly via value', () => {
-            const { container } = render(Stepper, { items: sampleItems, value: 'b' })
+        it('marks active item correctly via value', async () => {
+            const { container } = await render(Stepper, { items: sampleItems, value: 'b' })
             const items = getItems(container)
             expect(items[0].getAttribute('data-state')).toBe('completed')
             expect(items[1].getAttribute('data-state')).toBe('active')
             expect(items[2].getAttribute('data-state')).toBe('pending')
         })
 
-        it('marks all items pending when value matches nothing', () => {
-            const { container } = render(Stepper, {
+        it('marks all items pending when value matches nothing', async () => {
+            const { container } = await render(Stepper, {
                 items: sampleItems,
                 value: 'no-such-value'
             })
@@ -127,21 +127,21 @@ describe('Stepper', () => {
             })
         })
 
-        it('supports numeric values', () => {
+        it('supports numeric values', async () => {
             const items = [
                 { value: 0, title: 'A' },
                 { value: 1, title: 'B' },
                 { value: 2, title: 'C' }
             ]
-            const { container } = render(Stepper, { items, value: 1 })
+            const { container } = await render(Stepper, { items, value: 1 })
             const els = getItems(container)
             expect(els[0].getAttribute('data-state')).toBe('completed')
             expect(els[1].getAttribute('data-state')).toBe('active')
         })
 
-        it('falls back to index when value omitted on items', () => {
+        it('falls back to index when value omitted on items', async () => {
             const items = [{ title: 'A' }, { title: 'B' }, { title: 'C' }]
-            const { container } = render(Stepper, { items, value: 1 })
+            const { container } = await render(Stepper, { items, value: 1 })
             const els = getItems(container)
             expect(els[1].getAttribute('data-state')).toBe('active')
         })
@@ -151,7 +151,7 @@ describe('Stepper', () => {
 
     describe('click navigation', () => {
         it('activates the next step on click when linear (one step forward allowed)', async () => {
-            const { container } = render(Stepper, { items: sampleItems, value: 'a' })
+            const { container } = await render(Stepper, { items: sampleItems, value: 'a' })
             const triggers = getTriggers(container)
             await triggers[1].click()
             await vi.waitFor(() => {
@@ -160,7 +160,7 @@ describe('Stepper', () => {
         })
 
         it('allows clicking back to completed steps when linear', async () => {
-            const { container } = render(Stepper, { items: sampleItems, value: 'b' })
+            const { container } = await render(Stepper, { items: sampleItems, value: 'b' })
             const triggers = getTriggers(container)
             await triggers[0].click()
             await vi.waitFor(() => {
@@ -169,13 +169,13 @@ describe('Stepper', () => {
         })
 
         it('blocks jumping past pending step when linear', async () => {
-            const { container } = render(Stepper, { items: sampleItems, value: 'a' })
+            const { container } = await render(Stepper, { items: sampleItems, value: 'a' })
             const triggers = getTriggers(container)
             expect(triggers[2].hasAttribute('disabled')).toBe(true)
         })
 
         it('allows free navigation when linear=false', async () => {
-            const { container } = render(Stepper, {
+            const { container } = await render(Stepper, {
                 items: sampleItems,
                 value: 'a',
                 linear: false
@@ -189,7 +189,7 @@ describe('Stepper', () => {
 
         it('fires onValueChange with new value', async () => {
             const onValueChange = vi.fn()
-            const { container } = render(Stepper, {
+            const { container } = await render(Stepper, {
                 items: sampleItems,
                 value: 'a',
                 onValueChange
@@ -204,21 +204,21 @@ describe('Stepper', () => {
     // ==================== DISABLED ====================
 
     describe('disabled state', () => {
-        it('disables every trigger when disabled=true', () => {
-            const { container } = render(Stepper, { items: sampleItems, disabled: true })
+        it('disables every trigger when disabled=true', async () => {
+            const { container } = await render(Stepper, { items: sampleItems, disabled: true })
             const triggers = getTriggers(container)
             triggers.forEach((t) => {
                 expect(t.hasAttribute('disabled')).toBe(true)
             })
         })
 
-        it('disables individual item', () => {
+        it('disables individual item', async () => {
             const items: StepperItem[] = [
                 { value: 'a', title: 'A' },
                 { value: 'b', title: 'B', disabled: true },
                 { value: 'c', title: 'C' }
             ]
-            const { container } = render(Stepper, { items, value: 'a', linear: false })
+            const { container } = await render(Stepper, { items, value: 'a', linear: false })
             const triggers = getTriggers(container)
             expect(triggers[1].hasAttribute('disabled')).toBe(true)
             expect(triggers[0].hasAttribute('disabled')).toBe(false)
@@ -354,7 +354,7 @@ describe('Stepper', () => {
 
     describe('keyboard navigation', () => {
         it('ArrowRight moves focus to next trigger (horizontal)', async () => {
-            const { container } = render(Stepper, { items: sampleItems, value: 'a' })
+            const { container } = await render(Stepper, { items: sampleItems, value: 'a' })
             const triggers = getTriggers(container)
             triggers[0].focus()
             triggers[0].dispatchEvent(
@@ -366,7 +366,7 @@ describe('Stepper', () => {
         })
 
         it('ArrowLeft moves focus to previous trigger (horizontal)', async () => {
-            const { container } = render(Stepper, { items: sampleItems, value: 'b' })
+            const { container } = await render(Stepper, { items: sampleItems, value: 'b' })
             const triggers = getTriggers(container)
             triggers[1].focus()
             triggers[1].dispatchEvent(
@@ -378,7 +378,7 @@ describe('Stepper', () => {
         })
 
         it('Home/End focus first/last triggers', async () => {
-            const { container } = render(Stepper, {
+            const { container } = await render(Stepper, {
                 items: sampleItems,
                 value: 'b',
                 linear: false
@@ -399,20 +399,20 @@ describe('Stepper', () => {
     // ==================== CONTENT PANEL ====================
 
     describe('content panel', () => {
-        it('renders content for the active item', () => {
+        it('renders content for the active item', async () => {
             const items: StepperItem[] = [
                 { value: 'a', title: 'A', content: 'Body A' },
                 { value: 'b', title: 'B', content: 'Body B' }
             ]
-            const { container } = render(Stepper, { items, value: 'a' })
+            const { container } = await render(Stepper, { items, value: 'a' })
             const contents = getContents(container)
             expect(contents.length).toBe(1)
             expect(contents[0].textContent).toContain('Body A')
         })
 
-        it('omits content panel when content=false', () => {
+        it('omits content panel when content=false', async () => {
             const items: StepperItem[] = [{ value: 'a', title: 'A', content: 'Body A' }]
-            const { container } = render(Stepper, { items, value: 'a', content: false })
+            const { container } = await render(Stepper, { items, value: 'a', content: false })
             expect(getContents(container).length).toBe(0)
         })
     })
@@ -420,13 +420,13 @@ describe('Stepper', () => {
     // ==================== ORIENTATION ====================
 
     describe('orientation', () => {
-        it('applies horizontal classes by default', () => {
-            const { container } = render(Stepper, { items: sampleItems })
+        it('applies horizontal classes by default', async () => {
+            const { container } = await render(Stepper, { items: sampleItems })
             expect(getRoot(container).getAttribute('data-orientation')).toBe('horizontal')
         })
 
-        it('applies vertical classes when set', () => {
-            const { container } = render(Stepper, {
+        it('applies vertical classes when set', async () => {
+            const { container } = await render(Stepper, {
                 items: sampleItems,
                 orientation: 'vertical'
             })
@@ -448,8 +448,8 @@ describe('Stepper', () => {
         ] as const
 
         colors.forEach((c) => {
-            it(`applies ${c} color classes`, () => {
-                const { container } = render(Stepper, {
+            it(`applies ${c} color classes`, async () => {
+                const { container } = await render(Stepper, {
                     items: sampleItems,
                     value: 'b',
                     color: c
@@ -463,15 +463,15 @@ describe('Stepper', () => {
     // ==================== ARIA ====================
 
     describe('aria attributes', () => {
-        it('marks active trigger with aria-current="step"', () => {
-            const { container } = render(Stepper, { items: sampleItems, value: 'b' })
+        it('marks active trigger with aria-current="step"', async () => {
+            const { container } = await render(Stepper, { items: sampleItems, value: 'b' })
             const triggers = getTriggers(container)
             expect(triggers[1].getAttribute('aria-current')).toBe('step')
             expect(triggers[0].hasAttribute('aria-current')).toBe(false)
         })
 
-        it('roving tabindex: active = 0, others = -1', () => {
-            const { container } = render(Stepper, { items: sampleItems, value: 'b' })
+        it('roving tabindex: active = 0, others = -1', async () => {
+            const { container } = await render(Stepper, { items: sampleItems, value: 'b' })
             const triggers = getTriggers(container)
             expect(triggers[1].getAttribute('tabindex')).toBe('0')
             expect(triggers[0].getAttribute('tabindex')).toBe('-1')
@@ -482,16 +482,16 @@ describe('Stepper', () => {
     // ==================== UI OVERRIDES ====================
 
     describe('ui overrides', () => {
-        it('applies root override class', () => {
-            const { container } = render(Stepper, {
+        it('applies root override class', async () => {
+            const { container } = await render(Stepper, {
                 items: sampleItems,
                 class: 'custom-root-cls'
             })
             expect(getRoot(container).className).toContain('custom-root-cls')
         })
 
-        it('applies ui slot overrides', () => {
-            const { container } = render(Stepper, {
+        it('applies ui slot overrides', async () => {
+            const { container } = await render(Stepper, {
                 items: sampleItems,
                 ui: { indicator: 'custom-indicator-cls' }
             })
@@ -499,12 +499,12 @@ describe('Stepper', () => {
             expect(indicators[0].className).toContain('custom-indicator-cls')
         })
 
-        it('applies per-item ui overrides only to that item', () => {
+        it('applies per-item ui overrides only to that item', async () => {
             const items: StepperItem[] = [
                 { value: 'a', title: 'A' },
                 { value: 'b', title: 'B', ui: { indicator: 'b-only-cls' } }
             ]
-            const { container } = render(Stepper, { items })
+            const { container } = await render(Stepper, { items })
             const indicators = getIndicators(container)
             expect(indicators[1].className).toContain('b-only-cls')
             expect(indicators[0].className).not.toContain('b-only-cls')

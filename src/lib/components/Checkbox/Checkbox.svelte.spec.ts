@@ -16,28 +16,28 @@ describe('Checkbox', () => {
             await expect.element(cb).toBeInTheDocument()
         })
 
-        it('should render unchecked by default', () => {
+        it('should render unchecked by default', async () => {
             render(Checkbox)
             expect(getCheckbox()!.getAttribute('data-state')).toBe('unchecked')
         })
 
-        it('should render checked when checked prop is true', () => {
+        it('should render checked when checked prop is true', async () => {
             render(Checkbox, { checked: true })
             expect(getCheckbox()!.getAttribute('data-state')).toBe('checked')
         })
 
-        it('should render with id', () => {
+        it('should render with id', async () => {
             render(Checkbox, { id: 'my-checkbox' })
             expect(getCheckbox()!.id).toBe('my-checkbox')
         })
 
-        it('should generate an id automatically', () => {
+        it('should generate an id automatically', async () => {
             render(Checkbox)
             expect(getCheckbox()!.id).toBeTruthy()
         })
 
-        it('should render with name attribute', () => {
-            const { container } = render(Checkbox, { name: 'accept-terms' })
+        it('should render with name attribute', async () => {
+            const { container } = await render(Checkbox, { name: 'accept-terms' })
             const hidden = container.querySelector('input[name="accept-terms"]')
             expect(hidden).toBeTruthy()
         })
@@ -70,7 +70,7 @@ describe('Checkbox', () => {
             })
         })
 
-        it('should not render icon when unchecked', () => {
+        it('should not render icon when unchecked', async () => {
             render(Checkbox)
             const cb = getCheckbox()!
             expect(cb.querySelector('svg')).toBeNull()
@@ -80,7 +80,7 @@ describe('Checkbox', () => {
     // ==================== INDETERMINATE STATE ====================
 
     describe('indeterminate state', () => {
-        it('should render indeterminate state', () => {
+        it('should render indeterminate state', async () => {
             render(Checkbox, { indeterminate: true })
             expect(getCheckbox()!.getAttribute('data-state')).toBe('indeterminate')
         })
@@ -109,13 +109,13 @@ describe('Checkbox', () => {
             await expect.element(cb).toBeEnabled()
         })
 
-        it('should apply disabled styling to root', () => {
-            const { container } = render(Checkbox, { disabled: true })
+        it('should apply disabled styling to root', async () => {
+            const { container } = await render(Checkbox, { disabled: true })
             const root = container.firstElementChild as HTMLElement
             expect(root.className).toMatch(/opacity-75/)
         })
 
-        it('should apply cursor-not-allowed to base', () => {
+        it('should apply cursor-not-allowed to base', async () => {
             render(Checkbox, { disabled: true })
             expect(getCheckbox()!.className).toMatch(/cursor-not-allowed/)
         })
@@ -167,18 +167,18 @@ describe('Checkbox', () => {
         ] as const
 
         for (const color of colors) {
-            it(`should render with color="${color}"`, () => {
+            it(`should render with color="${color}"`, async () => {
                 render(Checkbox, { color, checked: true })
                 expect(getCheckbox()!.className).toMatch(new RegExp(`bg-${color}`))
             })
         }
 
-        it('should apply surface color', () => {
+        it('should apply surface color', async () => {
             render(Checkbox, { color: 'surface', checked: true })
             expect(getCheckbox()!.className).toMatch(/bg-on-surface/)
         })
 
-        it('should apply focus-visible outline per color', () => {
+        it('should apply focus-visible outline per color', async () => {
             render(Checkbox, { color: 'primary' })
             expect(getCheckbox()!.className).toMatch(/outline-primary/)
         })
@@ -187,33 +187,33 @@ describe('Checkbox', () => {
     // ==================== SIZES ====================
 
     describe('sizes', () => {
-        it('should apply xs size classes', () => {
+        it('should apply xs size classes', async () => {
             render(Checkbox, { size: 'xs' })
             expect(getCheckbox()!.className).toMatch(/size-3\.5/)
         })
 
-        it('should apply sm size classes', () => {
+        it('should apply sm size classes', async () => {
             render(Checkbox, { size: 'sm' })
             expect(getCheckbox()!.className).toMatch(/size-4/)
         })
 
-        it('should apply md size classes by default', () => {
+        it('should apply md size classes by default', async () => {
             render(Checkbox)
             expect(getCheckbox()!.className).toMatch(/size-4\.5/)
         })
 
-        it('should apply lg size classes', () => {
+        it('should apply lg size classes', async () => {
             render(Checkbox, { size: 'lg' })
             expect(getCheckbox()!.className).toMatch(/size-5/)
         })
 
-        it('should apply xl size classes', () => {
+        it('should apply xl size classes', async () => {
             render(Checkbox, { size: 'xl' })
             expect(getCheckbox()!.className).toMatch(/size-5\.5/)
         })
 
-        it('should apply wrapper text size per size variant', () => {
-            const { container } = render(Checkbox, { size: 'xs', label: 'Test' })
+        it('should apply wrapper text size per size variant', async () => {
+            const { container } = await render(Checkbox, { size: 'xs', label: 'Test' })
             const wrapper = container.querySelector('.ms-2') as HTMLElement
             expect(wrapper.className).toMatch(/text-xs/)
         })
@@ -234,8 +234,8 @@ describe('Checkbox', () => {
             await expect.element(desc).toBeInTheDocument()
         })
 
-        it('should render both label and description', () => {
-            const { container } = render(Checkbox, {
+        it('should render both label and description', async () => {
+            const { container } = await render(Checkbox, {
                 label: 'Dark mode',
                 description: 'Toggle theme appearance'
             })
@@ -245,30 +245,30 @@ describe('Checkbox', () => {
             expect(desc.textContent).toBe('Toggle theme appearance')
         })
 
-        it('should not render wrapper when no label or description', () => {
-            const { container } = render(Checkbox)
+        it('should not render wrapper when no label or description', async () => {
+            const { container } = await render(Checkbox)
             expect(container.querySelector('.ms-2')).toBeNull()
         })
 
-        it('should associate label with checkbox via for attribute', () => {
+        it('should associate label with checkbox via for attribute', async () => {
             render(Checkbox, { id: 'test-checkbox', label: 'My Label' })
             const label = document.querySelector('label') as HTMLLabelElement
             expect(label.getAttribute('for')).toBe('test-checkbox')
         })
 
-        it('should apply required asterisk styling to label', () => {
+        it('should apply required asterisk styling to label', async () => {
             render(Checkbox, { label: 'Accept terms', required: true })
             const label = document.querySelector('label') as HTMLElement
             expect(label.className).toMatch(/after:content/)
         })
 
-        it('should apply cursor-not-allowed to label when disabled', () => {
+        it('should apply cursor-not-allowed to label when disabled', async () => {
             render(Checkbox, { label: 'Disabled', disabled: true })
             const label = document.querySelector('label') as HTMLElement
             expect(label.className).toMatch(/cursor-not-allowed/)
         })
 
-        it('should apply cursor-not-allowed to description when disabled', () => {
+        it('should apply cursor-not-allowed to description when disabled', async () => {
             render(Checkbox, { description: 'Desc', disabled: true })
             const desc = document.querySelector('p') as HTMLElement
             expect(desc.className).toMatch(/cursor-not-allowed/)
@@ -278,37 +278,37 @@ describe('Checkbox', () => {
     // ==================== CUSTOM CLASS & UI ====================
 
     describe('custom class & ui', () => {
-        it('should apply custom class to root element', () => {
-            const { container } = render(Checkbox, { class: 'my-custom-class' })
+        it('should apply custom class to root element', async () => {
+            const { container } = await render(Checkbox, { class: 'my-custom-class' })
             const root = container.firstElementChild as HTMLElement
             expect(root.className).toContain('my-custom-class')
         })
 
-        it('should apply ui slot override to base', () => {
+        it('should apply ui slot override to base', async () => {
             render(Checkbox, { ui: { base: 'my-base-class' } })
             expect(getCheckbox()!.className).toContain('my-base-class')
         })
 
-        it('should apply ui slot override to root', () => {
-            const { container } = render(Checkbox, { ui: { root: 'my-root-class' } })
+        it('should apply ui slot override to root', async () => {
+            const { container } = await render(Checkbox, { ui: { root: 'my-root-class' } })
             const root = container.firstElementChild as HTMLElement
             expect(root.className).toContain('my-root-class')
         })
 
-        it('should apply ui slot override to label', () => {
+        it('should apply ui slot override to label', async () => {
             render(Checkbox, { label: 'Test', ui: { label: 'my-label-class' } })
             const label = document.querySelector('label') as HTMLElement
             expect(label.className).toContain('my-label-class')
         })
 
-        it('should apply ui slot override to description', () => {
+        it('should apply ui slot override to description', async () => {
             render(Checkbox, { description: 'Desc', ui: { description: 'my-desc-class' } })
             const desc = document.querySelector('p') as HTMLElement
             expect(desc.className).toContain('my-desc-class')
         })
 
-        it('should apply ui slot override to wrapper', () => {
-            const { container } = render(Checkbox, {
+        it('should apply ui slot override to wrapper', async () => {
+            const { container } = await render(Checkbox, {
                 label: 'Test',
                 ui: { wrapper: 'my-wrapper-class' }
             })
@@ -326,22 +326,22 @@ describe('Checkbox', () => {
             await expect.element(cb).toBeInTheDocument()
         })
 
-        it('should set aria-checked based on checked state', () => {
+        it('should set aria-checked based on checked state', async () => {
             render(Checkbox, { checked: true })
             expect(getCheckbox()!.getAttribute('aria-checked')).toBe('true')
         })
 
-        it('should set aria-checked false when unchecked', () => {
+        it('should set aria-checked false when unchecked', async () => {
             render(Checkbox)
             expect(getCheckbox()!.getAttribute('aria-checked')).toBe('false')
         })
 
-        it('should set aria-checked mixed when indeterminate', () => {
+        it('should set aria-checked mixed when indeterminate', async () => {
             render(Checkbox, { indeterminate: true })
             expect(getCheckbox()!.getAttribute('aria-checked')).toBe('mixed')
         })
 
-        it('should support required attribute', () => {
+        it('should support required attribute', async () => {
             render(Checkbox, { required: true })
             expect(getCheckbox()!.getAttribute('aria-required')).toBe('true')
         })
@@ -350,8 +350,8 @@ describe('Checkbox', () => {
     // ==================== COMBINED PROPS ====================
 
     describe('combined props', () => {
-        it('should render with label, description, and checked', () => {
-            const { container } = render(Checkbox, {
+        it('should render with label, description, and checked', async () => {
+            const { container } = await render(Checkbox, {
                 label: 'Email alerts',
                 description: 'Receive email when updates arrive',
                 checked: true
@@ -363,21 +363,21 @@ describe('Checkbox', () => {
             expect(getCheckbox()!.getAttribute('data-state')).toBe('checked')
         })
 
-        it('should render disabled with checked state', () => {
+        it('should render disabled with checked state', async () => {
             render(Checkbox, { disabled: true, checked: true })
             expect(getCheckbox()!.getAttribute('data-state')).toBe('checked')
             expect(getCheckbox()!.disabled).toBe(true)
         })
 
-        it('should render with color and size combined', () => {
+        it('should render with color and size combined', async () => {
             render(Checkbox, { color: 'success', size: 'xl', checked: true })
             const cb = getCheckbox()!
             expect(cb.className).toMatch(/bg-success/)
             expect(cb.className).toMatch(/size-5\.5/)
         })
 
-        it('should render with all props combined', () => {
-            const { container } = render(Checkbox, {
+        it('should render with all props combined', async () => {
+            const { container } = await render(Checkbox, {
                 checked: true,
                 color: 'error',
                 size: 'lg',
