@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.1.8] - 2026-07-11
+
+### Added
+
+- support custom CSS selectors for sortable handles in SortableList
+
 ## [3.1.7] - 2026-07-11
 
 ### Added
@@ -577,7 +583,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.7...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.8...HEAD
+[3.1.8]: https://github.com/asphum/svelora/compare/v3.1.7...v3.1.8
 [3.1.7]: https://github.com/asphum/svelora/compare/v3.1.6...v3.1.7
 [3.1.6]: https://github.com/asphum/svelora/compare/v3.1.5...v3.1.6
 [3.1.5]: https://github.com/asphum/svelora/compare/v3.1.4...v3.1.5
