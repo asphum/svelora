@@ -4,7 +4,7 @@
         RestrictToHorizontalAxis,
         RestrictToVerticalAxis
     } from '@dnd-kit/abstract/modifiers'
-    import type { DragEndEvent, DragStartEvent } from '@dnd-kit/dom'
+    import type { DragEndEvent, DragOverEvent, DragStartEvent } from '@dnd-kit/dom'
     import { isSortableOperation } from '@dnd-kit/dom/sortable'
     import { getContext, type Snippet } from 'svelte'
     import { moveArrayItem } from '../useSortable/sortable-utils.js'
@@ -55,31 +55,40 @@
         ctx.setDraggingId(source.id)
     }
 
-    function handleDragEnd(event: DragEndEvent) {
+    function handleDragOver(event: DragOverEvent) {
+        // During drag, reorder items optimistically so Svelte re-renders them
+        // in the new order — dnd-kit then animates the transition via WAAPI.
+        // Without this, items only reorder on drop and there is no push animation.
+        if (ctx.isDisabled() || !isSortableOperation(event.operation)) return
+
         const { source, target } = event.operation
-        
+        if (!source || !target || source.index === target.index) return
+
+        // Only handle items that belong to this list
+        const items = ctx.getItems()
+        const sourceInList = items.some((entry) => String(ctx.getId(entry)) === String(source.id))
+        if (!sourceInList) return
+
+        ctx.onReorder(moveArrayItem(items, source.index, target.index))
+    }
+
+    function handleDragEnd(event: DragEndEvent) {
+        const { source } = event.operation
+
         // Let the drop animation play (250ms default) before clearing draggingId
-        // This prevents the original item from flashing before the overlay lands.
+        // Items are already in correct order from handleDragOver — nothing to reorder here.
         setTimeout(() => {
-            // Only clear if the user hasn't started a new drag operation
             if (ctx.getDraggingId() === source?.id) {
                 ctx.setDraggingId(null)
             }
         }, 250)
-
-        if (ctx.isDisabled() || !isSortableOperation(event.operation)) return
-
-        if (!source || !target || source.index === target.index) return
-
-        const items = ctx.getItems()
-        ctx.onReorder(moveArrayItem(items, source.index, target.index))
     }
 </script>
 
 {#if isGrouped}
     {@render children?.()}
 {:else}
-    <DragDropProvider {modifiers} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+    <DragDropProvider {modifiers} onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd}>
         {@render children?.()}
         {#if overlay}
             <DragOverlay>

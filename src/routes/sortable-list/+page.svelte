@@ -107,7 +107,11 @@
                 Basic
             </a>
         </h2>
-        <Card class="border border-outline-variant/70 p-4">
+        <Card class="border border-outline-variant/70 p-5 bg-surface-container-lowest">
+            <h3 class="mb-4 text-base font-bold flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+                Tasks
+            </h3>
             <SortableList bind:items disabled={sortDisabled} getKey={(item) => item.id} itemClass="bg-surface border border-outline-variant/60 rounded-lg p-3">
                 {#snippet overlay({ item })}
                     <div class="flex w-full items-center justify-between gap-3 bg-surface border border-outline-variant/60 rounded-lg p-3 z-50 shadow-xl scale-[1.02] opacity-95">
@@ -140,8 +144,17 @@
                 Horizontal
             </a>
         </h2>
-        <Card class="border border-outline-variant/70 p-4">
-            <SortableList bind:items={horizontalItems} axis="horizontal" getKey={(item) => item.id}>
+        <Card class="border border-outline-variant/70 p-5 bg-surface-container-lowest">
+            <h3 class="mb-4 text-base font-bold flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                Stages
+            </h3>
+            <SortableList bind:items={horizontalItems} axis="horizontal" getKey={(item) => item.id} itemClass="bg-surface border border-outline-variant/60 rounded-lg px-4 py-2">
+                {#snippet overlay({ item })}
+                    <div class="flex items-center bg-surface border border-outline-variant/60 rounded-lg px-4 py-2 z-50 shadow-xl scale-[1.02] opacity-95">
+                        <span class="text-sm font-medium">{item.label}</span>
+                    </div>
+                {/snippet}
                 {#snippet children({ item })}
                     <span class="text-sm font-medium">{item.label}</span>
                 {/snippet}
@@ -158,7 +171,12 @@
         </h2>
         <p class="text-sm text-on-surface-variant">Set <code class="rounded bg-surface-container-high px-1">handle={'{false}'}</code> to drag the entire row.</p>
         <Card class="border border-outline-variant/70 p-4">
-            <SortableList bind:items={wholeRowItems} handle={false} getKey={(item) => item.id}>
+            <SortableList bind:items={wholeRowItems} handle={false} getKey={(item) => item.id} itemClass="bg-surface border border-outline-variant/60 rounded-lg p-3">
+                {#snippet overlay({ item })}
+                    <div class="flex w-full items-center gap-3 bg-surface border border-outline-variant/60 rounded-lg p-3 z-50 shadow-xl scale-[1.02] opacity-95">
+                        <span class="cursor-grab text-sm font-medium">{item.label}</span>
+                    </div>
+                {/snippet}
                 {#snippet children({ item })}
                     <span class="cursor-grab text-sm font-medium active:cursor-grabbing">{item.label}</span>
                 {/snippet}
@@ -199,7 +217,7 @@
                         <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
                         Done
                     </h3>
-                    <SortableList bind:items={kanbanItems['done']} group="done" getKey={(item) => item.id} class="min-h-[100px]" itemClass="bg-surface border border-outline-variant/60 rounded-lg p-3">
+                    <SortableList bind:items={kanbanItems.done} group="done" getKey={(item) => item.id} class="min-h-[100px]" itemClass="bg-surface border border-outline-variant/60 rounded-lg p-3">
                         {#snippet overlay({ item })}
                             <div class="flex w-full items-center justify-between gap-3 bg-surface border border-outline-variant/60 rounded-lg p-3 z-50 shadow-xl scale-[1.02] opacity-95">
                                 <span class="text-sm font-medium">{item.label}</span>

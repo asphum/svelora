@@ -44,7 +44,7 @@
 
     const itemClasses = $derived(
         twMerge(
-            'relative flex items-center gap-3 rounded-lg border border-outline-variant/60 bg-surface-container-low px-3 py-2 transition-shadow select-none',
+            'relative flex items-center gap-3 rounded-lg border border-outline-variant/60 bg-surface-container-low px-3 py-2 select-none',
             itemClass
         )
     )
@@ -59,7 +59,7 @@
                 use:sortable.item={{ index, item }}
                 role="listitem"
                 class={twMerge(
-                    'relative transition-colors',
+                    'relative sortable-item',
                     itemClasses,
                     dragging && (overlay ? 'bg-transparent border-transparent' : 'z-10 opacity-95 shadow-md')
                 )}
@@ -89,5 +89,22 @@
 <style>
     :global([data-sortable-active='true']) {
         user-select: none;
+    }
+
+    /*
+     * dnd-kit animates items via Web Animations API using the CSS `translate` property.
+     * Using will-change:translate tells the browser to promote these elements to their own
+     * GPU layer so the WAAPI animation (smooth push/shift) runs without layout thrashing.
+     * Do NOT add CSS transition:transform here — it conflicts with WAAPI and causes jank.
+     */
+    :global(.sortable-item) {
+        will-change: translate;
+    }
+
+    /* Smooth color/opacity transitions for the dragging state indicator */
+    :global(.sortable-item:not([aria-grabbed='true'])) {
+        transition: background-color 150ms ease,
+                    border-color 150ms ease,
+                    opacity 150ms ease;
     }
 </style>
