@@ -11,4 +11,6 @@ export interface SortableListProps<T> {
     class?: ClassNameValue
     itemClass?: ClassNameValue
     children: Snippet<[{ item: T; index: number; dragging: boolean }]>
+    overlay?: Snippet<[{ item: T }]>
+    group?: string
 }

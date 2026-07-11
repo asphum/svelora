@@ -17,12 +17,15 @@
         disabled = false,
         class: className,
         itemClass,
-        children
+        children,
+        overlay,
+        group
     }: SortableListProps<T> = $props()
 
     const sortable = useSortable({
         getItems: () => items,
         getId: (item) => getKey(item),
+        group: () => group,
         axis: () => axis,
         handle: () => (handle ? '[data-sortable-handle]' : undefined),
         disabled: () => disabled,
@@ -47,7 +50,7 @@
     )
 </script>
 
-<sortable.Provider>
+<sortable.Provider {overlay}>
     <div use:sortable.container class={listClass} role="list">
         {#each items as item, index (getKey(item))}
             {@const id = getKey(item)}
@@ -55,20 +58,29 @@
             <div
                 use:sortable.item={{ index, item }}
                 role="listitem"
-                class={twMerge(itemClasses, dragging && 'z-10 opacity-95 shadow-md')}
+                class={twMerge(
+                    'relative transition-colors',
+                    itemClasses,
+                    dragging && (overlay ? 'bg-transparent border-transparent' : 'z-10 opacity-95 shadow-md')
+                )}
                 aria-grabbed={dragging}
             >
-                {#if handle}
-                    <button
-                        type="button"
-                        data-sortable-handle
-                        class="inline-flex shrink-0 cursor-grab rounded-md p-1 text-on-surface-variant hover:bg-surface-container-high active:cursor-grabbing"
-                        aria-label="Drag to reorder"
-                    >
-                        <Icon name="lucide:grip-vertical" size="16" />
-                    </button>
+                {#if overlay && dragging}
+                    <div class="absolute inset-0 z-10 rounded-[inherit] border-2 border-dashed border-primary/50 bg-primary/5 pointer-events-none"></div>
                 {/if}
-                {@render children({ item, index, dragging })}
+                <div class={['flex items-center gap-3', overlay && dragging && 'invisible']}>
+                    {#if handle}
+                        <button
+                            type="button"
+                            data-sortable-handle
+                            class="inline-flex shrink-0 cursor-grab rounded-md p-1 text-on-surface-variant hover:bg-surface-container-high active:cursor-grabbing"
+                            aria-label="Drag to reorder"
+                        >
+                            <Icon name="lucide:grip-vertical" size="16" />
+                        </button>
+                    {/if}
+                    {@render children({ item, index, dragging })}
+                </div>
             </div>
         {/each}
     </div>

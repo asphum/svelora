@@ -1,5 +1,7 @@
 <script lang="ts">
-    import { Button, Card, Link, SortableList } from '$lib/index.js'
+    import { Link, Card, Button, SortableList, SortableGroup } from '$lib/index.js'
+    import { move } from '@dnd-kit/helpers'
+    import type { DragOverEvent } from '@dnd-kit/dom'
 
     type Item = { id: string; label: string }
 
@@ -16,10 +18,26 @@
         { id: 'h3', label: 'Publish' }
     ])
 
-    let wholeRowItems = $state<Item[]>([
-        { id: 'w1', label: 'Drag anywhere on this row' },
-        { id: 'w2', label: 'No grip handle' }
+    let wholeRowItems = $state([
+        { id: '1', label: 'Click anywhere to drag' },
+        { id: '2', label: 'No handle needed' },
+        { id: '3', label: 'Works great for simple lists' }
     ])
+
+    // Kanban board state
+    let kanbanItems = $state<Record<string, { id: string; label: string }[]>>({
+        'in-progress': [
+            { id: 'task-1', label: 'Learn Svelte 5' },
+            { id: 'task-2', label: 'Build a Kanban board' },
+            { id: 'task-3', label: 'Review code' },
+            { id: 'task-4', label: 'Setup project' }
+        ],
+        done: []
+    })
+
+    function handleDragOver(event: DragOverEvent) {
+        kanbanItems = move(kanbanItems, event)
+    }
 
     let sortDisabled = $state(false)
 
@@ -31,7 +49,8 @@
         { name: 'axis', type: "'vertical' | 'horizontal' | 'grid'", description: 'List layout axis. Default vertical. Use grid with CSS grid classes.' },
         { name: 'disabled', type: 'boolean', description: 'Disable sorting.' },
         { name: 'class', type: 'ClassNameValue', description: 'Classes on the list container.' },
-        { name: 'itemClass', type: 'ClassNameValue', description: 'Classes on each sortable row.' }
+        { name: 'itemClass', type: 'ClassNameValue', description: 'Classes on each sortable row.' },
+        { name: 'overlay', type: 'Snippet<[{ item: T }]>', description: 'Optional snippet to render a custom drag overlay (floating placeholder).' }
     ] as const
 
     const snippetReference = [
@@ -89,10 +108,15 @@
             </a>
         </h2>
         <Card class="border border-outline-variant/70 p-4">
-            <SortableList bind:items disabled={sortDisabled} getKey={(item) => item.id}>
+            <SortableList bind:items disabled={sortDisabled} getKey={(item) => item.id} itemClass="bg-surface border border-outline-variant/60 rounded-lg p-3">
+                {#snippet overlay({ item })}
+                    <div class="flex w-full items-center justify-between gap-3 bg-surface border border-outline-variant/60 rounded-lg p-3 z-50 shadow-xl scale-[1.02] opacity-95">
+                        <span class="text-sm font-medium">{item.label}</span>
+                    </div>
+                {/snippet}
                 {#snippet children({ item, index, dragging })}
                     <div class="flex w-full items-center justify-between gap-3">
-                        <span class="text-sm font-medium" class:opacity-60={dragging}>{item.label}</span>
+                        <span class="text-sm font-medium">{item.label}</span>
                         <span class="text-xs text-on-surface-variant">#{index + 1}</span>
                     </div>
                 {/snippet}
@@ -140,6 +164,54 @@
                 {/snippet}
             </SortableList>
         </Card>
+    </section>
+
+    <section class="space-y-3">
+        <h2 id="Draggable-Containers" class="text-lg font-semibold">
+            <a href="#Draggable-Containers" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+                <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                Draggable Containers (Kanban)
+            </a>
+        </h2>
+        <p class="text-sm text-on-surface-variant">Wrap multiple <code class="rounded bg-surface-container-high px-1">SortableList</code> components in a <code class="rounded bg-surface-container-high px-1">SortableGroup</code> to drag items between them.</p>
+        
+        <SortableGroup onDragOver={handleDragOver}>
+            <div class="grid gap-4 md:grid-cols-2">
+                <Card class="border border-outline-variant/70 p-5 bg-surface-container-lowest">
+                    <h3 class="mb-4 text-base font-bold flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+                        In Progress
+                    </h3>
+                    <SortableList bind:items={kanbanItems['in-progress']} group="in-progress" getKey={(item) => item.id} class="min-h-[100px]" itemClass="bg-surface border border-outline-variant/60 rounded-lg p-3">
+                        {#snippet overlay({ item })}
+                            <div class="flex w-full items-center justify-between gap-3 bg-surface border border-outline-variant/60 rounded-lg p-3 z-50 shadow-xl scale-[1.02] opacity-95">
+                                <span class="text-sm font-medium">{item.label}</span>
+                            </div>
+                        {/snippet}
+                        {#snippet children({ item })}
+                            <span class="text-sm font-medium">{item.label}</span>
+                        {/snippet}
+                    </SortableList>
+                </Card>
+
+                <Card class="border border-outline-variant/70 p-5 bg-surface-container-lowest">
+                    <h3 class="mb-4 text-base font-bold flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                        Done
+                    </h3>
+                    <SortableList bind:items={kanbanItems['done']} group="done" getKey={(item) => item.id} class="min-h-[100px]" itemClass="bg-surface border border-outline-variant/60 rounded-lg p-3">
+                        {#snippet overlay({ item })}
+                            <div class="flex w-full items-center justify-between gap-3 bg-surface border border-outline-variant/60 rounded-lg p-3 z-50 shadow-xl scale-[1.02] opacity-95">
+                                <span class="text-sm font-medium">{item.label}</span>
+                            </div>
+                        {/snippet}
+                        {#snippet children({ item })}
+                            <span class="text-sm font-medium">{item.label}</span>
+                        {/snippet}
+                    </SortableList>
+                </Card>
+            </div>
+        </SortableGroup>
     </section>
 
     <section class="space-y-3">

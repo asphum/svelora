@@ -48,7 +48,7 @@
     ] as const
 
     const sortableReturnReference = [
-        { name: 'Provider', type: 'Component', description: 'Required wrapper — mounts @dnd-kit/svelte DragDropProvider.' },
+        { name: 'Provider', type: 'Component', description: 'Required wrapper — mounts @dnd-kit/svelte DragDropProvider. Accepts an optional `overlay` snippet for custom drag overlays.' },
         { name: 'container', type: 'Action<HTMLElement>', description: 'Optional list wrapper — sets data-sortable-active while dragging.' },
         { name: 'item', type: 'Action<HTMLElement, { index, item }>', description: 'Attach to each row with the current index and item.' },
         { name: 'draggingId', type: 'string | number | null', description: 'Readonly id of the row currently being dragged.' }
@@ -128,25 +128,36 @@
             </a>
         </h2>
         <sortable.Provider>
+            {#snippet overlay({ item })}
+                <div class="flex items-center gap-3 rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 z-50 shadow-xl scale-[1.02] opacity-95">
+                    <button type="button" class="cursor-grab rounded-md p-1 text-on-surface-variant">::</button>
+                    <Badge label={item.title} color={item.color} variant="soft" />
+                </div>
+            {/snippet}
             <div use:sortable.container class="space-y-2 rounded-lg bg-surface-container-high p-4">
                 {#each tasks as task, index (task.id)}
                     <div
                         use:sortable.item={{ index, item: task }}
                         class={[
-                            'flex items-center gap-3 rounded-lg border border-outline-variant/60 bg-surface px-3 py-2',
-                            sortable.draggingId === task.id && 'opacity-80 shadow-md'
+                            'relative flex items-center gap-3 rounded-lg border border-outline-variant/60 px-3 py-2 transition-colors',
+                            sortable.draggingId === task.id ? 'bg-transparent border-transparent' : 'bg-surface'
                         ]}
                         aria-grabbed={sortable.draggingId === task.id}
                     >
-                    <button
-                        type="button"
-                        data-sortable-handle
-                        class="cursor-grab rounded-md p-1 text-on-surface-variant hover:bg-surface-container-high active:cursor-grabbing"
-                        aria-label="Drag to reorder"
-                    >
-                        ::
-                    </button>
-                    <Badge label={task.title} color={task.color} variant="soft" />
+                    {#if sortable.draggingId === task.id}
+                        <div class="absolute inset-0 z-10 rounded-lg border-2 border-dashed border-primary/50 bg-primary/5 pointer-events-none"></div>
+                    {/if}
+                    <div class={['flex w-full items-center gap-3', sortable.draggingId === task.id && 'invisible']}>
+                        <button
+                            type="button"
+                            data-sortable-handle
+                            class="cursor-grab rounded-md p-1 text-on-surface-variant active:cursor-grabbing"
+                            aria-label="Drag to reorder"
+                        >
+                            ::
+                        </button>
+                        <Badge label={task.title} color={task.color} variant="soft" />
+                    </div>
                 </div>
             {/each}
             </div>

@@ -1,6 +1,15 @@
 import type { UseSortableOptions } from '../useSortable/useSortable.svelte.js'
+import type { Snippet } from 'svelte'
 
 export const SORTABLE_CONTEXT_KEY = Symbol('svelora-sortable')
+export const SORTABLE_GROUP_CONTEXT_KEY = Symbol('svelora-sortable-group')
+
+export interface SortableGroupContextValue {
+    draggingId: string | number | null
+    registerOverlay: (groupId: string, snippet: Snippet<[{ item: unknown }]>) => void
+    unregisterOverlay: (groupId: string) => void
+    getOverlay: (groupId: string) => Snippet<[{ item: unknown }]> | undefined
+}
 
 export interface SortableContextValue<T> {
     groupId: string
@@ -11,4 +20,5 @@ export interface SortableContextValue<T> {
     getAxis: () => 'vertical' | 'horizontal' | 'grid'
     getHandle: () => string | undefined
     setDraggingId: (id: string | number | null) => void
+    getDraggingId: () => string | number | null
 }

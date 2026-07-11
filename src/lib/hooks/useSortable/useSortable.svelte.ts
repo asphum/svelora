@@ -1,10 +1,17 @@
 import type { Action } from 'svelte/action'
 import type { Component } from 'svelte'
 import { setContext, type Snippet } from 'svelte'
-import type { Data } from '@dnd-kit/abstract'
+import { CollisionPriority, type Data } from '@dnd-kit/abstract'
+import { createDroppable } from '@dnd-kit/svelte'
 import { createSortable } from '@dnd-kit/svelte/sortable'
 import SortableProvider from '../internal/SortableProvider.svelte'
-import { SORTABLE_CONTEXT_KEY, type SortableContextValue } from '../internal/sortable-context.js'
+import {
+    SORTABLE_CONTEXT_KEY,
+    SORTABLE_GROUP_CONTEXT_KEY,
+    type SortableContextValue,
+    type SortableGroupContextValue
+} from '../internal/sortable-context.js'
+import { getContext } from 'svelte'
 
 export interface UseSortableItemParams<T> {
     index: number
@@ -39,6 +46,12 @@ export interface UseSortableOptions<T> {
      * @default false
      */
     disabled?: boolean | (() => boolean)
+
+    /**
+     * Group ID for the sortable list. Used for cross-list drag and drop.
+     * If not provided, a unique ID is generated.
+     */
+    group?: string | (() => string | undefined)
 }
 
 export interface UseSortableReturn<T> {
@@ -46,7 +59,7 @@ export interface UseSortableReturn<T> {
      * Wrap sortable markup with this provider.
      * Required — [@dnd-kit/svelte](https://clauderic-dnd-kit.mintlify.app/frameworks/svelte) needs a DragDropProvider ancestor.
      */
-    readonly Provider: Component<{ children?: Snippet }>
+    readonly Provider: Component<{ children?: Snippet; overlay?: Snippet<[{ item: T }]> }>
 
     /** Attach to the list container element (optional wrapper). */
     readonly container: Action<HTMLElement>
@@ -67,10 +80,24 @@ let sortableGroupCounter = 0
  */
 export function useSortable<T>(options: UseSortableOptions<T>): UseSortableReturn<T> {
     const { getItems, getId, onReorder } = options
-    const groupId = `svelora-sortable-${++sortableGroupCounter}`
 
-    let draggingId = $state<string | number | null>(null)
+    function getGroup(): string {
+        const group = options.group
+        return (
+            (typeof group === 'function' ? group() : group) ??
+            `svelora-sortable-${++sortableGroupCounter}`
+        )
+    }
+
+    const groupId = getGroup()
+
+    let localDraggingId = $state<string | number | null>(null)
     let listNode = $state<HTMLElement | null>(null)
+
+    // Optional group context tracking draggingId globally
+    const groupCtx = getContext<SortableGroupContextValue | undefined>(SORTABLE_GROUP_CONTEXT_KEY)
+
+    const draggingId = $derived(groupCtx ? groupCtx.draggingId : localDraggingId)
 
     function getAxis(): 'vertical' | 'horizontal' | 'grid' {
         const axis = options.axis
@@ -97,8 +124,9 @@ export function useSortable<T>(options: UseSortableOptions<T>): UseSortableRetur
         getAxis,
         getHandle,
         setDraggingId(id) {
-            draggingId = id
-        }
+            localDraggingId = id
+        },
+        getDraggingId: () => localDraggingId
     }
 
     setContext(SORTABLE_CONTEXT_KEY, context as SortableContextValue<unknown>)
@@ -117,8 +145,18 @@ export function useSortable<T>(options: UseSortableOptions<T>): UseSortableRetur
     const container: Action<HTMLElement> = (node) => {
         listNode = node
 
+        const droppable = createDroppable({
+            get id() {
+                return getGroup()
+            },
+            type: 'sortable-group',
+            collisionPriority: CollisionPriority.Low
+        })
+        const detach = droppable.attach(node)
+
         return {
             destroy() {
+                detach()
                 if (listNode === node) {
                     listNode = null
                 }
@@ -131,11 +169,21 @@ export function useSortable<T>(options: UseSortableOptions<T>): UseSortableRetur
         let current = params!
 
         const sortable = createSortable({
-            id: String(getId(current.item)),
-            index: current.index,
-            group: groupId,
-            data: current.item as Data,
-            disabled: isDisabled()
+            get id() {
+                return String(getId(current.item))
+            },
+            get index() {
+                return current.index
+            },
+            get group() {
+                return getGroup()
+            },
+            get data() {
+                return current.item as Data
+            },
+            get disabled() {
+                return isDisabled()
+            }
         })
 
         const detach = sortable.attach(node)
