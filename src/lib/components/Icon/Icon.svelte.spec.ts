@@ -68,6 +68,33 @@ describe('Icon', () => {
             await expect.element(svg).toHaveAttribute('width', '2rem')
             await expect.element(svg).toHaveAttribute('height', '2rem')
         })
+
+        it('should allow Tailwind size utilities to override the default in Tailwind mode', async () => {
+            const { container } = await render(Icon, {
+                name: 'icon-[solar--clock-circle-line-duotone]',
+                class: 'size-20'
+            })
+            const icon = page.elementLocator(container.querySelector('span')!)
+
+            await expect.element(icon).toHaveClass(/size-20/)
+            await expect.element(icon).not.toHaveClass(/size-6/)
+            expect(container.querySelector('span')!.style.width).toBe('')
+            expect(container.querySelector('span')!.style.height).toBe('')
+        })
+
+        it('should apply per-breakpoint sizes in Tailwind mode', async () => {
+            const { container } = await render(Icon, {
+                name: 'icon-[solar--clock-circle-line-duotone]',
+                responsiveSize: { base: 16, sm: 20, md: '2rem' }
+            })
+            const icon = page.elementLocator(container.querySelector('span')!)
+            const style = container.querySelector('span')!.getAttribute('style') ?? ''
+
+            await expect.element(icon).toHaveClass(/responsive-size/)
+            expect(style).toContain('--svelora-icon-size-base: 16px')
+            expect(style).toContain('--svelora-icon-size-sm: 20px')
+            expect(style).toContain('--svelora-icon-size-md: 2rem')
+        })
     })
 
     // ==================== CUSTOM CLASS ====================

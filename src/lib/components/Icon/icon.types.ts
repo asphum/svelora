@@ -2,6 +2,11 @@ import type { IconProps as IconifyProps } from '@iconify/svelte'
 import type { SVGAttributes } from 'svelte/elements'
 import type { ClassNameValue } from 'tailwind-merge'
 
+/** Per-breakpoint icon sizes using Tailwind's default viewport breakpoints. */
+export type ResponsiveIconSize = Partial<
+    Record<'base' | 'sm' | 'md' | 'lg' | 'xl' | '2xl', number | string>
+>
+
 export interface IconProps
     extends Omit<IconifyProps, 'icon' | 'width' | 'height' | 'rotate' | 'flip' | 'class'>,
         Pick<
@@ -38,6 +43,13 @@ export interface IconProps
     size?: number | string
 
     /**
+     * Icon size per viewport breakpoint. Values can be pixels (numbers) or CSS sizes (strings).
+     * Missing breakpoints inherit the next-smallest specified size.
+     * @example { base: 16, sm: 20, md: 24 }
+     */
+    responsiveSize?: ResponsiveIconSize
+
+    /**
      * Icon color (CSS color value).
      * Defaults to `currentColor`, inheriting the parent's text color.
      * Use Tailwind `text-*` classes on the parent or via `class` prop as an alternative.
@@ -68,6 +80,7 @@ export interface IconProps
     /**
      * Additional CSS classes for the icon.
      * Merged with `shrink-0` via tailwind-merge, so conflicting utilities are resolved correctly.
+     * In Tailwind mode, use utilities such as `size-20` to override the default 24px size.
      */
     class?: ClassNameValue
 }

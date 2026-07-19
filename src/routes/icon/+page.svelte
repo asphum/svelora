@@ -21,7 +21,7 @@
     <!-- Usage -->
     <section class="space-y-3">
         <h2 id="Usage" class="text-lg font-semibold">
-<a href="#Usage" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Usage" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Usage
                     </a>
@@ -49,12 +49,20 @@
             <Icon name="lucide:heart" />
             <Icon name="lucide:star" />
         </div>
+        <p class="text-sm text-on-surface-variant">
+            To resize one icon by viewport, use
+            <code class="rounded bg-surface-container-highest px-1">responsiveSize</code>, for
+            example
+            <code class="rounded bg-surface-container-highest px-1"
+                >&#123; base: 16, sm: 20, md: 24 &#125;</code
+            >.
+        </p>
     </section>
 
     <!-- Size -->
     <section class="space-y-3">
         <h2 id="Size" class="text-lg font-semibold">
-<a href="#Size" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Size" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Size
                     </a>
@@ -81,7 +89,7 @@
     <!-- Color -->
     <section class="space-y-3">
         <h2 id="Color" class="text-lg font-semibold">
-<a href="#Color" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Color" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Color
                     </a>
@@ -136,7 +144,7 @@
     <!-- Flip -->
     <section class="space-y-3">
         <h2 id="Flip" class="text-lg font-semibold">
-<a href="#Flip" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Flip" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Flip
                     </a>
@@ -169,7 +177,7 @@
     <!-- Rotate -->
     <section class="space-y-3">
         <h2 id="Rotate" class="text-lg font-semibold">
-<a href="#Rotate" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Rotate" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Rotate
                     </a>
@@ -201,7 +209,7 @@
     <!-- Class -->
     <section class="space-y-3">
         <h2 id="Class" class="text-lg font-semibold">
-<a href="#Class" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Class" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Class
                     </a>
@@ -238,7 +246,7 @@
     <!-- Icon Sets -->
     <section class="space-y-3">
         <h2 id="Icon-Sets" class="text-lg font-semibold">
-<a href="#Icon-Sets" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Icon-Sets" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Icon Sets
                     </a>
@@ -278,7 +286,7 @@
     <!-- Examples -->
     <section class="space-y-3">
         <h2 id="Examples" class="text-lg font-semibold">
-<a href="#Examples" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Examples" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Examples
                     </a>
