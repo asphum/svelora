@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.1.10] - 2026-07-19
+
+### Added
+
+- add responsiveSize prop to Icon component with CSS variable-based sizing and update documentation accordingly
+
 ## [3.1.9] - 2026-07-19
 
 ### Added
@@ -593,7 +599,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.9...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.10...HEAD
+[3.1.10]: https://github.com/asphum/svelora/compare/v3.1.9...v3.1.10
 [3.1.9]: https://github.com/asphum/svelora/compare/v3.1.8...v3.1.9
 [3.1.8]: https://github.com/asphum/svelora/compare/v3.1.7...v3.1.8
 [3.1.7]: https://github.com/asphum/svelora/compare/v3.1.6...v3.1.7
