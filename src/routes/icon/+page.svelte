@@ -28,10 +28,18 @@
 </h2>
         <p class="text-sm text-on-surface-variant">
             Use the <code class="rounded bg-surface-container-highest px-1">name</code> prop with
-            the Iconify format
-            <code class="rounded bg-surface-container-highest px-1">collection:icon-name</code>.
+            either the Iconify format
+            <code class="rounded bg-surface-container-highest px-1">collection:icon-name</code>
+            or the Iconify Tailwind 4 format
+            <code class="rounded bg-surface-container-highest px-1"
+                >icon-[solar--clock-circle-line-duotone]</code
+            >. Install each icon set you use in your own app, for example
+            <code class="rounded bg-surface-container-highest px-1"
+                >bun add -D @iconify-json/solar</code
+            >.
         </p>
         <div class="flex flex-wrap items-center gap-4 rounded-lg bg-surface-container-high p-4">
+            <Icon name="icon-[solar--clock-circle-line-duotone]" />
             <Icon name="lucide:home" />
             <Icon name="lucide:settings" />
             <Icon name="lucide:user" />

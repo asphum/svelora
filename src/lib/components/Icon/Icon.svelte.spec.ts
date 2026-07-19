@@ -24,6 +24,18 @@ describe('Icon', () => {
             const svg = await getSvg(container)
             await expect.element(svg).toHaveClass(/shrink-0/)
         })
+
+        it('should render an Iconify Tailwind 4 name without changing the global provider', async () => {
+            const { container } = await render(Icon, {
+                name: 'icon-[solar--clock-circle-line-duotone]'
+            })
+            const icon = page.elementLocator(container.querySelector('span')!)
+
+            await expect.element(icon).toHaveClass(/icon-\[solar--clock-circle-line-duotone\]/)
+            await expect.element(icon).toHaveClass(/shrink-0/)
+            await expect.element(icon).toHaveAttribute('aria-hidden', 'true')
+            expect(container.querySelector('svg')).toBeNull()
+        })
     })
 
     // ==================== SIZE ====================

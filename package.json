@@ -204,6 +204,7 @@
     "devDependencies": {
         "@biomejs/biome": "2.5.3",
         "@inlang/paraglide-js": "^2.21.0",
+        "@iconify-json/solar": "^1.2.5",
         "@sveltejs/adapter-vercel": "^6.3.4",
         "@sveltejs/kit": "^2.69.2",
         "@sveltejs/package": "^2.5.8",
@@ -265,6 +266,7 @@
         "@dnd-kit/svelte": "^0.5.0",
         "@floating-ui/dom": "^1.8.0",
         "@iconify/svelte": "^5.2.2",
+        "@iconify/tailwind4": "^1.2.3",
         "@internationalized/date": "^3.12.2",
         "@modelcontextprotocol/sdk": "^1.29.0",
         "@standard-schema/spec": "^1.1.0",

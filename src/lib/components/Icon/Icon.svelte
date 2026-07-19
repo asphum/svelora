@@ -38,7 +38,13 @@
 
     const provider = $derived(config.provider ?? 'iconify')
 
-    // Automatically map "lucide:bell" to "icon-[lucide--bell]" if using tailwind provider
+    // Class-style names opt into Iconify's Tailwind 4 renderer automatically.
+    // This lets callers mix `icon-[solar--clock-circle-line-duotone]` with
+    // regular Iconify names without changing the global provider.
+    const isTailwindName = $derived(name.startsWith('icon-[') && name.endsWith(']'))
+    const useTailwindProvider = $derived(provider === 'tailwind' || isTailwindName)
+
+    // Automatically map Iconify names to Tailwind icon classes when using the global provider.
     const tailwindClass = $derived(
         name.startsWith('icon-') || name.startsWith('i-')
             ? name
@@ -49,13 +55,14 @@
     const sizeStyle = $derived(typeof size === 'number' ? `${size}px` : size)
 </script>
 
-{#if provider === 'tailwind'}
+{#if useTailwindProvider}
     <span
         class={twMerge(tailwindClass, iconClass)}
         style:width={sizeStyle}
         style:height={sizeStyle}
         style:color={color}
         style:transform={rotateValue ? `rotate(${rotateValue * 90}deg)` : undefined}
+        aria-hidden="true"
         {...(restProps as any)}
     ></span>
 {:else}

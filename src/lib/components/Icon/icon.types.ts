@@ -22,8 +22,9 @@ export interface IconProps
     /** Custom data attributes are forwarded to the rendered `<svg>`. */
     [key: `data-${string}`]: string | number | boolean | null | undefined
     /**
-     * Icon name in Iconify format: "collection:icon-name"
-     * @example "lucide:home", "mdi:account", "heroicons:star"
+     * Icon name in Iconify format (`collection:icon-name`) or Iconify Tailwind 4 class syntax.
+     * Class-style names automatically use the Tailwind renderer.
+     * @example "lucide:home", "mdi:account", "icon-[solar--clock-circle-line-duotone]"
      * @see https://icon-sets.iconify.design/
      */
     name: string
