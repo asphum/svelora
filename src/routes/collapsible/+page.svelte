@@ -18,7 +18,7 @@
     <!-- Basic -->
     <section class="space-y-3">
         <h2 id="Basic" class="text-lg font-semibold">
-<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Basic" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Basic
                     </a>
@@ -46,7 +46,7 @@
     <!-- Initially Open -->
     <section class="space-y-3">
         <h2 id="Initially-Open" class="text-lg font-semibold">
-<a href="#Initially-Open" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Initially-Open" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Initially Open
                     </a>
@@ -74,7 +74,7 @@
     <!-- Controlled -->
     <section class="space-y-3">
         <h2 id="Controlled-bindopen" class="text-lg font-semibold">
-<a href="#Controlled-bindopen" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Controlled-bindopen" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Controlled (bind:open)
                     </a>
@@ -118,7 +118,7 @@
     <!-- onOpenChange callback -->
     <section class="space-y-3">
         <h2 id="onOpenChange-Callback" class="text-lg font-semibold">
-<a href="#onOpenChange-Callback" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#onOpenChange-Callback" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         onOpenChange Callback
                     </a>
@@ -152,7 +152,7 @@
     <!-- Disabled -->
     <section class="space-y-3">
         <h2 id="Disabled" class="text-lg font-semibold">
-<a href="#Disabled" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Disabled" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Disabled
                     </a>
@@ -176,7 +176,7 @@
     <!-- Custom trigger (non-Button) -->
     <section class="space-y-3">
         <h2 id="Custom-Trigger" class="text-lg font-semibold">
-<a href="#Custom-Trigger" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Custom-Trigger" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Custom Trigger
                     </a>
@@ -219,7 +219,7 @@
     <!-- Custom UI Slots -->
     <section class="space-y-3">
         <h2 id="Custom-UI-Slots" class="text-lg font-semibold">
-<a href="#Custom-UI-Slots" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Custom-UI-Slots" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Custom UI Slots
                     </a>
@@ -254,7 +254,7 @@
     <!-- Multiple collapsibles -->
     <section class="space-y-3">
         <h2 id="Multiple-Collapsibles" class="text-lg font-semibold">
-<a href="#Multiple-Collapsibles" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
+<a href="#Multiple-Collapsibles" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                         <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
                         Multiple Collapsibles
                     </a>
