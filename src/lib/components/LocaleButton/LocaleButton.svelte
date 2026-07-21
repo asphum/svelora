@@ -162,6 +162,7 @@
     {loop}
     {portal}
     {arrow}
+    ui={fit ? { content: 'w-fit min-w-0' } : undefined}
 >
     {#snippet children({ open: isOpen, props })}
         <Button
