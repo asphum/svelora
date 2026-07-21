@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.2.5] - 2026-07-21
+
+### Added
+
+- add conditional width styling to LocaleButton dropdown via ui prop
+
 ## [3.2.4] - 2026-07-21
 
 ### Added
@@ -645,7 +651,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.2.4...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.2.5...HEAD
+[3.2.5]: https://github.com/asphum/svelora/compare/v3.2.4...v3.2.5
 [3.2.4]: https://github.com/asphum/svelora/compare/v3.2.3...v3.2.4
 [3.2.3]: https://github.com/asphum/svelora/compare/v3.2.2...v3.2.3
 [3.2.2]: https://github.com/asphum/svelora/compare/v3.2.1...v3.2.2
