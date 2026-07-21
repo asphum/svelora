@@ -9,27 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **DatePicker** — segmented date input with calendar popover, FormField integration, and `timeInput`
-- **TimeField** — segmented time input (`Time` / `CalendarDateTime` / `ZonedDateTime`)
-- **InputTags** — tag input with removable Badge tags (แทนที่ TagsInput)
-- **Toggle** / **ToggleGroup** — pressed-state button และ selection group แบบ bits-ui
-- dependency `@internationalized/number` สำหรับ InputNumber locale formatting
-- icons config — เพิ่ม `star`
+- _None yet._
 
 ### Changed
 
-- **DateRangePicker** — แทนที่ด้วย bits-ui range picker เต็มรูปแบบ (segmented field + range calendar + `timeInput`)
-- **InputNumber** — แทนที่ด้วย stepper + locale-aware formatting (`@internationalized/number`)
-- **Rating** — แทนที่ด้วย bits-ui rating (half stars, FormField, `icons.star`)
-- **Calendar** — หรี่ disabled dates (`opacity-50`) และปรับ range-selection styles
-
-### Removed
-
-- **TagsInput** — ลบออก ใช้ **InputTags** แทน
+- _None yet._
 
 ### Fixed
 
 - _None yet._
+
+## [3.2.0] - 2026-07-21
+
+### Added
+
+- introduce DatePicker component with segmented date input, time input support, and enhanced calendar features; update documentation and add new icons
 
 ## [3.1.11] - 2026-07-21
 
@@ -617,7 +611,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.11...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.2.0...HEAD
+[3.2.0]: https://github.com/asphum/svelora/compare/v3.1.11...v3.2.0
 [3.1.11]: https://github.com/asphum/svelora/compare/v3.1.10...v3.1.11
 [3.1.10]: https://github.com/asphum/svelora/compare/v3.1.9...v3.1.10
 [3.1.9]: https://github.com/asphum/svelora/compare/v3.1.8...v3.1.9
