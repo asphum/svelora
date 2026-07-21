@@ -17,7 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Chart: cancel async `onMount` when destroyed mid-import, skip render if container disconnected, catch render errors, and keep theme defaults when merging `options` / `series` updates
+- _None yet._
+
+## [3.1.11] - 2026-07-21
+
+### Fixed
+
+- improve Chart component stability, error handling, and dependency updates via ApexCharts and Svelte upgrades
 
 ## [3.1.10] - 2026-07-19
 
@@ -599,7 +605,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.10...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.1.11...HEAD
+[3.1.11]: https://github.com/asphum/svelora/compare/v3.1.10...v3.1.11
 [3.1.10]: https://github.com/asphum/svelora/compare/v3.1.9...v3.1.10
 [3.1.9]: https://github.com/asphum/svelora/compare/v3.1.8...v3.1.9
 [3.1.8]: https://github.com/asphum/svelora/compare/v3.1.7...v3.1.8
