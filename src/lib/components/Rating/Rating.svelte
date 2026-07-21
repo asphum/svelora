@@ -1,133 +1,115 @@
-<script lang="ts">
-    import { getComponentConfig } from '../../config.js'
-    import Icon from '../Icon/Icon.svelte'
+<script lang="ts" module>
     import type { RatingProps } from './rating.types.js'
-    import { ratingDefaults, ratingVariants } from './rating.variants.js'
 
-    const config = getComponentConfig('rating', ratingDefaults)
-
-    let {
-        value = $bindable(0),
-        max = 5,
-        variant = config.defaultVariants.variant,
-        color = config.defaultVariants.color,
-        size = config.defaultVariants.size,
-        allowHalf = false,
-        disabled = false,
-        readonly = false,
-        iconFull,
-        iconEmpty,
-        ui,
-        class: className,
-        onchange,
-        ...restProps
-    }: RatingProps = $props()
-
-    const resolvedIconFull = $derived(
-        iconFull ?? (variant === 'solid' ? 'mdi:star' : 'lucide:star')
-    )
-    const resolvedIconEmpty = $derived(
-        iconEmpty ?? (variant === 'solid' ? 'mdi:star-outline' : 'lucide:star')
-    )
-
-    const styles = $derived.by(() => {
-        const slots = ratingVariants({ variant, color, size, disabled, readonly })
-        return {
-            base: slots.base({ class: [config.slots.base, className, ui?.base] }),
-            starWrapper: slots.starWrapper({ class: [config.slots.starWrapper, ui?.starWrapper] }),
-            starFull: slots.starFull({ class: [config.slots.starFull, ui?.starFull] }),
-            starEmpty: slots.starEmpty({ class: [config.slots.starEmpty, ui?.starEmpty] })
-        }
-    })
-
-    let hoverValue = $state<number | null>(null)
-
-    let stars = $derived(Array.from({ length: max }, (_, i) => i + 1))
-
-    function handleMouseMove(e: MouseEvent, index: number) {
-        if (disabled || readonly) return
-
-        if (allowHalf) {
-            const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
-            const x = e.clientX - rect.left
-            const isHalf = x < rect.width / 2
-            hoverValue = isHalf ? index - 0.5 : index
-        } else {
-            hoverValue = index
-        }
-    }
-
-    function handleMouseLeave() {
-        if (disabled || readonly) return
-        hoverValue = null
-    }
-
-    function handleClick(index: number) {
-        if (disabled || readonly) return
-        value = hoverValue ?? index
-        onchange?.(value)
-    }
-
-    function handleKeyDown(e: KeyboardEvent, index: number) {
-        if (disabled || readonly) return
-
-        let newValue = value
-        if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
-            newValue = Math.min(max, value + (allowHalf ? 0.5 : 1))
-        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
-            newValue = Math.max(0, value - (allowHalf ? 0.5 : 1))
-        } else if (e.key === 'Enter' || e.key === ' ') {
-            newValue = index
-        } else {
-            return
-        }
-
-        e.preventDefault()
-        value = newValue
-        onchange?.(value)
-    }
-
-    function getStarState(index: number) {
-        const currentValue = hoverValue ?? value
-        if (currentValue >= index) return 'full'
-        if (allowHalf && currentValue >= index - 0.5) return 'half'
-        return 'empty'
-    }
+    export type Props = RatingProps
 </script>
 
-<div
-    class={styles.base}
-    onmouseleave={handleMouseLeave}
-    {...restProps}
-    role="radiogroup"
->
-    {#each stars as starIndex}
-        {@const state = getStarState(starIndex)}
+<script lang="ts">
+    import { RatingGroup, useId } from 'bits-ui'
+    import { ratingVariants, ratingDefaults } from './rating.variants.js'
+    import { getComponentConfig, iconsDefaults } from '../../config.js'
+    import Icon from '../Icon/Icon.svelte'
+    import { useFormField, useFormFieldEmit } from '../../hooks/useFormField/index.js'
 
-        <button
-            type="button"
-            role="radio"
-            aria-checked={value >= starIndex}
-            aria-label={`Rate ${starIndex} out of ${max} stars`}
-            class={styles.starWrapper}
-            disabled={disabled || readonly}
-            tabindex={disabled || readonly ? -1 : 0}
-            onmousemove={(e) => handleMouseMove(e, starIndex)}
-            onclick={() => handleClick(starIndex)}
-            onkeydown={(e) => handleKeyDown(e, starIndex)}
-        >
-            {#if state === 'full'}
-                <Icon name={resolvedIconFull} class={styles.starFull} />
-            {:else if state === 'half'}
-                <div class="relative">
-                    <Icon name={resolvedIconEmpty} class={styles.starEmpty} />
-                    <div class="absolute inset-0 overflow-hidden w-1/2">
-                        <Icon name={resolvedIconFull} class={styles.starFull} />
-                    </div>
-                </div>
-            {:else}
-                <Icon name={resolvedIconEmpty} class={styles.starEmpty} />
-            {/if}
-        </button>
-    {/each}
-</div>
+    const config = getComponentConfig('rating', ratingDefaults)
+    const icons = getComponentConfig('icons', iconsDefaults)
+
+    let {
+        ref = $bindable(null),
+        value = $bindable(0),
+        onValueChange,
+        ui,
+        id,
+        name,
+        color = config.defaultVariants.color,
+        size,
+        orientation = config.defaultVariants.orientation,
+        icon = icons.star,
+        activeIcon,
+        fill = config.defaultVariants.fill,
+        disabled = false,
+        required = false,
+        readonly = false,
+        class: className,
+        ...restProps
+    }: Props = $props()
+
+    const formFieldContext = useFormField()
+    const emit = useFormFieldEmit()
+
+    const hasError = $derived(
+        formFieldContext?.error !== undefined && formFieldContext?.error !== false
+    )
+    const resolvedSize = $derived(size ?? formFieldContext?.size ?? config.defaultVariants.size)
+    const resolvedColor = $derived(hasError ? 'error' : color)
+    const autoId = useId()
+    const resolvedId = $derived(id ?? formFieldContext?.ariaId ?? autoId)
+    const resolvedName = $derived(name ?? formFieldContext?.name)
+
+    const ariaDescribedBy = $derived(
+        !formFieldContext
+            ? undefined
+            : hasError
+              ? `${formFieldContext.ariaId}-error`
+              : `${formFieldContext.ariaId}-description ${formFieldContext.ariaId}-help`
+    )
+
+    const slots = $derived(
+        ratingVariants({
+            color: resolvedColor,
+            size: resolvedSize,
+            orientation,
+            fill
+        })
+    )
+
+    const resolvedActiveIcon = $derived(activeIcon ?? icon)
+
+    const classes = $derived({
+        root: slots.root({ class: [config.slots.root, className, ui?.root] }),
+        item: slots.item({ class: [config.slots.item, ui?.item] }),
+        icon: slots.icon({ class: [config.slots.icon, ui?.icon] }),
+        iconActive: slots.iconActive({ class: [config.slots.iconActive, ui?.iconActive] }),
+        partial: slots.partial({ class: [config.slots.partial, ui?.partial] })
+    })
+</script>
+
+<RatingGroup.Root
+    {...restProps}
+    bind:ref
+    bind:value
+    onValueChange={(val) => {
+        emit.onChange()
+        onValueChange?.(val)
+    }}
+    onblur={() => emit.onBlur()}
+    onfocus={() => emit.onFocus()}
+    id={resolvedId}
+    name={resolvedName}
+    {orientation}
+    {disabled}
+    {required}
+    {readonly}
+    aria-describedby={ariaDescribedBy}
+    aria-invalid={hasError ? true : undefined}
+    class={classes.root}
+>
+    {#snippet children({ items })}
+        {#each items as item (item.index)}
+            <RatingGroup.Item index={item.index} class={classes.item}>
+                {#snippet children({ state })}
+                    {#if state === 'active'}
+                        <Icon name={resolvedActiveIcon} class={classes.iconActive} />
+                    {:else}
+                        <Icon name={icon} class={classes.icon} />
+                    {/if}
+                    {#if state === 'partial'}
+                        <span class={classes.partial}>
+                            <Icon name={resolvedActiveIcon} class={classes.iconActive} />
+                        </span>
+                    {/if}
+                {/snippet}
+            </RatingGroup.Item>
+        {/each}
+    {/snippet}
+</RatingGroup.Root>

@@ -2,160 +2,96 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const ratingVariants = tv({
     slots: {
-        base: 'flex items-center gap-1',
-        starWrapper:
-            'relative cursor-pointer transition-transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full',
-        starFull: 'transition-colors duration-200',
-        starEmpty: 'transition-colors duration-200'
+        root: [
+            'inline-flex items-center w-fit rounded-sm',
+            'focus-visible:outline-2 focus-visible:outline-offset-2',
+            'data-disabled:opacity-75 data-disabled:cursor-not-allowed'
+        ],
+        item: 'relative shrink-0 cursor-pointer data-disabled:cursor-not-allowed data-readonly:cursor-default',
+        icon: 'shrink-0 text-outline-variant transition-colors',
+        iconActive: 'shrink-0 transition-colors',
+        partial: 'absolute inset-y-0 start-0 w-1/2 overflow-hidden'
     },
     variants: {
-        variant: {
-            solid: '',
-            outline: ''
-        },
         color: {
-            primary: '',
-            secondary: '',
-            tertiary: '',
-            success: '',
-            warning: '',
-            error: '',
-            info: '',
-            surface: ''
+            primary: {
+                root: 'focus-visible:outline-primary',
+                iconActive: 'text-primary'
+            },
+            secondary: {
+                root: 'focus-visible:outline-secondary',
+                iconActive: 'text-secondary'
+            },
+            tertiary: {
+                root: 'focus-visible:outline-tertiary',
+                iconActive: 'text-tertiary'
+            },
+            success: {
+                root: 'focus-visible:outline-success',
+                iconActive: 'text-success'
+            },
+            warning: {
+                root: 'focus-visible:outline-warning',
+                iconActive: 'text-warning'
+            },
+            error: {
+                root: 'focus-visible:outline-error',
+                iconActive: 'text-error'
+            },
+            info: {
+                root: 'focus-visible:outline-info',
+                iconActive: 'text-info'
+            },
+            surface: {
+                root: 'focus-visible:outline-outline',
+                iconActive: 'text-on-surface'
+            }
         },
         size: {
-            sm: { starFull: 'w-4 h-4', starEmpty: 'w-4 h-4' },
-            md: { starFull: 'w-5 h-5', starEmpty: 'w-5 h-5' },
-            lg: { starFull: 'w-6 h-6', starEmpty: 'w-6 h-6' },
-            xl: { starFull: 'w-8 h-8', starEmpty: 'w-8 h-8' }
-        },
-        disabled: {
-            true: {
-                base: 'opacity-50 cursor-not-allowed',
-                starWrapper: 'cursor-not-allowed hover:scale-100'
+            xs: {
+                root: 'gap-0.5',
+                icon: 'size-4',
+                iconActive: 'size-4'
+            },
+            sm: {
+                root: 'gap-0.5',
+                icon: 'size-5',
+                iconActive: 'size-5'
+            },
+            md: {
+                root: 'gap-1',
+                icon: 'size-6',
+                iconActive: 'size-6'
+            },
+            lg: {
+                root: 'gap-1',
+                icon: 'size-7',
+                iconActive: 'size-7'
+            },
+            xl: {
+                root: 'gap-1.5',
+                icon: 'size-8',
+                iconActive: 'size-8'
             }
         },
-        readonly: {
-            true: {
-                starWrapper: 'cursor-default hover:scale-100'
+        orientation: {
+            horizontal: {},
+            vertical: {
+                root: 'flex-col'
             }
+        },
+        fill: {
+            true: {
+                iconActive: '[&_path]:fill-current'
+            },
+            false: {}
         }
     },
-    compoundVariants: [
-        // ========== SOLID ==========
-        {
-            variant: 'solid',
-            color: 'primary',
-            class: { starFull: 'text-primary', starEmpty: 'text-outline-variant' }
-        },
-        {
-            variant: 'solid',
-            color: 'secondary',
-            class: { starFull: 'text-secondary', starEmpty: 'text-outline-variant' }
-        },
-        {
-            variant: 'solid',
-            color: 'tertiary',
-            class: { starFull: 'text-tertiary', starEmpty: 'text-outline-variant' }
-        },
-        {
-            variant: 'solid',
-            color: 'success',
-            class: { starFull: 'text-success', starEmpty: 'text-outline-variant' }
-        },
-        {
-            variant: 'solid',
-            color: 'warning',
-            class: { starFull: 'text-warning', starEmpty: 'text-outline-variant' }
-        },
-        {
-            variant: 'solid',
-            color: 'error',
-            class: { starFull: 'text-error', starEmpty: 'text-outline-variant' }
-        },
-        {
-            variant: 'solid',
-            color: 'info',
-            class: { starFull: 'text-info', starEmpty: 'text-outline-variant' }
-        },
-        {
-            variant: 'solid',
-            color: 'surface',
-            class: { starFull: 'text-on-surface', starEmpty: 'text-outline-variant' }
-        },
-
-        // ========== OUTLINE ==========
-        {
-            variant: 'outline',
-            color: 'primary',
-            class: {
-                starFull: 'text-primary stroke-primary',
-                starEmpty: 'fill-none text-outline-variant stroke-outline-variant'
-            }
-        },
-        {
-            variant: 'outline',
-            color: 'secondary',
-            class: {
-                starFull: 'text-secondary stroke-secondary',
-                starEmpty: 'fill-none text-outline-variant stroke-outline-variant'
-            }
-        },
-        {
-            variant: 'outline',
-            color: 'tertiary',
-            class: {
-                starFull: 'text-tertiary stroke-tertiary',
-                starEmpty: 'fill-none text-outline-variant stroke-outline-variant'
-            }
-        },
-        {
-            variant: 'outline',
-            color: 'success',
-            class: {
-                starFull: 'text-success stroke-success',
-                starEmpty: 'fill-none text-outline-variant stroke-outline-variant'
-            }
-        },
-        {
-            variant: 'outline',
-            color: 'warning',
-            class: {
-                starFull: 'text-warning stroke-warning',
-                starEmpty: 'fill-none text-outline-variant stroke-outline-variant'
-            }
-        },
-        {
-            variant: 'outline',
-            color: 'error',
-            class: {
-                starFull: 'text-error stroke-error',
-                starEmpty: 'fill-none text-outline-variant stroke-outline-variant'
-            }
-        },
-        {
-            variant: 'outline',
-            color: 'info',
-            class: {
-                starFull: 'text-info stroke-info',
-                starEmpty: 'fill-none text-outline-variant stroke-outline-variant'
-            }
-        },
-        {
-            variant: 'outline',
-            color: 'surface',
-            class: {
-                starFull: 'text-on-surface stroke-on-surface',
-                starEmpty: 'fill-none text-outline-variant stroke-outline-variant'
-            }
-        }
-    ],
     defaultVariants: {
-        variant: 'solid',
-        color: 'warning',
+        color: 'primary',
         size: 'md',
-        disabled: false,
-        readonly: false
+        orientation: 'horizontal',
+        fill: true
     }
 })
 

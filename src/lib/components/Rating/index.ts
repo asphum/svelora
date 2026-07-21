@@ -1,5 +1,2 @@
-import Rating from './Rating.svelte'
-
-export { Rating }
-export * from './rating.types.js'
-export * from './rating.variants.js'
+export { default as Rating } from './Rating.svelte'
+export type { RatingProps } from './rating.types.js'

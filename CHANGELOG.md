@@ -9,11 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- _None yet._
+- **DatePicker** — segmented date input with calendar popover, FormField integration, and `timeInput`
+- **TimeField** — segmented time input (`Time` / `CalendarDateTime` / `ZonedDateTime`)
+- **InputTags** — tag input with removable Badge tags (แทนที่ TagsInput)
+- **Toggle** / **ToggleGroup** — pressed-state button และ selection group แบบ bits-ui
+- dependency `@internationalized/number` สำหรับ InputNumber locale formatting
+- icons config — เพิ่ม `star`
 
 ### Changed
 
-- _None yet._
+- **DateRangePicker** — แทนที่ด้วย bits-ui range picker เต็มรูปแบบ (segmented field + range calendar + `timeInput`)
+- **InputNumber** — แทนที่ด้วย stepper + locale-aware formatting (`@internationalized/number`)
+- **Rating** — แทนที่ด้วย bits-ui rating (half stars, FormField, `icons.star`)
+- **Calendar** — หรี่ disabled dates (`opacity-50`) และปรับ range-selection styles
+
+### Removed
+
+- **TagsInput** — ลบออก ใช้ **InputTags** แทน
 
 ### Fixed
 

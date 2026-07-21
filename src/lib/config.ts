@@ -55,6 +55,7 @@ export const iconsDefaults = {
     zoomIn: 'lucide:zoom-in',
     trash: 'lucide:trash-2',
     search: 'lucide:search',
+    star: 'lucide:star',
     sortAsc: 'lucide:chevron-up',
     sortDesc: 'lucide:chevron-down',
     sortDefault: 'lucide:chevrons-up-down'

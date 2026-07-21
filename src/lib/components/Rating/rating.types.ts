@@ -1,75 +1,80 @@
-import type { HTMLAttributes } from 'svelte/elements'
+import type { RatingGroup as RatingGroupPrimitive } from 'bits-ui'
 import type { ClassNameValue } from 'tailwind-merge'
-import type { RatingSlots, RatingVariantProps } from './rating.variants.js'
+import type { RatingVariantProps, RatingSlots } from './rating.variants.js'
 
-export interface RatingProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+export type RatingProps = Omit<
+    RatingGroupPrimitive.RootProps,
+    'child' | 'children' | 'class' | 'ref' | 'value' | 'onValueChange' | 'orientation'
+> & {
     /**
-     * The current rating value.
+     * Bindable reference to the root DOM element.
+     */
+    ref?: HTMLElement | null
+
+    /**
+     * The current rating value. Supports two-way binding with `bind:value`.
+     * @default 0
      */
     value?: number
 
     /**
-     * The maximum rating value (number of stars).
-     * @default 5
+     * Callback when the rating value changes.
      */
-    max?: number
+    onValueChange?: (value: number) => void
 
     /**
-     * Visual style of the stars.
-     * @default 'solid'
-     */
-    variant?: NonNullable<RatingVariantProps['variant']>
-
-    /**
-     * Color scheme for active stars.
-     * @default 'warning'
+     * Sets the color applied to active (filled) icons.
+     * @default 'primary'
      */
     color?: NonNullable<RatingVariantProps['color']>
 
     /**
-     * Size of the stars.
+     * Controls the icon dimensions.
      * @default 'md'
      */
-    size?: RatingVariantProps['size']
+    size?: NonNullable<RatingVariantProps['size']>
 
     /**
-     * Whether the rating allows half-star selection.
-     * @default false
+     * Controls the layout and keyboard interaction direction.
+     * @default 'horizontal'
      */
-    allowHalf?: boolean
+    orientation?: NonNullable<RatingVariantProps['orientation']>
 
     /**
-     * Whether the rating is disabled.
+     * Icon rendered for each rating item.
+     * Supports any valid Iconify icon name.
+     * @default Uses `icons.star` from app config
      */
-    disabled?: boolean
+    icon?: string
 
     /**
-     * Whether the rating is read-only (cannot be changed by user).
+     * Icon rendered for active items and the filled half of partial items.
+     * Use this to supply a genuinely filled icon variant instead of the
+     * CSS auto-fill applied by `fill`.
+     * @default Same as `icon`
      */
-    readonly?: boolean
+    activeIcon?: string
 
     /**
-     * Icon for active/full stars. Defaults based on `variant`.
+     * Fills the active icon paths with the current color via CSS.
+     * Set to false to keep active icons outline-only (color change only),
+     * or when `activeIcon` already provides its own fill.
+     * @default true
      */
-    iconFull?: string
+    fill?: boolean
 
     /**
-     * Icon for inactive/empty stars. Defaults based on `variant`.
+     * The HTML id attribute for the rating group.
      */
-    iconEmpty?: string
+    id?: string
+
+    /**
+     * Additional CSS classes for the root element.
+     */
+    class?: ClassNameValue
 
     /**
      * Override styles for specific rating slots.
      */
     ui?: Partial<Record<RatingSlots, ClassNameValue>>
-
-    /**
-     * Additional CSS classes.
-     */
-    class?: string
-
-    /**
-     * Event fired when the rating changes.
-     */
-    onchange?: (value: number) => void
 }

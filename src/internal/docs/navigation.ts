@@ -374,6 +374,12 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:hash'
             },
             {
+                title: 'InputTags',
+                href: '/docs/components/input-tags',
+                legacyHref: '/input-tags',
+                icon: 'lucide:tags'
+            },
+            {
                 title: 'RadioGroup',
                 href: '/docs/components/radio-group',
                 legacyHref: '/radio-group',
@@ -411,6 +417,18 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:toggle-left'
             },
             {
+                title: 'Toggle',
+                href: '/docs/components/toggle',
+                legacyHref: '/toggle',
+                icon: 'lucide:toggle-right'
+            },
+            {
+                title: 'ToggleGroup',
+                href: '/docs/components/toggle-group',
+                legacyHref: '/toggle-group',
+                icon: 'lucide:layout-grid'
+            },
+            {
                 title: 'Textarea',
                 href: '/docs/components/textarea',
                 legacyHref: '/textarea',
@@ -439,12 +457,6 @@ export const docsComponentGroups: DocsGroup[] = [
                 href: '/docs/components/rating',
                 legacyHref: '/rating',
                 icon: 'lucide:star'
-            },
-            {
-                title: 'TagsInput',
-                href: '/docs/components/tags-input',
-                legacyHref: '/tags-input',
-                icon: 'lucide:tags'
             },
             {
                 title: 'FormField',
@@ -636,10 +648,22 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:calendar-range'
             },
             {
+                title: 'DatePicker',
+                href: '/docs/components/date-picker',
+                legacyHref: '/date-picker',
+                icon: 'lucide:calendar-check'
+            },
+            {
                 title: 'DateRangePicker',
                 href: '/docs/components/date-range-picker',
                 legacyHref: '/date-range-picker',
                 icon: 'lucide:calendar-days'
+            },
+            {
+                title: 'TimeField',
+                href: '/docs/components/time-field',
+                legacyHref: '/time-field',
+                icon: 'lucide:clock'
             }
         ]
     }
