@@ -63,7 +63,6 @@ export type PasswordInputProps = Omit<InputProps, 'type'> & {
      */
     maskChar?: string
 
-
     /**
      * Icon to display when the password is hidden (eye-off state).
      * Supports any valid Iconify icon name.
