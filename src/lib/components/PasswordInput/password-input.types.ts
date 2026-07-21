@@ -53,21 +53,15 @@ export type PasswordInputProps = Omit<InputProps, 'type'> & {
     segmentIcon?: string
 
     /**
-     * Iconify icon name to use as the password mask overlay instead of the
-     * browser-native bullet (•). When provided, the input switches to
-     * `type="text"` with transparent text and an absolutely-positioned row
-     * of icons rendered on top — one icon per character typed.
+     * Custom Unicode character to display as mask symbol instead of the default bullet (•).
+     * Works natively with password input selection, focus caret, and accessibility.
      *
-     * The toggle button still reveals the real text by removing the overlay
-     * and restoring the text colour.
-     *
-     * @example 'lucide:star'              // ★ ★ ★ ★ ★
-     * @example 'lucide:lock'              // 🔒 🔒 🔒 🔒 🔒
-     * @example 'ph:heart-fill'            // ♥ ♥ ♥ ♥ ♥
-     * @example 'lucide:dot'               // · · · · ·
-     * @example 'material-symbols:circle'  // ● ● ● ● ●
+     * @example '✦'
+     * @example '★'
+     * @example '●'
+     * @example '*'
      */
-    maskIcon?: string
+    maskChar?: string
 
 
     /**

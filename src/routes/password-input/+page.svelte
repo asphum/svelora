@@ -119,38 +119,36 @@
         </div>
     </section>
 
-    <!-- ==================== MASK ICON ==================== -->
+    <!-- ==================== MASK CHARACTER ==================== -->
     <section class="space-y-4">
-        <h2 id="Mask-Icon" class="text-lg font-semibold text-on-surface">
-            <a href="#Mask-Icon" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
+        <h2 id="Mask-Character" class="text-lg font-semibold text-on-surface">
+            <a href="#Mask-Character" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
                 <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
-                Mask Icon
+                Mask Character
             </a>
         </h2>
         <p class="text-sm text-on-surface-variant">
             Use
-            <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">maskIcon</code>
-            to replace the browser's default password bullet (•) with any Iconify icon.
-            Each character typed adds one icon to the row. Clicking the eye button
-            still reveals the real password text.
+            <code class="rounded bg-surface-container-highest px-1.5 py-0.5 text-xs">maskChar</code>
+            to customize the masked bullet symbol while maintaining full native selection, focus caret alignment, and accessibility.
         </p>
         <div class="flex flex-wrap gap-6">
             <div class="space-y-1">
-                <p class="text-xs text-on-surface-variant">lucide:star</p>
+                <p class="text-xs text-on-surface-variant">Star (✦)</p>
                 <div class="rounded-lg border border-outline-variant bg-surface-container-high p-4 w-64">
-                    <PasswordInput bind:value={pwdMaskStar} maskIcon="lucide:star" placeholder="Password" />
+                    <PasswordInput bind:value={pwdMaskStar} maskChar="✦" placeholder="Password" />
                 </div>
             </div>
             <div class="space-y-1">
-                <p class="text-xs text-on-surface-variant">ph:heart-fill</p>
+                <p class="text-xs text-on-surface-variant">Heart (♥)</p>
                 <div class="rounded-lg border border-outline-variant bg-surface-container-high p-4 w-64">
-                    <PasswordInput bind:value={pwdMaskHeart} maskIcon="ph:heart-fill" placeholder="Password" />
+                    <PasswordInput bind:value={pwdMaskHeart} maskChar="♥" placeholder="Password" />
                 </div>
             </div>
             <div class="space-y-1">
-                <p class="text-xs text-on-surface-variant">lucide:lock</p>
+                <p class="text-xs text-on-surface-variant">Asterisk (*)</p>
                 <div class="rounded-lg border border-outline-variant bg-surface-container-high p-4 w-64">
-                    <PasswordInput bind:value={pwdMaskLock} maskIcon="lucide:lock" placeholder="Password" />
+                    <PasswordInput bind:value={pwdMaskLock} maskChar="*" placeholder="Password" />
                 </div>
             </div>
         </div>

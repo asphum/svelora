@@ -19,7 +19,7 @@
         strengthFn,
         strengthLabels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'],
         segmentIcon,
-        maskIcon,
+        maskChar = '✦',
         hideIcon = 'lucide:eye-off',
         showIcon = 'lucide:eye',
         hideLabel = 'Hide password',
@@ -38,6 +38,57 @@
         isVisible = !isVisible
     }
 
+    const useMaskChar = $derived(maskChar && maskChar !== '•' && !isVisible)
+
+    let displayValue = $state('')
+
+    $effect(() => {
+        const val = String(value ?? '')
+        if (useMaskChar) {
+            displayValue = (maskChar ?? '✦').repeat(val.length)
+        } else {
+            displayValue = val
+        }
+    })
+
+    function handleInput(e: Event & { currentTarget: HTMLInputElement }) {
+        if (useMaskChar) {
+            const input = e.currentTarget
+            const newStr = input.value
+            const oldVal = String(value ?? '')
+            const char = maskChar ?? '✦'
+            const oldMask = char.repeat(oldVal.length)
+
+            const cursorPos = input.selectionStart ?? newStr.length
+            const delta = newStr.length - oldMask.length
+
+            if (delta > 0) {
+                const inserted = newStr.slice(cursorPos - delta, cursorPos)
+                const start = cursorPos - delta
+                value = oldVal.slice(0, start) + inserted + oldVal.slice(start)
+            } else if (delta < 0) {
+                const delCount = -delta
+                value = oldVal.slice(0, cursorPos) + oldVal.slice(cursorPos + delCount)
+            } else if (cursorPos > 0) {
+                const inserted = newStr[cursorPos - 1]
+                if (inserted && inserted !== char) {
+                    value = oldVal.slice(0, cursorPos - 1) + inserted + oldVal.slice(cursorPos)
+                }
+            }
+
+            const updatedVal = String(value ?? '')
+            displayValue = char.repeat(updatedVal.length)
+            input.value = displayValue
+            try {
+                input.setSelectionRange(cursorPos, cursorPos)
+            } catch {
+                // Ignore if not focused
+            }
+        } else {
+            value = e.currentTarget.value
+        }
+    }
+
     // Built-in strength heuristic: returns -1 when empty, 0–4 otherwise.
     function calculateStrength(pwd: string): number {
         if (!pwd) return -1
@@ -53,23 +104,16 @@
         strengthFn ? strengthFn(String(value ?? '')) : calculateStrength(String(value ?? ''))
     )
 
-    /**
-     * Returns a Tailwind `bg-*` colour class for filled bar segments.
-     * Segment i is "filled" when i < strength.
-     */
     function getSegmentBgColor(index: number, currentStrength: number): string {
         if (currentStrength <= 0 || index >= currentStrength) {
             return 'bg-surface-200 dark:bg-surface-700'
         }
-        if (currentStrength === 1) return 'bg-error-500'    // 1 filled — very weak
-        if (currentStrength === 2) return 'bg-warning-500'  // 2 filled — weak/fair
-        if (currentStrength === 3) return 'bg-success-400'  // 3 filled — good
-        return 'bg-success-500'                              // 4 filled — strong
+        if (currentStrength === 1) return 'bg-error-500'
+        if (currentStrength === 2) return 'bg-warning-500'
+        if (currentStrength === 3) return 'bg-success-400'
+        return 'bg-success-500'
     }
 
-    /**
-     * Returns a Tailwind `text-*` colour class for icon mode segments.
-     */
     function getSegmentTextColor(index: number, currentStrength: number): string {
         if (currentStrength <= 0 || index >= currentStrength) {
             return 'text-surface-200 dark:text-surface-700'
@@ -89,34 +133,24 @@
         meterWrapper: variantSlots.meterWrapper({ class: [config.slots.meterWrapper, ui?.meterWrapper] }),
         meterSegment: variantSlots.meterSegment({ class: [config.slots.meterSegment, ui?.meterSegment] }),
         meterIcon: variantSlots.meterIcon({ class: [config.slots.meterIcon, ui?.meterIcon] }),
-        strengthText: variantSlots.strengthText({ class: [config.slots.strengthText, ui?.strengthText] }),
-        maskOverlay: variantSlots.maskOverlay({ class: [config.slots.maskOverlay, ui?.maskOverlay] }),
-        maskIconItem: variantSlots.maskIconItem({ class: [config.slots.maskIconItem, ui?.maskIconItem] })
+        strengthText: variantSlots.strengthText({ class: [config.slots.strengthText, ui?.strengthText] })
     })
-
-    /** Number of characters in the current value — used to render mask icons. */
-    const charCount = $derived(String(value ?? '').length)
 </script>
 
 <div class={classes.root}>
     <div class={classes.inputWrapper}>
-        <!--
-            Forward only Input-scoped ui slots. PasswordInput-only slots
-            (toggleBtn, meterWrapper, etc.) are kept in `classes` above.
-        -->
         <Input
             {...restProps}
             bind:ref
-            bind:value
+            value={useMaskChar ? displayValue : value}
             {size}
             {color}
             {variant}
-            type={maskIcon || isVisible ? 'text' : 'password'}
+            type={useMaskChar || isVisible ? 'text' : 'password'}
             class="w-full"
+            oninput={handleInput}
             ui={{
-                base: maskIcon && !isVisible
-                    ? [ui?.base, 'text-transparent caret-current']
-                    : ui?.base,
+                base: ui?.base,
                 root: ui?.inputRoot,
                 leading: ui?.leading,
                 leadingIcon: ui?.leadingIcon,
@@ -125,19 +159,6 @@
             }}
             trailing
         />
-
-        <!--
-            maskIcon overlay: an absolutely-positioned row of icons rendered
-            on top of the transparent input text when hidden.
-            pointer-events-none ensures all keyboard/mouse events reach the real input.
-        -->
-        {#if maskIcon && !isVisible}
-            <div class={classes.maskOverlay} aria-hidden="true">
-                {#each { length: charCount } as _}
-                    <Icon name={maskIcon} class={classes.maskIconItem} />
-                {/each}
-            </div>
-        {/if}
 
         <button
             type="button"
@@ -159,13 +180,11 @@
             <div class={classes.meterWrapper}>
                 {#each { length: 4 } as _, i}
                     {#if segmentIcon}
-                        <!-- Icon mode: four icons coloured by strength level -->
                         <Icon
                             name={segmentIcon}
                             class="{classes.meterIcon} {getSegmentTextColor(i, strength)}"
                         />
                     {:else}
-                        <!-- Bar mode (default): coloured filled rectangles -->
                         <div class="{classes.meterSegment} {getSegmentBgColor(i, strength)}"></div>
                     {/if}
                 {/each}
@@ -176,3 +195,4 @@
         </div>
     {/if}
 </div>
+
