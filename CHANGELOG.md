@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.2.2] - 2026-07-21
+
+### Added
+
+- add ref binding support to LocaleButton component
+
 ## [3.2.1] - 2026-07-21
 
 ### Added
@@ -623,7 +629,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.2.1...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.2.2...HEAD
+[3.2.2]: https://github.com/asphum/svelora/compare/v3.2.1...v3.2.2
 [3.2.1]: https://github.com/asphum/svelora/compare/v3.2.0...v3.2.1
 [3.2.0]: https://github.com/asphum/svelora/compare/v3.1.11...v3.2.0
 [3.1.11]: https://github.com/asphum/svelora/compare/v3.1.10...v3.1.11
