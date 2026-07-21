@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- _None yet._
+- Chart: cancel async `onMount` when destroyed mid-import, skip render if container disconnected, catch render errors, and keep theme defaults when merging `options` / `series` updates
 
 ## [3.1.10] - 2026-07-19
 
