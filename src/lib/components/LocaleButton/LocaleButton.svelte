@@ -20,6 +20,7 @@
     const icons = getComponentConfig('icons', iconsDefaults)
 
     let {
+        ref = $bindable(null),
         locales = [],
         locale,
         variant = config.defaultVariants.variant ?? 'outline',
@@ -163,6 +164,7 @@
     {#snippet children({ open: isOpen, props })}
         <Button
             {...props}
+            bind:ref
             {variant}
             {color}
             {size}

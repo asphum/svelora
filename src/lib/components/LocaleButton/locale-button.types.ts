@@ -77,6 +77,11 @@ export type LocaleButtonProps = Omit<HTMLAttributes<HTMLElement>, 'children' | '
     RootProps &
     ContentProps & {
         /**
+         * Bind a reference to the underlying trigger HTMLButtonElement.
+         */
+        ref?: HTMLButtonElement | null
+
+        /**
          * Available locales shown in the menu.
          */
         locales: LocaleButtonLocale[]

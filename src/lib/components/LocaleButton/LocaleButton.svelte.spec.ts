@@ -25,6 +25,25 @@ describe('LocaleButton', () => {
             await expect.element(page.getByText('TH')).toBeInTheDocument()
         })
 
+        it('should bind ref to the trigger button element', async () => {
+            let buttonRef: HTMLButtonElement | null = null
+            render(LocaleButton, {
+                locales,
+                locale: 'en',
+                portal: false,
+                get ref() {
+                    return buttonRef
+                },
+                set ref(v) {
+                    buttonRef = v
+                }
+            })
+
+            await vi.waitFor(() => {
+                expect(buttonRef).toBeInstanceOf(HTMLButtonElement)
+            })
+        })
+
         it('should use placeholder when current locale is missing', async () => {
             render(LocaleButton, {
                 locales,
