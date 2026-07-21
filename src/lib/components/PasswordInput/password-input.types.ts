@@ -1,6 +1,6 @@
 import type { ClassNameValue } from 'tailwind-merge'
 import type { InputProps } from '../Input/input.types.js'
-import type { InputSlots } from '../Input/input.variants.js'
+import type { InputSlots, InputVariantProps } from '../Input/input.variants.js'
 import type { PasswordInputSlots, PasswordInputVariantProps } from './password-input.variants.js'
 
 /**
@@ -41,6 +41,36 @@ export type PasswordInputProps = Omit<InputProps, 'type'> & {
     strengthLabels?: [string, string, string, string, string]
 
     /**
+     * Iconify icon name to use for each strength meter segment instead of the
+     * default filled bar. When set, four icons are rendered side-by-side and
+     * coloured by strength level.
+     *
+     * @example 'lucide:star'    // ★ ★ ☆ ☆
+     * @example 'lucide:shield'  // shields
+     * @example 'ph:lock-fill'   // locks
+     * @example 'lucide:circle'  // circles
+     */
+    segmentIcon?: string
+
+    /**
+     * Iconify icon name to use as the password mask overlay instead of the
+     * browser-native bullet (•). When provided, the input switches to
+     * `type="text"` with transparent text and an absolutely-positioned row
+     * of icons rendered on top — one icon per character typed.
+     *
+     * The toggle button still reveals the real text by removing the overlay
+     * and restoring the text colour.
+     *
+     * @example 'lucide:star'              // ★ ★ ★ ★ ★
+     * @example 'lucide:lock'              // 🔒 🔒 🔒 🔒 🔒
+     * @example 'ph:heart-fill'            // ♥ ♥ ♥ ♥ ♥
+     * @example 'lucide:dot'               // · · · · ·
+     * @example 'material-symbols:circle'  // ● ● ● ● ●
+     */
+    maskIcon?: string
+
+
+    /**
      * Icon to display when the password is hidden (eye-off state).
      * Supports any valid Iconify icon name.
      * @default 'lucide:eye-off'
@@ -68,10 +98,25 @@ export type PasswordInputProps = Omit<InputProps, 'type'> & {
 
     /**
      * Controls the dimensions and text size of the field.
-     * Also scales the toggle button icon to match.
+     * Also scales the toggle button icon and strength meter segments to match.
      * @default 'md'
      */
     size?: NonNullable<PasswordInputVariantProps['size']>
+
+    /**
+     * Controls the visual style of the input field.
+     * Mirrors `<Input>` variants — the value is forwarded directly to the inner Input.
+     * @default 'outline'
+     */
+    variant?: NonNullable<InputVariantProps['variant']>
+
+    /**
+     * Sets the color scheme for focus ring and highlight.
+     * Also applied to the toggle button's focus ring for visual consistency.
+     * Automatically overridden with `'error'` when inside a FormField with an error.
+     * @default 'primary'
+     */
+    color?: NonNullable<InputVariantProps['color']>
 
     /**
      * Additional CSS classes for the root element.
@@ -82,7 +127,7 @@ export type PasswordInputProps = Omit<InputProps, 'type'> & {
      * Override styles for specific slots.
      *
      * **PasswordInput slots:** `root`, `inputWrapper`, `toggleBtn`, `toggleIcon`,
-     * `meterWrapper`, `meterSegment`, `strengthText`.
+     * `meterWrapper`, `meterSegment`, `meterIcon`, `strengthText`.
      *
      * **Inner Input slots:** `base`, `inputRoot`, `leading`, `leadingIcon`,
      * `trailing`, `trailingIcon`.

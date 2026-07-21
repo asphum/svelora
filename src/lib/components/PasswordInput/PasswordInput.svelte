@@ -18,11 +18,15 @@
         showStrength = false,
         strengthFn,
         strengthLabels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'],
+        segmentIcon,
+        maskIcon,
         hideIcon = 'lucide:eye-off',
         showIcon = 'lucide:eye',
         hideLabel = 'Hide password',
         showLabel = 'Show password',
         size = config.defaultVariants.size ?? 'md',
+        color = config.defaultVariants.color ?? 'primary',
+        variant = config.defaultVariants.variant ?? 'outline',
         class: className,
         ui,
         ...restProps
@@ -50,11 +54,10 @@
     )
 
     /**
-     * Map the filled-segment index to a colour class.
-     * strength -1 → no value yet; 0 → very weak (1 red segment); …; 4 → strong (4 green segments).
-     * Segment i is "filled" when  i < strength.
+     * Returns a Tailwind `bg-*` colour class for filled bar segments.
+     * Segment i is "filled" when i < strength.
      */
-    function getSegmentColor(index: number, currentStrength: number): string {
+    function getSegmentBgColor(index: number, currentStrength: number): string {
         if (currentStrength <= 0 || index >= currentStrength) {
             return 'bg-surface-200 dark:bg-surface-700'
         }
@@ -64,7 +67,20 @@
         return 'bg-success-500'                              // 4 filled — strong
     }
 
-    const variantSlots = $derived(passwordInputVariants({ size }))
+    /**
+     * Returns a Tailwind `text-*` colour class for icon mode segments.
+     */
+    function getSegmentTextColor(index: number, currentStrength: number): string {
+        if (currentStrength <= 0 || index >= currentStrength) {
+            return 'text-surface-200 dark:text-surface-700'
+        }
+        if (currentStrength === 1) return 'text-error-500'
+        if (currentStrength === 2) return 'text-warning-500'
+        if (currentStrength === 3) return 'text-success-400'
+        return 'text-success-500'
+    }
+
+    const variantSlots = $derived(passwordInputVariants({ size, color, variant }))
     const classes = $derived({
         root: variantSlots.root({ class: [config.slots.root, className, ui?.root] }),
         inputWrapper: variantSlots.inputWrapper({ class: [config.slots.inputWrapper, ui?.inputWrapper] }),
@@ -72,25 +88,35 @@
         toggleIcon: variantSlots.toggleIcon({ class: [config.slots.toggleIcon, ui?.toggleIcon] }),
         meterWrapper: variantSlots.meterWrapper({ class: [config.slots.meterWrapper, ui?.meterWrapper] }),
         meterSegment: variantSlots.meterSegment({ class: [config.slots.meterSegment, ui?.meterSegment] }),
-        strengthText: variantSlots.strengthText({ class: [config.slots.strengthText, ui?.strengthText] })
+        meterIcon: variantSlots.meterIcon({ class: [config.slots.meterIcon, ui?.meterIcon] }),
+        strengthText: variantSlots.strengthText({ class: [config.slots.strengthText, ui?.strengthText] }),
+        maskOverlay: variantSlots.maskOverlay({ class: [config.slots.maskOverlay, ui?.maskOverlay] }),
+        maskIconItem: variantSlots.maskIconItem({ class: [config.slots.maskIconItem, ui?.maskIconItem] })
     })
+
+    /** Number of characters in the current value — used to render mask icons. */
+    const charCount = $derived(String(value ?? '').length)
 </script>
 
 <div class={classes.root}>
     <div class={classes.inputWrapper}>
         <!--
-            Pass only Input-scoped ui slots (base, root, leading, trailing, …).
-            PasswordInput-only slots (toggleBtn, meterWrapper, etc.) are kept separate.
+            Forward only Input-scoped ui slots. PasswordInput-only slots
+            (toggleBtn, meterWrapper, etc.) are kept in `classes` above.
         -->
         <Input
             {...restProps}
             bind:ref
             bind:value
             {size}
-            type={isVisible ? 'text' : 'password'}
+            {color}
+            {variant}
+            type={maskIcon || isVisible ? 'text' : 'password'}
             class="w-full"
             ui={{
-                base: ui?.base,
+                base: maskIcon && !isVisible
+                    ? [ui?.base, 'text-transparent caret-current']
+                    : ui?.base,
                 root: ui?.inputRoot,
                 leading: ui?.leading,
                 leadingIcon: ui?.leadingIcon,
@@ -99,6 +125,19 @@
             }}
             trailing
         />
+
+        <!--
+            maskIcon overlay: an absolutely-positioned row of icons rendered
+            on top of the transparent input text when hidden.
+            pointer-events-none ensures all keyboard/mouse events reach the real input.
+        -->
+        {#if maskIcon && !isVisible}
+            <div class={classes.maskOverlay} aria-hidden="true">
+                {#each { length: charCount } as _}
+                    <Icon name={maskIcon} class={classes.maskIconItem} />
+                {/each}
+            </div>
+        {/if}
 
         <button
             type="button"
@@ -119,7 +158,16 @@
         <div>
             <div class={classes.meterWrapper}>
                 {#each { length: 4 } as _, i}
-                    <div class="{classes.meterSegment} {getSegmentColor(i, strength)}"></div>
+                    {#if segmentIcon}
+                        <!-- Icon mode: four icons coloured by strength level -->
+                        <Icon
+                            name={segmentIcon}
+                            class="{classes.meterIcon} {getSegmentTextColor(i, strength)}"
+                        />
+                    {:else}
+                        <!-- Bar mode (default): coloured filled rectangles -->
+                        <div class="{classes.meterSegment} {getSegmentBgColor(i, strength)}"></div>
+                    {/if}
                 {/each}
             </div>
             <p class={classes.strengthText}>
