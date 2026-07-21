@@ -26,6 +26,7 @@
         variant = config.defaultVariants.variant ?? 'outline',
         color = config.defaultVariants.color ?? 'surface',
         size = config.defaultVariants.size ?? 'md',
+        fit = config.defaultVariants.fit ?? false,
         loading = false,
         disabled = false,
         block = false,
@@ -70,7 +71,8 @@
     }: Props = $props()
 
     const classes = $derived.by(() => {
-        const slots = localeButtonVariants({ size })
+        const slots = localeButtonVariants({ size, fit })
+
         return {
             base: slots.base({ class: [config.slots.base, className, ui?.base] }),
             triggerLabel: slots.triggerLabel({

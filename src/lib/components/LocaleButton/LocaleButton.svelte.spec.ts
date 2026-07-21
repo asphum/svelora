@@ -44,6 +44,22 @@ describe('LocaleButton', () => {
             })
         })
 
+        it('should apply w-fit min-w-0 class to menu when fit is true', async () => {
+            render(LocaleButton, {
+                locales,
+                locale: 'en',
+                open: true,
+                fit: true,
+                portal: false
+            })
+
+            await vi.waitFor(() => {
+                const menu = document.querySelector('[role="menu"]')
+                expect(menu?.className).toContain('w-fit')
+                expect(menu?.className).toContain('min-w-0')
+            })
+        })
+
         it('should use placeholder when current locale is missing', async () => {
             render(LocaleButton, {
                 locales,

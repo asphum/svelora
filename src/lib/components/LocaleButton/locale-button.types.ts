@@ -110,6 +110,12 @@ export type LocaleButtonProps = Omit<HTMLAttributes<HTMLElement>, 'children' | '
         size?: NonNullable<ButtonVariantProps['size']>
 
         /**
+         * Shrinks the dropdown menu width to fit its content (`w-fit min-w-0`).
+         * @default false
+         */
+        fit?: boolean
+
+        /**
          * Renders a loading spinner and disables interaction.
          * @default false
          */

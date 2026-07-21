@@ -7,7 +7,7 @@ export const localeButtonVariants = tv({
         triggerLabel: 'truncate',
         triggerIcon: 'shrink-0',
         triggerChevron: 'shrink-0 opacity-70',
-        menu: 'min-w-52 space-y-1 rounded-xl p-1',
+        menu: 'space-y-1 rounded-xl p-1',
         menuLabel:
             'px-3 pt-2 pb-1 text-xs font-semibold tracking-[0.14em] text-on-surface-variant uppercase',
         item: [
@@ -25,6 +25,14 @@ export const localeButtonVariants = tv({
         itemIndicator: 'shrink-0 text-primary'
     },
     variants: {
+        fit: {
+            true: {
+                menu: 'w-fit min-w-0'
+            },
+            false: {
+                menu: 'min-w-52'
+            }
+        },
         size: {
             xs: {
                 triggerIcon: 'size-3.5',
@@ -48,7 +56,9 @@ export const localeButtonVariants = tv({
             }
         }
     },
-    defaultVariants: {}
+    defaultVariants: {
+        fit: false
+    }
 })
 
 export type LocaleButtonVariantProps = VariantProps<typeof localeButtonVariants>
