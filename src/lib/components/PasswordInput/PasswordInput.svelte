@@ -19,7 +19,7 @@
         strengthFn,
         strengthLabels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'],
         segmentIcon,
-        maskChar = '✦',
+        maskChar,
         hideIcon = 'lucide:eye-off',
         showIcon = 'lucide:eye',
         hideLabel = 'Hide password',
@@ -29,6 +29,7 @@
         variant = config.defaultVariants.variant ?? 'outline',
         class: className,
         ui,
+        name,
         ...restProps
     }: Props = $props()
 
@@ -38,7 +39,7 @@
         isVisible = !isVisible
     }
 
-    const useMaskChar = $derived(maskChar && maskChar !== '•' && !isVisible)
+    const useMaskChar = $derived(!!maskChar && maskChar !== '•' && !isVisible)
 
     let displayValue = $state('')
 
@@ -57,30 +58,55 @@
             const newStr = input.value
             const oldVal = String(value ?? '')
             const char = maskChar ?? '✦'
-            const oldMask = char.repeat(oldVal.length)
 
-            const cursorPos = input.selectionStart ?? newStr.length
-            const delta = newStr.length - oldMask.length
+            let prefixCount = 0
+            let suffixCount = 0
+            let inserted = ''
 
-            if (delta > 0) {
-                const inserted = newStr.slice(cursorPos - delta, cursorPos)
-                const start = cursorPos - delta
-                value = oldVal.slice(0, start) + inserted + oldVal.slice(start)
-            } else if (delta < 0) {
-                const delCount = -delta
-                value = oldVal.slice(0, cursorPos) + oldVal.slice(cursorPos + delCount)
-            } else if (cursorPos > 0) {
-                const inserted = newStr[cursorPos - 1]
-                if (inserted && inserted !== char) {
-                    value = oldVal.slice(0, cursorPos - 1) + inserted + oldVal.slice(cursorPos)
+            // Check if user inserted non-mask text (typing or pasting)
+            const firstNonMask = newStr.indexOf(char === '' ? '✦' : char)
+            const hasMaskChars = firstNonMask !== -1
+
+            if (!hasMaskChars) {
+                // All mask chars were replaced/deleted
+                inserted = newStr
+                prefixCount = 0
+                suffixCount = 0
+            } else {
+                // Count leading mask chars
+                while (prefixCount < newStr.length && newStr[prefixCount] === char) {
+                    prefixCount++
+                }
+                // Count trailing mask chars
+                while (
+                    suffixCount < newStr.length - prefixCount &&
+                    newStr[newStr.length - 1 - suffixCount] === char
+                ) {
+                    suffixCount++
+                }
+                // Extract inserted text between prefix and suffix mask chars
+                inserted = newStr.slice(prefixCount, newStr.length - suffixCount)
+
+                // Deletion only case (no inserted text)
+                if (inserted === '' && newStr.length < oldVal.length) {
+                    const cursorPos = input.selectionStart ?? prefixCount
+                    prefixCount = cursorPos
+                    suffixCount = newStr.length - cursorPos
                 }
             }
+
+            const head = oldVal.slice(0, prefixCount)
+            const tail = oldVal.slice(Math.max(prefixCount, oldVal.length - suffixCount))
+
+            value = head + inserted + tail
 
             const updatedVal = String(value ?? '')
             displayValue = char.repeat(updatedVal.length)
             input.value = displayValue
+
+            const newCursorPos = prefixCount + inserted.length
             try {
-                input.setSelectionRange(cursorPos, cursorPos)
+                input.setSelectionRange(newCursorPos, newCursorPos)
             } catch {
                 // Ignore if not focused
             }
@@ -138,10 +164,14 @@
 </script>
 
 <div class={classes.root}>
+    {#if useMaskChar && name}
+        <input type="hidden" {name} value={value ?? ''} />
+    {/if}
     <div class={classes.inputWrapper}>
         <Input
             {...restProps}
             bind:ref
+            name={useMaskChar ? undefined : name}
             value={useMaskChar ? displayValue : value}
             {size}
             {color}
