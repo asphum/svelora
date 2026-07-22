@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _None yet._
 
+## [3.2.7] - 2026-07-22
+
+### Changed
+
+- prepare public release
+
 ## [3.2.6] - 2026-07-22
 
 ### Changed
@@ -657,7 +663,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS 4 + Tailwind Variants integration
 - bits-ui and Vaul Svelte headless primitives
 
-[Unreleased]: https://github.com/asphum/svelora/compare/v3.2.6...HEAD
+[Unreleased]: https://github.com/asphum/svelora/compare/v3.2.7...HEAD
+[3.2.7]: https://github.com/asphum/svelora/compare/v3.2.6...v3.2.7
 [3.2.6]: https://github.com/asphum/svelora/compare/v3.2.5...v3.2.6
 [3.2.5]: https://github.com/asphum/svelora/compare/v3.2.4...v3.2.5
 [3.2.4]: https://github.com/asphum/svelora/compare/v3.2.3...v3.2.4
