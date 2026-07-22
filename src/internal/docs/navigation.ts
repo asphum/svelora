@@ -585,6 +585,14 @@ export const docsComponentGroups: DocsGroup[] = [
                 icon: 'lucide:square-stack'
             },
             {
+                title: 'Lightbox',
+                href: '/docs/components/lightbox',
+                legacyHref: '/lightbox',
+                icon: 'lucide:image-upscale',
+                description:
+                    'Full-screen image viewer popover with gallery navigation, zoom, rotation, and download.'
+            },
+            {
                 title: 'Confirm Dialog',
                 href: '/docs/components/confirm-dialog',
                 legacyHref: '/confirm-dialog',

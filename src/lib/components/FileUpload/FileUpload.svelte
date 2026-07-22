@@ -12,7 +12,7 @@
     import { useFormField, useFormFieldEmit } from '../../hooks/useFormField/index.js'
     import { useSortable } from '../../hooks/useSortable/index.js'
     import Icon from '../Icon/Icon.svelte'
-    import Modal from '../Modal/Modal.svelte'
+    import Lightbox from '../Lightbox/Lightbox.svelte'
     import { fileUploadDefaults, fileUploadVariants } from './file-upload.variants.js'
 
     const config = getComponentConfig('fileUpload', fileUploadDefaults)
@@ -713,28 +713,22 @@
 </div>
 
 {#if imagePreview}
-    <Modal
+    {@const imageFilesList = value.filter(isImageFile)}
+    {@const currentPf = previewFile}
+    {@const previewIndex = currentPf ? Math.max(0, imageFilesList.findIndex((f) => fileKey(f) === fileKey(currentPf))) : 0}
+    <Lightbox
         bind:open={previewOpen}
         onOpenChange={(v) => {
             if (!v) previewFile = null
         }}
-        title={previewFile?.name ?? ''}
-        description={previewFile ? formatFileSize(previewFile.size) : ''}
-        ui={{
-            content: ['max-w-3xl overflow-hidden', classes.previewContent],
-            body: ['p-0', classes.previewBody]
+        images={imageFilesList.map((f) => ({
+            src: getObjectUrl(f),
+            title: f.name,
+            description: formatFileSize(f.size)
+        }))}
+        index={previewIndex}
+        onIndexChange={(i) => {
+            if (imageFilesList[i]) previewFile = imageFilesList[i]
         }}
-    >
-        {#snippet body()}
-            {#if previewFile}
-                <div class="flex items-center justify-center bg-surface-container-low">
-                    <img
-                        src={getObjectUrl(previewFile)}
-                        alt={previewFile.name}
-                        class="max-h-[75vh] max-w-full"
-                    />
-                </div>
-            {/if}
-        {/snippet}
-    </Modal>
+    />
 {/if}
