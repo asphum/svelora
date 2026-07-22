@@ -17,6 +17,8 @@ export const fileUploadVariants = tv({
         files: '',
         file: 'relative',
         fileLeading: 'shrink-0',
+        fileHandle:
+            'shrink-0 text-on-surface-variant/70 hover:text-on-surface cursor-grab active:cursor-grabbing p-0.5 transition-colors',
         fileWrapper: 'flex flex-col min-w-0',
         fileName: 'text-on-surface truncate',
         fileSize: 'text-on-surface-variant truncate',

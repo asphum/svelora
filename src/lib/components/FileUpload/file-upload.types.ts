@@ -129,6 +129,29 @@ export type FileUploadProps = Omit<HTMLAttributes<HTMLElement>, 'class' | 'child
     layout?: NonNullable<FileUploadVariantProps['layout']>
 
     /**
+     * Enable drag-and-drop file reordering when `multiple` is true.
+     * @default true (when multiple is true)
+     */
+    sortable?: boolean
+
+    /**
+     * Callback fired when files are reordered via drag-and-drop.
+     */
+    onReorder?: (files: File[]) => void
+
+    /**
+     * Display a drag handle icon on sortable file items.
+     * @default true
+     */
+    sortableHandle?: boolean
+
+    /**
+     * Custom drag handle icon.
+     * @default Uses `icons.dragHandle` from config ('lucide:grip-vertical')
+     */
+    dragHandleIcon?: string
+
+    /**
      * Whether the upload area is disabled.
      * @default false
      */

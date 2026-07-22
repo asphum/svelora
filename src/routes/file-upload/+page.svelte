@@ -68,22 +68,21 @@
     <div class="space-y-2">
         <h1 class="text-2xl font-bold">FileUpload</h1>
         <p class="text-on-surface-variant">
-            Upload files via drag-and-drop or file dialog with preview and removal. This is for
-            <strong>OS file drops</strong> — to reorder UI lists use
-            <a href="/docs/hooks/use-sortable" class="text-primary underline">useSortable</a>
-            or
-            <a href="/docs/components/sortable-list" class="text-primary underline">SortableList</a>.
+            Upload files via drag-and-drop or file dialog with preview, removal, single or multiple upload modes, and built-in drag-and-drop file reordering (`sortable`).
         </p>
     </div>
 
-    <!-- Basic -->
+    <!-- Basic Single Upload -->
     <section class="space-y-3">
         <h2 id="Basic" class="text-lg font-semibold">
-<a href="#Basic" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
-                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
-                        Basic
-                    </a>
-</h2>
+            <a href="#Basic" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
+                <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                Single Upload Mode
+            </a>
+        </h2>
+        <p class="text-sm text-on-surface-variant">
+            By default (<code class="rounded bg-surface-container-highest px-1">multiple=false</code>), selecting or dropping a new file replaces the previously selected file.
+        </p>
         <div class="rounded-lg bg-surface-container-high p-4">
             <FileUpload bind:value={basicFiles} />
             <p class="mt-3 text-sm text-on-surface-variant">
@@ -92,20 +91,24 @@
         </div>
     </section>
 
-    <!-- Multiple Files -->
+    <!-- Multiple Files & Drag Reorder -->
     <section class="space-y-3">
         <h2 id="Multiple-Files" class="text-lg font-semibold">
-<a href="#Multiple-Files" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
-                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
-                        Multiple Files
-                    </a>
-</h2>
+            <a href="#Multiple-Files" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
+                <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                Multiple Files & Drag-and-Drop Reordering
+            </a>
+        </h2>
+        <p class="text-sm text-on-surface-variant">
+            Set <code class="rounded bg-surface-container-highest px-1">multiple</code> to allow accumulating multiple files. Built-in <code class="rounded bg-surface-container-highest px-1">sortable</code> enables drag handle handles to reorder files in place.
+        </p>
         <div class="rounded-lg bg-surface-container-high p-4">
             <FileUpload
                 bind:value={multipleFiles}
                 multiple
+                sortable
                 label="Drop multiple files here"
-                description="Upload as many files as you need"
+                description="Upload multiple files and drag handles to reorder"
             />
         </div>
     </section>

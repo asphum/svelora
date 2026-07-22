@@ -635,4 +635,26 @@ describe('FileUpload', () => {
             expect(getInput().name).toBe('avatar')
         })
     })
+
+    // ==================== SORTABLE REORDERING ====================
+
+    describe('sortable reordering', () => {
+        it('should render drag handles when multiple=true, sortable=true, and files > 1', async () => {
+            const files = [makeFile('a.txt'), makeFile('b.txt')]
+            render(FileUpload, { value: files, multiple: true, sortable: true })
+
+            await vi.waitFor(() => {
+                const handles = document.querySelectorAll('[data-sortable-handle]')
+                expect(handles.length).toBe(2)
+            })
+        })
+
+        it('should not render drag handles when sortable=false', async () => {
+            const files = [makeFile('a.txt'), makeFile('b.txt')]
+            render(FileUpload, { value: files, multiple: true, sortable: false })
+
+            const handles = document.querySelectorAll('[data-sortable-handle]')
+            expect(handles.length).toBe(0)
+        })
+    })
 })

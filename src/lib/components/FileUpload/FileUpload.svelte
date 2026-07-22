@@ -10,6 +10,7 @@
     import Button from '../Button/Button.svelte'
     import { getComponentConfig, iconsDefaults } from '../../config.js'
     import { useFormField, useFormFieldEmit } from '../../hooks/useFormField/index.js'
+    import { useSortable } from '../../hooks/useSortable/index.js'
     import Icon from '../Icon/Icon.svelte'
     import Modal from '../Modal/Modal.svelte'
     import { fileUploadDefaults, fileUploadVariants } from './file-upload.variants.js'
@@ -35,6 +36,10 @@
         size = config.defaultVariants.size,
         variant = config.defaultVariants.variant,
         layout = config.defaultVariants.layout,
+        sortable = true,
+        onReorder,
+        sortableHandle = true,
+        dragHandleIcon = icons.dragHandle ?? 'lucide:grip-vertical',
         disabled = false,
         loading = false,
         loadingIcon = icons.loading,
@@ -95,6 +100,26 @@
     const showFilesInside = $derived(
         layout === 'grid' && !multiple && value.length > 0 && preview && variant === 'area'
     )
+    const isSortableActive = $derived(sortable && multiple && value.length > 1 && !isDisabled)
+
+    const sortableInstance = useSortable({
+        getItems: () => value,
+        getId: (file) => fileKey(file),
+        axis: () => (layout === 'grid' ? 'grid' : 'vertical'),
+        handle: () => (sortableHandle ? '[data-sortable-handle]' : undefined),
+        disabled: () => !isSortableActive,
+        onReorder(nextFiles) {
+            value = nextFiles
+            onValueChange?.(nextFiles)
+            onReorder?.(nextFiles)
+            emit.onChange()
+        }
+    })
+
+    function sortableItem(node: HTMLElement, params: { index: number; item: File }) {
+        if (!isSortableActive) return
+        return sortableInstance.item(node, params)
+    }
 
     // Pass booleans directly so compound variants with `false` values match correctly
     const slots = $derived(
@@ -124,6 +149,7 @@
             files: slots.files({ class: [config.slots.files, u.files] }),
             file: slots.file({ class: [config.slots.file, u.file] }),
             fileLeading: slots.fileLeading({ class: [config.slots.fileLeading, u.fileLeading] }),
+            fileHandle: slots.fileHandle({ class: [config.slots.fileHandle, u.fileHandle] }),
             fileWrapper: slots.fileWrapper({ class: [config.slots.fileWrapper, u.fileWrapper] }),
             fileName: slots.fileName({ class: [config.slots.fileName, u.fileName] }),
             fileSize: slots.fileSize({ class: [config.slots.fileSize, u.fileSize] }),
@@ -498,115 +524,161 @@
                     onclick={clearAll}
                 />
             </div>
-            <div class={classes.files}>
-                {#each value as file, i (fileKey(file))}
-                    {#if fileSlot}
-                        {@render fileSlot({ file, index: i, remove: () => removeFile(i) })}
-                    {:else if layout === 'grid'}
-                        <!-- Grid item: no overflow-hidden on outer so close button can escape -->
-                        <div class={classes.file}>
-                            {#if isImageFile(file)}
-                                {#if imagePreview}
+            <sortableInstance.Provider>
+                <div use:sortableInstance.container class={classes.files}>
+                    {#each value as file, i (fileKey(file))}
+                        {#if fileSlot}
+                            <div
+                                use:sortableItem={{ index: i, item: file }}
+                                role="listitem"
+                                class={isSortableActive && sortableInstance.draggingId === fileKey(file) ? 'opacity-40' : undefined}
+                            >
+                                {@render fileSlot({ file, index: i, remove: () => removeFile(i) })}
+                            </div>
+                        {:else if layout === 'grid'}
+                            <!-- Grid item: no overflow-hidden on outer so close button can escape -->
+                            <div
+                                use:sortableItem={{ index: i, item: file }}
+                                role="listitem"
+                                class={[
+                                    classes.file,
+                                    isSortableActive &&
+                                        sortableInstance.draggingId === fileKey(file) &&
+                                        'opacity-40'
+                                ]}
+                            >
+                                {#if isSortableActive && sortableHandle}
                                     <button
-                                        class="group relative size-full cursor-zoom-in overflow-hidden rounded-[7px]"
-                                        onclick={() => openPreview(file)}
-                                        aria-label="Preview {file.name}"
+                                        type="button"
+                                        data-sortable-handle
+                                        class="absolute top-1.5 left-1.5 z-10 flex size-6 items-center justify-center rounded-full border border-outline-variant/60 bg-surface/90 text-on-surface-variant shadow-xs backdrop-blur-sm transition-colors hover:text-on-surface cursor-grab active:cursor-grabbing"
+                                        aria-label="Reorder {file.name}"
                                     >
-                                        <img
-                                            src={getObjectUrl(file)}
-                                            alt={file.name}
-                                            class="size-full object-cover transition-[filter] duration-200 group-hover:brightness-75"
-                                        />
-                                        <div
-                                            class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                                        >
-                                            <Icon
-                                                name={icons.zoomIn}
-                                                class="size-6 text-white drop-shadow-md"
-                                            />
-                                        </div>
+                                        <Icon name={dragHandleIcon} class="size-3.5" />
                                     </button>
-                                {:else}
-                                    <div class="size-full overflow-hidden rounded-[7px]">
-                                        <img
-                                            src={getObjectUrl(file)}
-                                            alt={file.name}
-                                            class="size-full object-cover"
-                                        />
-                                    </div>
                                 {/if}
-                            {:else}
-                                <div
-                                    class="flex size-full flex-col items-center justify-center gap-1.5 overflow-hidden rounded-[7px] bg-surface-container-low p-3 text-on-surface-variant"
-                                >
-                                    <Icon name={fileIcon} class="size-8 shrink-0" />
-                                    <span class="w-full truncate text-center text-xs"
-                                        >{file.name}</span
-                                    >
-                                </div>
-                            {/if}
-                            <div class={classes.fileTrailing}>
-                                <Button
-                                    variant="solid"
-                                    color="error"
-                                    size="xs"
-                                    icon={icons.close}
-                                    square
-                                    ui={{
-                                        base: 'size-5 rounded-full border-2 border-surface p-0 shadow-sm'
-                                    }}
-                                    onclick={() => removeFile(i)}
-                                    aria-label="Remove {file.name}"
-                                />
-                            </div>
-                        </div>
-                    {:else}
-                        <!-- List item -->
-                        <div class={classes.file}>
-                            <div class={classes.fileLeading}>
                                 {#if isImageFile(file)}
-                                    <img
-                                        src={getObjectUrl(file)}
-                                        alt={file.name}
-                                        class="size-8 shrink-0 rounded object-cover"
-                                    />
-                                {:else}
-                                    <Icon
-                                        name={fileIcon}
-                                        class="size-4 shrink-0 text-on-surface-variant"
-                                    />
-                                {/if}
-                            </div>
-                            <div class={classes.fileWrapper}>
-                                <span class={classes.fileName}>{file.name}</span>
-                                <span class={classes.fileSize}>{formatFileSize(file.size)}</span>
-                            </div>
-                            <div class={classes.fileTrailing}>
-                                <div class="flex items-center gap-0.5">
-                                    {#if isImageFile(file) && imagePreview}
-                                        <Button
-                                            variant="ghost"
-                                            {size}
-                                            icon={icons.zoomIn}
-                                            square
+                                    {#if imagePreview}
+                                        <button
+                                            class="group relative size-full cursor-zoom-in overflow-hidden rounded-[7px]"
                                             onclick={() => openPreview(file)}
                                             aria-label="Preview {file.name}"
-                                        />
+                                        >
+                                            <img
+                                                src={getObjectUrl(file)}
+                                                alt={file.name}
+                                                class="size-full object-cover transition-[filter] duration-200 group-hover:brightness-75"
+                                            />
+                                            <div
+                                                class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                                            >
+                                                <Icon
+                                                    name={icons.zoomIn}
+                                                    class="size-6 text-white drop-shadow-md"
+                                                />
+                                            </div>
+                                        </button>
+                                    {:else}
+                                        <div class="size-full overflow-hidden rounded-[7px]">
+                                            <img
+                                                src={getObjectUrl(file)}
+                                                alt={file.name}
+                                                class="size-full object-cover"
+                                            />
+                                        </div>
                                     {/if}
+                                {:else}
+                                    <div
+                                        class="flex size-full flex-col items-center justify-center gap-1.5 overflow-hidden rounded-[7px] bg-surface-container-low p-3 text-on-surface-variant"
+                                    >
+                                        <Icon name={fileIcon} class="size-8 shrink-0" />
+                                        <span class="w-full truncate text-center text-xs"
+                                            >{file.name}</span
+                                        >
+                                    </div>
+                                {/if}
+                                <div class={classes.fileTrailing}>
                                     <Button
-                                        variant="ghost"
-                                        {size}
+                                        variant="solid"
+                                        color="error"
+                                        size="xs"
                                         icon={icons.close}
                                         square
+                                        ui={{
+                                            base: 'size-5 rounded-full border-2 border-surface p-0 shadow-sm'
+                                        }}
                                         onclick={() => removeFile(i)}
                                         aria-label="Remove {file.name}"
                                     />
                                 </div>
                             </div>
-                        </div>
-                    {/if}
-                {/each}
-            </div>
+                        {:else}
+                            <!-- List item -->
+                            <div
+                                use:sortableItem={{ index: i, item: file }}
+                                role="listitem"
+                                class={[
+                                    classes.file,
+                                    isSortableActive &&
+                                        sortableInstance.draggingId === fileKey(file) &&
+                                        'opacity-40'
+                                ]}
+                            >
+                                {#if isSortableActive && sortableHandle}
+                                    <button
+                                        type="button"
+                                        data-sortable-handle
+                                        class={classes.fileHandle}
+                                        aria-label="Reorder {file.name}"
+                                    >
+                                        <Icon name={dragHandleIcon} class="size-4" />
+                                    </button>
+                                {/if}
+                                <div class={classes.fileLeading}>
+                                    {#if isImageFile(file)}
+                                        <img
+                                            src={getObjectUrl(file)}
+                                            alt={file.name}
+                                            class="size-8 shrink-0 rounded object-cover"
+                                        />
+                                    {:else}
+                                        <Icon
+                                            name={fileIcon}
+                                            class="size-4 shrink-0 text-on-surface-variant"
+                                        />
+                                    {/if}
+                                </div>
+                                <div class={classes.fileWrapper}>
+                                    <span class={classes.fileName}>{file.name}</span>
+                                    <span class={classes.fileSize}>{formatFileSize(file.size)}</span>
+                                </div>
+                                <div class={classes.fileTrailing}>
+                                    <div class="flex items-center gap-0.5">
+                                        {#if isImageFile(file) && imagePreview}
+                                            <Button
+                                                variant="ghost"
+                                                {size}
+                                                icon={icons.zoomIn}
+                                                square
+                                                onclick={() => openPreview(file)}
+                                                aria-label="Preview {file.name}"
+                                            />
+                                        {/if}
+                                        <Button
+                                            variant="ghost"
+                                            {size}
+                                            icon={icons.close}
+                                            square
+                                            onclick={() => removeFile(i)}
+                                            aria-label="Remove {file.name}"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        {/if}
+                    {/each}
+                </div>
+            </sortableInstance.Provider>
         {/if}
     {/if}
 </div>

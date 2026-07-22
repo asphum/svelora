@@ -58,7 +58,8 @@ export const iconsDefaults = {
     star: 'lucide:star',
     sortAsc: 'lucide:chevron-up',
     sortDesc: 'lucide:chevron-down',
-    sortDefault: 'lucide:chevrons-up-down'
+    sortDefault: 'lucide:chevrons-up-down',
+    dragHandle: 'lucide:grip-vertical'
 }
 
 // ==================== TYPES ====================
