@@ -113,6 +113,44 @@
         </div>
     </section>
 
+    <!-- Reordering (Drag & Drop) -->
+    <section class="space-y-3">
+        <h2 id="Reordering-Drag-and-Drop" class="text-lg font-semibold">
+            <a href="#Reordering-Drag-and-Drop" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
+                <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                Reordering (Drag & Drop)
+            </a>
+        </h2>
+        <p class="text-sm text-on-surface-variant">
+            Enable <code class="rounded bg-surface-container-highest px-1">sortable</code> to allow users to reorder selected files by dragging the handle. Works seamlessly on both <code class="rounded bg-surface-container-highest px-1">list</code> (vertical rows) and <code class="rounded bg-surface-container-highest px-1">grid</code> (2D image tiles) layouts.
+        </p>
+        <div class="grid grid-cols-1 gap-4 rounded-lg bg-surface-container-high p-4 sm:grid-cols-2">
+            <div class="space-y-2">
+                <p class="text-sm font-medium text-on-surface-variant">List Layout Sortable</p>
+                <FileUpload
+                    bind:value={multipleFiles}
+                    multiple
+                    sortable
+                    layout="list"
+                    label="Drop list files"
+                    description="Drag vertical handles to reorder"
+                />
+            </div>
+            <div class="space-y-2">
+                <p class="text-sm font-medium text-on-surface-variant">Grid Layout Sortable</p>
+                <FileUpload
+                    bind:value={gridMultipleFiles}
+                    multiple
+                    sortable
+                    layout="grid"
+                    accept="image/*"
+                    label="Drop grid images"
+                    description="Drag tile floating handles to reorder"
+                />
+            </div>
+        </div>
+    </section>
+
     <!-- Variants -->
     <section class="space-y-3">
         <h2 id="Variants" class="text-lg font-semibold">
