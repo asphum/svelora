@@ -116,9 +116,38 @@
         }
     })
 
-    function sortableItem(node: HTMLElement, params: { index: number; item: File }) {
-        if (!isSortableActive) return
-        return sortableInstance.item(node, params)
+    function sortableItem(
+        node: HTMLElement,
+        params: { index: number; item: File; active: boolean }
+    ) {
+        let handle: ReturnType<typeof sortableInstance.item> | undefined
+
+        function sync(p: { index: number; item: File; active: boolean }) {
+            if (p.active) {
+                if (!handle) {
+                    handle = sortableInstance.item(node, { index: p.index, item: p.item })
+                } else {
+                    handle.update?.({ index: p.index, item: p.item })
+                }
+            } else if (handle) {
+                handle.destroy?.()
+                handle = undefined
+            }
+        }
+
+        sync(params)
+
+        return {
+            update(newParams: { index: number; item: File; active: boolean }) {
+                sync(newParams)
+            },
+            destroy() {
+                if (handle) {
+                    handle.destroy?.()
+                    handle = undefined
+                }
+            }
+        }
     }
 
     // Pass booleans directly so compound variants with `false` values match correctly
@@ -529,7 +558,7 @@
                     {#each value as file, i (fileKey(file))}
                         {#if fileSlot}
                             <div
-                                use:sortableItem={{ index: i, item: file }}
+                                use:sortableItem={{ index: i, item: file, active: isSortableActive }}
                                 role="listitem"
                                 class={isSortableActive && sortableInstance.draggingId === fileKey(file) ? 'opacity-40' : undefined}
                             >
@@ -538,7 +567,7 @@
                         {:else if layout === 'grid'}
                             <!-- Grid item: no overflow-hidden on outer so close button can escape -->
                             <div
-                                use:sortableItem={{ index: i, item: file }}
+                                use:sortableItem={{ index: i, item: file, active: isSortableActive }}
                                 role="listitem"
                                 class={[
                                     classes.file,
@@ -615,7 +644,7 @@
                         {:else}
                             <!-- List item -->
                             <div
-                                use:sortableItem={{ index: i, item: file }}
+                                use:sortableItem={{ index: i, item: file, active: isSortableActive }}
                                 role="listitem"
                                 class={[
                                     classes.file,

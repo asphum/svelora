@@ -649,12 +649,22 @@ describe('FileUpload', () => {
             })
         })
 
-        it('should not render drag handles when sortable=false', async () => {
-            const files = [makeFile('a.txt'), makeFile('b.txt')]
-            render(FileUpload, { value: files, multiple: true, sortable: false })
+        it('should enable drag handles for all files when adding 1 file first and appending a 2nd file later', async () => {
+            const file1 = makeFile('file1.txt')
+            const file2 = makeFile('file2.txt')
 
-            const handles = document.querySelectorAll('[data-sortable-handle]')
-            expect(handles.length).toBe(0)
+            render(FileUpload, { value: [file1], multiple: true, sortable: true })
+
+            // With 1 file, no handles should be active
+            expect(document.querySelectorAll('[data-sortable-handle]').length).toBe(0)
+
+            // Simulate user adding 2nd file dynamically
+            await simulateFileInput([file2])
+
+            await vi.waitFor(() => {
+                const handles = document.querySelectorAll('[data-sortable-handle]')
+                expect(handles.length).toBe(2)
+            })
         })
     })
 })
