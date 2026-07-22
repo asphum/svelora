@@ -500,11 +500,14 @@ const locales: LocaleButtonLocale[] = [
 
     <section class="space-y-3">
         <h2 id="Sizes" class="text-lg font-semibold">
-<a href="#Sizes" class="group relative inline-flex items-center no-underline hover:underline focus:outline-none focus-visible:underline w-fit">
-                        <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
-                        Sizes
-                    </a>
-</h2>
+            <a href="#Sizes" class="group relative inline-flex items-center hover:underline focus:outline-none focus-visible:underline w-fit">
+                <span class="absolute -left-5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 text-primary/60 font-normal text-base leading-none" aria-hidden="true">#</span>
+                Sizes
+            </a>
+        </h2>
+        <p class="text-sm text-on-surface-variant">
+            Control trigger button and dropdown menu item scaling from <code class="rounded bg-surface-container-highest px-1">xs</code> to <code class="rounded bg-surface-container-highest px-1">xl</code>. Font sizes, item padding, badge indicators, and icons scale proportionally.
+        </p>
         <div class="flex flex-wrap items-end gap-3 rounded-lg bg-surface-container-high p-4">
             {#each sizes as size (size)}
                 <LocaleButton
@@ -518,6 +521,7 @@ const locales: LocaleButtonLocale[] = [
             {/each}
         </div>
     </section>
+
 
     <section class="space-y-3">
         <h2 id="Custom-Trigger" class="text-lg font-semibold">
